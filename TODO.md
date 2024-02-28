@@ -15,7 +15,8 @@
 - showcase personal projects
 - high-performance computing
     - algorithm optimization (use graph query as example)
-    
+- review of confusion matrix - how to memorize forever
+- information theory and the informational limit of datasets 
 
 # Later
 - functional programming

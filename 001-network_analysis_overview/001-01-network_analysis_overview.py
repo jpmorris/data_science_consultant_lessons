@@ -100,3 +100,16 @@
 # - **Average degree**: the average number of edges connected to a node
 # - **Closeness Centrality**: the average shortest path between a node and all other nodes
 # - **Communities**: groups of nodes that are more connected to each other than to other nodes
+
+# %% [markdown]
+# # Centrality Measures
+# - **Degree Centrality**: the number of edges connected to a node
+# - **Closeness Centrality**: the average shortest path between a node and all other nodes
+# - **Betweenness Centrality**: the fraction of shortest paths that pass through a node
+# - **Eigenvector Centrality**:
+# - **PageRank**:
+# - **Katz Centrality**:
+
+# %% [markdown]
+# [//]: # FLASHCARD
+# In words, how is Pagerank calculated?;PageRank is calculated by iteratively multipling the PageRank vector by the adjacency matrix and then normalizing the result. The process is repeated until the PageRank vector converges.
