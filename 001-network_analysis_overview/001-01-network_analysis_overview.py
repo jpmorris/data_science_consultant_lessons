@@ -106,9 +106,9 @@
 # - **Degree Centrality**: the number of edges connected to a node
 # - **Closeness Centrality**: the average shortest path between a node and all other nodes
 # - **Betweenness Centrality**: the fraction of shortest paths that pass through a node
-# - **Eigenvector Centrality**:
-# - **PageRank**:
-# - **Katz Centrality**:
+# - **Eigenvector Centrality**: like degree centrality but update by summing importance of in-neighbors
+# - **Katz Centrality**: like eigenvector centrality but every vertex has some 'free' importance, chooose alpha and beta
+# - **PageRank**: like Katz Centrality but importance is divided equally among out-neighbors
 
 # %% [markdown]
 # [//]: # FLASHCARD
