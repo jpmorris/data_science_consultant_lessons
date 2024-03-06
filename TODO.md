@@ -6,7 +6,7 @@
 
 - review of sci-kit API
 - order of algorithmic complexity (show sql example timings)
-
+- ML Theory
 - Data Structures
 - Design Patterns
 - git primer
