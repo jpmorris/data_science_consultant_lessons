@@ -85,12 +85,37 @@ def main(a):
 #         - Moreover, what defines a 'single responsibility'? Is multiplying 3 numbers a single responsibility?
 #       - For this reason there has been some pushback against 'Clean Code'
 
+# %% [markdown]
+# single principle in action
+# ``` javascript
+# func saveUser(db *sql.DB, user User) error {
+# 	if user.EmailAddress == "" {
+# 		return errors.New("user requires an email")
+# 	}
+# 	if len(user.Password) < 8 {
+# 		return errors.New("user password requires at least 8 characters")
+# 	}
+# 	hashedPassword, err = hash(user.Password)
+# 	if err != nil {
+# 		return err
+# 	}
+# 	_, err := db.Exec(`
+# 		INSERT INTO users (password, email_address, created)
+# 		VALUES ($1, $2, $3);`,
+# 		hashedPassword, user.EmailAddress, time.Now(),
+# 	)
+# 	return err
+# }
+# ```
+# first 3 if statments should be out of this function
 
 # %% [markdown]
 # 2. However, even if we don't take the Clean Code dictums as sacrosant, they are good principles to consider.
 #   - DRY (Don't Repeat Yourself) flows naturally from these principles
 #     - Though there may be occasions to violate DRY: "repetition is better than the wrong abstraction"
 #   - 'Never Nester' - Keep the code as flat as possible without too many nested loops, if statements, etc.
+#      - unhappy paths should go first
+#      - Linux kernel style guide: "If you need more than 3 levels of indentation, you're screwed anyway, and should fix your program."
 
 # %% [markdown]
 #

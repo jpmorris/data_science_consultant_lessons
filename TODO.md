@@ -1,8 +1,13 @@
 # List to cover
 - Good programming practices
+- Pythonic tricks
 - SQL primer
 - GenAI
 - NLP
+
+- more best practices:
+   - Do not wrap everything in try/catch
+   - No bare except
 
 - review of sci-kit API
 - order of algorithmic complexity (show sql example timings)
@@ -20,3 +25,4 @@
 
 # Later
 - functional programming
+- dynamic programming
