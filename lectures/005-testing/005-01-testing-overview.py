@@ -40,6 +40,11 @@
 # - **Smoke Testing**: testing the system to ensure that it works (critical functionalities)
 
 # %% [markdown]
+# - **Edge Case**: a test case with a unique condition (that often leads to a bug)
+# - **Corner Case**: a test case with multiple unique conditions
+
+
+# %% [markdown]
 # # Testing methodolgies
 # - **Specification-based Testing**: testing the system against the specification (oten UML or some requiements as testing input)
 #   - Found more in formal software development
