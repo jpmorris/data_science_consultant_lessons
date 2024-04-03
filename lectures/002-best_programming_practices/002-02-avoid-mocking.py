@@ -4,9 +4,9 @@
 
 # %%
 def work_with_file(file_name):
+    file_contents = fp.read()
+    do_stuff(risky_stuff)
     with open(file_name) as fp:
-        file_contents = fp.read()
-        do_stuff(risky_stuff)
 
 
 # %% [markdown]

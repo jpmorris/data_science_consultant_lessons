@@ -1,4 +1,10 @@
 # %% [markdown]
+# This is an example format of different to generate a paired jupytext notebook
+# - Start with a py file and then sync with
+# - `jupytext --sync <filename>.py`
+# - However if you are not using any runable code you should probably just use markdown directly
+
+# %% [markdown]
 # This is a multiline
 #
 # Markdown cell
