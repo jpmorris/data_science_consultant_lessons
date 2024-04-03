@@ -83,6 +83,11 @@ node that is the shortest distance, even if it's not the current node being sear
 - **Triangle**: a subgraph with three nodes and three edges
 - **Triadic Closure**: the tendency for nodes with a common neighbor to be connected
 
+# Basic Definitions - Graph Connectivity
+- **articulation points** - points that when removed increase the number of connected components 
+- **bridges** - edges that when removed increase the number of connected components. 
+- **connected component** - a subgraph in which each pair of nodes is connected with each other via a path
+
 
 # Basic Definitions - Centrality
 - **Centrality**: a measure of the importance of a node in a network
