@@ -118,7 +118,7 @@ To think about:
   - Not prameters or hypterprameters learned in training, but parameters that are set during inference
 - **Fine-tuning**: training a model on a specific dataset to improve performance on a specific task
 - **Model Size**: larger models tend to perform better
-- **RAG (Retrieval Augmented Generation)**: combining generative and retrieval models
+- **RAG (Retrieval Augmented Generation)**: integrates external data for enriched responses
 
 
 # Ways to modify LLM output - Inference Prameters:
