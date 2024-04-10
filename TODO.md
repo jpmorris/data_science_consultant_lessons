@@ -1,3 +1,12 @@
+# near term:
+- trunked based development vs gitflow (and how it relates to (our) data science repo)
+- generating data:
+  - own model
+  - python packages
+  - CTGAN
+  - LLMs
+  - compare outputs?
+
 
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
 - contextualize with deep learning basics

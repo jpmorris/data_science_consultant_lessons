@@ -37,5 +37,27 @@ Ways to improve LLM performance:
 - Danger is Catastrophic forgetting -
   - Catastropic Forgetting - when a model forgets how to do a task it was previously trained on
     - E.g. Fine tune on entity recoginition, and model forgets sentiment analysis
+  - How to avoid catastropic forgetting:
+    - May not need generality so it's fine to forget
+    - Fine-tune on multiple tasks at the same time
+    - Use regularization techniques that limit the amount of change that can be made to the weights of the model during training
+    - Consider using Parameter Efficient Fine-Tuning
+      -**Parameter Efficient Fine-Tuning**: a method that fine-tunes a model on a new task without forgetting the previous task
 
 ![Fine-tuning on single task](images/fine_tuning_single_task.png)
+
+# Multi-task, instruction fine-tuning
+- **Multi-task fine-tuning** train on multiple tasks to avoid catastrophic forgetting
+- Requires more data. Maybe 50,000 to 100,000
+- **Fine-tuned Language Net (FLAN)** - specific set of instructions used to fine-tuned model
+  - Because FLAN is the last step of training process, authors referred to it as the 'metaphorical desert' of the training process
+  - FLAN-T5 is the FLAN insturct model of the T5 model
+  - FLAN-PALM is the FLAN instruct model of the PALM model
+- FLAN-T5 has been trained against 473 Datasets across 146 task categories
+
+![Multi-task instruction fine-tuning](images/multi_task_instruction_fine_tuning.png)
+
+![FLAN Models](images/flan_models.png)
+
+![FLAN-T5](images/flan_t5.png)
+
