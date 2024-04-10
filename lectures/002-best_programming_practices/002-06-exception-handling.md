@@ -9,7 +9,7 @@
 - reraise exceptions using `raise`
 - You don't need to catch every possible exception
   - e.g if your script requires a file, you don't have to handle an exception just to craft a new
-    custom error message.  The exception is the error in many cases (especially for scripting)
+  -  custom error message.  The exception is the error in many cases (especially for scripting)
 
 ## References
 - https://www.youtube.com/watch?v=tIh42X0oGQc
