@@ -1,4 +1,5 @@
 # near term:
+- SQL Primer
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
 - generating data:
   - own model
@@ -29,6 +30,7 @@
    - 
    
 - CI/CD
+- Computer Vision
 - IDE Primer
 - review of sci-kit API
 - order of algorithmic complexity (show sql example timings)

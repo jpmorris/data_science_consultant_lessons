@@ -50,7 +50,7 @@ Ways to improve LLM performance:
 - **Multi-task fine-tuning** train on multiple tasks to avoid catastrophic forgetting
 - Requires more data. Maybe 50,000 to 100,000
 - **Fine-tuned Language Net (FLAN)** - specific set of instructions used to fine-tuned model
-  - Because FLAN is the last step of training process, authors referred to it as the 'metaphorical desert' of the training process
+  - Because FLAN is the last step of training process, authors referred to it as the 'metaphorical dessert' of the training process
   - FLAN-T5 is the FLAN insturct model of the T5 model
   - FLAN-PALM is the FLAN instruct model of the PALM model
 - FLAN-T5 has been trained against 473 Datasets across 146 task categories
