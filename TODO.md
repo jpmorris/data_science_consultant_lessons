@@ -23,6 +23,8 @@
 - GenAI
 - NLP
 
+
+
 - more best practices:
    - Never nesters
    - Do not wrap everything in try/catch
@@ -50,6 +52,11 @@
 # Later
 - functional programming
 - dynamic programming
+
+# Things to be aware of:
+- all computers have keyrings
+  - using an example to get the password from the keyring and login to aws:
+    - https://stackoverflow.com/questions/14756352/how-is-python-keyring-implemented-on-windows
 
 # from melissas spreadhseet
 Review APIs fully
