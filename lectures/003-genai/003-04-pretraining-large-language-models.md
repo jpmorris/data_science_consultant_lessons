@@ -129,7 +129,7 @@
 
 ![Compute Requirements for different LLMs](images/compute_requirements_for_llms.png)
 
-  We can see that to train GPT-3 (175 billion parameters) requires about 3700 Petflop/s-days. This would require 3700 V100 GPUs running for 8 days.  As a rough calculation, on AWS a `p3.2xlarge` instance costs $3.06 per hour (consumer cost). So to train GPT-3 would cost about 271,000 USD over 8 days for a total of 2.1 million 
+  We can see that to train GPT-3 (175 billion parameters) requires about 3700 Petflop/s-days. This would require 370 V100 GPUs running for 80 days.  As a rough calculation, on AWS a `p3.2xlarge` instance costs $3.06 per hour (consumer cost). So to train GPT-3 would cost about 27,100 USD over 80 days for a total of 2.1 million 
 
 - Of course consumer prices for AWS machines are far more expensive than company bulk prices, and not all GPUs were using 100% FLOPS. Another estimate puts this cost at 4.6 million USD.
 

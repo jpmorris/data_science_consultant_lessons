@@ -1,6 +1,6 @@
-# CLI Primer
+# CLI Shortcuts and directory/command navigation
 
-# Navigation and productivity
+# Basics
 
 ## Which Shell
 - **sh** - Bourne Shell - the original Unix shell.
@@ -11,8 +11,8 @@
 
 ## Tab completion
 Tab completion is a feature of the shell that allows the user to complete a command or file path by pressing the `Tab` key. This can be used to complete the name of a command, file, or directory.
-- **Ctrl + l** - Clear the screen.
-- **Ctrl + l** - Clear the screen.
+
+# Moving through directories
 
 ## popd
 `popd`/`pushd`/`dirs` are built-in shell commands that keeps an entire directory stack in history for the session. This allows the user to pop off previously visited directories to return to them.
@@ -32,6 +32,11 @@ After configurting the following shortcuts are available:
 - **Ctrl + r** - Search command history.
 - **Ctrl + t** - Search files and directories.
 - **Alt + c** - Change to a subdirectory.
+
+## `ALT + Left` and `ALT + Right`
+Almost all shells can be configured to use the `dirs`/`popd`/`pushd` tools via the `ALT + Left` and `ALT + Right` keys. This is a very useful feature that allows the user to quickly navigate through the directory stack.
+
+# Other 
 
 ## other CLI commands
 - **<TAB>** - Auto-complete the current command or file path.

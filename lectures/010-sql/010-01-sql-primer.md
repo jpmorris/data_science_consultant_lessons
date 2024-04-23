@@ -7,7 +7,12 @@ When SQL keywords are all caps, we can get a list of all the keywords used in a 
 ```bash
 find . -type t -exec cat {} + | grep -oE "\b[A-Z]+\b" | sort | uniq -c | sort
 ```
+To find the largest file recursively:
+```bash
+find . -type f -ls | sort -k7 -r | head -n 1
+```
 It's good to understand the power of bash, and avoid python if bash can do it in one line.
+
 ## A Note
 This primer is made for beyond the basics, and written for someone who has used SQL before. If you are new to SQL, you may want to start with a more basic primer.
 This primer is PostgreSQL specific, but most of the information is applicable to other SQL databases.
@@ -15,8 +20,10 @@ This primer is PostgreSQL specific, but most of the information is applicable to
 # General Tips
 - Try and find a tool with close-to-infinite history.  You will want to revisit old queries. 
 - Consider pulling data to pandas as part of a pipeline as it is generally faster to work with data in memory.
-  - If you are memory constrained, SQL doesn't have memory constraints as it is disk-based.
-- Get to know your tools.
+  - If you are memory constrained, SQL generally doesn't have memory constraints as it is disk-based.
+- If your queries take a long time to complete you may need clean information used by the query planner.
+  - Run `VACUUM FULL <tablename>`
+
 
 # Relational Data Model
 - SQL
@@ -80,6 +87,33 @@ However, it can make queries more complex and slow down inserts and updates.
 ![Star Schema](images/star_schema.png)
 
 ## Types
+# Numeric
+- `SMALLINT` - 2-byte integer
+- `INTEGER` - 4-byte integer
+- `BIGINT` - 8-byte integer
+- `DECIMAL` - arbitrary precision number
+- `NUMERIC` - arbitrary precision number
+- `REAL` - 4-byte floating-point number
+- `DOUBLE PRECISION` - 8-byte floating-point number
+- `SERIAL` - autoincrementing integer
+- `BIGSERIAL` - autoincrementing integer
+# Character
+- `CHARACTER(n)` - fixed-length string
+- `CHAR(n)` - fixed-length string
+- `VARCHAR(n)` - variable-length string
+- `TEXT` - variable-length string
+# Temporal
+- `DATE` - date
+- `TIME` - time
+- `TIMESTAMP` - date and time
+- `TIMESTAMP WITH TIME ZONE` - date and time with timezone
+- `INTERVAL` - time interval
+# Boolean
+- `BOOLEAN` - true or false
+# Array
+- `ARRAY` - array of any type
+# Binary
+- `BYTEA` - binary data
 
 
 # Tools
@@ -87,6 +121,8 @@ Tip: Try and find a tool with close-to-infinite history.  You will want to revis
 
 Some tools
 ## pgadmin
+- If you highlight it will only run highlighted code 
+- You can do a lot of management through the GUI
 ## SQL Workbench
 ## DBeaver
 ## CLI - psql
@@ -208,6 +244,7 @@ and conflict_action is one of:
 ## UPDATE 
 - **UPSERT** - portmaneau of UPDATE and INSERT - this will update a row if it exists, and insert it if it doesn't.
 ```sql
+
 [ WITH [ RECURSIVE ] with_query [, ...] ]
 UPDATE [ ONLY ] table_name [ * ] [ [ AS ] alias ]
     SET { column_name = { expression | DEFAULT } |
@@ -241,6 +278,25 @@ WITH test (age) AS (
 SELECT *
 FROM test
 ```
+
+## Other imporant keywords
+- `TRUNCATE` - removes all rows from a table.
+- `DROP` - removes a table or database.
+- `COALESE` - returns the first non-null value in a list.
+- `CASE...WHEN...THEN...ELSE...END` - used to create conditional statements.
+- `IS (NOT) NULL` - used to check if a value is null.
+- `WHERE (NOT) EXISTS` - used to check if a subquery returns any rows. Checks if data has already been processed
+- `NULLIF` - returns null if two values are equal.
+- `LPAD` - pads a string to a certain length.
+- `USING` - used in `JOIN` to specify the columns to join on.
+  - Shorthand for `USING ( a, b, ... ) is shorthand for ON left_table.a = right_table.a AND left_table.b = right_table.b`
+- `ON CONFLICT` - used in `INSERT` to specify what to do if a conflict occurs.
+- `TRUNCATE...CASCADE` - used to remove all rows from a table and any dependent tables.
+- `ALTER TABLE` - used to modify a table. Can be used to change the owner.
+- `GRANT <PRIVLEDGE> ON` - used to grant privileges to a user.
+- `CREATE VIEW` - used to create a view.
+- `CREATE TEMP` - used to create a temporary table.
+
 
 ## Set Operations
 Compared to the horizontal operation of `JOIN`:
