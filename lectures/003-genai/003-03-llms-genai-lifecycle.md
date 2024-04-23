@@ -112,6 +112,8 @@ To think about:
 
 
 # Ways to improve LLM performance:
+- **Pre-Train your own model** -- Many only help in very specific circumstances (very specific domain), usually general
+LLM language understanding (from off-the-shelf pretrained models) is helpful
 - **Prompt Engineering**: designing prompts to get the desired output
 - **In-context learning**: training a model on a specific dataset to improve performance on a specific task
 - **Inference Parameters**: adjusting parameters to improve performance
