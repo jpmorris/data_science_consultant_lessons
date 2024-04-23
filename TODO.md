@@ -1,12 +1,27 @@
 # near term:
 - SQL Primer
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
+- review of hackathon projects
 - generating data:
   - own model
   - python packages
   - CTGAN
   - LLMs
   - compare outputs?
+
+- pythonic
+- threading, Parllel, multiproesssing, asyncio and the GIL
+
+## List of programming best-practices to cover
+- logging without polluting app code
+- do not execute at import-time - keep your module-level globals clean of executable code
+  - avoid execution code at global-level
+  - sqlalchemy persistent engine vs singleton vs factory vs. creating a new engine every time
+- variable naming: code SHOULD READ
+- error handling
+  - Python vs other languages on using exceptions for flow control
+  - EAFP vs LBYL: https://softwareengineering.stackexchange.com/questions/298795/should-exceptions-be-raised-higher-up-or-lower-down-or-both
+
 
 
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
@@ -32,6 +47,7 @@
    - 
    
 - CI/CD
+- AutoML
 - Computer Vision
 - IDE Primer
 - review of sci-kit API

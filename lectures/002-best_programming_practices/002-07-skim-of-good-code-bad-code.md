@@ -47,3 +47,6 @@ This allows for different methods (`GetArea()` for Countries, `GetBallance()` fo
 
 
 - Interfaces need not be formal keywords. They also apply to classes and functions and describe the boundary and methods of exposing public information and hiding private information and is represented in the term Application Programming Interface (API)
+    - Web APIs are where one usually first encounters the term. The Web API boundary is stark, it is well-defined. However APIs apply to Classes and functions as well. 
+    - Take for example, the Pandas Library **API**: https://pandas.pydata.org/docs/reference/index.html
+
