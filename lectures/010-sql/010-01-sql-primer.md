@@ -15,28 +15,41 @@ It's good to understand the power of bash, and avoid python if bash can do it in
 
 ## A Note
 This primer is made for beyond the basics, and written for someone who has used SQL before. If you are new to SQL, you may want to start with a more basic primer.
-This primer is PostgreSQL specific, but most of the information is applicable to other SQL databases.
+This primer is PostgreSQL specific, but much of the information is applicable to other SQL databases.
 
 # General Tips
 - Try and find a tool with close-to-infinite history.  You will want to revisit old queries. 
 - Consider pulling data to pandas as part of a pipeline as it is generally faster to work with data in memory.
   - If you are memory constrained, SQL generally doesn't have memory constraints as it is disk-based.
+  - Our results show a difference of hours vs minutes for some queries.
 - If your queries take a long time to complete you may need clean information used by the query planner.
   - Run `VACUUM FULL <tablename>`
+- `ANALYZE` your tables after big inserts, it will keep your queries optimized
+- Some clients, like pgadmin, will return **client-side** errors if the query is too large **for the client**.  
+This is not a server-side error. If you write your query results to a table the query will complete.
 
 
 # Relational Data Model
 - SQL
  - Different Dialects
-   - PostgreSQL
-   - MySQL
-   - MariaDB
-   - SQLite
-   - Oracle
-   - SQL Server
-   - DB2
+  - PostgreSQL
+  - MySQL
+  - MariaDB
+  - SQLite
+  - Oracle
+  - SQL Server
+  - DB2
  - Is a declarative language vs imperative
-   - "What you want" vs "How to get it"
+  - "What you want" vs "How to get it"
+  - SQL is Declarative
+  - Declarative makes sense for data table operations, don't want to program your own queries you use often like `SELECT`
+  - However, the language is constrained, it's hard properly 'program' in pure SQL without the SQL-programming extensions
+  like PL/pgSQL
+    - Incidentally, SQL **is** turring complete system[^1]
+      - **Turing complete** - a system that can simulate a Turing machine. By Turing Equivalence this means one language
+      can perform any algorithm that another can.  A collelary is that a language can perform any task another can 
+      (resources notwithstanding).
+
   
 ## Other models - NoSQL
 There are many other databases that don't use SQL.
@@ -87,7 +100,7 @@ However, it can make queries more complex and slow down inserts and updates.
 ![Star Schema](images/star_schema.png)
 
 ## Types
-# Numeric
+### Numeric
 - `SMALLINT` - 2-byte integer
 - `INTEGER` - 4-byte integer
 - `BIGINT` - 8-byte integer
@@ -97,37 +110,37 @@ However, it can make queries more complex and slow down inserts and updates.
 - `DOUBLE PRECISION` - 8-byte floating-point number
 - `SERIAL` - autoincrementing integer
 - `BIGSERIAL` - autoincrementing integer
-# Character
+### Character
 - `CHARACTER(n)` - fixed-length string
 - `CHAR(n)` - fixed-length string
 - `VARCHAR(n)` - variable-length string
 - `TEXT` - variable-length string
-# Temporal
+### Temporal
 - `DATE` - date
 - `TIME` - time
 - `TIMESTAMP` - date and time
 - `TIMESTAMP WITH TIME ZONE` - date and time with timezone
 - `INTERVAL` - time interval
-# Boolean
+### Boolean
 - `BOOLEAN` - true or false
-# Array
+### Array
 - `ARRAY` - array of any type
-# Binary
+### Binary
 - `BYTEA` - binary data
 
 
-# Tools
+# SQL Clients/Tools
 Tip: Try and find a tool with close-to-infinite history.  You will want to revisit old queries. 
 
-Some tools
-## pgadmin
-- If you highlight it will only run highlighted code 
-- You can do a lot of management through the GUI
-## SQL Workbench
-## DBeaver
-## CLI - psql
-- Also `pgdump`
-## sqlalchemy
+- pgadmin
+  - If you highlight it will only run highlighted code 
+  - You can do a lot of management through the GUI
+- SQL Workbench
+- DBeaver
+- CLI - psql
+  - `psql` is a command line tool to run queries 
+  - Also `pgdump` - to dump a database
+- sqlalchemy - Python library to interact with SQL databases
 ```python
 from sqlalchemy import create_engine
 
@@ -137,10 +150,26 @@ connection = engine.connect()
 my_query = 'SELECT * FROM my_table'
 results = connection.execute(my_query).fetchall()
 ```
-## pandas
+- pandas
 ```python
 pd.read_sql('SELECT int_column, date_column FROM test_data', conn)
 ```
+- polars
+```python
+import polars as pl
+pdf = pl.read_sql('SELECT int_column, date_column FROM test_data', conn)
+pdf.write_database('tablename', conn)
+```
+
+
+# Query Optimizer
+All SQL engines have a query optimizer that will take your query and try to find the most efficient way to execute it.
+For example, if you are filtering lots of rows, it will try and filter out the data before running other parts of the query.
+However, you can write a query that is hard to optimize or the table can be in a poor state in terms of the metadata 
+That the optimizer may make suboptimal choices. You can use `EXPLAIN` to see how the query is being executed. Also
+use `ANALYZE` and `VACUUM` to keep your tables optimized.
+
+```sql 
 
 # SQL Syntax
 Notice the declariative nature of the syntax. It is limited but can avoid bugs easier.
@@ -343,18 +372,23 @@ GROUP BY
    state,-- note these are the only two columns grouped by
 ```
 
+## Functions vs Stored Procedures 
+Postgres can store some methods server-side to run over data. There are two types: functions and stored procedures.
+Functions cannot modify the database, it can only return a value. Stored procedures can modify the database, they 
+are similar to SQL code that is stored in the database and called as needed.
 
-## Stored Procedures
-# Query Optimizer
+## Views and Temp Tables
+- Views are a way to save a query and run it as if it were a table. This allows these views to to be dynamic.
+
 ## Extending SQL via Programming
 - PL/pgSQL
 ## EXPLAIN
 ## Connections
 - ODBC/JDBC
-## Views
 ## Window Functions
 ## Data Warehousing
 ## Transactions
 ## Partitioning, Clustering Sharding
 
 
+[^1]: https://stackoverflow.com/questions/900055/is-sql-or-even-tsql-turing-complete

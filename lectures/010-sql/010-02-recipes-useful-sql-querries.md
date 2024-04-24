@@ -1,5 +1,42 @@
 # Recipes - Useful SQL Querries
 
+## Referencing an Aliased Column in a WHERE Clause
+```sql
+SELECT *
+    FROM (
+        SELECT column_name AS alias_name
+        FROM table_name
+    ) x
+WHERE salary < 5000
+```
+
+## Conditional in SELECT statement:
+```sql
+select ename,sal,
+    case when sal <= 2000 then 'UNDERPAID'
+        then sal >= 4000 then 'OVERPAID'
+        else 'OK'
+    end as status
+from emp
+```
+
+## Finding rows in common between two tables
+```sql
+select empno,ename,job,sal,deptno
+from emp
+where (ename,job,sal) in (
+    select ename,job,sal from emp
+    intersect
+    select ename,job,sal from V
+)
+```
+
+## Determining if two tables have the same data
+
+
+## Identifying and avoiding Cartesian Products
+
+
 ## Create a copy of a table
 Instead of creating a table from scratch, try and copy a similar one. This will 
 ```sql
