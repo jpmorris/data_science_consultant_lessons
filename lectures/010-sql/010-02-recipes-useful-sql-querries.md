@@ -75,3 +75,41 @@ group by data_type
 order by count DESC;
 ```
 
+## Check for long-running queries
+```sql
+SELECT	
+  pid,	
+  now() - pg_stat_activity.query_start AS duration,	
+  query,	
+  state	
+FROM pg_stat_activity	
+WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes';
+```
+
+## Collect statistics about table and store - useful to help query planner make better decisions
+Should be run after (big) inserts.
+```sql
+ANALYZE <table>;
+```
+
+## Estimate row-count on a table
+```sql
+SELECT reltuples::bigint FROM pg_class WHERE oid = '<table>'::regclass; 
+```
+
+## Finding columns within tables within the database
+```sql
+select t.table_schema,
+       t.table_name,
+	   c.column_name
+from information_schema.tables t
+inner join information_schema.columns c on c.table_name = t.table_name
+                                and c.table_schema = t.table_schema
+where c.column_name like '%performance%'
+      and t.table_schema not in ('information_schema', 'pg_catalog')
+      and t.table_schema = 'std'  
+	  and t.table_name = 'fpds_contracts'
+order by t.table_schema;
+```
+
+
