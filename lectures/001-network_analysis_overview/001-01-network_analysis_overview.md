@@ -29,7 +29,9 @@
 
 ![Graph Examples](images/graph_examples.png)
 
-# Basic Definitions - Graph Properties 2
+# Basic Definitions - Subgraphs
+- **Subgraph**: a subset of nodes and edges from a graph
+  - Includes all the specific definitions below
 - **Cliques**: a complete subnetwork - a subnetwork where every pair of nodes is connected by an edge
 - **Component**: a connected subgraph
 - **Ego Network**: a node and its neighbors
@@ -42,6 +44,15 @@ Paul Erdos was a one of the world' greats mathmaticians.  He is know for his pro
 An 'Erdos number' was the the shortest path to Erdos in publications.
 
 ![Erdos-Ego Network](images/erdos_ego_network.png)
+
+- **Neighbors**: the nodes connected to a node
+- **Neighborhod**: a node and its neighbors
+  - Formally this is the direct neighbors, edges, and the edges between neighbors. Some graph packages use this term informally to larger group of neighbors of direct neighbors.
+- **Clustering Coefficient**: the fraction of a node's neighbors that are neighbors with each other
+- **Triad**: a subgraph with three nodes and three edges
+- **Triangle**: a subgraph with three nodes and three edges
+- **Triadic Closure**: the tendency for nodes with a common neighbor to be connected
+
 
 
 # Basic Definitions - Graph Representations
@@ -75,13 +86,6 @@ An 'Erdos number' was the the shortest path to Erdos in publications.
 - Therefore the search algorithm will not exhaustively search a given node like BFS, it will jump to the next
 node that is the shortest distance, even if it's not the current node being searched.
 "
-
-# Basic Definitions - Neighbors
-- **Neighbors**: the nodes connected to a node
-- **Clustering Coefficient**: the fraction of a node's neighbors that are neighbors with each other
-- **Triad**: a subgraph with three nodes and three edges
-- **Triangle**: a subgraph with three nodes and three edges
-- **Triadic Closure**: the tendency for nodes with a common neighbor to be connected
 
 # Basic Definitions - Graph Connectivity
 - **articulation points** - points that when removed increase the number of connected components 

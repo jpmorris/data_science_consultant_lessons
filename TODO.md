@@ -21,7 +21,9 @@
 - error handling
   - Python vs other languages on using exceptions for flow control
   - EAFP vs LBYL: https://softwareengineering.stackexchange.com/questions/298795/should-exceptions-be-raised-higher-up-or-lower-down-or-both
-
+- if you abstract PLEASE EXPOSE ALL EXISTING FUNCTIONALITY
+  - do not hide functionality
+  - e.g. dynamic dags inability to pass in arguments 
 
 
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
