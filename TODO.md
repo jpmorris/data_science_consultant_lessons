@@ -1,5 +1,12 @@
+# Today's Agenda:
+- Review of Learnings from recent code reviews:
+  - eval is GENERALLY bad
+  - globals are GENERALLY bad
+  - igraphs select() issues
+  - 
+ 
+
 # near term:
-- SQL Primer
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
 - review of hackathon projects
 - generating data:

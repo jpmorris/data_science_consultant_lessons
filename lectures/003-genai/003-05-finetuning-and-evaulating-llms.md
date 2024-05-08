@@ -71,7 +71,6 @@ Ways to improve LLM performance for your task:
 
 ![FLAN Models](images/flan_models.png)
 
-![FLAN-T5](images/flan_t5.png)
 
 # FLAN - Fine-tuned Language Net
 - Based on paper: https://arxiv.org/pdf/2210.11416
@@ -83,7 +82,7 @@ Ways to improve LLM performance for your task:
   - **Chain-of-thought** - alternative setup to zero/n-shot tuning where the model is tuned on a
   step-by-step example rather than n examples 
 - Used several benchmarks:
-  - MMLU - Multi-Modal Language Understanding
+  - MMLU - Massive Multitask Language Understanding 
     - paper: https://arxiv.org/pdf/2009.03300
   - BBH - Big-Bench Hard 
     - site: https://github.com/suzgunmirac/BIG-Bench-Hard
@@ -113,7 +112,51 @@ Ways to improve LLM performance for your task:
     - PALM - Microsoft
   - OpenSource Benchmarks can be seen here: https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
   
+![Chain of Thought](images/chain_of_thought.png)
+
+![Flan Tasks](images/flan_tasks.png)
 
 ![Current Top LLM Performance](images/current_top_llm_performance.png)
 
+
+# Model Evaluation
+- **ROUGE** - Recall-Oriented Understudy for Gisting Evaluation
+  - Used for text summarizaiton 
+  - Compares a summary to one or more reference summaries
+  - ROUGE-N: compares n-grams
+    - ROUGE-1: unigrams
+      - Doesn't consider ordering and only individual words.
+  - ROUGE-L: Longest Common Subsequence
+    - Considers the longest common subsequence of words between the generated summary and the reference summary
+  - Rouge Clipping - Limit the count of matches to the maximum count for the unigram in the reference
+- **BLEU** - Bilingual Evaluation Understudy
+  - Used for text translation
+  - Compares to human-generated tranlsations
+  - Is an average precision across a range of n-gram sizes
+    - Is provided by libraries such as HuggingFace
+- These are good for diagnositic evaluation, not final evaluation. For final evaluation use researcher-created benchmarks.
   
+
+![LLM Evaluation Metrics - Rouge-1](images/llm_metrics_rouge1.png)
+  
+![LLM Evaluation Metrics - Rouge-L](images/llm_metrics_rouge_l.png)
+
+![LLM Evaluation Metrics - Rouge Clipping](images/llm_metrics_rouge_clipping.png)
+
+
+# Benchmark
+- Glue - General Language Understand Evaluation
+  - Introduced in 2018
+  - Natural Language Tasks (e.g Sentiment analysis, Question Answering, etc)
+  - Leaderboard: https://gluebenchmark.com/leaderboard/
+- SuperGlue - Super General Language Understanding Evaluation
+  - Introduced in 2019
+  - Multi-sentence reasoning, Reading comprehension
+  - Leaderboard: https://super.gluebenchmark.com/leaderboard/
+- BigBench - Big Bench Hard
+  - Introduced in 2022
+- MMLU - Massive Multitask Language Understanding
+  - Introduced in 2021
+- HELM - Human Evaluated Language Model
+  - Evolving set of metrics
+  - Includes Toxicity, Factuality, etc
