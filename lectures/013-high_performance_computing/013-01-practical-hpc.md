@@ -43,21 +43,41 @@ v1_scaled = np.zeros((1000000, 1))
 v1_scaled = 2 * v1
 ```
 - Vectorization is a different way of thinking about the problem, but it's much faster.
+  - Instructions called SIMD - Single Instruction Multiple Data
 - If you can't vectorize, then you can try parallelism.
   - Paralleization is not easy to implment. Many libraries do not support it (e.g. `igraph`,
   `requests` even `pandas` natively)
   - Consider other data processing libraries (e.g. `dask`, `polars`, `duckdb`) which have 
   - In python be aware of the GIL (Global Interpreter Lock) which prevents true parallelization.
-    - TODO:
   native parallelization or other features that allow for faster processing.
-  - You will often have to roll your own with CPU parallelization libraries:
+    - TODO: describe GIL
+
+```python
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+def multithreading(func, args, workers):
+    with ThreadPoolExecutor(workers) as ex:
+        res = ex.map(func, args)
+    return list(res)
+def multiprocessing(func, args, workers):
+    with ProcessPoolExecutor(workers) as ex:
+        res = ex.map(func, args)
+    return list(res)
+```
+heres a footnote [^1]
+
+[Multigrheading VS MultiProcessing][1]
+
+-   You will often have to roll your own with CPU parallelization libraries:
       - `multiprocessing` 
       - `Parallel` from `joblib`
       - `threading`
-  - For even greater parallelization you can use GPU parallelization with libraries like `cupy` or `numba`, but it's easier to use libraries that natively support GPUs like `tensorflow`, `pytorch`, or `cuDF`.
+  - For even greater parallelization you can use GPU parallelization with libraries like `cupy` or
+    `numba`, but it's easier to use libraries that natively support GPUs like `tensorflow`, `pytorch`, or `cuDF`.
 - If you can't parallelize, the number of cores of a machine or any number of GPUs wont help you.
   - Try and get a machine with the fastest CPU clock speeds and turbo boost (in aws z-series, 
   or c-series)
+- You may need to do convert funcitions to C by using `cython` or in some cases you may need
+  to rewrite the code in a more performant langauge like C
 - If you still need more speed consider distributed computing with Spark clusters or Hadoop
 
 

@@ -139,7 +139,7 @@ Tip: Try and find a tool with close-to-infinite history.  You will want to revis
 - DBeaver
 - CLI - psql
   - `psql` is a command line tool to run queries 
-  - Also `pgdump` - to dump a database
+  - Also `pgdump` - to dump a table
 - sqlalchemy - Python library to interact with SQL databases
 ```python
 from sqlalchemy import create_engine
@@ -311,7 +311,7 @@ FROM test
 ## Other imporant keywords
 - `TRUNCATE` - removes all rows from a table.
 - `DROP` - removes a table or database.
-- `COALESE` - returns the first non-null value in a list.
+- `COALESCE` - returns the first non-null value in a list.
 - `CASE...WHEN...THEN...ELSE...END` - used to create conditional statements.
 - `IS (NOT) NULL` - used to check if a value is null.
 - `WHERE (NOT) EXISTS` - used to check if a subquery returns any rows. Checks if data has already been processed
@@ -342,13 +342,17 @@ Compared to the horizontal operation of `JOIN`:
 
 | Operator	                     | Description
 ---------------------------------|------------
-| <  | Less than
-| >  | Greater than
-| <= | Less than or equal to
-| >= | Greater than or equal to
-| =  | Equal
-| <> | Not equal
-| != | Not equal
+| <    | Less than
+| >    | Greater than
+| <=   | Less than or equal to
+| >=   | Greater than or equal to
+| =    | Equal
+| <>   | Not equal
+| !=   | Not equal
+| ~~   | `LIKE` 
+| ~~*  | `ILIKE` (case-insensitive `LIKE`)
+| !~~  | `NOT LIKE`
+| !~~* | `NOT ILIKE`
 
 ## JOIN
 - Outside of understanding different join types, it's important to know how they behave with duplicates and nulls
