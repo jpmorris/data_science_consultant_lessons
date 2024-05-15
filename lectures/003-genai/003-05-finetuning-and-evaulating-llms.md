@@ -3,6 +3,7 @@ Ways to improve LLM performance for your task:
 - **Pre-Training**: training a model from scratch on a large dataset
 - **Inference Parameters**: adjusting parameters to improve performance
   - Not prameters or hypterprameters learned in training, but parameters that are set during inference
+  - E.g. temperature, top-k, top-p, etc
 - **Prompt Engineering**: designing prompts to get the desired output
 - **In-context learning**: training a model on a specific dataset to improve performance on a specific task
   - n-shot learning: training a model on n examples of a task
@@ -16,7 +17,7 @@ Ways to improve LLM performance for your task:
 - **More Data** - more diverse data
 - **Bigger Model** - more parameters
 
-# Fine-tuning
+# (FULL) Fine-tuning
 - In-context learning can help a model but will often wont improve after 5 or 6 contextual examples
   - Also reduces the context window the more examples that are given
 - PreTraining (Self-supervised) of LLMs is unsupervised in that no manual labels are applied.

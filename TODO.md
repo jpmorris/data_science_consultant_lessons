@@ -1,12 +1,17 @@
-# Today's Agenda:
+# Next Agenda:
+- GenAI
+  - Fine Tuning
 - Review of Learnings from recent code reviews:
+  - using kwargs 
+  - igraphs strange API
   - eval is GENERALLY bad
   - globals are GENERALLY bad
+    - python scoping
   - igraphs select() issues
-  - 
  
 
 # near term:
+- go through flan tasks
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
 - review of hackathon projects
 - generating data:
