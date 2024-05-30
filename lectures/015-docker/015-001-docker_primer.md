@@ -53,6 +53,7 @@
 
 
 ## Important Docker Commands:
+- `docker build`: builds an image from a Dockerfile and a 'context'
 - `docker run <image>`: Will fetch an image from Docker Hub if needed, create and run a container based off the image
   - `--detach/-d`: Run the container in the background
   - `--name <name>`: Name the container
