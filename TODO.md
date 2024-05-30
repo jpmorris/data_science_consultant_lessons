@@ -1,13 +1,15 @@
-# Next Agenda:
-- GenAI
-  - Fine Tuning
+# Next Agendas:
+- Finish docker
+- demo of some docker
+  - prep example
+  
+
+- PEFT
+
 - Review of Learnings from recent code reviews:
   - using kwargs 
-  - igraphs strange API
-  - eval is GENERALLY bad
-  - globals are GENERALLY bad
-    - python scoping
-  - igraphs select() issues
+  - review of line labeler refactoring
+  - review of augmentor refactoring
  
 
 # near term:
