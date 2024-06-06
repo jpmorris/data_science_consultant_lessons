@@ -1,5 +1,7 @@
 # CLI Shortcuts and directory/command navigation
 
+# Topic overview
+
 # Basics
 
 ## Which Shell

@@ -62,6 +62,7 @@
   - `-i`: Run the container interactively
   - `-t`: Allocate a pseudo-TTY
   - Default repository is [Docker Hub](https://hub.docker.com/), but you can specify a different repository with `docker run <repository>/<image>`
+  - `--entrypoint`: Override the `ENTRYPOINT` in the Dockerfile
   - Very useful: (know how to go INSIDE a container)
        - `docker exec -it <container_name> /bin/bash`
 - `docker start <container>`: Start a container
