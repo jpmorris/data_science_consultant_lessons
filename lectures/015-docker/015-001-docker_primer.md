@@ -53,6 +53,7 @@
 
 
 ## Important Docker Commands:
+- `docker build`: builds an image from a Dockerfile and a 'context'
 - `docker run <image>`: Will fetch an image from Docker Hub if needed, create and run a container based off the image
   - `--detach/-d`: Run the container in the background
   - `--name <name>`: Name the container
@@ -61,6 +62,7 @@
   - `-i`: Run the container interactively
   - `-t`: Allocate a pseudo-TTY
   - Default repository is [Docker Hub](https://hub.docker.com/), but you can specify a different repository with `docker run <repository>/<image>`
+  - `--entrypoint`: Override the `ENTRYPOINT` in the Dockerfile
   - Very useful: (know how to go INSIDE a container)
        - `docker exec -it <container_name> /bin/bash`
 - `docker start <container>`: Start a container
