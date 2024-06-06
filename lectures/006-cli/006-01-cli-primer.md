@@ -184,18 +184,7 @@ configurting the following shortcuts are available:
   POSIX-compliant.
 
 
-## Ways to kill a process
-- **Ctrl + c** - Kill the current process.
-- **Ctrl + d** - Send an EOF signal to the current process.
-- **kill -9 <pid>** - Kill a process by its process ID.
-- **killall <process_name>** - Kill all processes with a given name.
-- **pkill <process_name>** - Kill a process by its name.
 
-
-## Background a process
-- **Ctrl + z** - Background the current process.
-- **bg** - Send the current process to the background.
-- **fg** - Bring the current process to the foreground.
 
 ## Redirecting output
 - **command > file** - Redirect the output of a command to a file.
