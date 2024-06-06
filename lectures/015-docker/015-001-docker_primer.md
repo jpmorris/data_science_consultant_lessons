@@ -124,6 +124,8 @@ EXPOSE 27017
 - `ENTRYPOINT` is the command that is run when the container starts. 
   - If `CMD` is present, it is appended to the `ENTRYPOINT` command.
 - So if you have `ENTRYPOINT ["echo", "Hello"]` and `CMD ["World"]` the container will run `echo Hello World`
+- This can be confusing. If you want to `docker run` with a custom command you will need to override
+  the `ENTRYPOINT` `--entrypoint` flag.
 
 
 ## Environment Variables
