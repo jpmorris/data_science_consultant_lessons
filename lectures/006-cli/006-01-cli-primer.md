@@ -1,32 +1,7 @@
 # CLI Shortcuts and directory/command navigation
 
-# Topic overview
-
-Way too much to cover, but we'll try and stick to this outline:
-
-- quick advert: flameshot
-- CLIs at HHSOIG
-- CLI Commands
-- quick advert: editing at the CLI w/ vim
-- Advanced topics
-
-# CLIs at HHSOIG:
-
-- On GFEs:
-  - Cygwin
-  - Git Bash
-  - Windows Subsystem for Linux
-- In AWS:
-  - Sagemaker Jupyterlab
-  - Sagemaker Code Editors
-  - Self-Managed Jupyterlab
-  - Cloud9
-  - CloudShell
-  - SSH into EC2 instances
-- Containers:
-  - Docker
-
 # CLI commands
+- Console prompt contains my current directory
 
 ## Advanced review of basics
 
@@ -34,27 +9,38 @@ Way too much to cover, but we'll try and stick to this outline:
   - `man <command>` - Display the manual page for a command.
   - `<cmd> --help` - Display help information for a command.
   - Some commands have man pages some have help flags and some have both, few have neither
+- `touch` - Create an empty file
+- `clear`: Clear the terminal screen.
+- `Ctrl + l`: Clear the terminal screen.
+- `.` - The current directory.
+- `..` - The parent directory.
+  - `./<cmd>` - Run a command in the current directory.
+  - `../<cmd>` - Run a command in the parent directory.
+  - `<cmd>` - Run a command in the PATH.
+- `mkdir -p` - Create directories recursively.
+- `tree` - Display the directory structure as a tree.
 - `cp -r` - Copy directories recursively.
 - `cp <file1> <file2> <file3> <destination>` - Copy multiple files to a destination.
 - `cp <file> ~-`: Copy a file to the previous directory.
 - `ls -lat` - List files in long format, hidden files, and sort by time.
+- `*` - wildcard, all files that pattern applies to
 - `ls ./*/subidr` - List all subdirectories via directory wildcard.
 - `rm -rf` - Remove files and directories recursively and forcefully.
   - You can use `rmdir` for directories, but `rm -rf` is universal, just be careful
   - `<ctrl + C>` to stop a command
 - `rm !(*.foo|*.bar|*.baz)` - Remove all files except those with a specific extension.
-- `mkdir -p` - Create directories recursively.
 - `mv filename.{old,new}` - Quickly rename extension
 
 ## Moving around CLI/commands
 
 ### commands
 
-- `clear`: Clear the terminal screen.
-- `Ctrl + l`: Clear the terminal screen.
 - `pwd` - Print the current working directory.
 - `!!`: Repeat the last command
   - `sudo !!`: important when you forget `sudo` in the last command
+- `<up>`/`<down>` - can navigate back through history
+- `<cmd1> | <cmd2>` - Pipe the output of command1 to the input of command2.
+- `history | grep <string>`: Search the command history for a string
 - `!<n>`: Repeat the nth command in the history (find n using `history`)
 - `!string`: Repeat the last command that starts with the string.
 - `!$`: Last argument of the last command.
@@ -94,12 +80,8 @@ recent command that matches the characters typed.
 
 ### commands
 
-- `.` - The current directory.
-- `..` - The parent directory.
-  - `./<cmd>` - Run a command in the current directory.
-  - `../<cmd>` - Run a command in the parent directory.
-  - `<cmd>` - Run a command in the PATH.
 - `~` - The home directory.
+- `cd` - will take you back to your home directory
 - `find . | grep <string>`: FIND A FILE - Search for a file name recursively
 - `grep <pattern> * -iR`: FIND A STRING IN A FILE - Search for a pattern in all files recursively
   (case-insensitive)
@@ -122,7 +104,7 @@ recent command that matches the characters typed.
   and `ALT + Right` keys. This is a very useful feature that allows the user to quickly navigate
   through the directory stack.
 - You can configure your .bashrc (.zshrc, etc.) to use `alt + left` and `alt + right` to navigate
-  through the directory stack. See bashrc file here:
+  through the directory stack.
 
 ## Advert: Editing & Vim
 
@@ -210,7 +192,6 @@ recent command that matches the characters typed.
 - `cat <file> | wc -l` - Count the number of lines in a file.
 - `jq` - A command-line JSON processor, great for pretty printing
 - `bc` - A command-line calculator
-- `tree` - Display the directory structure as a tree.
 
 # (bash) programming from the CLI
 
