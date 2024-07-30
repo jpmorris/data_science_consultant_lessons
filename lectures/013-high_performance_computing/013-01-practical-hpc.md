@@ -7,11 +7,13 @@ relevant information for data scientsts.
 - Giving the resources necessary to complete the program.
 
 # General Performance profiling workflow.
-_The is it worth it question_
+
+## The "is it worth it question"
 - Remember your requirements
   - For low throughput date, batching on weekly cadence, the requirements for speed are minimal
   - For realtime applications, the requirements may be stringent 
-_Memory question_
+
+## Memory question: is there enough memory to complete (quickly)
 - Here `top` or `mem` is your friend.  
   - In Sagemaker, the memory usage popup is helpful
   - AWS Cloudwatch will also show memory usage of machines
@@ -24,7 +26,7 @@ _Memory question_
   could be expensive depending on the workflow. 
 - If you cant scale up, consider distributed computing with Spark clusters or Hadoop
 
-_Processor question_
+## Processor question
 - Here `top` or `htop` is your friend
   - AWS Cloudwatch will also show CPU usage of machines
 - Profile your code
