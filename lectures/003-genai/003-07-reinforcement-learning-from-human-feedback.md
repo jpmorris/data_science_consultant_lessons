@@ -143,12 +143,33 @@ As a review: Ways to improve LLM performance for your task:
   - 'Constitution' includes:
     - A set of rules and principles
     - A set of prompts
-- Process:
+
+### Process
+
+- Stage 1: Supervised Learning Stage - Fine-Tune on Constitutional responses
   - Red team adversarial prompts against the model
-    - **Red Teaming**: generate adversarial examples
+  - **Red Teaming**: generate adversarial examples
   - Evaluate the responses based with the principles to produce lots of principle-based completions
-  - Fine tune based on these completions
+  - Fine tune based on these completions, called consistutional responses
     - Reminder: all fine-tuning starts with prompt-completion pairs
+  - **Constitutional Responses** - completions that are consistent with constitutional principles
+- Stage 2: Reinforcment Learning Stage - RLAIF
+  - Use fine-tuned model to generate SET of responses to Red Teamed Prompts
+  - Ask model which is preferred to consitutional principles
+  - Result is model generated preference dataset used to train reward model
+  - Can use this reward model to train model with preferences
+
+Reminder there are 4 models here:
+
+- 'Helpful LLM' - original instruct model
+- Fine-tuned LLM - LLM that has be fine tuned with constitutional repsonses
+- Reward model - often an LLM in itself that has be trained on the most-aligned prompts to
+  red-teamed prompts
+- Consitutional LLM - LLM that has been tuned with RL on the reward model
+
+- Question: how is RL tuning different than Fine-Tuning:
+  - Fine-tuning is supervised learning that relies on completion-prompt pairs
+  - RL tuning is reinforcement learning that relies on reward model
 
 ![Example of Consitutional Principles](images/constitutional_principles_example.png)
 ![Example of RLAIF Process](images/rlaif_process_example.png)
