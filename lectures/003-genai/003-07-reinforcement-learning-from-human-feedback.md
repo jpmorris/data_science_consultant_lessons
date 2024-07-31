@@ -159,14 +159,14 @@ As a review: Ways to improve LLM performance for your task:
   - Result is model generated preference dataset used to train reward model
   - Can use this reward model to train model with preferences
 
-Reminder there are 4 models here:
+Reminder there are several models here:
 
 - 'Helpful LLM' - original instruct model
-- Fine-tuned LLM - LLM that has be fine tuned with constitutional repsonses
 - Reward model - often an LLM in itself that has be trained on the most-aligned prompts to
   red-teamed prompts
 - Consitutional LLM - LLM that has been tuned with RL on the reward model
 
+Question:
 - Question: how is RL tuning different than Fine-Tuning:
   - Fine-tuning is supervised learning that relies on completion-prompt pairs
   - RL tuning is reinforcement learning that relies on reward model
