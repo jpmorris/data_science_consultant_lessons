@@ -1,8 +1,11 @@
+# Continuous learning Chat (these should always go int repo too):
+- generator comprehension
+
+
 # Next Agendas:
 
-- GENAI
-
 - Go through the skills guide
+- Review of all hackathon projects and the inherent LLM architectures and methods
 
 - Review of Learnings from recent code reviews:
   - using kwargs
