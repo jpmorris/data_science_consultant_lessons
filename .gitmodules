@@ -1,0 +1,6 @@
+[submodule "internal_excella_lectures"]
+	path = internal_excella_lectures
+	url = git@github.com:jpmorris/internal_excella_lectures.git
+[submodule "internal_lectures"]
+	path = internal_lectures
+	url = git@github.com:jpmorris/internal_lectures.git
