@@ -216,6 +216,5 @@ As a review: Ways to improve LLM performance for your task:
   - reinforcment learning
 - Bigger context windows
 - Multi-modality
-- LLM reasoning  
+- LLM reasoning
 - Neuro-symbolic AI - combining traditional symbolic AI
-
