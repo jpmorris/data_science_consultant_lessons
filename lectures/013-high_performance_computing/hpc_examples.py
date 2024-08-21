@@ -1,12 +1,14 @@
+# %%
 import time, os
 from threading import Thread, current_thread
 from multiprocessing import Process, current_process
 
 
-COUNT = 200000000
-SLEEP = 10
+COUNT = 20000000
+SLEEP = 2
 
 
+# %%
 def io_bound(sec):
 
     pid = os.getpid()
@@ -24,6 +26,7 @@ def io_bound(sec):
     )
 
 
+# %%
 def cpu_bound(n):
 
     pid = os.getpid()
@@ -44,6 +47,7 @@ def cpu_bound(n):
     )
 
 
+# %%
 def part1():
     # Code snippet for Part 1
     io_bound(SLEEP)
@@ -53,6 +57,7 @@ def part1():
     io_bound(SLEEP)
 
 
+# %%
 def part2():
     # Code snippet for Part 2
     t1 = Thread(target=io_bound, args=(SLEEP,))
@@ -72,6 +77,7 @@ def part2():
     t5.join()
 
 
+# %%
 def part3():
     cpu_bound(COUNT)
     cpu_bound(COUNT)
@@ -80,6 +86,7 @@ def part3():
     cpu_bound(COUNT)
 
 
+# %%
 def part4():
     t1 = Thread(target=cpu_bound, args=(COUNT,))
     t2 = Thread(target=cpu_bound, args=(COUNT,))
@@ -98,6 +105,7 @@ def part4():
     t5.join()
 
 
+# %%
 def part5():
     t1 = Process(target=cpu_bound, args=(COUNT,))
     t2 = Process(target=cpu_bound, args=(COUNT,))
@@ -116,6 +124,7 @@ def part5():
     t5.join()
 
 
+# %%
 def part6():
     t1 = Process(target=io_bound, args=(SLEEP,))
     t2 = Process(target=io_bound, args=(SLEEP,))
@@ -134,15 +143,41 @@ def part6():
     t5.join()
 
 
-if __name__ == "__main__":
-    start = time.time()
+start = time.time()
 
-    # part1() # 50 sec
-    # part2()  # 10 sec
-    # part3() # 164 sec
-    # part4()  # 280 sec
-    # part5()  # 104 sec
-    part6()  # 12 sec
+# %% %timeit
+start = time.time()
+part1()
+end = time.time()
+print("Time taken in seconds -", end - start)
 
-    end = time.time()
-    print("Time taken in seconds -", end - start)
+# %%
+start = time.time()
+part2()
+end = time.time()
+print("Time taken in seconds -", end - start)
+
+# %%
+start = time.time()
+part3()
+end = time.time()
+print("Time taken in seconds -", end - start)
+
+# %%
+start = time.time()
+part4()
+end = time.time()
+print("Time taken in seconds -", end - start)
+
+# %%
+start = time.time()
+part5()
+end = time.time()
+print("Time taken in seconds -", end - start)
+# %%
+start = time.time()
+part6()
+end = time.time()
+print("Time taken in seconds -", end - start)
+
+# %%
