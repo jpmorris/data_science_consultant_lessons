@@ -1,11 +1,12 @@
 # Continuous learning Chat (these should always go int repo too):
-- generator comprehension
 
+- generator comprehension
 
 # Next Agendas:
 
-- Go through the skills guide
 - Review of all hackathon projects and the inherent LLM architectures and methods
+- Go through the skills guide
+- Model review: Go through the Text analytics training pipeline
 
 - Review of Learnings from recent code reviews:
   - using kwargs
