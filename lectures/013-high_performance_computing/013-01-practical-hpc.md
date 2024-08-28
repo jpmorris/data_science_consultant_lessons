@@ -7,6 +7,7 @@ usually-softer requirements, and deployed Python.
 
 ## Summary: How do you get a program to complete faster?
 
+- **Dont do anything**: If it meets requirements there may be no need to make things faster
 - **Parallelism**: Divide the work among multiple processors.
 - **Clustering**: Divide the work among multiple computers.
 - **Vectorization**: Use SIMD instructions to perform the same operation on multiple data elements.
@@ -15,6 +16,14 @@ usually-softer requirements, and deployed Python.
 - **Hardware**: Use faster hardware.
 - **Profiling**: Identify the bottlenecks in your code.
 - **Tuning**: Optimize the code for the bottlenecks.
+
+## You may not want to do anything
+
+> "Premature Optimization is the root of all evil" -- Sir Tony Horae (via Donald Knuth)
+
+If your solution is meeting requirements, you should think hard about whether you want to try and
+speed things up. The caveat here is sometimes meet production requirements but the development cycle
+takes so long that it's worth speeding things up as you are iterating constantly through that cycle.
 
 ## Two major problems for AI/ML Engineers (and Data Scientists):
 
@@ -158,8 +167,9 @@ _Disk question_
 - If it's CPU bound, you can use parallelism, vectorization, or algorithmic improvements.
 - If it's IO bound, you can use clustering or memory access improvements.
 
-## How do you get a program to complete faster?
+## Review: How do you get a program to complete faster?
 
+- \*_Dont do anything_: If it meets requirements there may be no need to make things faster
 - **Parallelism**: Divide the work among multiple processors.
 - **Clustering**: Divide the work among multiple computers.
 - **Vectorization**: Use SIMD instructions to perform the same operation on multiple data elements.
