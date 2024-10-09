@@ -120,8 +120,22 @@ Also:
 
 - In the case of (quasi-)symmetrical distributions, you may be able to use the properties of a
   normal distribution (mean and standard deviation) to make cuts.
+- Cutting on z-score is possible, but most distributions will not be normal and z-scores work best
+  with normal distributions.
+- Mean and standard deviation are not robust statistics, and are sensitive to outliers.
 
 ![Symetrical histogram](images/symmetrical_histogram.png)
+
+![z-scores](images/zscores.png)
+
+- Alternative is using Mean Absolute Dispersion (MAD)
+
+  - **Mean Absolute Dispersion (MAD)** - The average of the absolute values of the differences
+    between the data points and the mean.
+
+    $$ MAD = Median(|X_i - \tilde{X}|)$$
+
+    where $\tilde{X}$ is the median of the data, and $X_i$ is the data point.
 
 - In the case of asymmetrical distributions, a simple method is to visualize the data and decide
   (maybe with a domain expert) a cut point to classify as an anomaly.
@@ -134,7 +148,11 @@ In this case maybe we pick a value greater than 8000 or 10000 as an anomaly.
 
 ![Multimodal histogram](images/multimodal_histogram.png)
 
-2. Multidimensional
+### Box Plots
+
+![Box Plots](images/boxplot.png)
+
+### Multidimensional
 
 - Euclidean distance is the most common way, but may not be appropriate if numbers have different
   scales and scaling factor is not obvious across dimensions.
@@ -142,7 +160,150 @@ In this case maybe we pick a value greater than 8000 or 10000 as an anomaly.
 - Also applying PCA may reveal a separation that is not obvious in the original dimensions because
   of slight differences that compound across dimensions.
 
+### PyOD
+
+Python library [pyod](https://pyod.readthedocs.io/en/latest/index.html) can be used for
+multidimensional anomaly detection.
+
+#### List of PyOD API/methods
+
+- Angle-based Outlier Detector (ABOD)
+- AE-1SVM - One-Class SVM
+- Adversarially Learned Anomaly Detection (ALAD)
+- Anomaly Detection with Generative Adversarial Networks (ADGAN)
+- AutoEncoder Outlier Detection
+- Clustering Based Local Outlier Factor (CBLOF)
+- Connectivity-Based Outlier Factor (COF)
+- Cook's distance outlier detection (CD)
+- Copula Based Outlier Detector (COPOD)
+- Deep One-Class Classification for Outlier Detection (DeepSVDD)
+- Deep Anomaly Detection with Deviation Networks (DevNet)
+- Deep Isolation Forest (DIF)
+- Unsupervised Outlier Detection Using Emperical Cumulative Distribution Functions(ECOD)
+- Feature Bagging Detector
+- Outlier Detection on Gaussian Mixture Models (GMM)
+- Histogram-based Outlier Detection (HBOS)
+- **Isolation Forest Outlier Detector (IForest)**
+- Isolation-based anomaly detection using nearest-neighbor ensembles
+- Kernel Density Estimation (KDE) for Unsupervised Outlier Detection
+- k-Nearest Neighbors Detector (KNN)
+- Kernel Principal Component Analysis (KPCA)
+- Linear Model Deviation-base outlier detection
+- Lightweight on-line dector of anomalies (Loda)
+- Local Outlier Factor (LOF)
+- Local Correlation Integral (LOCI)
+- Unifying Local Outlier Detection Methods via Graph Neural Networks
+- Locally Selective Combination of Parallel Outlier Ensembles (LSCP)
+- **Mean Absolute Deviation (MAD)**
+- Minimum Covariance Determinant (MCD)
+- Multiple-Objective Generative Adversarial Active Learning (MO-GAAL)
+- One-class SVM detector (OCSVM)
+- Principal Component Analysis (PCA)
+- Quasi-Monte Carlo Discrepancy outlier detection (QMCD)
+- R-graph
+- Rotation-based Outlier Detector (ROD)
+- Outlier Detection based on Sampling (SP)
+- Subspace Outlier Detection (SOD)
+- Single-Objective Generative Adversarial Active Learning (SO-GAAL)
+- Stochastic Outlier Selection (SOS)
+- Scalable Unsupervised Outlier Detection (SOD)
+- Variational AutoEncoder (VAE)
+- Unsupervised Anomaly Detection with Gernative Adversarial Networks to Guide Marker Discovery
+
+#### Isolation Forests
+
+- Healthcare data with a patient that is 12 years old, 160cm tall and 190 pounds is an outlier (190
+  lbs is not normal for a 12-year-old), but it can't be determined from any single variable alone.
+- **Isolation Forests** - A tree-based algorithm that isolates anomalies by randomly selecting a
+  feature and then randomly selecting a split value between the maximum and minimum values of the
+  selected feature.
+
+---
+
+Isolation Tree Algorithm
+
+**Require:** Input matrix $ X \in R^{n \times p} $
+
+1. $ t = \emptyset $ (the empty tree)
+2. If $ \text{nrow}(X) = 1 $ then return $ t $
+3. End if
+4. Randomly select $ x_i $, a feature of $ X $
+5. Randomly select a split point $ p \in (\min(x_i), \max(x_i)) $
+6. Add to $ t $ the node $ N\_{i,p} $
+7. Define $ X_l $ and $ X_r $ as the matrix composed of the samples of $ X $ where the variable $
+   x_i $ is respectively larger and smaller than $ p $.
+8. Repeat the algorithm with $ X = X_l $. Link the obtained tree as the left child of $ t $.
+9. Repeat the algorithm with $ X = X_r $. Link the obtained tree as the right child of $ t $.
+
+---
+
+- **Isolation Trees (iTrees)** - trees used in the isolation forest algorithm.
+
+  - Randomized versions of (untrained) decision trees. No training is required.
+  - Algorithm selects a random feature and splitting (branching) occurs randomly - because outliers
+    are far from most data it is more likely that random split will isolate the outlier
+    ![iTree](images/itree_splits.png)
+
+  - Points that require fewer splits will be closer to the root node and become outliers
+  - Trees grow until all points are isolated or maximum depth is reached
+  - Each datapoint is assigned an anomaly score based on the detph they were found
+  - Isolation _forrest_ uses many trees and averages the results
+
+- Hyperparameters:
+
+  - contamination: the proportion of outliers in the data (e.g. 0.10 means choosing the top 10% of
+    data as outliers)
+    - This hyperparameter exists in all `pyod` estimators except MAD
+    - Setting the right contamination is cricial to trust the predictions
+  - n_estimators: number of trees, use more trees for more complex data
+  - max_samples: number of samples to draw to build a tree, frequent sampling reduces overfitting
+  - max_features: number of features to draw to build a tree
+
+- Advantages:
+
+  - Can handle high-dimensional data
+  - Can handle mixed data types
+  - Can handle large datasets
+  - Can handle data with many outliers
+  - No statistical assumptions
+
+- Challenges:
+  - As an unsupervised method the only way to tune and test for correctness is to combine it with a
+    supervised method or informal evaluation
+
+#### KNN
+
+- **K-Nearest Neighbors (KNN)** - An algorithm that classifies a data point based on the majority
+  class of its k-neighbors
+- In the anomaly detection context, we have to specify contamination
+- Some say you can use KNN for Unsupervised (clustering?)
+  - Haven't found evidence of this.
+  - It is true that `scikit.neighbors` does have a `NearestNeighbors` class that can be used
+    unsupervised, but this uses different algorithms than KNN: BallTree, KDTree, and brute-force
+    `scikit.metrics.pairwise`.
+- KNN doesn't train at all, it simply memorizes, there for it is called a non-generalizing
+  supervised model
+
+- Advantages:
+  - Fast
+- Challenges:
+  - memory-inefficient
+  - sensitive to feature-scales -- curse of dimensionality
+    - WARNING: do not standardize using `StandardScaler`, outliers will skew mean and standard
+      deviation
+      - Alternative is `QuantileTransformer`
+
 1. Time dependence
+
+### Other Methods
+
+#### Distance And Density-Based
+
+#### Clustering-Based
+
+#### Model-Based
+
+#### Ensemble Methods
 
 [^1]:
     "A 40 year old lady comes to the emergency department from her husband’s funeral with a
