@@ -6,7 +6,10 @@
 
 - Review of all hackathon projects and the inherent LLM architectures and methods
 - Go through the skills guide
+- VSCODE review
 - Model review: Go through the Text analytics training pipeline
+- Taylor as guest speaker for programming questions
+- Record of State in Pipeline Design
 
 - Review of Learnings from recent code reviews:
   - using kwargs
@@ -60,6 +63,7 @@
 - GenAI
 - NLP
 
+- review of computing mathematics/discrete math (check the shaums book)
 - more best practices:
   - Never nesters
   - Do not wrap everything in try/catch
