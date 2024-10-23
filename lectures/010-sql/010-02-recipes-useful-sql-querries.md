@@ -183,4 +183,51 @@ where c.column_name like '%performance%'
 order by t.table_schema;
 ```
 
+## Get histogram from data
+```sql
+
+
+with diff as (
+	select 
+		g.grantee_id,
+		g.latitude,
+		esg2.latitude,
+		g.longitude,
+		esg2.longitude,
+		abs(g.latitude - esg2.latitude) as lat_diff,
+		abs(g.longitude - esg2.longitude) as long_diff
+	from public.grantee g
+	join std.esri_updated_geocode esg2 
+	on g.grantee_id = esg2.tax_identifier_number::BIGINT 
+	where abs(g.latitude - esg2.latitude) > 0 or abs(g.longitude - esg2.longitude) > 0
+),
+diff_stats as (
+	select 
+		min(lat_diff) as min,
+		max(lat_diff) as max
+	from diff
+),
+freq as (
+	select 
+		width_bucket(lat_diff, min, max, 10) as bucket,
+        -- int4range if integer
+        numrange(min(lat_diff), max(lat_diff)) as range,
+		count(*)as freq
+	from diff, diff_stats
+	group by bucket
+	order by bucket
+)
+
+select 
+	bucket, 
+	range, 
+	freq,
+   repeat('■',
+          (   freq::float
+            / max(freq) over()
+            * 30
+          )::int
+   ) as bar
+from freq
+```
 
