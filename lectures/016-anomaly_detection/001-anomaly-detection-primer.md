@@ -275,6 +275,9 @@ Isolation Tree Algorithm
 
 - **K-Nearest Neighbors (KNN)** - An algorithm that classifies a data point based on the majority
   class of its k-neighbors
+
+![KNN for anomaly detection](images/knn2.png)
+
 - In the anomaly detection context, we have to specify contamination
 - Some say you can use KNN for Unsupervised (clustering?)
   - Haven't found evidence of this.
