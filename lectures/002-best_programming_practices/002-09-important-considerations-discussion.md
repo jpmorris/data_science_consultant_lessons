@@ -1,3 +1,5 @@
+# Outline for talk with Taylor
+
 # Important Considerations Discussion
 
 Listed here are some of the hard decisions, best practicies, antipatterns, and code smells that
@@ -36,3 +38,12 @@ considerations found in OOP also apply to data science programming, and some wil
 ## Abstraction vs Repetition - DRY isn't sacrosanct.
 
 ## Never Nester - How many levels of nesting is too many?
+
+## Should transform before or after you pass
+
+e.g nested function needs a datetime object, but the function that calls it has it as a string,
+should you transform before you pass or after you pass
+
+## should you make something global or always pass?
+
+e.g. 'engine' database connector, should you define it as a global or pass it in

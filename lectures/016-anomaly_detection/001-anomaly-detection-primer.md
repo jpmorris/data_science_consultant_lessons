@@ -284,7 +284,7 @@ Isolation Tree Algorithm
   - It is true that `scikit.neighbors` does have a `NearestNeighbors` class that can be used
     unsupervised, but this uses different algorithms than KNN: BallTree, KDTree, and brute-force
     `scikit.metrics.pairwise`.
-- KNN doesn't train at all, it simply memorizes, there for it is called a non-generalizing
+- KNN doesn't train at all, it simply memorizes, therefore it is called a non-generalizing
   supervised model
 
 - Advantages:
@@ -296,21 +296,78 @@ Isolation Tree Algorithm
       deviation
       - Alternative is `QuantileTransformer`
 
-1. Time dependence
+### Comparision of some Scikit Learn Anomaly Detection Algorithms
 
-### Other Methods
+![Scikit-learn anomaly detection compared](images/sphx_glr_plot_anomaly_comparison_001.png)
 
-#### Distance And Density-Based
+Recall that a similar comparison is made in the clustering context:
 
-#### Clustering-Based
+![Scikit-learn clustering methods compared](images/sphx_glr_plot_cluster_comparison_001.png)
 
-#### Model-Based
+While clustering may be an option in some context, rarely will your data have non-anomalous forming
+a cluster, therefore these methods are not appropriate for anomaly detection.
 
-#### Ensemble Methods
+#### One Class - Support Vector Machine (OC-SVM)
+
+Traditional SVM in scikit learn (`sklear.svm.LinearSVC`):
+
+```python-repl
+>>> from sklearn.svm import LinearSVC
+>>> from sklearn.pipeline import make_pipeline
+>>> from sklearn.preprocessing import StandardScaler
+>>> from sklearn.datasets import make_classification
+>>> X, y = make_classification(n_features=4, random_state=0)
+>>> clf = make_pipeline(StandardScaler(),
+...                    LinearSVC(random_state=0, tol=1e-5))
+>>> clf.fit(X, y)
+Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('linearsvc', LinearSVC(random_state=0, tol=1e-05))])
+>>> print(clf.named_steps['linearsvc'].coef_)
+[[0.141...   0.526... 0.679... 0.493...]]
+>>> print(clf.named_steps['linearsvc'].intercept_)
+[0.1693...]
+>>> print(clf.predict([[0, 0, 0, 0]]))
+[1]
+```
+
+One-Class SVM in scikit learn (`sklearn.svm.OneClassSVM`):
+
+```python-repl
+>>> from sklearn.svm import OneClassSVM
+>>> X = [[0], [0.44], [0.45], [0.46], [1]]
+>>> clf = OneClassSVM(gamma='auto').fit(X)
+>>> clf.predict(X)
+array([-1,  1,  1,  1, -1])
+>>> clf.score_samples(X)
+array([1.7798..., 2.0547..., 2.0556..., 2.0561..., 1.7332...])
+```
+
+Note that the one-class version takes unlabeled data.
+
+### Advanced supervised methods
+
+The Beginning anomaly detection text does suggest more advanced methods. However it should be noted
+that these methods use labeled training data. When anomalies are labeled, anomaly detection falls
+back to simple classification and any method used for classification can be used for anomaly
+detection.
+
+#### AutoEncoder
+
+#### Generative Adversarial Networks
+
+#### LSTM
+
+#### Temporal Convolutional Networks
+
+#### Transformers
+
+
+
 
 [^1]:
-    "A 40 year old lady comes to the emergency department from her husband’s funeral with a
-    sensation of ‘fluttering’ in her chest. She is feeling very anxious. An ECG is performed. What
-    is the diagnosis?"
+    Sinus Tachacardia - "A 40 year old lady comes to the emergency department from her husband’s
+    funeral with a sensation of ‘fluttering’ in her chest. She is feeling very anxious. An ECG is
+    performed. What is the diagnosis?" - rarely goes above 120bpm and no p-waves visible
+    https://oxfordmedicaleducation.com/ecgs/ecg-examples/
 
 [^2]: Also see: https://cds.cern.ch/images/ATLAS-PHOTO-2012-001-2
