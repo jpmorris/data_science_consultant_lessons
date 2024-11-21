@@ -47,3 +47,5 @@ should you transform before you pass or after you pass
 ## should you make something global or always pass?
 
 e.g. 'engine' database connector, should you define it as a global or pass it in
+
+## How to do logging without polluting code

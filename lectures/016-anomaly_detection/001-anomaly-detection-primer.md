@@ -353,16 +353,138 @@ detection.
 
 #### AutoEncoder
 
+An autoencoder is a type of neural network used to learn efficient codings of unlabeled data: the
+encoder that transforms input data and the decoder which reconstructs the data from the encoded
+representation. Because the autoencoder reduces dimensionality the representation function that is
+learned should only describe essential features of the data. This should allow us to create a
+representation of the normal data and then use this to detect anomalies. In this method a loss can
+be calculated (and corrected) comparing the input data and the reconstructed output.
+
+![AutoEncoder](images/autoencoder.png)
+
+One need only run new data predictions through the autoencoder and compare the difference in the
+prediction to actual data and over some threshold can be classified as an anomaly.
+
+```python
+threshold=10.00
+y_pred = autoencoder.predict(x_test)
+y_dist = np.linalg.norm(x_test - y_pred, axis=-1)
+z = zip(y_dist >= threshold, y_dist)
+y_label=[]
+error = []
+for idx, (is_anomaly, y_dist) in enumerate(z):
+    if is_anomaly:
+        y_label.append(1)
+    else:
+        y_label.append(0)
+    error.append(y_dist)
+
+```
+
+Notice however, that it's best to start with a sample of pure normal data as much as possible to
+train the representation of the normal function. If starting with data which already has anomalies,
+it is best to label and remove them if possible.
+
+![AutoEncoder threshold](images/autoencoder_threshold.png)
+
 #### Generative Adversarial Networks
+
+In a GAN, two neural networks contest with each other in the form of a zero-sum game, where one
+agent's gain is another agent's loss.
+
+Given a training set, this technique learns to generate new data with the same statistics as the
+training set.
+
+![Generative Adversarial Network](images/gan.png)
+
+In the context of anaomaly detection, it is best to feed the GAN with normal data only. This way the
+GAN will decern on data which is normal and discriminate abnormal data.
 
 #### LSTM
 
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning a
+long sequence of data. They are used in time series data and can be used to detect anomalies in time
+series data.
+
+Like other algorithms, it is helpful to train the LSTM on normal data only. If it is not possible to
+cull the normal cases, if there are more normal data than anomalies, the model will probably pick
+out the regular pattern over the anomalies, but the more pure the normal data the better.
+
+The LSTM is trained in a supervised manner in the sense that sequences are data are fed to the
+model, and the Nth period in the sequence is decided ('labeled') by the user. (Compared to
+self-supervised learning in LLMs where the language itself encodes for the next word in the sequence
+and no labels are specified in the input data.)
+
+```python
+n_iter = len(sequence) - time_steps + 1
+for f in range(n_iter):
+    window = sequence[f:f+time_steps]
+    x_sequences.append(window[:-1])
+    y_sequences.append(window[-1:])
+x_sequences = np.array(x_sequences)
+y_sequences = np.array(y_sequences)
+
+sequences_x = x_sequences.reshape(len(x_sequences), time_steps-1, 1)
+print("sequences_x: ", sequences_x.shape)
+sequences_y = y_sequences.reshape(len(y_sequences), 1)
+print("sequences_y: ", sequences_y.shape)
+
+# Training on first half of data only, predicting on whole thing
+stop_point = int(0.5 * len(df))
+training_x = sequences_x[:stop_point]
+print("training_x: ", training_x.shape)
+training_y = sequences_y[:stop_point]
+print("training_y: ", training_y.shape)
+
+batch_size=32
+epochs=5
+
+model.fit(x=training_x, y=training_y,
+                       batch_size=batch_size, epochs=epochs,
+                       verbose=1, validation_data=(training_x, training_y),
+                       callbacks=[TensorBoard(log_dir='./logs/{0}'.format(tensorlog))])
+
+```
+
 #### Temporal Convolutional Networks
+
+An alternative to LSTMs are Temporal Convolutional Networks (TCNs). TCNs are a type of convolutional
+neural network. The setup is very similar to LSTMs where a sequence is fed and N periods are used to
+predict the N+1 period. (The Beginning Anomaly Detection text calls it 'unsupervised' in
+contradiction to some sources.)
 
 #### Transformers
 
+Transformers can also be setup similar to LSTMs and TCNs to predict the next period in a sequence,
+performing a supervised method for anomaly detection.
 
+### Example Problem Statement:
 
+Given a time-series data pattern of N independent data sources over years, where the data sources
+themselves may behave slightly differently from each other. Is it possible to detect anomalous
+behavior in the data sources?
+
+### Candidate Solution:
+
+If patterns are regular in time, then an LSTM or Temporal Convolutional Network would be good
+candidates as they would encode a regular pattern in the data. Ideally, we would want a pure signal
+of normal data throughout the year to capture seasonality and the model will need to be trained
+relative to annual date (if possible; research needed here). If anomalies are rare enough, having a
+slight impure sample may not be a problem. If it is possible to select pure data examples of normal
+data, those could be manually included to increase the sensitivity of the model.
+
+There is some risk that certain data sources (types) may behave radically different than others. If
+so, then some sort of normalization may need to be attempted. Or an attempt should be made to group
+data sources so that similar cases (amount spent, number of transactions, number of claims) are
+grouped together and specific models or multiple models should be attempted based on the
+stratification of the data.
+
+An LSTM model will be able to capture the time dependence of the data, however there may be other
+non-time dependent information that may be suggestive of an anomaly. It may be possible to modify
+the threshold based on this additional information to increase the sensitivity to anomalies.
+
+Because there is no ground truth of anomalies, a strong feedback will need to be established between
+the results of the model and a domain expert to determine if the anomalies are real or not.
 
 [^1]:
     Sinus Tachacardia - "A 40 year old lady comes to the emergency department from her husband’s
