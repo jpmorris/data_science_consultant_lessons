@@ -1,0 +1,48 @@
+# Sentiment Analysis with Logistic Regression
+
+## Review of Supervised ML
+
+![Supervised ML](images/supervised_ml_review.png)
+
+(Notice the parameters, theta, here. This is an example of the parametric/nonparametric distinction.
+There are other examples of nonparametric models in ML, such as KNN and certain types of decision
+trees like CART and C4.)
+
+## Feature Extraction
+
+We need to vectorize the text data. We can simply one-hot encode the words in the text. If the word
+appears it gets a 1; if not, a zero. This representation is very sparse and has large training and
+prediction time as the vocabulary increases.
+
+![Feature Extraction](images/feature_extraction.png)
+
+## Frequency Dictionary
+
+In order to represent text, tweets in this case, we convert the occurrence of words in positive and
+negative tweets into a frequency dictionary.
+
+![Frequency Dictionary](images/frequency_dictionary_example.png)
+
+## Feature Extraction
+
+We can extract features from the text by summing the frequency in the positive and negative
+dictionaries to produce a 3-dimensional vector for a given tweet.
+
+![Feature Extraction](images/feature_extraction_example.png)
+
+## Preprocessing
+
+### Stopwords
+
+Stopwords are words that are filtered out before or after processing of text. They are usually the
+most common words in a language and do not add much meaning to the text.
+
+![Stopwords](images/stopwords_example.png)
+
+### Stemming
+
+Stemming is the process of reducing inflected (or sometimes derived) words to their word stem, base
+or root form.
+
+![Stemming](images/stemming_example.png)
+
