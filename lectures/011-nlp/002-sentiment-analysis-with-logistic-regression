@@ -46,3 +46,43 @@ or root form.
 
 ![Stemming](images/stemming_example.png)
 
+# Review of Logistic Regression
+
+![Logistic Regression](images/logistic_regression_overview.png)
+
+![Logistic Regression Training](images/logistic_regression_training.png)
+
+![Logistic Regression Testing](images/logistic_regression_testing.png)
+
+# Logistic Regression for scratch in R
+
+```r
+train <- function(data, labels, alpha){
+    iter <- 1
+    # set random values for theta
+    n <- length(data)
+    d <- nrow(data)
+    theta <- runif(d, -1, 1)
+    old_theta <- rep(1, d)
+    # while all thetas are greater than threshold
+    while(any(abs(old_theta - theta) > 0.001)){
+        # shuffle
+        for(i in sample(x=1:n, replace=FALSE)){
+            old_theta <- theta
+            subtract <- (labels[[i]] * data[[i]])/(1 + exp(-labels[[i]]*drop(theta %*% data[[i]])))
+            theta <- theta - alpha * subtract
+        }
+        iter <- iter + 1
+        if(iter > 100){
+            print("early exit")
+            return(theta)
+        }
+    }
+    return(theta)
+}
+
+```
+
+# Quick Review of NLP Logistic Regression
+# 
+
