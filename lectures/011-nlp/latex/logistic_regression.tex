@@ -1,0 +1,24 @@
+\documentclass[preview]{standalone}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}[ht]
+\centering
+\textbf{Logistic Regression Training Algorithm} \\
+\begin{tabular}{|l|l|}
+\textbf{Step} & \textbf{Description} \\
+\hline
+1 & function logistic\_regression\_training() \\
+  &  input: data, labels, $\alpha$: learning rate, threshold: convergence threshold \\
+  &  output: $\theta$: learned parameters \\
+  &  labels: training labels \\
+3 &  d: number of rows in data \\
+4 &  $theta$ <- random(d) \\
+6 & \hspace{1cm} for random selection of $x_i$ in data without replacement \\ 
+7 & \hspace{1cm} \hspace{1cm} Update $\theta$ using Gradient Descent \\ 
+\hline
+\end{tabular}
+\end{table}
+\end{document}
