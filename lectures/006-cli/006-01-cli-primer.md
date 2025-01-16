@@ -1,6 +1,7 @@
 # CLI Shortcuts and directory/command navigation
 
 # CLI commands
+
 - Console prompt contains my current directory
 
 ## Advanced review of basics
@@ -47,7 +48,9 @@
 - `^foo^bar`: Replace the first occurrence of `foo` with `bar` in the last command.
 - `<ctrl+u>...<ctrl+y>`: interrupt and resume a command in progress
 - `<alt>+.`: Insert the last argument of the last command.
-- `fc`: Open the last command in the default text editor
+- `fc [first[last]] (e.g fc -4 -1)`: Open the last N commands (or a arbitrary subset of commands) in
+  the default text editor to modify AND EXECUTE
+  - very useful when you have to run the same long N commands over and over
 
 ### Tab completion
 
