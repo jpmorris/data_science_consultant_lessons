@@ -7,18 +7,21 @@ Much of this material comes from Stephane Maarek's course on Udemy - Ultimate AW
 Solutions ARchitect Associate 2025.
 
 # Rekognition
+Way to remember: 'Reccognize' objects, people, text, scences in images and video
 
 ![AWS Recognition](images/aws_rekognition.png)
 ![Recognition Modalities](images/rekognition_modalities.png)
 ![Rekognition - Content Moderation](images/rekognition_content_moderation.png)
 
 # Transcribe
+Way to remembe: Transcriptionist - convert speech to text
 
 ![AWS Transcribe](images/aws_transcribe.png)
 
 - Google's version: Speech
 
 # Polly
+Way to remember: Polly (the parrot) outputs audible speech, therefore: text->speech 
 
 ![AWS Polly](images/aws_polly.png) ![AWS Polly](images/aws_polly_lexicon_ssml.png)
 
@@ -29,10 +32,11 @@ Solutions ARchitect Associate 2025.
 ![AWS Translate](images/aws_translate.png)
 
 # Lex+Connect
-
+Way to remember: Think 'A(lex)a'
 ![AWS Lex+Connect](images/aws_lex_connect.png)
 
 # Comprehend
+Way to remember: 'Comprehend' think general NLP service
 
 ![AWS Comprehend](images/aws_comprehend.png)
 ![AWS Comprehend Medical](images/aws_comprehend_medical.png)
@@ -88,18 +92,22 @@ hiring external workers directly through amazon like mechanical turk.
 ![AWS Forecast](images/sagemaker_jumpstart.png)
 
 # Forecast
+Way to remember: Forecast: Predicting in time.
 
 ![AWS Forecast](images/aws_forecast.png)
 
 # Kendra
+Way to remember: Kendra means 'knowing' in Celtic: Document search service
 
 ![AWS Kendra](images/aws_kendra.png)
 
 # Personalize
+Way to remember: Personalize: Personalized recommendations
 
 ![AWS Personalize](images/aws_personalize.png)
 
 # Textrack
+Way to remember: Textrack (Text + Extract): Extracting text from images
 
 ![AWS Textrack](images/aws_textract.png)
 
@@ -112,4 +120,5 @@ hiring external workers directly through amazon like mechanical turk.
 
 # Amazon Q
 
-AI Assistant
+- Generative AI Assistant
+- Also used in Sagemaker for code completion
