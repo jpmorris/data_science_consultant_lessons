@@ -1,14 +1,21 @@
 # Continuous learning Chat (these should always go int repo too):
 
 - generator comprehension
+- Go through the skills guide
 
 # Next Agendas:
 
+- NLP continuous
 - Review of all hackathon projects and the inherent LLM architectures and methods
-- Go through the skills guide
-- VSCODE review
+  - Now only two more questions
+- Simulation and review of Challenge Problem
+- Chris' paper
+- LLM from scratch
+- Play around with DeepSeek
+
 - Model review: Go through the Text analytics training pipeline
 - Taylor as guest speaker for programming questions
+- Chris A as guest speaker for cloud design
 - Record of State in Pipeline Design
 
 - Review of Learnings from recent code reviews:
@@ -20,7 +27,6 @@
 
 - go through flan tasks
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
-- review of hackathon projects
 - generating data:
 
   - own model
@@ -30,7 +36,6 @@
   - compare outputs?
 
 - pythonic
-- threading, Parllel, multiproesssing, asyncio and the GIL
 
 ## List of programming best-practices to cover
 
