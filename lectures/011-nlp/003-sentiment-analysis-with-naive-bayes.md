@@ -1,5 +1,13 @@
 # Sentiment Analysis with Naive Bayes
 
+## What you should remember for life:
+
+### Facts to know:
+
+- Left side of bayes equality (e.g $P(A|B)$, "probability of A given B") The 'given' part (i.e $B$
+  in this case) is in the denominator on the right side of the equation.
+  - You can also derive with venn diagrams and plugging $P(A|B)$ into $P(B|A)$
+
 # Probability and Bayes' Rule
 
 ![Bayes Class](images/bayes_prob1.png)
@@ -12,11 +20,15 @@
 
 # Bayes' Rule
 
+To remember the derivation: left side of equality conditional ('given'; right of "|") equality goes
+in demoninator on rightside (also true of bayes formula generally) To remember bayes formula:
+remember the same rule and just remember to put the X, Y in the right place
+
 ![Bayes Rule](images/bayes_rule1.png)
 
 ![Bayes Rule](images/bayes_rule2.png)
 
-![Bayes Theorem Parts](images/bayes_theorem_parts.png`)
+![Bayes Theorem Parts](images/bayes_theorem_parts.png)
 
 ![Bayes Rule Proof](images/bayes_rule_proof.png)
 

@@ -13,6 +13,7 @@ for particular instructions.
 
 ## Editing
 
+
 ### Keyboard shortcuts - IMPORTANT
 
 - There are so many keyboard shortcuts for almost any action
