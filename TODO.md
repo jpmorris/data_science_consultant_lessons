@@ -51,6 +51,9 @@
 - if you abstract PLEASE EXPOSE ALL EXISTING FUNCTIONALITY
   - do not hide functionality
   - e.g. dynamic dags inability to pass in arguments
+- OOP vs Functional Programming vs programming with functions
+  - Show examples in the different paradigms
+  - Should a data scientist ever do MyDataframe(pd.DataFrame) or anything like that? I there ever a time for a data scientist to use OOP?
 
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
 
