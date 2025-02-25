@@ -53,7 +53,14 @@
   - e.g. dynamic dags inability to pass in arguments
 - OOP vs Functional Programming vs programming with functions
   - Show examples in the different paradigms
-  - Should a data scientist ever do MyDataframe(pd.DataFrame) or anything like that? I there ever a time for a data scientist to use OOP?
+  - Should a data scientist ever do MyDataframe(pd.DataFrame) or anything like that? I there ever a
+    time for a data scientist to use OOP?
+- Do you pass in the most raw form of data to a function or do you pass in the most processed form
+  of data to a function? E.g. you need to transform a np.array(list[dict]) do you past the list and
+  transform in the function or do you transform before you pass into the function. Example: see
+  spacy example labeled_spacy_files.py in dagster code
+- how to rewrite function to support: 2 separate functions, function flag, two independent functions
+  or modify data storage (see: labeled_spacy_files comparision with unlabeled)
 
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
 
