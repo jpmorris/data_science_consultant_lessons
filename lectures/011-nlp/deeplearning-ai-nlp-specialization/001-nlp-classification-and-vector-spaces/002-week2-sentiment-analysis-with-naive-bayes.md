@@ -4,9 +4,12 @@
 
 ### Facts to know:
 
-- Left side of bayes equality (e.g $P(A|B)$, "probability of A given B") The 'given' part (i.e $B$
-  in this case) is in the denominator on the right side of the equation.
-  - You can also derive with venn diagrams and plugging $P(A|B)$ into $P(B|A)$
+- To memorize Bayes' Formula: Left side of bayes equality (e.g $P(A|B)$, "probability of A given B")
+  The 'given' part (i.e $B$ in this case) is in the denominator on the right side of the equation:
+
+  $$P(A|B) = P(B|A)\frac{P(A)}{P(B)}$$
+
+- You can also derive with venn diagrams and plugging $P(A|B)$ into $P(B|A)$
   - Formally you take two versions of $P(A|B)$ and $P(B|A)$ in terms of their join probability and
     set them equal to each other
 - Standard Naive Bayes is a parametric model because it can be fully described by a reduced set of
@@ -23,13 +26,17 @@
 
 ### Naive Bayes Algorithm:
 
+"Get the log prior (ratio) for entire corpus, get all log likelihood (ratio) for all words. For a
+given document, sum the log likelihoods for each word and add the log prior for the class. If the
+sum is positive, the class is positive"
+
 - Processing
   1. Get dataset and preprocess corpus
 - Training
   1. Calculate frequencies of words by class (e.g. sentiment, spam) in corpus and therefore the
      probabilities by word and class, $P(w|c)$
-  1. Get $\lambda(w) = \log{\frac{P(w|c)}{P(w|c)}}$ for all words and the logprior,
-     $\log{\frac{P(c)}{P(c)}}$ for the corpus,
+  1. Get $\lambda(w) = \log{\frac{P(w|c_1)}{P(w|c_2)}}$ for all words and the logprior,
+     $\log{\frac{P(c_1)}{P(c_2)}}$ for the corpus,
 - Inference
   1. For each document, calculate the sum of $\lambda(w)$ for each word in the document and add the
      logprior for the class, if the sum is positive, the class is positive
