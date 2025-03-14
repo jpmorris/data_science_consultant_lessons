@@ -1,4 +1,4 @@
-# AWS Data Science Services and SAP SO2
+# AWS Data Science Services and SAP CO2
 
 This is a review of some AWS Data Science Services which overlap with the SAP SO2 exam - AWS
 Certified Solutions Architect - Professional.
@@ -14,7 +14,7 @@ Way to remember: 'Reccognize' objects, people, text, scences in images and video
 ![Rekognition - Content Moderation](images/rekognition_content_moderation.png)
 
 # Transcribe
-Way to remembe: Transcriptionist - convert speech to text
+Way to remember: Transcriptionist - convert speech to text
 
 ![AWS Transcribe](images/aws_transcribe.png)
 
