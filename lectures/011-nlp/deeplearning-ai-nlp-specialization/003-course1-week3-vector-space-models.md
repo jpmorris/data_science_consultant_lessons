@@ -67,32 +67,47 @@ the length of the vectors, the size of the vectors don't matter in this calculat
 ![PCA Algorithm](images/pca-algorithm.png)
 
 ---
+
 #### PCA Algorithm
 
+<!--
+TODO:
+- Complete code for course
+- Better description of PCA algorithm
+- Description of SVD
+- Description of Egienvalues and Eigenvectors
+- Description of NMF and how we used it in topic models
+- Exploration of PCA notebook for tier score
+  - Scree plot
+  - Is number of findings dominating
+
+-->
+
 Input: Data matrix X (m × n) with m samples and n features  
-Output: Reduced data matrix X' (m × k), where k ≤ n  
+Output: Reduced data matrix X' (m × k), where k ≤ n
 
 1. Center the data:
+
    - Compute mean of each feature: mean_vector = mean(X, axis=0)
    - Subtract mean from data: X_centered = X - mean_vector
 
 2. Perform Singular Value Decomposition (SVD):
+
    - [U, S, V^T] = SVD(X_centered)
    - U: Left singular vectors (m × m)
    - S: Singular values (diagonal matrix, size min(m, n))
    - V^T: Right singular vectors (n × n)
 
 3. Select the top k principal components:
+
    - Choose k based on variance explained or predefined value
    - Select the first k columns of V^T: V_k = V^T[:k]
 
 4. Transform the data:
+
    - Project the data onto the new basis: X' = X_centered × V_k^T
 
 5. Return X' (dimensionality-reduced data)
-
-
-
 
 ## Other Relevant Dimensionality Reduction
 
