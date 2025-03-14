@@ -70,6 +70,21 @@ there are two immediate attacks they can perform:
 
 ### Rainbow Tables
 
+Idea behind rainbow tables:
+
+- An attacker would like to precompute a lot of passwords and at attack-time just look up the hash
+  to find the corresponding password.
+- However storing all these can be huge for a giant keyspace
+- If an attacker can have a deterministic method to calculate the password/hash pairs then they can
+  store a much smaller set of data.
+- The attacker can use a faster 'reduction function' to generate new passwords to precompute hashes
+  from.
+- The attacker can chain a series of reduction functions and hashes together to create a rainbow
+  table.
+- At attack time the attacker performs computations that can tell them which series of computations
+  in a chain the attacker needs to compute to find the password (without storing all the
+  intermediate hashes).
+
 Rainbow tables allow an attacker to tradeoff time for space. Instead of storing all possible hashes
 an attacker computes a series of reduction functions and hashes in series:
 
@@ -431,5 +446,3 @@ A great website to test passwords: https://lowe.github.io/tryzxcvbn/
   - is this the much-maligned 'security by obscurity'? Ideally we want to be able to tell the
     attacker our pattern and still have it hard for them to crack. Adding a random character to a
     passphrase may result in
-
-- **Rainbow table attack** - uses precomputed hashes to look up passwords
