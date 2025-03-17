@@ -365,6 +365,8 @@ FROM test
 - `IS (NOT) NULL` - used to check if a value is null.
 - `WHERE (NOT) EXISTS` - used to check if a subquery returns any rows. Checks if data has already
   been processed
+- `NOT IN` - used to check if a value is not in a list.j
+- `EXCEPT` - alternative to `NOT IN` or `NOT EXISTS`.
 - `NULLIF` - returns null if two values are equal.
 - `LPAD` - pads a string to a certain length.
 - `USING` - used in `JOIN` to specify the columns to join on.
