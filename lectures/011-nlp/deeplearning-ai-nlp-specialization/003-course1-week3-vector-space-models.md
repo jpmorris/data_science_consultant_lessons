@@ -294,9 +294,10 @@ Important results and interpretation:
   - The eigenvectors in W also represent the principal components and the eigenvalues represent the
     variance explained by each principal component. Remember: the eigenvectors don't change
     direction under transformation.
-- Because we are getting the eigenvectors of the **covariance matrix**--a measure of how much each
-  variable correlates with others--we have a transformation that **maximizes the variance** of the
-  data (stretches it the most).
+- Because we are getting the eigenvectors of the **covariance matrix**--a relation of how much each
+  variable correlates with others--we have a transformation--the eigenvectors in W--that **maximizes
+  the variance** of the data. The 'Principal components' describe the directions in which the data
+  varies the most.
 
 ---
 
