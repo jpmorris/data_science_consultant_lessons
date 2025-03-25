@@ -1,6 +1,8 @@
 # Sentiment Analysis with Naive Bayes
 
-## What you should remember for life:
+<div style="background-color: rgb(87, 61, 61);">
+
+<font color="red">**To Remember Forever**</font>
 
 ### Facts to know:
 
@@ -40,6 +42,8 @@ sum is positive, the class is positive"
 - Inference
   1. For each document, calculate the sum of $\lambda(w)$ for each word in the document and add the
      logprior for the class, if the sum is positive, the class is positive
+
+</div>
 
 ---
 
@@ -145,6 +149,15 @@ Modification to Naive Bayes formula to avoid zero probabilities.
 # Log Likelihood
 
 ![Log Likelihood 1](images/log_likelihood1.png)
+
+We are trying to calculate the probability of a class given the evidence. From bayes formula:
+
+$$P(C|E) = \frac{P(E|C)P(C)}{P(E)}$$
+
+We need the prior and likelihood. The marginal is a normalization constant and doesn't appear in
+classification calculations. The product of the prior and all likelihoods across evidence in the
+case (words in tweet in our example) gives us the likelihood. The log is taken to avoid numerical
+underflow and ease optimization.
 
 ![Log Likelihood 2](images/log_likelihood2.png)
 

@@ -3,39 +3,44 @@
 - generator comprehension
 - Go through the skills guide
 
+# Challenge Problems
+
+- Create tier score from flags
+- Chucks problem
+
 # Next Agendas:
 
-- NLP continuous
-- Review of all hackathon projects and the inherent LLM architectures and methods
-  - Now only two more questions
-- Simulation and review of Challenge Problem
+- NLP: Machine Translation and Document Search
+- LLM from scratch: Karpathy's MakeMore
+- Status of AI Industry
+- Vibecoding project and tools review
+
+  - Bring avant garde sources to one common area
+    - What platoform? Webapp? Desktop app?
+  - Ontology of field deriving questions and topics
+
+- Simulation: and review of Car Destination Challenge Problem
 - Chris' paper
-- LLM from scratch
-- Play around with DeepSeek
+- After LLM from scratch:
 
-- Model review: Go through the Text analytics training pipeline
-- Taylor as guest speaker for programming questions
+  - review of Deepseek and other open source code
+
+- Taylor as guest speaker for programming questions (need a GOOD list of programming questions)
 - Chris A as guest speaker for cloud design
-- Record of State in Pipeline Design
 
-- Review of Learnings from recent code reviews:
-  - using kwargs
-  - review of line labeler refactoring
-  - review of augmentor refactoring
+  - Need to review LZA and Data Platform design
+
+- Review each part of pipeline along the way:
+  - NMF - unsupervised clustering
+  - Attention model - line labeler
 
 # near term:
 
+- linux from scratch; linux primer
 - go through flan tasks
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
-- generating data:
-
-  - own model
-  - python packages
-  - CTGAN
-  - LLMs
-  - compare outputs?
-
 - pythonic
+- Seconary IDE Primer - wait until Chuck has VSCode again
 
 ## List of programming best-practices to cover
 
@@ -74,9 +79,6 @@
 
 - Good programming practices
 - Pythonic tricks
-- SQL primer
-- GenAI
-- NLP
 
 - review of computing mathematics/discrete math (check the shaums book)
 - more best practices:
@@ -87,9 +89,7 @@
 - CI/CD
 - AutoML
 - Computer Vision
-- IDE Primer
 - review of sci-kit API
-- order of algorithmic complexity (show sql example timings)
 - ML Theory
 - Data Structures
 - Design Patterns
@@ -98,8 +98,6 @@
 - python SYSPATH/PYTHONPATH/module imports
 - complex problem solving strategies
 - showcase personal projects
-- high-performance computing
-  - algorithm optimization (use graph query as example)
 - review of confusion matrix - how to memorize forever
 - information theory and the informational limit of datasets
 

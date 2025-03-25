@@ -2,7 +2,11 @@
 
 # Abstract
 
-## What you should remember for life:
+
+<div style="background-color: rgb(87, 61, 61);">
+
+<font color="red">**To Remember Forever**</font>
+
 
 1. Weighted sum like linear regression. ($z = w_1x_1 + w_2x_2 + ... + w_nx_n + b$)
 2. Sigmoid function to map to probability. ($\sigma(z) = \frac{1}{1 + e^{-z}}$)
@@ -78,6 +82,8 @@ and bias $b$ iteratively until convergence.
 
 - **Multinomial Logistic Regression:** Used for multi-class classification (Softmax Regression).
 - **Regularization (L1/L2):** Helps prevent overfitting (L2 is Ridge, L1 is Lasso).
+
+</div>
 
 ## Summary
 

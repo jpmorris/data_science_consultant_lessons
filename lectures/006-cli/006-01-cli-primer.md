@@ -31,6 +31,7 @@
   - `<ctrl + C>` to stop a command
 - `rm !(*.foo|*.bar|*.baz)` - Remove all files except those with a specific extension.
 - `mv filename.{old,new}` - Quickly rename extension
+- `rename <string to replace> <replacement string> <files>` - Rename files with a pattern
 
 ## Moving around CLI/commands
 
@@ -108,6 +109,8 @@ recent command that matches the characters typed.
   through the directory stack.
 - You can configure your .bashrc (.zshrc, etc.) to use `alt + left` and `alt + right` to navigate
   through the directory stack.
+- Also default `CTRL + Right/Left` can move word by word. With these two commands `ALT/CTRL+ARROWS`
+  enables a much faster navigation
 
 ## Advert: Editing & Vim
 

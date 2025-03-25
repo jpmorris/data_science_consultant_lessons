@@ -77,6 +77,8 @@ the length of the vectors, the size of the vectors don't matter in this calculat
 
 ---
 
+<div style="background-color: rgb(87, 61, 61);">
+
 <font color="red">**To Remember Forever**</font>
 
 - 'eigen' from German word for 'own'
@@ -84,6 +86,8 @@ the length of the vectors, the size of the vectors don't matter in this calculat
     applied to it
   - The eigenvalue is the scalar that represents how the eigenvector was scaled during the linear
     transformation
+
+</div>
 
 ---
 
@@ -140,6 +144,8 @@ is also used in:
 
 ---
 
+<div style="background-color: rgb(87, 61, 61);">
+
 <font color="red">**To Remember Forever**</font>
 
 SVD is a matrix factorization technique that decomposes a matrix into three matrices. For a matrix
@@ -153,6 +159,8 @@ where:
   - Unitary matrices are matrices where the conjugate transpose is the inverse of the matrix
 - `Σ` is an `m x n` rectangular diagional matrix with the 'singular values' on the diagonal
 - `V^T` is an `n x n` unitary matrix
+
+</div>
 
 ---
 
@@ -259,6 +267,8 @@ TODO:
 
 ---
 
+<div style="background-color: rgb(87, 61, 61);">
+
 <font color="red">**To Remember Forever**</font>
 
 Input: Data matrix X (m × n) with m samples and n features  
@@ -298,6 +308,8 @@ Important results and interpretation:
   variable correlates with others--we have a transformation--the eigenvectors in W--that **maximizes
   the variance** of the data. The 'Principal components' describe the directions in which the data
   varies the most.
+
+</div>
 
 ---
 
