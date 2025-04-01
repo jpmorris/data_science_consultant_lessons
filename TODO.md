@@ -8,6 +8,25 @@
 - Create tier score from flags
 - Chucks problem
 
+# Current Agenda:
+
+- Quick overview of topics
+  - Thanks for the survey answers
+  - Why was it suddenly relevant: 'building things' as a priority for all of
+  - Let's get excited about building things too
+  - I have two projects I'm interested in:
+    1. App to be aware of the state of AI/ML
+    2. Ontology of the field -- what are the important topics that we should know/talk about
+    - This means knowledge of more than data science
+    - The plan was never to stop talking about analytics, but to pepper in some discussions insofar
+      as they are relevant to your interests and Excella
+      - Being able to talk and write code at a high level is helpful for Excella
+    - Plan: take you along with my (slow) journey of trying to build something but our priorities
+      are still LLM/NLP learnings
+      - Near term topics: Linux 'from scratch'
+- Vibecoding
+- MakeMore
+
 # Next Agendas:
 
 - NLP: Machine Translation and Document Search
@@ -41,6 +60,39 @@
 - trunked based development vs gitflow (and how it relates to (our) data science repo)
 - pythonic
 - Seconary IDE Primer - wait until Chuck has VSCode again
+
+# Comparative programming
+
+The goal here is to get a good overview of a bunch of relevant programming languages, take notes,
+and decide if there is important comparative points.
+
+Since we are surveying many langauges, we need short dense courses.
+
+C C++ C# Objective-C JavaScript TypeScript Java Kotlin Swift SQL Rust Scala R Julia Haskell Ruby
+Perl PHP Lua Prolog Lisp Scheme Smalltalk Erlang Elixir Clojure Groovy Fortran Groovy Cobol Ada
+Pascal
+
+<!-- prettier-ignore-start -->
+| Language   | Course                                                      | Hours | Link                                                                         |
+|------------|-------------------------------------------------------------|-------|------------------------------------------------------------------------------|
+| Go         | Go - The Complete Guide                                     | 15    | https://www.udemy.com/course/go-the-complete-guide                           |
+| Javascript | The Complete Gavascript Course 2025: From Zero to Expert!   | 71    | https://www.udemy.com/course/the-complete-javascript-course/                 |
+| C          | C Programming for Beginners                                 | 25    | https://www.udemy.com/course/c-programming-for-beginners-/                   |
+| C++        | Beginning C++ Programming - From Beginner to Beyond         | 46    | https://www.udemy.com/course/beginning-c-plus-plus-programming               |
+| Haskell    | The Complete Haskell Course: From Zero to Expert            | 24    | https://www.udemy.com/course/the-complete-haskell-course-from-zero-to-expert |
+| Java       | 60 Days of Java: The Complete Java masterclass              | 58    | https://www.udemy.com/course/javamasterclass/                                |
+| Rust       | Learn to Code with Rust                                     | 58    | https://www.udemy.com/course/learn-to-code-with-rust/                        |
+| Kotlin     | The Complete Android 14 & Kotlin Development Masterclass    | 66    | https://www.udemy.com/course/android-kotlin-developer                        |
+| Prolog     | The Complete Prolog Programming Course: From Zero to Expert | 15    | https://www.udemy.com/course/learn-prolog-programming-from-zero-to-hero/     |
+| Scala      | Complete Scala 3 Development Masterclass                    | 20    | https://www.udemy.com/course/completescala3/                                 |
+| C#         | Complete C# Masterclass                                     | 46    | https://www.udemy.com/course/complete-csharp-masterclass/                    |
+<!-- prettier-ignore-end -->
+
+- 444 total hours
+- 148 If you 3x it.
+- 120 If you skip intro content and what you're already familiar with.
+- If you dedicate 2.5 hours a week to this, you can get through it in about 50 weeks. This is a
+  year-long course if you take it slow.
 
 ## List of programming best-practices to cover
 
