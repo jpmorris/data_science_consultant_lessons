@@ -5,33 +5,38 @@
 
 # Challenge Problems
 
-- Create tier score from flags
+- Chris' Problem - Bootstrapping LLM
 - Chucks problem
 
 # Current Agenda:
 
-- Quick overview of topics
-  - Thanks for the survey answers
-  - Why was it suddenly relevant: 'building things' as a priority for all of
-  - Let's get excited about building things too
-  - I have two projects I'm interested in:
-    1. App to be aware of the state of AI/ML
-    2. Ontology of the field -- what are the important topics that we should know/talk about
-    - This means knowledge of more than data science
-    - The plan was never to stop talking about analytics, but to pepper in some discussions insofar
-      as they are relevant to your interests and Excella
-      - Being able to talk and write code at a high level is helpful for Excella
-    - Plan: take you along with my (slow) journey of trying to build something but our priorities
-      are still LLM/NLP learnings
-      - Near term topics: Linux 'from scratch'
-- Vibecoding
-- MakeMore
+- Review Challenge Problem #2: PCA Flags
+- LLM From Scratch: MakeMore
+- NLP: Machine Translation and Document Search
+- AI Industry/Tools:
+  - Theoretical limitations of LLMs
+  - MCP: Model Conext Protocol
+
+# Near-term Talks:
+
+- Signal Attenuation and quasi-time series anomaly detection
+  - When Chris and Chuck are ready
+
+# Mid-to-long term Talks:
+
+- Platform Choice and Tech Stacks
+- Backend Development and Design
+  - Scalable Applications
+- Programming
+  - Data Structures
+  - Algorithms
+    - Review of Most Common
+    - Sample of some LeetCode
+  - Design Patterns for Python for Scripting/Data Science
+  - Comparative Programming (Review of Languages required)
 
 # Next Agendas:
 
-- NLP: Machine Translation and Document Search
-- LLM from scratch: Karpathy's MakeMore
-- Status of AI Industry
 - Vibecoding project and tools review
 
   - Bring avant garde sources to one common area
@@ -77,15 +82,19 @@ Pascal
 |------------|-------------------------------------------------------------|-------|------------------------------------------------------------------------------|
 | Go         | Go - The Complete Guide                                     | 15    | https://www.udemy.com/course/go-the-complete-guide                           |
 | Javascript | The Complete Gavascript Course 2025: From Zero to Expert!   | 71    | https://www.udemy.com/course/the-complete-javascript-course/                 |
+| Typescript | | | |
 | C          | C Programming for Beginners                                 | 25    | https://www.udemy.com/course/c-programming-for-beginners-/                   |
 | C++        | Beginning C++ Programming - From Beginner to Beyond         | 46    | https://www.udemy.com/course/beginning-c-plus-plus-programming               |
 | Haskell    | The Complete Haskell Course: From Zero to Expert            | 24    | https://www.udemy.com/course/the-complete-haskell-course-from-zero-to-expert |
+| Scala      | Complete Scala 3 Development Masterclass                    | 20    | https://www.udemy.com/course/completescala3/                                 |
 | Java       | 60 Days of Java: The Complete Java masterclass              | 58    | https://www.udemy.com/course/javamasterclass/                                |
 | Rust       | Learn to Code with Rust                                     | 58    | https://www.udemy.com/course/learn-to-code-with-rust/                        |
 | Kotlin     | The Complete Android 14 & Kotlin Development Masterclass    | 66    | https://www.udemy.com/course/android-kotlin-developer                        |
 | Prolog     | The Complete Prolog Programming Course: From Zero to Expert | 15    | https://www.udemy.com/course/learn-prolog-programming-from-zero-to-hero/     |
-| Scala      | Complete Scala 3 Development Masterclass                    | 20    | https://www.udemy.com/course/completescala3/                                 |
 | C#         | Complete C# Masterclass                                     | 46    | https://www.udemy.com/course/complete-csharp-masterclass/                    |
+| R          | | | |
+| Julia      | || |
+
 <!-- prettier-ignore-end -->
 
 - 444 total hours

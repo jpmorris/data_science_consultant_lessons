@@ -1,5 +1,13 @@
 # Linux
 
+### List of anacdotes to include below
+
+- Knowing `dpkg`, dependencies and dependency hell for manually installing `psql` on sagemaker
+- (Aside: knowing how to install VISX and understanding roles and assumed-roles to get `aws` to work
+  on sagemaker)
+- Know how to restart services to reboot airflow
+- Write bash scripts for sagemaker lifecycle configuration
+
 This section serves as a primer on Linux operating system.
 
 ## Overview
@@ -81,14 +89,14 @@ It's important to know how to install software on Linux. These options are:
 The package manager should be the first option you try. It is the most common way to install
 software on Linux.
 
-| Distribution family | Package Manager | Command         |
-| ------------------- | --------------- | --------------- |
-| Debian-based        | APT             | `apt`/`apt-get` |
-| Red Hat-based       | YUM/RPM         | `yum`/`rpm`     |
-| Arch-based          | Pacman          | `pacman`/`yay`  |
-| Gentoo-based        | Portage         | `emerge`        |
-| Slackware-based     | Slackpkg        | `slackpkg`      |
-| SUSE-based          | Zypper          | `zypper`        |
+| Distribution family | Package Manager | Command                |
+| ------------------- | --------------- | ---------------------- |
+| Debian-based        | APT,DPKG        | `apt`/`apt-get`/`dpkg` |
+| Red Hat-based       | YUM/RPM         | `yum`/`rpm`            |
+| Arch-based          | Pacman          | `pacman`/`yay`         |
+| Gentoo-based        | Portage         | `emerge`               |
+| Slackware-based     | Slackpkg        | `slackpkg`             |
+| SUSE-based          | Zypper          | `zypper`               |
 
 ### Shell
 
@@ -190,7 +198,6 @@ practitioner in the development context.
 - `/home` - Contains user home directories.
 - `/lib` - Contains essential shared libraries and kernel modules.
 - `/mnt` - Contains mount points for temporarily mounted filesystems.
-  - If you need to see if a drive (e.g. EBS drive in AWS) is mounted this is where you would look.
 - `/opt` - Contains optional software packages and add-on applications.
   - When you install optional software this is where it may go
 - `/proc` - Contains virtual files that provide information about the system and processes.

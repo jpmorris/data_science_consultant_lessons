@@ -103,7 +103,6 @@ than by language with each language described under each concept.
 | Clojure     | Dynamic     | Functional             | Interpreted | Garbage Collection           | Yes         | 0                      |
 | Groovy      | Dynamic     | Multi-paradigm         | Interpreted | Garbage Collection           | Yes         | 0                      |
 | Fortran     | Static      | Procedural             | Compiled    | Manual                       | No          | 1                      |
-| Groovy      | Static      | Procedural             | Compiled    | Manual                       | No          | 1                      |
 | Cobol       | Static      | Procedural             | Compiled    | Manual                       | No          | 1                      |
 | Ada         | Static      | Multi-paradigm         | Compiled    | Manual                       | Yes         | 0                      |
 | Pascal      | Static      | Procedural             | Compiled    | Manual                       | No          | 1                      |
@@ -148,7 +147,6 @@ isolation, etc.)
 | Python   | Single Python file                                       | Directory with multiple modules | snake_case    |
 | Go       | Collection of Go source files that are compiled together | Collection of go modules        | camelCase     |
 
-
 <!-- prettier-ignore-end -->
 
 ### Python
@@ -161,6 +159,12 @@ name can be used. When python executes a file it runs the code from top to botto
 sometimes this is only to define functions and classes and when the code executes it may jump around
 into different clases or function definitions.
 
+#### Exporting
+
+In python all functions, variables, and methods are exported by default. A convention is that any
+method or function that starts with an underscore is considered private and should not be used
+outside of the module. This is a convention and not enforced by the language.
+
 ### Go
 
 Go packages are defined on a per-directory basis. Each directory can contain multiple `.go` files.
@@ -169,11 +173,17 @@ directory containing the file. The `main` package is an exception to this rule. 
 is a special package that defines an executable program. The `main` package must contain a `main`
 function that is the entry point of the program.
 
+#### Exporting
+
+In go a file can be exported by starting the file name with a capital letter.
+
 ## Syntax
 
 ### Python
 
 ### Go
+
+#### Variables and Constants
 
 Go is a statically typed language, so types need to be declared. Variables are declared with `var`,
 there is a `:=` operator when a type can be inferred.
@@ -184,6 +194,41 @@ expectedReturnRate := 5.5
 // or
 var investmentAmount, years float64 = 1000, 10
 ```
+
+#### Receivers
+
+In Go there are receiver as well as argument parameters:
+
+```go
+func (r *ReceiverType) MethodName(arg1 Type1, arg2 Type2) ReturnType {
+    // method body
+}
+```
+
+This reads "attach a method called `MethodName` that returns `ReturnType` to the t ype
+`*ReceiverType`. Which is different than
+
+```go
+func MethodName(p *Parameter) ReturnType {
+    // method body
+}
+```
+
+which reads "declare a function called `MethodName`that takes one parameter of type `*Parameter`
+and returns `ReturnType`". This design encourages 'composition over inheritance' and is a common
+pattern in Go.
+
+#### Constructors
+
+Go also uses the convention that constructors are named `New()`.
+
+## Keywords
+
+### Go
+
+- **nil\*** - The zero value for pointers, interfaces, maps, slices, channels, and function types.
+- **panic** - A built-in function that stops the normal execution of a goroutine. It is similar to
+  throwing an exception in other languages.
 
 #### Constants vs Variables
 
@@ -279,5 +324,151 @@ default:
     // This is the default case if none of the above cases match
     fmt.Println("Invalid option")
 
+}
+```
+
+## Package Management
+
+### Python
+
+- `pip`, `poetry`, `uv`, `conda` (among othersc) can be used to manage packages with the following
+  record file for installed packages:
+  - `pip` a `requirements.txt` can be exported (with `pip freeze`)
+  - `conda` a `environment.yml` file can be exported with `conda env export`
+  - `poetry` and `uv` use a `pyproject.toml` file to record installed dependencies
+
+Both `pip` and `conda` list all dependencies, including sub-dependencies. `uv` and `poetry` list
+only requested dependencies not all sub-dependencies. These commands can, and should, be run inside
+a virtual environment to avoid polluting the system python installation.
+
+### Go
+
+`go get` is used to install packages. The `go.mod` file is used to manage dependencies. When you
+install these packages they are installed globally.
+
+## Memory Management
+
+### Python
+
+- Python uses a garbage collector to manage memory. The garbage collector automatically frees up
+  memory that is no longer being used by the program. This is done using reference counting and
+  cyclic garbage collection.
+
+### Go
+
+- Go also uses a garbage collector and you can use pointers to manage memory. The **Null Value** of
+  a pointer is `nil`.
+
+## Classes
+
+### Go
+
+The most obvious difference in Go is that there are no classes. Instead, Go uses **structs** to
+define data structures. Structs are similar to classes in that they can contain fields and methods.
+Structs are defined using the `type` keyword.
+
+Structs also allow metadata to be added to the struct. This is done using **tags**. Tags are
+additional information that can be added to the fields of a struct. Tags are defined using backticks
+(`) and can be used to define how the struct should be serialized or deserialized.
+
+```go
+type User struct {
+    Name     string `json:"name"`
+    Age      int    `json:"age"`
+    Email    string `json:"email"`
+    Password string `json:"password"`
+}
+```
+
+## Encapsulation
+
+### Python
+
+Python does not have strict access control. However, it uses a convention of prefixing private
+variables and methods with an underscore (`_`) to indicate that they are intended for internal use
+only. This is not enforced by the language and is just a convention.
+
+### Go
+
+In go you must use a capital letter to export a variable or method. If the first letter of the
+variable or method is lowercase, it is not exported and is considered private to the package. This
+is a convention and is enforced by the language.
+
+## Structs
+
+### Go
+
+```go
+
+type user struct {
+    name string
+    age  int
+}
+
+func (u user) getName() string {
+    return u.name
+}
+
+func (u *user) clearName() {
+    u.name = ""
+}
+
+func newUser(name string) (*user, error) {
+    if name == "" {
+        return nil, errors.New("name cannot be empty")
+    }
+
+    return &user{name: name}, nil
+}
+
+func main() {
+    u := user{name: "John", age: 30}
+    fmt.Println(u.getName())
+    u.clearName()
+    fmt.Println(u.getName())
+}
+```
+
+## Polymorphism
+
+### Interfaces
+
+#### Go
+
+In Go, polymorphism is achieved through interfaces. An interface is a type that defines a set of
+methods that a type must implement. A type can implement multiple interfaces, and an interface can
+be implemented by multiple types. Unlike other languages, Go does not require explicit declaration
+of the implementation of an interface. If a type implements all the methods of an interface, it is
+considered to implement that interface. This is known as **structural typing**.
+
+```go
+type saver interface {
+    Save() error
+}
+
+func saveData(data saver) {
+    err := data.Save()
+    return err
+}
+```
+
+### Generics
+
+#### Go
+
+In Go, generics are a way to write functions and data structures that can work with any type. This
+is done using type parameters. Type parameters are defined using square brackets (`[]`) and can be
+used in function signatures and struct definitions.
+
+```go
+import "fmt"
+
+func main() {
+    result := add(1, 2)
+    fmt.Println(result)
+}
+
+func add[T int | float64 | string](a, b T) T {
+    return a + b
 }
 ```
