@@ -263,13 +263,14 @@ TODO:
 
 -->
 
-##### Using the Covariance Matrix
-
----
-
 <div style="background-color: rgb(87, 61, 61);">
 
 <font color="red">**To Remember Forever**</font>
+
+
+##### PCA - Using the Covariance Matrix
+
+---
 
 Input: Data matrix X (m × n) with m samples and n features  
 Output: Reduced data matrix X' (m × k), where k ≤ n
