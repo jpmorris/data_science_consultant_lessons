@@ -1,5 +1,31 @@
+# Current Agenda:
+
+- LLM From Scratch: MakeMore
+  - Review notes and important concepts (Tensors, MLE, Softmax definition, Regularization)
+  - Review of Frequency-based MakeMore - go over final code
+  - Review of Neural Net-based MakeMore - go over final code
+  - Explain the difference between the frequency and neural net approaches
+- NLP: Machine Translation and Document Search
+- AI Industry/Tools:
+  - Career, Personal, and Life planning under potential AI disruption
+    - Scenarios
+    - Theoretical limitations of LLMs
+    - How to plan for the future
+  - MCP: Model Conext Protocol
+  - Vibecoding tools review (as part of project building)
+
+# Near-term/Ongoing Theme Talks:
+
+- Signal Attenuation and quasi-time series anomaly detection
+  - When Chris and Chuck are ready
+- LLM From Scratch
+  - Add as needed: CGAP Attention Model
+- NLP Course
+  - Add as needed: TFIDF, NMF (CGAP unsupervised topics)
+
 # Continuous learning Chat (these should always go int repo too):
 
+- which metrics are robust to class imbalance? Why is f1 score robust to class imbalance?
 - generator comprehension
 - Go through the skills guide
 
@@ -8,61 +34,44 @@
 - Chris' Problem - Bootstrapping LLM
 - Chucks problem
 
-# Current Agenda:
+# Project Related Talks
 
-- Review Challenge Problem #2: PCA Flags
-- LLM From Scratch: MakeMore
-- NLP: Machine Translation and Document Search
-- AI Industry/Tools:
-  - Theoretical limitations of LLMs
-  - MCP: Model Conext Protocol
-
-# Near-term Talks:
-
-- Signal Attenuation and quasi-time series anomaly detection
-  - When Chris and Chuck are ready
-
-# Mid-to-long term Talks:
-
-- Platform Choice and Tech Stacks
-- Backend Development and Design
+- Project learning requirements:
+  - Go
+  - JavaScript/Typescript
+  - Platform Choice and Tech Stacks, and Tools
+  - Backend Development and Design
   - Scalable Applications
-- Programming
-  - Data Structures
-  - Algorithms
-    - Review of Most Common
-    - Sample of some LeetCode
-  - Design Patterns for Python for Scripting/Data Science
-  - Comparative Programming (Review of Languages required)
+  - Programming
+    - Data Structures
+    - Algorithms
+      - Review of Most Common
+      - Sample of some LeetCode
+    - Design Patterns for Python for Scripting/Data Science
+- Comparative Programming (Review of Languages required)
 
-# Next Agendas:
+# Next Agendas Ideas
 
-- Vibecoding project and tools review
-
-  - Bring avant garde sources to one common area
-    - What platoform? Webapp? Desktop app?
-  - Ontology of field deriving questions and topics
-
+- Linux from scratch
 - Simulation: and review of Car Destination Challenge Problem
-- Chris' paper
+- Deep Learning course for more low-level
+- Advanced Classical ML - theory, automl, model improvement, phenomenology
 - After LLM from scratch:
-
   - review of Deepseek and other open source code
-
-- Taylor as guest speaker for programming questions (need a GOOD list of programming questions)
+- Taylor as guest speaker for programming questions (need a GOOD list of programming questions,
+  after projects and programming review
 - Chris A as guest speaker for cloud design
-
   - Need to review LZA and Data Platform design
-
 - Review each part of pipeline along the way:
   - NMF - unsupervised clustering
   - Attention model - line labeler
+- Review of Canonical Papers (after project)
 
-# near term:
+# Eventual:
 
-- linux from scratch; linux primer
-- go through flan tasks
-- trunked based development vs gitflow (and how it relates to (our) data science repo)
+- Go through flan tasks
+- Git
+  - trunked based development vs gitflow (and how it relates to (our) data science repo)
 - pythonic
 - Seconary IDE Primer - wait until Chuck has VSCode again
 
@@ -103,7 +112,7 @@ Pascal
 - If you dedicate 2.5 hours a week to this, you can get through it in about 50 weeks. This is a
   year-long course if you take it slow.
 
-## List of programming best-practices to cover
+## List of programming best-practices to cover -- Brainstorming for eventual content
 
 - logging without polluting app code
 - do not execute at import-time - keep your module-level globals clean of executable code
@@ -149,13 +158,10 @@ Pascal
   -
 - CI/CD
 - AutoML
-- Computer Vision
+- Computer Vision (after frigate experments)
 - review of sci-kit API
 - ML Theory
-- Data Structures
-- Design Patterns
 - git primer
-- cli/gnu tools primer
 - python SYSPATH/PYTHONPATH/module imports
 - complex problem solving strategies
 - showcase personal projects
@@ -175,11 +181,15 @@ Pascal
 
 # from melissas spreadhseet
 
-Review APIs fully SQL Primer Will review soon Git Primer Bash/GNU Primer need project relevance
-other distributions, need project relevance also confidence limits review of all stat tests also
-CONOVA etc, need good examples database review cleaning + transformation + selection review of
-pandas/numpy/scikit API data normalization, imputation, etc part of database review unstructured
-data data security awareness algorithm comparision automl feature selection review review of metrics
-math for data science algorithm comparision review of unsupervised learning review of NLP review of
-Deep Learning review of AWS services data pipelining Mlops model monitoring high-performance
-computing hadoop et al big data review (esp platforms agile review?
+- Review APIs fully
+- SQL Primer Will review soon
+- Git Primer
+- Bash/GNU Primer need project relevance
+- other distributions, need project relevance also confidence limits
+- review of all stat tests also CONOVA etc, need good examples database review cleaning +
+  transformation + selection review of pandas/numpy/scikit API data normalization, imputation, etc
+  part of database review unstructured data data security awareness algorithm comparision automl
+  feature selection review review of metrics math for data science algorithm comparision review of
+  unsupervised learning review of NLP review of Deep Learning review of AWS services data pipelining
+  Mlops model monitoring high-performance computing hadoop et al big data review (esp platforms
+  agile review?

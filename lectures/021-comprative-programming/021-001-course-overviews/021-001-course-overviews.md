@@ -143,9 +143,9 @@ isolation, etc.)
 
 <!-- prettier-ignore-start-->
 | Language | Module                                                   | Package                         | Variable Case Type |
-|----------|----------------------------------------------------------|---------------------------------| --------------|
-| Python   | Single Python file                                       | Directory with multiple modules | snake_case    |
-| Go       | Collection of Go source files that are compiled together | Collection of go modules        | camelCase     |
+|----------|----------------------------------------------------------|---------------------------------|--------------------|
+| Python   | Single Python file                                       | Directory with multiple modules | snake_case         |
+| Go       | Collection of Go source files that are compiled together | Collection of go modules        | camelCase          |
 
 <!-- prettier-ignore-end -->
 
@@ -214,9 +214,9 @@ func MethodName(p *Parameter) ReturnType {
 }
 ```
 
-which reads "declare a function called `MethodName`that takes one parameter of type `*Parameter`
-and returns `ReturnType`". This design encourages 'composition over inheritance' and is a common
-pattern in Go.
+which reads "declare a function called `MethodName`that takes one parameter of type `*Parameter` and
+returns `ReturnType`". This design encourages 'composition over inheritance' and is a common pattern
+in Go.
 
 #### Constructors
 
@@ -472,3 +472,65 @@ func add[T int | float64 | string](a, b T) T {
     return a + b
 }
 ```
+
+## Data Structures
+
+### Sequences
+
+### Python
+
+Python has several built-in data structures, including:
+
+<!-- prettier-ignore-start -->
+| Data Structure | Description                                   | Mutable | Ordered | Indexed | Unique |
+|----------------|-----------------------------------------------|---------|---------|---------|--------|
+| List           | A collection of items that can be changed.    | Yes     | Yes     | Yes     | No     |
+| Tuple          | A collection of items that cannot be changed. | No      | Yes     | Yes     | No     |
+| Set            | A collection of unique items.                 | Yes     | No      | No      | Yes    |
+| Dictionary     | A collection of key-value pairs.              | Yes     | Yes     | Yes     | No     |
+<!-- prettier-ignore-end -->
+
+```python
+lst = [1, 2, 3]
+tpl = (1, 2, 3)
+set = {1, 2, 3}
+dct = {"a": 1, "b": 2, "c": 3}
+```
+
+You can slice arrays using the following syntax:
+
+```python
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# [start:end:step]
+slc1 = arr[1:5]  # [2, 3, 4, 5]
+slc2 = arr[1:]   # [2, 3, 4, 5, 6, 7, 8, 9, 10]
+slc3 = arr[:5]   # [1, 2, 3, 4, 5]
+slc4 = arr[::2]  # [1, 3, 5, 7, 9]
+slc5 = arr[::-1] # [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+slc6 = arr[1:5:2] # [2, 4]
+slc8 = arr[5:1:-1] # [6, 5, 4, 3, 2]
+```
+
+### Go
+
+Go has several built-in data structures, including:
+
+<!-- prettier-ignore-start -->
+| Data Structure | Description                                   | Mutable | Ordered | Indexed | Unique |
+|----------------|-----------------------------------------------|---------|---------|---------|--------|
+| Array          | A fixed-size collection of items.             | No      | Yes     | Yes     | No     |
+| Slice          | A dynamic-size collection of items.           | Yes     | Yes     | Yes     | No     |
+| Map            | A collection of key-value pairs.              | Yes     | No      | No      | No     |
+<!-- prettier-ignore-end -->
+
+```go
+arr := [3]int{1, 2, 3, 4}
+slc1 := arr[1:2]
+
+slc2 := []int{1, 2, 3, 4, 5, 6}
+slc3 = slc2.append(7, 8, 9)
+
+mp := map[string]int{"a": 1, "b": 2, "c": 3}
+```
+
+In go you cant use negative indexing or steps.
