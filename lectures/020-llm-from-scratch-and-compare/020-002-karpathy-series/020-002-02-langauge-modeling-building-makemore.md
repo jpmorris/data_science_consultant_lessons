@@ -138,7 +138,7 @@ We would like a single number that measure the performance of the model. In this
 not predicting bigrams but rather passing the actual words through and seeing what probability is
 associated with a given bigram. If the probability is close to 1 then the model is performing well.
 If we multiply all probabilities, it would give us a number between 0 and 1. For a large number of
-words this can give us a measure of performance: the close the 1 the better the model is performing.
+words this can give us a measure of performance: the closer to 1 the better the model is performing.
 This likelihood is a function of the model parameters, $\theta$. In this case, the parameters are
 simply the bigram probabilities.
 
@@ -294,7 +294,9 @@ The optimization of the neural network will run the same way as with micrograd.
 
 Recall the three types of regularization:
 
-- Lasso: penalizes the sum of the absolute values of the weights
+- LASSO: penalizes the sum of the absolute values of the weights
+  - LASSO - Least Absolute Shrinkage and Selection Operator
+    - To remember: when you think 'absolute' think 'absolute value', the term of the regularization.
   - L1 regularization
   - Use when you want to select important features (automatically sets some coefficients to zero)
   - $ \lambda \sum_i |w_i| $
@@ -306,6 +308,34 @@ Recall the three types of regularization:
   - L1 and L2 regularization
   - good for high-dimensional data
   - $ \lambda_1 \sum_i |w_i| + \lambda_2 \sum_i w_i^2 $
+
+**Visual Interpretation**
+
+With regularization optimization is applied across the loss function and the regularization terms
+
+$$ \sum_i V(f(x_i,y_i)) + \lambda \sum_i R(f)$$
+
+Where V is the underlying loss function and R is the regularization term. For the case of RSS
+(Residual Sum of Squares) for OLE (Ordinary Least Squares) regression, the loss function with ridge
+regression is:
+
+$$ \sum^n_i \left( y_i - \beta_o - \sum^p_j \beta_j x{ij} \right)^2 + \lambda \sum^p_j \beta_j^2 $$
+
+and for LASSO regression is:
+
+$$ \sum^n_i \left( y_i - \beta_o - \sum^p_j \beta_j x{ij} \right)^2 + \lambda \sum^p_j |\beta_j| $$
+
+Projecting into 2-D for visualizing, although the optimized minium is most likely a single point in
+this
+$\beta_1, \beta_2 $ parameter space, when we introduce a regularization term to avoid over
+fitting the regularization pulls the optimized coefficients away from this minium where the 
+parameters can take a set of values away from the non-regularized minimum. (The set of $\beta$
+parameter values form an elliptical contour in this space--like walking around the bottom of a
+valley above the minimum bottom.) The regularization forces the parameters to be minimized both for
+the loss function but also for the size of the terms under the assumption that smaller terms are
+less likely to overfit.
+
+![Lasso vs Ridge](images/lasso-ridge2.png)
 
 </div>
 
