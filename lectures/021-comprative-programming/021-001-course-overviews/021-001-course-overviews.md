@@ -222,6 +222,33 @@ in Go.
 
 Go also uses the convention that constructors are named `New()`.
 
+#### Operators
+
+##### Unpacking
+
+###### Python
+
+To unpack a list or tuple, you can use the `*` operator.
+
+```python
+a = [1, 2, 3]
+b = [*a, 4, 5]
+print(b)  # [1, 2, 3, 4, 5]
+```
+
+###### Go
+
+To unpack a slice, you can use the `...` operator.
+
+```go
+func main() {
+	a := []int{1, 2, 3}
+	b := []int{4, 5, 6}
+	c := append(a, b...)
+	fmt.Println(c)
+}
+```
+
 ## Keywords
 
 ### Go
@@ -229,6 +256,7 @@ Go also uses the convention that constructors are named `New()`.
 - **nil\*** - The zero value for pointers, interfaces, maps, slices, channels, and function types.
 - **panic** - A built-in function that stops the normal execution of a goroutine. It is similar to
   throwing an exception in other languages.
+- **make** - A built-in function that allocates and initializes slices, maps, and channels.
 
 #### Constants vs Variables
 
@@ -522,6 +550,8 @@ Go has several built-in data structures, including:
 | Slice          | A dynamic-size collection of items.           | Yes     | Yes     | Yes     | No     |
 | Map            | A collection of key-value pairs.              | Yes     | No      | No      | No     |
 <!-- prettier-ignore-end -->
+
+A map is analogous to a dictionary in python.
 
 ```go
 arr := [3]int{1, 2, 3, 4}

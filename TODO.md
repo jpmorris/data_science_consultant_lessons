@@ -39,15 +39,16 @@
 - Project learning requirements:
   - Go
   - JavaScript/Typescript
-  - Platform Choice and Tech Stacks, and Tools
-  - Backend Development and Design
-  - Scalable Applications
   - Programming
     - Data Structures
     - Algorithms
       - Review of Most Common
-      - Sample of some LeetCode
-    - Design Patterns for Python for Scripting/Data Science
+      - Sample of some LeetCode Design Patterns for Python for Scripting/Data Science
+  - Platform Choice and Tech Stacks, and Tools
+  - System Design courses
+    - Microservices
+    - Scalable Applications
+    - Backend Development and Design
 - Comparative Programming (Review of Languages required)
 
 # Next Agendas Ideas
