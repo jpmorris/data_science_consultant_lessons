@@ -1,18 +1,17 @@
-# Current Agenda:
+# 2025 Themes:
 
-- LLM From Scratch: MakeMore
-  - Review notes and important concepts (Tensors, MLE, Softmax definition, Regularization)
-  - Review of Frequency-based MakeMore - go over final code
-  - Review of Neural Net-based MakeMore - go over final code
-  - Explain the difference between the frequency and neural net approaches
-- NLP: Machine Translation and Document Search
-- AI Industry/Tools:
-  - Career, Personal, and Life planning under potential AI disruption
-    - Scenarios
-    - Theoretical limitations of LLMs
-    - How to plan for the future
-  - MCP: Model Conext Protocol
-  - Vibecoding tools review (as part of project building)
+- LLM From Scratch
+- NLP 4-course specialization
+- Cloud level solution and architecture 
+  - Guest Lectures: Chris A, Vickey
+- Classical ML Deep Dive
+- AI Industry/Tools
+
+# Today's Agenda:
+
+- METR stduy
+- NLP - Machine Translation and Document Search
+
 
 # Near-term/Ongoing Theme Talks:
 
@@ -22,6 +21,8 @@
   - Add as needed: CGAP Attention Model
 - NLP Course
   - Add as needed: TFIDF, NMF (CGAP unsupervised topics)
+- MCP: Model Context Protocol
+- Vibecoding tools review (as part of project building)
 
 # Continuous learning Chat (these should always go int repo too):
 
@@ -50,6 +51,17 @@
     - Scalable Applications
     - Backend Development and Design
 - Comparative Programming (Review of Languages required)
+
+# Possible AWS Cert information:
+
+- Solutions Architect - Associate
+- Solutions Architect - Professional
+- Data Engineer
+- Machine Learning Engineer
+- Machine Learning Specialty - expires Jan 31 2026
+- Developer
+- Cloud Practitioner - Optional
+- AI Practitioner - Optional
 
 # Next Agendas Ideas
 

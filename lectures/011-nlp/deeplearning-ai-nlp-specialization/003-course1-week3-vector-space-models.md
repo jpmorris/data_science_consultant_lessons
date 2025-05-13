@@ -267,7 +267,6 @@ TODO:
 
 <font color="red">**To Remember Forever**</font>
 
-
 ##### PCA - Using the Covariance Matrix
 
 ---

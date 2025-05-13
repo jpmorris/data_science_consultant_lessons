@@ -258,13 +258,17 @@ func main() {
   throwing an exception in other languages.
 - **make** - A built-in function that allocates and initializes slices, maps, and channels.
 
-#### Constants vs Variables
+## Constants vs Variables
+
+### Go
 
 Constants are declared with the `const` keyword. Constants are immutable and must be assigned a
 value at the time of declaration. Variables are declared with the `var` keyword. Variables can be
 assigned a value at the time of declaration or later in the program.
 
-#### Functions
+## Functions
+
+### Go
 
 Like many statically typed languages the types must be specified for function parameters and return
 values. In go you can specify a common type in the arguments, and you specify the return types after
@@ -284,6 +288,93 @@ func calculateFinancials(revenue, expenses, taxRate float64) (float64, float64, 
     ratio := ebt / profit
     return ebt, profit, ratio
 }
+```
+
+#### Functions as First-Class Citizens
+
+In many languages functions are first-class citizens. This means that functions can be passed as
+arguments to other functions, returned from functions, and assigned to variables.
+
+```go
+// example of a function that takes a function as an argument
+def double(x):
+    return x * 2
+
+def multiply(func, arg):
+    return func(arg)
+result = multiply(double, 5)
+print(result)  # Output: 10
+```
+
+#### Anonymous Functions
+
+In many language you do not need to declare a function before using it. This is called an anonymous
+function.
+
+```go
+// Anonymous function
+multiply := func(a, b int) int {
+    return a * b
+}
+result := multiply(2, 5)
+fmt.Println(result) // Output: 10
+```
+
+#### Closures
+
+A closure is a function that captures the variables from its surrounding context. This allows the
+closure to access those variables even after the surrounding context has finished executing. All
+anonymous functions are closures.
+
+```go
+// can use this function as a factory to create other transfomer functions
+func createTrnansformer(factor int) func(int) int {
+    return func(x int) int {
+        return x * factor
+    }
+double := createTransformer(2) // closure because this function closed over the variable `factor` and the scope it was created
+triple := createTransformer(3)
+fmt.Println(double(5)) // Output: 10
+fmt.Println(triple(5)) // Output: 15
+}
+```
+
+#### Recursion
+
+A function can call itself. This is called recursion. Recursion is a powerful tool for solving
+problems that can be broken down into smaller subproblems.
+
+```go
+func factorial(n int) int {
+    if n == 0 {
+        return 1
+    }
+    return n * factorial(n-1)
+}
+factorial(5) // Output: 120
+```
+
+#### Variadic Functions
+
+A variadic function is a function that can take a variable number of arguments. This is done using
+the `...` operator. The variadic argument must be the last argument in the function signature.
+
+```go
+func sum(numbers ...int) int {
+    total := 0
+    for _, number := range numbers {
+        total += number
+    }
+    return total
+}
+```
+
+```python
+def sum(*numbers):
+    total = 0
+    for number in numbers:
+        total += number
+    return total
 ```
 
 ## Control Structures
@@ -539,6 +630,14 @@ slc6 = arr[1:5:2] # [2, 4]
 slc8 = arr[5:1:-1] # [6, 5, 4, 3, 2]
 ```
 
+You can unpack a list or tuple using the `*` operator.
+
+```python
+a = [1, 2, 3]
+b = [*a, 4, 5]
+print(b)  # [1, 2, 3, 4, 5]
+```
+
 ### Go
 
 Go has several built-in data structures, including:
@@ -563,4 +662,21 @@ slc3 = slc2.append(7, 8, 9)
 mp := map[string]int{"a": 1, "b": 2, "c": 3}
 ```
 
-In go you cant use negative indexing or steps.
+### Unpacking
+
+In Go you can unpack a slice using the `...` operator.
+
+```go
+a := []int{1, 2, 3}
+b := []int{4, 5, 6}
+c := append(a, b...)
+fmt.Println(c) // Output: [1 2 3 4 5 6]
+```
+
+In python you can unpack a list or tuple using the `*` operator.
+
+```python
+a = [1, 2, 3]
+b = [*a, 4, 5]
+print(b)  # Output: [1, 2, 3, 4, 5]
+```
