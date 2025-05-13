@@ -149,8 +149,9 @@ Pascal
   spacy example labeled_spacy_files.py in dagster code
 - how to rewrite function to support: 2 separate functions, function flag, two independent functions
   or modify data storage (see: labeled_spacy_files comparision with unlabeled)
-
+- Classes vs functions - check out textract code
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
+  
 
 - contextualize with deep learning basics
 - show the code
