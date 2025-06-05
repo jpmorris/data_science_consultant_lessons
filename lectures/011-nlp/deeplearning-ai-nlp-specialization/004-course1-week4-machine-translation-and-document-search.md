@@ -1,5 +1,37 @@
 # Machine Translation and Documentation Search
 
+- [Machine Translation and Documentation Search](#machine-translation-and-documentation-search)
+  - [Review from Week 3](#review-from-week-3)
+  - [Important tools](#important-tools)
+    - [Transforming word vectors](#transforming-word-vectors)
+      - [Steps required to learn $R$](#steps-required-to-learn-r)
+    - [Hash Function](#hash-function)
+      - [Locality Sensitive Hashing](#locality-sensitive-hashing)
+  - [Notebook Example](#notebook-example)
+    - [Word Embeddings for English and French Words](#word-embeddings-for-english-and-french-words)
+      - [`get_matrices`](#get_matrices)
+    - [Translations](#translations)
+      - [Translation as Linear Transformation of Embeddings](#translation-as-linear-transformation-of-embeddings)
+        - [`compute_loss`](#compute_loss)
+        - [`compute_gradient`](#compute_gradient)
+          - [Early Stopping](#early-stopping)
+        - [`align_embeddings()`](#align_embeddings)
+      - [Testing the Translation](#testing-the-translation)
+        - [k-Nearest Neighbors](#k-nearest-neighbors)
+        - [Cosine Similarity](#cosine-similarity)
+        - [Distance](#distance)
+        - [`nearest_neighbor()`](#nearest_neighbor)
+        - [`test_vocabulary()`](#test_vocabulary)
+    - [LSH and Document Search](#lsh-and-document-search)
+      - [Getting the Document Embeddings](#getting-the-document-embeddings)
+        - [`get_document_embedding()`](#get_document_embedding)
+        - [`get_document_vecs()`](#get_document_vecs)
+      - [Looking up the Tweets](#looking-up-the-tweets)
+      - [Finding the most Similar Tweets with LSH](#finding-the-most-similar-tweets-with-lsh)
+      - [Getting the Hash Number for a Vector - `hash_value_of_vector()`](#getting-the-hash-number-for-a-vector---hash_value_of_vector)
+      - [Creating a hash Table - `make_hash_table()`](#creating-a-hash-table---make_hash_table)
+      - [Creating all Hash Tables - `approximate_knn()`](#creating-all-hash-tables---approximate_knn)
+
 ## Review from Week 3
 
 <u>**'eigen' from German word for 'own'**</u>
@@ -81,12 +113,14 @@
 
 ---
 
-## Transforming word vectors
+## Important tools
+
+### Transforming word vectors
 
 Word vectors can be transformed from one space to another. For example, if we have word vectors in
 English and we want to transform them to French, we can use a transformation matrix $R$ to do this.
 
-### Steps required to learn $R$
+#### Steps required to learn $R$
 
 ![Transforming Word Vectors](images/transforming_word_vectors.png)
 
@@ -121,9 +155,7 @@ $$
 
 <!-- prettier-ignore-end -->
 
-## K-Nearest Neighbors
-
-## Hash Function
+### Hash Function
 
 A hash function is any function that can be used to map data of arbitrary size to fixed-size values.
 The values returned by a hash function are called hash values.
@@ -181,7 +213,7 @@ Regardless of the size of the hash table, the time complexity for searching for 
 This is because the key itself defines the location in memory and no sorting or searching is
 required.
 
-### Locality Sensitive Hashing
+#### Locality Sensitive Hashing
 
 Sometimes we want to hash values but for values to have relationships so that hash values will group
 similar values together. This is called locality sensitive hashing (LSH). This would be dangerous in
@@ -196,15 +228,33 @@ algorithm, but for lookups, LSH is a useful technique.
 
 ### Word Embeddings for English and French Words
 
-- Given word embeddings and English to French dictionary
+#### `get_matrices`
+
+- Given word embeddings and English to French dictionary create an embedding matrix `get_matrices`
+  where English and French embedding matrices (of shape (num_words, embedding_size)) where each row
+  in the English matrix corresponds to the the same row in the French matrix.
   - It appears that embeddings come from word2vec (Gensim)
-- Create embedding matrix `get_matrices` which is a (vertically) stacked matrix of the word vectors
-  (also for training subset)
 
 ### Translations
 
-Summary: If we have a transformation across word embeddings in English to French, we can compute the
-nearest neighbor to any general English embedding to get likely French translation.
+Summary: If we have a transformation across word embeddings, $R$, from English to French, we can
+transform compute any word embedding, $e$, to get a new embedding $eR = f$. We can then lookup the
+closest vector to this transformation and that should be the translation.
+
+Steps:
+
+1. Assemble embedding matrices from embedding vectors and known dictionary (`get_matrices`)
+1. Find transformation $R$ by iterative updating - `align_embeddings()`:
+   1. Calculate the loss (the Frobenius norm) of the Transformation matrix - `compute_loss()`
+   1. Calculate the gradient of the loss - `compute_gradient()`
+   1. Update, $R$ and repeat
+
+#### Translation as Linear Transformation of Embeddings
+
+We first need to find R by minimizing R for our training data which compares our transformed English
+embedding with the corresponding French embedding.
+
+##### `compute_loss`
 
 - Finding the transformation matrix involves finding an R that minimizes the norm of the difference
   between the transformed English embedding and the French embedding.
@@ -221,21 +271,138 @@ increase with dictionary size.
 
 $$\frac{1}{m} \| \mathbf{X R} - \mathbf{Y} \|_{F}^{2}$$
 
-- To minimize the elements of R, we calculate the gradient of the loss and perform Gradient Descent.
-  The derivative is:
+##### `compute_gradient`
+
+To minimize the elements of R, we calculate the gradient of the loss and perform Gradient Descent.
+The derivative is:
 
 $$\frac{d}{dR}𝐿(𝑋,𝑌,𝑅)=\frac{d}{dR}\Big(\frac{1}{m}\| X R -Y\|_{F}^{2}\Big) = \frac{2}{m}X^{T} (X R - Y)$$
+
+We optimize $R$ by iteratively updating values in the direction of the gradient
+
+$$ R*{new} = R*{old} - \alpha g $$
+
+Where $\alpha$ is the learning rate, and g is the gradient of the loss.
 
 <div style="background-color: rgb(87, 61, 61);">
 
 <font color="red">**To Remember Forever**</font>
 
-#### Early Stopping
+###### Early Stopping
 
 Early stopping is a technique used to prevent overfitting in machine learning models. It involves
 monitoring the model's performance on a validation set during training and stopping the training
 process when the performance starts to degrade.
 
+- Why not always do 'early stopping'? The dataset may have noise in validation set leading to
+  premature stopping or it may stop too soon. Use early stopping as a solution to overfitting, not
+  as a default.
+- An alternative is to train with a fixed number of iterations.
+
 </div>
 
+##### `align_embeddings()`
+
+The sorted embedding matrices (French and English) are used to update the transformation matrix,
+$R$, by `compute_loss`, `compute_gradient` and updating the transformation matrix.
+
+#### Testing the Translation
+
+##### k-Nearest Neighbors
+
+This is not the common k-NN algorithm used in classification, but is a vector search for the closest
+vector using cosine similarity.
+
+The transformation of the English word to French, $eR = f$, often wont give the **exact**
+corresponding French vector, however the vector should be close to the real translation. By finding
+the nearest vector we can find the proper translation.
+
+##### Cosine Similarity
+
+$$\cos(u,v)=\frac{u\cdot v}{\left\|u\right\|\left\|v\right\|}$$
+
+- $\cos(u,v)$ = $1$ when $u$ and $v$ lie on the same line and have the same direction.
+- $\cos(u,v)$ is $-1$ when they have exactly opposite directions.
+- $\cos(u,v)$ is $0$ when the vectors are orthogonal (perpendicular) to each other.
+
+##### Distance
+
+- We can obtain distance metric from cosine similarity, but the cosine similarity can't be used
+  directly as the distance metric.
+- When the cosine similarity increases (towards $1$), the "distance" between the two vectors
+  decreases (towards $0$).
+- We can define the cosine distance between $u$ and $v$ as
+
+$$d_{\text{cos}}(u,v)=1-\cos(u,v)$$
+
+##### `nearest_neighbor()`
+
+- Again, this is not the common k-NN algorithm used in classification, but is a vector search for
+  the closest vector using cosine similarity.
+- We calculate the cosine similarity for a set of candidate vectors and select the closest.
+
+##### `test_vocabulary()`
+
+- This function predicts a French translation for all English words using `nearest_neighbor()` and
+  calculates the accuracy.
+
 ### LSH and Document Search
+
+#### Getting the Document Embeddings
+
+- We can create a document embedding by summing up the embeddings of all words in the document.
+- **Bag-of-Words**: This is a common technique where we treat the document as a set of words and
+  ignore the order of the words. The document embedding is simply the sum of the embeddings of all
+  words in the document.
+- By summing up the embeddings in this way we are creating a Bag-of-Words representation of the
+  document.
+
+##### `get_document_embedding()`
+
+- We get the document embedding by summing up the embeddings of all words in the document.
+
+##### `get_document_vecs()`
+
+- This function gets the document embeddings for a set of documents.
+
+#### Looking up the Tweets
+
+- Given a new tweet we can compare it to all other tweets using the cosine similarity to find the
+  most similar tweets.
+
+#### Finding the most Similar Tweets with LSH
+
+- Searching a large set of documents for the most similar document scales as $O(n)$, which is not
+  efficient. By using locality sensitive hashing (LSH) the location of a document (vector) is
+  defined by its content, and similar documents will be hashed to the same location.
+- In this case, we can split up a document space with random planes. The dot product of the normal
+  to the plan with a given vector says which side the plane vector lies.
+
+#### Getting the Hash Number for a Vector - `hash_value_of_vector()`
+
+- We compute which side the vector (tweet embedding in this case), vectorially, by taking the doct
+  product of this vector with the matrix of all planes.
+
+- Not unlike counting in other bases, we can define a unique number which specifies the location of
+  the vector in the document space.
+- In our case we raise two to the power of the index of the plane and sum these values to get a
+  unique number for the vector.
+
+$$hash = \sum_{i=0}^{N-1} \left( 2^{i} \times h_{i} \right)$$
+
+- here $i$ is the vector index and $2^{i}$ is the power of two for the index. This sum will always
+  produce a unique number for a given vector.
+
+#### Creating a hash Table - `make_hash_table()`
+
+- In order to do speedy lookups, we need to create a hash table to store the vectors.
+- We create $2 \times \text{num\_planes}$ hash tables, one for each side of the plane.
+- Each hash table is a dictionary where the key is the hash value and the value is a list of vectors
+  (tweets) that have that hash value.
+- The hash value is computed using `hash_value_of_vector()` and the vectors are stored in the hash
+  table/dictionary.
+
+#### Creating all Hash Tables - `approximate_knn()`
+
+- This is the full function. It creates multiple hash tables (universes) that can speed up
+  comparisions at the cost of tables/universe-creation.

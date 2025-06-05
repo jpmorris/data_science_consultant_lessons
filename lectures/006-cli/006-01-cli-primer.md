@@ -147,6 +147,8 @@ recent command that matches the characters typed.
   - **separate GNU tools** - standalone programs that are not part of the shell.
   - This distinction is not very important except to know that some of these tools will need to be
     installed and do not come by default
+- Running command at certain time (good for notifications)
+  - 
 - Monitoring (log) files
   - `watch <cmd>` - Run a command repeatedly and display the output.
     - `watch -n 1 ls -lat` - Run `ls -lat` every second to watch for when a file appears or changes.
