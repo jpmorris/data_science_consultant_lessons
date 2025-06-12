@@ -397,7 +397,7 @@ $$hash = \sum_{i=0}^{N-1} \left( 2^{i} \times h_{i} \right)$$
 
 - In order to do speedy lookups, we need to create a hash table to store the vectors.
 - We create $2 \times \text{num\_planes}$ hash tables, one for each side of the plane.
-- Each hash table is a dictionary where the key is the hash value and the value is a list of vectors
+aach hash table is a dictionary where the key is the hash value and the value is a list of vectors
   (tweets) that have that hash value.
 - The hash value is computed using `hash_value_of_vector()` and the vectors are stored in the hash
   table/dictionary.
