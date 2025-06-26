@@ -99,6 +99,8 @@ This is a review of Solution Architecture learning resource list provided by Chr
 - [What is DNS?](https://www.cloudflare.com/learning/dns/what-is-dns/)
   - DNS (Domain Name System) is the phonebook of the internet, translating human-readable domain
     names into IP addresses.
+    - DNS resolver - A DNS resolver is a server that receives DNS queries from clients and resolves
+      them by querying other DNS servers.
 
 ### Process
 
@@ -107,6 +109,7 @@ This is a review of Solution Architecture learning resource list provided by Chr
 1. A user types ‘example.com’ into a web browser and the query travels into the Internet and is
    received by a DNS recursive resolver.
 1. The resolver then queries a DNS root nameserver (.).
+   - 13 identities; about 600 physical servers
 1. The root server then responds to the resolver with the address of a Top Level Domain (TLD) DNS
    server (such as .com or .net), which stores the information for its domains. When searching for
    example.com, our request is pointed toward the .com TLD. 1.The resolver then makes a request to
