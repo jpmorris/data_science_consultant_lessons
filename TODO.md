@@ -2,7 +2,7 @@
 
 - LLM From Scratch
 - NLP 4-course specialization
-- Cloud level solution and architecture 
+- Cloud level solution and architecture
   - Guest Lectures: Chris A, Vickey
 - Classical ML Deep Dive
 - AI Industry/Tools
@@ -11,7 +11,6 @@
 
 - METR stduy
 - NLP - Machine Translation and Document Search
-
 
 # Near-term/Ongoing Theme Talks:
 
@@ -23,6 +22,10 @@
   - Add as needed: TFIDF, NMF (CGAP unsupervised topics)
 - MCP: Model Context Protocol
 - Vibecoding tools review (as part of project building)
+
+# Model phenomenology
+
+- 'On the biology of a large langauge model' - anthropic
 
 # Continuous learning Chat (these should always go int repo too):
 
