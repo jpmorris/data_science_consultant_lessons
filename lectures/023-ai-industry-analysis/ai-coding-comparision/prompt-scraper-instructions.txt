@@ -1,0 +1,15 @@
+The following page lists a spec for API access to data I would like to download:
+
+https://www.justice.gov/developer/api-documentation/api_v1
+
+I would like to download all data from the /api/v1/press_releases.json endpoint
+using Python.
+
+Please create code that does the following:
+
+- Steps through the endpoint from 2016-01-01 to the current date
+- Steps through each page provided by the API for a given date.
+- Downloads json payloads for each page and concatenates them in a list of
+dictionaries.
+- Takes this list of dictionaries, exports it as json to an s3 bucket.
+

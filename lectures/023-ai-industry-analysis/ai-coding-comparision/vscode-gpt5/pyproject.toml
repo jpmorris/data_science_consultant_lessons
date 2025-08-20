@@ -1,0 +1,33 @@
+#[build-system]
+#requires = ["hatchling>=1.17"]
+#build-backend = "hatchling.build"
+
+[project]
+name = "doj-press-releases"
+version = "0.1.0"
+description = "Download DOJ press releases to S3 and aggregate them into a CSV"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "boto3>=1.28,<2",
+  "pandas>=2.2,<3",
+  "requests>=2.31,<3",
+]
+
+#[project.scripts]
+#doj-download = "download_doj_press_releases:main"
+#doj-aggregate = "aggregate_doj_press_releases:main"
+
+[dependency-groups]
+# Optional dev tools (install with: uv sync --group dev)
+dev = [
+  "ruff>=0.5",
+  "mypy>=1.10",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true

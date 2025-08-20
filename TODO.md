@@ -1,7 +1,10 @@
+# Upcoming Talks
+
+- vibecoding tools review
+  - try vibecoding project of doj scraping and csv bucket storage
+
 # 2025 Themes:
 
-- LLM From Scratch
-- NLP 4-course specialization
 - Cloud level solution and architecture
   - Guest Lectures: Chris A, Vickey
 - Classical ML Deep Dive
@@ -9,8 +12,12 @@
 
 # Today's Agenda:
 
-- METR stduy
 - NLP - Machine Translation and Document Search
+
+# 2026 Themes
+
+- LLM From Scratch
+- NLP 4-course specialization
 
 # Near-term/Ongoing Theme Talks:
 
@@ -153,8 +160,8 @@ Pascal
 - how to rewrite function to support: 2 separate functions, function flag, two independent functions
   or modify data storage (see: labeled_spacy_files comparision with unlabeled)
 - Classes vs functions - check out textract code
+
 # RNN, LSTM, Transformers compared (should be part of deep learning lesson?)
-  
 
 - contextualize with deep learning basics
 - show the code

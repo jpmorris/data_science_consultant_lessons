@@ -1,0 +1,26 @@
+[
+  {
+    "attachment": "",
+    "body": "<p>Sample press release body content.</p>",
+    "changed": "<time datetime=\"2022-06-01T12:00:00-05:00\">1654084800</time>",
+    "component": [
+      {
+        "uuid": "test-uuid",
+        "name": "Test Office"
+      }
+    ],
+    "created": "<time datetime=\"2022-06-01T10:00:00-05:00\">1654077600</time>",
+    "date": "1654041600",
+    "image": "",
+    "number": "22-001",
+    "teaser": "Sample teaser text...",
+    "title": "Sample Press Release Title",
+    "topic": [
+      {
+        "name": "Test Topic"
+      }
+    ],
+    "url": "/opa/pr/sample-press-release",
+    "uuid": "sample-uuid-123"
+  }
+]
