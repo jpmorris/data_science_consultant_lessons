@@ -1,6 +1,6 @@
 This summary is an overview of solution architecture developed based on the following resources:
 
-- "Solution Architecture's Handobook", Shrivastava and Srivastav
+- "Solution Architecture's Handbook", Shrivastava and Srivastav
 - Ultimate AWS Certified Solutions Architect Associate 2025 - Udemy Course, Stephan Marek
 - Ultimate AWS Certified Solutions Architect Professional 2025 - Udemy Course, Stephan Marek
 - Microsoft Cloud Deisng Patterns, Microsoft
