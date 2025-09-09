@@ -1,14 +1,26 @@
 # Review of Industry Sentiment
 
-# AI IDEs, Coding Assistants, Vibe-Coding Tools, and Related AI Developer Tools (2025)
 
 ## Some current rankings as of Aug 2025
+Post-GPT5 release:
 
 ![LMArena Text Rankings 08-2025](images/lmarena-text-2025-08.png)
 
 ![LMArena Copilot Rankings 08-2025](images/lmarena-copilot-2025-08.png)
 
-Current major contenders are:
+
+[ai-2027](https://ai-2027.com/)
+
+[metr.github.io](https://metr.github.io/)
+
+![Metr Post GPT-5](images/metr-post-gpt5.png)
+
+- Prediction markets have dropped for OpenAI AGI
+- Long term markets unchanged: AGI 20
+
+# AI IDEs, Coding Assistants, Vibe-Coding Tools, and Related AI Developer Tools (2025)
+
+The top-performing coding models are:
 
 - Anthropic's Claude
 - Deepseek
@@ -56,6 +68,7 @@ Platforms that embed AI deeply within the development environment—some even of
 - Prompt Response is [here](./prompt-responses/cursor-claude4-sonnet.md)
 
 ### Other
+
 - **GitHub Copilot Agent** – Autonomous Copilot that takes end-to-end actions within the editor.
 - **QodoAI** (formerly CodiumAI) – Agentic assistant focused on automating workflows.
 - **Devin AI** (by Cognition) – A powerful AI software engineer capable of autonomous code
@@ -73,8 +86,6 @@ Integrated into editors or CLI for code suggestions, completions, and enhancemen
 - **Tabnine** – AI autocompletion tool supporting many editors.
 - **Sourcegraph Cody** – Context-aware code assistant that understands entire codebases.
 - **Replit Agent (Ghostwriter)** – Cloud-based AI assistant in Replit’s IDE.
-- **Codiga; Sourcery; Snyk Code (DeepCode)** – AI for reviews, bug detection, and vulnerabilities.
-- **Microsoft IntelliCode** – AI-enhanced code completion for Visual Studio.
 - **Others:** Continue.dev, MutableAI, AskCodi, CodeGeeX, Saturnhead AI, Hugging Face, OpenAI Codex.
 
 ---
