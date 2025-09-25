@@ -70,6 +70,13 @@ Other important differences:
 
   <!-- prettier-ignore-end -->
 
+- Applied Example: Linear Regression
+  - Both Data Scientist and Statisticians use linear regression
+  - see:
+    https://stats.stackexchange.com/questions/268755/when-should-linear-regression-be-called-machine-learning
+  - However, data scientists will concentrate on the learning and predictions
+  - Statisticians will concentrate on inference and testing assumptions of the model.
+
 ## Aside: Bayesian vs Frequentist
 
 - **Bayesian Statistics**
@@ -88,9 +95,11 @@ Other important differences:
 
 - Linear Normalization
   - https://stats.stackexchange.com/questions/70801/how-to-normalize-data-to-0-1-range
+- Standarization
 - Sigmoid Transformation
 
 ![Sigmoid Transformation](images/sigmoid-transform.png)
+
 - Box-Cox Transformation
   - https://en.wikipedia.org/wiki/Box%E2%80%93Cox_transformation
 
@@ -100,6 +109,13 @@ Other important differences:
   - https://en.wikipedia.org/wiki/Inverse_hyperbolic_sine
 
 ![Inverse Hyperbolic Sine Transformation](images/inverse-hyperbolic-sine.png)
+
+- Winsorization
+  - Limits extreme values in the data to reduce the effect of outliers
+  - Useful when you want to limit the influence of outliers without removing them
+  - Process: Set all values above a certain percentile to that percentile value, and all values
+    below a certain percentile to that percentile value
+  - https://en.wikipedia.org/wiki/Winsorizing
 
 ## Reminder of General Machine Learning Development Process
 
@@ -165,7 +181,7 @@ Example 2: Combatting Fraud
 
 - **Definition**: Data that lacks a predefined format or schema. It cannot be stored in a
   traditional relational database and requires specialized techniques for processing and analysis.
-- **Examples**: Text (emails, articles), images, audio, and video files.
+- **Examples**: Text (emfails, articles), images, audio, and video files.
 
 ##### Semi-Structured Data
 
@@ -182,7 +198,10 @@ Example 2: Combatting Fraud
 - **Deserialization**: The reverse process of reconstructing an object from the stored or
   transmitted format.
 
-##### Data Formats for DataFrames
+- Aside: Remember the difference between Normalized and Denormalized?
+  ![Normalized vs Denormalized](images/normalized-denormalized.png)
+
+##### Data Formats for DfataFrames
 
 - **Parquet (columnar storage format)**
 
@@ -198,7 +217,7 @@ Example 2: Combatting Fraud
   - **Characteristics**: Designed for efficient transfer of data frames (e.g., Pandas, R) between
     environments. Not intended for long-term storage.
 
-##### Model Serialization and Transfer
+##### Model Serializatiofn and Transfer
 
 - **ONNX (Open Neural Network Exchange)**
 
@@ -215,7 +234,7 @@ Example 2: Combatting Fraud
   - **Characteristics**:
     - _Pickle_: Standard Python serialization format for arbitrary objects. Can be a security risk
       with untrusted data.
-    - _Cloudpickle_: Extends Pickle to handle more complex objects (e.g., lambda functions), useful
+    - _Cloudpickle_: Extefnds Pickle to handle more complex objects (e.g., lambda functions), useful
       in distributed computing.
 
 - **Safetensors**
@@ -308,19 +327,45 @@ Example 2: Combatting Fraud
   - Label/Categorical encoding
   - Ordinal encoding
 
-- **Scaling and Normalization**
+#### Feature Scaling
 
-  - **Difference between scaling and normalization**
+- **Standardization and Normalization**
 
-    - _Scaling_: Adjusting the range of data (changing minimum and maximum values without altering
-      distribution shape).
-    - _Normalization_: Adjusting the distribution of data (making features follow a standard scale,
-      often unit norm or Gaussian-like).
-    - Example: Heights in cm vs. meters (scaling), or rescaling word counts into unit-length vectors
-      (normalization).
+  - **Scaling** adjusts the range of features to a standard scale without distorting differences in
+    the ranges of values.
+  - **Standardization** transforms features to have a mean of 0 and a standard deviation of 1.
+  - **Normalization** typically rescales features to a range of [0, 1] or [-1, 1], often using L1 or
+    L2 norms.
 
-  - **Scaling Methods**
+- How to transform hour or year variables:
+  - Sin/Cos transformations will preserve the cyclical nature of these variables
 
+Let us underline that (assuming $x_{max} > x_{min}$)
+
+$$
+\frac{x_i - x_{min}}{x_{max} - x_{min}}
+$$
+
+yields results in $[0, 1]$ (and the limits will always be present in the results), while
+
+$$
+\frac{x_i - x_{mean}}{x_{max} - x_{min}}
+$$
+
+yields results in $(-1, 1)$ (noting that $-1$ and $1$ are unattainable). In contrast
+
+$$
+\frac{x_i - \mu}{\sigma}
+$$
+
+-- where $\mu$ and $\sigma$ are understood as mean and standard deviation -- produces results with
+mean 0 and SD 1 and with some values always outside $[-1, 1]$.
+
+- **Scaling Methods**
+
+  - These methods are generally not used in Tree-based methods
+
+  - Types:
     - **Min-Max Scaling**
       - Formula: $((x-x_{min})/(x_{max}-x_{min}))$
       - Rescales values to a fixed range, typically \([0, 1]\).
@@ -332,21 +377,44 @@ Example 2: Combatting Fraud
     - **Robust Scaling**
       - Uses median and interquartile range (IQR) instead of mean and variance.
       - More robust to outliers than Min-Max or Z-score.
+  - When used:
+    - SVMs, PCA, deep learning
 
-  - **Normalization Methods**
-    - **L1 Normalization (Manhattan norm)**
-      - Scales features so the sum of absolute values equals 1.
-      - Useful for sparse features (e.g., text word counts).
-    - **L2 Normalization (Euclidean norm)**
-      - Scales features so the sum of squares equals 1.
-      - Common in models sensitive to vector magnitude (e.g., SVM, k-NN).
-    - **Unit Vector Normalization**
-      - Rescales feature vectors to length \(1\).
-      - Often used in text mining and cosine similarity tasks.
+- **Normalization Methods**
+
+  - Types:
+    - Data Scaling normalizes features within [0, 1] or [-1, 1]
+    - Norms applied to vectors - **L1 Normalization (Manhattan norm)** - Scales features so the sum
+      of absolute values equals 1. - Useful for sparse features (e.g., text word counts). - **L2
+      Normalization (Euclidean norm)** - Scales features so the sum - Distance based models (kNN,
+      k-Means), bounded activations (sigmoid/tanh NN), images of squares equals 1. - Common in
+      models sensitive to vector magnitude (e.g., SVM, k-NN). - **Unit Vector Normalization** -
+      Rescales feature vectors to length \(1\). - Often used in text mining and cosine similarity
+      tasks.
+  - When used:
+    - Distance based models (kNN, k-Means), bounded activations (sigmoid/tanh NN), images
+    - Text data (TF-IDF, word embeddings)
+  - Note: The vector norms are the same norms used in regularization (L1, L2) but apply to the
+    feature vectors (rows) rather than model weights (parameters).
 
 - **Feature Extraction Tools**
   - `FeatureTools` (automated feature synthesis).
-  - Deep Fea
+  - Deep Feature Synthesis (DFS).
+
+<!-- prettier-ignore-begin -->
+
+| Concept                       | What it acts on                | Math definition                                                                                     | Goal / Use case                                                      | Typical models                                                            |     |     |
+| ----------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------- | --- | --- |
+| **Scaling (Min–Max)**         | **Features (columns)**         | $x' = \frac{x - x_{min}}{x_{max} - x_{min}}$ → \[0,1] (or other range)                              | Make features comparable, especially when bounded range is useful    | kNN, k-Means, Neural Nets (sigmoid/tanh), Image pixels                    |     |     |
+| **Standardization (Z-score)** | **Features (columns)**         | $x' = \frac{x - \mu}{\sigma}$ (mean = 0, std = 1)                                                   | Center & equalize variance                                           | Linear regression/logistic regression w/ regularization, SVM, PCA         |     |     |
+| **Normalization (L1)**        | **Samples (rows)**             | $\mathbf{x}' = \frac{\mathbf{x}}{\|\mathbf{x}\|_1}, with (\|\mathbf{x}\|\_1 = \sum_i x_i$           | Make each vector’s **sum abs values = 1**                            | Text mining (TF-IDF), sparse data, ML pipelines using Manhattan distances |
+| **Normalization (L2)**        | **Samples (rows)**             | $\mathbf{x}' = \frac{\mathbf{x}}{\|\mathbf{x}\|_2}$, with $\|\mathbf{x}\|_2 = \sqrt{\sum_i x_i^2}$  | Make each vector’s **Euclidean norm = 1**; enables cosine similarity | Text embeddings, kNN, SVM (when inputs are document vectors)              |     |     |
+| **Normalization (L∞)**        | **Samples (rows)**             | $\mathbf{x}' = \frac{\mathbf{x}}{\|\mathbf{x}\|_\infty}, with (\|\mathbf{x}\|\_\infty = \max_i x_i$ | Scale so max abs feature value = 1                                   | Rare, but sometimes in bounded optimization problems                      |
+| **L1 Regularization (Lasso)** | **Model weights (parameters)** | Loss = Error + $\lambda \|\mathbf{w}\|_1$                                                           | Encourages **sparsity** (feature selection)                          | Linear/logistic regression, sparse models                                 |     |     |
+| **L2 Regularization (Ridge)** | **Model weights (parameters)** | Loss = Error + $\lambda \|\mathbf{w}\|_2^2$                                                         | Shrinks weights smoothly, avoids large coefficients                  | Linear/logistic regression, SVM, neural nets                              |     |     |
+| **Elastic Net**               | **Model weights (parameters)** | Loss = Error + $\lambda_1 \|\mathbf{w}\|_1 + \lambda_2 \|\mathbf{w}\|_2^2$                          | Combines sparsity (L1) + shrinkage (L2)                              | High-dimensional regression, genomics, text models                        |     |     |
+
+<-- - prettier-ignore-end -->
 
 ### Feature Selection
 
@@ -436,7 +504,7 @@ Example 2: Combatting Fraud
 - **Stability Selection**
 
   - Combines subsampling with feature selection methods (e.g., LASSO).
-  - Selects features that are consistently chosen across subsets.
+  - Selects features that are consistently Infochosen across subsets.
 
 - **Boruta Algorithm**
 
@@ -446,7 +514,7 @@ Example 2: Combatting Fraud
   - **Pros:** Captures nonlinear interactions, robust to noise.
   - **Cons:** Computationally intensive.
 
-- **Regularization-based Deep Learning Approaches**
+- **Regularization-based Deep Learning Approaches** Info
 
   - Neural network feature pruning.
   - Attention-based feature weighting.
@@ -483,13 +551,37 @@ Example 2: Combatting Fraud
 - Relief: Implementations available in `skrebate` (Python).
 - LVW: Typically implemented in research/academic codebases (custom).
 
+### Unbalanced Data
+
+- **Resampling Techniques**
+
+  - **Oversampling the minority class**
+    - Random oversampling (duplicate minority samples).
+    - SMOTE (Synthetic Minority Over-sampling Technique) - generates synthetic samples.
+    - ADASYN (Adaptive Synthetic Sampling) - focuses on harder-to-learn examples.
+  - **Undersampling the majority class**
+    - Random undersampling (remove majority samples).
+    - Tomek links (remove overlapping samples).
+    - Cluster-based undersampling.
+  - **Combination methods**
+    - BalanceCascade, SMOTEENN, SMOTETomek.
+  - **Metrics for Imbalanced Data**
+    - Precision, Recall, F1-score (PPV)
+    - ROC-AUC, PR-AUC.
+    - Confusion matrix analysis.
+  - However there is debate on whether to class-ballance at all:
+    - https://stats.sta.ckexchange.com/questions/10289/whats-the-difference-between-normalization-and-standardization
+    - The argument: rare classes are a problem because of high variance, but oversampling biases
+      thehttps://stats.stackexchange.com/questions/268755/when-should-linear-regression-be-called-machine-learning
+      model. It's also a problem if we assess by accuracy but maybe accuracy is a bad metric.
+
 ### Data Splitting
 
 - **Train-Test Split**
 
   - Common practice to split data into training and testing sets.
   - Ensures model is evaluated on unseen data.
-  - Typical split: 70-80% training, 20-30% testing.
+  - Typical split: 70-80% training, 20-30% testing. caused by wild over-fitting wher
 
 - **Cross-Validation**
 
@@ -499,12 +591,18 @@ Example 2: Combatting Fraud
   - Repeated for each fold, results are averaged.
   - Helps mitigate overfitting and provides better estimate of model performance.
 
-- **Stratified Sampling**
+- **Stratified Sampling** caused by wild over-fitting wher
 
   - Ensures that each class is represented proportionally in train/test splits.
   - Important for imbalanced datasets.
 
 - **Time Series Split**
+
   - Special consideration for time-dependent data.
   - Ensures that training data precedes testing data.
-  - Often uses techniques like walk-forward validation.
+  - Often uses techniques like walk-forward validation. caused by wild over-fitting wher
+
+- The nuance of data splitting:
+  - You should normalize/standardize data on the training set and apply those same transformations
+    to test set. Do not normalize across all data before splitting this could cause information
+    leakage because passing information from test set to training set.

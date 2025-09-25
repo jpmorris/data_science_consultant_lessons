@@ -14,7 +14,7 @@ support vector machines, and k-nearest neighbors among others.
 
 - Current LLM processing options of tabular data:
 
-  1. Process directly - very limited to small samples (e.g Bob is how old)
+  1. Process directly - very limited to small samples (e.g Bob is how old?)
 
   - They can read limited tabular data:
     > Why this is limited

@@ -94,18 +94,23 @@ Also:
 
 - Not all distributions are gaussian.  
   ![Probability Distributions](images/probability_distributions.jpg)
+
   - Although standard deviation is defined on all distributions it is less useful in non-normal
     distributions. However, it may still be used to define anomalies, except where the distribution
     is asymmetrical.
   - Luckily many distributions end up being near normal or almost symmetrical.
+
     - But many will not be symmetrical, let alone normal. (E.g. income, wealth, almost anything to
       do with money), or multimodal.
     - If possible use the properties of a closer-matched distribution
-    - This is NOT because of the central limit theorem. - Aside: - **Central Limit Theorem** - The
-      distribution of the sum of a large number of independent, identically distributed random
-      variables approaches a normal distribution, regardless of the shape of the original
-      distribution. - Said for a specific case: the sampling distribution from any distribution
-      shape will be normal ![Central Limit Theorem](images/central_limit_theorem.png)
+    - This is NOT because of the central limit theorem.
+    - Aside: - **Central Limit Theorem** - The distribution of the sum of a large number of
+      independent, identically distributed random variables approaches a normal distribution,
+      regardless of the shape of the original distribution. - Said for a specific case: the sampling
+      distribution from any distribution shape will be normal
+
+      ![Central Limit Theorem](images/central_limit_theorem.png)
+
 - Shape matters because a naive (and often correct way) to find anomalies it to cut out data that
   exists outside of a certain number of standard deviations from the mean.
 

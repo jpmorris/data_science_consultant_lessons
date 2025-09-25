@@ -4,51 +4,50 @@
      - Why do statisticians look down on stepwise regression
    - Feature Engineering
    - Questions
-     - Algorithms for automatic model selection -
-       https://stats.stackexchange.com/questions/20836/algorithms-for-automatic-model-selection
-     - Satistics vs Machine learning (two cultures) -
-       https://stats.stackexchange.com/questions/6/the-two-cultures-statistics-vs-machine-learning
-     - What is the difference between test set and validation set -
-       https://stats.stackexchange.com/questions/19048/what-is-the-difference-between-test-set-and-validation-set
-     - Bayesian and frequentist reasoning in plain english -
-       https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english
-     - How to normalize data 0 -1 range -
-       https://stats.stackexchange.com/questions/70801/how-to-normalize-data-to-0-1-range
-     - How should I transform non-negative data including zeros -
-       https://stats.stackexchange.com/questions/1444/how-should-i-transform-non-negative-data-including-zeros
-     - How to know that your machine learning problem is hopeless -
-       https://stats.stackexchange.com/questions/222179/how-to-know-that-your-machine-learning-problem-is-hopeless
-     - How to udnerstand covariance -
-       https://stats.stackexchange.com/questions/18058/how-would-you-explain-covariance-to-someone-who-understands-only-the-mean
-     - How to determin which distribution fits my data -
-       https://stats.stackexchange.com/questions/132652/how-to-determine-which-distribution-fits-my-data-best
-     - Central limit theorem -
-       https://stats.stackexchange.com/questions/3734/what-intuitive-explanation-is-there-for-the-central-limit-theorem
-     - Are large datasets inappropriate for hypothesis testing -
-       https://stats.stackexchange.com/questions/2516/are-large-data-sets-inappropriate-for-hypothesis-testing
-     - Normalization and Standardization difference -
-       https://stats.stackexchange.com/questions/10289/whats-the-difference-between-normalization-and-standardization
-     - Are unbaanced dataset probelmatic and how does oversampling help? -
-       https://stats.stackexchange.com/questions/357466/are-unbalanced-datasets-problematic-and-how-does-oversampling-purport-to-he
-     - How does SVM work -
-       https://stats.stackexchange.com/questions/18082/how-would-you-explain-the-difference-between-correlation-and-covariance
-     - when is logistic regression machine learning -
-       https://stats.stackexchange.com/questions/268755/when-should-linear-regression-be-called-machine-learning
-     - train/test/validation set splitting -
-       https://datascience.stackexchange.com/questions/15135/train-test-validation-set-splitting-in-sklearn
-     - how big is big data - https://datascience.stackexchange.com/questions/19/how-big-is-big-data
-     - in supervised learning why is it bad to have correlated featuerss -
-       https://datascience.stackexchange.com/questions/24452/in-supervised-learning-why-is-it-bad-to-have-correlated-features
-     - always better to use the full dataset to train final model -
-       https://datascience.stackexchange.com/questions/33008/is-it-always-better-to-use-the-whole-dataset-to-train-the-final-model
-     - Should I go for balanced or represenative datset -
-       https://datascience.stackexchange.com/questions/810/should-i-go-for-a-balanced-dataset-or-a-representative-dataset
-     - What is groudn truth -
-       https://datascience.stackexchange.com/questions/17839/what-is-ground-truth
-     - encoding features like month and hour as categorical -
-       https://datascience.stackexchange.com/questions/17759/encoding-features-like-month-and-hour-as-categorial-or-numeric
-     - shoudl we apply normalizaton to test data as well
-     - data normalization before or after train-test split - 
+     - [x] Algorithms for automatic model selection -
+           https://stats.stackexchange.com/questions/20836/algorithms-for-automatic-model-selection
+     - [x] Satistics vs Machine learning (two cultures) -
+           https://stats.stackexchange.com/questions/6/the-two-cultures-statistics-vs-machine-learning
+     - [x] What is the difference between test set and validation set -
+           https://stats.stackexchange.com/questions/19048/what-is-the-difference-between-test-set-and-validation-set
+     - [x] Bayesian and frequentist reasoning in plain english -
+           https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english
+     - [x] How to normalize data 0 -1 range -
+           https://stats.stackexchange.com/questions/70801/how-to-normalize-data-to-0-1-range
+     - [x] How should I transform non-negative data including zeros -
+           https://stats.stackexchange.com/questions/1444/how-should-i-transform-non-negative-data-including-zeros
+     - [x] How to know that your machine learning problem is hopeless -
+           https://stats.stackexchange.com/questions/222179/how-to-know-that-your-machine-learning-problem-is-hopeless
+     - [x] How to understand covariance -
+           https://stats.stackexchange.com/questions/18058/how-would-you-explain-covariance-to-someone-who-understands-only-the-mean
+     - [x] How to determine which distribution fits my data -
+           https://stats.stackexchange.com/questions/132652/how-to-determine-which-distribution-fits-my-data-best
+     - [x] Central limit theorem -
+           https://stats.stackexchange.com/questions/3734/what-intuitive-explanation-is-there-for-the-central-limit-theorem
+     - [x] Are large datasets inappropriate for hypothesis testing -
+           https://stats.stackexchange.com/questions/2516/are-large-data-sets-inappropriate-for-hypothesis-testing
+     - [x] Normalization and Standardization difference -
+           https://stats.stackexchange.com/questions/10289/whats-the-difference-between-normalization-and-standardization
+     - [x] Are unbaanced dataset probelmatic and how does oversampling help? -
+           https://stats.stackexchange.com/questions/357466/are-unbalanced-datasets-problematic-and-how-does-oversampling-purport-to-he
+     - [x] when is linear regression machine learning -
+           https://stats.stackexchange.com/questions/268755/when-should-linear-regression-be-called-machine-learning
+     - [x] train/test/validation set splitting -
+           https://datascience.stackexchange.com/questions/15135/train-test-validation-set-splitting-in-sklearn
+     - [x] how big is big data -
+           https://datascience.stackexchange.com/questions/19/how-big-is-big-data
+     - [x] in supervised learning why is it bad to have correlated features -
+           https://datascience.stackexchange.com/questions/24452/in-supervised-learning-why-is-it-bad-to-have-correlated-features
+     - [x] always better to use the full dataset to train final model -
+           https://datascience.stackexchange.com/questions/33008/is-it-always-better-to-use-the-whole-dataset-to-train-the-final-model
+     - [x] Should I go for balanced or represenative datset -
+           https://datascience.stackexchange.com/questions/810/should-i-go-for-a-balanced-dataset-or-a-representative-dataset
+     - [x] What is groudn truth -
+           https://datascience.stackexchange.com/questions/17839/what-is-ground-truth
+     - [ ] encoding features like month and hour as categorical -
+           https://datascience.stackexchange.com/questions/17759/encoding-features-like-month-and-hour-as-categorial-or-numeric
+     - [ ] shoudl we apply normalizaton to test data as well
+     - [ ] data normalization before or after train-test split -
 2. Supervised Learning - Classification
    - Review of Scikit-learn
    - Review of CARET
@@ -64,8 +63,8 @@
        https://stats.stackexchange.com/questions/18891/bagging-boosting-and-stacking-in-machine-learning
      - How to deal with perfect separation in logistic regresison -
        https://stats.stackexchange.com/questions/11109/how-to-deal-with-perfect-separation-in-logistic-regression
-     - What is the influence of C in SVMs -
-       https://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel
+     - What is the influence of C in SVMs - https://staknowledge from random forest -
+       https://stats.stackexchange.com/questions/21152/obtaining-ts.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel
      - How to intuitively explain what a kernel is -
        https://stats.stackexchange.com/questions/152897/how-to-intuitively-explain-what-a-kernel-is
      - Gradient Boosting Tree vs Random Forest -
@@ -79,14 +78,18 @@
      - when to use one hot encoding vs labelencoder vs dictvectorizer -
        https://datascience.stackexchange.com/questions/9443/when-to-use-one-hot-encoding-vs-labelencoder-vs-dictvectorizor
      - are svms till stat of the art -
-       https://datascience.stackexchange.com/questions/711/are-support-vector-machines-still-considered-state-of-the-art-in-their-niche
+       https://datascience.stackexchange.com/questions/711/are-support-vector-machines-still-considered-state-of-the-art-in-their-nichekexchange.com/questions/36450/what-is-the-difference-between-gradient-descent-and-stochastic-gradient-descent
+   - Why is overfitting bad in ml - https://datascience.stac
      - What does logits in machine learning mean -
        https://datascience.stackexchange.com/questions/31041/what-does-logits-in-machine-learning-mean
      - Does Scikit-learn have a forward selection stepwise regression algorithm? -
        https://datascience.stackexchange.com/questions/937/does-scikit-learn-have-a-forward-selection-stepwise-regression-algorithm
-     - when to use random forest over SVM and vice versa - https://datascience.stackexchange.com/questions/6838/when-to-use-random-forest-over-svm-and-vice-versa
-     - why do we need xbgboost and random forest - https://datascience.stackexchange.com/questions/23789/why-do-we-need-xgboost-and-random-forest
-     - why use both validation and test set - https://datascience.stackexchange.com/questions/18339/why-use-both-validation-set-and-test-set
+     - when to use random forest over SVM and vice versa -
+       https://datascience.stackexchange.com/questions/6838/when-to-use-random-forest-over-svm-and-vice-versa
+     - why do we need xbgboost and random forest -
+       https://datascience.stackexchange.com/questions/23789/why-do-we-need-xgboost-and-random-forest
+     - why use both validation and test set -
+       https://datascience.stackexchange.com/questions/18339/why-use-both-validation-set-and-test-set
 3. Supervised Learning - Regression
 
    - Review of Scikit-learn
@@ -112,7 +115,8 @@
        https://stats.stackexchange.com/questions/72774/numerical-example-to-understand-expectation-maximization
      - k-means clutering for mixed data -
        https://datascience.stackexchange.com/questions/22/k-means-clustering-for-mixed-numeric-and-categorical-data
-     - is it necessary to standardize your data before clustering - https://datascience.stackexchange.com/questions/6715/is-it-necessary-to-standardize-your-data-before-clustering
+     - is it necessary to standardize your data before clustering -
+       https://datascience.stackexchange.com/questions/6715/is-it-necessary-to-standardize-your-data-before-clustering
 5. Unsupervised Learning - Dimensionality Reduction
 
    - Questions
@@ -129,7 +133,9 @@
      - PCA on correlation or covariance -
        https://stats.stackexchange.com/questions/53/pca-on-correlation-or-covariance
      - Reverse PCA -
-       https://stats.stackexchange.com/questions/229092/how-to-reverse-pca-and-reconstruct-original-variables-from-several-principal-com
+       https://stats.stackexchange.com/questions/229092/how-to-reverse-pckexchange.com/questions/36450/what-is-the-difference-between-gradient-descent-and-stochastic-gradient-descent
+   - Why is overfitting bad in ml -
+     https://datascience.staca-and-reconstruct-original-variables-from-several-principal-com
      - Why do we need to normalize before applying PCA -
        https://stats.stackexchange.com/questions/69157/why-do-we-need-to-normalize-data-before-principal-component-analysis-pca
      - dimensionality reduction -
@@ -178,6 +184,8 @@
      https://datascience.stackexchange.com/questions/30881/when-is-precision-more-important-over-recall
    - How to choose a model after k-fold cross-validation -
      https://stats.stackexchange.com/questions/52274/how-to-choose-a-predictive-model-after-k-fold-cross-validation
+   - [] Correlation and covariance -
+     https://stats.stackexchange.com/questions/18082/how-would-you-explain-the-difference-between-correlation-and-covariance
 
 7. Advanced Topics
    - Ensemble Methods

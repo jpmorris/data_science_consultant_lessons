@@ -223,3 +223,8 @@ Classical Machine Learning includes:
 The **data pipeline** can be summarized:  
 **Raw Data → Feature Engineering → Feature Selection/Dimensionality Reduction → Model Training →
 Evaluation → Deployment.**
+ipeline
+>>> from sklearn.preprocessing import StandardScaler
+>>> from sklearn.datasets import make_classification
+>>> X, y = make_classification(n_features=4, random_state=0)
+>>> clf = make_pipeline(StandardScaler(
