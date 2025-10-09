@@ -17,7 +17,7 @@ is illuminating:
 Simon Blomberg:
 
 > From R's fortunes package: To paraphrase provocatively, 'machine learning is statistics minus any
-> checking of models and assumptions'. -- Brian D. Ripley (about the difference between machine
+> checking of models and assumptions'. -- confusion-matrix-samplingBrian D. Ripley (about the difference between machine
 > learning and statistics) useR! 2004, Vienna (May 2004) :-) Season's Greetings! Andrew Gelman: In
 > that case, maybe we should get rid of checking of models and assumptions more often. Then maybe
 > we'd be able to solve some of the problems that the machine learning people can solve but we
