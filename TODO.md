@@ -1,13 +1,12 @@
 # Upcoming Talks
 
-- vibecoding tools review
-  - try vibecoding project of doj scraping and csv bucket storage
+- Claude Code
+- Beta/Binomial
+- Linux
 
 # 2025 Themes:
 
-- Cloud level solution and architecture
-  - Guest Lectures: Chris A, Vickey
-- Classical ML Deep Dive
+- Linux from Scratch
 - AI Industry/Tools
 
 # Today's Agenda:

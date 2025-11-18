@@ -56,4 +56,6 @@
     significantly compared to previous decades. Change point detection algorithms can identify this
     period as a significant change point in the time series of global temperatures, indicating a
     shift in the underlying climate dynamics.
-    
+
+
+ 

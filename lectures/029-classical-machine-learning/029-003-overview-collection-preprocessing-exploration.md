@@ -10,18 +10,20 @@ sexisest Job of the 21st century'
 However, models were built prior to 1985/2012. It's important to understand how models are built by
 our statistician colleagues for one to have a broader understanding of modeling. This difference was
 predicted in in a seminal paper,
-["Statistical Modeling: The Two Cultures"](https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full)
+["Statistical Modeling: The Two Cultures"](https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-M
+---
+odeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full)
 by Leo Breiman. A subsequent discussion online in 2004 around the difference with 'machine learning'
 is illuminating:
 
 Simon Blomberg:
 
 > From R's fortunes package: To paraphrase provocatively, 'machine learning is statistics minus any
-> checking of models and assumptions'. -- confusion-matrix-samplingBrian D. Ripley (about the difference between machine
-> learning and statistics) useR! 2004, Vienna (May 2004) :-) Season's Greetings! Andrew Gelman: In
-> that case, maybe we should get rid of checking of models and assumptions more often. Then maybe
-> we'd be able to solve some of the problems that the machine learning people can solve but we
-> can't!
+> checking of models and assumptions'. -- confusion-matrix-samplingBrian D. Ripley (about the
+> difference between machine learning and statistics) useR! 2004, Vienna (May 2004) :-) Season's
+> Greetings! Andrew Gelman: In that case, maybe we should get rid of checking of models and
+> assumptions more often. Then maybe we'd be able to solve some of the problems that the machine
+> learning people can solve but we can't!
 
 The biggest differences are
 
@@ -146,6 +148,12 @@ variables.
 - Reverse causation
 - Spurious causation
 
+- Tip: Data Scientists rarely need to track causation, but if you do look into
+  - Bayesian Networks
+  - do-calculus
+  - Targeted Maximum Likelihood Estimation (TMLE)
+  - causal forest
+
 ![Confounders](images/coufounders.png)
 
 ### Best Data is causative data
@@ -166,6 +174,13 @@ Example 2: Combatting Fraud
 
 - More Helpful: Audit flags
 - Less helpful: Total dollars awarded
+
+### Dataset shift, domain adaptation, and robustness
+
+- Detect shifts (covariate, label, concept). Test using two-sample tests (KS, MMD) or
+  classifier-based drift detectors.
+- Correct with importance weighting, domain-adaptive representations, or re-training with recent
+  data. Consider robust optimization and distributionally robust methods for worst-case guarantees.
 
 ### Data Formats
 
@@ -203,7 +218,11 @@ Example 2: Combatting Fraud
 
 ##### Data Formats for DfataFrames
 
-- **Parquet (columnar storage format)**
+- \*\*Parquet (columnar storagg.
+
+- **Safetensors**
+
+  - **Characteristics**: Modern, secure format for storing tensors. Avoids secue format)\*\*
 
   - **Characteristics**: Optimized for big data analytics. Stores data in columns rather than rows,
     improving compression and query performance by allowing you to read only the columns you need.
@@ -217,7 +236,7 @@ Example 2: Combatting Fraud
   - **Characteristics**: Designed for efficient transfer of data frames (e.g., Pandas, R) between
     environments. Not intended for long-term storage.
 
-##### Model Serializatiofn and Transfer
+##### Model Serialization and Transfer
 
 - **ONNX (Open Neural Network Exchange)**
 
@@ -255,59 +274,70 @@ Example 2: Combatting Fraud
 
   - **Missing Data Mechanisms**
 
-    - **MCAR (Missing Completely At Random)**
-      - The probability of missingness is unrelated to _observed or unobserved_ data.
-      - Example: A sensor fails randomly, dropping values independent of other variables.
-      - **Implication:** Analysis remains unbiased, but sample size is reduced.
-      - Acceptable to use listwise/pairwise deletion or simple imputation.
-    - **MAR (Missing At Random)**
-      - The probability of missingness depends only on _observed_ data, not the missing values
-        themselves.
-      - Example: Income is more likely to be missing for younger respondents (age is observed).
-      - **Implication:** More sophisticated imputation (e.g., regression, MICE, tree-based) can
-        recover information without bias.
-    - **MNAR (Missing Not At Random)**
-      - The probability of missingness depends on the _unobserved_ (missing) data itself.
-      - Example: Patients with more severe symptoms are less likely to report their health status.
-      - **Implication:** Hardest case — requires domain knowledge, sensitivity analysis, or
-        specialized statistical models (selection models, pattern-mixture models).
+![Missing Data Types](images/missing-data.png)
 
-  - **Deletion methods**
+- **MCAR (Missing Completely At Random)**
+  - The probability of missingness is unrelated to _observed or unobserved_ data.
+  - Example: A sensor fails randomly, dropping values independent of other variables.
+  - **Implication:** Analysis remains unbiased, but sample size is reduced.
+  - Acceptable to use listwise/pairwise deletion or simple imputation.
+- **MAR (Missing At Random)**
+  - The probability of missingness depends only on _observed_ data, not the missing values
+    themselves.
+  - Example: Income is more likely to be missing for younger respondents (age is observed).
+  - **Implication:** More sophisticated imputation (e.g., regression, MICE, tree-based) can recover
+    information without bias.
+- **MNAR (Missing Not At Random)**
 
-    - **Listwise deletion (complete case analysis)**
-      - Removes entire rows if _any_ value is missing.
-      - Simple but can drastically reduce sample size.
-      - Can introduce bias if missingness is not completely random.
-    - **Pairwise deletion (available case analysis)**
-      - Instead of discarding an entire row, keeps all non-missing data.
-      - Each analysis (e.g., correlation, covariance) is computed using all rows where _both
-        variables_ of interest are present.
-      - **Advantages:** maximizes data usage and preserves more information than listwise deletion.
-      - **Disadvantages:**
-        - Different analyses may be based on different subsets of data, making results harder to
-          compare.
-        - Can produce inconsistent covariance/correlation matrices.
-        - Works best when missingness is small and random.
+  - The probability of missingness depends on the _unobserved_ (missing) data itself.
+  - Example: Patients with more severe symptoms are less likely to report their health status.
+  - **Implication:** Hardest case — requires domain knowledge, sensitivity analysis, or specialized
+    statistical models (selection models, pattern-mixture models).
+  - Cheat Sheet: ![Missing Data Types Cheat Sheet](images/missing-data-cheatsheet.png) - Y:
+    Target/Response variable - X: Observed/Predictor variables - R: Missingness indicator (1 =
+    missing, 0 = observed) - C: Unobserved (Confounding) variable
 
-  - **Imputation methods**
-    - **Simple imputation**
-      - Mean/median/mode imputation
-      - Forward/backward fill (time series)
-    - **Model-based imputation**
-      - **K-nearest neighbors (KNN) imputation**
-        - Fills missing values based on similarity to nearest data points.
-      - **Regression imputation**
-        - Predicts missing values from other features using regression models.
-      - **Tree-based imputation**
-        - Uses decision trees or ensembles (Random Forests, Gradient Boosted Trees) to predict
-          missing values.
-        - Handles nonlinearities and mixed data types effectively.
-    - **Iterative and advanced methods**
-      - **MICE (Multiple Imputation by Chained Equations)**
-        - Iteratively models each variable with missing values as a function of others.
-        - Produces multiple completed datasets and pools results.
-        - Reduces bias and captures uncertainty.
-      - **Autoencoder-based imputations**
+- **Deletion methods**
+
+  - **Listwise deletion (complete case analysis)**
+    - Removes entire rows if _any_ value is missing.
+    - Simple but can drastically reduce sample size.
+    - Can introduce bias if missingness is not completely random.
+  - **Pairwise deletion (available case analysis)**
+    - Instead of discarding an entire row, keeps all non-missing data.
+    - Each analysis (e.g., correlation, covariance) is computed using all rows where _both
+      variables_ of interest are present.
+    - **Advantages:** maximizes data usage and preserves more information than listwise deletion.
+    - **Disadvantages:**
+      - Different analyses may be based on different subsets of data, making results harder to
+        compare.
+      - Can produce inconsistent covariance/correlation matrices.
+      - Works best when missingness is small and random.
+
+- **Imputation methods**
+  - **Simple imputation**
+    - Mean/median/mode imputation
+    - Forward/backward fill (time series)
+  - **Model-based imputation**
+    - **K-nearest neighbors (KNN) imputation**
+      - Fills missing values based on similarity to nearest data points.
+    - **Regression imputation**
+      - Predicts missing values from other features using regression models.
+    - **Tree-based imputation**
+      - Uses decision trees or ensembles (Random Forests, Gradient Boosted Trees) to predict missing
+        values.
+      - Handles nonlinearities and mixed data types effectively.
+    - **Deep learning-based imputation**
+      - Uses neural networks (e.g., autoencoders) to learn complex patterns for imputation.
+  - **Iterative and advanced methods**
+    - **MICE (Multiple Imputation by Chained Equations)**
+      - Iteratively models each variable with missing values as a function of others.
+      - Produces multiple completed datasets and pools results.
+      - Reduces bias and captures uncertainty.
+    - **Autoencoder-based imputations**
+  - **Bayesian imputation**
+    - Uses Bayesian models to estimate distributions of missing values.
+    - Captures uncertainty and can incorporate prior knowledge.
 
 ### Feature Engineering
 
@@ -326,6 +356,12 @@ Example 2: Combatting Fraud
   - One-hot encoding
   - Label/Categorical encoding
   - Ordinal encoding
+
+- **Feature Automation Libraries**
+  - `PyCaret`
+  - `FeatureTools`
+  - `Feature-engine`
+  - `AutoFeat`
 
 #### Feature Scaling
 
@@ -559,6 +595,7 @@ mean 0 and SD 1 and with some values always outside $[-1, 1]$.
     - Random oversampling (duplicate minority samples).
     - SMOTE (Synthetic Minority Over-sampling Technique) - generates synthetic samples.
     - ADASYN (Adaptive Synthetic Sampling) - focuses on harder-to-learn examples.
+    - SMOTE-GAN (uses GANs to generate synthetic samples).
   - **Undersampling the majority class**
     - Random undersampling (remove majority samples).
     - Tomek links (remove overlapping samples).
@@ -591,18 +628,74 @@ mean 0 and SD 1 and with some values always outside $[-1, 1]$.
   - Repeated for each fold, results are averaged.
   - Helps mitigate overfitting and provides better estimate of model performance.
 
-- **Stratified Sampling** caused by wild over-fitting wher
+- **Stratified Sampling** caused by wild over-fitting where
 
   - Ensures that each class is represented proportionally in train/test splits.
   - Important for imbalanced datasets.
 
-- **Time Series Split**
+| Split              | Purpose                                                  | Typical Size | Analogy         |
+| :----------------- | :------------------------------------------------------- | :----------- | :-------------- |
+| **Training set**   | Used to fit model parameters (weights, trees, etc.)      | 60–80%       | “School”        |
+| **Validation set** | Used for model selection and hyperparameter tuning       | 10–20%       | “Practice exam” |
+| **Test set**       | Held out until the very end to estimate true performance | 10–20%       | “Final exam”    |
 
-  - Special consideration for time-dependent data.
-  - Ensures that training data precedes testing data.
-  - Often uses techniques like walk-forward validation. caused by wild over-fitting wher
+- Core Splitting Principles:
+  - You should never use information at training time that would not be available at inference time
+    (either at test-time or production-time).
+  - The validation set can be used for tuning not training.
 
-- The nuance of data splitting:
-  - You should normalize/standardize data on the training set and apply those same transformations
-    to test set. Do not normalize across all data before splitting this could cause information
-    leakage because passing information from test set to training set.
+#### Common Mistakes & Leakage Sources
+
+1. Transforming before splitting
+
+- Mistake: Normalizing, standardizing, imputing, or encoding the entire dataset before splitting.
+- Why it’s wrong: The scaler, imputer, or encoder learns parameters (mean, std, median, vocabulary)
+  from both train and test data — effectively letting test data influence the model.
+- Fix:
+  - Fit preprocessing transformers only on the training set.
+  - Apply those fitted transformers to validation/test data.
+
+2. Feature engineering on all data
+
+- Mistake: Creating features (e.g., aggregations, embeddings, PCA components, target encodings)
+  using the whole dataset.
+- Why it’s wrong: The engineered feature incorporates information from test examples.
+- Fix: Do feature creation inside a pipeline that’s fitted only on training folds (e.g.,
+  sklearn.Pipeline or cross-validation wrappers).
+
+3. Temporal leakage
+
+- Mistake: Randomly shuffling time-series data and splitting.
+- Why it’s wrong: Future information leaks into the past.
+- Fix: Use time-based splits (train on earlier timestamps, validate on later ones).
+- Techniques: walk-forward validation, expanding window.
+
+4. Label leakage
+
+- Mistake: Including features that are functionally related to the target, even indirectly (e.g.,
+  “amount_paid” when predicting “defaulted”).
+- Fix: Audit features to ensure none are proxies or post-outcome variables.
+
+5. Using test set during hyperparameter tuning
+
+- Mistake: Repeatedly checking the test score to decide hyperparameters.
+- Fix: Keep test set sealed until you’ve finalized your model via validation or CV.
+
+6. Group leakage
+
+- Mistake: Same individual, customer, or device ID appears in both train and test.
+- Fix: Use GroupKFold or GroupShuffleSplit to ensure all data from one entity are confined to a
+  single split.
+https://upload.wikimedia.org/wikipedia/c
+7. Target Encoding without CV
+
+- Mistake: Target encoding categorical variables using the global mean of the target (includes test
+  folds).
+- Fix: Use fold-specific target encodings — encode each fold using means computed from other folds
+  only.
+
+8. Data augmentation leakage (esp. in vision/NLP)
+
+- Mistake: Applying augmentations that mix samples from training and validation sets (e.g., mixup
+  across all data).
+- Fix: Ensure augmentation occurs after splitting and within-train only.
