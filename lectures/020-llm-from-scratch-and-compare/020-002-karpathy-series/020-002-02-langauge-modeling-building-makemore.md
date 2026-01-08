@@ -114,7 +114,11 @@ torch.Size([5, 3, 4, 1])
 >>> x=torch.empty(1)
 >>> y=torch.empty(3,1,7)
 >>> (x+y).size()
-torch.Size([3, 1, 7])
+torch.Size([3, 1, 7])d and you want to shrink coefficients without eliminating them
+  - $ \lambda \sum_i w_i^2 $
+- Elastic Net: a combination of the two
+  - L1 and L2 regularization
+  - good for high-dimensional data
 
 >>> x=torch.empty(5,2,4,1)
 >>> y=torch.empty(3,1,1)

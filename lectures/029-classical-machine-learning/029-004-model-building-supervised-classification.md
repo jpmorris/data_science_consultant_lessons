@@ -273,10 +273,14 @@ tree_optimal = DecisionTreeClassifier(max_depth=5, min_samples_leaf=10)
 This is a fundamental distinction in machine learning that affects model flexibility, assumptions,
 and behavior.
 
-**Parametric Models** (Logistic Regression, Naive Bayes):
+**Parametric Models** (Linear Regresison, Logistic Regression, Naive Bayes):
 
 - Have a **fixed number of parameters** determined before seeing the data
 - Make **strong assumptions** about the functional form of the data distribution
+  - **Linear Regression** assumes additive, homoscedastic error with independent observations.
+  - **Logistic Regression** assumes a logistic/sigmoid functional form in the probability
+    distribution
+  - **Naive Bayes** assumes feature independence given the class label
 - Model complexity doesn't grow with dataset size
 - Examples:
   - **Logistic Regression**: Has exactly p+1 parameters (p features + intercept), regardless of
@@ -340,6 +344,38 @@ _Neural Networks:_ Neural Networks are a nuanced case:
 **Key Takeaway**: The parametric/non-parametric distinction isn't always binary. It's better thought
 of as a spectrum, with some models having characteristics of both. What matters most is
 understanding the assumptions and flexibility of each algorithm for your specific problem.
+
+<div style="background-color: rgb(87, 61, 61);">
+
+<font color="red">**To Remember Forever**</font>
+
+- **Parametric Models** makes **strong assumptions** about the data distribution, have parameter
+  values derived from training data and **training data can be disregarded** after training.
+- **Non-parametric models** **don't assume specific distributions** and **require training data** to
+  make predictions.
+
+</br>
+</div>
+
+##### Real-World relevance:
+
+- Mobile app recommendation systems - need a small models, so parametric
+- High-frequency trading - need fast predictions, so parametric
+- Medical Diagnosis with limited data - data starved so non-parametric (or simple parametric with
+  strong regularization). Strong parametric assumptions may be wrong.
+- Dynamic Pricing with Concept Drift - non-parametric to adapt to changing patterns
+
+##### Parametric vs Non-Parametric Model Selection Guide
+
+| Your Situation                           | Likely Better Choice                                                  |
+| ---------------------------------------- | --------------------------------------------------------------------- |
+| Deploying to edge/mobile/embedded        | Parametric                                                            |
+| Need sub-second predictions at scale     | Parametric                                                            |
+| Very limited training data               | Depends—strong theory → parametric; no theory → simple non-parametric |
+| Massive training dataset                 | Parametric (compress into model)                                      |
+| Rapidly changing patterns                | Non-parametric or online learning                                     |
+| Must explain every decision              | Parametric (usually)                                                  |
+| Unknown functional form, sufficient data | Non-parametric                                                        |
 
 ### Additional Property Explanations
 
@@ -453,30 +489,106 @@ understanding the assumptions and flexibility of each algorithm for your specifi
 - Avoiding overfitting (dropout, early stopping)
 - **When to use**: Complex non-linear patterns, sufficient data, computational resources available
 
-## Model Evaluation
+## Procedure for Algorithm Selection
 
-### Performance Metrics
+## How to Improve Models
 
-- Accuracy and its limitations
-- Precision, Recall, F1-Score
-- ROC curves and AUC
-- Precision-Recall curves
-- Confusion matrix analysis
-- Multi-class metrics (macro, micro, weighted averaging)
+- Data Improvements
+  - More data
+  - Better quality data
+- Algorithm Selection
+- Feature Engineering
+- Feature Selection
+  - Dimensionality Reduction
+- Hyperparameter Tuning
+- Better Optimization
+- Regularization Techniques
+- Ensemble Methods
 
-### Statistical Considerations
+### Data/Model Compatibility
 
-- Cross-validation strategies (k-fold, stratified, leave-one-out)
-- Confidence intervals for metrics
-- Statistical significance testing
-- McNemar's test for classifier comparison
+From learning curves:
 
-### Model Selection Criteria
+- High bias (curves converged, low performance)
+  - More complex model
+  - Add features
+  - Reduce regularization
+- High variance (large gap between curves)
+  - More data
+  - Simpler model
+  - Increase regularization
+  - Ensemble methods
+- Good fit but want better performance
+  - More data
+  - Better features
+  - Different algorithm
+  - Hyperparameter tuning
 
-- Occam's Razor principle
-- AIC/BIC for model comparison
-- Validation curves
-- Learning curves
+### Pragmatic Algorithm Selection
+
+1. Filter out algorithms that don't fit constraints (speed, interpretability, memory)
+2. Start with simple algorithms (Logistic Regression, Naive Bayes) and establish baseline
+   performance
+3. Try commonly strong algorithms (XGBoost/LightGBM, Random Forest, Neural network)
+4. Improve on baseline (tune hyperparameters, feature engineering)
+
+### When to use AutoML
+
+The pragmatic approach is usually sufficient and a good approach, but AutoML can be useful when:
+
+1. Initial Exploration - if you don't know much about the and want to explore the solution space
+2. Benchmarking your best model against an AutoML scan.
+3. Comparing your model against other models
+4. Quick Good-Enough Model - when you need a quick solution and don't have time for manual tuning
+
+### Practical Evaluation
+
+1. Train-validation split
+2. Look at final metrics
+3. Eyeball the gap:
+   - Small gap, low performance → high bias
+   - Large gap → high variance
+   - Both high → good fit, need more data/features/algorithm
+
+## How to improve Model Performance
+
+
+### Data-Centric Approaches
+
+- Data cleaning and preprocessing
+- Feature engineering and selection
+- Handling class imbalance (resampling, synthetic data)
+- Data augmentation techniques
+- Dimensionality reduction (PCA, t-SNE)
+- Outlier detection and treatment
+- Feature scaling and normalization
+- Dealing with missing data
+- Collecting more data
+- Domain knowledge integration
+- Data labeling quality
+- Exploratory Data Analysis (EDA)
+- Feature interactions
+
+### Model-Centric Approaches
+
+- Hyperparameter tuning (grid search, random search, Bayesian optimization)
+- Regularization techniques (L1, L2, dropout)
+- Ensemble methods (bagging, boosting, stacking)
+- Model architecture optimization
+- Early stopping criteria
+- Cross-validation strategies
+- Transfer learning (if applicable)
+- Model interpretability tools (SHAP, LIME)
+
+### Monitoring and maintenance
+
+- Model performance tracking over time
+- Retraining strategies
+  - Scheduled retraining
+  - Performance-based retraining
+  - Data drift detection
+- Version control for models and data
+- A/B testing for model updates
 
 ## Practical Implementation
 
@@ -572,7 +684,10 @@ understanding the assumptions and flexibility of each algorithm for your specifi
    - Time-based splits
 
 4. "Understanding the bias-variance tradeoff in ensemble methods"
-   - Bagging reduces variance
+   - Bagging reduces varian### More/Better Data
+
+### Better Model
+ce
    - Boosting reduces bias
    - Mathematical formulation
 
