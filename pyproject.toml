@@ -14,3 +14,8 @@ dependencies = [
     #    "torch",
     "scikit-learn>=1.6.1",
 ]
+
+[tool.uv.workspace]
+members = [
+    "lectures/020-llm-from-scratch-and-compare/020-002-karpathy-series",
+]

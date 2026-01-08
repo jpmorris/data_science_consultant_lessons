@@ -1,5 +1,7 @@
 # Upcoming Talks
 
+- Add quiz to each talk
+- sympy - symbolic plotting -  hsa/hra plot
 - Claude Code
 - Beta/Binomial
 - Linux
@@ -23,7 +25,7 @@
 - Signal Attenuation and quasi-time series anomaly detection
   - When Chris and Chuck are ready
 - LLM From Scratch
-  - Add as needed: CGAP Attention Model
+  - Add as needed: CGAP Attention Modeling/sympy-health-plan [main *] ± % uv run -- python h
 - NLP Course
   - Add as needed: TFIDF, NMF (CGAP unsupervised topics)
 - MCP: Model Context Protocol
