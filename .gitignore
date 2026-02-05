@@ -2,8 +2,9 @@
 .history
 books
 *.zip
-.vscode
 rockyou.txt
+llm-from-scratch-overview-slides_files
+llm-from-scratch-overview-slides.html
 
 
 ### PTYHON ####

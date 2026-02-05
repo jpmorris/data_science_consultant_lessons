@@ -35,8 +35,8 @@ the most common filesystems include:
   - Cannot span different filesystems
   - Cannot link to directories (with some exceptions for system use)
   - `ln target linkname`
-  - Cannot have broken hard links (if the original file is deleted, the hard link still points to
-    the data)
+  - Cannot have bro emerge <pkg>` | | \*\*Remove pacoken hard links (if the original file is
+    deleted, the hard link still points to the data)
   - File contents only deleted when all hard links are removed
   - Usually more confusing therefor less obviously useful
 
@@ -335,9 +335,6 @@ create a minimal POSIX-compliant system.
 | **Show package info** | `apt show <pkg>` | `yum info <pkg>` | `dnf info <pkg>` | `pacman -Qi <pkg>` | `zypper info <pkg>` | `equery meta <pkg>` |
 | **Clean cache** | `sudo apt clean` | `sudo yum clean all` | `sudo dnf clean all` | `sudo pacman -Sc` or `-Scc` | `sudo zypper clean` | `sudo eclean packages` |
 
-
-
-
 - Universal package formats
   - `snap`
   - `flatpak`
@@ -346,6 +343,234 @@ create a minimal POSIX-compliant system.
 <!-- prettier-ignore-end -->
 
 ## Init System and Service Management
+
+The init system is the first process started by the kernel (PID 1) and is responsible for
+initializing the system, starting services, and managing the system state. Modern Linux
+distributions primarily use **systemd**, while older systems used **SysVinit**.
+
+### systemd (Modern Init System)
+
+systemd is a system and service manager that provides parallel service startup, on-demand daemon
+activation, dependency-based service control, and much more. It uses **units** (service files) to
+manage system components.
+
+#### Common Unit Types
+
+- `.service` - System services (daemons)
+- `.socket` - IPC or network sockets
+- `.target` - Groups of units (similar to runlevels)
+- `.mount` - Filesystem mount points
+- `.timer` - Scheduled tasks (cron-like)
+- `.path` - Path-based activation
+
+#### Service Management Commands
+
+```bash
+# Start a service
+sudo systemctl start nginx
+
+# Stop a service
+sudo systemctl stop nginx
+
+# Restart a service
+sudo systemctl restart nginx
+
+# Reload service configuration without restarting
+sudo systemctl reload nginx
+
+# Enable service to start at boot
+sudo systemctl enable nginx
+
+# Disable service from starting at boot
+sudo systemctl disable nginx
+
+# Check service status
+systemctl status nginx
+
+# Check if service is enabled
+systemctl is-enabled nginx
+
+# Check if service is active
+systemctl is-active nginx
+```
+
+#### Viewing and Managing Services
+
+```bash
+# List all units
+systemctl list-units
+
+# List all services
+systemctl list-units --type=service
+
+# List all failed units
+systemctl --failed
+
+# Show service dependencies
+systemctl list-dependencies nginx
+
+# View service logs
+journalctl -u nginx
+
+# Follow service logs in real-time
+journalctl -u nginx -f
+
+# View logs since last boot
+journalctl -b
+
+# View logs for specific time range
+journalctl --since "2026-01-20" --until "2026-01-22"
+```
+
+#### System State Management
+
+```bash
+# Reboot the system
+sudo systemctl reboot
+
+# Power off the system
+sudo systemctl poweroff
+
+# Suspend the system
+sudo systemctl suspend
+
+# Hibernate the system
+sudo systemctl hibernate
+
+# Get system state
+systemctl status
+
+# Show current target (runlevel equivalent)
+systemctl get-default
+
+# Change default target
+sudo systemctl set-default multi-user.target
+```
+
+#### systemd Targets (Runlevels)
+
+Targets are groups of units that define system states, similar to traditional runlevels:
+
+| Target              | Equivalent Runlevel | Description                              |
+| ------------------- | ------------------- | ---------------------------------------- |
+| `poweroff.target`   | 0                   | System shutdown                          |
+| `rescue.target`     | 1                   | Single-user/rescue mode                  |
+| `multi-user.target` | 2, 3, 4             | Multi-user text mode                     |
+| `graphical.target`  | 5                   | Multi-user with graphical interface      |
+| `reboot.target`     | 6                   | System reboot                            |
+| `emergency.target`  | -                   | Emergency shell (minimal initialization) |
+
+```bash
+# Switch to a different target
+sudo systemctl isolate multi-user.target
+
+# List available targets
+systemctl list-units --type=target
+```
+
+#### Creating a Custom systemd Service
+
+Create a service file in `/etc/systemd/system/myapp.service`:
+
+```ini
+[Unit]
+Description=My Custom Application
+After=network.target
+
+[Service]
+Type=simple
+User=myuser
+WorkingDirectory=/opt/myapp
+ExecStart=/opt/myapp/start.sh
+ExecStop=/opt/myapp/stop.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# Reload systemd to recognize new service
+sudo systemctl daemon-reload
+
+# Enable and start the service
+sudo systemctl enable myapp
+sudo systemctl start myapp
+```
+
+#### Service Types
+
+- `simple` - Default; main process specified by ExecStart
+- `forking` - Process forks and parent exits
+- `oneshot` - Process exits after completing (useful for scripts)
+- `dbus` - Service acquires a D-Bus name
+- `notify` - Service sends notification when ready
+
+#### Practical Example: Managing Airflow Services
+
+Here's a real-world example of editing and restarting Apache Airflow services:
+
+```bash
+# Edit the airflow scheduler service file
+sudo vim /etc/systemd/system/airflow-scheduler.service
+
+# After saving changes, reload systemd configuration
+sudo systemctl daemon-reload
+
+# Restart all Airflow services
+sudo systemctl restart airflow-scheduler
+sudo systemctl restart airflow-webserver
+sudo systemctl restart airflow-worker
+
+# Verify all services are running
+systemctl status airflow-scheduler
+systemctl status airflow-webserver
+systemctl status airflow-worker
+
+# Alternative: restart multiple services in one line
+sudo systemctl restart airflow-scheduler airflow-webserver airflow-worker
+
+# Check for any failures
+systemctl --failed | grep airflow
+
+# View recent logs for troubleshooting
+journalctl -u airflow-scheduler -n 50
+journalctl -u airflow-webserver -n 50
+journalctl -u airflow-worker -n 50
+```
+
+### SysVinit (Traditional Init System)
+
+SysVinit was the traditional Unix init system that used shell scripts in `/etc/init.d/` and
+runlevels (0-6) to manage system state. It started services sequentially and used simple shell
+scripts for service management. Modern Linux distributions have largely replaced it with systemd,
+which offers parallel startup, better dependency management, and more sophisticated service control.
+
+### Common Service Management Tasks
+
+```bash
+# Check which init system is running
+ps -p 1 -o comm=
+# Returns: systemd or init
+
+# View all running processes in tree format
+pstree -p
+systemctl status  # systemd-specific
+
+# Monitor service resource usage
+systemctl status myapp  # shows memory/CPU with systemd
+top -p $(pgrep myapp)   # traditional approach
+
+# Analyze boot time
+systemd-analyze
+systemd-analyze blame    # show time taken by each service
+systemd-analyze critical-chain  # show critical path
+
+# Mask a service (prevent it from starting)
+sudo systemctl mask myapp
+sudo systemctl unmask myapp
+```
 
 ## Logging and Event Management
 

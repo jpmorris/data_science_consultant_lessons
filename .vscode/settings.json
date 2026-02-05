@@ -1,0 +1,11 @@
+{
+    "cSpell.ignoreWords": [
+        "CGAP",
+        "pyproject"
+    ],
+    "python-envs.pythonProjects": [],
+    "cSpell.words": [
+        "interpretability"
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+}

@@ -1,0 +1,11 @@
+repo_path: /home/jmorris/workspace/DeepSeek-V3
+output_dir: /home/jmorris/workspace/deepseek-out
+max_words: 200000
+max_file_size: 10485760 # 10 MB
+skip_patterns:
+ - "*.log"
+ - "*.tmp"
+skip_dirs:
+ - "__pycache__"
+ - "node_modules"
+verbose: false

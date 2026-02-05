@@ -1,0 +1,763 @@
+---
+title: "LLMs from Scratch"
+author: "James Morris"
+date: "2026-01-16"
+format: 
+  revealjs:
+    theme: dracula
+    fontsize: 20pt
+    # chalkboard: true  # Not compatible with self-contained output
+    lightbox: true
+    highlight-style: pygments
+    html-math-method: katex
+    self-contained: true
+    width: 1920
+    height: 1080
+    pdf-separate-fragments: false
+    pdf-max-pages-per-slide: 1
+jupyter: python3
+
+---
+
+# Part 1: Zero to GPT
+
+---
+
+## Neural Network Review: Backpropagation 
+
+::::{.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 0.8em;"}
+### Process
+1. **Forward Pass**: For each layer, compute linear transformation ($z = Wx + b$), then apply activation function ($a = \varphi(z)$), pass to next layer
+2. **Loss Calculation**: Compare predictions to ground truth using loss function (e.g., cross-entropy, MSE)
+3. **Backpropagation**: Starting from output, compute $\frac{\partial L}{\partial W}$ and $\frac{\partial L}{\partial b}$ for each layer using chain rule
+4. **Parameter Update**: $W = W - \alpha \frac{\partial L}{\partial W}$ and $b = b - \alpha \frac{\partial L}{\partial b}$ (where $\alpha$ is learning rate)
+
+### Neuron Output Formula
+Each neuron computes a weighted sum plus bias, then applies activation function:
+$$o_j = \varphi(\text{net}_j) = \varphi\left(\sum_{k=1}^n w_{kj}x_k + b_j\right)$$
+:::
+:::
+
+::: {.column width="40%"}
+![Backpropagation Steps](images/backprop.png){.lightbox}
+:::
+::::
+
+::: {.notes}
+- Backpropagation exists everywhere in modern architectures where differentiable operations are chained together (e.g., attention, normalization, moe, feedfoward)
+- History
+  - Neural Networks
+    - First Perceptron: Rosenblatt 1958
+    - Multi-layer Perceptron: Ivakhnenko & Lapa 1965
+  - Backpropagation
+    - Seppo Linnainmaa
+  - Nobel Prize in Physics 2025:
+    - Hinton - Back propagation
+    - Hopfield - 'Hopfield Network' 
+:::
+
+---
+
+## Neural Networks in pure Python: Micrograd
+
+Micrograd is a A Scalar-valued Python Autograd
+
+- **autograd** - automatic differentiation
+- Autograd occurs by backward propagation through a computational graph computing gradients via the chain rule automatically across all nodes
+- Only need to define classes `Value` (stores neuron value and gradient), `Neuron`, `Layer`, `MCP`
+- `n` is the network
+
+```python
+n = MLP(3, [4, 4, 1])
+for k in range(1000):
+    
+    # FOWARD PASS
+    ypred = [n(x) for x in xs] 
+    loss = sum((yout - ygt)**2 for ygt, yout in zip(ys, ypred))
+
+    # BACK PROPAGATION
+    n.zero_grad()
+    loss.backward()
+
+    # UPDATE WEIGHTS
+    for p in n.parameters():
+        p.data += -1 * p.grad
+```
+---
+
+## Makemore: Bigram Language Model
+
+**Two approaches to predict next character:**
+
+::::: {style="font-size: 0.8em;"}
+:::: {.columns}
+
+::: {.column width="40%"}
+**1. Statistical Approach (Counting)**
+
+- Count character pair frequencies in training data
+- Normalize counts → probability distributions
+- Sample: .→e→m→m→a→. = "emma"
+
+**2.Neural Network Approach**
+
+- One-hot encode characters (27-dim vectors)
+- Single linear layer: logits = `X @ W` 
+- Softmax: logits → probabilities
+- Loss: negative log likelihood
+- Gradient descent: tune W to minimize loss
+- **Result: Identical probabilities!**
+:::
+
+::: {.column width="60%"}
+![Bigram Model](images/lookup_matrix.png){width="90%" .lightbox}
+:::
+
+::::
+:::::
+
+---
+
+## Makemore: From Statistics to MLP Language Model^[[Bengio et al 2003](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)] {style="font-size: 0.7em;"}
+
+### Problem with expanding past Bigrams
+- Single character: 27 rows (one per character)
+- Two characters: 27² = 729 rows (exponential explosion)
+- Three characters: 20,000+ possibilities
+- Table becomes too sparse (most cells will have 0 or 1 examples), predictions remain poor
+
+### MLP Solution
+- **Character Embeddings**: Map each character to dense vector (e.g., 10-dimensional)
+- **Context Window**: Take N previous characters (e.g., 3) to predict next
+- **Hidden Layer**: Fully connected layer with tanh activation (e.g., 200 neurons)
+- **Output Layer**: 27 neurons (one per character) → softmax → probabilities
+- **Key Insight**: Similar characters (vowels, consonants) cluster in embedding space
+- **Training**: Maximize log-likelihood using backpropagation
+
+### Optimization Techniques
+- **Mini-batch training**: 32 examples per update (faster than full batch)
+- **Learning rate search**: Exponentially space 0.001 to 1.0, find valley (~0.1)
+- **Learning rate decay**: 0.1 → 0.01 after 100k steps
+- **Train/Dev/Test splits**: 80%/10%/10% to detect overfitting
+
+::: {.notes}
+- He expands the model to dimension (10) and hidden layer size (200) 
+:::
+
+---
+
+## Makemore: Batch Normalization
+
+
+**Batch Normalization** (Ioffe & Szegedy, 2015):
+
+- Normalize activations: $\hat{x} = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}}$
+- Scale & shift: $y = \gamma \hat{x} + \beta$ (learnable)
+- Benefits: Stabilizes deep networks, less sensitive to initialization
+- Drawback: Couples examples in batch (affects inference)
+
+::: {.notes}
+- Traditional MLPs are sensitive to initialization
+  - But hard to tune activations to stay in "active" range when layers get deep
+- Karpathy
+  - Fixing naive initialization
+  - Fix Saturated Tanh neurons (near -1/+1 gradients vanish)
+  - Dead Neurons
+- But Normalization helps remove this problem
+:::
+
+---
+
+## Attention Review {style="font-size: 0.7em;"}
+
+:::: {.panel-tabset}
+
+### Content
+
+
+:::: {.columns}
+::: {.column width="45%"}
+
+- **Attention** - The mechanism that allows tokens to communicate and share information
+- Attention goes back to 2014^[[Bahdanau et al, 2014](https://arxiv.org/abs/1409.0473)] for seq2seq models to solve issues with RNNs
+- Breakthrough in 2017 with "Attention is All You Need"^[[Vaswani et al, 2017](https://arxiv.org/abs/1706.03762)] (Vaswani et al) - Transformer architecture
+  - Removed recurrence entirely, relying solely on attention mechanisms
+
+
+**Mechanism: The Three components:**
+
+- **Query (Q)**: "What am I looking for?" - what information this token needs, some **semantic pattern**
+- **Key (K)**: "What do I contain?" - what information this token advertises, the token's **semantic content**
+- **Value (V)**: "What do I send?" - the actual content to communicate
+  - If the query and key match, the value propagates and we say that the Query 'attends to' the Key
+
+:::
+::: {.column width="55%"}
+
+
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+
+![Attention Query Key](images/attention-q-k.png){.lightbox}
+
+:::
+::::
+
+
+### Code
+
+```{.python code-line-numbers="14,19-22,24" }
+def eager_attention_forward(
+    module: nn.Module,
+    query: torch.Tensor,
+    key: torch.Tensor,
+    value: torch.Tensor,
+    attention_mask: torch.Tensor | None,
+    scaling: float,
+    dropout: float = 0.0,
+    **kwargs: Unpack[TransformersKwargs],
+):
+    key_states = repeat_kv(key, module.num_key_value_groups)
+    value_states = repeat_kv(value, module.num_key_value_groups)
+
+    attn_weights = torch.matmul(query, key_states.transpose(2, 3)) * scaling
+    if attention_mask is not None:
+        causal_mask = attention_mask[:, :, :, : key_states.shape[-2]]
+        attn_weights = attn_weights + causal_mask
+
+    attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query.dtype)
+    attn_weights = nn.functional.dropout(attn_weights, p=dropout, training=module.training)
+    attn_output = torch.matmul(attn_weights, value_states)
+    attn_output = attn_output.transpose(1, 2).contiguous()
+
+    return attn_output, attn_weights
+```
+
+::::
+
+::: {.notes}
+- dropout: regularization technique to prevent overfitting (by randomly zeroing out parts of the attention weights during training)
+:::
+
+
+---
+
+
+# Part 2: From GPT to Modern LLMs
+
+
+---
+
+## State-of-the-Art LLMs: Open vs Closed {style="font-size: 0.7em;"}
+
+| Model | Developer | LLMArena^[[LLMArena Leaderboard](https://lmarena.ai/leaderboard/text){target="_blank"}] Rank | LLMArena Score | License | Params | Arch | Context | Attention | Norm | Activation | Position |
+|-------|-----------|---------------|----------------|---------|--------|------|---------|-----------|------|------------|----------|
+| **Gemini 3 Pro** | Google | #1 | 1489 | Proprietary | ? | ? | ? | ? | ? | ? | ? |
+| **Grok 4.1 Thinking** | xAI | #2 | 1477 | Proprietary | ? | ? | ? | ? | ? | ? | ? |
+| **Claude Opus 4.5 Thinking** | Anthropic | #4 | 1468 | Proprietary | ? | ? | 200K | ? | ? | ? | ? |
+| **GPT-5.1 High** | OpenAI | #9 | 1460 | Proprietary | ? | ? | 128K | ? | ? | ? | ? |
+| **DeepSeek-V3.2**^[[older DeepSeek-V3 paper](https://arxiv.org/pdf/2412.19437.pdf){target="_blank"}] | DeepSeek | #32 | 1423 | MIT | 671B/37B | MoE | 128K | MLA | RMSNorm | SwiGLU | RoPE |
+| **Qwen 3**^[[older Qwen2.5 paper](https://arxiv.org/pdf/2412.15115.pdf){target="_blank"}] | Alibaba | #34 | 1423 | Apache 2.0 | 235B/22B | MoE | 128K | GQA | RMSNorm | SwiGLU | RoPE |
+| **Mistral Large 3**^[[older Mixtral 8x7B paper](https://arxiv.org/pdf/2401.04088.pdf){target="_blank"}] | Mistral AI | #49 | 1413 | Apache 2.0 | ? | ? | 128K | GQA | RMSNorm | SwiGLU | RoPE |
+| **Llama 3.3**^[[older Llama 3 paper](https://arxiv.org/pdf/2407.21783.pdf){target="_blank"}] | Meta | #146 | 1320 | Llama 3 | 70B | Dense | 128K | GQA | RMSNorm | SwiGLU | RoPE |
+
+
+::: {.notes}
+- Arena ELO from LMSYS Chatbot Arena (updated Jan 12, 2026)
+- Params format: Total/Active (for MoE models)
+- Open models provide architectural transparency - closed models (?) don't
+- Notice: All open models converge on same choices (RMSNorm, SwiGLU, RoPE, GQA/MLA)
+- DeepSeek-V3.2 ranks among top 5 models globally while being fully open (MIT license)
+- This talk focuses on understanding these open model architectures
+:::
+
+---
+
+## Modern LLM Architectures {.scrollable style="font-size: 0.6em;"}
+
+:::: {.columns}
+::: {.column width="40%"}
+
+**General Architecture is simple:** 
+
+1. Tokenizer
+2. Embedding layer
+3. Transformer blocks
+   - Self-Attention
+   - Feed-Forward Network
+   - Normalization
+   - Residual Connections
+
+**Complexity is in Training and Inference systems:**
+
+- Training Differences from general architecture
+  - Optimization
+  - Training Stages (Base, Instruction, RLHF)
+  - Data Mixes for different Capabilities
+  - Reward Models
+  - Sampling Strategies
+- Inference Differences
+  - Routing Logic
+  - KV caching
+  - Safety
+  - Chain of Thought
+  
+:::
+::: {.column width="60%"}
+
+![Transformer Architecture](images/transfomer-diagram.png){width="40%" .lightbox}
+![DeepSeek-V3](images/deepseek-v3-basic-architecture.png){width="59%" .lightbox}
+![LLama 3](images/llama3-basic-architecture.png){width="90%" .lightbox}\
+
+:::
+::::
+
+::: {.notes}
+
+- Modern LLMs almost all using decoder-only Transformer architecture (the *Berts being encoder-only, and BART/T5 being encoder-decoder)
+  - Because:
+    - Task Generality
+    - Efficient Training
+    - Emergent Capabilities
+
+:::
+
+---
+
+## RoPE: Rotary Position Embeddings {.scrollable} {style="font-size: 0.8em;"}
+
+::: {.panel-tabset}
+
+### Content 
+- Classical - not-relative aware (absolute positions only):
+  - Absolute Positional Embedding - would encode position by adding position to token embeddings:
+    - `input_embedding = token_embedding + position_embedding`
+    - Problem: needs to learn relative positions (position 17 − position 12 = 5)
+  - Sinusodial Positional Embedding - fixed functions of sine/cosine to encode position:
+    - Found in original Transformer paper (Vaswani et al. 2017)
+    - Position Embedding formulas:
+$$\mathrm{PE}(p, 2k) = \sin\!\left(\frac{p}{10000^{2k/d}}\right)$$
+$$\mathrm{PE}(p, 2k+1) = \cos\!\left(\frac{p}{10000^{2k/d}}\right)$$
+- **RoPE - Relative Position Embedding** - encodes relative positions by rotating Q/K vectors in complex space
+$$
+\begin{bmatrix}
+x_1' \\
+x_2'
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos(p\theta) & -\sin(p\theta) \\
+\sin(p\theta) & \cos(p\theta)
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix}
+$$
+  
+### Code 
+
+```python
+@use_kernel_func_from_hub("rotary_pos_emb")
+def apply_rotary_pos_emb(q, k, cos, sin, unsqueeze_dim=1):
+    """Applies Rotary Position Embedding to the query and key tensors.
+
+    Args:
+        q (`torch.Tensor`): The query tensor.
+        k (`torch.Tensor`): The key tensor.
+        cos (`torch.Tensor`): The cosine part of the rotary embedding.
+        sin (`torch.Tensor`): The sine part of the rotary embedding.
+        unsqueeze_dim (`int`, *optional*, defaults to 1):
+            The 'unsqueeze_dim' argument specifies the dimension along which to unsqueeze cos[position_ids] and
+            sin[position_ids] so that they can be properly broadcasted to the dimensions of q and k. For example, note
+            that cos[position_ids] and sin[position_ids] have the shape [batch_size, seq_len, head_dim]. Then, if q and
+            k have the shape [batch_size, heads, seq_len, head_dim], then setting unsqueeze_dim=1 makes
+            cos[position_ids] and sin[position_ids] broadcastable to the shapes of q and k. Similarly, if q and k have
+            the shape [batch_size, seq_len, heads, head_dim], then set unsqueeze_dim=2.
+    Returns:
+        `tuple(torch.Tensor)` comprising of the query and key tensors rotated using the Rotary Position Embedding.
+    """
+    cos = cos.unsqueeze(unsqueeze_dim)
+    sin = sin.unsqueeze(unsqueeze_dim)
+    q_embed = (q * cos) + (rotate_half(q) * sin)
+    k_embed = (k * cos) + (rotate_half(k) * sin)
+    return q_embed, k_embedd
+```
+:::
+
+::: {.notes}
+- Token embeddings happen at the input layer applied to the token IDs
+- RoPE embeddings happen in the attention layer, applied to Q and K before computing attention scores
+:::
+
+---
+
+
+## RMSNorm: Simpler, Faster Normalization^[[(Zhang, Sennrich, 2019)](https://arxiv.org/abs/1910.07467)] {style="font-size: 0.8em;"}
+
+
+**Normalization** stabilizes activations across layers → prevents vanishing/exploding gradients, speeds optimization
+
+**LayerNorm (GPT-2/3):** (Similar math, but normalizes over Features)
+$$y = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \cdot \gamma + \beta$$
+
+**RMSNorm (Modern LLMs):**
+$$y = \frac{x}{\text{RMS}(x) + \epsilon} \cdot \gamma \quad \text{where } \text{RMS}(x) = \sqrt{\frac{1}{n}\sum x_i^2}$$
+
+**Comparison:**
+
+| Feature | LayerNorm | RMSNorm |
+|---------|-----------|---------|
+| Mean centering | ✓ ($\mu$) | ✗ |
+| Bias term | ✓ ($\beta$) | ✗ |
+| Parameters | 2 per dim | 1 per dim |
+| Speed | Baseline | Faster |
+| Placement | Post-norm | **Pre-norm** (before attention/FFN) |
+ 
+::: {.notes}
+- Vanishing/exploding gradients: when gradients become too small/large, preventing effective learning
+  - Backprop does multiplication of gradients and these can vanish/explode exponentially with depth
+- RMSNorm benefits:
+  - Fewer reductions (combines many values into fewer values)
+  - Fewer parameters
+  - Simpler gradients
+  - Better numerical stability at scale
+  - Pairs well with pre-norm architectures 
+- Usually will see one RMSNorm per Transformer block (before attention and before FFN)
+:::
+
+---
+
+## Feed-Forward Network Review {style="font-size: 0.7em;"}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+**What is a Feed-Forward Network (FFN)?**
+
+The second major component in each transformer block (after attention)
+
+**Purpose:**
+
+- **Per-token computation** - processes each token independently
+- Gives tokens a chance to "think about what they learned" from attention
+- Adds **non-linear transformation** and **capacity** to the model
+
+**Structure:**
+
+```python
+# Standard FFN (2-layer MLP)
+out = W2(Activation(W1(x)))  # [d] → [4d] → [d]
+```
+
+:::
+::: {.column width="50%"}
+
+**Key characteristics:**
+
+- Expands from model dimension `d` to `4d` (intermediate), then back to `d`
+- Applies non-linear activation (GELU, ReLU, or SwiGLU)
+- Contains ~⅔ of the model's total parameters
+- Applied independently to each position in sequence
+
+**The division of labor:**
+
+1. **Attention** mixes information between tokens (communication)
+2. **FFN** processes information within each token (computation)
+
+:::
+::::
+
+![Feed Forward Network](images/feedforward-mlp.png){.lightbox width="60%"}
+
+::: {.notes}
+- "Feed Foward" no feedback, no communication between vectors
+- More parameters in FFN than attention (2/3 vs 1/3)
+- Feed-Forward are possibility where factual information is stored
+:::
+
+---
+
+## SwiGLU: Gated Activations {style="font-size: 0.7em;"}
+
+::: {.panel-tabset}
+
+### Content
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Sigmoid:**
+$$\sigma(x) = \frac{1}{1 + e^{-x}}$$
+
+**Tanh:**
+$$\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
+
+**ReLU:**
+$$\text{ReLU}(x) = \max(0, x)$$
+
+**GELU** - Gaussian Error Linear Unit:
+$$\text{GELU}(x) = x \cdot \Phi(x)$$
+where $\Phi(x)$ is Gaussian CDF
+
+**SiLU/Swish** - Sigmoid Linear Unit:
+$$\text{SiLU}(x) = x \cdot \sigma(x)$$
+:::
+
+::: {.column width="50%"}
+**Standard FFN (GPT):**
+```python
+out = W2(GELU(W1(x)))  # Shape: [d] → [4d] → [d]
+```
+**SwiGLU FFN** - Swish-Gated Linear Unit **(Llama):**
+```python
+out = W2(SiLU(W1(x)) ⊙ W3(x))  # Gating mechanism!
+```
+
+**Key insight:** Split hidden layer into two paths - one is "gate", one is "value"
+
+- $\text{SiLU}(x) = x \cdot \sigma(x)$ (smooth approximation of ReLU)
+- Element-wise multiply (⊙) acts as learned gating
+
+
+```{python}
+#| echo: false
+import numpy as np
+import plotly.graph_objects as go
+from scipy.special import erf
+
+# Create x values
+x = np.linspace(-3, 3, 1000)
+
+# Define activation functions
+relu = np.maximum(0, x)
+gelu = 0.5 * x * (1 + erf(x / np.sqrt(2)))
+silu = x / (1 + np.exp(-x))  # SiLU/Swish (used in SwiGLU)
+sigmoid = 1 / (1 + np.exp(-x))  # Used in GLU as gate
+tanh = np.tanh(x)  # Classic activation, bounded [-1, 1]
+
+# Create interactive plot
+fig = go.Figure()
+
+# Classic activations (different colors)
+fig.add_trace(go.Scatter(x=x, y=relu, mode='lines', name='ReLU',
+                         line=dict(width=3, color='#3498db')))
+fig.add_trace(go.Scatter(x=x, y=sigmoid, mode='lines', name='Sigmoid',
+                         line=dict(width=3, color='#9b59b6', dash='dash')))
+fig.add_trace(go.Scatter(x=x, y=tanh, mode='lines', name='Tanh',
+                         line=dict(width=3, color='#2ecc71', dash='dot')))
+# Modern gating activations (red)
+fig.add_trace(go.Scatter(x=x, y=gelu, mode='lines', name='GELU (GeGLU)',
+                         line=dict(width=3, color='#e74c3c', dash='dash')))
+fig.add_trace(go.Scatter(x=x, y=silu, mode='lines', name='SiLU/Swish (SwiGLU)',
+                         line=dict(width=3, color='#e74c3c', dash='dot')))
+
+fig.update_layout(
+    title="",
+    xaxis_title="x",
+    yaxis_title="f(x)",
+    hovermode='x unified',
+    template='plotly_white',
+    height=250,
+    font=dict(size=12),
+    showlegend=True,
+    legend=dict(x=0.02, y=0.98, bgcolor='rgba(255,255,255,0.8)', orientation='h'),
+    plot_bgcolor='white',
+    paper_bgcolor='white',
+    xaxis=dict(range=[-3.2, 3.2]),
+    yaxis=dict(range=[-1.2, 3.2]),
+    shapes=[
+        # Thick y-axis at x=0
+        dict(type='line', x0=0, x1=0, y0=-1.2, y1=3.2,
+             line=dict(color='black', width=2)),
+        # Thick x-axis at y=0
+        dict(type='line', x0=-3.2, x1=3.2, y0=0, y1=0,
+             line=dict(color='black', width=2))
+    ],
+    margin=dict(l=40, r=20, t=10, b=40)
+)
+
+fig.show()
+```
+
+:::
+
+::::
+
+### Code
+
+```python
+# From meta-llama/llama-models (models/llama4/moe.py)
+def batched_swiglu(self, x: Tensor, w1: Tensor, w3: Tensor, w2: Tensor) -> Tensor:
+    """
+    SwiGLU activation for Mixture of Experts
+    
+    Args:
+        x: Input tensor
+        w1: Gate projection weights
+        w3: Value projection weights  
+        w2: Down projection weights
+    
+    Returns:
+        Output after SwiGLU transformation
+    """
+    # Step 1: Gate path with SiLU + Value path, then element-wise multiply
+    middle_out_egF = F.silu(torch.bmm(x, w1)) * torch.bmm(x, w3)
+    
+    # Step 2: Project back down to original dimension
+    return torch.bmm(middle_out_egF, w2)
+```
+
+**Key operations:**
+
+- `torch.bmm()` - Batch matrix multiply (for parallel expert processing)
+- `F.silu()` - SiLU activation: $f(x) = x \cdot \sigma(x)$
+- `*` - Element-wise multiply (gating mechanism)
+
+**Formula:** $\text{SwiGLU}(x) = W_2(\text{SiLU}(W_1(x)) \odot W_3(x))$
+
+:::
+
+::: {.notes}
+- Sigmoid: Used as gate in GLU
+- ReLU: Sharp corner at zero, dead neurons for x<0
+- GELU: 
+  - input multipled (gated) by smooth Gaussian CDF
+  - Smooth, probabilistic gating (used in GPT and GeGLU)
+- SiLU/Swish: 
+  - the input is multipled (gated) by sigmoid, acting as a filter
+  - Used in SwiGLU with gating mechanism  
+- SwiGLU
+  - Has two level of gating: SiLU + element-wise multiply
+
+- GLU/GeGLU are gating mechanisms that split into gate×value paths
+- Pronounce:
+  - GLU: "gloo"
+  - GELU: "gee-loo"
+  - GeGLU: "gee-gloo"
+  - SiLU: "sigh-loo"
+  - SwiGLU: "swig-loo"
+:::
+
+
+
+## Grouped Query Attention (GQA): Efficient KV Caching {style="font-size: 0.8em;"}
+
+**The KV cache problem:** During inference, must store K/V for all previous tokens
+
+- Multi-Head Attention: 32 heads × 128 dim × 2 (K+V) = huge memory!
+
+**Three approaches:**
+
+1. **Multi-Head Attention (MHA)** - GPT-2/3 standard
+
+   - Each head has own Q, K, V projections
+   - KV cache: `n_heads × seq_len × head_dim × 2`
+
+2. **Multi-Query Attention (MQA)** - Single shared K/V
+
+   - All query heads share one K/V head
+   - KV cache: `1 × seq_len × head_dim × 2` (huge savings!)
+   - Slight quality degradation
+
+3. **Grouped Query Attention (GQA)** - Llama 2/3's sweet spot
+
+   - Groups of queries share K/V heads  
+   - Example: 32 query heads, 8 KV heads (4 queries per KV)
+   - KV cache: `n_kv_heads × seq_len × head_dim × 2`
+   - **Best balance:** 90%+ quality, 75% memory savings
+
+
+---
+
+## Mixture of Experts (MoE): Sparse Activation
+
+**Core idea:** Not all parameters need to be active for every token
+
+**Architecture:**
+```
+Standard FFN: x → Dense(4d) → Dense(d)  [All params active]
+
+MoE FFN:      x → Router → Top-K experts → Weighted sum
+              └→ Expert 1 (only if selected)
+              └→ Expert 2 (only if selected)  [Sparse!]
+              └→ ... (E total experts)
+```
+
+**Benefits:**
+
+- More total parameters, same compute per token
+- Specialization: different experts for different patterns
+- Mixtral 8×7B: 47B total params, uses 13B per token (8 experts, top-2)
+
+**Challenges:**
+
+- Load balancing (some experts get overused)
+- Training stability (discrete routing decisions)
+- Serving complexity (need to fit all experts in memory)
+
+---
+
+## RLHF: Reinforcement Learning from Human Feedback {style="font-size: 0.7em;"}
+
+**The Problem**: Base models trained on next-token prediction don't naturally align with human preferences
+- May be truthful but unhelpful, or helpful but unsafe
+- Need to teach the model what humans actually want
+
+**Three-Stage Training Process:**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+**Stage 1: Supervised Fine-Tuning (SFT)**
+- Start with base model (e.g., GPT-3)
+- Fine-tune on high-quality human demonstrations
+- "Prompt → Desired Response" pairs
+- Creates initial aligned model
+
+**Stage 2: Reward Model Training**
+- Collect human preference data
+- Present model outputs A vs B for same prompt
+- Humans rank: "A is better than B"
+- Train reward model to predict human preferences
+- Output: Scalar score for any (prompt, response) pair
+
+:::
+::: {.column width="50%"}
+
+**Stage 3: Reinforcement Learning**
+- Use PPO (Proximal Policy Optimization)
+- Model generates responses
+- Reward model scores them
+- Update policy to maximize reward
+- **KL penalty**: Stay close to SFT model (prevent mode collapse)
+
+**The Loss Function:**
+$$\text{objective} = \mathbb{E}[r_\theta(x,y)] - \beta \text{KL}(\pi_\theta || \pi_{\text{SFT}})$$
+
+- $r_\theta$: Reward model score
+- $\text{KL}$: KL divergence penalty
+- $\beta$: Balances reward vs staying close to SFT
+
+:::
+::::
+
+**Modern Alternatives:**
+- **DPO** (Direct Preference Optimization): Skip reward model, optimize directly from preferences
+- **RLAIF**: Use AI feedback instead of human feedback (more scalable)
+
+::: {.notes}
+- RLHF is why ChatGPT feels so different from base GPT-3
+- Critical for safety, helpfulness, and harmlessness
+- Very expensive: requires lots of human labelers
+- PPO is notoriously finicky to tune
+- DPO (2023) simplified this significantly
+:::
+
+---
+
+
+

@@ -6,12 +6,15 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "gensim>=4.3.3",
+    "graphviz>=0.21",
     "ipykernel>=6.29.5",
     "matplotlib",
+    "nbformat>=5.10.4",
     "nltk>=3.9.1",
     "numpy",
     "pandas",
     #    "torch",
+    "pyragify>=0.1.0",
     "scikit-learn>=1.6.1",
 ]
 

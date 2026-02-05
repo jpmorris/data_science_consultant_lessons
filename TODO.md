@@ -1,8 +1,8 @@
 # Upcoming Talks
 
+- Communciation Skills
 - Add quiz to each talk
-- sympy - symbolic plotting -  hsa/hra plot
-- Claude Code
+- sympy - symbolic plotting - hsa/hra plot
 - Beta/Binomial
 - Linux
 
@@ -14,6 +14,11 @@
 # Today's Agenda:
 
 - NLP - Machine Translation and Document Search
+
+# Future git intermediate talk (recipes and common situations):
+
+- "Accidentally committed to main but didn't push" - create branch, reset head back 1 in main,
+  checkout branch, push
 
 # 2026 Themes
 
