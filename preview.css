@@ -1,0 +1,100 @@
+/* GitHub Dark Base */
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    padding: 45px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Force all headings to GitHub Blue */
+h1, h2, h3, h4, h5, h6 {
+    color: #58a6ff !important;
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    line-height: 1.25;
+}
+
+/* H1: The Master Title */
+h1 {
+    font-size: 2em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #58a6ff; /* Thick blue underline */
+}
+
+/* H2: Major Section */
+h2 {
+    font-size: 1.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #30363d; /* Subtle divider */
+}
+
+/* H3: Sub Section */
+h3 {
+    font-size: 1.3em;
+    border-left: 4px solid #58a6ff; /* Bold blue vertical bar */
+    padding-left: 15px;
+}
+
+/* H4: High Emphasis - Small Caps & Indent */
+h4 {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed #30363d;
+}
+
+/* H5: Deep Level - Italic + Bullet */
+h5 {
+    font-size: 1em;
+    font-style: italic;
+}
+
+/* H6: Lowest Level - Subtle Bracket */
+h6 {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+h6::before {
+    content: "[ ";
+}
+h6::after {
+    content: " ]";
+}
+
+/* Ensure paragraph text doesn't compete */
+p { color: #c9d1d9; margin-left: 0; }
+
+/* Inline highlights — use as <mark class="red">text</mark> etc. */
+mark.red {
+    background-color: rgba(248, 81, 73, 0.15);
+    color: #ffa198;
+    border-bottom: 1px dotted #f85149;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+mark.green {
+    background-color: rgba(63, 185, 80, 0.15);
+    color: #7ee787;
+    border-bottom: 1px dotted #3fb950;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+mark.yellow {
+    background-color: rgba(187, 128, 9, 0.15);
+    color: #e3b341;
+    border-bottom: 1px dotted #bb8009;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+mark.blue {
+    background-color: rgba(56, 139, 253, 0.15);
+    color: #79c0ff;
+    border-bottom: 1px dotted #388bfd;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+

@@ -6,10 +6,6 @@
 - Beta/Binomial
 - Linux
 
-# 2025 Themes:
-
-- Linux from Scratch
-- AI Industry/Tools
 
 # Today's Agenda:
 
@@ -22,8 +18,6 @@
 
 # 2026 Themes
 
-- LLM From Scratch
-- NLP 4-course specialization
 
 # Near-term/Ongoing Theme Talks:
 

@@ -245,16 +245,16 @@ tree_optimal = DecisionTreeClassifier(max_depth=5, min_samples_leaf=10)
 
 <!-- prettier-ignore-end -->
 
-| Algorithm                   | Robust to Missing Data       | Parametric/Non-parametric | Multi-class Support | Classification/Regression | Interpretability    | Training Speed   | Prediction Speed | Feature Scaling Required | Handles Non-linear               | Prone to Overfitting          | Handles High-Dimensional Data  | Handles Categorical Features | Memory Usage  | Hyperparameter Sensitivity                    |
-| --------------------------- | ---------------------------- | ------------------------- | ------------------- | ------------------------- | ------------------- | ---------------- | ---------------- | ------------------------ | -------------------------------- | ----------------------------- | ------------------------------ | ---------------------------- | ------------- | --------------------------------------------- |
-| **Logistic Regression**     | No (requires imputation)     | Parametric                | Yes (multinomial)   | Classification only       | High                | Fast             | Very Fast        | Yes                      | No (without feature engineering) | Low (with regularization)     | Moderate                       | Requires encoding            | Low           | Low                                           |
-| **Naive Bayes**             | Moderate (can skip features) | Parametric                | Yes (natural)       | Classification only       | High                | Very Fast        | Very Fast        | No                       | Limited                          | Low                           | Excellent                      | Yes (natural)                | Low           | Low                                           |
-| **K-Nearest Neighbors**     | No (requires imputation)     | Non-parametric            | Yes (natural)       | Both                      | Low                 | Very Fast (lazy) | Slow             | Yes (critical)           | Yes                              | High (low k)                  | Poor (curse of dimensionality) | Requires encoding            | High          | Medium (k selection)                          |
-| **Decision Trees**          | Yes (native handling)        | Non-parametric            | Yes (natural)       | Both                      | Very High           | Fast             | Very Fast        | No                       | Yes                              | Very High                     | Moderate                       | Yes (native)                 | Moderate      | High (depth, splits)                          |
-| **Support Vector Machines** | No (requires imputation)     | Non-parametric\*          | Yes (OvO/OvR)       | Both                      | Low (except linear) | Slow             | Fast             | Yes (critical)           | Yes (with kernels)               | Moderate                      | Excellent                      | Requires encoding            | Moderate-High | Very High (C, kernel, gamma)                  |
-| **Random Forests**          | Yes (native handling)        | Non-parametric            | Yes (natural)       | Both                      | Medium              | Moderate         | Fast             | No                       | Yes                              | Low                           | Good                           | Yes (native)                 | High          | Medium                                        |
-| **Gradient Boosting**       | Yes (native handling)        | Non-parametric            | Yes (native)        | Both                      | Medium              | Slow             | Fast             | No                       | Yes                              | High (without regularization) | Good                           | Yes (native, CatBoost best)  | Moderate      | Very High (learning rate, depth, etc.)        |
-| **Neural Networks (MLP)**   | No (requires imputation)     | Non-parametric            | Yes (softmax)       | Both                      | Very Low            | Very Slow        | Fast             | Yes (critical)           | Yes                              | Very High                     | Excellent                      | Requires encoding            | High          | Very High (architecture, learning rate, etc.) |
+| Algorithm                   | Robust to Missing Data       | Parametric/Non-parametric    | Multi-class Support | Classification/Regression | Interpretability    | Training Speed   | Prediction Speed | Feature Scaling Required | Handles Non-linear               | Prone to Overfitting          | Handles High-Dimensional Data  | Handles Categorical Features | Memory Usage  | Hyperparameter Sensitivity                    |
+| --------------------------- | ---------------------------- | ---------------------------- | ------------------- | ------------------------- | ------------------- | ---------------- | ---------------- | ------------------------ | -------------------------------- | ----------------------------- | ------------------------------ | ---------------------------- | ------------- | --------------------------------------------- |
+| **Logistic Regression**     | No (requires imputation)     | Parametric                   | Yes (multinomial)   | Classification only       | High                | Fast             | Very Fast        | Yes                      | No (without feature engineering) | Low (with regularization)     | Moderate                       | Requires encoding            | Low           | Low                                           |
+| **Naive Bayes**             | Moderate (can skip features) | Parametric                   | Yes (natural)       | Classification only       | High                | Very Fast        | Very Fast        | No                       | Limited                          | Low                           | Excellent                      | Yes (natural)                | Low           | Low                                           |
+| **K-Nearest Neighbors**     | No (requires imputation)     | Non-parametric               | Yes (natural)       | Both                      | Low                 | Very Fast (lazy) | Slow             | Yes (critical)           | Yes                              | High (low k)                  | Poor (curse of dimensionality) | Requires encoding            | High          | Medium (k selection)                          |
+| **Decision Trees**          | Yes (native handling)        | Non-parametric               | Yes (natural)       | Both                      | Very High           | Fast             | Very Fast        | No                       | Yes                              | Very High                     | Moderate                       | Yes (native)                 | Moderate      | High (depth, splits)                          |
+| **Support Vector Machines** | No (requires imputation)     | Parametric/Non-parametric\*  | Yes (OvO/OvR)       | Both                      | Low (except linear) | Slow             | Fast             | Yes (critical)           | Yes (with kernels)               | Moderate                      | Excellent                      | Requires encoding            | Moderate-High | Very High (C, kernel, gamma)                  |
+| **Random Forests**          | Yes (native handling)        | Non-parametric               | Yes (natural)       | Both                      | Medium              | Moderate         | Fast             | No                       | Yes                              | Low                           | Good                           | Yes (native)                 | High          | Medium                                        |
+| **Gradient Boosting**       | Yes (native handling)        | Non-parametric               | Yes (native)        | Both                      | Medium              | Slow             | Fast             | No                       | Yes                              | High (without regularization) | Good                           | Yes (native, CatBoost best)  | Moderate      | Very High (learning rate, depth, etc.)        |
+| **Neural Networks (MLP)**   | No (requires imputation)     | Parametric (semi-parametric) | Yes (softmax)       | Both                      | Very Low            | Very Slow        | Fast             | Yes (critical)           | Yes                              | Very High                     | Excellent                      | Requires encoding            | High          | Very High (architecture, learning rate, etc.) |
 
 <!-- prettier-ignore-end -->
 
@@ -552,7 +552,6 @@ The pragmatic approach is usually sufficient and a good approach, but AutoML can
 
 ## How to improve Model Performance
 
-
 ### Data-Centric Approaches
 
 - Data cleaning and preprocessing
@@ -666,19 +665,16 @@ The pragmatic approach is usually sufficient and a good approach, but AutoML can
 ### Selected Advanced Questions
 
 1. "Why does XGBoost perform better than Random Forest on tabular data?"
-
    - Bias-variance decomposition
    - Sequential vs parallel learning
    - Feature interaction handling
 
 2. "When should I use SVM vs Logistic Regression?"
-
    - Linear separability assessment
    - Computational considerations
    - Kernel methods advantage
 
 3. "How to properly validate time-series classification?"
-
    - Temporal leakage prevention
    - Walk-forward validation
    - Time-based splits
@@ -687,9 +683,11 @@ The pragmatic approach is usually sufficient and a good approach, but AutoML can
    - Bagging reduces varian### More/Better Data
 
 ### Better Model
+
 ce
-   - Boosting reduces bias
-   - Mathematical formulation
+
+- Boosting reduces bias
+- Mathematical formulation
 
 ## Best Practices and Recommendations
 

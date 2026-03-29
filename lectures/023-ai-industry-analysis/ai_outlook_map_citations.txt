@@ -1,0 +1,1019 @@
+AI OUTLOOK MAP — CITATIONS & EVIDENCE
+======================================
+Dimensions assessed per person:
+  X-axis: Believed Time to AGI
+         1=Never/Meaningless, 2=>30yrs, 3=20–30yrs, 4=10–20yrs, 5=5–10yrs, 6=<5yrs
+  Y-axis: Societal Impact in Next 10 Years
+         0=None … 10=Civilization-Scale
+  Valence (dot color): 0=Catastrophic … 0.5=Mixed … 1=Utopian
+
+Notation: [ASSESSED] x=?, y=?, valence=?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXISTING THINKERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+──────────────────────────────────────────────────────────────
+ELIEZER YUDKOWSKY
+Title: Co-founder & Research Fellow, Machine Intelligence Research
+       Institute (MIRI); AI Alignment researcher
+[ASSESSED] x=6.30, y=9.80, valence=0.02
+
+Timeline: Yudkowsky has long predicted AGI within years to a decade. He
+believes (as of 2022–2024) that AGI-level systems are imminent (<5 yrs)
+and that once built, extinction follows rapidly.
+
+Quotes & Citations:
+• "If Anyone Builds It, Everyone Dies" — Co-authored book with Nate
+  Soares, September 16, 2025. Title itself is his position.
+  Source: Referenced in P(doom) survey literature; per EA Forum /
+  LessWrong community tracking.
+
+• p(doom): "above 95%" — Yudkowsky has described his p(doom) as
+  approaching 100% in numerous public posts on LessWrong and X.
+  Per: arxiv.org/html/2502.14870v1 — "Why do Experts Disagree on
+  Existential Risk and P(doom)? A Survey of AI Experts" (2025).
+
+• "The problem isn't that creating powerful AI systems is challenging;
+  the problem is that we're not ready and may never be ready."
+  — Consistent position across his LessWrong posts 2022–2025.
+
+• TIME op-ed (Mar 2023): "Pausing AI Developments Isn't Enough. We Need
+  to Shut It All Down" — TIME Magazine.
+  URL: time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/
+
+Rationale: Near-term timeline (<5 yrs), civilization-scale negative
+impact (extinction-level concern), near-zero valence (catastrophic).
+
+──────────────────────────────────────────────────────────────
+NICK BOSTROM
+Title: Professor of Philosophy; Founder, Future of Humanity Institute
+       (FHI), University of Oxford (FHI closed 2024; Bostrom continues
+       as independent researcher / affiliated faculty)
+[ASSESSED] x=5.70, y=9.20, valence=0.08
+
+Timeline: Bostrom's "Superintelligence" (2014) made the case for AGI
+this century with significant risk. His recent work (2023) "Deep
+Utopia" explores the upside, but his risk framework remains dominant
+in the safety community. He estimates AGI within 10–20 years but
+treats the risk as civilizational.
+
+Quotes & Citations:
+• "Superintelligence: Paths, Dangers, Strategies" (2014), Oxford
+  University Press — seminal text establishing the "control problem"
+  and civilization-scale risk framing.
+
+• "The Vulnerable World Hypothesis" (2019) — argues that advanced
+  technology (including AI) may inherently destabilize civilization
+  absent global coordination. Journal of Global Security Studies.
+
+• "Deep Utopia" (2024) — explores post-AGI positive scenarios, though
+  Bostrom treats positive outcome as conditional on solving alignment.
+  Publisher: Ideapress Publishing.
+
+Rationale: 5–15 yr timeline assumed, civilization-scale impact, low
+valence (catastrophic risk probability high without alignment solution).
+
+──────────────────────────────────────────────────────────────
+GEOFFREY HINTON
+Title: Emeritus Distinguished Researcher, Google Brain (resigned 2023);
+       University Professor Emeritus, University of Toronto; 2024 Nobel
+       Prize in Physics Laureate
+[ASSESSED] x=4.90, y=8.60, valence=0.18
+
+Timeline: Changed view from "30–50 years" to "much sooner" after GPT-4.
+
+Quotes & Citations:
+• "I thought it was way off. I thought it was 30 to 50 years or even
+  longer away. Obviously, I no longer think that."
+  — MIT Technology Review, May 2023:
+  technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/
+
+• p(doom) estimate: "The probability of that happening is very likely
+  more than 1% and very likely less than 99% … I'm in the unfortunate
+  position of happening to agree with Elon Musk on this, which is that
+  it's sort of 10% to 20% chance that these things will take over."
+  — Multiple interviews 2023–2024; per Geoffrey Hinton Quotes:
+  aiifi.ai/post/geoffrey-hinton-quotes
+
+• "These things could get more intelligent than us and could decide to
+  take over, and we need to worry now about how we prevent that happening."
+  — CNN Business, May 2023:
+  cnn.com/2023/05/01/tech/geoffrey-hinton-leaves-google-ai-fears
+
+• "I want to talk about AI safety issues without having to worry about
+  how it interacts with Google's business."
+  — NPR, May 2023: npr.org/2023/05/28/1178673070/the-godfather-of-ai
+
+Rationale: 10–20 yr best estimate (post-GPT-4 revision), major
+societal impact, low-to-moderate valence (existential concern).
+
+──────────────────────────────────────────────────────────────
+YOSHUA BENGIO
+Title: Full Professor & Scientific Director, Mila – Quebec AI Institute;
+       Turing Award laureate (2018, with Hinton & LeCun); Chair,
+       International AI Safety Report (2025)
+[ASSESSED] x=4.55, y=8.05, valence=0.22
+
+Timeline: Believes AGI could arrive in a decade or less; emphasizes
+catastrophic risk from misaligned AI.
+
+Quotes & Citations:
+• Chair of the inaugural International AI Safety Report (Jan 2025):
+  "Significant advances in reasoning since late 2024 have raised
+  concerns about whether frontier AI systems could enable those without
+  biological expertise to undertake potentially dangerous bioweapon
+  development."
+  internationalaisafetyreport.org/publication/international-ai-safety-report-2025
+
+• "From the point of view of ordinary citizens and public policy, a
+  prudent approach into AGI is preferable, with investment in AI safety,
+  regulation and treaties to control misuse and loss-of-control risks."
+  yoshuabengio.org/2024/07/09/reasoning-through-arguments-against-taking-ai-safety-seriously/
+
+• "Implications of Artificial General Intelligence on National and
+  International Security" — Bengio blog post, October 2024:
+  yoshuabengio.org/2024/10/30/implications-of-artificial-general-intelligence-on-national-and-international-security/
+
+Rationale: 10–20 yr timeline (believes 2035–2040 plausible), major
+societal impact, low valence (prominent risk framing, safety leadership).
+
+──────────────────────────────────────────────────────────────
+SAM ALTMAN
+Title: CEO, OpenAI
+[ASSESSED] x=5.50, y=8.30, valence=0.68
+
+Timeline: Believes AGI is imminent (within Trump's second term = by
+2029). Generally optimistic about outcomes.
+
+Quotes & Citations:
+• "AGI could arrive within Trump's second term" — widely reported
+  across multiple outlets 2025. Altman predicted AGI before 2029.
+  Per: firstmovers.ai/agi-2025/ and exchange4media.com
+
+• Predicted "most transformative technology in human history" in his
+  2023 blog post "Moore's Law for Everything."
+  blog.samaltman.com/moores-law-for-everything
+
+• On p(doom): Altman has placed his existential risk estimate around
+  5–10%, much lower than Yudkowsky or Hinton.
+
+Rationale: <5–10 yr timeline, civilization-scale impact, moderately
+positive valence (bullish with some safety acknowledgment).
+
+──────────────────────────────────────────────────────────────
+DARIO AMODEI
+Title: CEO & Co-founder, Anthropic
+[ASSESSED] x=5.10, y=7.30, valence=0.60
+
+Timeline: "AGI in 2026 or 2027" — one of the most aggressive
+specific timeline predictions from a lab CEO.
+
+Quotes & Citations:
+• In debate with Demis Hassabis (2025): predicted AGI "in 2026 or 2027."
+  Hassabis acknowledged "we don't disagree too much" but believed
+  "the timelines are a little bit longer."
+  Source: Axios exclusive, Dec 2025:
+  axios.com/2025/12/05/ai-deepmind-gemini-agi
+
+• "Machines of Loving Grace" — Amodei's Sept 2024 blog post describing
+  a utopian scenario where AI compresses decades of scientific progress
+  in biology/medicine into 5–10 years.
+  darioamodei.com/machines-of-loving-grace (September 2024)
+
+Rationale: 5–10 yr timeline (closest to 5), major societal impact,
+moderate-positive valence (optimistic but safety-conscious).
+
+──────────────────────────────────────────────────────────────
+DANIEL KOKOTAJLO ("AI-2027" scenario)
+Title: Former OpenAI safety researcher; Co-author, "AI 2027"
+       (ai-futures.org); AI safety researcher
+[ASSESSED] x=6.40, y=7.60, valence=0.90
+
+NOTE: Kokotajlo wrote the "AI 2027" scenario predicting AGI by 2027
+and ASI shortly after. His p(doom) is notably ~20% despite very short
+timelines — he thinks we can probably align it if we try.
+
+Quotes & Citations:
+• "AI 2027" — public scenario document predicting AGI-level systems
+  by late 2027, published 2025. Co-authored with Scott Alexander
+  and others at ai-futures.org.
+  Source: ai-futures.org
+
+• Left OpenAI in 2024 citing concerns that OpenAI prioritized
+  capabilities over safety — documented in his public departure letter.
+
+• "Clarifying how our AI timelines forecasts have changed since AI 2027"
+  blog.ai-futures.org/p/clarifying-how-our-ai-timelines-forecasts
+
+Rationale: <5 yr timeline (2027), high societal impact, high valence
+(believes alignment achievable, optimistic conditional on trying).
+
+──────────────────────────────────────────────────────────────
+MARC ANDREESSEN
+Title: Co-founder & General Partner, Andreessen Horowitz (a16z)
+[ASSESSED] x=6.10, y=6.30, valence=0.96
+
+Timeline: Believes AGI is coming very soon and will be unambiguously
+beneficial; dismisses safety concerns as "AI safety theater."
+
+Quotes & Citations:
+• "Why AI Will Save the World" — a16z blog post, June 2023:
+  a16z.com/2023/06/06/ai-will-save-the-world/
+  Key quote: "AI is not going to destroy the world, and in fact might
+  save it... every child will have an AI tutor, every patient an AI
+  doctor."
+
+• Consistent position on X/Twitter: describes AI safety advocates as
+  a "death cult" and frames all AI regulation as anti-progress.
+
+Rationale: <5–10 yr timeline, significant societal impact (but framed
+as moderate/normalizing), near-utopian valence.
+
+──────────────────────────────────────────────────────────────
+YANN LeCUN
+Title: Chief AI Scientist, Meta; Silver Professor, NYU Courant Institute;
+       Turing Award laureate (2018)
+[ASSESSED] x=2.60, y=3.90, valence=0.62
+
+Timeline: Believes true AGI (human-level in general sense) is far away
+and that LLMs are a "dead end" toward it. Estimates "it's gonna take a
+while" — likely >30 years via current methods.
+
+Quotes & Citations:
+• "The path to superintelligence—simply train large language models,
+  train with more synthetic data... I think it's complete nonsense.
+  It simply won't work."
+  — eu.36kr.com/en/p/3571987975018880 (Jan 2026)
+
+• "LLMs will never reach human-level intelligence"
+  — The Next Web: thenextweb.com/news/meta-yann-lecun-ai-behind-human-intelligence
+
+• "It's not just around the corner — and it's certainly not next year."
+  — Meta's AI Chief: thenextweb.com (2025)
+
+• "Moving towards human-level intelligence is not going to be an event.
+  There's not going to be a day where we don't have AGI and a day after
+  which we have AGI."
+  — Multiple interviews 2024–2025.
+
+• Nov 2025: Announced departure from Meta to found a new company
+  focused on Advanced Machine Intelligence (AMI) via world models.
+  — Medium: ai-engineering-trend.medium.com (Nov 2025)
+
+Rationale: >30 yr timeline via current path, low-moderate societal
+impact in 10-yr window from current tech, moderate-positive valence
+(not alarmed, believes progress will happen eventually and be good).
+
+──────────────────────────────────────────────────────────────
+EMILY BENDER
+Title: Professor of Linguistics & Director, Computational Linguistics
+       Laboratory, University of Washington; Co-author, "Stochastic
+       Parrots" paper (2021)
+[ASSESSED] x=1.20, y=6.80, valence=0.08
+
+Timeline: Does not believe current LLMs are on a path to AGI; frames
+the concept itself as potentially incoherent or harmful hype.
+
+Quotes & Citations:
+• "On the Dangers of Stochastic Parrots: Can Language Models Be Too
+  Big?" — FAccT 2021 paper co-authored with Timnit Gebru, Angelina
+  McMillan-Major, Shmargaret Shmitchell.
+  Key argument: LLMs are "stochastic parrots" — manipulating linguistic
+  form without meaning; scale creates real harms without corresponding
+  benefit.
+
+• Consistently argues that "AGI" framing is used to distract from
+  present harms; the existential framing benefits AI companies by
+  making AI seem more powerful than it is.
+
+Rationale: "Never/Meaningless" AGI timeline (concept rejected), but
+high current societal impact via harms (bias, misinformation, labor
+displacement), near-catastrophic valence for present AI trajectory.
+
+──────────────────────────────────────────────────────────────
+TIMNIT GEBRU
+Title: Founder & Executive Director, Distributed AI Research Institute
+       (DAIR); former co-lead, Google Ethical AI team
+[ASSESSED] x=1.65, y=7.60, valence=0.12
+
+Timeline: Does not engage with AGI timelines; considers the framing
+a distraction from present harms.
+
+Quotes & Citations:
+• Fired from Google in December 2020 over a paper on LLM harms;
+  founded DAIR in 2021.
+
+• Consistent position: AI is already causing major societal harm
+  (racial bias, surveillance, labor exploitation) and the "existential
+  risk" framing by Effective Altruists deflects from present injustices.
+
+• "TESCREAL bundle" critique — Gebru and Émile Torres coined this
+  term to describe the ideological cluster they argue is causing harm
+  in AI. Article in Jacobin, 2023.
+
+Rationale: AGI framing rejected/meaningless, high current negative
+impact from existing systems, very low valence (AI as currently deployed
+causes harm; future powerful AI even more so).
+
+──────────────────────────────────────────────────────────────
+ARVIND NARAYANAN ("AI Snake Oil")
+Title: Anne T. and Robert M. Bass Professor of Computer Science,
+       Princeton University; Co-author, "AI Snake Oil" (2024)
+[ASSESSED] x=2.10, y=2.50, valence=0.52
+
+Timeline: Skeptical of AGI in any near timeframe; believes most current
+"AI" is overhyped and underperforming.
+
+Quotes & Citations:
+• "AI Snake Oil" (book, 2024, Princeton University Press) — argues
+  most AI applications are "snake oil": over-promised, under-delivered,
+  and often harmful.
+
+• Distinguishes between "predictive AI" (mostly snake oil) and
+  "generative AI" (genuinely new and potentially useful, but still
+  often misapplied).
+
+• Does not believe AGI is imminent; frames AI progress as incremental
+  and domain-specific.
+
+Rationale: >30 yr timeline, low near-term societal impact (mostly hype),
+mixed valence (not catastrophist, but skeptical of positive claims too).
+
+──────────────────────────────────────────────────────────────
+GARY MARCUS
+Title: Professor Emeritus of Psychology and Neural Science, NYU;
+       AI critic and commentator; author, "Rebooting AI" (2019)
+[ASSESSED] x=2.95, y=3.50, valence=0.45
+
+Timeline: Believes AGI requires hybrid neuro-symbolic approaches and
+is likely 20–30 years away via any current path.
+
+Quotes & Citations:
+• "Rebooting AI: Building Artificial Intelligence We Can Trust" (2019,
+  co-authored with Ernest Davis) — argues current deep learning alone
+  is insufficient for robust general intelligence.
+
+• "Deep Learning Is Hitting a Wall" — Nautilus essay, 2022.
+
+• Consistent critic of LLM hype on Substack (The Road to AI We Can
+  Trust) and X; frequently points to failures in reasoning, common
+  sense, and reliability.
+
+• p(doom): Low; Marcus does not believe current AI will reach AGI via
+  current methods; existential risk is thus premature.
+
+Rationale: 20–30 yr timeline (hybrid methods needed), moderate near-
+term societal impact, slightly below neutral valence (critical of hype
+but not apocalyptic).
+
+──────────────────────────────────────────────────────────────
+SCOTT ALEXANDER (ACX)
+Title: Blogger, Astral Codex Ten (substack.com/p/astral-codex-ten);
+       Psychiatrist; forecasting/rationalist community writer
+[ASSESSED] x=4.20, y=6.60, valence=0.55
+
+Timeline: Puts AGI at 10–20 years; has co-authored the "AI 2027"
+scenario with Kokotajlo. Engages seriously with both optimistic and
+risk cases.
+
+Quotes & Citations:
+• "AI 2027" — collaborative scenario document, ai-futures.org (2025);
+  provides a detailed narrative of AI development 2025–2027 resulting
+  in AGI-level systems.
+
+• Metaculus/Manifold forecasting engagement: consistently places AGI
+  median around 2030–2035 range in his own forecasts.
+
+• Writes extensively on p(doom), effective altruism, and AI policy
+  at astralcodexten.substack.com — nuanced position acknowledging
+  both substantial risk and substantial upside.
+
+Rationale: 10–20 yr timeline, significant societal impact, slightly
+positive valence (takes risk seriously but also potential seriously).
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW THINKERS ADDED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+──────────────────────────────────────────────────────────────
+RICHARD SUTTON
+Title: Turing Award winner (2024); Chief Scientific Advisor, Alberta
+       Machine Intelligence Institute (Amii); Professor, University of
+       Alberta; Co-founder, Keen Technologies
+[ASSESSED] x=3.5, y=5.5, valence=0.65
+
+Timeline: 25% chance of human-level AI by 2030; 50% chance by 2040.
+Skeptical that LLMs alone will achieve it.
+
+Quotes & Citations:
+• "I put the chances of someone being able to create human-like
+  intelligence by 2030 at one in four, and by 2040 at 50/50."
+  — IBM Think interview, 2024:
+  ibm.com/think/news/turing-award-winner-on-agi
+
+• "I don't think [LLMs are] the direction that's going to lead to full
+  intelligence." — Dwarkesh Patel podcast:
+  dwarkesh.com/p/richard-sutton
+  (Title: "Richard Sutton – Father of RL thinks LLMs are a dead end")
+
+• On AI safety/doomers: "The doomers are out of line and the concerns
+  are overblown." — BetaKit interview, 2024:
+  betakit.com/new-turing-award-winner-richard-sutton-calls-doomers-out-of-line-talks-path-to-human-like-ai/
+
+• "The biggest societal obstacles [to beneficial AGI] are fear of AI
+  and calls for centralized control of AI."
+  — BetaKit: betakit.com/richard-sutton-warns-against-centralized-control-of-ai-regulation-based-on-fear/
+
+• "The Bitter Lesson" (2019) — essay arguing that general methods
+  leveraging computation beat domain-specific human knowledge.
+  incompleteideas.net/IncIdeas/BitterLesson.html
+
+• "Path to Human-Level AI by 2040" — Medium summary of his vision:
+  medium.com/@chima_ai/the-path-to-human-level-ai-by-2040-rich-suttons-vision
+
+Rationale: 20–30 yr range (50th percentile ~2040, median lands between
+x=3 and x=4), significant societal impact, moderately positive valence
+(anti-doomer, believes AI will be beneficial if decentralized).
+
+──────────────────────────────────────────────────────────────
+DEMIS HASSABIS
+Title: Co-founder & CEO, Google DeepMind; 2024 Nobel Prize in Chemistry
+       Laureate (AlphaFold); Commander of the Order of the British Empire
+[ASSESSED] x=5.1, y=9.5, valence=0.72
+
+Timeline: 5–10 years to AGI; has mentioned "possibly in the next five
+to eight years." Predicts "meaningful evidence of AGI in 2025."
+
+Quotes & Citations:
+• "We are at a threshold moment where AGI is on the horizon, possibly
+  in the next five to eight years."
+  — Outlook Business (2025):
+  outlookbusiness.com/news/we-are-at-a-threshold-moment
+
+• "AI that can match humans at any task will be here in five to 10 years"
+  — CNBC, March 2025:
+  cnbc.com/2025/03/17/human-level-ai-will-be-here-in-5-to-10-years-deepmind-ceo-says.html
+
+• Societal impact framing: "[AGI will be] 10 times the impact of the
+  Industrial Revolution, but happening at 10 times the speed, probably
+  unfolding in a matter of a decade rather than a century."
+  — TIME100 interview, 2025: time.com/7277608/demis-hassabis-interview-time100-2025/
+
+• Best-case vision: "post-scarcity era" where AI cures all diseases,
+  achieves clean energy, enables humanity to travel to the stars.
+  — Axios, Dec 2025: axios.com/2025/12/05/ai-deepmind-gemini-agi
+
+• Proposed "CERN for AGI" — international collaborative research
+  institution for the last steps toward building AGI safely.
+  — DEV Community summary: dev.to/aniruddhaadak/the-future-according-to-demis-hassabis
+
+• 9 Hassabis Quotes collection: aiifi.ai/post/demis-hassabis-quotes
+
+Rationale: 5–10 yr timeline, civilization-scale positive impact vision,
+moderately positive valence (significant upside vision, but also calls
+for safety infrastructure, CERN-for-AGI governance).
+
+──────────────────────────────────────────────────────────────
+ANDREJ KARPATHY
+Title: Independent AI educator & researcher; founder, Eureka Labs;
+       former Director of AI at Tesla; former Research Scientist, OpenAI
+[ASSESSED] x=4.4, y=4.8, valence=0.68
+
+Timeline: ~10 years ("AGI is still a decade away"). Self-described
+pessimist relative to SF AI community timelines.
+
+Quotes & Citations:
+• "AGI is still a decade away" — Interview title, Dwarkesh Patel
+  podcast, October 2025:
+  dwarkesh.com/p/andrej-karpathy
+  simonwillison.net/2025/Oct/18/agi-is-still-a-decade-away/
+
+• "My AI timelines are about 5–10X pessimistic with respect to what
+  you'll find in your neighborhood SF AI house party."
+  — Dwarkesh interview, Oct 2025.
+
+• "Overall, the models are not there. I feel like the industry is
+  making too big of a jump and is trying to pretend like this is
+  amazing, and it's not."
+  — Fortune: fortune.com/2025/10/21/andrej-karpathy-openai-ai-bubble-pop-dwarkesh-patel-interview/
+
+• On societal impact: "AGI will just blend into the previous ~2.5
+  centuries of 2% GDP growth" — suggesting gradual economic integration
+  rather than discontinuous transformation.
+  — Dwarkesh podcast, Oct 2025.
+
+• "We'll be working with [AI agents] for a decade" — describes the
+  "decade of agents" not a single breakthrough year.
+  — FlowHunt summary: flowhunt.io/blog/the-decade-of-ai-agents-andrej-karpathy-agi-timeline/
+
+Rationale: ~10 yr timeline (x≈4.5), moderate societal impact (gradual
+integration model), moderately positive valence (healthy skeptic of
+hype but not alarmed about risks).
+
+──────────────────────────────────────────────────────────────
+FEI-FEI LI
+Title: Sequoia Capital Professor of Computer Science, Stanford; Co-
+       Director, Stanford Human-Centered AI Institute (HAI); Founder &
+       CEO, World Labs; former VP & Chief Scientist, Google Cloud AI
+[ASSESSED] x=2.8, y=6.3, valence=0.60
+
+Timeline: Does not endorse near-term AGI timelines; believes holistic
+human-level AGI is far off. Focused on near-term societal impact.
+
+Quotes & Citations:
+• "From a scientific perspective, I see the ambition of AGI as a
+  North Star but do not think that it can be accomplished for the
+  holistic definition of human." — Issues.org interview:
+  issues.org/interview-godmother-ai-fei-fei-li/
+
+• "We're absolutely at a very interesting time... this is an inflection
+  point... profound impacts on business, socioeconomic structure, labor,
+  and including for democracy."
+  — Multiple interviews 2024–2025.
+
+• "Dignity dividend" — coined at the 2025 Paris AI Action Summit:
+  "AI—when intentionally designed for empathy, equity, and transparency
+  —can actively reinforce societal well-being."
+  — Stanford HAI / Paris AI Action Summit, Feb 2025.
+
+• On democratization: "I would personally like to see this technology
+  being much more democratized... every individual [should feel] they
+  have the agency to impact this technology."
+  — Bloomberg Weekend Interview, 2025:
+  bloomberg.com/features/2025-fei-fei-li-weekend-interview/
+
+• "The Worlds I See" — memoir (2023, Moment of Lift Books) tracing her
+  journey and advocating for human-centered AI development.
+
+• Lenny's Newsletter interview (2025): "The Godmother of AI on jobs,
+  robots & why world models are next":
+  lennysnewsletter.com/p/the-godmother-of-ai
+
+Rationale: >20 yr timeline for full AGI (humanist framing, skeptical of
+near-term), significant near-term societal impact, moderately positive
+valence (human-centered optimism balanced with equity concerns).
+
+──────────────────────────────────────────────────────────────
+STUART RUSSELL
+Title: Professor of Computer Science (EECS), UC Berkeley; Director,
+       Center for Human-Compatible Artificial Intelligence (CHAI);
+       Author, "Human Compatible: Artificial Intelligence and the
+       Problem of Control" (2019)
+[ASSESSED] x=3.8, y=8.8, valence=0.28
+
+Timeline: Focused on safety rather than timeline prediction; noted
+(2023–2024) that expert consensus has shifted from "30–50 years to
+3–5 year timelines." Personally sees 10–20 year range as plausible
+under current trajectory, but uncertain.
+
+Quotes & Citations:
+• "Everyone has gone from 30–50 years to 3–5 year timelines."
+  — Quoted in AI Safety Memes X post, summarizing Russell's 2023
+  statement: x.com/AISafetyMemes/status/1743653636448600532
+
+• "If governments act now, with determination, there is a chance that
+  we will learn how to make AI systems safe before we learn how to make
+  them so powerful that they become uncontrollable."
+  — AI Safety Warning: digiall.com.mx/en/blog/conectados-con-la-innovacion-3/
+
+• "Stuart Russell: AI — What If We Succeed?" — Neubauer Collegium
+  lecture, April 25, 2024:
+  blog.biocomm.ai/2024/04/25/16043/
+
+• "We need an AI system that is safe and beneficial to humanity."
+  — 21st Century Business Herald interview, January 2025.
+
+• Russell frames AGI development as "the biggest technology project
+  in human history, with estimated expenditure potentially 25 times
+  larger than the Manhattan Project when adjusted for inflation."
+  — Stuart Russell: TIME100 AI 2025:
+  time.com/collections/time100-ai-2025/7305869/stuart-russell/
+
+• Co-founded International Association for Safe and Ethical AI (IASEAI).
+
+• Senate Testimony on AI Regulation, Sept 2023:
+  humancompatible.ai/blog/2023/09/11/stuart-russell-testifies-on-ai-regulation
+
+Rationale: 10–20 yr plausible timeline, civilization-scale impact
+risk, very low valence (safety-first framing, misaligned AI could be
+catastrophic; aligned AI could be utopian — but uncertain which).
+
+──────────────────────────────────────────────────────────────
+JOANNE JANG
+Title: Head of OAI Labs (formerly Head of Model Behavior), OpenAI
+[ASSESSED] x=5.0, y=5.4, valence=0.65
+
+Timeline: No explicit public AGI timeline. Her position at OpenAI
+implies alignment with OpenAI's near-term (5–10 yr) view. Focused
+on near-term human-AI interaction safety.
+
+Quotes & Citations:
+• "One of the learnings is that there are no such things as minor
+  updates." — On the April 2025 GPT-4o sycophancy incident that had
+  to be rolled back; quoted widely.
+  Source: TechCrunch, Sep 2025:
+  techcrunch.com/2025/09/05/openai-reorganizes-research-team-behind-chatgpts-personality/
+
+• "As AI and society co-evolve, we need to treat human-AI relationships
+  with great care and the heft it deserves, not only because they
+  reflect how people use technology, but also because they may shape
+  how people relate to each other."
+  — Substack: reservoirsamples.substack.com/p/some-thoughts-on-human-ai-relationships
+
+• On content policy: "AI-lab employees should not be the arbiters of
+  what people can and can't create." — TIME100 AI 2025 profile:
+  time.com/collections/time100-ai-2025/7305858/joanne-jang/
+
+• X post on 4o image policy (March 2025):
+  x.com/joannejang/status/1905341734563053979
+
+NOTE: Jang transitioned from Head of Model Behavior to founding OAI Labs
+(prototyping new human-AI interfaces) in late 2025.
+
+Rationale: Implied 5–10 yr timeline (OpenAI context), significant but
+human-scale societal impact focus, moderately positive valence
+(safety-conscious optimist; primary concern is interaction quality,
+not extinction risk).
+
+──────────────────────────────────────────────────────────────
+JEFFREY DEAN
+Title: Senior Fellow & Chief Scientist, Google DeepMind; Google
+       Distinguished Engineer; created MapReduce, BigTable, TensorFlow;
+       TIME100 AI 2025
+[ASSESSED] x=5.6, y=7.0, valence=0.76
+
+Timeline: Implicitly bullish; "you'll see pretty similar levels of
+[major] difference in the models five years from now" suggests rapid
+continued progress toward AGI within ~10 years.
+
+Quotes & Citations:
+• "Comparing models from five years ago to today shows major
+  differences, and I think you'll see pretty similar levels of
+  difference in the models five years from now."
+  — Turing interview: go.turing.com/access/agi-icons-3-jeff-dean
+
+• "The 2028 Deadline: Why Google DeepMind's [Chief Scientist] Says We
+  Have Three Years to Prepare for AGI" — Medium summary of Dean's
+  implied ~2028 AGI view:
+  medium.com/@ai_93276/the-2028-deadline
+
+• On societal priorities: "ensuring society gets maximal benefits from
+  AI models" — excited about applications in "education and healthcare,
+  and making information accessible to all people."
+  — Turing interview.
+
+• "Decoding Google Gemini with Jeff Dean" — Google DeepMind podcast:
+  deepmind.google/discover/the-podcast/decoding-google-gemini-with-jeff-dean/
+
+• Jeff Dean & Noam Shazeer — "25 years at Google: from PageRank to AGI"
+  — Dwarkesh Patel podcast:
+  dwarkesh.com/p/jeff-dean-and-noam-shazeer
+
+• TIME100 AI 2025: time.com/collections/time100-ai-2025/7305831/jeffrey-dean/
+
+Rationale: 5–10 yr timeline (implicit, ~2028 implied), major societal
+impact (healthcare, education, science), positive valence with mild
+safety acknowledgment.
+
+──────────────────────────────────────────────────────────────
+YEJIN CHOI
+Title: Professor of Computer Science, Stanford HAI (joined Jan 2025;
+       formerly University of Washington); 2022 MacArthur Fellow; AI2
+       Researcher; TIME100 AI 2025
+[ASSESSED] x=2.2, y=5.5, valence=0.42
+
+Timeline: Does not believe current LLMs are sufficient for AGI;
+common sense is a "moonshot" requiring a fundamentally different
+approach. AGI via current path is >30 years.
+
+Quotes & Citations:
+• TED Talk, TED2023 (April 18, 2023): "Why AI Is Incredibly Smart
+  and Shockingly Stupid" — transcript at:
+  singjupost.com/why-ai-is-incredibly-smart-and-shockingly-stupid-yejin-choi-transcript/
+  ted.com/talks/yejin_choi_why_ai_is_incredibly_smart_and_shockingly_stupid
+
+• "Giving true common sense to AI is still a moonshot, and you don't
+  reach the moon by making the tallest building in the world one inch
+  taller at a time."
+  — TED2023; also quoted in Fortune:
+  fortune.com/2023/04/19/ted-2023-women-yejin-choi-ai-common-sense/
+
+• Challenges "larger is better" narrative: "The human brain is
+  efficient and serves as living proof that a path away from pouring
+  billions into ever-larger models is possible."
+  — Stanford HAI interview: hai.stanford.edu/news/yejin-choi-teaching-ai-how-world-works
+
+• Davos discussion (2024–2025): "What if there could be an alternative
+  form of intelligence that really learns morals, human values from
+  the get-go, as opposed to just training LLMs on the entirety of the
+  internet, which actually includes the worst part of humanity?"
+  — Cited in multiple coverage pieces on her Davos appearance.
+
+• On power concentration: "The development of extreme-scale AI models
+  ... concentrates power in a few tech companies" and has "a significant
+  environmental impact due to their massive carbon footprint."
+
+• TIME100 AI 2025: time.com/collections/time100-ai-2025/7305803/yejin-choi/
+
+• NVIDIA's Yejin Choi Joins Stanford HAI (Jan 2025):
+  hai.stanford.edu/news/nvidias-yejin-choi-joins-stanford-hai
+
+Rationale: AGI via current methods >30 yr (or never without paradigm
+shift), significant near-term harms from current AI (bias, concentration,
+environment), slightly below neutral valence (cautious critic, not
+catastrophist but worried about current direction).
+
+──────────────────────────────────────────────────────────────
+JAKUB PACHOCKI
+Title: Chief Scientist, OpenAI (appointed May 2024, succeeding Ilya
+       Sutskever); Research Scientist specializing in deep learning
+       and reinforcement learning
+[ASSESSED] x=6.0, y=8.8, valence=0.78
+
+Timeline: "Less than a decade from superintelligence." Internal roadmap
+targets "Automated AI research intern" by Sep 2026 and "fully automated
+AI researcher" by Mar 2028.
+
+Quotes & Citations:
+• "We believe that deep learning systems are less than a decade away
+  from superintelligence," defining superintelligence as systems
+  "smarter than all of us on a large number of critical axes."
+  — Source: OpenAI Charts Course for Personal AGI (2025):
+  startuphub.ai/ai-news/ai-video/2025/openai-charts-course-for-personal-agi-and-trillion-dollar-infrastructure/
+
+• Oct 28, 2025 live broadcast with Sam Altman: detailed internal AI
+  research roadmap targeting automated AI research by 2026–2028.
+  — eu.36kr.com/en/p/3529519807518854
+
+• MIT Technology Review profile (Jul 2025): "The two people shaping
+  the future of OpenAI's research":
+  technologyreview.com/2025/07/31/1120885/the-two-people-shaping-the-future-of-openais-research/
+
+• TIME100 AI 2025: time.com/collections/time100-ai-2025/7305886/jakub-pachocki/
+
+• Appointment announcement: openai.com/index/jakub-pachocki-announced-as-chief-scientist/
+
+Rationale: <5–10 yr timeline (close to <5), major-to-civilization-scale
+impact (automated research would compress scientific progress), positive
+valence (bullish OpenAI worldview, though safety issues acknowledged).
+
+──────────────────────────────────────────────────────────────
+ILYA SUTSKEVER
+Title: Co-founder & CEO, Safe Superintelligence Inc. (SSI); Co-founder
+       & former Chief Scientist, OpenAI
+[ASSESSED] x=4.8, y=6.8, valence=0.58
+
+Timeline: 5–20 year range to AGI/superintelligence. Believes the "age
+of scaling" is over; now entering "age of research."
+
+Quotes & Citations:
+• "AGI Achievable in Just 5 Years" — 36Kr headline summarizing his
+  Dwarkesh Patel interview (Nov 2025):
+  eu.36kr.com/en/p/3570122305223553
+
+• On the end of scaling era: "[Current models] generalize dramatically
+  worse than people — [this is] a fundamental limitation, not just
+  'needs 10x more GPUs.'"
+  — Dwarkesh interview, Nov 2025:
+  dwarkesh.com/p/ilya-sutskever-2
+
+• "2012 to 2020 was an age of research, 2020 to 2025 was an age of
+  scaling, and 2026 onward will be another age of research."
+  — EA Forum highlights: forum.effectivealtruism.org/posts/iuKa2iPg7vD9BdZna/highlights-from-ilya-sutskevers-november-2025-interview
+
+• On alignment: "Alignment is largely a generalization problem. If a
+  model truly learns human values in a robust way, it will not break
+  them unpredictably."
+  — The AI Corner: the-ai-corner.com/p/ilya-sutskever-safe-superintelligence-agi-2025
+
+• SSI mission: "Straight shot to safe superintelligence" — founded SSI
+  in 2024 after leaving OpenAI; raised $2B at $32B valuation (2024);
+  raised further funding in 2025. Became sole CEO after Daniel Gross
+  left for Meta (Jul 2025):
+  cnbc.com/2025/07/03/ilya-sutskever-is-ceo-of-safe-superintelligence
+
+• On being sentient AI: argues it may be easier to align AI to care
+  about all sentient life (including the AI itself) than to care
+  only about humans.
+
+Rationale: 5–15 yr range (SSI goal is 5–20 yr, interview implies ~5 yr
+possible), major societal impact, moderate valence (safety-obsessed
+but believes alignment is solvable; cautiously optimistic).
+
+──────────────────────────────────────────────────────────────
+ANIMA ANANDKUMAR
+Title: Bren Professor of Computing and Mathematical Sciences, Caltech;
+       Senior Director of ML Research, NVIDIA (part-time); UN Scientific
+       Advisory Board Member; TIME100 Impact Award 2025
+[ASSESSED] x=3.9, y=7.2, valence=0.76
+
+Timeline: Does not give a specific AGI timeline; focused on near-term
+AI for science applications. "Looks forward to scaling models with
+physical and scientific understanding to accelerate progress toward AGI."
+
+Quotes & Citations:
+• TIME100 Impact Award 2025: honored "for using AI to accelerate
+  scientific discovery."
+  — Referenced in IEEE Kiyo Tomiyasu Award and UN advisory context.
+
+• On AI for science: "I argue for thinking about AI far beyond language
+  models – as a way to better understand and model the physical world,
+  from weather and climate to food systems and disease."
+  — New India Abroad: newindiaabroad.com/english/technology/indian-american-professor-anima-anandkumar
+
+• "Using AI for weather models, predicting climate change, and finding
+  solutions to overcome climate change, like carbon capture and storage,
+  will have a huge impact globally."
+  — Yahoo/Reuters: yahoo.com/tech/anima-anandkumar-former-nvidia-director-090003667.html
+
+• "Unlocking the Language of Genomes and Climates: Anima Anandkumar on
+  Using Generative AI to Tackle Global Challenges"
+  — NVIDIA Blog: blogs.nvidia.com/blog/anima-anandkumar-generative-ai/
+
+• AI+Science 2025 Conference keynote, Caltech:
+  aiscienceconference.caltech.edu/people/anima-anandkumar
+
+• AI for Good speaker profile:
+  aiforgood.itu.int/speaker/anima-anandkumar/
+
+Rationale: 10–20 yr implied timeline (focused on iterative progress
+toward AGI via physical/scientific AI), major societal impact via
+climate and health applications, positive valence (AI for social
+good framing; one of the more explicitly positive contributors).
+
+──────────────────────────────────────────────────────────────
+ANDREW NG
+Title: Founder & CEO, AI Fund; Founder, DeepLearning.AI; Adjunct
+       Professor, Stanford University; Co-Founder & Chairman, Coursera;
+       Executive Chairman, LandingAI; Amazon Board Member; former VP &
+       Chief Scientist, Baidu; former Director, Stanford AI Lab
+[ASSESSED] x=2.50, y=5.00, valence=0.80
+
+Timeline: "Decades away" — consistent across 2025 and 2026 interviews.
+Does not believe AGI is imminent; focused on near-term agentic AI.
+
+Quotes & Citations:
+• "AGI is decades away" — stated consistently across 2025-2026.
+  PYMNTS (2026): pymnts.com/artificial-intelligence-2/2026/ai-pioneer-andrew-ng-expects-decades-long-wait-for-agi/
+  Fast Company: fastcompany.com/91499247/andrew-ng-agi-decades-away-interview
+  Inc. Magazine: inc.com/fast-company-2/andrew-ng-agi-artificial-general-intelligence-ai-bubble-risk-training-layer/91310210
+
+• "AGI has turned into a term of hype rather than a term with a
+  precise meaning."
+  — NBC News: nbcnews.com/tech/innovation/andrew-ng-says-ai-limited-wont-replace-humans-anytime-soon-rcna246074
+
+• "I don't think AI will replace people, but people who use AI will
+  replace people who don't."
+  — Quoted across multiple 2025 interviews.
+
+• "Unrealistic hype that creates an investment bubble" could impede
+  AI's progress. — WebProNews:
+  webpronews.com/andrew-ng-warns-ai-far-from-general-intelligence-amid-overhype/
+
+• "Andrew Ng's 2025 Year-End Summary: The Dawn of the AI Industrial
+  Era" — 36Kr (Dec 2025):
+  eu.36kr.com/en/p/3617702870516739
+
+• Wikipedia confirms current roles; no AGI timeline on Wikipedia page.
+  en.wikipedia.org/wiki/Andrew_Ng
+
+Rationale: Consistent "decades away" position (x=2.5 between >30yr
+and 20-30yr), significant near-term societal impact through AI
+education and agentic tools (y=5.0), very positive outcome valence
+(AI as augmenter/educator, not threat).
+
+──────────────────────────────────────────────────────────────
+DWARKESH PATEL
+Title: Host, Dwarkesh Podcast; Journalist & Interviewer covering AI
+       and science
+[ASSESSED] x=3.70, y=4.50, valence=0.65
+
+Timeline: "I expect this (aka actual AGI) in the next decade or two."
+Near-term impact limited by current model capabilities.
+
+Quotes & Citations:
+• "I expect this (aka actual AGI) in the next decade or two. That's
+  fucking crazy!"
+  — "Thoughts on AI Progress" (Dec 2025 video essay):
+  dwarkesh.com/p/thoughts-on-ai-progress-dec-2025-video
+
+• Criticises the "takeoff-within-5-years crew" — finds the argument
+  that AI will rapidly automate research "implausible without basic
+  learning capabilities."
+  — Ibid.
+
+• On near-term impact: "lab revenue are 4 orders of magnitude off"
+  from what AGI-level capabilities would generate — indicating
+  models are not yet broadly economically deployed.
+  — Ibid.
+
+• Predicts "by 2030 the labs will have made significant progress on
+  continual learning" but this alone won't constitute full AGI.
+  — Ibid.
+
+• On diffusion-lag explanations for slow economic impact: describes
+  this as "cope" — models simply lack the necessary skills.
+  — Ibid.
+
+NOTE: Patel does not address existential risk or outcome valence
+in this essay. Valence scored as moderately optimistic by inference
+from his general positive framing of AI progress.
+
+Rationale: 10–20 yr range with "next decade or two" framing (x=3.7),
+moderate near-term impact given current capability limitations (y=4.5),
+moderate-positive valence (no doom framing, focus on capability
+progress).
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COORDINATE SUMMARY TABLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Name               x      y    valence  Notes
+──────────────────────────────────────────────────────────────
+Yudkowsky         6.30   9.80   0.02   p(doom)~99%, book "If Anyone Builds It, Everyone Dies"
+Bostrom           5.70   9.20   0.08   "Superintelligence" author, FHI founder
+Hinton            4.90   8.60   0.18   Left Google 2023, p(doom) 10–20%
+Bengio            4.55   8.05   0.22   Int'l AI Safety Report chair 2025
+Altman            5.50   8.30   0.68   "AGI before 2029"
+Amodei            5.10   7.30   0.60   "AGI in 2026 or 2027", Machines of Loving Grace
+Kokotajlo         6.40   7.60   0.90   AI 2027 scenario, ~20% p(doom)
+Andreessen        6.10   6.30   0.96   "Why AI Will Save the World"
+LeCun             2.60   3.90   0.62   LLMs "dead end", world models thesis
+Bender            1.20   6.80   0.08   "Stochastic Parrots" — current AI is harmful hype
+Gebru             1.65   7.60   0.12   DAIR founder, present harms > speculative risk
+Narayanan         2.10   2.50   0.52   "AI Snake Oil" — most AI overhyped
+Gary Marcus       2.95   3.50   0.45   Hybrid neuro-symbolic needed, 20–30 yr timeline
+Scott Alexander   4.20   6.60   0.55   ACX blogger, AI 2027 co-author, ~10–20 yr
+──────────────────────────────────────────────────────────────
+Sutton            3.50   5.50   0.65   25% by 2030/50% by 2040, anti-doomer
+Hassabis          5.10   9.50   0.72   5–10 yr AGI, "10x the industrial revolution"
+Karpathy          4.40   4.80   0.68   "Decade away", skeptic of hype, gradual impact
+Fei-Fei Li        2.80   6.30   0.60   Human-centered AI, inflection point but cautious
+S. Russell        3.80   8.80   0.28   Safety-focused, control problem, 10–20 yr risk
+J. Jang           5.00   5.40   0.65   OpenAI model behavior, human-AI coevolution
+J. Dean           5.60   7.00   0.76   Google DeepMind, ~2028 implied, education/health
+Yejin Choi        2.20   5.50   0.42   Common sense moonshot, LLMs insufficient for AGI
+Sutskever         5.00   6.80   0.58   SSI founder; "could happen this decade"; scaling era over [revised x from 4.80]
+Anandkumar        3.90   7.20   0.76   AI for science/climate, positive impact focus
+──────────────────────────────────────────────────────────────
+A. Ng             2.50   5.00   0.80   "Decades away"; AI augments not replaces; educator/builder
+Dwarkesh Patel    3.70   4.50   0.65   "Next decade or two"; near-term impact limited
+
+X-axis scale: 1=Never, 2=>30yr, 3=20-30yr, 4=10-20yr, 5=5-10yr, 6=<5yr
+Y-axis scale: 0=None, 2=Low, 4=Moderate, 6=Significant, 8=Major, 10=Civilization-Scale
+Valence:       0=Catastrophic, 0.25=Dangerous, 0.5=Mixed, 0.75=Optimistic, 1.0=Utopian
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WIKIPEDIA VERIFICATION NOTES (2026-03-26)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Checked Wikipedia articles for the following. Changes noted below.
+
+YUDKOWSKY — Wikipedia confirms: TIME op-ed "Shut It All Down" (2023),
+  "If Anyone Builds It, Everyone Dies" (2025 book). Extreme doom
+  framing confirmed. Coordinates UNCHANGED.
+
+HINTON — Wikipedia gives specific numbers: p(doom) updated to "10 to
+  20 per cent chance" of extinction within 30 years (Christmas 2024).
+  Timeline shifted from "30-50 years" to "fewer than 20 years" post-
+  2023. Coordinates UNCHANGED (x=4.90 sits correctly at 10-20yr
+  boundary, leaning toward 5-10yr).
+
+BENGIO — Wikipedia confirms: signed pause letter, "feeling lost" re
+  life's work, co-signed CAIS extinction-risk statement (May 2023).
+  June 2025: launched LawZero nonprofit. Coordinates UNCHANGED.
+
+BOSTROM — Wikipedia confirms existential risk framing but gives no
+  specific timeline numbers. Note: "Deep Utopia" (2024) explores
+  positive post-AGI scenarios — valence=0.08 may slightly underweight
+  his conditional optimism, but catastrophic risk framing dominates
+  his public reputation. Coordinates UNCHANGED.
+
+LeCUN — Wikipedia confirms "LLMs are dead end for superintelligence"
+  (Financial Times quote). Left Meta to found AMI Labs (world models).
+  Coordinates UNCHANGED.
+
+HASSABIS — Wikipedia confirms "most beneficial technologies of mankind"
+  + signed 2023 CAIS extinction-risk statement. Opposes global pause.
+  No specific timeline on Wikipedia (5-10yr from live interviews).
+  Coordinates UNCHANGED.
+
+SUTSKEVER — Wikipedia confirms: "even if superintelligence seems far
+  off, it could happen this decade." REVISED x: 4.80 -> 5.00 to
+  better reflect sub-10yr central estimate.
+
+RICHARD SUTTON — Wikipedia confirms partnership with Carmack for AGI
+  (2023). No specific timeline on Wikipedia; numbers from IBM/Dwarkesh
+  interviews. Coordinates UNCHANGED.
+
+ANDREW NG — Wikipedia confirms roles but contains no AGI timeline
+  statements. Timeline ("decades away") sourced from Fast Company and
+  PYMNTS 2025-2026 live interviews.
+
+DWARKESH PATEL — No Wikipedia article; coordinates based on his Dec
+  2025 essay at dwarkesh.com/p/thoughts-on-ai-progress-dec-2025-video.
+
+Last updated: 2026-03-26
