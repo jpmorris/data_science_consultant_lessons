@@ -1,5 +1,23 @@
 # Network Connection Diagnosis
 
+<div style="background-color: rgb(87, 61, 61);">
+<font color="red">**To Remember Forever**</font>
+
+### Software Design — Things That Stay True
+
+- **Functions first, classes when justified** — default to functions; promote to a class only when parameters travel together, state appears, or you need swappable implementations. A class with one method is probably just a function.
+- **`@dataclass(frozen=True)` for config/value objects** — eliminates `__init__` boilerplate and makes instances immutable. Pass one config object instead of 4–8 loose parameters.
+- **Keyword-only args (`*`)** — put `*` in the signature to force callers to name arguments, preventing silent bugs from positional ordering mistakes.
+- **Only catch exceptions you can do something about** — recover, add context, translate across an abstraction boundary, clean up, or convert to a user-facing result. A bare re-raise or `raise Exception(str(exc))` is worse than nothing.
+- **Dependency injection over self-construction** — pass collaborators in from outside; don't let a class build its own dependencies internally. Makes code testable and swappable.
+- **Polymorphism replaces `if/else` on type** — a shared interface with multiple implementations is cleaner than branching on `source_type == "s3"` everywhere.
+- **Express mental model** — register `METHOD /path` handlers; middleware runs first (parse body, serve static files), then the router matches, then your handler runs and calls `res.json()`. No request is "done" until the handler sends a response.
+- **Chrome extension contexts** — three distinct environments: service worker (persistent, no DOM, listens to Chrome events), side panel/popup (has DOM, runs only when open), content script (injected into web pages). Use `chrome.storage.local` — not `localStorage` — to persist state across panel close/reopen.
+- **Tight coupling smell** — when a runner imports a specific implementation by name, or names are hardcoded, or artifacts are tied to one impl. Goal: the runner shouldn't care which implementation it gets.
+
+</div>
+
+
 This is best described as a **layered divide-and-conquer diagnostic workflow**.
 It is **inspired by the OSI model**, but in practice it is not a strict textbook
 "up the stack" or "down the stack" exercise. It is a practical workflow for
@@ -327,7 +345,7 @@ How to read it:
 In one terminal:
 
 ```bash
-sudo tcpdump -i any -s0 -X port 443
+sudo tcpdump -i any -s0 -X port 443 and host example.com
 ```
 
 In another terminal:

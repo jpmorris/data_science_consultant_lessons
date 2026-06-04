@@ -21,4 +21,5 @@ dependencies = [
 [tool.uv.workspace]
 members = [
     "lectures/020-llm-from-scratch-and-compare/020-002-karpathy-series",
+    "lectures/032-ai-agents/manim-animations",
 ]
