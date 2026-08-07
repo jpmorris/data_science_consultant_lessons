@@ -160,18 +160,50 @@
     return svg;
   }
 
+  // Duration (ms) of each half of the sequenced transition -- must match
+  // the CSS `transition: transform <ROTATE_MS>, opacity <FADE_MS>` values
+  // in custom.scss. Sequencing (rotate, *then* fade v4/v5 in -- or fade
+  // v4/v5 out, *then* rotate back) is done with plain `transition-delay`,
+  // not a second reveal stage: this diagram is entirely JS-driven already,
+  // so ordering two CSS transitions is just arithmetic on when each one
+  // is allowed to start, no extra slide needed.
+  var ROTATE_MS = 800;
+  var FADE_MS = 500;
+
   function applyStage(stageName, animate) {
     var stage = STAGES[stageName];
     if (!stage) return;
+
+    var prevStage = currentAxesStage ? STAGES[currentAxesStage] : null;
+    var v4WasPresent = prevStage ? prevStage.v4.present : null;
+    var v4NowPresent = stage.v4.present;
+    // Forward: rotate x/z first, then fade v4/v5 in once they've settled.
+    var enteringExtras = animate && prevStage && !v4WasPresent && v4NowPresent;
+    // Backward: fade v4/v5 out first, then rotate x/z back once they're gone.
+    var leavingExtras = animate && prevStage && v4WasPresent && !v4NowPresent;
 
     AXIS_ORDER.forEach(function (id) {
       var cfg = stage[id];
       var line = axisEls[id].line;
       var label = axisEls[id].label;
+      var isExtra = (id === 'v4' || id === 'v5');
 
       if (!animate) {
         line.classList.add('llm-axes-no-transition');
         label.classList.add('llm-axes-no-transition');
+      } else {
+        var transformDelay = 0;
+        var opacityDelay = 0;
+        if (enteringExtras) {
+          opacityDelay = isExtra ? ROTATE_MS : 0;
+        } else if (leavingExtras) {
+          transformDelay = isExtra ? 0 : FADE_MS;
+        }
+        // Order must match the `transition:` property list in custom.scss
+        // (transform, then opacity).
+        var delayValue = transformDelay + 'ms, ' + opacityDelay + 'ms';
+        line.style.transitionDelay = delayValue;
+        label.style.transitionDelay = delayValue;
       }
 
       line.style.transform =
@@ -191,6 +223,8 @@
         void label.getBoundingClientRect();
         line.classList.remove('llm-axes-no-transition');
         label.classList.remove('llm-axes-no-transition');
+        line.style.transitionDelay = '0ms, 0ms';
+        label.style.transitionDelay = '0ms, 0ms';
       }
     });
   }

@@ -65,7 +65,7 @@ Everything else in this talk is downstream of that.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     {{< include images/llm-ingredients-language.svg >}}
   </div>
   <div class="diagram-split-text">
@@ -90,7 +90,7 @@ property of the input the model has to somehow represent.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     <div class="llm-axes-mount" data-id="llm-axes-panel" data-axes-stage="embeddings"></div>
   </div>
   <div class="diagram-split-text">
@@ -115,7 +115,7 @@ real embedding spaces have hundreds to thousands of dimensions.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     <div class="llm-axes-mount" data-id="llm-axes-panel" data-axes-stage="latent-space"></div>
   </div>
   <div class="diagram-split-text">
@@ -148,7 +148,7 @@ dimensions; real embedding spaces pack in vastly more than that.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     {{< include images/llm-ingredients-transformer.svg >}}
   </div>
   <div class="diagram-split-text">
@@ -182,7 +182,7 @@ fixed-window models) structurally cannot represent.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     {{< include images/llm-ingredients-data-volume.svg >}}
   </div>
   <div class="diagram-split-text">
@@ -216,7 +216,7 @@ Foundation's Common Crawl report.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     {{< include images/llm-ingredients-compute-scale.svg >}}
   </div>
   <div class="diagram-split-text">
@@ -248,7 +248,7 @@ numbers is far too large to show on a true linear scale.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     {{< include images/llm-ingredients-training-loop.svg >}}
   </div>
   <div class="diagram-split-text">
@@ -279,7 +279,7 @@ millions to billions of times, over weeks. This is what stages 5 and 6
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
+  <div class="diagram-split-visual diagram-panel" data-id="llm-ingredients-panel">
     {{< include images/llm-ingredients-inference-pipeline.svg >}}
   </div>
   <div class="diagram-split-text">
