@@ -1,0 +1,10 @@
+[project]
+name = "content-mining"
+version = "0.1.0"
+description = "Search HN / Bluesky / YouTube for 'cool things people are doing with agents' content, for the Grounded AI talk's Part 4"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.32",
+    "youtube-transcript-api>=0.6",
+    "praw>=7.7",
+]

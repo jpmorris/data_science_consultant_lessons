@@ -1,0 +1,11 @@
+<svg width="560" height="560" viewBox="0 0 600 600">
+  <line x1="80" y1="500" x2="520" y2="500" stroke="#586e75" stroke-width="2"/>
+  <rect x="140" y="80" width="120" height="420" fill="#93a1a1" opacity="0.5"/>
+  <text x="200" y="65" text-anchor="middle" font-size="24" font-weight="600" fill="#eee8d5">~240T</text>
+  <text x="200" y="530" text-anchor="middle" font-size="18" fill="#93a1a1">Common Crawl</text>
+  <text x="200" y="554" text-anchor="middle" font-size="18" fill="#93a1a1">(raw)</text>
+  <rect x="340" y="420" width="120" height="80" fill="#2aa198"/>
+  <text x="400" y="405" text-anchor="middle" font-size="24" font-weight="600" fill="#eee8d5">~15&ndash;20T</text>
+  <text x="400" y="530" text-anchor="middle" font-size="18" fill="#2aa198">used after</text>
+  <text x="400" y="554" text-anchor="middle" font-size="18" fill="#2aa198">filtering</text>
+</svg>

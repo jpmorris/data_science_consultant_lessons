@@ -1,0 +1,12 @@
+<svg width="560" height="560" viewBox="0 0 600 600">
+  <line x1="80" y1="500" x2="520" y2="500" stroke="#586e75" stroke-width="2"/>
+  <line x1="80" y1="500" x2="80" y2="80" stroke="#586e75" stroke-width="2"/>
+  <text x="300" y="555" text-anchor="middle" font-size="20" fill="#93a1a1">training steps</text>
+  <text x="45" y="290" text-anchor="middle" font-size="20" fill="#93a1a1" transform="rotate(-90,45,290)">loss</text>
+  <path d="M 100 120 C 200 160, 250 320, 340 400 S 460 470, 500 480" fill="none" stroke="#2aa198" stroke-width="4"/>
+  <circle cx="100" cy="120" r="7" fill="#b58900"/>
+  <circle cx="500" cy="480" r="7" fill="#2aa198"/>
+  <text x="120" y="100" font-size="18" fill="#b58900">forward pass &rarr; compute loss</text>
+  <text x="300" y="440" font-size="18" fill="#eee8d5">&rarr; backward pass &rarr; update weights</text>
+  <text x="300" y="465" font-size="18" fill="#eee8d5">&rarr; repeat, millions of times</text>
+</svg>

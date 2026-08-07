@@ -1,0 +1,4 @@
+- source: grounded-ai-talk-slides.qmd
+  posit-connect-cloud:
+    - id: 019fd029-2d5a-7105-89da-81b559be2888
+      url: https://connect.posit.cloud/jamesmorris/content/019fd029-2d5a-7105-89da-81b559be2888

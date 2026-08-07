@@ -1,0 +1,102 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: 'Inter', sans-serif;
+$presentation-heading-font: 'Inter Display', sans-serif;
+// Solarized base02 instead of moon's default base03 -- one step lighter,
+// still dark. Panels/dividers below use a slightly lighter teal on top of
+// this so they still read as distinct against the new, lighter page bg.
+$body-bg: #073642;
+
+/*-- scss:rules --*/
+
+// reveal.js's core CSS sets lists to display:inline-block (shrink-to-fit),
+// which on short bullet lines leaves them looking like a narrow left column
+// with empty space beside them instead of using the slide's full width.
+.reveal .slides section ul,
+.reveal .slides section ol {
+  display: block;
+}
+
+// Part-divider slides: big display heading + accent underline, paired with
+// a data-background-gradient set per-slide in the markdown.
+.reveal .slides section.divider-slide h1 {
+  font-size: 2.6em;
+  letter-spacing: 0.01em;
+}
+.reveal .slides section.divider-slide h1::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 6px;
+  margin-top: 0.5em;
+  background: #2aa198;
+}
+
+// Sidebar accent bar down the left edge of the slide -- a plain-bullet-slide
+// option that doesn't touch layout, just adds a color spine.
+.reveal .slides section.accent-left {
+  border-left: 10px solid #2aa198;
+  padding-left: 0.6em;
+}
+
+// Heading-accent option for bullet slides: colored underline beneath the
+// slide title instead of a full sidebar bar.
+.reveal .slides section.heading-accent h2 {
+  display: inline-block;
+  padding-bottom: 0.2em;
+  border-bottom: 4px solid #b58900;
+}
+
+// Tinted side panel for split image/caption layouts (used inside a
+// {.column} div alongside a figure column).
+.reveal .slides .callout-panel {
+  background: #0d4a55;
+  border-radius: 8px;
+  padding: 0.9em 1.1em;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+// Canvas panel for the auto-animate ingredients diagram: rounded frame that
+// centers an inline SVG, distinct from the plain slide background.
+.reveal .slides .diagram-panel {
+  background: #0d4a55;
+  border-radius: 12px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 620px;
+}
+
+// Hand-rolled two-column row for diagram+bullets slides that repeat across
+// an auto-animate sequence. Quarto's own .columns/.column div layout
+// conflicts with reveal.js's auto-animate reflow when the same column
+// structure appears on adjacent auto-animate slides -- it gets knocked from
+// display:flex to display:initial mid-transition and never recovers. This
+// plain, unrelated class name sidesteps whatever auto-animate matching
+// logic causes that.
+.reveal .slides .diagram-split-row {
+  display: flex !important;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+}
+.reveal .slides .diagram-split-row .diagram-split-visual {
+  flex: 0 0 55%;
+}
+.reveal .slides .diagram-split-row .diagram-split-text {
+  flex: 1;
+  text-align: left;
+}
+.reveal .slides .diagram-split-row .diagram-split-text ul {
+  margin: 0;
+}
+
+// Full-bleed accent treatment for the single "thesis" slide.
+.reveal .slides section.stat-slide blockquote {
+  border: none;
+  background: transparent;
+  color: #2aa198;
+  font-family: $presentation-heading-font;
+}

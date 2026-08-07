@@ -1,0 +1,32 @@
+<svg width="560" height="560" viewBox="0 0 600 600">
+  <defs>
+    <marker id="arrowX-s2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#268bd2"/>
+    </marker>
+    <marker id="arrowY-s2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2aa198"/>
+    </marker>
+    <marker id="arrowZ-s2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b58900"/>
+    </marker>
+    <marker id="arrow4-s2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6c71c4"/>
+    </marker>
+    <marker id="arrow5-s2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#859900"/>
+    </marker>
+  </defs>
+  <line data-id="axis-x-skewed" x1="0" y1="0" x2="215.1" y2="0" stroke="#268bd2" stroke-width="3" marker-end="url(#arrowX-s2)" transform="translate(300,340) rotate(159.9)"/>
+  <line data-id="axis-y-skewed" x1="0" y1="0" x2="229.8" y2="0" stroke="#2aa198" stroke-width="3" marker-end="url(#arrowY-s2)" transform="translate(300,340) rotate(30)"/>
+  <line data-id="axis-z-skewed" x1="0" y1="0" x2="225.4" y2="0" stroke="#b58900" stroke-width="3" marker-end="url(#arrowZ-s2)" transform="translate(300,340) rotate(-100)"/>
+  <line data-id="axis-4" x1="0" y1="0" x2="200.3" y2="0" stroke="#6c71c4" stroke-width="3" marker-end="url(#arrow4-s2)" transform="translate(300,340) rotate(-55)"/>
+  <line data-id="axis-5" x1="0" y1="0" x2="194.9" y2="0" stroke="#859900" stroke-width="3" marker-end="url(#arrow5-s2)" transform="translate(300,340) rotate(110.1)"/>
+  <circle data-id="origin" cx="300" cy="340" r="5" fill="#eee8d5"/>
+  <text data-id="label-x-skewed" font-size="26" font-weight="600" fill="#268bd2" transform="translate(65,440)">x</text>
+  <text data-id="label-y-skewed" font-size="26" font-weight="600" fill="#2aa198" transform="translate(510,480)">y</text>
+  <text data-id="label-z-skewed" font-size="26" font-weight="600" fill="#b58900" transform="translate(268,100)">z</text>
+  <text data-id="label-4" font-size="26" font-weight="600" fill="#6c71c4" transform="translate(428,160)">v4</text>
+  <text data-id="label-5" font-size="26" font-weight="600" fill="#859900" transform="translate(195,550)">v5</text>
+  <circle data-id="word-pt" cx="420" cy="220" r="10" fill="#eee8d5" stroke="#268bd2" stroke-width="2"/>
+  <text data-id="word-label" x="440" y="215" font-size="22" font-weight="600" fill="#eee8d5">bank</text>
+</svg>
