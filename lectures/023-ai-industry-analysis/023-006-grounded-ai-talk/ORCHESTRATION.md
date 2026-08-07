@@ -13,6 +13,7 @@ doc is about *how the team operates*, that one is about *the deck itself*.
 | Content | `content` | `content` | No — own worktree |
 | Visual 1 | `visual-1` | `visual-1` | No — own worktree |
 | Visual 2 | `visual-2` | `visual-2` | No — own worktree |
+| Visual 3 | `visual-3` | `visual-3` | No — own worktree |
 
 **Naming rule**: worktrees and branches are named by *role*, never by the task
 currently being worked on. `visual-1` might work on axis rotation today and an
@@ -36,10 +37,12 @@ worktree called `rotation` or similar.
   work itself.
 - **Content** — researches and writes talk content: bullet text, speaker
   notes, citations, accuracy-checking. Primarily edits `grounded-ai-talk-slides.qmd`.
-- **Visual 1 / Visual 2** — general-purpose visual/UI work: diagrams
-  (`images/*.svg`), layout, CSS (`custom.scss`), animation. Each works on
-  whatever slide(s) they're currently assigned via their own session's
-  kickoff prompt — that assignment is session-specific, not part of this doc.
+- **Visual N** (Visual 1, Visual 2, Visual 3, ...) — general-purpose
+  visual/UI work: diagrams (`images/*.svg`), layout, CSS (`custom.scss`),
+  animation. Each works on whatever slide(s) they're currently assigned via
+  their own session's kickoff prompt — that assignment is session-specific,
+  not part of this doc. Adding another visual agent later doesn't need a
+  design change, just the next number.
 
 ## Ports (reserve these for the lifetime of your session, not per-task)
 
@@ -49,6 +52,11 @@ worktree called `rotation` or similar.
 | Content | 9401 | 7901 |
 | Visual 1 | 9402 | 7902 |
 | Visual 2 | 9403 | 7903 |
+| Visual 3 | 9404 | 7904 |
+
+(Pattern for any future Visual N: CDP `9401 + N`, preview `7901 + N`. Add a
+row here when you actually spin one up, rather than assuming — keeps this
+table the single source of truth every agent can trust.)
 
 Launch your own headless Chrome for verification, don't reuse the user's own
 `quarto-follow` window (that's on CDP `9224` / preview `7899` — don't touch
