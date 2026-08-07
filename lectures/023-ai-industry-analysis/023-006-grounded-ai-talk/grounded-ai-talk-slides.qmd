@@ -346,9 +346,12 @@ and reused, not recomputed every step.
 
 Residual (a.k.a. skip) connections — each "+" in the diagram is `output = x +
 Sublayer(x)`: the sublayer's input `x` is carried around it unchanged and
-added back to its output. "Skip" names the topology (the connection skips
-over the block); "residual" names what the block has to learn — a correction
-on top of the input, rather than the full transformation from scratch.
+added back to its output. `x` is a per-token activation vector, not a set of
+weights — its very first version comes out of Token Embedding + Positional
+Encoding at the bottom of the stack, and each block's job is just to update
+it. "Skip" names the topology (the connection skips over the block);
+"residual" names what the block has to learn — a correction on top of the
+input, rather than the full transformation from scratch.
 Motivation: this comes from ResNet (2015, image classification), which found
 that plain deep networks got *worse* at training error (not just test error)
 as more layers were added — proof it was an optimization problem, not
