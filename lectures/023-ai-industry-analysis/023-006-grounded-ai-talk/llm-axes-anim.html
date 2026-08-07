@@ -28,6 +28,18 @@
 -->
 <script>
 (function () {
+  // Quarto's preview live-reload patches the DOM in place to preserve the
+  // user's current slide position instead of doing a hard page reload,
+  // which re-executes this inline <script> on every edit+render without
+  // clearing the previous run's state. Without this guard, each
+  // re-execution builds its own separate persistent <svg> and registers
+  // its own 'slidechanged' listener, and they pile up and fight over the
+  // same mount -- symptoms look like duplicate/stale axes, one instance
+  // snapping instead of animating, elements "dropping in" out of nowhere.
+  // A hard refresh (not live-reload) clears this, since it resets `window`.
+  if (window.__llmAxesAnimInitialized) return;
+  window.__llmAxesAnimInitialized = true;
+
   var SVG_NS = 'http://www.w3.org/2000/svg';
   var ORIGIN = { x: 300, y: 340 };
 
