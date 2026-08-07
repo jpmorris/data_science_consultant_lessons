@@ -58,8 +58,16 @@ those):
   --user-data-dir=/tmp/<role>-profile --no-first-run --window-size=1920,1080
 ```
 Prefer one-shot `quarto render` + screenshot over running your own live
-`quarto preview` server when you can — it sidesteps port/process management
-entirely. If you do need live preview, use your assigned preview port.
+`quarto preview` server for your *own* verification — it sidesteps
+port/process management entirely.
+
+**The preview port exists for the user's benefit, separately from your own
+verification loop.** The user watches each worktree's progress live — one
+browser tab per worktree, pointed at that worktree's preview port — the same
+way they'd watch a single agent work, but with one tab per agent instead of
+one shared view. If it's not already running, start `quarto preview --port
+<your assigned port> --no-browser` once early in your session and leave it
+running; you don't need to manage it further.
 
 ## Git workflow
 
@@ -75,8 +83,13 @@ entirely. If you do need live preview, use your assigned preview port.
 4. Merging into `main` is the orchestrator's job, and it does so
    proactively — it doesn't wait to be told "go ahead." Once you've said
    your work is ready, expect it to land without needing to ask again.
-5. If you're picking up new work after a merge, pull/rebase your worktree
-   against the latest `main` first, so you're not building on stale state.
+5. Rebase against the latest `main` at two points: as soon as you're told
+   your own last piece of work was merged (so you keep building on top of
+   your own now-canonical history, not a stale copy of it), and before
+   starting any new chunk of work generally (so you also pick up whatever
+   the *other* agents have landed in the meantime). Don't bother rebasing
+   mid-task just to stay live-synced — it's not needed for genuinely
+   disjoint work and just adds churn.
 
 ## Verification standard
 
