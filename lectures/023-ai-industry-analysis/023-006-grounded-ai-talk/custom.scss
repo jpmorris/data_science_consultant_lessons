@@ -139,13 +139,12 @@ $body-bg: #073642;
 // transform on these is set from JS as plain CSS (not the SVG attribute)
 // specifically so it participates in a CSS transition -- auto-animate
 // can't animate `transform` at all (see AGENT-BRIEFING.md), so this
-// diagram bypasses it entirely rather than fighting it.
-.llm-axes-line,
-.llm-axes-label {
+// diagram bypasses it entirely rather than fighting it. No axis letter
+// labels anymore -- just the lines themselves.
+.llm-axes-line {
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
 }
-.llm-axes-line.llm-axes-no-transition,
-.llm-axes-label.llm-axes-no-transition {
+.llm-axes-line.llm-axes-no-transition {
   transition: none !important;
 }
 
