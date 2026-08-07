@@ -104,17 +104,50 @@ the hard way.
   change get unmatched (unique id per stage) so they cross-fade cleanly
   instead of collapsing.
 
-**Open problem, if you're picking up the rotation work:** the technically
-sound path is JS-created (not statically-declared) SVG elements + a plain
-CSS `transition: transform` + a JS listener on `Reveal.on('slidechanged'
-| 'fragmentshown', ...)`, entirely bypassing auto-animate's `data-id`
-matching. Confirmed: freshly `document.createElementNS`'d SVG elements DO
-correctly interpolate `transform` this way. Unconfirmed/unexplained: the
-exact same technique failed on an SVG element that was part of the page's
-*static* initial HTML (not JS-created) — even after ruling out timing,
-stylesheet-vs-inline-style, and `transform-origin` as causes. If you hit
-this, the known-working fallback is to build the shape via JS from scratch
-rather than starting from static markup.
+**Solved** (llm-stage-2-embeddings ↔ llm-stage-3-latent-space axes, see
+`llm-axes-anim.html`): JS-created (not statically-declared) SVG elements +
+a plain CSS `transition: transform` + a JS listener on
+`Reveal.on('slidechanged', ...)`, entirely bypassing auto-animate's
+`data-id` matching for those elements. Confirmed: freshly
+`document.createElementNS`'d SVG elements DO correctly interpolate
+`transform` this way — reused for any future rotation work. Two gotchas
+that ate real debugging time, both confirmed via `getComputedStyle`
+sampled every `requestAnimationFrame`, not screenshots:
+
+- **The transition silently no-ops if you reparent the element and change
+  its `transform` in the same synchronous tick.** The two style changes
+  collapse into one unobserved recalc — the browser never gets a chance to
+  render the "before" state, so there's nothing to transition *from*, and
+  the element just jumps straight to the final value with zero animation.
+  Fix: force a layout flush (e.g. `void el.getBoundingClientRect()`)
+  between the reparent and the restyle. This explains the earlier
+  "unconfirmed/unexplained" failure noted below for static-markup
+  elements too, if that code path also reparented — worth checking first
+  if you hit an instant-jump instead of a transition on the next thing you
+  build this way.
+- **Auto-animate fades the whole *mount point* if it doesn't share a
+  `data-id` across the two slides**, even though none of the JS-created
+  content inside it is auto-animate's concern. Auto-animate's documented
+  default behavior for anything it can't match between two
+  `auto-animate="true"` slides is to fade it in/out — and an empty mount
+  `<div>` with no `data-id` counts as unmatched, so the *entire panel*
+  (including your genuinely-animating children) flashes on top of your own
+  transition. Fix: give the mount div a `data-id` shared across every stage
+  it appears in. Since both stages render it with identical position/size,
+  auto-animate treats it as "the same element, unchanged" and leaves it
+  alone — safe specifically because the mount div itself never gets a CSS
+  `transform` (only its children do, and they aren't separately
+  auto-animate-matched targets, so they never collide with reveal's
+  injected `transform: none` override on matched elements).
+
+Original unconfirmed finding, preserved in case it recurs: the same
+JS-transform technique failed on an SVG element that was part of the
+page's *static* initial HTML (not JS-created) — even after ruling out
+timing, stylesheet-vs-inline-style, and `transform-origin` as causes,
+*before* the reparent-timing gotcha above was known. If you hit this again
+with genuinely no reparenting involved, the known-working fallback is
+still to build the shape via JS from scratch rather than starting from
+static markup.
 
 ## Verification workflow
 

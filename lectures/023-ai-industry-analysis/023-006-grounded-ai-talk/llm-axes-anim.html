@@ -9,9 +9,22 @@
   document.createElementNS (not static markup), drive their rotation
   entirely with a plain CSS `transition: transform`, and reparent the single
   persistent <svg> into whichever slide's mount point is currently active on
-  Reveal's own 'slidechanged' event. Auto-animate never sees these elements,
-  so its data-id matching/collision with `transform` never enters the
-  picture.
+  Reveal's own 'slidechanged' event. Auto-animate never sees these child
+  elements, so its data-id matching/collision with `transform` never enters
+  the picture.
+
+  Important: the two `.llm-axes-mount` divs (one per stage, in the qmd) DO
+  need a shared `data-id="llm-axes-panel"` -- without it, auto-animate
+  treats the mount as two unrelated, unmatched elements and applies its own
+  default fade in/out to the whole panel (its documented behavior for
+  anything it can't match), which visibly flashes on top of our rotation.
+  Giving it a matching data-id makes auto-animate recognize it as "the same
+  element, unchanged" (identical position/size on both slides) and leave it
+  alone entirely -- confirmed via computed opacity sampled every frame
+  during the transition. This is safe specifically because we never set a
+  CSS `transform` on the mount div itself (only on its children, which
+  aren't separately matched targets) -- doing that WOULD hit the
+  transform:none collision documented in AGENT-BRIEFING.md.
 -->
 <script>
 (function () {

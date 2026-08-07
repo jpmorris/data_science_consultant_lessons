@@ -91,7 +91,7 @@ property of the input the model has to somehow represent.
 ```{=html}
 <div class="diagram-split-row">
   <div class="diagram-split-visual diagram-panel">
-    <div class="llm-axes-mount" data-axes-stage="embeddings"></div>
+    <div class="llm-axes-mount" data-id="llm-axes-panel" data-axes-stage="embeddings"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -116,7 +116,7 @@ real embedding spaces have hundreds to thousands of dimensions.
 ```{=html}
 <div class="diagram-split-row">
   <div class="diagram-split-visual diagram-panel">
-    <div class="llm-axes-mount" data-axes-stage="latent-space"></div>
+    <div class="llm-axes-mount" data-id="llm-axes-panel" data-axes-stage="latent-space"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
