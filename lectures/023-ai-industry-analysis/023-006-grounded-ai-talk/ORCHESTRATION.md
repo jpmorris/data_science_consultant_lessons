@@ -22,10 +22,18 @@ worktree called `rotation` or similar.
 ## Roles
 
 - **Orchestrator** — the canonical checkout, on `main`. Talks to the user
-  infrequently. Its job: merge worker branches into `main` after the user has
-  reviewed (or asks it to review), resolve conflicts if they arise, push to
-  `origin` when asked, and answer occasional cross-cutting questions. It does
-  **not** do content or visual work itself.
+  infrequently, and operates with the same standing trust/autonomy a single
+  agent would: it does **not** wait to be told "go ahead and merge." When a
+  worker reports a piece of work done, the orchestrator merges it
+  proactively — its own sanity check (clean render, no warnings, no obvious
+  breakage) *is* the review, the same way a single agent's self-verification
+  already is. Git history is the safety net; if a merge turns out to be
+  wrong, back it out and fix it, don't add a pre-merge approval gate. The
+  orchestrator resolves conflicts if they arise, pushes to `origin`
+  proactively too (not just when asked), and surfaces to the user only when
+  something needs a real decision — a conflict it can't resolve confidently,
+  a broken render, an ambiguous change. It does **not** do content or visual
+  work itself.
 - **Content** — researches and writes talk content: bullet text, speaker
   notes, citations, accuracy-checking. Primarily edits `grounded-ai-talk-slides.qmd`.
 - **Visual 1 / Visual 2** — general-purpose visual/UI work: diagrams
@@ -60,9 +68,13 @@ entirely. If you do need live preview, use your assigned preview port.
    make your first commit.
 3. When you've finished a meaningful chunk of work (not necessarily the whole
    task — smaller, more frequent handoffs are easier to merge than one big
-   one at the end), tell the user it's ready. Don't merge it yourself.
-4. The user will either review it with you, or ask the orchestrator to
-   review/merge it. Either way, merging into `main` is the orchestrator's job.
+   one at the end), tell the user it's ready. Don't merge it yourself — not
+   because you need approval, but because it's mechanically awkward: `main`
+   is checked out in the orchestrator's directory, not yours, and git won't
+   let you check out a branch that's already checked out elsewhere.
+4. Merging into `main` is the orchestrator's job, and it does so
+   proactively — it doesn't wait to be told "go ahead." Once you've said
+   your work is ready, expect it to land without needing to ask again.
 5. If you're picking up new work after a merge, pull/rebase your worktree
    against the latest `main` first, so you're not building on stale state.
 
