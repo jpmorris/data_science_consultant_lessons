@@ -130,17 +130,21 @@
   var EMB_VM = { embeddings: true, 'vector-math': true, 'latent-space': false };
   var VM_ONLY = { embeddings: false, 'vector-math': true, 'latent-space': false };
   var ARROW_PRESENT = { embeddings: false, 'vector-math': true, 'latent-space': false };
+  var ORIGIN_PRESENT = { embeddings: true, 'vector-math': false, 'latent-space': true };
 
   var WORD_POINTS = {
     // gender pair -- right of z. king->queen and man->woman share the
-    // identical (170,-110) offset. king/man get their label placed BELOW
-    // instead of the default above-right, since both of them have arrows
-    // exiting upward/rightward -- an above label would sit in the arrow's
-    // own path.
+    // identical (170,-110) offset -- that's the actual relationship being
+    // shown; man/woman's position is chosen so the resulting parallelogram
+    // reads as visibly slanted rather than looking rectangular by
+    // accident. king/man get their label placed BELOW instead of the
+    // default above-right, since both of them have arrows exiting
+    // upward/rightward -- an above label would sit in the arrow's own
+    // path.
     king:   { x: 370, y: 250, group: 'gender', present: EMB_VM, labelPos: 'below' },
     queen:  { x: 540, y: 140, group: 'gender', present: VM_ONLY },
-    man:    { x: 420, y: 320, group: 'gender', present: VM_ONLY, labelPos: 'below' },
-    woman:  { x: 590, y: 210, group: 'gender', present: VM_ONLY },
+    man:    { x: 425, y: 305, group: 'gender', present: VM_ONLY, labelPos: 'below' },
+    woman:  { x: 595, y: 195, group: 'gender', present: VM_ONLY },
     // tense pair -- left of z, but deliberately NOT a mirror image of the
     // gender pair: mirrored positions with a mirrored offset reads as "the
     // same relationship reflected", which is the wrong idea (these are two
@@ -152,26 +156,24 @@
     swam:   { x: 130, y: 170, group: 'tense',  present: VM_ONLY, labelPos: 'left' }
   };
   var WORD_GROUP_COLOR = { gender: '#268bd2', tense: '#6c71c4' };
+  // man->woman IS the (woman - man) term from queen = king + (woman - man)
+  // -- not a separate annotation vector, the real one, so it's the one
+  // that gets +/- markers (near its man/tail end and woman/head end)
+  // rather than inventing extra connector arrows. walk->walked doesn't get
+  // this treatment -- there's no third/fourth word being solved for on
+  // that pair, it's only showing that the direction recurs, not an
+  // equation.
   var ANALOGY_ARROWS = [
-    { from: 'man',  to: 'woman',  group: 'gender' },
+    { from: 'man',  to: 'woman',  group: 'gender', minus: 'man', plus: 'woman' },
     { from: 'king', to: 'queen',  group: 'gender' },
     { from: 'walk', to: 'walked', group: 'tense' },
     { from: 'swim', to: 'swam',   group: 'tense' }
-  ];
-  // The other two sides of the king/queen/man/woman parallelogram --
-  // makes the actual arithmetic (king - man + woman = queen) visible
-  // inside the diagram itself, not just implied by the two parallel
-  // arrows above. Deliberately subtler than the main analogy arrows
-  // (thinner, plain cream, no dash) so they read as annotation, not as a
-  // third relationship competing with gender/tense.
-  var MATH_CONNECTORS = [
-    { from: 'king',  to: 'man',   symbol: '−' },
-    { from: 'woman', to: 'queen', symbol: '+' }
   ];
 
   var svg = null;
   var visiblePanel = null;
   var axisEls = {};
+  var originEl = null;
   var wordPointEls = {};
   var arrowEls = [];
   var currentAxesStage = null;
@@ -229,12 +231,18 @@
       axisEls[id] = { line: line };
     });
 
-    var origin = ns('circle');
-    origin.setAttribute('cx', String(ORIGIN.x));
-    origin.setAttribute('cy', String(ORIGIN.y));
-    origin.setAttribute('r', '5');
-    origin.setAttribute('fill', '#eee8d5');
-    svg.appendChild(origin);
+    // The origin dot: legitimately meaningful in embeddings/latent-space
+    // (it's the axes' actual shared pivot point), but not in vector-math
+    // (none of king/queen/man/woman are computed from it -- showing it
+    // there implies a dependency that isn't real). Dims/undims on the
+    // same schedule as the axis lines rather than being always-on.
+    originEl = ns('circle');
+    originEl.setAttribute('cx', String(ORIGIN.x));
+    originEl.setAttribute('cy', String(ORIGIN.y));
+    originEl.setAttribute('r', '5');
+    originEl.setAttribute('fill', '#eee8d5');
+    originEl.classList.add('llm-fade-el');
+    svg.appendChild(originEl);
 
     var arrowDefs = ns('defs');
     ['gender', 'tense'].forEach(function (group) {
@@ -252,19 +260,6 @@
       marker.appendChild(path);
       arrowDefs.appendChild(marker);
     });
-    var mathMarker = ns('marker');
-    mathMarker.setAttribute('id', 'llm-arrow-math');
-    mathMarker.setAttribute('viewBox', '0 0 10 10');
-    mathMarker.setAttribute('refX', '8');
-    mathMarker.setAttribute('refY', '5');
-    mathMarker.setAttribute('markerWidth', '6');
-    mathMarker.setAttribute('markerHeight', '6');
-    mathMarker.setAttribute('orient', 'auto-start-reverse');
-    var mathPath = ns('path');
-    mathPath.setAttribute('d', 'M0,0 L10,5 L0,10 z');
-    mathPath.setAttribute('fill', '#eee8d5');
-    mathMarker.appendChild(mathPath);
-    arrowDefs.appendChild(mathMarker);
     svg.appendChild(arrowDefs);
 
     ANALOGY_ARROWS.forEach(function (a) {
@@ -282,33 +277,35 @@
       line.classList.add('llm-fade-el');
       svg.appendChild(line);
       arrowEls.push(line);
-    });
 
-    MATH_CONNECTORS.forEach(function (c) {
-      var from = WORD_POINTS[c.from];
-      var to = WORD_POINTS[c.to];
-      var line = ns('line');
-      line.setAttribute('x1', String(from.x));
-      line.setAttribute('y1', String(from.y));
-      line.setAttribute('x2', String(to.x));
-      line.setAttribute('y2', String(to.y));
-      line.setAttribute('stroke', '#eee8d5');
-      line.setAttribute('stroke-width', '1.5');
-      line.setAttribute('marker-end', 'url(#llm-arrow-math)');
-      line.classList.add('llm-fade-el');
-      svg.appendChild(line);
-      arrowEls.push(line);
-
-      var symbol = ns('text');
-      symbol.setAttribute('x', String((from.x + to.x) / 2 + 10));
-      symbol.setAttribute('y', String((from.y + to.y) / 2 + 6));
-      symbol.setAttribute('font-size', '24');
-      symbol.setAttribute('font-weight', '700');
-      symbol.setAttribute('fill', '#eee8d5');
-      symbol.textContent = c.symbol;
-      symbol.classList.add('llm-fade-el');
-      svg.appendChild(symbol);
-      arrowEls.push(symbol);
+      // +/- markers directly on this arrow (only set for man->woman) --
+      // placed just off the line, near each end, rather than on a
+      // separate annotation arrow: this line IS the (woman - man) term,
+      // so the markers belong on it.
+      if (a.minus || a.plus) {
+        var dx = to.x - from.x, dy = to.y - from.y;
+        var len = Math.sqrt(dx * dx + dy * dy);
+        var px = -dy / len, py = dx / len; // unit perpendicular
+        [
+          { word: a.minus, symbol: '−', t: 0.24 },
+          { word: a.plus, symbol: '+', t: 0.76 }
+        ].forEach(function (m) {
+          if (!m.word) return;
+          var mx = from.x + dx * m.t + px * 16;
+          var my = from.y + dy * m.t + py * 16;
+          var symbol = ns('text');
+          symbol.setAttribute('x', String(mx));
+          symbol.setAttribute('y', String(my));
+          symbol.setAttribute('text-anchor', 'middle');
+          symbol.setAttribute('font-size', '24');
+          symbol.setAttribute('font-weight', '700');
+          symbol.setAttribute('fill', '#eee8d5');
+          symbol.textContent = m.symbol;
+          symbol.classList.add('llm-fade-el');
+          svg.appendChild(symbol);
+          arrowEls.push(symbol);
+        });
+      }
     });
 
     Object.keys(WORD_POINTS).forEach(function (word) {
@@ -478,6 +475,7 @@
       applyFade([wordPointEls[word].point, wordPointEls[word].label], present, seq.wordPairDelay, animate);
     });
     applyFade(arrowEls, ARROW_PRESENT[stageName], seq.wordPairDelay, animate);
+    applyFade([originEl], ORIGIN_PRESENT[stageName], 0, animate);
   }
 
   var currentAnchor = null;
