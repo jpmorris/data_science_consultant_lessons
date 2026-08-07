@@ -63,23 +63,25 @@
   // the one axis that should read as completely stationary while x/z
   // rotate and v4/v5 fade in. v4/v5's angles are also shared across both
   // stages (only their opacity changes) so they fade in already in their
-  // final position instead of popping. v4 sits close to z and v5 close to
-  // x -- a deliberately small gap, not fully coincident -- to read as
-  // "nearly parallel, not exactly orthogonal", the actual point of this
-  // diagram (relaxed/near-orthogonality, not identical vectors).
+  // final position instead of popping. v4 sits close to z (20deg
+  // clockwise/"to the right" of it, not mirrored on the other side -- that
+  // reads as ambiguous rather than close) and v5 close to x -- a
+  // deliberately small gap, not fully coincident -- to read as "nearly
+  // parallel, not exactly orthogonal", the actual point of this diagram
+  // (relaxed/near-orthogonality, not identical vectors).
   var STAGES = {
     embeddings: {
       x:  { angle: 147.7, present: true,  label: { x: 80,  y: 482 } },
       y:  { angle: 30,    present: true,  label: { x: 500, y: 482 } },
       z:  { angle: -90,   present: true,  label: { x: 315, y: 100 } },
-      v4: { angle: -120,  present: false, label: { x: 183, y: 136 } },
+      v4: { angle: -80,   present: false, label: { x: 341, y: 109 } },
       v5: { angle: 135,   present: false, label: { x: 137, y: 503 } }
     },
     'latent-space': {
       x:  { angle: 159.9, present: true, label: { x: 65,  y: 440 } },
       y:  { angle: 30,    present: true, label: { x: 500, y: 482 } },
       z:  { angle: -100,  present: true, label: { x: 268, y: 100 } },
-      v4: { angle: -120,  present: true, label: { x: 183, y: 136 } },
+      v4: { angle: -80,   present: true, label: { x: 341, y: 109 } },
       v5: { angle: 135,   present: true, label: { x: 137, y: 503 } }
     }
   };
