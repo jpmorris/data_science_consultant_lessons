@@ -53,8 +53,9 @@ notebook.
 
 **First OpenAI call + core concepts:**
 
-- **System prompt vs. user prompt**: the system prompt sets overall context/role
-  for the whole conversation; the user prompt is the specific message.
+- **System prompt vs. user prompt**: <mark class="yellow-highlight"> the system
+  prompt sets overall context/role for the whole conversation; the user prompt
+  is the specific message. </mark>
 - First gen-AI use case built Day 1: a **website summarizer** — scrape a page
   with BeautifulSoup, send the text to OpenAI, get back a markdown summary.
 
@@ -533,10 +534,12 @@ synthesize a brochure. Two chained LLM calls.
 - **One-shot / multi-shot prompting**: put example(s) of good output in the
   prompt. One example = one-shot; several = multi-shot. (Also showed _negative_
   examples — "do not include privacy/terms/email links.")
-- **JSON prompting**: LLMs are trained heavily on natural language,
-  **markdown**, and **JSON** — so asking for a JSON structure (with an example)
-  gives reliable, parseable output. `response_format={"type": "json_object"}`
-  enforces it.
+- **JSON prompting**: <mark class="yellow-highlight">LLMs are trained heavily on
+  natural language, **markdown**, and **JSON** — so asking for a JSON structure
+  (with an example) gives reliable, parseable output.
+  `response_format={"type": "json_object"}` enforces it. This
+  **constrained/grammar-based decoding** works by masking out (set to `-inf`)
+  all logits for invalid tokens before softmax.</mark>
 - **Constrained decoding**: at inference the model emits a probability
   distribution over next tokens; JSON mode constrains sampling so only tokens
   that keep the JSON well-formed are chosen — guaranteeing valid JSON even
@@ -552,36 +555,52 @@ synthesize a brochure. Two chained LLM calls.
 Duolingo's AI feature calls GPT behind the scenes). Embrace the **notebook /
 scientist mindset** — experiment and iterate on prompts.
 
-**Exercises:** extend the brochure generator (add a 3rd call to translate),
-apply the synthesize-and-generate pattern to your own domain, and build a
-personalized **AI technical tutor** using GPT-5 nano and/or Ollama.
-
 ---
 
 ## Week 2: Build a Multi-Modal Chatbot — LLMs, Gradio UI, and Agents
 
 ### Day 1: Connecting to Multiple Frontier Models + LLM Frameworks
 
-- **Calling many providers**: OpenAI, Claude, Gemini, local Ollama, and
-  **OpenRouter** (a router that forwards requests to many providers). Tested
-  reasoning effort and brain-teaser/scaling puzzles across models. (Reminder:
-  **Groq** with a Q = fast cloud inference of open models, distinct from Elon's
-  **Grok** with a K.)
+- **Calling many providers**: OpenAI, Claude, Gemini, local Ollama, and <mark
+  class="yellow-highlight"> **OpenRouter** </mark> (a router that forwards
+  requests to many providers). Tested reasoning effort and brain-teaser/scaling
+  puzzles across models. (Reminder: **Groq** with a Q = fast cloud inference of
+  open models, distinct from Elon's **Grok** with a K.)
 - **LLM frameworks / abstraction layers**:
   - **LangChain** — the famous, heavyweight abstraction framework (`ChatOpenAI`,
     `llm.invoke(...)`). Powerful but a lot to learn; revisited in Week 5. (Ed is
     a self-described mild LangChain skeptic.)
-  - **LiteLLM** — a _lightweight_ layer:
-    `completion(model="provider/model", messages=...)`. Easy switching between
-    models, including managed services (`bedrock/`, `azure/`, `vertex/`).
-    Reports input/output token counts and **cost** per call — useful for
-    tracking unit economics.
-- **Prompt caching**: re-sending the same input prefix within a few minutes
-  costs less. OpenAI does it automatically — the prefix must match
-  _identically_, so put changing content (e.g. today's date) at the **end** of
-  the prompt and static content first. Anthropic is explicit (prime the cache at
-  +25%, then reuse ~10× cheaper). Demonstrated with the full text of Hamlet —
-  and a **confident hallucination** when the context wasn't provided.
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+
+
+from langchain_openai import ChatOpenAI
+
+def tell_a_joke(topic="cats"):
+    return f"Tell me a short joke about {topic}."
+
+llm = ChatOpenAI(model="gpt-5-mini")
+response = llm.invoke(tell_a_joke())
+
+print(response.content)
+
+```
+
+- **LiteLLM** — a _lightweight_ layer:
+  `completion(model="provider/model", messages=...)`. Easy switching between
+  models, including managed services
+  (<mark class="yellow-highlight">`bedrock/`</mark>, `azure/`, `vertex/`).
+  Reports input/output token counts and **cost** per call — useful for tracking
+  unit economics.
+- <mark class="yellow-highlight">**Prompt caching**</mark>: re-sending the same
+  input prefix within a few minutes costs less. OpenAI does it automatically —
+  the prefix must match _identically_, so put changing content (e.g. today's
+  date) at the **end** of the prompt and static content first. Anthropic is
+  explicit (prime the cache at +25%, then reuse ~10× cheaper). Demonstrated with
+  the full text of Hamlet — and a **confident hallucination** when the context
+  wasn't provided.
 - **LLM-vs-LLM conversation**: pit two chatbots against each other (snarky GPT
   vs. polite Claude) by constructing the message lists by hand. Reinforces the
   illusion of memory (you pass the whole conversation each turn).
