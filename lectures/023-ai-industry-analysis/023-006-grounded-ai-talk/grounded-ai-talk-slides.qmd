@@ -342,9 +342,67 @@ generated so far. Attention: every token can directly attend to every other
 token (up to and including itself, masked so it can't see the future), in
 parallel — no recurrence needed. The KV cache is what makes autoregressive
 generation tractable: keys/values for already-seen tokens are computed once
-and reused, not recomputed every step. Nothing has dethroned this general
-shape as the dominant architecture since 2017, but there are real
-contenders:
+and reused, not recomputed every step.
+
+Residual (a.k.a. skip) connections — each "+" in the diagram is `output = x +
+Sublayer(x)`: the sublayer's input `x` is carried around it unchanged and
+added back to its output. "Skip" names the topology (the connection skips
+over the block); "residual" names what the block has to learn — a correction
+on top of the input, rather than the full transformation from scratch.
+Motivation: this comes from ResNet (2015, image classification), which found
+that plain deep networks got *worse* at training error (not just test error)
+as more layers were added — proof it was an optimization problem, not
+overfitting. The residual fixes it by giving gradients a direct identity
+path back to early layers during backprop, so they don't have to be
+multiplied through every layer's Jacobian to get there — that's the
+vanishing-gradient mitigation. This is what makes stacking dozens (or 100+)
+of Transformer blocks trainable at all. One more detail baked into this
+diagram: it's drawn pre-norm (Norm happens before the sublayer, residual
+added after) — what GPT-2 onward and Llama use, versus the original 2017
+paper's post-norm (normalize after the add). Pre-norm is more stable at
+scale, part of why it's now near-universal.
+
+What each piece in the diagram is actually for:
+
+- **Token Embedding + Positional Encoding** — turns discrete tokens into
+  continuous vectors the network can do math on, and injects order
+  information, since attention itself is permutation-invariant and has no
+  built-in sense of sequence order without this.
+- **Norm** (before each sublayer, plus once at the end) — keeps activation
+  magnitudes stable as values pass through many stacked layers, stopping
+  them from exploding or shrinking with depth. A big part of why stacks of
+  dozens of blocks are trainable at all, alongside the residuals above.
+- **Masked Multi-Head Self-Attention** — lets every token gather information
+  from every earlier token (masked so it can't see the future, required for
+  autoregressive generation). "Multi-head" runs several attention patterns
+  in parallel subspaces, so the model can track different kinds of
+  relationships at once (e.g., syntax vs. coreference vs. topic) instead of
+  being forced into a single pattern.
+- **KV Cache** — avoids recomputing keys/values for every earlier token at
+  every generation step; without it, generating token N would mean
+  reprocessing the entire prefix from scratch each time.
+- **Feed-Forward Network** — attention mixes information *across* token
+  positions; the FFN then transforms each token's own representation
+  independently (no cross-token mixing here). It's also where most of a
+  model's raw parameter count lives. Meta-characteristic worth stating:
+  there's real interpretability research locating factual/world knowledge
+  specifically in FFN layers — Geva et al. (2020/2021, "Transformer
+  Feed-Forward Layers Are Key-Value Memories") show FFN layers behave like
+  key-value lookups, and Meng et al. (2022, the "ROME" model-editing paper)
+  found specific facts (e.g., "Paris is the capital of France") can often be
+  located and edited by changing specific mid-layer FFN weights. Caveat to
+  say out loud: this doesn't mean FFN does it all in isolation — attention
+  still does essential work retrieving and routing that knowledge into
+  context. Verify citation details before presenting.
+- **Final Norm** — one more normalization pass before the output projection,
+  so the final linear layer sees a consistently-scaled input regardless of
+  how many blocks came before.
+- **Linear → Softmax** — projects the final hidden state into one score per
+  vocabulary token (logits), then converts those scores into a valid
+  probability distribution to sample the next token from.
+
+Nothing has dethroned this general shape as the dominant architecture since
+2017, but there are real contenders:
 
 - **Mamba** — a state-space model, linear-time sequence processing instead of
   attention's quadratic cost.
