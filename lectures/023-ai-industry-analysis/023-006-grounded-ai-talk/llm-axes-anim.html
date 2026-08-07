@@ -1,6 +1,10 @@
 <!--
-  JS-driven rotation for the "Ingredients of an LLM" latent-space axes
-  diagram (stage 2 "embeddings" -> stage 3 "latent-space").
+  JS-driven diagram for the "Ingredients of an LLM" embeddings sequence,
+  spanning three consecutive stages that all share one persistent panel:
+  stage 2 "embeddings" (3 axes, "bank" point) -> stage 3 "vector-math"
+  (same 3 axes, stationary; "bank" fades out, 8 word points + 4 analogy
+  arrows fade in) -> stage 4 "latent-space" (word points fade back out;
+  x/z genuinely rotate and v4/v5 fade in once settled).
 
   Why this exists instead of auto-animate: reveal.js auto-animate cannot
   interpolate the `transform` property at all on matched (data-id) elements
@@ -77,6 +81,18 @@
       v4: { angle: -80,   present: false, label: { x: 341, y: 109 } },
       v5: { angle: 135,   present: false, label: { x: 137, y: 503 } }
     },
+    // x/y/z angles here are identical to `embeddings` -- deliberately no
+    // rotation on this transition. The rotation is reserved for the NEXT
+    // transition (into latent-space), where it visually marks the pivot
+    // from "meaning is geometric" to "and this geometry is denser than
+    // plain orthogonality allows".
+    'vector-math': {
+      x:  { angle: 147.7, present: true,  label: { x: 80,  y: 482 } },
+      y:  { angle: 30,    present: true,  label: { x: 500, y: 482 } },
+      z:  { angle: -90,   present: true,  label: { x: 315, y: 100 } },
+      v4: { angle: -80,   present: false, label: { x: 341, y: 109 } },
+      v5: { angle: 135,   present: false, label: { x: 137, y: 503 } }
+    },
     'latent-space': {
       x:  { angle: 159.9, present: true, label: { x: 65,  y: 440 } },
       y:  { angle: 30,    present: true, label: { x: 500, y: 482 } },
@@ -86,9 +102,40 @@
     }
   };
 
+  // "bank" (stage 2 only) and the king/queen word-analogy group (stage 3
+  // only) are simple translate+fade elements -- no rotation, just opacity,
+  // same as axis labels but without a matching line.
+  var BANK_PRESENT = { embeddings: true, 'vector-math': false, 'latent-space': false };
+  var WORD_PAIR_PRESENT = { embeddings: false, 'vector-math': true, 'latent-space': false };
+
+  // Two analogy pairs, each internally parallel but pointing in a
+  // different direction from the other pair -- the point isn't just "king
+  // - man + woman = queen" as a one-off trick, it's that DIFFERENT
+  // relationships each get their own consistent, reusable direction.
+  var WORD_POINTS = {
+    man:    { x: 410, y: 330, group: 'gender' },
+    woman:  { x: 450, y: 275, group: 'gender' },
+    king:   { x: 415, y: 210, group: 'gender' },
+    queen:  { x: 455, y: 155, group: 'gender' },
+    walk:   { x: 480, y: 340, group: 'tense' },
+    walked: { x: 545, y: 355, group: 'tense' },
+    swim:   { x: 485, y: 230, group: 'tense' },
+    swam:   { x: 550, y: 245, group: 'tense' }
+  };
+  var WORD_GROUP_COLOR = { gender: '#268bd2', tense: '#6c71c4' };
+  var ANALOGY_ARROWS = [
+    { from: 'man',  to: 'woman',  group: 'gender' },
+    { from: 'king', to: 'queen',  group: 'gender' },
+    { from: 'walk', to: 'walked', group: 'tense' },
+    { from: 'swim', to: 'swam',   group: 'tense' }
+  ];
+
   var svg = null;
   var visiblePanel = null;
   var axisEls = {};
+  var bankEls = {};
+  var wordPointEls = {};
+  var arrowEls = [];
   var currentAxesStage = null;
 
   function ns(tag) {
@@ -165,23 +212,89 @@
       axisEls[id].label = label;
     });
 
-    var wordPt = ns('circle');
-    wordPt.setAttribute('cx', '420');
-    wordPt.setAttribute('cy', '220');
-    wordPt.setAttribute('r', '10');
-    wordPt.setAttribute('fill', '#eee8d5');
-    wordPt.setAttribute('stroke', '#268bd2');
-    wordPt.setAttribute('stroke-width', '2');
-    svg.appendChild(wordPt);
+    var bankPt = ns('circle');
+    bankPt.setAttribute('cx', '420');
+    bankPt.setAttribute('cy', '220');
+    bankPt.setAttribute('r', '10');
+    bankPt.setAttribute('fill', '#eee8d5');
+    bankPt.setAttribute('stroke', '#268bd2');
+    bankPt.setAttribute('stroke-width', '2');
+    bankPt.classList.add('llm-fade-el');
+    svg.appendChild(bankPt);
+    bankEls.point = bankPt;
 
-    var wordLabel = ns('text');
-    wordLabel.setAttribute('x', '440');
-    wordLabel.setAttribute('y', '215');
-    wordLabel.setAttribute('font-size', '22');
-    wordLabel.setAttribute('font-weight', '600');
-    wordLabel.setAttribute('fill', '#eee8d5');
-    wordLabel.textContent = 'bank';
-    svg.appendChild(wordLabel);
+    var bankLabel = ns('text');
+    bankLabel.setAttribute('x', '440');
+    bankLabel.setAttribute('y', '215');
+    bankLabel.setAttribute('font-size', '22');
+    bankLabel.setAttribute('font-weight', '600');
+    bankLabel.setAttribute('fill', '#eee8d5');
+    bankLabel.textContent = 'bank';
+    bankLabel.classList.add('llm-fade-el');
+    svg.appendChild(bankLabel);
+    bankEls.label = bankLabel;
+
+    var arrowDefs = ns('defs');
+    ['gender', 'tense'].forEach(function (group) {
+      var marker = ns('marker');
+      marker.setAttribute('id', 'llm-arrow-' + group);
+      marker.setAttribute('viewBox', '0 0 10 10');
+      marker.setAttribute('refX', '8');
+      marker.setAttribute('refY', '5');
+      marker.setAttribute('markerWidth', '7');
+      marker.setAttribute('markerHeight', '7');
+      marker.setAttribute('orient', 'auto-start-reverse');
+      var path = ns('path');
+      path.setAttribute('d', 'M0,0 L10,5 L0,10 z');
+      path.setAttribute('fill', WORD_GROUP_COLOR[group]);
+      marker.appendChild(path);
+      arrowDefs.appendChild(marker);
+    });
+    svg.appendChild(arrowDefs);
+
+    ANALOGY_ARROWS.forEach(function (a) {
+      var from = WORD_POINTS[a.from];
+      var to = WORD_POINTS[a.to];
+      var line = ns('line');
+      line.setAttribute('x1', String(from.x));
+      line.setAttribute('y1', String(from.y));
+      line.setAttribute('x2', String(to.x));
+      line.setAttribute('y2', String(to.y));
+      line.setAttribute('stroke', WORD_GROUP_COLOR[a.group]);
+      line.setAttribute('stroke-width', '2.5');
+      line.setAttribute('stroke-dasharray', '5,4');
+      line.setAttribute('marker-end', 'url(#llm-arrow-' + a.group + ')');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      arrowEls.push(line);
+    });
+
+    Object.keys(WORD_POINTS).forEach(function (word) {
+      var pt = WORD_POINTS[word];
+      var color = WORD_GROUP_COLOR[pt.group];
+
+      var circle = ns('circle');
+      circle.setAttribute('cx', String(pt.x));
+      circle.setAttribute('cy', String(pt.y));
+      circle.setAttribute('r', '6');
+      circle.setAttribute('fill', '#eee8d5');
+      circle.setAttribute('stroke', color);
+      circle.setAttribute('stroke-width', '2');
+      circle.classList.add('llm-fade-el');
+      svg.appendChild(circle);
+
+      var label = ns('text');
+      label.setAttribute('x', String(pt.x + 12));
+      label.setAttribute('y', String(pt.y - 8));
+      label.setAttribute('font-size', '19');
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', color);
+      label.textContent = word;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+
+      wordPointEls[word] = { point: circle, label: label };
+    });
 
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
@@ -201,6 +314,40 @@
   // is allowed to start, no extra slide needed.
   var ROTATE_MS = 800;
   var FADE_MS = 500;
+
+  // Extra sequencing for the two simple fade groups (bank point, word-pair
+  // octet) on top of the axis rotate/fade logic below -- keyed by the
+  // specific adjacent transition, since each direction needs a different
+  // wait. Not covered here (e.g. a direct embeddings<->latent-space jump
+  // via overview mode, skipping vector-math) falls back to 0/0: an
+  // uncommon access path, immediate/concurrent is a fine default for it.
+  var FADE_SEQUENCE = {
+    'embeddings->vector-math':   { bankDelay: 0,                  wordPairDelay: FADE_MS },
+    'vector-math->embeddings':   { wordPairDelay: 0,               bankDelay: FADE_MS },
+    // Word points fade out right as the rotation starts (both run
+    // 0-800ms) -- only v4/v5 (handled above) wait for rotation to finish.
+    'vector-math->latent-space': { wordPairDelay: 0,                bankDelay: 0 },
+    // Reverse is fully sequential: v4/v5 fade out (0-500ms), axes rotate
+    // back (500-1300ms), THEN word points fade in -- so nothing ever
+    // overlaps the moving axes on the way back in.
+    'latent-space->vector-math': { wordPairDelay: FADE_MS + ROTATE_MS, bankDelay: 0 }
+  };
+
+  function applyFade(els, present, delayMs, animate) {
+    els.forEach(function (el) {
+      if (!animate) {
+        el.classList.add('llm-axes-no-transition');
+      } else {
+        el.style.transitionDelay = delayMs + 'ms';
+      }
+      el.style.opacity = present ? '1' : '0';
+      if (!animate) {
+        void el.getBoundingClientRect();
+        el.classList.remove('llm-axes-no-transition');
+        el.style.transitionDelay = '0ms';
+      }
+    });
+  }
 
   function applyStage(stageName, animate) {
     var stage = STAGES[stageName];
@@ -259,6 +406,18 @@
         label.style.transitionDelay = '0ms, 0ms';
       }
     });
+
+    var seqKey = (currentAxesStage || 'none') + '->' + stageName;
+    var seq = FADE_SEQUENCE[seqKey] || { bankDelay: 0, wordPairDelay: 0 };
+
+    applyFade([bankEls.point, bankEls.label], BANK_PRESENT[stageName], seq.bankDelay, animate);
+
+    var wordPairPresent = WORD_PAIR_PRESENT[stageName];
+    var wordEls = [];
+    Object.keys(wordPointEls).forEach(function (word) {
+      wordEls.push(wordPointEls[word].point, wordPointEls[word].label);
+    });
+    applyFade(wordEls.concat(arrowEls), wordPairPresent, seq.wordPairDelay, animate);
   }
 
   var currentAnchor = null;

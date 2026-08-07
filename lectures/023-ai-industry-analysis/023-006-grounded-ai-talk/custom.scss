@@ -142,6 +142,16 @@ $body-bg: #073642;
   transition: none !important;
 }
 
+// Simple opacity-only fade elements sharing the panel with the axes (the
+// "bank" point, the king/queen word-analogy points+arrows) -- no
+// transform, just fade, reusing the same instant-snap toggle class above.
+.llm-fade-el {
+  transition: opacity 0.5s ease;
+}
+.llm-fade-el.llm-axes-no-transition {
+  transition: none !important;
+}
+
 // Full-bleed accent treatment for the single "thesis" slide.
 .reveal .slides section.stat-slide blockquote {
   border: none;

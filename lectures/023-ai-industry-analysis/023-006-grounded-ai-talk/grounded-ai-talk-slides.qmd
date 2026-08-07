@@ -59,8 +59,7 @@ Everything else in this talk is downstream of that.
 
 # Part 1: The Magic {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
-<!-- STAGE 1/8 (llm-stage-1-language): language: ambiguous word, no numbers yet -->
-
+<!-- STAGE 1/9 (llm-stage-1-language): language: ambiguous word, no numbers yet -->
 ## The Ingredients of an LLM {#llm-stage-1-language auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -84,8 +83,7 @@ is the simplest example. Nobody engineered this into the model; it's a
 property of the input the model has to somehow represent.
 :::
 
-<!-- STAGE 2/8 (llm-stage-2-embeddings): embeddings: 3 orthogonal axes + 1 point -->
-
+<!-- STAGE 2/9 (llm-stage-2-embeddings): embeddings: 3 orthogonal axes + 1 point -->
 ## The Ingredients of an LLM {#llm-stage-2-embeddings auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -109,9 +107,44 @@ language at all. This axis diagram is a toy 3-dimensional stand-in;
 real embedding spaces have hundreds to thousands of dimensions.
 :::
 
-<!-- STAGE 3/8 (llm-stage-3-latent-space): latent space: axes skew, 5 axes total -->
+<!-- STAGE 3/9 (llm-stage-3-vector-math): vector math: king-man+woman=queen, two parallel analogy pairs -->
+## The Ingredients of an LLM {#llm-stage-3-vector-math auto-animate="true" .heading-accent}
 
-## The Ingredients of an LLM {#llm-stage-3-latent-space auto-animate="true" .heading-accent}
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="vector-math"></div>
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li>An informationally dense, context-sensitive language</li>
+      <li>A way to turn words into numbers (embeddings)</li>
+      <li><strong>A geometry where semantic relationships become vector arithmetic</strong></li>
+    </ul>
+  </div>
+</div>
+```
+
+::: {.notes}
+The classic demonstration: king &minus; man + woman &approx; queen. The
+offset from "man" to "woman" and the offset from "king" to "queen" point in
+almost the same direction &mdash; the space has learned a consistent
+"gender" direction, without ever being told one exists. Shown here with a
+second, unrelated pair (walk/walked, swim/swam) to make the point that
+this isn't a cherry-picked coincidence: different relationships get their
+own consistent directions, and the SAME offset recurs across otherwise
+unrelated words. Classic reference: Mikolov et al., "Linguistic
+Regularities in Continuous Space Word Representations" (NAACL 2013) and
+the original word2vec paper (Mikolov et al. 2013, arXiv:1301.3781). Worth
+saying out loud: this is a genuinely simplified, best-case illustration
+&mdash; real analogy performance is noisier and more brittle than the
+clean textbook examples, and modern LLM embeddings are far higher-
+dimensional and contextual (not one fixed vector per word) than this toy
+picture shows.
+:::
+
+<!-- STAGE 4/9 (llm-stage-4-latent-space): latent space: axes skew, 5 axes total -->
+## The Ingredients of an LLM {#llm-stage-4-latent-space auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
@@ -122,6 +155,7 @@ real embedding spaces have hundreds to thousands of dimensions.
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li><strong>A latent space that relaxes orthogonality to pack in more information</strong></li>
     </ul>
   </div>
@@ -142,9 +176,8 @@ a model would be limited to roughly as many independent concepts as it has
 dimensions; real embedding spaces pack in vastly more than that.
 :::
 
-<!-- STAGE 4/8 (llm-stage-4-transformer): transformer: layered schematic -->
-
-## The Ingredients of an LLM {#llm-stage-4-transformer auto-animate="true" .heading-accent}
+<!-- STAGE 5/9 (llm-stage-5-transformer): transformer: layered schematic -->
+## The Ingredients of an LLM {#llm-stage-5-transformer auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
@@ -155,6 +188,7 @@ dimensions; real embedding spaces pack in vastly more than that.
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li><strong>A highly parameterized statistical model (the Transformer)</strong></li>
     </ul>
@@ -176,9 +210,8 @@ long-range dependencies that lower-capacity models (n-grams, bag-of-words,
 fixed-window models) structurally cannot represent.
 :::
 
-<!-- STAGE 5/8 (llm-stage-5-data): data: Common Crawl vs. used-after-filtering bars -->
-
-## The Ingredients of an LLM {#llm-stage-5-data auto-animate="true" .heading-accent}
+<!-- STAGE 6/9 (llm-stage-6-data): data: Common Crawl vs. used-after-filtering bars -->
+## The Ingredients of an LLM {#llm-stage-6-data auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
@@ -189,6 +222,7 @@ fixed-window models) structurally cannot represent.
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li><strong>Lots of data</strong></li>
@@ -210,9 +244,8 @@ Nemotron-CC (arXiv 2412.02595), FineWeb (HuggingFace/NeurIPS 2024), Mozilla
 Foundation's Common Crawl report.
 :::
 
-<!-- STAGE 6/8 (llm-stage-6-compute): compute: FLOPs-over-time bars -->
-
-## The Ingredients of an LLM {#llm-stage-6-compute auto-animate="true" .heading-accent}
+<!-- STAGE 7/9 (llm-stage-7-compute): compute: FLOPs-over-time bars -->
+## The Ingredients of an LLM {#llm-stage-7-compute auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
@@ -223,6 +256,7 @@ Foundation's Common Crawl report.
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li>Lots of data</li>
@@ -242,9 +276,8 @@ models have been trained at the scale of GPT-4"), Stanford HAI AI Index 2025. Ch
 numbers is far too large to show on a true linear scale.
 :::
 
-<!-- STAGE 7/8 (llm-stage-7-training): training: descending loss curve -->
-
-## The Ingredients of an LLM {#llm-stage-7-training auto-animate="true" .heading-accent}
+<!-- STAGE 8/9 (llm-stage-8-training): training: descending loss curve -->
+## The Ingredients of an LLM {#llm-stage-8-training auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
@@ -255,6 +288,7 @@ numbers is far too large to show on a true linear scale.
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li>Lots of data</li>
@@ -269,13 +303,12 @@ numbers is far too large to show on a true linear scale.
 The loop: run the model forward on a batch, compare its prediction to the
 real next token (the loss), compute gradients backward through every
 parameter, nudge every weight slightly to reduce that loss, repeat &mdash;
-millions to billions of times, over weeks. This is what stages 5 and 6
+millions to billions of times, over weeks. This is what stages 6 and 7
 (data and compute) actually get spent on.
 :::
 
-<!-- STAGE 8/8 (llm-stage-8-inference): inference: prompt -> model -> sampled token -->
-
-## The Ingredients of an LLM {#llm-stage-8-inference auto-animate="true" .heading-accent}
+<!-- STAGE 9/9 (llm-stage-9-inference): inference: prompt -> model -> sampled token -->
+## The Ingredients of an LLM {#llm-stage-9-inference auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
@@ -286,6 +319,7 @@ millions to billions of times, over weeks. This is what stages 5 and 6
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li>Lots of data</li>
