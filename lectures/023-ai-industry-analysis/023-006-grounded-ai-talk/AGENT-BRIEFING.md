@@ -132,13 +132,41 @@ sampled every `requestAnimationFrame`, not screenshots:
   `auto-animate="true"` slides is to fade it in/out — and an empty mount
   `<div>` with no `data-id` counts as unmatched, so the *entire panel*
   (including your genuinely-animating children) flashes on top of your own
-  transition. Fix: give the mount div a `data-id` shared across every stage
-  it appears in. Since both stages render it with identical position/size,
-  auto-animate treats it as "the same element, unchanged" and leaves it
-  alone — safe specifically because the mount div itself never gets a CSS
-  `transform` (only its children do, and they aren't separately
-  auto-animate-matched targets, so they never collide with reveal's
-  injected `transform: none` override on matched elements).
+  transition.
+  **The fix that seemed obvious here — give the mount a shared `data-id` so
+  it's "the same element, unchanged" — is a trap, do not do this.** It
+  stops the mount from fading, but makes things *worse*: once the mount
+  becomes a matched element, reveal recurses into its subtree looking for
+  descendants it can independently mark, finds your un-data-id'd
+  JS-created line/label elements, and starts driving its *own* `opacity`
+  transition on them via `[data-auto-animate-target^=unmatched]
+  {opacity:0}` (confirmed by reading reveal's bundled source) — fighting
+  your own JS-driven opacity/transform changes on the exact same elements.
+  This looks like elements randomly "dropping in" or one navigation
+  animating correctly while the next snaps to a wrong pose, and it's
+  intermittent enough to look like a timing bug rather than what it is.
+  **The only reliable fix is to keep the whole diagram outside anything
+  auto-animate's scan ever walks, full stop — not to negotiate with it via
+  data-id.** Concretely: don't put the real content inside the
+  `auto-animate="true"` section's DOM at all. Put an invisible,
+  zero-content placeholder there instead (sized via CSS to reserve the
+  right layout space, e.g. `visibility: hidden`) purely so the flex layout
+  doesn't reflow — auto-animate can do whatever it wants to a placeholder
+  that renders nothing, it's undetectable either way. Build the actual
+  visible content as a single persistent `position: fixed` element
+  appended directly to `<body>` (a sibling of `.reveal`, never a
+  descendant — being nested under anything reveal-owned risks inheriting a
+  `transform` ancestor, which would break `position: fixed`'s
+  viewport-relative behavior), and on every `'slidechanged'` reposition it
+  via `getBoundingClientRect()` of whichever placeholder is in the current
+  slide. This also means the SVG never needs to be reparented at all after
+  its initial creation, which incidentally sidesteps the reparent-timing
+  gotcha above too — one less thing to get wrong. Verified via a 30x rapid
+  next/prev "mash" test (40ms between each, faster than a real keypress
+  cadence) with `getComputedStyle` sampled every frame: zero instances of
+  any line/label element ever acquiring `data-auto-animate-target`, and a
+  fresh page load always converges to exactly one `<svg>` / one panel
+  element, no matter how aggressively you navigate.
 
 Original unconfirmed finding, preserved in case it recurs: the same
 JS-transform technique failed on an SVG element that was part of the

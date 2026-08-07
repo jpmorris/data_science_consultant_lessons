@@ -6,25 +6,31 @@
   interpolate the `transform` property at all on matched (data-id) elements
   -- confirmed via direct testing, see AGENT-BRIEFING.md. The fix is to stop
   asking auto-animate to do it: build the axis lines/labels once via
-  document.createElementNS (not static markup), drive their rotation
-  entirely with a plain CSS `transition: transform`, and reparent the single
-  persistent <svg> into whichever slide's mount point is currently active on
-  Reveal's own 'slidechanged' event. Auto-animate never sees these child
-  elements, so its data-id matching/collision with `transform` never enters
-  the picture.
+  document.createElementNS (not static markup) and drive their rotation
+  entirely with a plain CSS `transition: transform`.
 
-  Important: the two `.llm-axes-mount` divs (one per stage, in the qmd) DO
-  need a shared `data-id="llm-axes-panel"` -- without it, auto-animate
-  treats the mount as two unrelated, unmatched elements and applies its own
-  default fade in/out to the whole panel (its documented behavior for
-  anything it can't match), which visibly flashes on top of our rotation.
-  Giving it a matching data-id makes auto-animate recognize it as "the same
-  element, unchanged" (identical position/size on both slides) and leave it
-  alone entirely -- confirmed via computed opacity sampled every frame
-  during the transition. This is safe specifically because we never set a
-  CSS `transform` on the mount div itself (only on its children, which
-  aren't separately matched targets) -- doing that WOULD hit the
-  transform:none collision documented in AGENT-BRIEFING.md.
+  The visible panel is NOT inside .reveal .slides at all -- it's a single
+  persistent, `position: fixed` element appended to <body>, repositioned on
+  top of an invisible `.llm-axes-anchor` placeholder (one per stage, in the
+  qmd) every time the current slide changes. This took two earlier failed
+  attempts to get right, both documented in AGENT-BRIEFING.md:
+    1. First attempt reparented the real content into a per-stage mount
+       <div> living inside the section. Reveal's auto-animate faded the
+       WHOLE mount in/out because an unmatched element (no data-id) between
+       two auto-animate slides gets its documented default fade treatment.
+    2. Second attempt gave the mount a matching data-id to stop that fade.
+       This made things *worse*: once the mount became a matched element,
+       reveal started recursing into its subtree looking for ITS OWN
+       unmatched descendants, found our un-data-id'd line/label elements,
+       and started driving its own independent opacity transition on them
+       -- fighting our JS-driven one on the very same elements. That's what
+       looked like axes randomly "dropping in" on navigation.
+  The only reliable fix is what's here: keep the whole diagram outside
+  anything reveal's auto-animate scan ever walks, so neither failure mode
+  can happen regardless of what auto-animate's internal matching decides.
+  The anchor's only job is reserving layout space (via a matching CSS
+  height) inside the two-column row; it renders nothing, so it plainly
+  doesn't matter if auto-animate marks it unmatched/fades it.
 -->
 <script>
 (function () {
@@ -79,6 +85,7 @@
   };
 
   var svg = null;
+  var visiblePanel = null;
   var axisEls = {};
   var currentAxesStage = null;
 
@@ -88,6 +95,11 @@
 
   function buildSvgOnce() {
     if (svg) return svg;
+
+    visiblePanel = document.createElement('div');
+    visiblePanel.className = 'llm-axes-visible-panel';
+    visiblePanel.style.display = 'none';
+    document.body.appendChild(visiblePanel);
 
     svg = ns('svg');
     svg.setAttribute('viewBox', '0 0 600 600');
@@ -169,6 +181,12 @@
     wordLabel.textContent = 'bank';
     svg.appendChild(wordLabel);
 
+    // Attached once, permanently -- never reparented again, unlike the
+    // earlier mount-based attempt. That also sidesteps the "reparent and
+    // restyle in the same tick suppresses the transition" gotcha from
+    // AGENT-BRIEFING.md entirely, since there's no more reparenting at all.
+    visiblePanel.appendChild(svg);
+
     return svg;
   }
 
@@ -241,24 +259,32 @@
     });
   }
 
+  var currentAnchor = null;
+
+  function positionVisiblePanel() {
+    if (!currentAnchor) return;
+    var rect = currentAnchor.getBoundingClientRect();
+    visiblePanel.style.left = rect.left + 'px';
+    visiblePanel.style.top = rect.top + 'px';
+    visiblePanel.style.width = rect.width + 'px';
+    visiblePanel.style.height = rect.height + 'px';
+  }
+
   function handleSlideChange(slideEl) {
     if (!slideEl) return;
-    var mount = slideEl.querySelector('.llm-axes-mount');
-    if (!mount) {
+    var anchor = slideEl.querySelector('.llm-axes-anchor');
+    if (!anchor) {
       currentAxesStage = null;
+      currentAnchor = null;
+      visiblePanel.style.display = 'none';
       return;
     }
-    var newStage = mount.dataset.axesStage;
+    currentAnchor = anchor;
+    visiblePanel.style.display = 'flex';
+    positionVisiblePanel();
+
+    var newStage = anchor.dataset.axesStage;
     var animate = currentAxesStage !== null && currentAxesStage !== newStage;
-    if (svg.parentElement !== mount) {
-      mount.appendChild(svg);
-      // Force a style flush so the pre-move values get committed/observed
-      // as a real rendered frame before we change them below. Without this,
-      // the reparent and the upcoming transform change collapse into a
-      // single unobserved style recalc and the transition never triggers
-      // -- the element just jumps straight to the final value.
-      void svg.getBoundingClientRect();
-    }
     applyStage(newStage, animate);
     currentAxesStage = newStage;
   }
@@ -269,6 +295,7 @@
     Reveal.on('slidechanged', function (event) {
       handleSlideChange(event.currentSlide);
     });
+    window.addEventListener('resize', positionVisiblePanel);
   }
 
   function whenRevealAvailable() {

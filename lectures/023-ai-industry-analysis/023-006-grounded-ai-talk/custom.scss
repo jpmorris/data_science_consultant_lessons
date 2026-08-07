@@ -93,17 +93,40 @@ $body-bg: #073642;
   margin: 0;
 }
 
-// Mount point for the JS-driven (non-auto-animate) latent-space axes
-// diagram. A single persistent <svg>, built once via createElementNS, is
-// reparented into whichever slide's mount is currently active as the user
-// navigates -- see llm-axes-anim.html. Sized to match the diagram-panel's
-// old flex-centered SVG so layout doesn't shift.
-.reveal .slides .llm-axes-mount {
-  width: 560px;
-  height: 560px;
+// Invisible layout-only placeholder for the latent-space axes diagram.
+// Reserves the same box the old .diagram-panel occupied (so the flex row
+// doesn't reflow) but renders nothing itself -- the real, visible panel is
+// a separate element living outside .reveal .slides entirely (appended to
+// <body> by llm-axes-anim.html) and positioned on top of this anchor's
+// rect. It has to live outside .slides: giving reveal's auto-animate
+// anything to look at here (even a matched data-id) causes it to recurse
+// into the subtree and apply its own conflicting opacity transition to any
+// non-data-id'd descendant it finds -- see AGENT-BRIEFING.md. This way
+// auto-animate's scan of the section never encounters the diagram at all.
+.reveal .slides .llm-axes-anchor {
+  height: 620px;
+  visibility: hidden;
+}
+
+// The real, visible axes panel -- deliberately NOT under .reveal .slides.
+// Mirrors the old .diagram-panel's look; position/size are set inline by
+// JS every time it's shown, matching the current .llm-axes-anchor's
+// on-screen rect (in viewport px, which already accounts for reveal's own
+// responsive scale-to-fit transform since getBoundingClientRect reports
+// final rendered coordinates).
+.llm-axes-visible-panel {
+  position: fixed;
+  background: #0d4a55;
+  border-radius: 12px;
+  padding: 3%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.llm-axes-visible-panel .llm-axes-svg {
+  width: 100%;
+  height: 100%;
 }
 
 // transform on these is set from JS as plain CSS (not the SVG attribute)
