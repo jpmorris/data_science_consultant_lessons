@@ -93,6 +93,32 @@ $body-bg: #073642;
   margin: 0;
 }
 
+// Mount point for the JS-driven (non-auto-animate) latent-space axes
+// diagram. A single persistent <svg>, built once via createElementNS, is
+// reparented into whichever slide's mount is currently active as the user
+// navigates -- see llm-axes-anim.html. Sized to match the diagram-panel's
+// old flex-centered SVG so layout doesn't shift.
+.reveal .slides .llm-axes-mount {
+  width: 560px;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// transform on these is set from JS as plain CSS (not the SVG attribute)
+// specifically so it participates in a CSS transition -- auto-animate
+// can't animate `transform` at all (see AGENT-BRIEFING.md), so this
+// diagram bypasses it entirely rather than fighting it.
+.llm-axes-line,
+.llm-axes-label {
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+}
+.llm-axes-line.llm-axes-no-transition,
+.llm-axes-label.llm-axes-no-transition {
+  transition: none !important;
+}
+
 // Full-bleed accent treatment for the single "thesis" slide.
 .reveal .slides section.stat-slide blockquote {
   border: none;

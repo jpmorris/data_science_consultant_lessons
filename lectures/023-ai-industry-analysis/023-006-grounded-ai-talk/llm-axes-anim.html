@@ -1,0 +1,221 @@
+<!--
+  JS-driven rotation for the "Ingredients of an LLM" latent-space axes
+  diagram (stage 2 "embeddings" -> stage 3 "latent-space").
+
+  Why this exists instead of auto-animate: reveal.js auto-animate cannot
+  interpolate the `transform` property at all on matched (data-id) elements
+  -- confirmed via direct testing, see AGENT-BRIEFING.md. The fix is to stop
+  asking auto-animate to do it: build the axis lines/labels once via
+  document.createElementNS (not static markup), drive their rotation
+  entirely with a plain CSS `transition: transform`, and reparent the single
+  persistent <svg> into whichever slide's mount point is currently active on
+  Reveal's own 'slidechanged' event. Auto-animate never sees these elements,
+  so its data-id matching/collision with `transform` never enters the
+  picture.
+-->
+<script>
+(function () {
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var ORIGIN = { x: 300, y: 340 };
+
+  var AXES_CFG = {
+    x:  { color: '#268bd2', radius: 220 },
+    y:  { color: '#2aa198', radius: 227 },
+    z:  { color: '#b58900', radius: 228 },
+    v4: { color: '#6c71c4', radius: 200 },
+    v5: { color: '#859900', radius: 195 }
+  };
+  var AXIS_ORDER = ['x', 'y', 'z', 'v4', 'v5'];
+  var AXIS_LETTER = { x: 'x', y: 'y', z: 'z', v4: 'v4', v5: 'v5' };
+
+  var STAGES = {
+    embeddings: {
+      x:  { angle: 147.7, present: true,  label: { x: 80,  y: 482 } },
+      y:  { angle: 32.3,  present: true,  label: { x: 500, y: 482 } },
+      z:  { angle: -90,   present: true,  label: { x: 315, y: 100 } },
+      v4: { angle: -55,   present: false, label: { x: 428, y: 160 } },
+      v5: { angle: 110.1, present: false, label: { x: 195, y: 550 } }
+    },
+    'latent-space': {
+      x:  { angle: 159.9, present: true, label: { x: 65,  y: 440 } },
+      y:  { angle: 30,    present: true, label: { x: 510, y: 480 } },
+      z:  { angle: -100,  present: true, label: { x: 268, y: 100 } },
+      v4: { angle: -55,   present: true, label: { x: 428, y: 160 } },
+      v5: { angle: 110.1, present: true, label: { x: 195, y: 550 } }
+    }
+  };
+
+  var svg = null;
+  var axisEls = {};
+  var currentAxesStage = null;
+
+  function ns(tag) {
+    return document.createElementNS(SVG_NS, tag);
+  }
+
+  function buildSvgOnce() {
+    if (svg) return svg;
+
+    svg = ns('svg');
+    svg.setAttribute('viewBox', '0 0 600 600');
+    svg.setAttribute('width', '560');
+    svg.setAttribute('height', '560');
+    svg.classList.add('llm-axes-svg');
+
+    var defs = ns('defs');
+    AXIS_ORDER.forEach(function (id) {
+      var marker = ns('marker');
+      marker.setAttribute('id', 'llm-axes-arrow-' + id);
+      marker.setAttribute('viewBox', '0 0 10 10');
+      marker.setAttribute('refX', '8');
+      marker.setAttribute('refY', '5');
+      marker.setAttribute('markerWidth', '8');
+      marker.setAttribute('markerHeight', '8');
+      marker.setAttribute('orient', 'auto-start-reverse');
+      var path = ns('path');
+      path.setAttribute('d', 'M0,0 L10,5 L0,10 z');
+      path.setAttribute('fill', AXES_CFG[id].color);
+      marker.appendChild(path);
+      defs.appendChild(marker);
+    });
+    svg.appendChild(defs);
+
+    AXIS_ORDER.forEach(function (id) {
+      var cfg = AXES_CFG[id];
+      var line = ns('line');
+      line.setAttribute('x1', '0');
+      line.setAttribute('y1', '0');
+      line.setAttribute('x2', String(cfg.radius));
+      line.setAttribute('y2', '0');
+      line.setAttribute('stroke', cfg.color);
+      line.setAttribute('stroke-width', '3');
+      line.setAttribute('marker-end', 'url(#llm-axes-arrow-' + id + ')');
+      line.classList.add('llm-axes-line');
+      line.dataset.axis = id;
+      line.style.transformOrigin = '0px 0px';
+      svg.appendChild(line);
+      axisEls[id] = { line: line };
+    });
+
+    var origin = ns('circle');
+    origin.setAttribute('cx', String(ORIGIN.x));
+    origin.setAttribute('cy', String(ORIGIN.y));
+    origin.setAttribute('r', '5');
+    origin.setAttribute('fill', '#eee8d5');
+    svg.appendChild(origin);
+
+    AXIS_ORDER.forEach(function (id) {
+      var cfg = AXES_CFG[id];
+      var label = ns('text');
+      label.setAttribute('font-size', '26');
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', cfg.color);
+      label.textContent = AXIS_LETTER[id];
+      label.classList.add('llm-axes-label');
+      label.dataset.axis = id;
+      label.style.transformOrigin = '0px 0px';
+      svg.appendChild(label);
+      axisEls[id].label = label;
+    });
+
+    var wordPt = ns('circle');
+    wordPt.setAttribute('cx', '420');
+    wordPt.setAttribute('cy', '220');
+    wordPt.setAttribute('r', '10');
+    wordPt.setAttribute('fill', '#eee8d5');
+    wordPt.setAttribute('stroke', '#268bd2');
+    wordPt.setAttribute('stroke-width', '2');
+    svg.appendChild(wordPt);
+
+    var wordLabel = ns('text');
+    wordLabel.setAttribute('x', '440');
+    wordLabel.setAttribute('y', '215');
+    wordLabel.setAttribute('font-size', '22');
+    wordLabel.setAttribute('font-weight', '600');
+    wordLabel.setAttribute('fill', '#eee8d5');
+    wordLabel.textContent = 'bank';
+    svg.appendChild(wordLabel);
+
+    return svg;
+  }
+
+  function applyStage(stageName, animate) {
+    var stage = STAGES[stageName];
+    if (!stage) return;
+
+    AXIS_ORDER.forEach(function (id) {
+      var cfg = stage[id];
+      var line = axisEls[id].line;
+      var label = axisEls[id].label;
+
+      if (!animate) {
+        line.classList.add('llm-axes-no-transition');
+        label.classList.add('llm-axes-no-transition');
+      }
+
+      line.style.transform =
+        'translate(' + ORIGIN.x + 'px,' + ORIGIN.y + 'px) rotate(' + cfg.angle + 'deg)';
+      label.style.transform =
+        'translate(' + cfg.label.x + 'px,' + cfg.label.y + 'px)';
+
+      var opacity = cfg.present ? '1' : '0';
+      line.style.opacity = opacity;
+      label.style.opacity = opacity;
+
+      if (!animate) {
+        // Force layout so the instant (transition:none) values above are
+        // committed before we remove the class -- otherwise the browser can
+        // coalesce this with the next style change and transition anyway.
+        void line.getBoundingClientRect();
+        void label.getBoundingClientRect();
+        line.classList.remove('llm-axes-no-transition');
+        label.classList.remove('llm-axes-no-transition');
+      }
+    });
+  }
+
+  function handleSlideChange(slideEl) {
+    if (!slideEl) return;
+    var mount = slideEl.querySelector('.llm-axes-mount');
+    if (!mount) {
+      currentAxesStage = null;
+      return;
+    }
+    var newStage = mount.dataset.axesStage;
+    var animate = currentAxesStage !== null && currentAxesStage !== newStage;
+    if (svg.parentElement !== mount) {
+      mount.appendChild(svg);
+      // Force a style flush so the pre-move values get committed/observed
+      // as a real rendered frame before we change them below. Without this,
+      // the reparent and the upcoming transform change collapse into a
+      // single unobserved style recalc and the transition never triggers
+      // -- the element just jumps straight to the final value.
+      void svg.getBoundingClientRect();
+    }
+    applyStage(newStage, animate);
+    currentAxesStage = newStage;
+  }
+
+  function setup() {
+    buildSvgOnce();
+    handleSlideChange(Reveal.getCurrentSlide());
+    Reveal.on('slidechanged', function (event) {
+      handleSlideChange(event.currentSlide);
+    });
+  }
+
+  function whenRevealAvailable() {
+    if (window.Reveal) {
+      if (typeof Reveal.isReady === 'function' && Reveal.isReady()) {
+        setup();
+      } else {
+        Reveal.on('ready', setup);
+      }
+    } else {
+      setTimeout(whenRevealAvailable, 30);
+    }
+  }
+
+  whenRevealAvailable();
+})();
+</script>
