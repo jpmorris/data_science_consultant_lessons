@@ -381,6 +381,19 @@ What each piece in the diagram is actually for:
   in parallel subspaces, so the model can track different kinds of
   relationships at once (e.g., syntax vs. coreference vs. topic) instead of
   being forced into a single pattern.
+  - **Why multiple heads**: we need multiple heads because language is
+    complex — there are many distinct aspects of it that need attending to
+    at once, and a single head can only capture one such pattern at a time.
+  - **Why multiple blocks**: we need multiple blocks because facts and
+    features compound — each block adds a new vector directly into the same
+    running per-token representation (the residual stream), a literal
+    additive update, not a repeated attempt, so a later block can depend on
+    something only an earlier block could have produced. In specific traced
+    cases we can name exactly what gets added: a "previous-token" signal
+    enabling pattern-completion (induction heads), or accumulated facts
+    about a specific entity enabling multi-hop recall (factual lookup
+    circuits). What a given block adds in the general case isn't known —
+    an open problem, not a detail being skipped.
 - **KV Cache** — avoids recomputing keys/values for every earlier token at
   every generation step; without it, generating token N would mean
   reprocessing the entire prefix from scratch each time.
