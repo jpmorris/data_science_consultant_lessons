@@ -1,10 +1,11 @@
 <!--
   JS-driven diagram for the "Ingredients of an LLM" embeddings sequence,
   spanning three consecutive stages that all share one persistent panel:
-  stage 2 "embeddings" (3 axes, "bank" point) -> stage 3 "vector-math"
-  (same 3 axes, stationary; "bank" fades out, 8 word points + 4 analogy
-  arrows fade in) -> stage 4 "latent-space" (word points fade back out;
-  x/z genuinely rotate and v4/v5 fade in once settled).
+  stage 2 "embeddings" (3 axes, "king" as the one point) -> stage 3
+  "vector-math" (same 3 axes, stationary, king unchanged; the other 7 word
+  points + 4 analogy arrows fade in around it) -> stage 4 "latent-space"
+  (word points fade back out; x/z genuinely rotate and v4/v5 fade in once
+  settled).
 
   Why this exists instead of auto-animate: reveal.js auto-animate cannot
   interpolate the `transform` property at all on matched (data-id) elements
@@ -102,25 +103,36 @@
     }
   };
 
-  // "bank" (stage 2 only) and the king/queen word-analogy group (stage 3
-  // only) are simple translate+fade elements -- no rotation, just opacity,
-  // same as axis labels but without a matching line.
-  var BANK_PRESENT = { embeddings: true, 'vector-math': false, 'latent-space': false };
-  var WORD_PAIR_PRESENT = { embeddings: false, 'vector-math': true, 'latent-space': false };
-
-  // Two analogy pairs, each internally parallel but pointing in a
-  // different direction from the other pair -- the point isn't just "king
-  // - man + woman = queen" as a one-off trick, it's that DIFFERENT
+  // These are simple translate+fade elements -- no rotation, just opacity,
+  // same as axis labels but without a matching line. "king" is the
+  // through-line from stage 2: it's the one word shown on its own in
+  // "embeddings" (at the exact position it holds here too, so it never
+  // moves or fades between those two stages -- it's the same point, not a
+  // replacement), then the other 7 fade in around it to build out the
+  // analogy. Two analogy pairs, each internally parallel but pointing in a
+  // different direction from the other pair, spread across the full
+  // available quadrant (not cramped near king) -- the point isn't just
+  // "king - man + woman = queen" as a one-off trick, it's that DIFFERENT
   // relationships each get their own consistent, reusable direction.
+  var EMB_VM = { embeddings: true, 'vector-math': true, 'latent-space': false };
+  var VM_ONLY = { embeddings: false, 'vector-math': true, 'latent-space': false };
+  var ARROW_PRESENT = { embeddings: false, 'vector-math': true, 'latent-space': false };
+
   var WORD_POINTS = {
-    man:    { x: 410, y: 330, group: 'gender' },
-    woman:  { x: 450, y: 275, group: 'gender' },
-    king:   { x: 415, y: 210, group: 'gender' },
-    queen:  { x: 455, y: 155, group: 'gender' },
-    walk:   { x: 480, y: 340, group: 'tense' },
-    walked: { x: 545, y: 355, group: 'tense' },
-    swim:   { x: 485, y: 230, group: 'tense' },
-    swam:   { x: 550, y: 245, group: 'tense' }
+    // gender pair -- upper band, king fixed where "bank" used to sit.
+    // king->queen and man->woman use the identical (165,-100) offset;
+    // starting points are chosen far enough apart that neither pair's
+    // second point drifts back near the other pair's first point.
+    king:   { x: 420, y: 220, group: 'gender', present: EMB_VM },
+    queen:  { x: 585, y: 120, group: 'gender', present: VM_ONLY },
+    man:    { x: 345, y: 210, group: 'gender', present: VM_ONLY },
+    woman:  { x: 510, y: 110, group: 'gender', present: VM_ONLY },
+    // tense pair -- lower band, fully separated from the gender pair by a
+    // clear vertical gap; identical (150,55) offset for both instances.
+    walk:   { x: 345, y: 270, group: 'tense',  present: VM_ONLY },
+    walked: { x: 495, y: 325, group: 'tense',  present: VM_ONLY },
+    swim:   { x: 345, y: 335, group: 'tense',  present: VM_ONLY },
+    swam:   { x: 495, y: 390, group: 'tense',  present: VM_ONLY }
   };
   var WORD_GROUP_COLOR = { gender: '#268bd2', tense: '#6c71c4' };
   var ANALOGY_ARROWS = [
@@ -133,7 +145,6 @@
   var svg = null;
   var visiblePanel = null;
   var axisEls = {};
-  var bankEls = {};
   var wordPointEls = {};
   var arrowEls = [];
   var currentAxesStage = null;
@@ -212,28 +223,6 @@
       axisEls[id].label = label;
     });
 
-    var bankPt = ns('circle');
-    bankPt.setAttribute('cx', '420');
-    bankPt.setAttribute('cy', '220');
-    bankPt.setAttribute('r', '10');
-    bankPt.setAttribute('fill', '#eee8d5');
-    bankPt.setAttribute('stroke', '#268bd2');
-    bankPt.setAttribute('stroke-width', '2');
-    bankPt.classList.add('llm-fade-el');
-    svg.appendChild(bankPt);
-    bankEls.point = bankPt;
-
-    var bankLabel = ns('text');
-    bankLabel.setAttribute('x', '440');
-    bankLabel.setAttribute('y', '215');
-    bankLabel.setAttribute('font-size', '22');
-    bankLabel.setAttribute('font-weight', '600');
-    bankLabel.setAttribute('fill', '#eee8d5');
-    bankLabel.textContent = 'bank';
-    bankLabel.classList.add('llm-fade-el');
-    svg.appendChild(bankLabel);
-    bankEls.label = bankLabel;
-
     var arrowDefs = ns('defs');
     ['gender', 'tense'].forEach(function (group) {
       var marker = ns('marker');
@@ -283,9 +272,15 @@
       circle.classList.add('llm-fade-el');
       svg.appendChild(circle);
 
+      // Points past the panel's horizontal midpoint get their label
+      // anchored on the LEFT (text growing back toward center) instead of
+      // the right, so labels on points near the right edge don't run off
+      // the panel.
+      var labelOnLeft = pt.x > 470;
       var label = ns('text');
-      label.setAttribute('x', String(pt.x + 12));
+      label.setAttribute('x', String(pt.x + (labelOnLeft ? -12 : 12)));
       label.setAttribute('y', String(pt.y - 8));
+      if (labelOnLeft) label.setAttribute('text-anchor', 'end');
       label.setAttribute('font-size', '19');
       label.setAttribute('font-weight', '600');
       label.setAttribute('fill', color);
@@ -315,22 +310,27 @@
   var ROTATE_MS = 800;
   var FADE_MS = 500;
 
-  // Extra sequencing for the two simple fade groups (bank point, word-pair
-  // octet) on top of the axis rotate/fade logic below -- keyed by the
-  // specific adjacent transition, since each direction needs a different
-  // wait. Not covered here (e.g. a direct embeddings<->latent-space jump
-  // via overview mode, skipping vector-math) falls back to 0/0: an
-  // uncommon access path, immediate/concurrent is a fine default for it.
+  // Extra sequencing for the word-point/arrow fade group on top of the
+  // axis rotate/fade logic below -- keyed by the specific adjacent
+  // transition, since each direction needs a different wait. "king" is
+  // excluded from ever needing this in practice: its presence doesn't
+  // change on the embeddings<->vector-math legs, so setting its opacity to
+  // the same value again is a no-op regardless of delay. Not covered here
+  // (e.g. a direct embeddings<->latent-space jump via overview mode,
+  // skipping vector-math) falls back to 0: an uncommon access path,
+  // immediate/concurrent is a fine default for it.
   var FADE_SEQUENCE = {
-    'embeddings->vector-math':   { bankDelay: 0,                  wordPairDelay: FADE_MS },
-    'vector-math->embeddings':   { wordPairDelay: 0,               bankDelay: FADE_MS },
+    // queen/man/woman/etc. fade in right away -- nothing needs to clear
+    // first now that king just stays put instead of fading out.
+    'embeddings->vector-math':   { wordPairDelay: 0 },
+    'vector-math->embeddings':   { wordPairDelay: 0 },
     // Word points fade out right as the rotation starts (both run
     // 0-800ms) -- only v4/v5 (handled above) wait for rotation to finish.
-    'vector-math->latent-space': { wordPairDelay: 0,                bankDelay: 0 },
+    'vector-math->latent-space': { wordPairDelay: 0 },
     // Reverse is fully sequential: v4/v5 fade out (0-500ms), axes rotate
     // back (500-1300ms), THEN word points fade in -- so nothing ever
     // overlaps the moving axes on the way back in.
-    'latent-space->vector-math': { wordPairDelay: FADE_MS + ROTATE_MS, bankDelay: 0 }
+    'latent-space->vector-math': { wordPairDelay: FADE_MS + ROTATE_MS }
   };
 
   function applyFade(els, present, delayMs, animate) {
@@ -408,16 +408,17 @@
     });
 
     var seqKey = (currentAxesStage || 'none') + '->' + stageName;
-    var seq = FADE_SEQUENCE[seqKey] || { bankDelay: 0, wordPairDelay: 0 };
+    var seq = FADE_SEQUENCE[seqKey] || { wordPairDelay: 0 };
 
-    applyFade([bankEls.point, bankEls.label], BANK_PRESENT[stageName], seq.bankDelay, animate);
-
-    var wordPairPresent = WORD_PAIR_PRESENT[stageName];
-    var wordEls = [];
-    Object.keys(wordPointEls).forEach(function (word) {
-      wordEls.push(wordPointEls[word].point, wordPointEls[word].label);
+    // Each word has its own per-stage presence ("king" differs from the
+    // other 7 -- it's present in both embeddings and vector-math, so this
+    // naturally leaves it untouched whenever its presence doesn't change,
+    // CSS transitions only kick in when the value actually flips).
+    Object.keys(WORD_POINTS).forEach(function (word) {
+      var present = WORD_POINTS[word].present[stageName];
+      applyFade([wordPointEls[word].point, wordPointEls[word].label], present, seq.wordPairDelay, animate);
     });
-    applyFade(wordEls.concat(arrowEls), wordPairPresent, seq.wordPairDelay, animate);
+    applyFade(arrowEls, ARROW_PRESENT[stageName], seq.wordPairDelay, animate);
   }
 
   var currentAnchor = null;
