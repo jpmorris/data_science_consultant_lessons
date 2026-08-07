@@ -324,14 +324,27 @@ as a raw, unqualified fact. Say that explicitly if asked.
 
 ## The Transformer Still Rules {.heading-accent}
 
-![Encoder-decoder Transformer architecture, from "Attention Is All You Need" (Vaswani et al., 2017).](images/transformer-architecture.png){fig-align="center"
-height="700"}
+::: {style="text-align: center;"}
+```{=html}
+{{< include images/decoder-only-transformer.svg >}}
+```
+:::
 
 ::: {.notes}
-Image: Wikimedia Commons, CC BY-SA 4.0. Attention: every token can
-directly attend to every other token, in parallel — no recurrence needed.
-Nothing has dethroned this as the dominant architecture since 2017, but there
-are real contenders:
+This is a decoder-only Transformer — the architecture behind GPT, Claude,
+Llama, and effectively every mainstream LLM today. The original "Attention Is
+All You Need" (Vaswani et al., 2017) diagram was encoder-decoder, built for
+machine translation (encode a source sentence, decode into a target
+language). Modern LLMs drop the encoder and its cross-attention entirely,
+keeping only the stack of masked self-attention + feed-forward blocks shown
+here, repeated N times, generating one token at a time from everything
+generated so far. Attention: every token can directly attend to every other
+token (up to and including itself, masked so it can't see the future), in
+parallel — no recurrence needed. The KV cache is what makes autoregressive
+generation tractable: keys/values for already-seen tokens are computed once
+and reused, not recomputed every step. Nothing has dethroned this general
+shape as the dominant architecture since 2017, but there are real
+contenders:
 
 - **Mamba** — a state-space model, linear-time sequence processing instead of
   attention's quadratic cost.
