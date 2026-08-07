@@ -133,17 +133,23 @@
 
   var WORD_POINTS = {
     // gender pair -- right of z. king->queen and man->woman share the
-    // identical (170,-110) offset.
-    king:   { x: 370, y: 250, group: 'gender', present: EMB_VM },
+    // identical (170,-110) offset. king/man get their label placed BELOW
+    // instead of the default above-right, since both of them have arrows
+    // exiting upward/rightward -- an above label would sit in the arrow's
+    // own path.
+    king:   { x: 370, y: 250, group: 'gender', present: EMB_VM, labelPos: 'below' },
     queen:  { x: 540, y: 140, group: 'gender', present: VM_ONLY },
-    man:    { x: 420, y: 320, group: 'gender', present: VM_ONLY },
+    man:    { x: 420, y: 320, group: 'gender', present: VM_ONLY, labelPos: 'below' },
     woman:  { x: 590, y: 210, group: 'gender', present: VM_ONLY },
-    // tense pair -- exact mirror image of the gender pair across x=300,
-    // using the mirrored (-170,-110) offset.
+    // tense pair -- left of z, but deliberately NOT a mirror image of the
+    // gender pair: mirrored positions with a mirrored offset reads as "the
+    // same relationship reflected", which is the wrong idea (these are two
+    // DIFFERENT relationships, each with their own direction -- gender's
+    // is a shallow diagonal, tense's is steep/near-vertical, on purpose).
     walk:   { x: 230, y: 250, group: 'tense',  present: VM_ONLY },
-    walked: { x: 60,  y: 140, group: 'tense',  present: VM_ONLY },
+    walked: { x: 180, y: 100, group: 'tense',  present: VM_ONLY, labelPos: 'left' },
     swim:   { x: 180, y: 320, group: 'tense',  present: VM_ONLY },
-    swam:   { x: 10,  y: 210, group: 'tense',  present: VM_ONLY }
+    swam:   { x: 130, y: 170, group: 'tense',  present: VM_ONLY, labelPos: 'left' }
   };
   var WORD_GROUP_COLOR = { gender: '#268bd2', tense: '#6c71c4' };
   var ANALOGY_ARROWS = [
@@ -151,6 +157,16 @@
     { from: 'king', to: 'queen',  group: 'gender' },
     { from: 'walk', to: 'walked', group: 'tense' },
     { from: 'swim', to: 'swam',   group: 'tense' }
+  ];
+  // The other two sides of the king/queen/man/woman parallelogram --
+  // makes the actual arithmetic (king - man + woman = queen) visible
+  // inside the diagram itself, not just implied by the two parallel
+  // arrows above. Deliberately subtler than the main analogy arrows
+  // (thinner, plain cream, no dash) so they read as annotation, not as a
+  // third relationship competing with gender/tense.
+  var MATH_CONNECTORS = [
+    { from: 'king',  to: 'man',   symbol: '−' },
+    { from: 'woman', to: 'queen', symbol: '+' }
   ];
 
   var svg = null;
@@ -236,6 +252,19 @@
       marker.appendChild(path);
       arrowDefs.appendChild(marker);
     });
+    var mathMarker = ns('marker');
+    mathMarker.setAttribute('id', 'llm-arrow-math');
+    mathMarker.setAttribute('viewBox', '0 0 10 10');
+    mathMarker.setAttribute('refX', '8');
+    mathMarker.setAttribute('refY', '5');
+    mathMarker.setAttribute('markerWidth', '6');
+    mathMarker.setAttribute('markerHeight', '6');
+    mathMarker.setAttribute('orient', 'auto-start-reverse');
+    var mathPath = ns('path');
+    mathPath.setAttribute('d', 'M0,0 L10,5 L0,10 z');
+    mathPath.setAttribute('fill', '#eee8d5');
+    mathMarker.appendChild(mathPath);
+    arrowDefs.appendChild(mathMarker);
     svg.appendChild(arrowDefs);
 
     ANALOGY_ARROWS.forEach(function (a) {
@@ -255,6 +284,33 @@
       arrowEls.push(line);
     });
 
+    MATH_CONNECTORS.forEach(function (c) {
+      var from = WORD_POINTS[c.from];
+      var to = WORD_POINTS[c.to];
+      var line = ns('line');
+      line.setAttribute('x1', String(from.x));
+      line.setAttribute('y1', String(from.y));
+      line.setAttribute('x2', String(to.x));
+      line.setAttribute('y2', String(to.y));
+      line.setAttribute('stroke', '#eee8d5');
+      line.setAttribute('stroke-width', '1.5');
+      line.setAttribute('marker-end', 'url(#llm-arrow-math)');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      arrowEls.push(line);
+
+      var symbol = ns('text');
+      symbol.setAttribute('x', String((from.x + to.x) / 2 + 10));
+      symbol.setAttribute('y', String((from.y + to.y) / 2 + 6));
+      symbol.setAttribute('font-size', '24');
+      symbol.setAttribute('font-weight', '700');
+      symbol.setAttribute('fill', '#eee8d5');
+      symbol.textContent = c.symbol;
+      symbol.classList.add('llm-fade-el');
+      svg.appendChild(symbol);
+      arrowEls.push(symbol);
+    });
+
     Object.keys(WORD_POINTS).forEach(function (word) {
       var pt = WORD_POINTS[word];
       var color = WORD_GROUP_COLOR[pt.group];
@@ -269,15 +325,29 @@
       circle.classList.add('llm-fade-el');
       svg.appendChild(circle);
 
-      // Points past the panel's horizontal midpoint get their label
-      // anchored on the LEFT (text growing back toward center) instead of
-      // the right, so labels on points near the right edge don't run off
-      // the panel.
-      var labelOnLeft = pt.x > 470;
+      // Default: label above-right, or above-left (anchor "end") once the
+      // point is past the panel's horizontal midpoint, so it doesn't run
+      // off the right edge. `labelPos` overrides this for specific points
+      // whose default side happens to collide with their own arrow's
+      // approach/exit path -- 'below' (king, man: both have arrows exiting
+      // up/right) or 'left' (walked, swam: both have their incoming arrow
+      // approaching from the upper-right, the same side the default would
+      // place the label).
       var label = ns('text');
-      label.setAttribute('x', String(pt.x + (labelOnLeft ? -16 : 16)));
-      label.setAttribute('y', String(pt.y - 12));
-      if (labelOnLeft) label.setAttribute('text-anchor', 'end');
+      if (pt.labelPos === 'below') {
+        label.setAttribute('x', String(pt.x));
+        label.setAttribute('y', String(pt.y + 30));
+        label.setAttribute('text-anchor', 'middle');
+      } else if (pt.labelPos === 'left') {
+        label.setAttribute('x', String(pt.x - 16));
+        label.setAttribute('y', String(pt.y - 12));
+        label.setAttribute('text-anchor', 'end');
+      } else {
+        var labelOnLeft = pt.x > 470;
+        label.setAttribute('x', String(pt.x + (labelOnLeft ? -16 : 16)));
+        label.setAttribute('y', String(pt.y - 12));
+        if (labelOnLeft) label.setAttribute('text-anchor', 'end');
+      }
       label.setAttribute('font-size', '27');
       label.setAttribute('font-weight', '600');
       label.setAttribute('fill', color);
