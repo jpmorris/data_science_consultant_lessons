@@ -1,10 +1,11 @@
-<svg width="560" height="384" viewBox="0 0 700 480">
+<svg width="560" height="360" viewBox="0 0 700 450">
   <style>
     .fade { opacity: 0; }
     .box        { animation: fadeInStay .5s ease forwards; animation-delay: 0s; }
     .sys        { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
     .user-turn  { animation: fadeInStay .6s ease forwards; animation-delay: 1.3s; }
     .arrow2     { animation: fadeInStay .4s ease forwards; animation-delay: 2.1s; }
+    .answer-label { animation: fadeInStay .4s ease forwards; animation-delay: 3.0s; }
     .w1c { animation: fadeInOut .9s ease-in-out forwards; animation-delay: 2.1s; }
     .w1a { animation: fadeInStay .4s ease forwards; animation-delay: 3.0s; }
     .w2c { animation: fadeInOut .9s ease-in-out forwards; animation-delay: 3.5s; }
@@ -33,20 +34,19 @@
     </marker>
   </defs>
 
-  <!-- prompt panel: system + user + growing assistant completion -->
+  <!-- prompt panel: system + user + growing answer completion -->
   <g class="sys fade">
-    <rect x="40" y="20" width="620" height="170" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text x="60" y="52" font-size="18" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers</text>
-    <text x="60" y="74" font-size="18" font-style="italic" fill="#93a1a1">questions about how LLMs work.</text>
+    <rect x="40" y="20" width="620" height="140" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
+    <text x="60" y="55" font-size="18" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
   </g>
 
   <g class="user-turn fade">
-    <text x="60" y="108" font-size="22" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
-    <line x1="350" y1="190" x2="350" y2="245" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+    <text x="60" y="95" font-size="22" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
+    <line x1="350" y1="160" x2="350" y2="215" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
   </g>
 
-  <text x="60" y="148" font-size="20" fill="#2aa198">
-    <tspan class="fade" style="animation: fadeInStay .4s ease forwards; animation-delay: 3.0s;">Assistant:</tspan>
+  <text x="60" y="135" font-size="20" fill="#2aa198">
+    <tspan class="answer-label fade">Answer:</tspan>
     <tspan class="w1a fade"> They</tspan>
     <tspan class="w2a fade"> predict</tspan>
     <tspan class="w3a fade"> the</tspan>
@@ -55,15 +55,15 @@
   </text>
 
   <!-- LLM box -->
-  <rect class="box fade" x="280" y="250" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <text class="box fade" x="350" y="304" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
+  <rect class="box fade" x="280" y="220" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+  <text class="box fade" x="350" y="274" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
 
-  <line class="arrow2 fade" x1="350" y1="340" x2="350" y2="395" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <line class="arrow2 fade" x1="350" y1="310" x2="350" y2="365" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <!-- completion slot: one word visible at a time -->
-  <text class="w1c fade" x="350" y="440" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">They</text>
-  <text class="w2c fade" x="350" y="440" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">predict</text>
-  <text class="w3c fade" x="350" y="440" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">the</text>
-  <text class="w4c fade" x="350" y="440" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">next</text>
-  <text class="w5c fade" x="350" y="440" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">token.</text>
+  <text class="w1c fade" x="350" y="410" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">They</text>
+  <text class="w2c fade" x="350" y="410" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">predict</text>
+  <text class="w3c fade" x="350" y="410" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">the</text>
+  <text class="w4c fade" x="350" y="410" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">next</text>
+  <text class="w5c fade" x="350" y="410" text-anchor="middle" font-size="26" font-style="italic" fill="#b58900">token.</text>
 </svg>

@@ -15,6 +15,7 @@ format:
     height: 1080
     pdf-separate-fragments: false
     pdf-max-pages-per-slide: 1
+    include-after-body: nexttoken-replay.html
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf

@@ -1,0 +1,16 @@
+<script>
+(function () {
+  function restartAnimatedPanel(slide) {
+    var panel = slide.querySelector('.diagram-split-visual');
+    if (!panel) return;
+    var clone = panel.cloneNode(true);
+    panel.replaceWith(clone);
+  }
+  Reveal.on('slidechanged', function (event) {
+    var slide = event.currentSlide;
+    if (slide && slide.id === 'nexttoken-stage-1-zeroshot') {
+      restartAnimatedPanel(slide);
+    }
+  });
+})();
+</script>
