@@ -54,8 +54,7 @@
     <circle cx="420" cy="365.62003" r="2.2" fill="#93a1a1"/>
     <!-- faded echo of the next block in the stack -->
     <rect x="190" y="376" width="450" height="55" rx="14" fill="none" stroke="#93a1a1" stroke-width="2" stroke-dasharray="8,6" opacity="0.32"/>
-    <text x="420" y="399" text-anchor="middle" font-size="17" font-weight="bold" fill="#b58900">Transformer Block</text>
-    <text x="420" y="418" text-anchor="middle" font-size="14" fill="#93a1a1">(&#215; N, stacked)</text>
+    <text x="410.67197" y="409.49405" text-anchor="middle" font-size="17" font-weight="bold" fill="#b58900">Additional Transformer Stacked Blocks (N total)</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,502.86838 V 473.56"/>
     <!-- continuation dots: block boundary up into the faded echo -->
     <circle cx="420" cy="440" r="2.2" fill="#93a1a1"/>
@@ -63,7 +62,7 @@
     <circle cx="420" cy="464" r="2.2" fill="#93a1a1"/>
     <!-- transformer block boundary -->
     <rect x="189.97449" y="508.8786" width="450.05103" height="621.14716" rx="14.001587" fill="none" stroke="#93a1a1" stroke-width="1.94923" stroke-dasharray="8, 6"/>
-    <text x="200.8174" y="531.07825" font-size="18" fill="#b58900" font-weight="bold">Transformer Block</text>
+    <text x="200.8174" y="531.07825" font-size="20" fill="#b58900" font-weight="bold">Transformer Block</text>
     <!-- residual connections: solid, same color/style as the flow arrows;
          both swing right and are drawn before the KV Cache connector below
          so the KV Cache's amber line renders on top where they cross -->
@@ -135,7 +134,7 @@
     <text x="20" y="113" font-size="30" fill="#eee8d5">what comes next</text>
     <text x="20" y="149" font-size="26" fill="#b58900">&#8594; e.g., "king"</text>
   </g>
-  <path class="fragment" data-fragment-index="8" d="M360.0,80.0 L800.0,80.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
+  <path class="fragment" data-fragment-index="8" d="M360.0,80.0 L439.2,77.0 L527.2,83.0 L615.2,77.5 L703.2,82.0 L800.0,80.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
 
   <!-- 8: linear -> softmax -->
   <g class="fragment" data-fragment-index="7" font-family="'Architects Daughter', cursive">
@@ -143,14 +142,14 @@
     <text x="1450" y="218" font-size="30" fill="#eee8d5">token probabilities</text>
     <text x="1450" y="254" font-size="26" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
   </g>
-  <path class="fragment" data-fragment-index="7" d="M1420.0,185.0 L1220.0,185.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
+  <path class="fragment" data-fragment-index="7" d="M1420.0,185.0 L1384.0,182.0 L1344.0,188.0 L1304.0,182.5 L1264.0,187.0 L1220.0,185.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
 
   <!-- 7: x N fade box -->
   <g class="fragment" data-fragment-index="6" font-family="'Architects Daughter', cursive">
     <text x="20" y="398" font-size="30" fill="#eee8d5">Repeats N times, each pass</text>
     <text x="20" y="436" font-size="30" fill="#eee8d5">building on the last</text>
   </g>
-  <path class="fragment" data-fragment-index="6" d="M430.0,408.0 L840.0,408.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
+  <path class="fragment" data-fragment-index="6" d="M430.0,408.0 L491.4,405.0 L559.7,411.0 L627.9,405.5 L696.1,410.0 L771.2,408.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
 
   <!-- 6: feed-forward network -->
   <g class="fragment" data-fragment-index="5" font-family="'Architects Daughter', cursive">
@@ -158,14 +157,14 @@
     <text x="20" y="653" font-size="30" fill="#eee8d5">this is largely where facts about</text>
     <text x="20" y="691" font-size="30" fill="#eee8d5">the world are stored</text>
   </g>
-  <path class="fragment" data-fragment-index="5" d="M530.0,632.0 L900.0,632.0" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
+  <path class="fragment" data-fragment-index="5" d="M530.0,632.0 L589.0,629.0 L654.6,635.0 L720.2,629.5 L785.8,634.0 L858.0,632.0" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
 
   <!-- 5: masked multi-head self-attention -->
   <g class="fragment" data-fragment-index="3" font-family="'Architects Daughter', cursive">
     <text x="20" y="918" font-size="30" fill="#eee8d5">Gathers context from earlier</text>
     <text x="20" y="956" font-size="30" fill="#eee8d5">tokens, several ways at once</text>
   </g>
-  <path class="fragment" data-fragment-index="3" d="M460.0,933.0 L890.0,933.0" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)"/>
+  <path class="fragment" data-fragment-index="3" d="M460.0,933.0 L529.6,930.0 L607.0,936.0 L684.4,930.5 L761.8,935.0 L846.9,933.0" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)"/>
 
   <!-- 4: KV cache: callout on the RIGHT, since KV Cache is itself the one
        component living outside the main column; a short direct arrow beats
@@ -174,14 +173,14 @@
     <text x="1740" y="918" font-size="30" fill="#eee8d5">Stores past keys/values</text>
     <text x="1740" y="956" font-size="30" fill="#eee8d5">so they're not recomputed</text>
   </g>
-  <path class="fragment" data-fragment-index="4" d="M1715.0,933.0 L1495.0,933.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
+  <path class="fragment" data-fragment-index="4" d="M1715.0,933.0 L1675.4,930.0 L1631.4,936.0 L1587.4,930.5 L1543.4,935.0 L1495.0,933.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
 
   <!-- 3: first norm -->
   <g class="fragment" data-fragment-index="2" font-family="'Architects Daughter', cursive">
     <text x="20" y="1048" font-size="30" fill="#eee8d5">Keeps values in a</text>
     <text x="20" y="1086" font-size="30" fill="#eee8d5">stable range</text>
   </g>
-  <path class="fragment" data-fragment-index="2" d="M280.0,1063.0 L980.0,1063.0" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)"/>
+  <path class="fragment" data-fragment-index="2" d="M280.0,1063.0 L392.4,1060.0 L517.2,1066.0 L642.0,1060.5 L766.9,1065.0 L904.2,1063.0" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)"/>
 
   <!-- 2: token + positional embedding -->
   <g class="fragment" data-fragment-index="1" font-family="'Architects Daughter', cursive">
@@ -189,7 +188,7 @@
     <text x="1550" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
     <text x="1550" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
   </g>
-  <path class="fragment" data-fragment-index="1" d="M1520.0,1200.0 L1220.0,1200.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
+  <path class="fragment" data-fragment-index="1" d="M1520.0,1200.0 L1466.0,1197.0 L1406.0,1203.0 L1346.0,1197.5 L1286.0,1202.0 L1220.0,1200.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
 
   <!-- 1: prompt tokens -->
   <g class="fragment" data-fragment-index="0" font-family="'Architects Daughter', cursive">
@@ -206,6 +205,6 @@
       <text x="288.5" y="1339">ization</text>
     </g>
   </g>
-  <path class="fragment" data-fragment-index="0" d="M400.0,1274.0 L922.0,1274.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
+  <path class="fragment" data-fragment-index="0" d="M400.0,1274.0 L494.0,1271.0 L598.4,1277.0 L702.8,1271.5 L807.2,1276.0 L922.0,1274.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
 
 </svg>
