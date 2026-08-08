@@ -450,100 +450,100 @@
        applied to 35 tokens instead of 5. -->
   <g class="s2-sys fade">
     <rect x="20" y="48" width="520" height="330" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text class="s2-sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
+    <text class="s2-sys-text" x="40" y="75" font-size="14" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that answers questions.</text>
   </g>
 
   <g class="s2-u1-left fade">
-    <text class="s2-user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
+    <text class="s2-user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: How do LLMs work?</text>
   </g>
   <line class="s2-box fade" x1="280" y1="378" x2="280" y2="415" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
-  <text class="s2-tagOpen1 fade" x="40" y="129" font-size="16" fill="#6c71c4">&lt;reasoning&gt;</text>
-  <text x="55" y="153" font-size="16" font-style="italic" fill="#6c71c4">
-    <tspan class="s2-r1w1 fade">I</tspan>
-    <tspan class="s2-r1w2 fade"> should</tspan>
-    <tspan class="s2-r1w3 fade"> distinguish</tspan>
-    <tspan class="s2-r1w4 fade"> large</tspan>
-    <tspan class="s2-r1w5 fade"> vs</tspan>
-    <tspan class="s2-r1w6 fade"> small</tspan>
-    <tspan class="s2-r1w7 fade"> language</tspan>
-    <tspan class="s2-r1w8 fade"> models.</tspan>
+  <text class="s2-tagOpen1 fade" x="40" y="129" font-size="14" fill="#6c71c4" font-family="'Courier New', monospace">&lt;reasoning&gt;</text>
+  <text x="55" y="153" font-size="14" font-style="italic" fill="#6c71c4" font-family="'Courier New', monospace">
+    <tspan class="s2-r1w1 fade" font-family="'Courier New', monospace">I</tspan>
+    <tspan class="s2-r1w2 fade" font-family="'Courier New', monospace"> should</tspan>
+    <tspan class="s2-r1w3 fade" font-family="'Courier New', monospace"> distinguish</tspan>
+    <tspan class="s2-r1w4 fade" font-family="'Courier New', monospace"> large</tspan>
+    <tspan class="s2-r1w5 fade" font-family="'Courier New', monospace"> vs</tspan>
+    <tspan class="s2-r1w6 fade" font-family="'Courier New', monospace"> small</tspan>
+    <tspan class="s2-r1w7 fade" font-family="'Courier New', monospace"> language</tspan>
+    <tspan class="s2-r1w8 fade" font-family="'Courier New', monospace"> models.</tspan>
   </text>
-  <text class="s2-tagClose1 fade" x="40" y="177" font-size="16" fill="#6c71c4">&lt;/reasoning&gt;</text>
-  <text class="s2-sumOpen fade" x="40" y="201" font-size="16" fill="#6c71c4">&lt;user summary&gt;</text>
-  <text x="55" y="225" font-size="16" font-style="italic" fill="#6c71c4">
-    <tspan class="s2-sw1 fade">Creating</tspan>
-    <tspan class="s2-sw2 fade"> a</tspan>
-    <tspan class="s2-sw3 fade"> more</tspan>
-    <tspan class="s2-sw4 fade"> detailed</tspan>
-    <tspan class="s2-sw5 fade"> definition</tspan>
+  <text class="s2-tagClose1 fade" x="40" y="177" font-size="14" fill="#6c71c4" font-family="'Courier New', monospace">&lt;/reasoning&gt;</text>
+  <text class="s2-sumOpen fade" x="40" y="201" font-size="14" fill="#6c71c4" font-family="'Courier New', monospace">&lt;user summary&gt;</text>
+  <text x="55" y="225" font-size="14" font-style="italic" fill="#6c71c4" font-family="'Courier New', monospace">
+    <tspan class="s2-sw1 fade" font-family="'Courier New', monospace">Creating</tspan>
+    <tspan class="s2-sw2 fade" font-family="'Courier New', monospace"> a</tspan>
+    <tspan class="s2-sw3 fade" font-family="'Courier New', monospace"> more</tspan>
+    <tspan class="s2-sw4 fade" font-family="'Courier New', monospace"> detailed</tspan>
+    <tspan class="s2-sw5 fade" font-family="'Courier New', monospace"> definition</tspan>
   </text>
-  <text class="s2-sumClose fade" x="40" y="249" font-size="16" fill="#6c71c4">&lt;/user summary&gt;</text>
-  <text class="s2-tagOpen2 fade" x="40" y="273" font-size="16" fill="#6c71c4">&lt;reasoning&gt;</text>
-  <text x="55" y="297" font-size="16" font-style="italic" fill="#6c71c4">
-    <tspan class="s2-r2w1 fade">I</tspan>
-    <tspan class="s2-r2w2 fade"> should</tspan>
-    <tspan class="s2-r2w3 fade"> distinguish</tspan>
-    <tspan class="s2-r2w4 fade"> modern</tspan>
-    <tspan class="s2-r2w5 fade"> and</tspan>
-    <tspan class="s2-r2w6 fade"> classical</tspan>
-    <tspan class="s2-r2w7 fade"> LLMs</tspan>
+  <text class="s2-sumClose fade" x="40" y="249" font-size="14" fill="#6c71c4" font-family="'Courier New', monospace">&lt;/user summary&gt;</text>
+  <text class="s2-tagOpen2 fade" x="40" y="273" font-size="14" fill="#6c71c4" font-family="'Courier New', monospace">&lt;reasoning&gt;</text>
+  <text x="55" y="297" font-size="14" font-style="italic" fill="#6c71c4" font-family="'Courier New', monospace">
+    <tspan class="s2-r2w1 fade" font-family="'Courier New', monospace">I</tspan>
+    <tspan class="s2-r2w2 fade" font-family="'Courier New', monospace"> should</tspan>
+    <tspan class="s2-r2w3 fade" font-family="'Courier New', monospace"> distinguish</tspan>
+    <tspan class="s2-r2w4 fade" font-family="'Courier New', monospace"> modern</tspan>
+    <tspan class="s2-r2w5 fade" font-family="'Courier New', monospace"> and</tspan>
+    <tspan class="s2-r2w6 fade" font-family="'Courier New', monospace"> classical</tspan>
+    <tspan class="s2-r2w7 fade" font-family="'Courier New', monospace"> LLMs</tspan>
   </text>
-  <text class="s2-tagClose2 fade" x="40" y="321" font-size="16" fill="#6c71c4">&lt;/reasoning&gt;</text>
-  <text x="40" y="348" font-size="18" fill="#2aa198">
-    <tspan class="s2-answerLabel fade">Answer:</tspan>
-    <tspan class="s2-aw1 fade"> They</tspan>
-    <tspan class="s2-aw2 fade"> use</tspan>
-    <tspan class="s2-aw3 fade"> 'self-attention'</tspan>
-    <tspan class="s2-aw4 fade"> to</tspan>
-    <tspan class="s2-aw5 fade"> predict</tspan>
-    <tspan class="s2-aw6 fade"> the</tspan>
-    <tspan class="s2-aw7 fade"> next</tspan>
-    <tspan class="s2-aw8 fade"> token.</tspan>
+  <text class="s2-tagClose2 fade" x="40" y="321" font-size="14" fill="#6c71c4" font-family="'Courier New', monospace">&lt;/reasoning&gt;</text>
+  <text x="40" y="348" font-size="13" fill="#2aa198" font-family="'Courier New', monospace">
+    <tspan class="s2-answerLabel fade" font-family="'Courier New', monospace">Answer:</tspan>
+    <tspan class="s2-aw1 fade" font-family="'Courier New', monospace"> They</tspan>
+    <tspan class="s2-aw2 fade" font-family="'Courier New', monospace"> use</tspan>
+    <tspan class="s2-aw3 fade" font-family="'Courier New', monospace"> 'self-attention'</tspan>
+    <tspan class="s2-aw4 fade" font-family="'Courier New', monospace"> to</tspan>
+    <tspan class="s2-aw5 fade" font-family="'Courier New', monospace"> predict</tspan>
+    <tspan class="s2-aw6 fade" font-family="'Courier New', monospace"> the</tspan>
+    <tspan class="s2-aw7 fade" font-family="'Courier New', monospace"> next</tspan>
+    <tspan class="s2-aw8 fade" font-family="'Courier New', monospace"> token.</tspan>
   </text>
 
   <!-- LLM box -->
   <rect class="s2-box fade" x="210" y="420" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <text class="s2-box fade" x="280" y="474" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
+  <text class="s2-box fade" x="280" y="474" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">LLM</text>
 
   <line class="s2-box fade" x1="280" y1="510" x2="280" y2="565" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <!-- completion slot: one token visible at a time -->
-  <text class="s2-tagOpen1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">&lt;reasoning&gt;</text>
-  <text class="s2-r1w1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">I</text>
-  <text class="s2-r1w2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">should</text>
-  <text class="s2-r1w3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">distinguish</text>
-  <text class="s2-r1w4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">large</text>
-  <text class="s2-r1w5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">vs</text>
-  <text class="s2-r1w6-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">small</text>
-  <text class="s2-r1w7-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">language</text>
-  <text class="s2-r1w8-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">models.</text>
-  <text class="s2-tagClose1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">&lt;/reasoning&gt;</text>
-  <text class="s2-sumOpen-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">&lt;user summary&gt;</text>
-  <text class="s2-sw1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">Creating</text>
-  <text class="s2-sw2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">a</text>
-  <text class="s2-sw3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">more</text>
-  <text class="s2-sw4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">detailed</text>
-  <text class="s2-sw5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">definition</text>
-  <text class="s2-sumClose-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">&lt;/user summary&gt;</text>
-  <text class="s2-tagOpen2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">&lt;reasoning&gt;</text>
-  <text class="s2-r2w1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">I</text>
-  <text class="s2-r2w2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">should</text>
-  <text class="s2-r2w3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">distinguish</text>
-  <text class="s2-r2w4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">modern</text>
-  <text class="s2-r2w5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">and</text>
-  <text class="s2-r2w6-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">classical</text>
-  <text class="s2-r2w7-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">LLMs</text>
-  <text class="s2-tagClose2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">&lt;/reasoning&gt;</text>
-  <text class="s2-answerLabel-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">Answer:</text>
-  <text class="s2-aw1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">They</text>
-  <text class="s2-aw2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">use</text>
-  <text class="s2-aw3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">'self-attention'</text>
-  <text class="s2-aw4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">to</text>
-  <text class="s2-aw5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">predict</text>
-  <text class="s2-aw6-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">the</text>
-  <text class="s2-aw7-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">next</text>
-  <text class="s2-aw8-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">token.</text>
+  <text class="s2-tagOpen1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;reasoning&gt;</text>
+  <text class="s2-r1w1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">I</text>
+  <text class="s2-r1w2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">should</text>
+  <text class="s2-r1w3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">distinguish</text>
+  <text class="s2-r1w4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">large</text>
+  <text class="s2-r1w5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">vs</text>
+  <text class="s2-r1w6-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">small</text>
+  <text class="s2-r1w7-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">language</text>
+  <text class="s2-r1w8-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">models.</text>
+  <text class="s2-tagClose1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;/reasoning&gt;</text>
+  <text class="s2-sumOpen-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;user summary&gt;</text>
+  <text class="s2-sw1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">Creating</text>
+  <text class="s2-sw2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">a</text>
+  <text class="s2-sw3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">more</text>
+  <text class="s2-sw4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">detailed</text>
+  <text class="s2-sw5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">definition</text>
+  <text class="s2-sumClose-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;/user summary&gt;</text>
+  <text class="s2-tagOpen2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;reasoning&gt;</text>
+  <text class="s2-r2w1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">I</text>
+  <text class="s2-r2w2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">should</text>
+  <text class="s2-r2w3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">distinguish</text>
+  <text class="s2-r2w4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">modern</text>
+  <text class="s2-r2w5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">and</text>
+  <text class="s2-r2w6-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">classical</text>
+  <text class="s2-r2w7-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">LLMs</text>
+  <text class="s2-tagClose2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;/reasoning&gt;</text>
+  <text class="s2-answerLabel-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">Answer:</text>
+  <text class="s2-aw1-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">They</text>
+  <text class="s2-aw2-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">use</text>
+  <text class="s2-aw3-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">'self-attention'</text>
+  <text class="s2-aw4-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">to</text>
+  <text class="s2-aw5-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">predict</text>
+  <text class="s2-aw6-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">the</text>
+  <text class="s2-aw7-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">next</text>
+  <text class="s2-aw8-wc fade" x="280" y="600" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">token.</text>
 
   <!-- RIGHT PANE: terminal -- never shows reasoning content. "Thinking..."
        during reasoning; the user-facing summary flashes whole; then the

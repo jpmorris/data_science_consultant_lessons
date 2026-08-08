@@ -235,64 +235,64 @@
   <!-- LEFT PANE: raw growing context -->
   <g class="s3-sys fade">
     <rect x="20" y="48" width="520" height="234" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text class="s3-sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1">System: You are a chatbot that can run bash commands.</text>
+    <text class="s3-sys-text" x="40" y="75" font-size="15" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that can run bash commands.</text>
   </g>
 
   <g class="s3-u1-left fade">
-    <text class="s3-user-text" x="40" y="102" font-size="18" font-weight="600" fill="#eee8d5">User: Make a bash script that echoes</text>
-    <text class="s3-user-text" x="40" y="126" font-size="18" font-weight="600" fill="#eee8d5">"What is an LLM?" to the terminal</text>
+    <text class="s3-user-text" x="40" y="102" font-size="18" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: Make a bash script that echoes</text>
+    <text class="s3-user-text" x="40" y="126" font-size="18" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">"What is an LLM?" to the terminal</text>
   </g>
   <line class="s3-box fade" x1="280" y1="282" x2="280" y2="320" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
-  <text class="s3-tagOpen fade" x="40" y="153" font-size="15" fill="#268bd2">&lt;function_calls name="bash"&gt;</text>
-  <text x="55" y="177" font-size="15" font-style="italic" fill="#268bd2">
-    <tspan class="s3-bw1 fade">echo</tspan>
-    <tspan class="s3-bw2 fade"> "What</tspan>
-    <tspan class="s3-bw3 fade"> is</tspan>
-    <tspan class="s3-bw4 fade"> an</tspan>
-    <tspan class="s3-bw5 fade"> LLM?"</tspan>
+  <text class="s3-tagOpen fade" x="40" y="153" font-size="15" fill="#268bd2" font-family="'Courier New', monospace">&lt;function_calls name="bash"&gt;</text>
+  <text x="55" y="177" font-size="15" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">
+    <tspan class="s3-bw1 fade" font-family="'Courier New', monospace">echo</tspan>
+    <tspan class="s3-bw2 fade" font-family="'Courier New', monospace"> "What</tspan>
+    <tspan class="s3-bw3 fade" font-family="'Courier New', monospace"> is</tspan>
+    <tspan class="s3-bw4 fade" font-family="'Courier New', monospace"> an</tspan>
+    <tspan class="s3-bw5 fade" font-family="'Courier New', monospace"> LLM?"</tspan>
   </text>
-  <text class="s3-tagClose fade" x="40" y="201" font-size="15" fill="#268bd2">&lt;/function_calls&gt;</text>
+  <text class="s3-tagClose fade" x="40" y="201" font-size="15" fill="#268bd2" font-family="'Courier New', monospace">&lt;/function_calls&gt;</text>
 
-  <text class="s3-tool-result fade" x="40" y="225" font-size="14" fill="#859900">&lt;tool_result&gt;Created hello-world.sh&lt;/tool_result&gt;</text>
+  <text class="s3-tool-result fade" x="40" y="225" font-size="14" fill="#859900" font-family="'Courier New', monospace">&lt;tool_result&gt;Created hello-world.sh&lt;/tool_result&gt;</text>
 
-  <text x="40" y="252" font-size="18" fill="#2aa198">
-    <tspan class="s3-answerLabel fade">Answer:</tspan>
-    <tspan class="s3-aw1 fade"> I</tspan>
-    <tspan class="s3-aw2 fade"> created</tspan>
-    <tspan class="s3-aw3 fade"> hello-world.sh</tspan>
-    <tspan class="s3-aw4 fade"> in</tspan>
-    <tspan class="s3-aw5 fade"> ~/user</tspan>
+  <text x="40" y="252" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+    <tspan class="s3-answerLabel fade" font-family="'Courier New', monospace">Answer:</tspan>
+    <tspan class="s3-aw1 fade" font-family="'Courier New', monospace"> I</tspan>
+    <tspan class="s3-aw2 fade" font-family="'Courier New', monospace"> created</tspan>
+    <tspan class="s3-aw3 fade" font-family="'Courier New', monospace"> hello-world.sh</tspan>
+    <tspan class="s3-aw4 fade" font-family="'Courier New', monospace"> in</tspan>
+    <tspan class="s3-aw5 fade" font-family="'Courier New', monospace"> ~/user</tspan>
   </text>
 
   <!-- LLM box -->
   <rect class="s3-box fade" x="210" y="320" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <text class="s3-box fade" x="280" y="374" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
+  <text class="s3-box fade" x="280" y="374" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">LLM</text>
 
   <line class="s3-box fade" x1="280" y1="410" x2="280" y2="465" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <!-- Agent Harness box, branching off the LLM -->
   <line class="s3-box fade" x1="350" y1="365" x2="400" y2="365" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
   <rect class="s3-harness-box fade" x="400" y="320" width="160" height="90" rx="10" fill="#0d4a55" stroke="#859900" stroke-width="3"/>
-  <text class="s3-box fade" x="480" y="374" text-anchor="middle" font-size="18" font-weight="700" fill="#eee8d5">Agent Harness</text>
+  <text class="s3-box fade" x="480" y="374" text-anchor="middle" font-size="18" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Agent Harness</text>
   <circle class="s3-dot-h1 fade" cx="363" cy="365" r="6" fill="#eee8d5"/>
   <circle class="s3-dot-h2 fade" cx="373" cy="365" r="6" fill="#eee8d5"/>
   <circle class="s3-dot-h3 fade" cx="383" cy="365" r="6" fill="#eee8d5"/>
 
   <!-- completion slot -->
-  <text class="s3-tagOpen-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">&lt;function_calls name="bash"&gt;</text>
-  <text class="s3-bw1-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">echo</text>
-  <text class="s3-bw2-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">"What</text>
-  <text class="s3-bw3-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">is</text>
-  <text class="s3-bw4-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">an</text>
-  <text class="s3-bw5-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">LLM?"</text>
-  <text class="s3-tagClose-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2">&lt;/function_calls&gt;</text>
-  <text class="s3-answerLabel-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">Answer:</text>
-  <text class="s3-aw1-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">I</text>
-  <text class="s3-aw2-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">created</text>
-  <text class="s3-aw3-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">hello-world.sh</text>
-  <text class="s3-aw4-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">in</text>
-  <text class="s3-aw5-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900">~/user</text>
+  <text class="s3-tagOpen-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">&lt;function_calls name="bash"&gt;</text>
+  <text class="s3-bw1-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">echo</text>
+  <text class="s3-bw2-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">"What</text>
+  <text class="s3-bw3-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">is</text>
+  <text class="s3-bw4-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">an</text>
+  <text class="s3-bw5-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">LLM?"</text>
+  <text class="s3-tagClose-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">&lt;/function_calls&gt;</text>
+  <text class="s3-answerLabel-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">Answer:</text>
+  <text class="s3-aw1-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">I</text>
+  <text class="s3-aw2-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">created</text>
+  <text class="s3-aw3-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">hello-world.sh</text>
+  <text class="s3-aw4-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">in</text>
+  <text class="s3-aw5-wc fade" x="280" y="500" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">~/user</text>
 
   <!-- panel flash when the harness's result lands in the context -->
   <rect class="s3-panel-inject-flash fade" x="20" y="48" width="520" height="234" rx="10" fill="none" stroke="#859900" stroke-width="4" filter="url(#softGlow)"/>

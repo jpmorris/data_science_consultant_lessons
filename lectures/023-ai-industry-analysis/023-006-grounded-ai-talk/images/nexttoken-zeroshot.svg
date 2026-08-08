@@ -231,52 +231,52 @@
   <!-- LEFT PANE: raw growing context -->
   <g class="sys fade">
     <rect x="20" y="48" width="520" height="232" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text class="sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
+    <text class="sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that answers questions.</text>
   </g>
 
   <g class="u1-left fade">
-    <text class="user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
+    <text class="user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: How do LLMs work?</text>
   </g>
   <line class="box fade" x1="280" y1="280" x2="280" y2="325" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
-  <text x="40" y="129" font-size="18" fill="#2aa198">
-    <tspan class="answer-label fade">Answer:</tspan>
-    <tspan class="w1a fade"> They</tspan>
-    <tspan class="w2a fade"> predict</tspan>
-    <tspan class="w3a fade"> the</tspan>
-    <tspan class="w4a fade"> next</tspan>
-    <tspan class="w5a fade"> token.</tspan>
+  <text x="40" y="129" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+    <tspan class="answer-label fade" font-family="'Courier New', monospace">Answer:</tspan>
+    <tspan class="w1a fade" font-family="'Courier New', monospace"> They</tspan>
+    <tspan class="w2a fade" font-family="'Courier New', monospace"> predict</tspan>
+    <tspan class="w3a fade" font-family="'Courier New', monospace"> the</tspan>
+    <tspan class="w4a fade" font-family="'Courier New', monospace"> next</tspan>
+    <tspan class="w5a fade" font-family="'Courier New', monospace"> token.</tspan>
   </text>
 
   <g class="u2-left fade">
-    <text class="user2-text" x="40" y="163" font-size="20" font-weight="600" fill="#eee8d5">User: What is a token?</text>
+    <text class="user2-text" x="40" y="163" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: What is a token?</text>
   </g>
-  <text x="40" y="190" font-size="18" fill="#2aa198">
-    <tspan class="answer-label2 fade">Answer:</tspan>
-    <tspan class="w1ab fade"> A</tspan>
-    <tspan class="w2ab fade"> small</tspan>
-    <tspan class="w3ab fade"> chunk</tspan>
-    <tspan class="w4ab fade"> of</tspan>
-    <tspan class="w5ab fade"> text.</tspan>
+  <text x="40" y="190" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+    <tspan class="answer-label2 fade" font-family="'Courier New', monospace">Answer:</tspan>
+    <tspan class="w1ab fade" font-family="'Courier New', monospace"> A</tspan>
+    <tspan class="w2ab fade" font-family="'Courier New', monospace"> small</tspan>
+    <tspan class="w3ab fade" font-family="'Courier New', monospace"> chunk</tspan>
+    <tspan class="w4ab fade" font-family="'Courier New', monospace"> of</tspan>
+    <tspan class="w5ab fade" font-family="'Courier New', monospace"> text.</tspan>
   </text>
 
   <!-- LLM box (shared by both rounds) -->
   <rect class="box fade" x="210" y="330" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <text class="box fade" x="280" y="384" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
+  <text class="box fade" x="280" y="384" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">LLM</text>
 
   <line class="box fade" x1="280" y1="420" x2="280" y2="475" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <!-- completion slot (shared by both rounds) -->
-  <text class="w1c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">They</text>
-  <text class="w2c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">predict</text>
-  <text class="w3c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">the</text>
-  <text class="w4c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">next</text>
-  <text class="w5c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">token.</text>
-  <text class="w1cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">A</text>
-  <text class="w2cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">small</text>
-  <text class="w3cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">chunk</text>
-  <text class="w4cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">of</text>
-  <text class="w5cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">text.</text>
+  <text class="w1c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">They</text>
+  <text class="w2c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">predict</text>
+  <text class="w3c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">the</text>
+  <text class="w4c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">next</text>
+  <text class="w5c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">token.</text>
+  <text class="w1cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">A</text>
+  <text class="w2cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">small</text>
+  <text class="w3cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">chunk</text>
+  <text class="w4cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">of</text>
+  <text class="w5cb fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">text.</text>
 
   <!-- RIGHT PANE: single terminal window, monospace, black -->
   <rect class="early fade" x="580" y="60" width="380" height="150" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
