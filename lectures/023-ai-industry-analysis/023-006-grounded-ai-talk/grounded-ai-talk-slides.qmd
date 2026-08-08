@@ -372,10 +372,12 @@ and agentic tool use are both just this same loop with more stuff stuffed
 into the context before the next prediction.
 :::
 
-<!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- <reasoning>/<user summary>
-     blocks generate on the raw-context pane; terminal shows "Thinking..."
-     during reasoning, flashes the summary sentence whole, then streams the
-     real answer word-by-word once ready -->
+<!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- every tag AND every word
+     (35 tokens total) appears one at a time on the raw-context pane, LLM
+     box pulses once per token, no exceptions; terminal shows "Thinking..."
+     during reasoning, flashes the summary sentence whole (not word-by-word
+     -- deliberately different, it's a separate user-facing generation),
+     then streams the real answer word-by-word once ready -->
 ## It's ALL Next-Token Prediction {#nexttoken-stage-2-cot auto-animate="true" .heading-accent}
 
 ```{=html}
