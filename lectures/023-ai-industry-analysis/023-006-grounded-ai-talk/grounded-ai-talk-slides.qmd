@@ -343,14 +343,69 @@ are real contenders:
   attention variants (sliding window, grouped-query, etc.).
 :::
 
-## It's Next-Token Prediction All the Way Down {.incremental .heading-accent}
+<!-- STAGE 1/3 (nexttoken-stage-1-zeroshot): zero-shot -- animated prompt->LLM->completion loop, 5 words -->
+## It's ALL Next-Token Prediction {#nexttoken-stage-1-zeroshot auto-animate="true" .heading-accent}
 
-- **Zero-shot**: ask a novel question, no examples — it just answers
-- **Chain-of-thought**: ask it to "think step by step" — reasoning improves
-- **Agent + harness**: give it tools, a loop, and a stopping rule — it acts
-  - **Harness** = everything wrapped _around_ the model — prompts, tools,
-    memory, orchestration code, stopping rules. The model isn't getting smarter
-    here; the scaffolding around it is getting better engineered.
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual diagram-panel">
+    {{< include images/nexttoken-zeroshot.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li><strong>Zero-shot</strong>: ask a novel question, no examples — it just answers, one predicted token at a time</li>
+    </ul>
+  </div>
+</div>
+```
+
+::: {.notes}
+Every "answer" is the same mechanism repeated: predict one token, append it
+to the context, predict the next one, repeat. Zero-shot means no examples in
+the prompt — just a system prompt, a question, and the model sampling its
+way to a response one token at a time.
+:::
+
+<!-- STAGE 2/3 (nexttoken-stage-2-cot): chain-of-thought -- placeholder, iterate next -->
+## It's ALL Next-Token Prediction {#nexttoken-stage-2-cot auto-animate="true" .heading-accent}
+
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual diagram-panel">
+    {{< include images/nexttoken-cot.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li>Zero-shot: ask a novel question, no examples — it just answers, one predicted token at a time</li>
+      <li><strong>Chain-of-thought</strong>: ask it to "think step by step" — reasoning improves</li>
+    </ul>
+  </div>
+</div>
+```
+
+<!-- STAGE 3/3 (nexttoken-stage-3-agent): agent + harness -- placeholder, iterate next -->
+## It's ALL Next-Token Prediction {#nexttoken-stage-3-agent auto-animate="true" .heading-accent}
+
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual diagram-panel">
+    {{< include images/nexttoken-agent.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li>Zero-shot: ask a novel question, no examples — it just answers, one predicted token at a time</li>
+      <li>Chain-of-thought: ask it to "think step by step" — reasoning improves</li>
+      <li><strong>Agent + harness</strong>: give it tools, a loop, and a stopping rule — it acts</li>
+    </ul>
+  </div>
+</div>
+```
+
+::: {.notes}
+**Harness** = everything wrapped _around_ the model — prompts, tools,
+memory, orchestration code, stopping rules. The model isn't getting smarter
+here; the scaffolding around it is getting better engineered.
+:::
 
 ## The Entropy Floor {.heading-accent}
 
