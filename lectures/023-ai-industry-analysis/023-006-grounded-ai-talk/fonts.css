@@ -28,3 +28,13 @@
   font-weight: 700;
   font-style: normal;
 }
+@font-face {
+  /* Hand-drawn annotation font, used only for diagram callouts (not body
+     text). OFL-licensed (SIL Open Font License 1.1), same license family
+     as Inter -- verified against google/fonts/ofl/architectsdaughter/OFL.txt
+     before embedding. */
+  font-family: 'Architects Daughter';
+  src: url('fonts/ArchitectsDaughter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
