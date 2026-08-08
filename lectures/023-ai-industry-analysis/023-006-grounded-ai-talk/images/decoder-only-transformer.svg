@@ -132,7 +132,9 @@
   <g class="fragment" data-fragment-index="8" font-family="'Architects Daughter', cursive">
     <text x="20" y="75" font-size="30" fill="#eee8d5">The model's guess for</text>
     <text x="20" y="113" font-size="30" fill="#eee8d5">what comes next</text>
-    <text x="20" y="149" font-size="26" fill="#b58900">&#8594; e.g., "king"</text>
+    <text x="20" y="163" font-size="26" fill="#b58900">&#8594; predicted:</text>
+    <rect x="195" y="138" width="75" height="42" rx="7" fill="#0d4a55" stroke="#b58900" stroke-width="2"/>
+    <text x="232.5" y="167" font-size="24" fill="#eee8d5" text-anchor="middle">king</text>
   </g>
   <path class="fragment" data-fragment-index="8" d="M360.0,80.0 L439.2,77.0 L527.2,83.0 L615.2,77.5 L703.2,82.0 L800.0,80.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
 
@@ -186,7 +188,7 @@
   <g class="fragment" data-fragment-index="1" font-family="'Architects Daughter', cursive">
     <text x="1550" y="1165" font-size="30" fill="#eee8d5">Each token becomes a</text>
     <text x="1550" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
-    <text x="1550" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
+    <text x="1550" y="1231" font-size="26" fill="#93a1a1">"coron" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
   </g>
   <path class="fragment" data-fragment-index="1" d="M1520.0,1200.0 L1466.0,1197.0 L1406.0,1203.0 L1346.0,1197.5 L1286.0,1202.0 L1220.0,1200.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
 
@@ -195,14 +197,16 @@
     <text x="20" y="1258" font-size="30" fill="#eee8d5">Split into tokens &#8212;</text>
     <text x="20" y="1296" font-size="30" fill="#eee8d5">not always whole words:</text>
     <g font-size="24" fill="#eee8d5" text-anchor="middle">
-      <rect x="20" y="1310" width="33" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
-      <text x="36.5" y="1339">I</text>
-      <rect x="65" y="1310" width="69" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
-      <text x="99.5" y="1339">love</text>
-      <rect x="146" y="1310" width="81" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
-      <text x="186.5" y="1339">token</text>
-      <rect x="239" y="1310" width="99" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
-      <text x="288.5" y="1339">ization</text>
+      <rect x="20" y="1310" width="57" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <text x="48.5" y="1339">The</text>
+      <rect x="89" y="1310" width="81" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <text x="129.5" y="1339">coron</text>
+      <rect x="182" y="1310" width="81" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <text x="222.5" y="1339">ation</text>
+      <rect x="275" y="1310" width="69" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <text x="309.5" y="1339">made</text>
+      <rect x="356" y="1310" width="57" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <text x="384.5" y="1339">him</text>
     </g>
   </g>
   <path class="fragment" data-fragment-index="0" d="M400.0,1274.0 L494.0,1271.0 L598.4,1277.0 L702.8,1271.5 L807.2,1276.0 L922.0,1274.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
