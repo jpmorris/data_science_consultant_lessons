@@ -1,0 +1,7 @@
+# Quarto render output -- fully reproducible from grounded-ai-talk-slides.qmd
+# via `quarto render`. Tracking it causes a guaranteed merge conflict every
+# time two branches independently re-render (both touch the same generated
+# file). References under references/ are source material, not render
+# output, and stay tracked.
+grounded-ai-talk-slides.html
+*_files/
