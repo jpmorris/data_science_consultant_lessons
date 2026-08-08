@@ -45,7 +45,7 @@
     <text x="20" y="75" font-size="30" fill="#eee8d5">The model's guess for</text>
     <text x="20" y="113" font-size="30" fill="#eee8d5">what comes next</text>
     <text x="20" y="149" font-size="26" fill="#b58900">&#8594; e.g., "king"</text>
-    <path d="M340,80 H850" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
+    <path d="M360,80 H830" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 8: linear -> softmax -->
@@ -53,14 +53,14 @@
     <text x="1450" y="180" font-size="30" fill="#eee8d5">Turns the final vector into</text>
     <text x="1450" y="218" font-size="30" fill="#eee8d5">token probabilities</text>
     <text x="1450" y="254" font-size="26" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
-    <path d="M1440,185 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <path d="M1420,185 H1190" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 7: x N fade box -->
   <g class="fragment" data-fragment-index="6" font-family="'Architects Daughter', cursive">
     <text x="20" y="398" font-size="30" fill="#eee8d5">Repeats N times, each pass</text>
     <text x="20" y="436" font-size="30" fill="#eee8d5">building on the last</text>
-    <path d="M360,408 H790" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
+    <path d="M430,408 H810" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 6: feed-forward network -->
@@ -68,14 +68,14 @@
     <text x="20" y="615" font-size="30" fill="#eee8d5">Processes each token individually &#8212;</text>
     <text x="20" y="653" font-size="30" fill="#eee8d5">this is largely where facts about</text>
     <text x="20" y="691" font-size="30" fill="#eee8d5">the world are stored</text>
-    <path d="M400,632 H890" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)" filter="url(#sketchy)"/>
+    <path d="M530,632 H910" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 5: masked multi-head self-attention -->
   <g class="fragment" data-fragment-index="3" font-family="'Architects Daughter', cursive">
     <text x="20" y="918" font-size="30" fill="#eee8d5">Gathers context from earlier</text>
     <text x="20" y="956" font-size="30" fill="#eee8d5">tokens, several ways at once</text>
-    <path d="M400,933 H875" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)" filter="url(#sketchy)"/>
+    <path d="M460,933 H895" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 4: KV cache: callout on the RIGHT, since KV Cache is itself the one
@@ -84,14 +84,14 @@
   <g class="fragment" data-fragment-index="4" font-family="'Architects Daughter', cursive">
     <text x="1740" y="918" font-size="30" fill="#eee8d5">Stores past keys/values</text>
     <text x="1740" y="956" font-size="30" fill="#eee8d5">so they're not recomputed</text>
-    <path d="M1740,933 H1445" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
+    <path d="M1715,933 H1465" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 3: first norm -->
   <g class="fragment" data-fragment-index="2" font-family="'Architects Daughter', cursive">
     <text x="20" y="1048" font-size="30" fill="#eee8d5">Keeps values in a</text>
     <text x="20" y="1086" font-size="30" fill="#eee8d5">stable range</text>
-    <path d="M230,1063 H930" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)" filter="url(#sketchy)"/>
+    <path d="M280,1063 H950" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 2: token + positional embedding -->
@@ -99,7 +99,7 @@
     <text x="1550" y="1165" font-size="30" fill="#eee8d5">Each token becomes a</text>
     <text x="1550" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
     <text x="1550" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
-    <path d="M1540,1200 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <path d="M1520,1200 H1190" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 1: prompt tokens -->
@@ -116,7 +116,7 @@
       <rect x="239" y="1310" width="99" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
       <text x="288.5" y="1339">ization</text>
     </g>
-    <path d="M420,1274 H972" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
+    <path d="M400,1274 H952" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
   </g>
 
   <!-- ================= MAIN DIAGRAM (unchanged internally, shifted right) ================= -->
