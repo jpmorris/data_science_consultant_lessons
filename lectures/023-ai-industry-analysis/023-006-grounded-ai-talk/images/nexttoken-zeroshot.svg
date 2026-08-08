@@ -1,6 +1,7 @@
-<svg width="780" height="445" viewBox="0 0 1000 570">
+<svg width="950" height="562" viewBox="0 0 1000 610">
   <style>
     .fade { opacity: 0; }
+    .title { animation: fadeInStay .4s ease forwards; animation-delay: .1s; }
     .box   { animation: fadeInStay .5s ease forwards; animation-delay: 0s; }
     .early { animation: fadeInStay .4s ease forwards; animation-delay: .15s; }
     .sys   { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
@@ -218,9 +219,13 @@
     </clipPath>
   </defs>
 
+  <text class="title fade" x="500" y="26" text-anchor="middle" font-size="24" font-weight="700" fill="#b58900">Simple Prompt</text>
+
+  <g transform="translate(0,40)">
+
   <!-- pane headers + divider -->
-  <text class="early fade" x="20" y="35" font-size="16" font-style="italic" fill="#93a1a1">Raw context sent to the model</text>
-  <text class="early fade" x="580" y="35" font-size="16" font-style="italic" fill="#93a1a1">What you actually see</text>
+  <text class="early fade" x="20" y="35" font-size="24" font-style="italic" fill="#93a1a1">Raw context sent to the model</text>
+  <text class="early fade" x="580" y="35" font-size="24" font-style="italic" fill="#93a1a1">What you actually see</text>
   <line class="early fade" x1="560" y1="20" x2="560" y2="560" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- LEFT PANE: raw growing context -->
@@ -389,5 +394,6 @@
     <circle class="a2a5b fade" cx="280" cy="435" r="7" fill="#eee8d5"/>
     <circle class="a2b5b fade" cx="280" cy="450" r="7" fill="#eee8d5"/>
     <circle class="a2c5b fade" cx="280" cy="465" r="7" fill="#eee8d5"/>
+  </g>
   </g>
 </svg>

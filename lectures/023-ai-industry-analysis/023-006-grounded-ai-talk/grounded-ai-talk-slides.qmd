@@ -372,9 +372,10 @@ and agentic tool use are both just this same loop with more stuff stuffed
 into the context before the next prediction.
 :::
 
-<!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- <think> block generates
-     word-by-word on the raw-context pane, terminal only ever shows a
-     "Thinking..." placeholder, never the reasoning content itself -->
+<!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- <reasoning>/<user summary>
+     blocks generate on the raw-context pane; terminal shows "Thinking..."
+     during reasoning, flashes the summary sentence whole, then streams the
+     real answer word-by-word once ready -->
 ## It's ALL Next-Token Prediction {#nexttoken-stage-2-cot auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -395,14 +396,32 @@ into the context before the next prediction.
 Same question as the previous stage, same final answer — the point isn't
 that reasoning changes the answer here, it's that reasoning is the *same
 mechanism*: tokens generated one at a time, just wrapped in a tag and
-usually hidden from you. The `<think>` tag is DeepSeek R1's actual,
-publicly-documented output format — say that explicitly if asked, since
-other labs (Anthropic, OpenAI, Google) handle this differently, mostly
-hiding raw reasoning entirely rather than using a visible tag. "Ask it to
-think step by step" describes *prompted* CoT (the 2022-era technique); by
-2026 frontier models increasingly do this natively via RL training, not
-because anyone asked — worth saying out loud if the audience seems to
-expect the older framing.
+usually hidden from you.
+
+`<reasoning>` and `<user summary>` here are **illustrative, not a real
+tag from any lab** — say that explicitly if asked. We don't actually know
+ChatGPT's internal format; OpenAI deliberately hides raw reasoning
+entirely, in both the ChatGPT UI and the API. What you actually see
+flashing in ChatGPT while it works is a *separately generated summary* of
+the reasoning, not the reasoning itself — a distinct generation pass
+whose job is showing you a live-updating gloss, not a transcript. That's
+exactly the distinction the two tag types dramatize here: `<reasoning>`
+= the real internal deliberation (never shown to the user), `<user
+summary>` = the model generating a *different*, shorter piece of text
+whose whole purpose is to be shown. Both are still just next-token
+prediction — that's the point — they're just aimed at different
+audiences.
+
+DeepSeek R1 is the one lab that's a genuine documented exception: its raw
+output literally contains `<think>...</think>` tags, publicly confirmed
+in the R1 paper. Worth mentioning by name if asked which lab (if any)
+actually does this. Anthropic's extended thinking returns structured API
+content blocks (`type: "thinking"`) rather than an inline tag; Google's
+Gemini thinking models show a "Thoughts" summary similar in spirit to
+ChatGPT's. "Ask it to think step by step" describes *prompted* CoT (the
+2022-era technique); by 2026 frontier models increasingly reason natively
+via RL training, not because anyone asked — worth saying out loud if the
+audience seems to expect the older framing.
 :::
 
 <!-- STAGE 3/3 (nexttoken-stage-3-agent): agent + harness -- placeholder, iterate next -->
