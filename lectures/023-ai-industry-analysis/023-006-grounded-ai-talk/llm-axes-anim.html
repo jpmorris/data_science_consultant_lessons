@@ -188,14 +188,16 @@
   // Stage 5 "transformer": "Who is the current UK king ?" fades in, with
   // king (still the same persistent element) gliding to its spot in the
   // sentence, then a blue arrow from king up into an unlabeled, shaded
-  // sketch of the decoder-only Transformer -- same silhouette as the real
-  // labeled diagram elsewhere in the deck ("The Transformer Still Rules"):
-  // token embedding at the bottom, one repeated norm/attention/residual/
-  // norm/FFN/residual block (with a KV-cache stub sticking out its side
-  // and a stack-echo shadow behind it for "repeated N times"), final norm,
-  // then linear+softmax at the top. No text anywhere in the sketch --
-  // nothing has been labeled yet at this point in the talk, it's just a
-  // preview of the shape to come.
+  // sketch of the decoder-only Transformer, enclosed in one solid frame
+  // with an unlabeled output arrow poking out its top -- same silhouette
+  // as the real labeled diagram elsewhere in the deck ("The Transformer
+  // Still Rules"): token embedding at the bottom, one repeated norm/
+  // attention/residual/norm/FFN/residual block, a separate small dashed
+  // "repeated N times" indicator connected above it by short dotted
+  // segments (matching that diagram's own convention, not a stack-shadow
+  // effect), final norm, then linear+softmax at the top. No text anywhere
+  // in the sketch -- nothing has been labeled yet at this point in the
+  // talk, it's just a preview of the shape to come.
   // Positions re-derived from measured getBBox() widths at font-size 27 so
   // the gaps between words read as visually even (~18px), same empirical
   // approach as the tree's KING_LABEL_HALF_WIDTH above.
@@ -209,29 +211,35 @@
     { text: 'UK',      x: 434, y: 540 },
     { text: '?',       x: 548, y: 540 }
   ];
+  // Dropped a first-pass "stack echo" (offset shadow rects behind the
+  // block) for the N-times-repeated indicator -- unclear at a glance.
+  // Matches the real diagram's own convention instead: a separate small
+  // dashed box, connected to the block below and Final Norm above by
+  // short dotted segments. Also dropped the KV-cache stub and attention-
+  // head bars from the first pass: too much detail for a silhouette.
   var XFMR_ARROW = {
-    from: { x: 498, y: 500 },
-    to:   { x: 350, y: 472 }
+    from: { x: 498, y: 505 },
+    to:   { x: 350, y: 495 }
   };
-  var XFMR_EMBED = { x: 285, y: 440, w: 130, h: 30, rx: 6 };
-  var XFMR_BLOCK_OUTER = { x: 270, y: 220, w: 160, h: 205, rx: 10 };
-  var XFMR_BLOCK_SHADOW_DX = [10, 20];
-  var XFMR_NORM1 = { x: 305, y: 400, w: 90, h: 18, rx: 4 };
-  var XFMR_ATTN = { x: 290, y: 330, w: 120, h: 50, rx: 6 };
-  var XFMR_KV = { x: 415, y: 340, w: 30, h: 30, rx: 4 };
-  var XFMR_ATTN_BARS = [
-    { x: 300, y: 385, w: 6, h: 12, o: 0.9 },
-    { x: 314, y: 382, w: 6, h: 15, o: 0.7 },
-    { x: 328, y: 388, w: 6, h: 9,  o: 0.5 },
-    { x: 342, y: 384, w: 6, h: 13, o: 0.3 }
-  ];
-  var XFMR_PLUS1 = { x: 350, y: 315 };
-  var XFMR_NORM2 = { x: 305, y: 290, w: 90, h: 18, rx: 4 };
-  var XFMR_FFN = { x: 295, y: 240, w: 110, h: 40, rx: 6 };
-  var XFMR_PLUS2 = { x: 350, y: 228 };
-  var XFMR_FINAL_NORM = { x: 305, y: 185, w: 90, h: 20, rx: 4 };
-  var XFMR_LINSOFT = { x: 280, y: 145, w: 140, h: 30, rx: 6 };
-  var XFMR_OUTPUT = { x: 270, y: 90, w: 160, h: 40, rx: 8 };
+  var XFMR_OUTPUT_ARROW = {
+    from: { x: 350, y: 116 },
+    to:   { x: 350, y: 82 }
+  };
+  var XFMR_FRAME = { x: 250, y: 105, w: 200, h: 410, rx: 10 };
+  var XFMR_OUTPUT = { x: 260, y: 116, w: 180, h: 35, rx: 8 };
+  var XFMR_LINSOFT = { x: 280, y: 163, w: 140, h: 28, rx: 6 };
+  var XFMR_FINAL_NORM = { x: 305, y: 203, w: 90, h: 18, rx: 4 };
+  var XFMR_REPEAT_CONNECTOR_1 = { from: { x: 350, y: 259 }, to: { x: 350, y: 221 } }; // repeat box -> final norm
+  var XFMR_REPEAT_BOX = { x: 280, y: 239, w: 140, h: 20, rx: 4 };
+  var XFMR_REPEAT_CONNECTOR_2 = { from: { x: 350, y: 277 }, to: { x: 350, y: 259 } }; // block -> repeat box
+  var XFMR_BLOCK_OUTER = { x: 270, y: 277, w: 160, h: 178, rx: 10 };
+  var XFMR_PLUS2 = { x: 350, y: 292 };
+  var XFMR_FFN = { x: 295, y: 298, w: 110, h: 34, rx: 6 };
+  var XFMR_NORM2 = { x: 305, y: 342, w: 90, h: 16, rx: 4 };
+  var XFMR_PLUS1 = { x: 350, y: 364 };
+  var XFMR_ATTN = { x: 290, y: 370, w: 120, h: 50, rx: 6 };
+  var XFMR_NORM1 = { x: 305, y: 430, w: 90, h: 16, rx: 4 };
+  var XFMR_EMBED = { x: 285, y: 470, w: 130, h: 30, rx: 6 };
 
   // king/man/woman/queen, each drawn as a genuine vector from the shared
   // origin -- not just a labeled point. This is the standard illustration
@@ -319,7 +327,7 @@
     svg.classList.add('llm-axes-svg');
 
     var arrowDefs = ns('defs');
-    [['llm-arrow-gender', GENDER_COLOR], ['llm-arrow-ortho', ORTHO_COLOR], ['llm-arrow-chain', CHAIN_COLOR], ['llm-arrow-bg', BG_VECTOR_COLOR]].forEach(function (m) {
+    [['llm-arrow-gender', GENDER_COLOR], ['llm-arrow-ortho', ORTHO_COLOR], ['llm-arrow-chain', CHAIN_COLOR], ['llm-arrow-bg', BG_VECTOR_COLOR], ['llm-arrow-struct', STRUCT_COLOR]].forEach(function (m) {
       var marker = ns('marker');
       marker.setAttribute('id', m[0]);
       marker.setAttribute('viewBox', '0 0 10 10');
@@ -565,26 +573,34 @@
       xfmrEls.push(label);
     });
 
-    var xfmrArrow = ns('line');
-    xfmrArrow.setAttribute('x1', String(XFMR_ARROW.from.x));
-    xfmrArrow.setAttribute('y1', String(XFMR_ARROW.from.y));
-    xfmrArrow.setAttribute('x2', String(XFMR_ARROW.to.x));
-    xfmrArrow.setAttribute('y2', String(XFMR_ARROW.to.y));
-    xfmrArrow.setAttribute('stroke', GENDER_COLOR);
-    xfmrArrow.setAttribute('stroke-width', '3');
-    xfmrArrow.setAttribute('marker-end', 'url(#llm-arrow-gender)');
-    xfmrArrow.classList.add('llm-fade-el');
-    svg.appendChild(xfmrArrow);
-    xfmrEls.push(xfmrArrow);
+    function xfmrLine(cfg, opts) {
+      opts = opts || {};
+      var line = ns('line');
+      line.setAttribute('x1', String(cfg.from.x));
+      line.setAttribute('y1', String(cfg.from.y));
+      line.setAttribute('x2', String(cfg.to.x));
+      line.setAttribute('y2', String(cfg.to.y));
+      line.setAttribute('stroke', opts.color || GENDER_COLOR);
+      line.setAttribute('stroke-width', String(opts.strokeWidth || 3));
+      if (opts.dotted) line.setAttribute('stroke-dasharray', '1.5,5');
+      line.setAttribute('marker-end', 'url(#' + (opts.marker || 'llm-arrow-gender') + ')');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      xfmrEls.push(line);
+      return line;
+    }
+    xfmrLine(XFMR_ARROW);
 
     // Shaded, unlabeled sketch -- same silhouette as the real decoder-only
     // Transformer diagram elsewhere in the deck, bottom (input) to top
-    // (output): embedding -> [repeated block: norm, self-attention (+ a KV
-    // cache stub sticking out its side, + a few small bars standing in for
-    // attention heads), residual add, norm, feed-forward, residual add] ->
-    // final norm -> linear+softmax -> output. The repeated block gets a
-    // "stack echo" (two faint offset copies of its outline behind it) to
-    // read as "repeated N times" without needing any text to say so.
+    // (output): embedding -> [repeated block: norm, self-attention,
+    // residual add, norm, feed-forward, residual add] -> a separate small
+    // dashed "repeated N times" indicator, connected to the block below
+    // and Final Norm above by short dotted segments (matches the real
+    // diagram's own convention for showing the repeat -- not a
+    // stack-shadow effect, that read as unclear on the first pass) ->
+    // final norm -> linear+softmax -> output, all inside one solid frame
+    // with an unlabeled output arrow poking out its top.
     function xfmrRect(cfg, opts) {
       opts = opts || {};
       var rect = ns('rect');
@@ -620,27 +636,22 @@
       });
     }
 
-    XFMR_BLOCK_SHADOW_DX.forEach(function (dx, i) {
-      xfmrRect(
-        { x: XFMR_BLOCK_OUTER.x + dx, y: XFMR_BLOCK_OUTER.y, w: XFMR_BLOCK_OUTER.w, h: XFMR_BLOCK_OUTER.h, rx: XFMR_BLOCK_OUTER.rx },
-        { dashed: true, fillOpacity: 0, strokeOpacity: 0.28 - i * 0.1 }
-      );
-    });
-    xfmrRect(XFMR_EMBED);
-    xfmrRect(XFMR_BLOCK_OUTER, { dashed: true, fillOpacity: 0, strokeOpacity: 0.45 });
-    xfmrRect(XFMR_NORM1);
-    xfmrRect(XFMR_ATTN);
-    xfmrRect(XFMR_KV, { dashed: true });
-    XFMR_ATTN_BARS.forEach(function (bar) {
-      xfmrRect({ x: bar.x, y: bar.y, w: bar.w, h: bar.h, rx: 1 }, { fillOpacity: bar.o, strokeOpacity: 0 });
-    });
-    xfmrPlus(XFMR_PLUS1);
-    xfmrRect(XFMR_NORM2);
-    xfmrRect(XFMR_FFN);
-    xfmrPlus(XFMR_PLUS2);
-    xfmrRect(XFMR_FINAL_NORM);
-    xfmrRect(XFMR_LINSOFT);
+    xfmrRect(XFMR_FRAME, { fillOpacity: 0, strokeOpacity: 0.7, strokeWidth: 2 });
     xfmrRect(XFMR_OUTPUT);
+    xfmrLine(XFMR_OUTPUT_ARROW, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 2 });
+    xfmrRect(XFMR_LINSOFT);
+    xfmrRect(XFMR_FINAL_NORM);
+    xfmrLine(XFMR_REPEAT_CONNECTOR_1, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
+    xfmrRect(XFMR_REPEAT_BOX, { dashed: true, fillOpacity: 0, strokeOpacity: 0.5 });
+    xfmrLine(XFMR_REPEAT_CONNECTOR_2, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
+    xfmrRect(XFMR_BLOCK_OUTER, { dashed: true, fillOpacity: 0, strokeOpacity: 0.45 });
+    xfmrPlus(XFMR_PLUS2);
+    xfmrRect(XFMR_FFN);
+    xfmrRect(XFMR_NORM2);
+    xfmrPlus(XFMR_PLUS1);
+    xfmrRect(XFMR_ATTN);
+    xfmrRect(XFMR_NORM1);
+    xfmrRect(XFMR_EMBED);
 
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
