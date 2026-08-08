@@ -372,7 +372,9 @@ and agentic tool use are both just this same loop with more stuff stuffed
 into the context before the next prediction.
 :::
 
-<!-- STAGE 2/3 (nexttoken-stage-2-cot): chain-of-thought -- placeholder, iterate next -->
+<!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- <think> block generates
+     word-by-word on the raw-context pane, terminal only ever shows a
+     "Thinking..." placeholder, never the reasoning content itself -->
 ## It's ALL Next-Token Prediction {#nexttoken-stage-2-cot auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -388,6 +390,20 @@ into the context before the next prediction.
   </div>
 </div>
 ```
+
+::: {.notes}
+Same question as the previous stage, same final answer — the point isn't
+that reasoning changes the answer here, it's that reasoning is the *same
+mechanism*: tokens generated one at a time, just wrapped in a tag and
+usually hidden from you. The `<think>` tag is DeepSeek R1's actual,
+publicly-documented output format — say that explicitly if asked, since
+other labs (Anthropic, OpenAI, Google) handle this differently, mostly
+hiding raw reasoning entirely rather than using a visible tag. "Ask it to
+think step by step" describes *prompted* CoT (the 2022-era technique); by
+2026 frontier models increasingly do this natively via RL training, not
+because anyone asked — worth saying out loud if the audience seems to
+expect the older framing.
+:::
 
 <!-- STAGE 3/3 (nexttoken-stage-3-agent): agent + harness -- placeholder, iterate next -->
 ## It's ALL Next-Token Prediction {#nexttoken-stage-3-agent auto-animate="true" .heading-accent}

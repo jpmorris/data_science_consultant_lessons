@@ -6,9 +6,10 @@
     var clone = panel.cloneNode(true);
     panel.replaceWith(clone);
   }
+  var animatedStageIds = ['nexttoken-stage-1-zeroshot', 'nexttoken-stage-2-cot'];
   Reveal.on('slidechanged', function (event) {
     var slide = event.currentSlide;
-    if (slide && slide.id === 'nexttoken-stage-1-zeroshot') {
+    if (slide && animatedStageIds.indexOf(slide.id) !== -1) {
       restartAnimatedPanel(slide);
     }
   });
