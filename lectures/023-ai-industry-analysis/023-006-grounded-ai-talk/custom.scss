@@ -103,13 +103,15 @@ $body-bg: #073642;
 // into the subtree and apply its own conflicting opacity transition to any
 // non-data-id'd descendant it finds -- see AGENT-BRIEFING.md. This way
 // auto-animate's scan of the section never encounters the diagram at all.
-// Square, not stretched to the column's full width: the SVG's viewBox is
-// square (0 0 600 600), and a non-square container letterboxes it (scales
-// to fit the smaller dimension, centered, wasting the rest as empty
-// margin) -- which was quietly throwing away most of the available width
-// no matter how far apart the diagram's own coordinates were spread.
+// Sized to match the SVG's own aspect ratio, not stretched to the column's
+// full width: the SVG's viewBox is 700x600 (widened from a square 600x600
+// to fit the embedding-numbers label without clipping), and a container
+// with a different aspect ratio letterboxes it (scales to fit the smaller
+// dimension, centered, wasting the rest as empty margin) -- which was
+// quietly throwing away most of the available width no matter how far
+// apart the diagram's own coordinates were spread.
 .reveal .slides .llm-axes-anchor {
-  width: 620px;
+  width: 723px;
   height: 620px;
   margin: 0 auto;
   visibility: hidden;
