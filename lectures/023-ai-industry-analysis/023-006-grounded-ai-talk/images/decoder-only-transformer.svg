@@ -1,4 +1,4 @@
-<svg width="1429" height="1000" viewBox="0 0 2000 1400" xmlns="http://www.w3.org/2000/svg">
+<svg width="1677" height="1004" viewBox="0 25 2230 1335" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#93a1a1"/>
@@ -12,7 +12,7 @@
          canvas: objectBoundingBox (the default) collapses to zero for a
          perfectly horizontal or vertical line, which silently hides the
          entire filtered element. -->
-    <filter id="sketchy" filterUnits="userSpaceOnUse" x="-50" y="-50" width="2000" height="1450">
+    <filter id="sketchy" filterUnits="userSpaceOnUse" x="-50" y="-50" width="2350" height="1500">
       <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="1" seed="7" result="noise"/>
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
@@ -50,10 +50,10 @@
 
   <!-- 8: linear -> softmax -->
   <g class="fragment" data-fragment-index="7" font-family="'Architects Daughter', cursive">
-    <text x="1200" y="180" font-size="30" fill="#eee8d5">Turns the final vector into</text>
-    <text x="1200" y="218" font-size="30" fill="#eee8d5">token probabilities</text>
-    <text x="1200" y="254" font-size="26" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
-    <path d="M1190,185 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <text x="1450" y="180" font-size="30" fill="#eee8d5">Turns the final vector into</text>
+    <text x="1450" y="218" font-size="30" fill="#eee8d5">token probabilities</text>
+    <text x="1450" y="254" font-size="26" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
+    <path d="M1440,185 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 7: x N fade box -->
@@ -82,9 +82,9 @@
        component living outside the main column; a short direct arrow beats
        a long detour around the attention box -->
   <g class="fragment" data-fragment-index="4" font-family="'Architects Daughter', cursive">
-    <text x="1490" y="918" font-size="30" fill="#eee8d5">Stores past keys/values</text>
-    <text x="1490" y="956" font-size="30" fill="#eee8d5">so they're not recomputed</text>
-    <path d="M1490,933 H1445" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
+    <text x="1740" y="918" font-size="30" fill="#eee8d5">Stores past keys/values</text>
+    <text x="1740" y="956" font-size="30" fill="#eee8d5">so they're not recomputed</text>
+    <path d="M1740,933 H1445" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 3: first norm -->
@@ -96,10 +96,10 @@
 
   <!-- 2: token + positional embedding -->
   <g class="fragment" data-fragment-index="1" font-family="'Architects Daughter', cursive">
-    <text x="1350" y="1165" font-size="30" fill="#eee8d5">Each token becomes a</text>
-    <text x="1350" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
-    <text x="1350" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
-    <path d="M1340,1200 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <text x="1550" y="1165" font-size="30" fill="#eee8d5">Each token becomes a</text>
+    <text x="1550" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
+    <text x="1550" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
+    <path d="M1540,1200 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 1: prompt tokens -->
@@ -123,7 +123,7 @@
   <g transform="translate(600,0)">
     <!-- output probabilities -->
     <rect x="249.88957" y="37.074272" width="340.22086" height="83.036156" rx="8.0051966" fill="#0d4a55" stroke="#b58900" stroke-width="1.77914"/>
-    <text x="419.18835" y="57.667618" text-anchor="middle" font-size="17" fill="#eee8d5">Next-token probabilities</text>
+    <text x="419.18835" y="57.667618" text-anchor="middle" font-size="19" fill="#eee8d5">Next-token probabilities</text>
     <rect x="342" y="99" width="12" height="13" fill="#93a1a1"/>
     <rect x="362" y="86" width="12" height="26" fill="#93a1a1"/>
     <rect x="382" y="68" width="12" height="44" fill="#b58900"/>
@@ -133,11 +133,11 @@
     <line x1="420" y1="153.32001" x2="420" y2="125.32001" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
     <!-- linear + softmax -->
     <rect x="270" y="155.98001" width="300" height="58" rx="8" fill="#0d4a55" stroke="#268bd2" stroke-width="2"/>
-    <text x="420" y="190.98001" text-anchor="middle" font-size="17" fill="#eee8d5">Linear &#8594; Softmax</text>
+    <text x="420" y="190.98001" text-anchor="middle" font-size="19" fill="#eee8d5">Linear &#8594; Softmax</text>
     <line x1="420" y1="257.30002" x2="420" y2="219.30002" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
     <!-- final norm -->
     <rect x="325" y="262.62003" width="190" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
-    <text x="420" y="291.62003" text-anchor="middle" font-size="17" fill="#eee8d5">Final Norm</text>
+    <text x="420" y="291.62003" text-anchor="middle" font-size="19" fill="#eee8d5">Final Norm</text>
     <line x1="420" y1="335.94003" x2="420" y2="312.94003" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
     <!-- continuation dots: Final Norm down into the faded echo -->
     <circle cx="420" cy="341.62003" r="2.2" fill="#93a1a1"/>
@@ -145,8 +145,8 @@
     <circle cx="420" cy="365.62003" r="2.2" fill="#93a1a1"/>
     <!-- faded echo of the next block in the stack -->
     <rect x="190" y="376" width="450" height="55" rx="14" fill="none" stroke="#93a1a1" stroke-width="2" stroke-dasharray="8,6" opacity="0.32"/>
-    <text x="420" y="399" text-anchor="middle" font-size="15" font-weight="bold" fill="#b58900">Transformer Block</text>
-    <text x="420" y="418" text-anchor="middle" font-size="12" fill="#93a1a1">(&#215; N, stacked)</text>
+    <text x="420" y="399" text-anchor="middle" font-size="17" font-weight="bold" fill="#b58900">Transformer Block</text>
+    <text x="420" y="418" text-anchor="middle" font-size="14" fill="#93a1a1">(&#215; N, stacked)</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,502.86838 V 473.56"/>
     <!-- continuation dots: block boundary up into the faded echo -->
     <circle cx="420" cy="440" r="2.2" fill="#93a1a1"/>
@@ -154,29 +154,29 @@
     <circle cx="420" cy="464" r="2.2" fill="#93a1a1"/>
     <!-- transformer block boundary -->
     <rect x="189.97449" y="508.8786" width="450.05103" height="621.14716" rx="14.001587" fill="none" stroke="#93a1a1" stroke-width="1.94923" stroke-dasharray="8, 6"/>
-    <text x="200.8174" y="531.07825" font-size="16" fill="#b58900" font-weight="bold">Transformer Block</text>
+    <text x="200.8174" y="531.07825" font-size="18" fill="#b58900" font-weight="bold">Transformer Block</text>
     <!-- residual connections: solid, same color/style as the flow arrows;
          both swing right and are drawn before the KV Cache connector below
          so the KV Cache's amber line renders on top where they cross -->
     <path d="M 420,1105.5826 H 580 V 814 H 435" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="-969.31995" y="593.29987" font-size="12" fill="#93a1a1" transform="rotate(-90)" text-anchor="middle">residual</text>
+    <text x="-969.31995" y="593.29987" font-size="14" fill="#93a1a1" transform="rotate(-90)" text-anchor="middle">residual</text>
     <path d="M 419.96375,785.24093 H 580.0358 V 530.68419 H 434.9705" fill="none" stroke="#93a1a1" stroke-width="1.94963" marker-end="url(#arrow)"/>
-    <text x="-665" y="593.29987" font-size="12" fill="#93a1a1" transform="rotate(-90)" text-anchor="middle">residual</text>
+    <text x="-665" y="593.29987" font-size="14" fill="#93a1a1" transform="rotate(-90)" text-anchor="middle">residual</text>
     <!-- residual add 2 -->
     <circle cx="420" cy="531" r="15" fill="#0d4a55" stroke="#93a1a1" stroke-width="2"/>
     <text x="420" y="537" text-anchor="middle" font-size="18" fill="#eee8d5">+</text>
     <path stroke="#93a1a1" stroke-width="2.00032" marker-end="url(#arrow)" d="M 420,575.45913 V 551.32"/>
     <!-- feed-forward -->
     <rect x="290" y="582" width="260" height="100" rx="8" fill="#0d4a55" stroke="#859900" stroke-width="2"/>
-    <text x="420" y="608" text-anchor="middle" font-size="16" fill="#eee8d5">Feed-Forward Network</text>
-    <text x="420" y="630" text-anchor="middle" font-size="13" fill="#93a1a1">expand &#8594; activate &#8594; project</text>
+    <text x="420" y="608" text-anchor="middle" font-size="18" fill="#eee8d5">Feed-Forward Network</text>
+    <text x="420" y="630" text-anchor="middle" font-size="15" fill="#93a1a1">expand &#8594; activate &#8594; project</text>
     <rect x="380" y="648" width="14" height="16" fill="#859900" opacity="0.6"/>
     <rect x="400" y="642" width="14" height="28" fill="#859900"/>
     <rect x="420" y="648" width="14" height="16" fill="#859900" opacity="0.6"/>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,712.60696 V 687.32"/>
     <!-- norm 2 -->
     <rect x="330" y="718" width="180" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
-    <text x="420" y="747" text-anchor="middle" font-size="17" fill="#eee8d5">Norm</text>
+    <text x="420" y="747" text-anchor="middle" font-size="19" fill="#eee8d5">Norm</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,792.84174 V 768.32"/>
     <!-- residual add 1 -->
     <circle cx="420" cy="814" r="15" fill="#0d4a55" stroke="#93a1a1" stroke-width="2"/>
@@ -184,31 +184,31 @@
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,862.28522 V 834.32"/>
     <!-- masked multi-head self-attention -->
     <rect x="275" y="865" width="290" height="140" rx="8" fill="#0d4a55" stroke="#2aa198" stroke-width="2"/>
-    <text x="420" y="891" text-anchor="middle" font-size="16" fill="#eee8d5">Masked Multi-Head</text>
-    <text x="420" y="913" text-anchor="middle" font-size="16" fill="#eee8d5">Self-Attention</text>
+    <text x="420" y="891" text-anchor="middle" font-size="18" fill="#eee8d5">Masked Multi-Head</text>
+    <text x="420" y="913" text-anchor="middle" font-size="18" fill="#eee8d5">Self-Attention</text>
     <rect x="310" y="924.68005" width="16" height="60" fill="#2aa198" opacity="0.9"/>
     <rect x="378" y="924.68005" width="16" height="60" fill="#2aa198" opacity="0.7"/>
     <rect x="446" y="924.68005" width="16" height="60" fill="#2aa198" opacity="0.5"/>
     <rect x="514" y="924.68005" width="16" height="60" fill="#2aa198" opacity="0.3"/>
-    <text x="420" y="1000.34" text-anchor="middle" font-size="13" fill="#93a1a1">attention heads (illustrative)</text>
+    <text x="420" y="1000.34" text-anchor="middle" font-size="15" fill="#93a1a1">attention heads (illustrative)</text>
     <!-- KV cache, outside the block boundary -->
     <line x1="565" y1="935" x2="668" y2="935" stroke="#b58900" stroke-width="2" marker-start="url(#arrowAmber)" marker-end="url(#arrowAmber)"/>
     <rect x="670" y="885" width="175" height="100" rx="8" fill="#0d4a55" stroke="#b58900" stroke-width="2"/>
-    <text x="757" y="911" text-anchor="middle" font-size="16" fill="#eee8d5">KV Cache</text>
-    <text x="757" y="933" text-anchor="middle" font-size="13" fill="#93a1a1">cached keys/values</text>
-    <text x="757" y="951" text-anchor="middle" font-size="13" fill="#93a1a1">from prior tokens</text>
+    <text x="757" y="911" text-anchor="middle" font-size="18" fill="#eee8d5">KV Cache</text>
+    <text x="757" y="933" text-anchor="middle" font-size="14" fill="#93a1a1">cached keys/values</text>
+    <text x="757" y="951" text-anchor="middle" font-size="14" fill="#93a1a1">from prior tokens</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,1035.9713 V 1010.32"/>
     <!-- norm 1 -->
     <rect x="330" y="1041" width="180" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
-    <text x="420" y="1070" text-anchor="middle" font-size="17" fill="#eee8d5">Norm</text>
+    <text x="420" y="1070" text-anchor="middle" font-size="19" fill="#eee8d5">Norm</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,1109.9452 V 1091.32"/>
     <!-- branch point (into norm1 / residual bypass) -->
     <circle cx="420" cy="1114" r="4" fill="#eee8d5"/>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,1163.4591 V 1123.32"/>
     <!-- embedding + positional -->
     <rect x="270" y="1170" width="300" height="60" rx="8" fill="#0d4a55" stroke="#268bd2" stroke-width="2"/>
-    <text x="420" y="1194" text-anchor="middle" font-size="17" fill="#eee8d5">Token Embedding +</text>
-    <text x="420" y="1217" text-anchor="middle" font-size="17" fill="#eee8d5">Positional Encoding</text>
+    <text x="420" y="1194" text-anchor="middle" font-size="19" fill="#eee8d5">Token Embedding +</text>
+    <text x="420" y="1217" text-anchor="middle" font-size="19" fill="#eee8d5">Positional Encoding</text>
     <path stroke="#93a1a1" stroke-width="2.00032" marker-end="url(#arrow)" d="m 420.38261,1262.1556 v -23.7565"/>
     <!-- input tokens -->
     <rect x="372" y="1266" width="16" height="16" fill="#2aa198"/>
@@ -216,6 +216,6 @@
     <rect x="412" y="1266" width="16" height="16" fill="#93a1a1"/>
     <rect x="432" y="1266" width="16" height="16" fill="#2aa198"/>
     <rect x="452" y="1266" width="16" height="16" fill="#93a1a1"/>
-    <text x="420" y="1308" text-anchor="middle" font-size="15" fill="#93a1a1">prompt tokens</text>
+    <text x="420" y="1308" text-anchor="middle" font-size="17" fill="#93a1a1">prompt tokens</text>
   </g>
 </svg>
