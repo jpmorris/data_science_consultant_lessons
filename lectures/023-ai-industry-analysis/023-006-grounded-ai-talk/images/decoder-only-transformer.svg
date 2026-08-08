@@ -50,10 +50,10 @@
 
   <!-- 8: linear -> softmax -->
   <g class="fragment" data-fragment-index="7" font-family="'Architects Daughter', cursive">
-    <text x="20" y="180" font-size="20" fill="#eee8d5">Turns the final vector into</text>
-    <text x="20" y="208" font-size="20" fill="#eee8d5">token probabilities</text>
-    <text x="20" y="236" font-size="17" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
-    <path d="M400,185 H870" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <text x="1200" y="170" font-size="20" fill="#eee8d5">Turns the final vector into</text>
+    <text x="1200" y="198" font-size="20" fill="#eee8d5">token probabilities</text>
+    <text x="1200" y="226" font-size="17" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
+    <path d="M1190,185 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 7: x N fade box -->
@@ -96,10 +96,10 @@
 
   <!-- 2: token + positional embedding -->
   <g class="fragment" data-fragment-index="1" font-family="'Architects Daughter', cursive">
-    <text x="20" y="1160" font-size="20" fill="#eee8d5">Each token becomes a</text>
-    <text x="20" y="1188" font-size="20" fill="#eee8d5">vector of numbers, e.g.</text>
-    <text x="20" y="1213" font-size="17" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
-    <path d="M420,1188 V1200 H870" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <text x="1210" y="1165" font-size="30" fill="#eee8d5">Each token becomes a</text>
+    <text x="1210" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
+    <text x="1210" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
+    <path d="M1200,1200 H1170" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 1: prompt tokens -->
