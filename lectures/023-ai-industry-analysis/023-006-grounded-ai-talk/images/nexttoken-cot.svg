@@ -563,7 +563,9 @@
   <g class="s2-thinking-2 fade">
     <text class="s2-blink" x="590" y="160" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
   </g>
-  <text x="590" y="160" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
+  <!-- lands where the vanished summary was, not where "Thinking..." was,
+       so there's no dead gap between the question and the final answer -->
+  <text x="590" y="130" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
     <tspan class="s2-aw1-r fade">They</tspan>
     <tspan class="s2-aw2-r fade"> use</tspan>
     <tspan class="s2-aw3-r fade"> 'self-attention'</tspan>
