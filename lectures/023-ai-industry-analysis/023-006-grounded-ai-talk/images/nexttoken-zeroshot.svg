@@ -5,7 +5,28 @@
     .sys        { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
     .user-turn  { animation: fadeInStay .6s ease forwards; animation-delay: 1.3s; }
     .arrow2-base { animation: fadeInStay .3s ease forwards; animation-delay: 1.9s; }
-    .answer-label { animation: fadeInStay .4s ease forwards; animation-delay: 3.5s; }
+
+    /* text flashes in sync with each cycle's box glow (.pg{n}) -- present
+       from the start, so it flashes on every cycle */
+    .sys-text, .user-text {
+      animation:
+        flashSys .35s ease 2.00s, flashSys .35s ease 3.80s, flashSys .35s ease 5.60s,
+        flashSys .35s ease 7.40s, flashSys .35s ease 9.20s;
+    }
+    .user-text {
+      animation-name: flashUser, flashUser, flashUser, flashUser, flashUser;
+    }
+
+    /* answer words flash on every cycle *after* they've folded into the
+       prompt -- they're part of "the whole prompt" being re-sent from
+       that point on, so they keep flashing right alongside sys/user text.
+       (no flash at each word's own delay -- that moment is its fade-in,
+       not a resend.) */
+    .answer-label {
+      animation: fadeInStay .4s ease forwards,
+        flashAns .35s ease 3.80s, flashAns .35s ease 5.60s,
+        flashAns .35s ease 7.40s, flashAns .35s ease 9.20s;
+    }
 
     @keyframes fadeInStay {
       from { opacity: 0; }
@@ -22,6 +43,9 @@
       40%  { opacity: 1; }
       100% { opacity: 0; }
     }
+    @keyframes flashSys  { 0%, 100% { fill: #93a1a1; } 50% { fill: #ffffff; } }
+    @keyframes flashUser { 0%, 100% { fill: #eee8d5; } 50% { fill: #ffffff; } }
+    @keyframes flashAns  { 0%, 100% { fill: #2aa198; } 50% { fill: #ffffff; } }
 
     /* cycle 1 -- delays anchored at loop start 2.00s */
     .pg1  { animation: blip .35s ease forwards; animation-delay: 2.00s; }
@@ -33,7 +57,11 @@
     .a2b1 { animation: blip .25s ease forwards; animation-delay: 2.82s; }
     .a2c1 { animation: blip .25s ease forwards; animation-delay: 2.94s; }
     .w1c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 3.10s; }
-    .w1a  { animation: fadeInStay .3s ease forwards; animation-delay: 3.50s; }
+    .w1a  {
+      animation: fadeInStay .3s ease forwards 3.50s,
+        flashAns .35s ease 3.80s, flashAns .35s ease 5.60s,
+        flashAns .35s ease 7.40s, flashAns .35s ease 9.20s;
+    }
 
     /* cycle 2 -- anchored at 3.80s */
     .pg2  { animation: blip .35s ease forwards; animation-delay: 3.80s; }
@@ -45,7 +73,10 @@
     .a2b2 { animation: blip .25s ease forwards; animation-delay: 4.62s; }
     .a2c2 { animation: blip .25s ease forwards; animation-delay: 4.74s; }
     .w2c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 4.90s; }
-    .w2a  { animation: fadeInStay .3s ease forwards; animation-delay: 5.30s; }
+    .w2a  {
+      animation: fadeInStay .3s ease forwards 5.30s,
+        flashAns .35s ease 5.60s, flashAns .35s ease 7.40s, flashAns .35s ease 9.20s;
+    }
 
     /* cycle 3 -- anchored at 5.60s */
     .pg3  { animation: blip .35s ease forwards; animation-delay: 5.60s; }
@@ -57,7 +88,10 @@
     .a2b3 { animation: blip .25s ease forwards; animation-delay: 6.42s; }
     .a2c3 { animation: blip .25s ease forwards; animation-delay: 6.54s; }
     .w3c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 6.70s; }
-    .w3a  { animation: fadeInStay .3s ease forwards; animation-delay: 7.10s; }
+    .w3a  {
+      animation: fadeInStay .3s ease forwards 7.10s,
+        flashAns .35s ease 7.40s, flashAns .35s ease 9.20s;
+    }
 
     /* cycle 4 -- anchored at 7.40s */
     .pg4  { animation: blip .35s ease forwards; animation-delay: 7.40s; }
@@ -69,7 +103,10 @@
     .a2b4 { animation: blip .25s ease forwards; animation-delay: 8.22s; }
     .a2c4 { animation: blip .25s ease forwards; animation-delay: 8.34s; }
     .w4c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 8.50s; }
-    .w4a  { animation: fadeInStay .3s ease forwards; animation-delay: 8.90s; }
+    .w4a  {
+      animation: fadeInStay .3s ease forwards 8.90s,
+        flashAns .35s ease 9.20s;
+    }
 
     /* cycle 5 -- anchored at 9.20s */
     .pg5  { animation: blip .35s ease forwards; animation-delay: 9.20s; }
@@ -102,11 +139,11 @@
        flows into the model again," not "this content goes away." -->
   <g class="sys fade">
     <rect x="40" y="20" width="620" height="140" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text x="60" y="55" font-size="18" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
+    <text class="sys-text" x="60" y="55" font-size="18" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
   </g>
 
   <g class="user-turn fade">
-    <text x="60" y="95" font-size="22" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
+    <text class="user-text" x="60" y="95" font-size="22" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
     <line x1="350" y1="160" x2="350" y2="215" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
   </g>
 
