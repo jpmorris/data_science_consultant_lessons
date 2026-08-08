@@ -1,10 +1,10 @@
 <svg width="860" height="602" viewBox="0 0 1000 700">
   <style>
     .fade { opacity: 0; }
-    .title { animation: fadeInStay .4s ease forwards; animation-delay: .1s; }
-    .box   { animation: fadeInStay .5s ease forwards; animation-delay: 0s; }
-    .early { animation: fadeInStay .4s ease forwards; animation-delay: .15s; }
-    .sys   { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
+    .s2-title { animation: fadeInStay .4s ease forwards; animation-delay: .1s; }
+    .s2-box   { animation: fadeInStay .5s ease forwards; animation-delay: 0s; }
+    .s2-early { animation: fadeInStay .4s ease forwards; animation-delay: .15s; }
+    .s2-sys   { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
 
     @keyframes fadeInStay { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeOutStay { from { opacity: 1; } to { opacity: 0; } }
@@ -33,14 +33,14 @@
        pulses + 8 answer words) -- everything else reveals once, no repeat
        flash, to keep this file tractable given how much longer this
        exchange is than the previous stage. */
-    .sys-text   { animation: flashSys .35s ease 3.20s, flashSys .35s ease 6.10s, flashSys .35s ease 9.00s, flashSys .35s ease 11.90s, flashSys .35s ease 13.70s, flashSys .35s ease 15.50s, flashSys .35s ease 17.30s, flashSys .35s ease 19.10s, flashSys .35s ease 20.90s, flashSys .35s ease 22.70s, flashSys .35s ease 24.50s; }
-    .user1-text { animation: flashUser .35s ease 3.20s, flashUser .35s ease 6.10s, flashUser .35s ease 9.00s, flashUser .35s ease 11.90s, flashUser .35s ease 13.70s, flashUser .35s ease 15.50s, flashUser .35s ease 17.30s, flashUser .35s ease 19.10s, flashUser .35s ease 20.90s, flashUser .35s ease 22.70s, flashUser .35s ease 24.50s; }
+    .s2-sys-text   { animation: flashSys .35s ease 3.20s, flashSys .35s ease 6.10s, flashSys .35s ease 9.00s, flashSys .35s ease 11.90s, flashSys .35s ease 13.70s, flashSys .35s ease 15.50s, flashSys .35s ease 17.30s, flashSys .35s ease 19.10s, flashSys .35s ease 20.90s, flashSys .35s ease 22.70s, flashSys .35s ease 24.50s; }
+    .s2-user1-text { animation: flashUser .35s ease 3.20s, flashUser .35s ease 6.10s, flashUser .35s ease 9.00s, flashUser .35s ease 11.90s, flashUser .35s ease 13.70s, flashUser .35s ease 15.50s, flashUser .35s ease 17.30s, flashUser .35s ease 19.10s, flashUser .35s ease 20.90s, flashUser .35s ease 22.70s, flashUser .35s ease 24.50s; }
 
-    .u1-left { animation: fadeInStay .3s ease forwards; animation-delay: 2.29s; }
+    .s2-u1-left { animation: fadeInStay .3s ease forwards; animation-delay: 2.29s; }
 
-    .prompt1 { animation: fadeInStay .1s ease forwards; animation-delay: 1.3s; }
-    #type1clip rect { animation: typeWidth .99s steps(18, end) forwards; animation-delay: 1.3s; --full-w: 198px; }
-    .cursor1 {
+    .s2-prompt1 { animation: fadeInStay .1s ease forwards; animation-delay: 1.3s; }
+    #s2-type1clip rect { animation: typeWidth .99s steps(18, end) forwards; animation-delay: 1.3s; --full-w: 198px; }
+    .s2-cursor1 {
       animation: fadeInStay .05s ease forwards 1.3s,
         cursorMove .99s steps(18, end) forwards 1.3s,
         cursorBlinkOut .8s ease forwards 2.29s;
@@ -54,7 +54,7 @@
     .summary-close { animation: fadeInStay .3s ease forwards; animation-delay: 8.10s; }
     .think-open-2  { animation: fadeInStay .3s ease forwards; animation-delay: 8.40s; }
     .think-close-2 { animation: fadeInStay .3s ease forwards; animation-delay: 11.00s; }
-    .answer-label  { animation: fadeInStay .3s ease forwards; animation-delay: 11.30s; }
+    .s2-answer-label  { animation: fadeInStay .3s ease forwards; animation-delay: 11.30s; }
 
     /* terminal: "Thinking..." shows during reasoning blocks, hides and
        flashes the whole summary sentence at once during the summary block,
@@ -115,9 +115,9 @@
     .a2aW1 { animation: blip .25s ease forwards; animation-delay: 12.60s; }
     .a2bW1 { animation: blip .25s ease forwards; animation-delay: 12.72s; }
     .a2cW1 { animation: blip .25s ease forwards; animation-delay: 12.84s; }
-    .w1c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 13.00s; }
-    .w1a   { animation: fadeInStay .3s ease forwards; animation-delay: 13.40s; }
-    .wr1a  { animation: fadeInStay .3s ease forwards; animation-delay: 13.40s; }
+    .s2-w1c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 13.00s; }
+    .s2-w1a   { animation: fadeInStay .3s ease forwards; animation-delay: 13.40s; }
+    .s2-wr1a  { animation: fadeInStay .3s ease forwards; animation-delay: 13.40s; }
 
     .pgW2  { animation: blip .35s ease forwards; animation-delay: 13.70s; }
     .a1aW2 { animation: blip .25s ease forwards; animation-delay: 13.85s; }
@@ -127,9 +127,9 @@
     .a2aW2 { animation: blip .25s ease forwards; animation-delay: 14.40s; }
     .a2bW2 { animation: blip .25s ease forwards; animation-delay: 14.52s; }
     .a2cW2 { animation: blip .25s ease forwards; animation-delay: 14.64s; }
-    .w2c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 14.80s; }
-    .w2a   { animation: fadeInStay .3s ease forwards; animation-delay: 15.20s; }
-    .wr2a  { animation: fadeInStay .3s ease forwards; animation-delay: 15.20s; }
+    .s2-w2c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 14.80s; }
+    .s2-w2a   { animation: fadeInStay .3s ease forwards; animation-delay: 15.20s; }
+    .s2-wr2a  { animation: fadeInStay .3s ease forwards; animation-delay: 15.20s; }
 
     .pgW3  { animation: blip .35s ease forwards; animation-delay: 15.50s; }
     .a1aW3 { animation: blip .25s ease forwards; animation-delay: 15.65s; }
@@ -139,9 +139,9 @@
     .a2aW3 { animation: blip .25s ease forwards; animation-delay: 16.20s; }
     .a2bW3 { animation: blip .25s ease forwards; animation-delay: 16.32s; }
     .a2cW3 { animation: blip .25s ease forwards; animation-delay: 16.44s; }
-    .w3c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 16.60s; }
-    .w3a   { animation: fadeInStay .3s ease forwards; animation-delay: 17.00s; }
-    .wr3a  { animation: fadeInStay .3s ease forwards; animation-delay: 17.00s; }
+    .s2-w3c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 16.60s; }
+    .s2-w3a   { animation: fadeInStay .3s ease forwards; animation-delay: 17.00s; }
+    .s2-wr3a  { animation: fadeInStay .3s ease forwards; animation-delay: 17.00s; }
 
     .pgW4  { animation: blip .35s ease forwards; animation-delay: 17.30s; }
     .a1aW4 { animation: blip .25s ease forwards; animation-delay: 17.45s; }
@@ -151,9 +151,9 @@
     .a2aW4 { animation: blip .25s ease forwards; animation-delay: 18.00s; }
     .a2bW4 { animation: blip .25s ease forwards; animation-delay: 18.12s; }
     .a2cW4 { animation: blip .25s ease forwards; animation-delay: 18.24s; }
-    .w4c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 18.40s; }
-    .w4a   { animation: fadeInStay .3s ease forwards; animation-delay: 18.80s; }
-    .wr4a  { animation: fadeInStay .3s ease forwards; animation-delay: 18.80s; }
+    .s2-w4c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 18.40s; }
+    .s2-w4a   { animation: fadeInStay .3s ease forwards; animation-delay: 18.80s; }
+    .s2-wr4a  { animation: fadeInStay .3s ease forwards; animation-delay: 18.80s; }
 
     .pgW5  { animation: blip .35s ease forwards; animation-delay: 19.10s; }
     .a1aW5 { animation: blip .25s ease forwards; animation-delay: 19.25s; }
@@ -163,9 +163,9 @@
     .a2aW5 { animation: blip .25s ease forwards; animation-delay: 19.80s; }
     .a2bW5 { animation: blip .25s ease forwards; animation-delay: 19.92s; }
     .a2cW5 { animation: blip .25s ease forwards; animation-delay: 20.04s; }
-    .w5c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 20.20s; }
-    .w5a   { animation: fadeInStay .3s ease forwards; animation-delay: 20.60s; }
-    .wr5a  { animation: fadeInStay .3s ease forwards; animation-delay: 20.60s; }
+    .s2-w5c   { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 20.20s; }
+    .s2-w5a   { animation: fadeInStay .3s ease forwards; animation-delay: 20.60s; }
+    .s2-wr5a  { animation: fadeInStay .3s ease forwards; animation-delay: 20.60s; }
 
     .pgW6  { animation: blip .35s ease forwards; animation-delay: 20.90s; }
     .a1aW6 { animation: blip .25s ease forwards; animation-delay: 21.05s; }
@@ -215,31 +215,31 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <clipPath id="type1clip" clipPathUnits="userSpaceOnUse">
+    <clipPath id="s2-type1clip" clipPathUnits="userSpaceOnUse">
       <rect x="622" y="77" width="0" height="24"/>
     </clipPath>
   </defs>
 
-  <text class="title fade" x="500" y="26" text-anchor="middle" font-size="24" font-weight="700" fill="#b58900">Reasoning-style</text>
+  <text class="s2-title fade" x="500" y="26" text-anchor="middle" font-size="24" font-weight="700" fill="#b58900">Reasoning-style</text>
 
   <g transform="translate(0,40)">
 
   <!-- pane headers + divider -->
-  <text class="early fade" x="20" y="35" font-size="24" font-style="italic" fill="#93a1a1">Raw context sent to the model</text>
-  <text class="early fade" x="580" y="35" font-size="24" font-style="italic" fill="#93a1a1">What you actually see</text>
-  <line class="early fade" x1="560" y1="20" x2="560" y2="650" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text class="s2-early fade" x="20" y="35" font-size="24" font-style="italic" fill="#93a1a1">Raw context sent to the model</text>
+  <text class="s2-early fade" x="580" y="35" font-size="24" font-style="italic" fill="#93a1a1">What you actually see</text>
+  <line class="s2-early fade" x1="560" y1="20" x2="560" y2="650" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- LEFT PANE: raw growing context, including the model's own reasoning
        block and the separately-generated user-facing summary -->
-  <g class="sys fade">
+  <g class="s2-sys fade">
     <rect x="20" y="48" width="520" height="330" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text class="sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
+    <text class="s2-sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1">System: You are a chatbot that answers questions.</text>
   </g>
 
-  <g class="u1-left fade">
-    <text class="user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
+  <g class="s2-u1-left fade">
+    <text class="s2-user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
   </g>
-  <line class="box fade" x1="280" y1="378" x2="280" y2="415" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <line class="s2-box fade" x1="280" y1="378" x2="280" y2="415" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <text class="think-open-1 fade" x="40" y="129" font-size="16" fill="#6c71c4">&lt;reasoning&gt;</text>
   <text class="rs1a fade" x="55" y="153" font-size="16" font-style="italic" fill="#6c71c4">I should distinguish large vs small language models.</text>
@@ -254,32 +254,32 @@
   <text class="think-close-2 fade" x="40" y="321" font-size="16" fill="#6c71c4">&lt;/reasoning&gt;</text>
 
   <text x="40" y="348" font-size="18" fill="#2aa198">
-    <tspan class="answer-label fade">Answer:</tspan>
-    <tspan class="w1a fade"> They</tspan>
-    <tspan class="w2a fade"> use</tspan>
-    <tspan class="w3a fade"> 'self-attention'</tspan>
-    <tspan class="w4a fade"> to</tspan>
-    <tspan class="w5a fade"> predict</tspan>
+    <tspan class="s2-answer-label fade">Answer:</tspan>
+    <tspan class="s2-w1a fade"> They</tspan>
+    <tspan class="s2-w2a fade"> use</tspan>
+    <tspan class="s2-w3a fade"> 'self-attention'</tspan>
+    <tspan class="s2-w4a fade"> to</tspan>
+    <tspan class="s2-w5a fade"> predict</tspan>
     <tspan class="w6a fade"> the</tspan>
     <tspan class="w7a fade"> next</tspan>
     <tspan class="w8a fade"> token.</tspan>
   </text>
 
   <!-- LLM box -->
-  <rect class="box fade" x="210" y="420" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <text class="box fade" x="280" y="474" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
+  <rect class="s2-box fade" x="210" y="420" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+  <text class="s2-box fade" x="280" y="474" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
 
-  <line class="box fade" x1="280" y1="510" x2="280" y2="565" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <line class="s2-box fade" x1="280" y1="510" x2="280" y2="565" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <!-- completion slot -->
   <text class="rs1c fade" x="280" y="600" text-anchor="middle" font-size="19" font-style="italic" fill="#b58900">I should distinguish large vs small language models.</text>
   <text class="rs2c fade" x="280" y="600" text-anchor="middle" font-size="19" font-style="italic" fill="#b58900">Creating a more detailed definition</text>
   <text class="rs3c fade" x="280" y="600" text-anchor="middle" font-size="19" font-style="italic" fill="#b58900">I should distinguish modern and classical LLMs</text>
-  <text class="w1c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">They</text>
-  <text class="w2c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">use</text>
-  <text class="w3c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">'self-attention'</text>
-  <text class="w4c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">to</text>
-  <text class="w5c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">predict</text>
+  <text class="s2-w1c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">They</text>
+  <text class="s2-w2c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">use</text>
+  <text class="s2-w3c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">'self-attention'</text>
+  <text class="s2-w4c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">to</text>
+  <text class="s2-w5c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">predict</text>
   <text class="w6c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">the</text>
   <text class="w7c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">next</text>
   <text class="w8c fade" x="280" y="600" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">token.</text>
@@ -288,21 +288,21 @@
        during reasoning blocks; the user-facing summary flashes as a whole
        sentence (never typed, never word-by-word); then the real answer
        streams in word by word once it's ready. -->
-  <rect class="early fade" x="580" y="60" width="380" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
+  <rect class="s2-early fade" x="580" y="60" width="380" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
 
-  <text class="prompt1 fade" x="600" y="95" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
-  <text x="622" y="95" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type1clip)">How do LLMs work?</text>
-  <rect class="cursor1 fade" y="77" width="9" height="20" fill="#eee8d5"/>
+  <text class="s2-prompt1 fade" x="600" y="95" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="622" y="95" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s2-type1clip)">How do LLMs work?</text>
+  <rect class="s2-cursor1 fade" y="77" width="9" height="20" fill="#eee8d5"/>
 
   <text class="thinking-label-1 fade" x="600" y="140" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
   <text class="summary-flash fade" x="600" y="140" font-family="'Courier New', monospace" font-size="17" fill="#eee8d5">Creating a more detailed definition</text>
   <text class="thinking-label-2 fade" x="600" y="140" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
   <text x="600" y="140" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
-    <tspan class="wr1a fade">They</tspan>
-    <tspan class="wr2a fade"> use</tspan>
-    <tspan class="wr3a fade"> 'self-attention'</tspan>
-    <tspan class="wr4a fade"> to</tspan>
-    <tspan class="wr5a fade" x="600" dy="24">predict</tspan>
+    <tspan class="s2-wr1a fade">They</tspan>
+    <tspan class="s2-wr2a fade"> use</tspan>
+    <tspan class="s2-wr3a fade"> 'self-attention'</tspan>
+    <tspan class="s2-wr4a fade"> to</tspan>
+    <tspan class="s2-wr5a fade" x="600" dy="24">predict</tspan>
     <tspan class="wr6a fade"> the</tspan>
     <tspan class="wr7a fade"> next</tspan>
     <tspan class="wr8a fade"> token.</tspan>
