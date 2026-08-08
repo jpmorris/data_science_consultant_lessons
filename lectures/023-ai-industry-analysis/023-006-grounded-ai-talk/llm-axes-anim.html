@@ -385,12 +385,29 @@
     // TREE_* constants above. king's own leaf is NOT built here; it's
     // WORD_POINTS.king's persistent label, tweened into KING_TREE_POS by
     // updateKingLabelPosition below.
+    // Edges stop short of each end's text instead of running into it --
+    // insetPoint pulls the endpoint back along the line by a fixed gap.
+    // Gaps differ because they're measured from each node's baseline: the
+    // parent end backs off from a line of text sitting mostly above its
+    // own baseline, the child end backs off from text sitting mostly
+    // below the gap point, so it needs to clear the text's cap-height on
+    // approach.
+    var TREE_EDGE_GAP_FROM_PARENT = 16;
+    var TREE_EDGE_GAP_TO_CHILD = 26;
+    function insetPoint(from, to, gap) {
+      var dx = to.x - from.x, dy = to.y - from.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len === 0) return { x: from.x, y: from.y };
+      return { x: from.x + (dx / len) * gap, y: from.y + (dy / len) * gap };
+    }
     TREE_EDGES.forEach(function (edge) {
+      var p1 = insetPoint(edge[0], edge[1], TREE_EDGE_GAP_FROM_PARENT);
+      var p2 = insetPoint(edge[1], edge[0], TREE_EDGE_GAP_TO_CHILD);
       var line = ns('line');
-      line.setAttribute('x1', String(edge[0].x));
-      line.setAttribute('y1', String(edge[0].y));
-      line.setAttribute('x2', String(edge[1].x));
-      line.setAttribute('y2', String(edge[1].y));
+      line.setAttribute('x1', String(p1.x));
+      line.setAttribute('y1', String(p1.y));
+      line.setAttribute('x2', String(p2.x));
+      line.setAttribute('y2', String(p2.y));
       line.setAttribute('stroke', STRUCT_COLOR);
       line.setAttribute('stroke-width', '1.5');
       line.classList.add('llm-fade-el');
@@ -402,7 +419,7 @@
       label.setAttribute('x', String(node.x));
       label.setAttribute('y', String(node.y));
       label.setAttribute('text-anchor', 'middle');
-      label.setAttribute('font-size', '16');
+      label.setAttribute('font-size', '22');
       label.setAttribute('font-style', 'italic');
       label.setAttribute('fill', STRUCT_COLOR);
       label.textContent = node.text;
