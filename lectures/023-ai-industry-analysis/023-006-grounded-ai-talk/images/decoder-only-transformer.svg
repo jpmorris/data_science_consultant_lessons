@@ -9,16 +9,16 @@
   </defs>
 
   <!-- output probabilities -->
-  <rect x="250" y="15" width="340" height="95" rx="8" fill="#0d4a55" stroke="#b58900" stroke-width="2"/>
-  <text x="420" y="40" text-anchor="middle" font-size="17" fill="#eee8d5">Next-token probabilities</text>
-  <rect x="342" y="82" width="12" height="15" fill="#93a1a1"/>
-  <rect x="362" y="67" width="12" height="30" fill="#93a1a1"/>
-  <rect x="382" y="41" width="12" height="56" fill="#b58900"/>
-  <rect x="402" y="72" width="12" height="25" fill="#93a1a1"/>
-  <rect x="422" y="84" width="12" height="13" fill="#93a1a1"/>
-  <rect x="442" y="77" width="12" height="20" fill="#93a1a1"/>
+  <rect x="250" y="15" width="340" height="105" rx="8" fill="#0d4a55" stroke="#b58900" stroke-width="2"/>
+  <text x="420" y="39" text-anchor="middle" font-size="17" fill="#eee8d5">Next-token probabilities</text>
+  <rect x="342" y="99" width="12" height="13" fill="#93a1a1"/>
+  <rect x="362" y="86" width="12" height="26" fill="#93a1a1"/>
+  <rect x="382" y="68" width="12" height="44" fill="#b58900"/>
+  <rect x="402" y="90" width="12" height="22" fill="#93a1a1"/>
+  <rect x="422" y="101" width="12" height="11" fill="#93a1a1"/>
+  <rect x="442" y="95" width="12" height="17" fill="#93a1a1"/>
 
-  <line x1="420" y1="148" x2="420" y2="110" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="420" y1="148" x2="420" y2="120" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
 
   <!-- linear + softmax -->
   <rect x="270" y="148" width="300" height="58" rx="8" fill="#0d4a55" stroke="#268bd2" stroke-width="2"/>
@@ -32,19 +32,35 @@
 
   <line x1="420" y1="312" x2="420" y2="289" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
 
-  <!-- x N continuation: label, dots, faded echo of the next block -->
-  <text x="420" y="325" text-anchor="middle" font-size="19" font-weight="700" fill="#b58900">&#215; N</text>
-  <circle cx="420" cy="339" r="2.2" fill="#93a1a1"/>
-  <circle cx="420" cy="350" r="2.2" fill="#93a1a1"/>
-  <circle cx="420" cy="361" r="2.2" fill="#93a1a1"/>
+  <!-- continuation dots: Final Norm down into the faded echo -->
+  <circle cx="420" cy="323" r="2.2" fill="#93a1a1"/>
+  <circle cx="420" cy="335" r="2.2" fill="#93a1a1"/>
+  <circle cx="420" cy="347" r="2.2" fill="#93a1a1"/>
+
+  <!-- faded echo of the next block in the stack -->
   <rect x="190" y="376" width="450" height="55" rx="14" fill="none" stroke="#93a1a1" stroke-width="2" stroke-dasharray="8,6" opacity="0.32"/>
+  <text x="420" y="399" text-anchor="middle" font-size="15" font-weight="bold" fill="#b58900">Transformer Block</text>
+  <text x="420" y="418" text-anchor="middle" font-size="12" fill="#93a1a1">(&#215; N, stacked)</text>
 
   <line x1="420" y1="476" x2="420" y2="431" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- continuation dots: block boundary up into the faded echo -->
+  <circle cx="420" cy="440" r="2.2" fill="#93a1a1"/>
+  <circle cx="420" cy="452" r="2.2" fill="#93a1a1"/>
+  <circle cx="420" cy="464" r="2.2" fill="#93a1a1"/>
 
   <!-- transformer block boundary -->
   <rect x="190" y="476" width="450" height="654" rx="14" fill="none" stroke="#93a1a1" stroke-width="2" stroke-dasharray="8,6"/>
   <text x="210" y="502" font-size="16" fill="#b58900" font-weight="bold">Transformer Block</text>
   <text x="210" y="522" font-size="13" fill="#93a1a1">(&#215; N, stacked)</text>
+
+  <!-- residual connections: solid, same color/style as the flow arrows;
+       both swing right and are drawn before the KV Cache connector below
+       so the KV Cache's amber line renders on top where they cross -->
+  <path d="M420,1114 L580,1114 L580,814 L435,814" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="580" y="964" font-size="12" fill="#93a1a1" transform="rotate(-90 580 964)" text-anchor="middle">residual</text>
+
+  <path d="M420,799 L580,799 L580,531 L435,531" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="580" y="665" font-size="12" fill="#93a1a1" transform="rotate(-90 580 665)" text-anchor="middle">residual</text>
 
   <!-- residual add 2 -->
   <circle cx="420" cy="531" r="15" fill="#0d4a55" stroke="#93a1a1" stroke-width="2"/>
@@ -101,13 +117,6 @@
 
   <!-- branch point (into norm1 / residual bypass) -->
   <circle cx="420" cy="1114" r="4" fill="#eee8d5"/>
-
-  <!-- residual connections: solid, same color/style as the flow arrows -->
-  <path d="M420,1114 L250,1114 L250,814 L405,814" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="250" y="964" font-size="12" fill="#93a1a1" transform="rotate(-90 250 964)" text-anchor="middle">residual</text>
-
-  <path d="M420,799 L580,799 L580,531 L435,531" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="580" y="665" font-size="12" fill="#93a1a1" transform="rotate(-90 580 665)" text-anchor="middle">residual</text>
 
   <line x1="420" y1="1170" x2="420" y2="1118" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
 
