@@ -40,14 +40,20 @@
       --start-x: 622px; --end-x: 820px;
     }
 
+    @keyframes blinkOpacity { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+    .s2-blink { animation: blinkOpacity .9s ease-in-out infinite; }
+
     .s2-thinking-1 {
       animation: fadeInStay .3s ease forwards 2.89s, fadeOutStay .2s ease forwards 18.74s;
     }
+    /* summary persists once it lands -- no fadeOutStay -- so "Thinking..."
+       for the second reasoning block gets its own line below it instead
+       of replacing it in place. */
     .s2-summary-flash {
-      animation: fadeInStay .3s ease forwards 18.74s, fadeOutStay .2s ease forwards 19.74s;
+      animation: fadeInStay .3s ease forwards 18.74s;
     }
     .s2-thinking-2 {
-      animation: fadeInStay .3s ease forwards 19.74s, fadeOutStay .2s ease forwards 29.74s;
+      animation: fadeInStay .3s ease forwards 20.74s, fadeOutStay .2s ease forwards 29.74s;
     }
 
     .s2-sys-text   { animation: flashSys .18s ease 2.89s, flashSys .18s ease 3.89s, flashSys .18s ease 4.89s, flashSys .18s ease 5.89s, flashSys .18s ease 6.89s, flashSys .18s ease 7.89s, flashSys .18s ease 8.89s, flashSys .18s ease 9.89s, flashSys .18s ease 10.89s, flashSys .18s ease 11.89s, flashSys .18s ease 12.89s, flashSys .18s ease 13.89s, flashSys .18s ease 14.89s, flashSys .18s ease 15.89s, flashSys .18s ease 16.89s, flashSys .18s ease 17.89s, flashSys .18s ease 18.89s, flashSys .18s ease 19.89s, flashSys .18s ease 20.89s, flashSys .18s ease 21.89s, flashSys .18s ease 22.89s, flashSys .18s ease 23.89s, flashSys .18s ease 24.89s, flashSys .18s ease 25.89s, flashSys .18s ease 26.89s, flashSys .18s ease 27.89s, flashSys .18s ease 28.89s, flashSys .18s ease 29.89s, flashSys .18s ease 30.89s, flashSys .18s ease 31.89s, flashSys .18s ease 32.89s, flashSys .18s ease 33.89s, flashSys .18s ease 34.89s, flashSys .18s ease 35.89s, flashSys .18s ease 36.89s; }
@@ -548,10 +554,16 @@
   <text x="622" y="95" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s2-type1clip)">How do LLMs work?</text>
   <rect class="s2-cursor1 fade" y="77" width="9" height="20" fill="#eee8d5"/>
 
-  <text class="s2-thinking-1 fade" x="600" y="140" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
-  <text class="s2-summary-flash fade" x="600" y="140" font-family="'Courier New', monospace" font-size="17" fill="#eee8d5">Creating a more detailed definition</text>
-  <text class="s2-thinking-2 fade" x="600" y="140" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
-  <text x="600" y="140" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
+  <g class="s2-thinking-1 fade">
+    <text class="s2-blink" x="600" y="130" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
+  </g>
+  <!-- persists once revealed -- own line, doesn't get replaced -->
+  <text class="s2-summary-flash fade" x="600" y="130" font-family="'Courier New', monospace" font-size="17" fill="#eee8d5">Creating a more detailed definition</text>
+
+  <g class="s2-thinking-2 fade">
+    <text class="s2-blink" x="600" y="160" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
+  </g>
+  <text x="600" y="160" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
     <tspan class="s2-aw1-r fade">They</tspan>
     <tspan class="s2-aw2-r fade"> use</tspan>
     <tspan class="s2-aw3-r fade"> 'self-attention'</tspan>
