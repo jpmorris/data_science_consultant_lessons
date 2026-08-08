@@ -209,13 +209,13 @@ just as intuitively unrelated but actually came back at -0.28 &mdash; a
 real example of why it's worth checking instead of assuming.
 :::
 
-<!-- STAGE 5/9 (llm-stage-5-transformer): transformer: layered schematic -->
+<!-- STAGE 5/9 (llm-stage-5-transformer): transformer: unlabeled sketch, king glides in as the input -->
 ## The Ingredients of an LLM {#llm-stage-5-transformer auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-transformer.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="transformer"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -241,6 +241,14 @@ Transformer's specific contribution is multi-head self-attention: every
 token can directly attend to every other token in context, capturing
 long-range dependencies that lower-capacity models (n-grams, bag-of-words,
 fixed-window models) structurally cannot represent.
+
+The sketch shown here is deliberately unlabeled -- same silhouette as the
+real decoder-only Transformer diagram in "The Transformer Still Rules"
+(embedding at the bottom, a repeated norm/attention/residual/norm/FFN/
+residual block, final norm, then linear+softmax at the top) but shaded
+out and stripped of every label, since none of that detail has been
+introduced yet. "king" is shown gliding in as the input token feeding
+the bottom of the stack -- the full labeled version comes later.
 :::
 
 <!-- STAGE 6/9 (llm-stage-6-data): data: Common Crawl vs. used-after-filtering bars -->

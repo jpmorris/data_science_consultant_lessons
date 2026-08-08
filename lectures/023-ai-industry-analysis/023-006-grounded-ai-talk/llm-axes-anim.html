@@ -91,15 +91,16 @@
   var SVG_NS = 'http://www.w3.org/2000/svg';
   var ORIGIN = { x: 300, y: 340 };
 
-  var LANG_ONLY = { language: true,  embeddings: false, 'vector-math': false, 'latent-space': false };
-  var EMB_ONLY  = { language: false, embeddings: true,  'vector-math': false, 'latent-space': false };
-  var EMB_ALL   = { language: false, embeddings: true,  'vector-math': true,  'latent-space': true  };
-  var VM_ONLY   = { language: false, embeddings: false, 'vector-math': true,  'latent-space': false };
-  var LS_ONLY   = { language: false, embeddings: false, 'vector-math': false, 'latent-space': true  };
+  var LANG_ONLY = { language: true,  embeddings: false, 'vector-math': false, 'latent-space': false, transformer: false };
+  var EMB_ONLY  = { language: false, embeddings: true,  'vector-math': false, 'latent-space': false, transformer: false };
+  var EMB_ALL   = { language: false, embeddings: true,  'vector-math': true,  'latent-space': true,  transformer: false };
+  var VM_ONLY   = { language: false, embeddings: false, 'vector-math': true,  'latent-space': false, transformer: false };
+  var LS_ONLY   = { language: false, embeddings: false, 'vector-math': false, 'latent-space': true,  transformer: false };
+  var XFMR_ONLY = { language: false, embeddings: false, 'vector-math': false, 'latent-space': false, transformer: true  };
   // king's label (not its vector line) is visible from the very first
   // stage onward -- it starts inside the sentence tree and never
   // disappears, just moves.
-  var ALWAYS_PRESENT = { language: true, embeddings: true, 'vector-math': true, 'latent-space': true };
+  var ALWAYS_PRESENT = { language: true, embeddings: true, 'vector-math': true, 'latent-space': true, transformer: true };
 
   var GENDER_COLOR = '#268bd2';
   var ORTHO_COLOR = '#859900';
@@ -184,6 +185,54 @@
     [{ x: 640, y: 390 }, { x: 640, y: 490 }]            // N -> "crown"
   ];
 
+  // Stage 5 "transformer": "Who is the current UK king ?" fades in, with
+  // king (still the same persistent element) gliding to its spot in the
+  // sentence, then a blue arrow from king up into an unlabeled, shaded
+  // sketch of the decoder-only Transformer -- same silhouette as the real
+  // labeled diagram elsewhere in the deck ("The Transformer Still Rules"):
+  // token embedding at the bottom, one repeated norm/attention/residual/
+  // norm/FFN/residual block (with a KV-cache stub sticking out its side
+  // and a stack-echo shadow behind it for "repeated N times"), final norm,
+  // then linear+softmax at the top. No text anywhere in the sketch --
+  // nothing has been labeled yet at this point in the talk, it's just a
+  // preview of the shape to come.
+  // Positions re-derived from measured getBBox() widths at font-size 27 so
+  // the gaps between words read as visually even (~18px), same empirical
+  // approach as the tree's KING_LABEL_HALF_WIDTH above.
+  var KING_XFMR_VISUAL_CENTER = { x: 498, y: 540 };
+  var KING_XFMR_POS = { x: KING_XFMR_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_XFMR_VISUAL_CENTER.y };
+  var SENTENCE_WORDS = [
+    { text: 'Who',     x: 173, y: 540 },
+    { text: 'is',      x: 228, y: 540 },
+    { text: 'the',     x: 273, y: 540 },
+    { text: 'current', x: 352, y: 540 },
+    { text: 'UK',      x: 434, y: 540 },
+    { text: '?',       x: 548, y: 540 }
+  ];
+  var XFMR_ARROW = {
+    from: { x: 498, y: 500 },
+    to:   { x: 350, y: 472 }
+  };
+  var XFMR_EMBED = { x: 285, y: 440, w: 130, h: 30, rx: 6 };
+  var XFMR_BLOCK_OUTER = { x: 270, y: 220, w: 160, h: 205, rx: 10 };
+  var XFMR_BLOCK_SHADOW_DX = [10, 20];
+  var XFMR_NORM1 = { x: 305, y: 400, w: 90, h: 18, rx: 4 };
+  var XFMR_ATTN = { x: 290, y: 330, w: 120, h: 50, rx: 6 };
+  var XFMR_KV = { x: 415, y: 340, w: 30, h: 30, rx: 4 };
+  var XFMR_ATTN_BARS = [
+    { x: 300, y: 385, w: 6, h: 12, o: 0.9 },
+    { x: 314, y: 382, w: 6, h: 15, o: 0.7 },
+    { x: 328, y: 388, w: 6, h: 9,  o: 0.5 },
+    { x: 342, y: 384, w: 6, h: 13, o: 0.3 }
+  ];
+  var XFMR_PLUS1 = { x: 350, y: 315 };
+  var XFMR_NORM2 = { x: 305, y: 290, w: 90, h: 18, rx: 4 };
+  var XFMR_FFN = { x: 295, y: 240, w: 110, h: 40, rx: 6 };
+  var XFMR_PLUS2 = { x: 350, y: 228 };
+  var XFMR_FINAL_NORM = { x: 305, y: 185, w: 90, h: 20, rx: 4 };
+  var XFMR_LINSOFT = { x: 280, y: 145, w: 140, h: 30, rx: 6 };
+  var XFMR_OUTPUT = { x: 270, y: 90, w: 160, h: 40, rx: 8 };
+
   // king/man/woman/queen, each drawn as a genuine vector from the shared
   // origin -- not just a labeled point. This is the standard illustration
   // for this specific analogy (confirmed against multiple real references,
@@ -248,6 +297,7 @@
   var langEls = [];
   var numbersEl = null;
   var bgVectorEls = [];
+  var xfmrEls = [];
   var currentAxesStage = null;
 
   function ns(tag) {
@@ -497,6 +547,101 @@
       langEls.push(label);
     });
 
+    // Stage 5 "transformer": the sentence (all words but king, which is
+    // WORD_POINTS.king's own persistent label, tweened here the same way
+    // it's tweened into the stage-1 tree), an arrow from king up into an
+    // unlabeled shaded sketch of the decoder-only Transformer's silhouette.
+    SENTENCE_WORDS.forEach(function (word) {
+      var label = ns('text');
+      label.setAttribute('x', String(word.x));
+      label.setAttribute('y', String(word.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '27');
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', CHAIN_COLOR);
+      label.textContent = word.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      xfmrEls.push(label);
+    });
+
+    var xfmrArrow = ns('line');
+    xfmrArrow.setAttribute('x1', String(XFMR_ARROW.from.x));
+    xfmrArrow.setAttribute('y1', String(XFMR_ARROW.from.y));
+    xfmrArrow.setAttribute('x2', String(XFMR_ARROW.to.x));
+    xfmrArrow.setAttribute('y2', String(XFMR_ARROW.to.y));
+    xfmrArrow.setAttribute('stroke', GENDER_COLOR);
+    xfmrArrow.setAttribute('stroke-width', '3');
+    xfmrArrow.setAttribute('marker-end', 'url(#llm-arrow-gender)');
+    xfmrArrow.classList.add('llm-fade-el');
+    svg.appendChild(xfmrArrow);
+    xfmrEls.push(xfmrArrow);
+
+    // Shaded, unlabeled sketch -- same silhouette as the real decoder-only
+    // Transformer diagram elsewhere in the deck, bottom (input) to top
+    // (output): embedding -> [repeated block: norm, self-attention (+ a KV
+    // cache stub sticking out its side, + a few small bars standing in for
+    // attention heads), residual add, norm, feed-forward, residual add] ->
+    // final norm -> linear+softmax -> output. The repeated block gets a
+    // "stack echo" (two faint offset copies of its outline behind it) to
+    // read as "repeated N times" without needing any text to say so.
+    function xfmrRect(cfg, opts) {
+      opts = opts || {};
+      var rect = ns('rect');
+      rect.setAttribute('x', String(cfg.x));
+      rect.setAttribute('y', String(cfg.y));
+      rect.setAttribute('width', String(cfg.w));
+      rect.setAttribute('height', String(cfg.h));
+      rect.setAttribute('rx', String(cfg.rx));
+      rect.setAttribute('fill', STRUCT_COLOR);
+      rect.setAttribute('fill-opacity', String(opts.fillOpacity != null ? opts.fillOpacity : 0.1));
+      rect.setAttribute('stroke', STRUCT_COLOR);
+      rect.setAttribute('stroke-opacity', String(opts.strokeOpacity != null ? opts.strokeOpacity : 0.55));
+      rect.setAttribute('stroke-width', String(opts.strokeWidth || 1.5));
+      if (opts.dashed) rect.setAttribute('stroke-dasharray', '6,5');
+      rect.classList.add('llm-fade-el');
+      svg.appendChild(rect);
+      xfmrEls.push(rect);
+      return rect;
+    }
+    function xfmrPlus(pt) {
+      [[-7, 0, 7, 0], [0, -7, 0, 7]].forEach(function (d) {
+        var line = ns('line');
+        line.setAttribute('x1', String(pt.x + d[0]));
+        line.setAttribute('y1', String(pt.y + d[1]));
+        line.setAttribute('x2', String(pt.x + d[2]));
+        line.setAttribute('y2', String(pt.y + d[3]));
+        line.setAttribute('stroke', STRUCT_COLOR);
+        line.setAttribute('stroke-opacity', '0.6');
+        line.setAttribute('stroke-width', '2');
+        line.classList.add('llm-fade-el');
+        svg.appendChild(line);
+        xfmrEls.push(line);
+      });
+    }
+
+    XFMR_BLOCK_SHADOW_DX.forEach(function (dx, i) {
+      xfmrRect(
+        { x: XFMR_BLOCK_OUTER.x + dx, y: XFMR_BLOCK_OUTER.y, w: XFMR_BLOCK_OUTER.w, h: XFMR_BLOCK_OUTER.h, rx: XFMR_BLOCK_OUTER.rx },
+        { dashed: true, fillOpacity: 0, strokeOpacity: 0.28 - i * 0.1 }
+      );
+    });
+    xfmrRect(XFMR_EMBED);
+    xfmrRect(XFMR_BLOCK_OUTER, { dashed: true, fillOpacity: 0, strokeOpacity: 0.45 });
+    xfmrRect(XFMR_NORM1);
+    xfmrRect(XFMR_ATTN);
+    xfmrRect(XFMR_KV, { dashed: true });
+    XFMR_ATTN_BARS.forEach(function (bar) {
+      xfmrRect({ x: bar.x, y: bar.y, w: bar.w, h: bar.h, rx: 1 }, { fillOpacity: bar.o, strokeOpacity: 0 });
+    });
+    xfmrPlus(XFMR_PLUS1);
+    xfmrRect(XFMR_NORM2);
+    xfmrRect(XFMR_FFN);
+    xfmrPlus(XFMR_PLUS2);
+    xfmrRect(XFMR_FINAL_NORM);
+    xfmrRect(XFMR_LINSOFT);
+    xfmrRect(XFMR_OUTPUT);
+
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
     // restyle in the same tick suppresses the transition" gotcha from
@@ -548,10 +693,17 @@
     return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   }
 
-  function tweenKingLabel(toLanguageStage, animate) {
+  // Three possible resting spots for king's label: the stage-1 tree leaf,
+  // the stage-5 sentence, or its normal vector-label spot (labelAt) for
+  // every stage in between.
+  function kingTargetForStage(stageName) {
+    if (stageName === 'language') return KING_TREE_POS;
+    if (stageName === 'transformer') return KING_XFMR_POS;
+    return WORD_POINTS.king.labelAt;
+  }
+
+  function tweenKingLabel(target, animate) {
     var label = wordPointEls.king.label;
-    var base = WORD_POINTS.king.labelAt;
-    var target = toLanguageStage ? KING_TREE_POS : base;
 
     if (kingGlideRaf !== null) {
       cancelAnimationFrame(kingGlideRaf);
@@ -566,6 +718,7 @@
 
     var fromX = parseFloat(label.getAttribute('x'));
     var fromY = parseFloat(label.getAttribute('y'));
+    if (fromX === target.x && fromY === target.y) return;
     var start = null;
     function step(ts) {
       if (start === null) start = ts;
@@ -601,18 +754,17 @@
       applyFade([els.label], labelPresent, labelEntering ? FADE_MS : 0, animate);
     });
 
-    var wasLanguage = prevStage === 'language';
-    var isLanguage = stageName === 'language';
-    if (wasLanguage !== isLanguage) {
-      tweenKingLabel(isLanguage, animate);
-    } else if (!animate) {
-      tweenKingLabel(isLanguage, false);
-    }
+    tweenKingLabel(kingTargetForStage(stageName), animate);
 
     var langWasPresent = prevStage ? LANG_ONLY[prevStage] : false;
     var langPresent = LANG_ONLY[stageName];
     var langEntering = animate && !langWasPresent && langPresent;
     applyFade(langEls, langPresent, langEntering ? FADE_MS : 0, animate);
+
+    var xfmrWasPresent = prevStage ? XFMR_ONLY[prevStage] : false;
+    var xfmrPresent = XFMR_ONLY[stageName];
+    var xfmrEntering = animate && !xfmrWasPresent && xfmrPresent;
+    applyFade(xfmrEls, xfmrPresent, xfmrEntering ? FADE_MS : 0, animate);
 
     var vmWasPresent = prevStage ? VM_ONLY[prevStage] : false;
     var vmPresent = VM_ONLY[stageName];
