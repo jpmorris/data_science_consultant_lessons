@@ -4,7 +4,6 @@
     .box   { animation: fadeInStay .5s ease forwards; animation-delay: 0s; }
     .early { animation: fadeInStay .4s ease forwards; animation-delay: .15s; }
     .sys   { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
-    .arrow2-base { animation: fadeInStay .3s ease forwards; animation-delay: 2.59s; }
 
     @keyframes fadeInStay { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeInOut {
@@ -232,8 +231,8 @@
 
   <g class="u1-left fade">
     <text class="user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
-    <line x1="280" y1="280" x2="280" y2="325" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
   </g>
+  <line class="box fade" x1="280" y1="280" x2="280" y2="325" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <text x="40" y="129" font-size="18" fill="#2aa198">
     <tspan class="answer-label fade">Answer:</tspan>
@@ -260,7 +259,7 @@
   <rect class="box fade" x="210" y="330" width="140" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
   <text class="box fade" x="280" y="384" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5">LLM</text>
 
-  <line class="arrow2-base fade" x1="280" y1="420" x2="280" y2="475" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <line class="box fade" x1="280" y1="420" x2="280" y2="475" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
   <!-- completion slot (shared by both rounds) -->
   <text class="w1c fade" x="280" y="515" text-anchor="middle" font-size="24" font-style="italic" fill="#b58900">They</text>
