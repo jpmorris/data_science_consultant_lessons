@@ -23,6 +23,7 @@
        the whole point: tags aren't special, they're generated the same
        way as everything else. */
     @keyframes boxFlash { 0%, 100% { stroke: #b58900; stroke-width: 3; } 40% { stroke: #eee8d5; stroke-width: 5; } }
+    @keyframes panelFlash { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: 0; } }
 
     .s2-u1-left { animation: fadeInStay .3s ease forwards; animation-delay: 2.29s; }
 
@@ -54,50 +55,72 @@
         boxFlash .3s ease forwards 16.09s, boxFlash .3s ease forwards 16.49s;
     }
 
-    /* tags -- one token each, same reveal as any word */
-    .s2-tag-open-1  { animation: fadeInStay .25s ease forwards; animation-delay: 2.89s; }
-    .s2-tag-close-1 { animation: fadeInStay .25s ease forwards; animation-delay: 6.49s; }
-    .s2-sum-open    { animation: fadeInStay .25s ease forwards; animation-delay: 6.89s; }
-    .s2-sum-close   { animation: fadeInStay .25s ease forwards; animation-delay: 9.29s; }
-    .s2-tag-open-2  { animation: fadeInStay .25s ease forwards; animation-delay: 9.69s; }
-    .s2-tag-close-2 { animation: fadeInStay .25s ease forwards; animation-delay: 12.89s; }
-    .s2-answer-label { animation: fadeInStay .25s ease forwards; animation-delay: 13.29s; }
+    /* the whole raw-context panel glows (border + faint fill wash over its
+       own content) in lockstep with the LLM box, once per token -- makes
+       it visually unmistakable that the entire accumulated prompt is what
+       flows through the model each time, not just the newest piece. */
+    .s2-panel-glow {
+      animation:
+        panelFlash .3s ease forwards 2.89s, panelFlash .3s ease forwards 3.29s, panelFlash .3s ease forwards 3.69s,
+        panelFlash .3s ease forwards 4.09s, panelFlash .3s ease forwards 4.49s, panelFlash .3s ease forwards 4.89s,
+        panelFlash .3s ease forwards 5.29s, panelFlash .3s ease forwards 5.69s, panelFlash .3s ease forwards 6.09s,
+        panelFlash .3s ease forwards 6.49s, panelFlash .3s ease forwards 6.89s, panelFlash .3s ease forwards 7.29s,
+        panelFlash .3s ease forwards 7.69s, panelFlash .3s ease forwards 8.09s, panelFlash .3s ease forwards 8.49s,
+        panelFlash .3s ease forwards 8.89s, panelFlash .3s ease forwards 9.29s, panelFlash .3s ease forwards 9.69s,
+        panelFlash .3s ease forwards 10.09s, panelFlash .3s ease forwards 10.49s, panelFlash .3s ease forwards 10.89s,
+        panelFlash .3s ease forwards 11.29s, panelFlash .3s ease forwards 11.69s, panelFlash .3s ease forwards 12.09s,
+        panelFlash .3s ease forwards 12.49s, panelFlash .3s ease forwards 12.89s, panelFlash .3s ease forwards 13.29s,
+        panelFlash .3s ease forwards 13.69s, panelFlash .3s ease forwards 14.09s, panelFlash .3s ease forwards 14.49s,
+        panelFlash .3s ease forwards 14.89s, panelFlash .3s ease forwards 15.29s, panelFlash .3s ease forwards 15.69s,
+        panelFlash .3s ease forwards 16.09s, panelFlash .3s ease forwards 16.49s;
+    }
+
+    /* tags -- one token each, same reveal as any word. Delayed .15s after
+       the matching panel/box flash above so the flash reads as "sending",
+       then the token lands. */
+    .s2-tag-open-1  { animation: fadeInStay .25s ease forwards; animation-delay: 3.04s; }
+    .s2-tag-close-1 { animation: fadeInStay .25s ease forwards; animation-delay: 6.64s; }
+    .s2-sum-open    { animation: fadeInStay .25s ease forwards; animation-delay: 7.04s; }
+    .s2-sum-close   { animation: fadeInStay .25s ease forwards; animation-delay: 9.44s; }
+    .s2-tag-open-2  { animation: fadeInStay .25s ease forwards; animation-delay: 9.84s; }
+    .s2-tag-close-2 { animation: fadeInStay .25s ease forwards; animation-delay: 13.04s; }
+    .s2-answer-label { animation: fadeInStay .25s ease forwards; animation-delay: 13.44s; }
 
     /* reasoning block 1 -- 8 words, one token every .4s */
-    .s2-r1w1 { animation: fadeInStay .25s ease forwards; animation-delay: 3.29s; }
-    .s2-r1w2 { animation: fadeInStay .25s ease forwards; animation-delay: 3.69s; }
-    .s2-r1w3 { animation: fadeInStay .25s ease forwards; animation-delay: 4.09s; }
-    .s2-r1w4 { animation: fadeInStay .25s ease forwards; animation-delay: 4.49s; }
-    .s2-r1w5 { animation: fadeInStay .25s ease forwards; animation-delay: 4.89s; }
-    .s2-r1w6 { animation: fadeInStay .25s ease forwards; animation-delay: 5.29s; }
-    .s2-r1w7 { animation: fadeInStay .25s ease forwards; animation-delay: 5.69s; }
-    .s2-r1w8 { animation: fadeInStay .25s ease forwards; animation-delay: 6.09s; }
+    .s2-r1w1 { animation: fadeInStay .25s ease forwards; animation-delay: 3.44s; }
+    .s2-r1w2 { animation: fadeInStay .25s ease forwards; animation-delay: 3.84s; }
+    .s2-r1w3 { animation: fadeInStay .25s ease forwards; animation-delay: 4.24s; }
+    .s2-r1w4 { animation: fadeInStay .25s ease forwards; animation-delay: 4.64s; }
+    .s2-r1w5 { animation: fadeInStay .25s ease forwards; animation-delay: 5.04s; }
+    .s2-r1w6 { animation: fadeInStay .25s ease forwards; animation-delay: 5.44s; }
+    .s2-r1w7 { animation: fadeInStay .25s ease forwards; animation-delay: 5.84s; }
+    .s2-r1w8 { animation: fadeInStay .25s ease forwards; animation-delay: 6.24s; }
 
     /* user-facing summary -- 5 words */
-    .s2-sw1 { animation: fadeInStay .25s ease forwards; animation-delay: 7.29s; }
-    .s2-sw2 { animation: fadeInStay .25s ease forwards; animation-delay: 7.69s; }
-    .s2-sw3 { animation: fadeInStay .25s ease forwards; animation-delay: 8.09s; }
-    .s2-sw4 { animation: fadeInStay .25s ease forwards; animation-delay: 8.49s; }
-    .s2-sw5 { animation: fadeInStay .25s ease forwards; animation-delay: 8.89s; }
+    .s2-sw1 { animation: fadeInStay .25s ease forwards; animation-delay: 7.44s; }
+    .s2-sw2 { animation: fadeInStay .25s ease forwards; animation-delay: 7.84s; }
+    .s2-sw3 { animation: fadeInStay .25s ease forwards; animation-delay: 8.24s; }
+    .s2-sw4 { animation: fadeInStay .25s ease forwards; animation-delay: 8.64s; }
+    .s2-sw5 { animation: fadeInStay .25s ease forwards; animation-delay: 9.04s; }
 
     /* reasoning block 2 -- 7 words */
-    .s2-r2w1 { animation: fadeInStay .25s ease forwards; animation-delay: 10.09s; }
-    .s2-r2w2 { animation: fadeInStay .25s ease forwards; animation-delay: 10.49s; }
-    .s2-r2w3 { animation: fadeInStay .25s ease forwards; animation-delay: 10.89s; }
-    .s2-r2w4 { animation: fadeInStay .25s ease forwards; animation-delay: 11.29s; }
-    .s2-r2w5 { animation: fadeInStay .25s ease forwards; animation-delay: 11.69s; }
-    .s2-r2w6 { animation: fadeInStay .25s ease forwards; animation-delay: 12.09s; }
-    .s2-r2w7 { animation: fadeInStay .25s ease forwards; animation-delay: 12.49s; }
+    .s2-r2w1 { animation: fadeInStay .25s ease forwards; animation-delay: 10.24s; }
+    .s2-r2w2 { animation: fadeInStay .25s ease forwards; animation-delay: 10.64s; }
+    .s2-r2w3 { animation: fadeInStay .25s ease forwards; animation-delay: 11.04s; }
+    .s2-r2w4 { animation: fadeInStay .25s ease forwards; animation-delay: 11.44s; }
+    .s2-r2w5 { animation: fadeInStay .25s ease forwards; animation-delay: 11.84s; }
+    .s2-r2w6 { animation: fadeInStay .25s ease forwards; animation-delay: 12.24s; }
+    .s2-r2w7 { animation: fadeInStay .25s ease forwards; animation-delay: 12.64s; }
 
     /* final answer -- 8 words, left + right panes in lockstep */
-    .s2-aw1 { animation: fadeInStay .25s ease forwards; animation-delay: 13.69s; }
-    .s2-aw2 { animation: fadeInStay .25s ease forwards; animation-delay: 14.09s; }
-    .s2-aw3 { animation: fadeInStay .25s ease forwards; animation-delay: 14.49s; }
-    .s2-aw4 { animation: fadeInStay .25s ease forwards; animation-delay: 14.89s; }
-    .s2-aw5 { animation: fadeInStay .25s ease forwards; animation-delay: 15.29s; }
-    .s2-aw6 { animation: fadeInStay .25s ease forwards; animation-delay: 15.69s; }
-    .s2-aw7 { animation: fadeInStay .25s ease forwards; animation-delay: 16.09s; }
-    .s2-aw8 { animation: fadeInStay .25s ease forwards; animation-delay: 16.49s; }
+    .s2-aw1 { animation: fadeInStay .25s ease forwards; animation-delay: 13.84s; }
+    .s2-aw2 { animation: fadeInStay .25s ease forwards; animation-delay: 14.24s; }
+    .s2-aw3 { animation: fadeInStay .25s ease forwards; animation-delay: 14.64s; }
+    .s2-aw4 { animation: fadeInStay .25s ease forwards; animation-delay: 15.04s; }
+    .s2-aw5 { animation: fadeInStay .25s ease forwards; animation-delay: 15.44s; }
+    .s2-aw6 { animation: fadeInStay .25s ease forwards; animation-delay: 15.84s; }
+    .s2-aw7 { animation: fadeInStay .25s ease forwards; animation-delay: 16.24s; }
+    .s2-aw8 { animation: fadeInStay .25s ease forwards; animation-delay: 16.64s; }
 
     /* terminal: "Thinking..." during both reasoning blocks, the summary
        sentence flashes whole once it's fully generated (never typed, never
@@ -105,13 +128,13 @@
        generation, unlike the reasoning itself), then the real answer
        streams in word by word once ready. */
     .s2-thinking-1 {
-      animation: fadeInStay .3s ease forwards 2.89s, fadeOutStay .2s ease forwards 9.14s;
+      animation: fadeInStay .3s ease forwards 2.89s, fadeOutStay .2s ease forwards 9.29s;
     }
     .s2-summary-flash {
-      animation: fadeInStay .3s ease forwards 9.14s, fadeOutStay .2s ease forwards 9.69s;
+      animation: fadeInStay .3s ease forwards 9.29s, fadeOutStay .2s ease forwards 9.44s;
     }
     .s2-thinking-2 {
-      animation: fadeInStay .3s ease forwards 9.69s, fadeOutStay .2s ease forwards 13.29s;
+      animation: fadeInStay .3s ease forwards 9.44s, fadeOutStay .2s ease forwards 13.44s;
     }
   </style>
 
@@ -119,6 +142,13 @@
     <marker id="arrowDown" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#93a1a1"/>
     </marker>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <clipPath id="s2-type1clip" clipPathUnits="userSpaceOnUse">
       <rect x="622" y="77" width="0" height="24"/>
     </clipPath>
@@ -144,6 +174,8 @@
     <text x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5">User: How do LLMs work?</text>
   </g>
   <line class="s2-box fade" x1="280" y1="378" x2="280" y2="415" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <rect class="s2-panel-glow fade" x="20" y="48" width="520" height="330" rx="10" fill="#eee8d5" fill-opacity="0.14" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
 
   <text class="s2-tag-open-1 fade" x="40" y="129" font-size="16" fill="#6c71c4">&lt;reasoning&gt;</text>
   <text x="55" y="153" font-size="16" font-style="italic" fill="#6c71c4">
