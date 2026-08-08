@@ -37,7 +37,7 @@
       animation: fadeInStay .05s ease forwards 1.3s,
         cursorMove .99s steps(18, end) forwards 1.3s,
         cursorBlinkOut .8s ease forwards 2.29s;
-      --start-x: 622px; --end-x: 820px;
+      --start-x: 612px; --end-x: 810px;
     }
 
     @keyframes blinkOpacity { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
@@ -46,11 +46,11 @@
     .s2-thinking-1 {
       animation: fadeInStay .3s ease forwards 2.89s, fadeOutStay .2s ease forwards 18.74s;
     }
-    /* summary persists once it lands -- no fadeOutStay -- so "Thinking..."
-       for the second reasoning block gets its own line below it instead
-       of replacing it in place. */
+    /* summary persists through the second reasoning block (its own line,
+       "Thinking..." appears below it rather than replacing it), then
+       vanishes right as the real answer starts streaming in. */
     .s2-summary-flash {
-      animation: fadeInStay .3s ease forwards 18.74s;
+      animation: fadeInStay .3s ease forwards 18.74s, fadeOutStay .2s ease forwards 29.74s;
     }
     .s2-thinking-2 {
       animation: fadeInStay .3s ease forwards 20.74s, fadeOutStay .2s ease forwards 29.74s;
@@ -430,7 +430,7 @@
       </feMerge>
     </filter>
     <clipPath id="s2-type1clip" clipPathUnits="userSpaceOnUse">
-      <rect x="622" y="77" width="0" height="24"/>
+      <rect x="612" y="77" width="0" height="24"/>
     </clipPath>
   </defs>
 
@@ -548,27 +548,27 @@
   <!-- RIGHT PANE: terminal -- never shows reasoning content. "Thinking..."
        during reasoning; the user-facing summary flashes whole; then the
        real answer streams in word by word once ready. -->
-  <rect class="s2-early fade" x="580" y="60" width="380" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
+  <rect class="s2-early fade" x="570" y="60" width="420" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
 
-  <text class="s2-prompt1 fade" x="600" y="95" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
-  <text x="622" y="95" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s2-type1clip)">How do LLMs work?</text>
+  <text class="s2-prompt1 fade" x="590" y="95" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="612" y="95" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s2-type1clip)">How do LLMs work?</text>
   <rect class="s2-cursor1 fade" y="77" width="9" height="20" fill="#eee8d5"/>
 
   <g class="s2-thinking-1 fade">
-    <text class="s2-blink" x="600" y="130" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
+    <text class="s2-blink" x="590" y="130" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
   </g>
-  <!-- persists once revealed -- own line, doesn't get replaced -->
-  <text class="s2-summary-flash fade" x="600" y="130" font-family="'Courier New', monospace" font-size="17" fill="#eee8d5">Creating a more detailed definition</text>
+  <!-- persists once revealed, then vanishes right as the real answer starts -->
+  <text class="s2-summary-flash fade" x="590" y="130" font-family="'Courier New', monospace" font-size="16" fill="#eee8d5">Creating a more detailed definition</text>
 
   <g class="s2-thinking-2 fade">
-    <text class="s2-blink" x="600" y="160" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
+    <text class="s2-blink" x="590" y="160" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Thinking...</text>
   </g>
-  <text x="600" y="160" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
+  <text x="590" y="160" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
     <tspan class="s2-aw1-r fade">They</tspan>
     <tspan class="s2-aw2-r fade"> use</tspan>
     <tspan class="s2-aw3-r fade"> 'self-attention'</tspan>
     <tspan class="s2-aw4-r fade"> to</tspan>
-    <tspan class="s2-aw5-r fade" x="600" dy="24">predict</tspan>
+    <tspan class="s2-aw5-r fade" x="590" dy="24">predict</tspan>
     <tspan class="s2-aw6-r fade"> the</tspan>
     <tspan class="s2-aw7-r fade"> next</tspan>
     <tspan class="s2-aw8-r fade"> token.</tspan>
