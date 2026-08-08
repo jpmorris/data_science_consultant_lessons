@@ -373,8 +373,14 @@ into the context before the next prediction.
 :::
 
 <!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- every tag AND every word
-     (35 tokens total) appears one at a time on the raw-context pane, LLM
-     box pulses once per token, no exceptions; terminal shows "Thinking..."
+     (35 tokens total) runs the exact same per-token pipeline as the
+     "Simple Prompt" stage: panel glow -> dots down arrow1 -> LLM glow ->
+     dots down arrow2 -> token lands in the completion slot -> folds into
+     the panel, flashing white; already-revealed tokens keep re-flashing
+     on every later cycle, same as stage 1. Generated via
+     /tmp/pwtest/gen-stage2.mjs + assemble-stage2.mjs (not hand-written --
+     35 tokens x up to 34 flash instances each is impractical to author by
+     hand without transcription errors). Terminal shows "Thinking..."
      during reasoning, flashes the summary sentence whole (not word-by-word
      -- deliberately different, it's a separate user-facing generation),
      then streams the real answer word-by-word once ready -->
