@@ -107,6 +107,12 @@
   var CHAIN_COLOR = '#eee8d5';
   var STRUCT_COLOR = '#93a1a1';
   var BG_VECTOR_COLOR = '#4a6a72';
+  // Same amber already used for this deck's accent underline
+  // (.heading-accent h2 in custom.scss) and for "answer" highlights in
+  // the real decoder-only Transformer diagram (Next-token probabilities,
+  // "-> predicted: king") -- reused here for the same reason: it's this
+  // deck's established color for "the thing being highlighted/pointed at."
+  var AMBER_COLOR = '#b58900';
 
   // Unlabeled grey vectors, shown only in "embeddings" alongside king --
   // there's nothing special about king's position; the space is full of
@@ -208,15 +214,21 @@
   // around the arrow (~8px each side, measured via getBBox, and it read
   // as touching both words). Arrow retargeted to the new gap's actual
   // midpoint rather than eyeballed.
-  var KING_XFMR_VISUAL_CENTER = { x: 477, y: 540 };
+  // Sentence baseline dropped 540 -> 570 so the whole row sits cleanly
+  // below the input arrow instead of the arrow's line crossing through
+  // the same vertical band as the text (which is what "taking space in
+  // the sentence" looked like -- the arrow's tail dipped only slightly
+  // past the baseline while its head reached well above the text's cap
+  // height, so the line visibly cut across the words).
+  var KING_XFMR_VISUAL_CENTER = { x: 477, y: 570 };
   var KING_XFMR_POS = { x: KING_XFMR_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_XFMR_VISUAL_CENTER.y };
   var SENTENCE_WORDS = [
-    { text: 'Who',     x: 120, y: 540 },
-    { text: 'is',      x: 175, y: 540 },
-    { text: 'the',     x: 220, y: 540 },
-    { text: 'current', x: 299, y: 540 },
-    { text: 'UK',      x: 413, y: 540 },
-    { text: '?',       x: 527, y: 540 }
+    { text: 'Who',     x: 120, y: 570 },
+    { text: 'is',      x: 175, y: 570 },
+    { text: 'the',     x: 220, y: 570 },
+    { text: 'current', x: 299, y: 570 },
+    { text: 'UK',      x: 413, y: 570 },
+    { text: '?',       x: 527, y: 570 }
   ];
   // Dropped a first-pass "stack echo" (offset shadow rects behind the
   // block) for the N-times-repeated indicator -- unclear at a glance.
@@ -234,14 +246,22 @@
   // widening it above), not the box's own center (350) -- 17px off,
   // invisible at this width, but keeps the arrow genuinely vertical
   // instead of splitting the difference and going diagonal again.
+  // Tail (530) sits below the frame's own bottom edge (515) and well
+  // above the sentence's cap-height (~550, baseline 570) -- clear of
+  // both. Head (502) stops just short of the embed box's actual top
+  // edge... wait, its BOTTOM edge (500, since the arrow approaches from
+  // below) rather than inside it (495 used to land inside the box,
+  // which is the "arrow overlapping the box" bug).
   var XFMR_ARROW = {
-    from: { x: 367, y: 565 },
-    to:   { x: 367, y: 495 }
+    from: { x: 367, y: 530 },
+    to:   { x: 367, y: 502 }
   };
   var XFMR_OUTPUT_ARROW = {
     from: { x: 350, y: 116 },
     to:   { x: 350, y: 45 }
   };
+  var XFMR_ANSWER_TEXT = { x: 350, y: 32 };
+  var XFMR_STAMP = { x: 350, y: 315, rotate: -28 };
   var XFMR_FRAME = { x: 250, y: 105, w: 200, h: 410, rx: 10 };
   var XFMR_OUTPUT = { x: 260, y: 116, w: 180, h: 35, rx: 8 };
   var XFMR_LINSOFT = { x: 280, y: 163, w: 140, h: 28, rx: 6 };
@@ -656,6 +676,22 @@
     xfmrRect(XFMR_FRAME, { fillOpacity: 0, strokeOpacity: 0.7, strokeWidth: 2 });
     xfmrRect(XFMR_OUTPUT);
     xfmrLine(XFMR_OUTPUT_ARROW, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 2 });
+
+    // The one piece of real text in this whole sketch: what actually
+    // comes out the top. Amber, not blue -- this isn't king, it's the
+    // model's answer.
+    var answerLabel = ns('text');
+    answerLabel.setAttribute('x', String(XFMR_ANSWER_TEXT.x));
+    answerLabel.setAttribute('y', String(XFMR_ANSWER_TEXT.y));
+    answerLabel.setAttribute('text-anchor', 'middle');
+    answerLabel.setAttribute('font-size', '26');
+    answerLabel.setAttribute('font-weight', '600');
+    answerLabel.setAttribute('fill', AMBER_COLOR);
+    answerLabel.textContent = 'Charles III';
+    answerLabel.classList.add('llm-fade-el');
+    svg.appendChild(answerLabel);
+    xfmrEls.push(answerLabel);
+
     xfmrRect(XFMR_LINSOFT);
     xfmrRect(XFMR_FINAL_NORM);
     xfmrLine(XFMR_REPEAT_CONNECTOR_1, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
@@ -669,6 +705,26 @@
     xfmrRect(XFMR_ATTN);
     xfmrRect(XFMR_NORM1);
     xfmrRect(XFMR_EMBED);
+
+    // Diagonal "TRANSFORMER" stamp across the whole frame -- names the
+    // box as a single unit without labeling any of its internal parts
+    // (nothing inside has been introduced yet). Low opacity so it reads
+    // as a watermark, not a heading; drawn last so it sits on top of
+    // every box it crosses.
+    var stampLabel = ns('text');
+    stampLabel.setAttribute('x', String(XFMR_STAMP.x));
+    stampLabel.setAttribute('y', String(XFMR_STAMP.y));
+    stampLabel.setAttribute('text-anchor', 'middle');
+    stampLabel.setAttribute('font-size', '26');
+    stampLabel.setAttribute('font-weight', '700');
+    stampLabel.setAttribute('letter-spacing', '0.5');
+    stampLabel.setAttribute('fill', AMBER_COLOR);
+    stampLabel.setAttribute('fill-opacity', '0.3');
+    stampLabel.setAttribute('transform', 'rotate(' + XFMR_STAMP.rotate + ' ' + XFMR_STAMP.x + ' ' + XFMR_STAMP.y + ')');
+    stampLabel.textContent = 'TRANSFORMER';
+    stampLabel.classList.add('llm-fade-el');
+    svg.appendChild(stampLabel);
+    xfmrEls.push(stampLabel);
 
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
