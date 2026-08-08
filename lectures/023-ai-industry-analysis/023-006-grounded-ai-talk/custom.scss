@@ -136,21 +136,10 @@ $body-bg: #073642;
   height: 100%;
 }
 
-// transform on these is set from JS as plain CSS (not the SVG attribute)
-// specifically so it participates in a CSS transition -- auto-animate
-// can't animate `transform` at all (see AGENT-BRIEFING.md), so this
-// diagram bypasses it entirely rather than fighting it. No axis letter
-// labels anymore -- just the lines themselves.
-.llm-axes-line {
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
-}
-.llm-axes-line.llm-axes-no-transition {
-  transition: none !important;
-}
-
-// Simple opacity-only fade elements sharing the panel with the axes (the
-// "bank" point, the king/queen word-analogy points+arrows) -- no
-// transform, just fade, reusing the same instant-snap toggle class above.
+// Simple opacity-only fade elements in the king/queen vector-math panel
+// (word vectors, labels, the -man/+woman chain, the numbers text) -- no
+// transform anywhere in this diagram anymore (no axes left to rotate),
+// just plain fades.
 .llm-fade-el {
   transition: opacity 0.5s ease;
 }

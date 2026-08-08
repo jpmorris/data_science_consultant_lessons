@@ -142,7 +142,7 @@ dimensional and contextual (not one fixed vector per word) than this toy
 picture shows.
 :::
 
-<!-- STAGE 4/9 (llm-stage-4-latent-space): latent space: axes skew, 5 axes total -->
+<!-- STAGE 4/9 (llm-stage-4-latent-space): latent space: 4 verified near-orthogonal words fade in around king -->
 ## The Ingredients of an LLM {#llm-stage-4-latent-space auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -172,7 +172,16 @@ dimensions by encoding them as almost-orthogonal directions, tolerating a
 small amount of cross-feature interference &mdash; especially cheap when
 features are sparse (rarely active at once). Without relaxed orthogonality,
 a model would be limited to roughly as many independent concepts as it has
-dimensions; real embedding spaces pack in vastly more than that.
+dimensions; real embedding spaces pack in vastly more than that (Anthropic's
+"Scaling Monosemanticity" work found millions of interpretable feature
+directions in a model with only a few thousand dimensions &mdash; direct
+evidence this isn't just theoretical). The four words shown here
+(drill/supernova/photosynthesis/asteroid) aren't picked for vibes &mdash;
+checked against real glove-wiki-gigaword-100 embeddings, their cosine
+similarity with "king" is 0.011/0.016/-0.004/-0.019 respectively, genuinely
+within a hair of zero. A tempting fourth candidate ("whiteboard") looked
+just as intuitively unrelated but actually came back at -0.28 &mdash; a
+real example of why it's worth checking instead of assuming.
 :::
 
 <!-- STAGE 5/9 (llm-stage-5-transformer): transformer: layered schematic -->
