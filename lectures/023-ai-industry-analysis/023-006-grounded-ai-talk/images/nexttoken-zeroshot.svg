@@ -23,8 +23,8 @@
        (no flash at each word's own delay -- that moment is its fade-in,
        not a resend.) */
     .answer-label {
-      animation: fadeInStay .4s ease forwards,
-        flashAns .35s ease 3.80s, flashAns .35s ease 5.60s,
+      animation: fadeInStay .3s ease forwards 1.9s,
+        flashAns .35s ease 2.00s, flashAns .35s ease 3.80s, flashAns .35s ease 5.60s,
         flashAns .35s ease 7.40s, flashAns .35s ease 9.20s;
     }
 
