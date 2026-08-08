@@ -7,16 +7,6 @@
       <path d="M0,0 L10,5 L0,10 z" fill="#b58900"/>
     </marker>
 
-    <!-- hand-drawn wobble, applied only to callout leader-lines.
-         filterUnits="userSpaceOnUse" with a fixed region covering the whole
-         canvas: objectBoundingBox (the default) collapses to zero for a
-         perfectly horizontal or vertical line, which silently hides the
-         entire filtered element. -->
-    <filter id="sketchy" filterUnits="userSpaceOnUse" x="-50" y="-50" width="2350" height="1500">
-      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="1" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-
     <!-- bigger, callout-specific arrowheads (kept separate from the main diagram's markers above) -->
     <marker id="calloutArrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#b58900"/>
@@ -144,7 +134,7 @@
     <text x="20" y="75" font-size="30" fill="#eee8d5">The model's guess for</text>
     <text x="20" y="113" font-size="30" fill="#eee8d5">what comes next</text>
     <text x="20" y="149" font-size="26" fill="#b58900">&#8594; e.g., "king"</text>
-    <path d="M360,80 H830" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
+    <path d="M360.0,80.0 L439.2,77.0 L527.2,83.0 L615.2,77.5 L703.2,82.0 L800.0,80.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
   </g>
 
   <!-- 8: linear -> softmax -->
@@ -152,14 +142,14 @@
     <text x="1450" y="180" font-size="30" fill="#eee8d5">Turns the final vector into</text>
     <text x="1450" y="218" font-size="30" fill="#eee8d5">token probabilities</text>
     <text x="1450" y="254" font-size="26" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
-    <path d="M1420,185 H1190" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <path d="M1420.0,185.0 L1384.0,182.0 L1344.0,188.0 L1304.0,182.5 L1264.0,187.0 L1220.0,185.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
   </g>
 
   <!-- 7: x N fade box -->
   <g class="fragment" data-fragment-index="6" font-family="'Architects Daughter', cursive">
     <text x="20" y="398" font-size="30" fill="#eee8d5">Repeats N times, each pass</text>
     <text x="20" y="436" font-size="30" fill="#eee8d5">building on the last</text>
-    <path d="M430,408 H810" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
+    <path d="M430.0,408.0 L503.8,405.0 L585.8,411.0 L667.8,405.5 L749.8,410.0 L840.0,408.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
   </g>
 
   <!-- 6: feed-forward network -->
@@ -167,14 +157,14 @@
     <text x="20" y="615" font-size="30" fill="#eee8d5">Processes each token individually &#8212;</text>
     <text x="20" y="653" font-size="30" fill="#eee8d5">this is largely where facts about</text>
     <text x="20" y="691" font-size="30" fill="#eee8d5">the world are stored</text>
-    <path d="M530,632 H910" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)" filter="url(#sketchy)"/>
+    <path d="M530.0,632.0 L596.6,629.0 L670.6,635.0 L744.6,629.5 L818.6,634.0 L900.0,632.0" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
   </g>
 
   <!-- 5: masked multi-head self-attention -->
   <g class="fragment" data-fragment-index="3" font-family="'Architects Daughter', cursive">
     <text x="20" y="918" font-size="30" fill="#eee8d5">Gathers context from earlier</text>
     <text x="20" y="956" font-size="30" fill="#eee8d5">tokens, several ways at once</text>
-    <path d="M460,933 H895" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)" filter="url(#sketchy)"/>
+    <path d="M460.0,933.0 L537.4,930.0 L623.4,936.0 L709.4,930.5 L795.4,935.0 L890.0,933.0" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)"/>
   </g>
 
   <!-- 4: KV cache: callout on the RIGHT, since KV Cache is itself the one
@@ -183,14 +173,14 @@
   <g class="fragment" data-fragment-index="4" font-family="'Architects Daughter', cursive">
     <text x="1740" y="918" font-size="30" fill="#eee8d5">Stores past keys/values</text>
     <text x="1740" y="956" font-size="30" fill="#eee8d5">so they're not recomputed</text>
-    <path d="M1715,933 H1465" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
+    <path d="M1715.0,933.0 L1675.4,930.0 L1631.4,936.0 L1587.4,930.5 L1543.4,935.0 L1495.0,933.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
   </g>
 
   <!-- 3: first norm -->
   <g class="fragment" data-fragment-index="2" font-family="'Architects Daughter', cursive">
     <text x="20" y="1048" font-size="30" fill="#eee8d5">Keeps values in a</text>
     <text x="20" y="1086" font-size="30" fill="#eee8d5">stable range</text>
-    <path d="M280,1063 H950" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)" filter="url(#sketchy)"/>
+    <path d="M280.0,1063.0 L406.0,1060.0 L546.0,1066.0 L686.0,1060.5 L826.0,1065.0 L980.0,1063.0" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)"/>
   </g>
 
   <!-- 2: token + positional embedding -->
@@ -198,7 +188,7 @@
     <text x="1550" y="1165" font-size="30" fill="#eee8d5">Each token becomes a</text>
     <text x="1550" y="1201" font-size="30" fill="#eee8d5">vector of numbers, e.g.</text>
     <text x="1550" y="1231" font-size="26" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
-    <path d="M1520,1200 H1190" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)" filter="url(#sketchy)"/>
+    <path d="M1520.0,1200.0 L1466.0,1197.0 L1406.0,1203.0 L1346.0,1197.5 L1286.0,1202.0 L1220.0,1200.0" fill="none" stroke="#268bd2" stroke-width="2" marker-end="url(#calloutArrowBlue)"/>
   </g>
 
   <!-- 1: prompt tokens -->
@@ -215,7 +205,7 @@
       <rect x="239" y="1310" width="99" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
       <text x="288.5" y="1339">ization</text>
     </g>
-    <path d="M400,1274 H952" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
+    <path d="M400.0,1274.0 L494.0,1271.0 L598.4,1277.0 L702.8,1271.5 L807.2,1276.0 L922.0,1274.0" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)"/>
   </g>
 
 </svg>
