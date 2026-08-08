@@ -82,7 +82,6 @@
   var GENDER_COLOR = '#268bd2';
   var ORTHO_COLOR = '#859900';
   var CHAIN_COLOR = '#eee8d5';
-  var NUMBERS_COLOR = '#93a1a1';
 
   // king/man/woman/queen, each drawn as a genuine vector from the shared
   // origin -- not just a labeled point. This is the standard illustration
@@ -124,7 +123,9 @@
     queen: { x: QUEEN.x, y: QUEEN.y, present: VM_ONLY, color: GENDER_COLOR, labelPos: 'left' },
 
     drill:          { x: DRILL.x,          y: DRILL.y,          present: LS_ONLY, color: ORTHO_COLOR },
-    supernova:      { x: SUPERNOVA.x,      y: SUPERNOVA.y,      present: LS_ONLY, color: ORTHO_COLOR },
+    // Default (right) label would extend rightward into drill's own
+    // vector line -- force left instead.
+    supernova:      { x: SUPERNOVA.x,      y: SUPERNOVA.y,      present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left' },
     // origin-vector approaches from the lower-right for both of these --
     // force left so the label doesn't sit in its own vector's path.
     photosynthesis: { x: PHOTOSYNTHESIS.x, y: PHOTOSYNTHESIS.y, present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', fontSize: 22 },
@@ -199,8 +200,11 @@
     // honest walked path rather than an implied/labeled relationship.
     var bend = { x: KING.x + ORIGIN.x - MAN.x, y: KING.y + ORIGIN.y - MAN.y };
     [
-      { from: KING, to: bend, symbol: '− man' },
-      { from: bend, to: QUEEN, symbol: '+ woman' }
+      // nudgeX pushes the label further right than the perpendicular
+      // offset alone -- without it, "- man"'s label sits almost on top of
+      // its own dashed line.
+      { from: KING, to: bend, symbol: '− man', nudgeX: 22 },
+      { from: bend, to: QUEEN, symbol: '+ woman', nudgeX: 0 }
     ].forEach(function (seg) {
       var line = ns('line');
       line.setAttribute('x1', String(seg.from.x));
@@ -220,7 +224,7 @@
       var dx = seg.to.x - seg.from.x, dy = seg.to.y - seg.from.y;
       var len = Math.sqrt(dx * dx + dy * dy);
       var label = ns('text');
-      label.setAttribute('x', String(mx - (dy / len) * 14));
+      label.setAttribute('x', String(mx - (dy / len) * 14 + seg.nudgeX));
       label.setAttribute('y', String(my + (dx / len) * 14));
       label.setAttribute('text-anchor', 'middle');
       label.setAttribute('font-size', '20');
@@ -275,14 +279,15 @@
     // King's raw component numbers -- a stand-in for what the vector
     // actually is (a plain array of floats), shown only in "embeddings"
     // and gone by the time anything else appears. Not real trained
-    // weights, just illustrative -- placed below the origin, clear of
-    // king's own vector (which points up-and-right).
+    // weights, just illustrative -- placed directly under king itself
+    // (same color) rather than the origin, so it reads as "this word" ->
+    // "these numbers", not as a caption for the whole diagram.
     numbersEl = ns('text');
-    numbersEl.setAttribute('x', String(ORIGIN.x));
-    numbersEl.setAttribute('y', String(ORIGIN.y + 50));
+    numbersEl.setAttribute('x', String(KING.x));
+    numbersEl.setAttribute('y', String(KING.y + 62));
     numbersEl.setAttribute('text-anchor', 'middle');
     numbersEl.setAttribute('font-size', '20');
-    numbersEl.setAttribute('fill', NUMBERS_COLOR);
+    numbersEl.setAttribute('fill', GENDER_COLOR);
     numbersEl.textContent = '[ 0.23, −0.45, 0.55, 0.11, … ]';
     numbersEl.classList.add('llm-fade-el');
     svg.appendChild(numbersEl);
