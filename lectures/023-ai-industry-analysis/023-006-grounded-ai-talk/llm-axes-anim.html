@@ -105,6 +105,28 @@
   var ORTHO_COLOR = '#859900';
   var CHAIN_COLOR = '#eee8d5';
   var STRUCT_COLOR = '#93a1a1';
+  var BG_VECTOR_COLOR = '#4a6a72';
+
+  // Unlabeled grey vectors, shown only in "embeddings" alongside king --
+  // there's nothing special about king's position; the space is full of
+  // other words' vectors too, this just makes that legible instead of
+  // implied. Word vectors are NOT unit-normalized in general (word2vec
+  // and GloVe magnitudes vary and actually correlate with word frequency;
+  // even LLM hidden states aren't L2-normalized to 1, despite LayerNorm
+  // doing something related but distinct) -- varying lengths here are
+  // realistic, not just a visual device. Endpoints generated once
+  // (angles spread around king's own direction with a gap left around it
+  // so king stays visually distinct, lengths randomized) and kept fixed
+  // rather than regenerated per load, same reasoning as the hand-tuned
+  // WORD_POINTS coordinates elsewhere in this file: deterministic beats
+  // re-rolling on every page load.
+  var BG_VECTORS = [
+    { x: 458, y: 345 }, { x: 426, y: 412 }, { x: 411, y: 459 },
+    { x: 363, y: 478 }, { x: 290, y: 531 }, { x: 260, y: 456 },
+    { x: 173, y: 486 }, { x: 219, y: 369 }, { x: 86,  y: 316 },
+    { x: 149, y: 271 }, { x: 238, y: 286 }, { x: 267, y: 258 },
+    { x: 292, y: 226 }, { x: 341, y: 201 }, { x: 436, y: 197 }
+  ];
 
   // A small constituency tree for "The king wore a crown" -- just enough
   // structure to make "dense, context-sensitive" concrete (this is the
@@ -209,6 +231,7 @@
   var arrowEls = [];
   var langEls = [];
   var numbersEl = null;
+  var bgVectorEls = [];
   var currentAxesStage = null;
 
   function ns(tag) {
@@ -230,7 +253,7 @@
     svg.classList.add('llm-axes-svg');
 
     var arrowDefs = ns('defs');
-    [['llm-arrow-gender', GENDER_COLOR], ['llm-arrow-ortho', ORTHO_COLOR], ['llm-arrow-chain', CHAIN_COLOR]].forEach(function (m) {
+    [['llm-arrow-gender', GENDER_COLOR], ['llm-arrow-ortho', ORTHO_COLOR], ['llm-arrow-chain', CHAIN_COLOR], ['llm-arrow-bg', BG_VECTOR_COLOR]].forEach(function (m) {
       var marker = ns('marker');
       marker.setAttribute('id', m[0]);
       marker.setAttribute('viewBox', '0 0 10 10');
@@ -246,6 +269,23 @@
       arrowDefs.appendChild(marker);
     });
     svg.appendChild(arrowDefs);
+
+    // Unlabeled grey background vectors (BG_VECTORS) -- appended before
+    // king's own line so they paint underneath it, keeping king visually
+    // dominant despite sharing the same origin.
+    BG_VECTORS.forEach(function (pt) {
+      var line = ns('line');
+      line.setAttribute('x1', String(ORIGIN.x));
+      line.setAttribute('y1', String(ORIGIN.y));
+      line.setAttribute('x2', String(pt.x));
+      line.setAttribute('y2', String(pt.y));
+      line.setAttribute('stroke', BG_VECTOR_COLOR);
+      line.setAttribute('stroke-width', '2');
+      line.setAttribute('marker-end', 'url(#llm-arrow-bg)');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      bgVectorEls.push(line);
+    });
 
     // Each word as a genuine solid vector FROM the origin -- no dot marks
     // any point on it. A word's meaning is the vector itself (direction),
@@ -564,6 +604,7 @@
     applyFade(arrowEls, vmPresent, chainEntering ? FADE_MS : 0, animate);
 
     applyFade([numbersEl], EMB_ONLY[stageName], 0, animate);
+    applyFade(bgVectorEls, EMB_ONLY[stageName], 0, animate);
   }
 
   var currentAnchor = null;
