@@ -434,9 +434,9 @@
     </clipPath>
   </defs>
 
-  <text class="s2-title fade" x="500" y="26" text-anchor="middle" font-size="24" font-weight="700" fill="#b58900">Reasoning-style</text>
+  <text class="s2-title fade" x="500" y="34" text-anchor="middle" font-size="36" font-weight="700" fill="#b58900">Reasoning-style</text>
 
-  <g transform="translate(0,40)">
+  <g transform="translate(0,58)">
 
   <!-- pane headers + divider -->
   <text class="s2-early fade" x="20" y="35" font-size="24" font-style="italic" fill="#93a1a1">Raw context sent to the model</text>
