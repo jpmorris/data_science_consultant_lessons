@@ -354,7 +354,7 @@ are real contenders:
   </div>
   <div class="diagram-split-text">
     <ul>
-      <li><strong>Zero-shot</strong>: ask a novel question, no examples — it just answers, one predicted token at a time</li>
+      <li><strong>Simple prompting</strong>: no reasoning, no tools — the model just answers, one predicted token at a time</li>
     </ul>
   </div>
 </div>
@@ -362,9 +362,14 @@ are real contenders:
 
 ::: {.notes}
 Every "answer" is the same mechanism repeated: predict one token, append it
-to the context, predict the next one, repeat. Zero-shot means no examples in
-the prompt — just a system prompt, a question, and the model sampling its
-way to a response one token at a time.
+to the context, predict the next one, repeat. The left pane is the raw
+context the model actually processes; the right pane is what a real chat UI
+shows you — notice the system prompt never appears there. The second
+question in this demo is the key beat: watch the *entire* box (including the
+first answer) glow and pulse through the model again, not just the new
+question. This is the throughline for the rest of the section — reasoning
+and agentic tool use are both just this same loop with more stuff stuffed
+into the context before the next prediction.
 :::
 
 <!-- STAGE 2/3 (nexttoken-stage-2-cot): chain-of-thought -- placeholder, iterate next -->
@@ -377,8 +382,8 @@ way to a response one token at a time.
   </div>
   <div class="diagram-split-text">
     <ul>
-      <li>Zero-shot: ask a novel question, no examples — it just answers, one predicted token at a time</li>
-      <li><strong>Chain-of-thought</strong>: ask it to "think step by step" — reasoning improves</li>
+      <li>Simple prompting: no reasoning, no tools — the model just answers, one predicted token at a time</li>
+      <li><strong>Reasoning</strong> (chain-of-thought): "thinking" tokens generated before the final answer</li>
     </ul>
   </div>
 </div>
@@ -394,8 +399,8 @@ way to a response one token at a time.
   </div>
   <div class="diagram-split-text">
     <ul>
-      <li>Zero-shot: ask a novel question, no examples — it just answers, one predicted token at a time</li>
-      <li>Chain-of-thought: ask it to "think step by step" — reasoning improves</li>
+      <li>Simple prompting: no reasoning, no tools — the model just answers, one predicted token at a time</li>
+      <li>Reasoning (chain-of-thought): "thinking" tokens generated before the final answer</li>
       <li><strong>Agent + harness</strong>: give it tools, a loop, and a stopping rule — it acts</li>
     </ul>
   </div>
