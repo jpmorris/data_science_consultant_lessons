@@ -14,6 +14,7 @@ doc is about *how the team operates*, that one is about *the deck itself*.
 | Visual 1 | `visual-1` | `visual-1` | No — own worktree |
 | Visual 2 | `visual-2` | `visual-2` | No — own worktree |
 | Visual 3 | `visual-3` | `visual-3` | No — own worktree |
+| Research | `research` | `research` | No — own worktree |
 
 **Naming rule**: worktrees and branches are named by *role*, never by the task
 currently being worked on. `visual-1` might work on axis rotation today and an
@@ -43,6 +44,19 @@ worktree called `rotation` or similar.
   their own session's kickoff prompt — that assignment is session-specific,
   not part of this doc. Adding another visual agent later doesn't need a
   design change, just the next number.
+- **Research** — gathers and curates sourced findings (practitioner
+  tips/anecdotes about agents and GenAI, mainly for Part 4 — "What You
+  Should Know") using the scripts in `content-mining/` (read
+  `content-mining/README.md` first: Hacker News and Bluesky work with no
+  setup, Reddit currently goes through Arctic Shift — not the official
+  Reddit API, which is built but blocked pending app approval — and YouTube
+  needs a one-time API key). **This role doesn't write slide content
+  directly** — it writes curated, sourced findings into `content-draft.md`
+  (the deck's source-of-truth outline) for the Content agent to pull from.
+  Keeps research and slide-synthesis from touching the same section of the
+  `.qmd` at the same time. Same citation standard as everywhere else in this
+  project: cite sources, flag contested/unverified claims, don't assert from
+  memory when a claim can be checked.
 
 ## Ports (reserve these for the lifetime of your session, not per-task)
 
@@ -53,6 +67,7 @@ worktree called `rotation` or similar.
 | Visual 1 | 9402 | 7902 |
 | Visual 2 | 9403 | 7903 |
 | Visual 3 | 9404 | 7904 |
+| Research | 9405 (unlikely to need one — no diagrams, no live preview) | 7905 |
 
 (Pattern for any future Visual N: CDP `9401 + N`, preview `7901 + N`. Add a
 row here when you actually spin one up, rather than assuming — keeps this
