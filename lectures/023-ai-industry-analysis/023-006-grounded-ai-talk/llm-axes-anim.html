@@ -143,29 +143,45 @@
   // line up with the row. Measured empirically (getBBox at font-size 27,
   // font-weight 600) rather than guessed.
   var KING_LABEL_HALF_WIDTH = 26;
-  var KING_TREE_VISUAL_CENTER = { x: 280, y: 370 };
+  // Full breakdown, not just the phrasal nodes: S -> NP("The king") + VP
+  // ("wore a crown"); NP -> Det("The") + N("king"); VP -> V("wore") +
+  // NP("a crown"); that inner NP -> Det("a") + N("crown"). Every word gets
+  // its own preterminal POS tag directly above it, one row deeper than
+  // the phrasal (S/NP/VP) row above it.
+  var TREE_FONT = 29; // structure/leaf font size, 22 * 1.3 rounded
+  var KING_TREE_VISUAL_CENTER = { x: 250, y: 390 };
   var KING_TREE_POS = { x: KING_TREE_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_TREE_VISUAL_CENTER.y };
   var TREE_NODES = [
-    { text: 'S',  x: 350, y: 130 },
-    { text: 'NP', x: 180, y: 250 },
-    { text: 'VP', x: 500, y: 250 },
-    { text: 'NP', x: 580, y: 370 }
+    { text: 'S',   x: 350, y: 90 },
+    { text: 'NP',  x: 180, y: 190 },
+    { text: 'VP',  x: 525, y: 190 },
+    { text: 'Det', x: 110, y: 290 },
+    { text: 'N',   x: 250, y: 290 },
+    { text: 'V',   x: 460, y: 290 },
+    { text: 'NP',  x: 590, y: 290 },
+    { text: 'Det', x: 540, y: 390 },
+    { text: 'N',   x: 640, y: 390 }
   ];
   var TREE_LEAVES = [
-    { text: 'The',   x: 100, y: 370 },
-    { text: 'wore',  x: 420, y: 370 },
-    { text: 'a',     x: 520, y: 490 },
+    { text: 'The',   x: 110, y: 390 },
+    { text: 'wore',  x: 460, y: 390 },
+    { text: 'a',     x: 540, y: 490 },
     { text: 'crown', x: 640, y: 490 }
   ];
   var TREE_EDGES = [
-    [{ x: 350, y: 130 }, { x: 180, y: 250 }],
-    [{ x: 350, y: 130 }, { x: 500, y: 250 }],
-    [{ x: 180, y: 250 }, { x: 100, y: 370 }],
-    [{ x: 180, y: 250 }, KING_TREE_VISUAL_CENTER],
-    [{ x: 500, y: 250 }, { x: 420, y: 370 }],
-    [{ x: 500, y: 250 }, { x: 580, y: 370 }],
-    [{ x: 580, y: 370 }, { x: 520, y: 490 }],
-    [{ x: 580, y: 370 }, { x: 640, y: 490 }]
+    [{ x: 350, y: 90 },  { x: 180, y: 190 }],           // S -> NP
+    [{ x: 350, y: 90 },  { x: 525, y: 190 }],           // S -> VP
+    [{ x: 180, y: 190 }, { x: 110, y: 290 }],           // NP -> Det(The)
+    [{ x: 180, y: 190 }, { x: 250, y: 290 }],           // NP -> N(king)
+    [{ x: 525, y: 190 }, { x: 460, y: 290 }],           // VP -> V(wore)
+    [{ x: 525, y: 190 }, { x: 590, y: 290 }],           // VP -> NP(a crown)
+    [{ x: 110, y: 290 }, { x: 110, y: 390 }],           // Det -> "The"
+    [{ x: 250, y: 290 }, KING_TREE_VISUAL_CENTER],      // N -> "king"
+    [{ x: 460, y: 290 }, { x: 460, y: 390 }],           // V -> "wore"
+    [{ x: 590, y: 290 }, { x: 540, y: 390 }],           // NP -> Det(a)
+    [{ x: 590, y: 290 }, { x: 640, y: 390 }],           // NP -> N(crown)
+    [{ x: 540, y: 390 }, { x: 540, y: 490 }],           // Det -> "a"
+    [{ x: 640, y: 390 }, { x: 640, y: 490 }]            // N -> "crown"
   ];
 
   // king/man/woman/queen, each drawn as a genuine vector from the shared
@@ -459,7 +475,7 @@
       label.setAttribute('x', String(node.x));
       label.setAttribute('y', String(node.y));
       label.setAttribute('text-anchor', 'middle');
-      label.setAttribute('font-size', '22');
+      label.setAttribute('font-size', String(TREE_FONT));
       label.setAttribute('font-style', 'italic');
       label.setAttribute('fill', STRUCT_COLOR);
       label.textContent = node.text;
@@ -472,7 +488,7 @@
       label.setAttribute('x', String(leaf.x));
       label.setAttribute('y', String(leaf.y));
       label.setAttribute('text-anchor', 'middle');
-      label.setAttribute('font-size', '22');
+      label.setAttribute('font-size', String(TREE_FONT));
       label.setAttribute('font-weight', '600');
       label.setAttribute('fill', CHAIN_COLOR);
       label.textContent = leaf.text;
