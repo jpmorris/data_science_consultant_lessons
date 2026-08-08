@@ -126,19 +126,18 @@ real embedding spaces have hundreds to thousands of dimensions.
 ```
 
 ::: {.notes}
-The classic demonstration: king &minus; man + woman &approx; queen. The
-offset from "man" to "woman" and the offset from "king" to "queen" point in
-almost the same direction &mdash; the space has learned a consistent
-"gender" direction, without ever being told one exists. Shown here with a
-second, unrelated pair (walk/walked, swim/swam) to make the point that
-this isn't a cherry-picked coincidence: different relationships get their
-own consistent directions, and the SAME offset recurs across otherwise
-unrelated words. Classic reference: Mikolov et al., "Linguistic
-Regularities in Continuous Space Word Representations" (NAACL 2013) and
-the original word2vec paper (Mikolov et al. 2013, arXiv:1301.3781). Worth
-saying out loud: this is a genuinely simplified, best-case illustration
-&mdash; real analogy performance is noisier and more brittle than the
-clean textbook examples, and modern LLM embeddings are far higher-
+The classic demonstration: king &minus; man + woman &approx; queen, shown
+here as an actual walked vector path (king, then subtract man's vector,
+then add woman's vector, landing on queen) rather than just an implied
+relationship between unlabeled points &mdash; the offset from man to woman
+and the offset from king to queen are the same vector, meaning the space
+has learned a consistent "gender" direction without ever being told one
+exists. Classic reference: Mikolov et al., "Linguistic Regularities in
+Continuous Space Word Representations" (NAACL 2013) and the original
+word2vec paper (Mikolov et al. 2013, arXiv:1301.3781). Worth saying out
+loud: this is a genuinely simplified, best-case illustration &mdash; real
+analogy performance is noisier and more brittle than the clean textbook
+examples, and modern LLM embeddings are far higher-
 dimensional and contextual (not one fixed vector per word) than this toy
 picture shows.
 :::

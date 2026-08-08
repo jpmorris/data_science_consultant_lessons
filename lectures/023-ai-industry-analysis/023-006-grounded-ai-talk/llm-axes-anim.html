@@ -1,11 +1,12 @@
 <!--
   JS-driven diagram for the "Ingredients of an LLM" embeddings sequence,
   spanning three consecutive stages that all share one persistent panel:
-  stage 2 "embeddings" (3 axes, "king" as the one point) -> stage 3
-  "vector-math" (same 3 axes, stationary, king unchanged; the other 7 word
-  points + 4 analogy arrows fade in around it) -> stage 4 "latent-space"
-  (word points fade back out; x/z genuinely rotate and v4/v5 fade in once
-  settled).
+  stage 2 "embeddings" (3 axes, "king" as the one vector from the shared
+  origin) -> stage 3 "vector-math" (axes hidden; king unchanged; man/
+  woman/queen fade in as their own vectors from the same origin, plus a
+  dashed "-man, +woman" path from king's tip landing on queen) -> stage 4
+  "latent-space" (word vectors fade back out; axes return; x/z genuinely
+  rotate and v4/v5 fade in once settled).
 
   Why this exists instead of auto-animate: reveal.js auto-animate cannot
   interpolate the `transform` property at all on matched (data-id) elements
@@ -68,21 +69,24 @@
   // alone still carry the two things that matter (relative angle, and
   // "there are 5 of them now, not 3"). y is intentionally identical
   // (angle) across all three stages -- it's the one axis that should read
-  // as completely stationary while x/z rotate and v4/v5 fade in. x/y/z
-  // dim to a faint background presence during vector-math (the king/queen
-  // demo isn't about coordinates along these axes, it's about relations
-  // between points -- full-strength axes competing for attention there
-  // read as more literal-coordinate-math than intended) and return to
-  // full opacity exactly as the rotation into latent-space begins. v4/v5's
-  // angles are shared across the two stages they can appear in (only
-  // opacity changes) so they fade in already in their final position
-  // instead of popping. v4 sits close to z (20deg clockwise/"to the
-  // right", not mirrored -- that reads as ambiguous rather than close)
-  // and v5 close to x -- a deliberately small gap, not fully coincident,
-  // to read as "nearly parallel, not exactly orthogonal", the actual
-  // point of this diagram (relaxed/near-orthogonality, not identical
-  // vectors).
-  var DIM = 0.28;
+  // as completely stationary while x/z rotate and v4/v5 fade in.
+  //
+  // x/y/z are fully hidden (not just dimmed) during vector-math, not shown
+  // at any opacity: there's no real basis/coordinate system to speak of in
+  // an embedding space (any basis you'd draw is arbitrary up to rotation,
+  // carries no fixed meaning -- these lines were only ever generic
+  // plotting scaffolding), and showing them at all during the king/queen
+  // demo implies more structure than exists, competing with the actual
+  // content (king/man/woman/queen's own vectors) for attention. They
+  // return at full opacity exactly as the rotation into latent-space
+  // begins. v4/v5's angles are shared across the two stages they can
+  // appear in (only opacity changes) so they fade in already in their
+  // final position instead of popping. v4 sits close to z (20deg
+  // clockwise/"to the right", not mirrored -- that reads as ambiguous
+  // rather than close) and v5 close to x -- a deliberately small gap, not
+  // fully coincident, to read as "nearly parallel, not exactly
+  // orthogonal", the actual point of this diagram (relaxed/near-
+  // orthogonality, not identical vectors).
   var STAGES = {
     embeddings: {
       x:  { angle: 147.7, opacity: 1 },
@@ -97,9 +101,9 @@
     // from "meaning is geometric" to "and this geometry is denser than
     // plain orthogonality allows".
     'vector-math': {
-      x:  { angle: 147.7, opacity: DIM },
-      y:  { angle: 30,    opacity: DIM },
-      z:  { angle: -90,   opacity: DIM },
+      x:  { angle: 147.7, opacity: 0 },
+      y:  { angle: 30,    opacity: 0 },
+      z:  { angle: -90,   opacity: 0 },
       v4: { angle: -80,   opacity: 0 },
       v5: { angle: 135,   opacity: 0 }
     },
@@ -112,63 +116,52 @@
     }
   };
 
-  // These are simple translate+fade elements -- no rotation, just opacity,
-  // no label text (word points get a text label, but it's the word
-  // itself, not an axis letter). "king" is the through-line from stage 2:
-  // the one word shown on its own in "embeddings" (at the exact position
-  // it holds here too, so it never moves or fades between those two
-  // stages -- it's the same point, not a replacement), then the other 7
-  // fade in around it. Two analogy pairs (gender, tense), each internally
-  // parallel but pointing a different direction from the other pair --
-  // the point isn't "king - man + woman = queen" as a one-off trick, it's
-  // that DIFFERENT relationships each get their own consistent, reusable
-  // direction. Laid out mirrored left/right across the z-axis (x=300):
-  // gender on the right, tense on the left at the mirrored positions --
-  // reads as centered/balanced around z rather than piled into one
-  // quadrant, and uses the entire upper half of the canvas (the lower
-  // half is where the x/y axis lines themselves run).
+  // king/man/woman/queen, each drawn as a genuine vector from the shared
+  // origin -- not just a labeled point. This is the standard illustration
+  // for this specific analogy (confirmed against multiple real references,
+  // not guessed): solid vectors from a common origin for each word, plus a
+  // dashed "-man, +woman" path from king's tip showing the arithmetic as
+  // an actual walked path, landing on queen. queen's position is DERIVED
+  // (king - man + woman), not hand-placed, so the dashed path is
+  // guaranteed to close exactly on it regardless of how king/man/woman get
+  // tuned later. "king" is the through-line from stage 2: present in both
+  // embeddings and vector-math at this identical position, so it never
+  // moves or fades between those two stages -- it's the same vector, not
+  // a replacement. tense (walk/walked/swim/swam) is dropped for now to
+  // keep this first pass legible -- add back later if there's room.
   var EMB_VM = { embeddings: true, 'vector-math': true, 'latent-space': false };
   var VM_ONLY = { embeddings: false, 'vector-math': true, 'latent-space': false };
-  var ARROW_PRESENT = { embeddings: false, 'vector-math': true, 'latent-space': false };
-  var ORIGIN_PRESENT = { embeddings: true, 'vector-math': false, 'latent-space': true };
+  var ORIGIN_PRESENT = { embeddings: true, 'vector-math': true, 'latent-space': true };
+  var GENDER_COLOR = '#268bd2';
+  var CHAIN_COLOR = '#eee8d5';
+
+  // Long, distinctly-angled vectors using the whole canvas now that
+  // there's no axis to avoid crossing -- short vectors clustered near the
+  // origin read as small/cramped no matter how the panel is sized. Found
+  // by search rather than hand-picked: the "bend" point of the -man/+woman
+  // chain (see below) also needs to clear every other point by a healthy
+  // margin, which isn't obvious to satisfy by hand alongside the canvas
+  // bounds -- this set keeps every pairwise distance (king/man/woman/
+  // queen/bend, all 10 pairs) above 220 units.
+  var KING = { x: 433, y: 287 };
+  var MAN = { x: 242, y: 123 };
+  var WOMAN = { x: 81, y: 279 };
+  var QUEEN = { x: KING.x - MAN.x + WOMAN.x, y: KING.y - MAN.y + WOMAN.y };
 
   var WORD_POINTS = {
-    // gender pair -- right of z. king->queen and man->woman share the
-    // identical (170,-110) offset -- that's the actual relationship being
-    // shown; man/woman's position is chosen so the resulting parallelogram
-    // reads as visibly slanted rather than looking rectangular by
-    // accident. king/man get their label placed BELOW instead of the
-    // default above-right, since both of them have arrows exiting
-    // upward/rightward -- an above label would sit in the arrow's own
-    // path.
-    king:   { x: 370, y: 250, group: 'gender', present: EMB_VM, labelPos: 'below' },
-    queen:  { x: 540, y: 140, group: 'gender', present: VM_ONLY },
-    man:    { x: 425, y: 305, group: 'gender', present: VM_ONLY, labelPos: 'below' },
-    woman:  { x: 595, y: 195, group: 'gender', present: VM_ONLY },
-    // tense pair -- left of z, but deliberately NOT a mirror image of the
-    // gender pair: mirrored positions with a mirrored offset reads as "the
-    // same relationship reflected", which is the wrong idea (these are two
-    // DIFFERENT relationships, each with their own direction -- gender's
-    // is a shallow diagonal, tense's is steep/near-vertical, on purpose).
-    walk:   { x: 230, y: 250, group: 'tense',  present: VM_ONLY },
-    walked: { x: 180, y: 100, group: 'tense',  present: VM_ONLY, labelPos: 'left' },
-    swim:   { x: 180, y: 320, group: 'tense',  present: VM_ONLY },
-    swam:   { x: 130, y: 170, group: 'tense',  present: VM_ONLY, labelPos: 'left' }
+    // king/man use the default (above, right-anchored) placement -- both
+    // of king's lines (its own origin-vector, the outgoing -man segment)
+    // approach/exit below it, and man has nothing else nearby.
+    king:  { x: KING.x,  y: KING.y,  present: EMB_VM },
+    man:   { x: MAN.x,   y: MAN.y,   present: VM_ONLY },
+    // woman's own origin-vector approaches from the lower-right, so the
+    // default right-side label would sit in its path -- force left.
+    woman: { x: WOMAN.x, y: WOMAN.y, present: VM_ONLY, labelPos: 'left' },
+    // queen has TWO incoming lines (its own origin-vector from the
+    // upper-right, and the dashed +woman segment from the lower-right) --
+    // force left to clear both.
+    queen: { x: QUEEN.x, y: QUEEN.y, present: VM_ONLY, labelPos: 'left' }
   };
-  var WORD_GROUP_COLOR = { gender: '#268bd2', tense: '#6c71c4' };
-  // man->woman IS the (woman - man) term from queen = king + (woman - man)
-  // -- not a separate annotation vector, the real one, so it's the one
-  // that gets +/- markers (near its man/tail end and woman/head end)
-  // rather than inventing extra connector arrows. walk->walked doesn't get
-  // this treatment -- there's no third/fourth word being solved for on
-  // that pair, it's only showing that the direction recurs, not an
-  // equation.
-  var ANALOGY_ARROWS = [
-    { from: 'man',  to: 'woman',  group: 'gender', minus: 'man', plus: 'woman' },
-    { from: 'king', to: 'queen',  group: 'gender' },
-    { from: 'walk', to: 'walked', group: 'tense' },
-    { from: 'swim', to: 'swam',   group: 'tense' }
-  ];
 
   var svg = null;
   var visiblePanel = null;
@@ -231,11 +224,11 @@
       axisEls[id] = { line: line };
     });
 
-    // The origin dot: legitimately meaningful in embeddings/latent-space
-    // (it's the axes' actual shared pivot point), but not in vector-math
-    // (none of king/queen/man/woman are computed from it -- showing it
-    // there implies a dependency that isn't real). Dims/undims on the
-    // same schedule as the axis lines rather than being always-on.
+    // The origin dot serves double duty: the axes' shared pivot point in
+    // embeddings/latent-space, and the shared start point for king/man/
+    // woman/queen's own vectors in vector-math -- same physical point on
+    // screen either way, always visible now, just anchoring different
+    // content depending on the stage.
     originEl = ns('circle');
     originEl.setAttribute('cx', String(ORIGIN.x));
     originEl.setAttribute('cy', String(ORIGIN.y));
@@ -245,9 +238,9 @@
     svg.appendChild(originEl);
 
     var arrowDefs = ns('defs');
-    ['gender', 'tense'].forEach(function (group) {
+    [['llm-arrow-gender', GENDER_COLOR], ['llm-arrow-chain', CHAIN_COLOR]].forEach(function (m) {
       var marker = ns('marker');
-      marker.setAttribute('id', 'llm-arrow-' + group);
+      marker.setAttribute('id', m[0]);
       marker.setAttribute('viewBox', '0 0 10 10');
       marker.setAttribute('refX', '8');
       marker.setAttribute('refY', '5');
@@ -256,89 +249,99 @@
       marker.setAttribute('orient', 'auto-start-reverse');
       var path = ns('path');
       path.setAttribute('d', 'M0,0 L10,5 L0,10 z');
-      path.setAttribute('fill', WORD_GROUP_COLOR[group]);
+      path.setAttribute('fill', m[1]);
       marker.appendChild(path);
       arrowDefs.appendChild(marker);
     });
     svg.appendChild(arrowDefs);
 
-    ANALOGY_ARROWS.forEach(function (a) {
-      var from = WORD_POINTS[a.from];
-      var to = WORD_POINTS[a.to];
+    // Each word as a genuine solid vector FROM the origin -- the primary
+    // visual now, not just a labeled dot.
+    Object.keys(WORD_POINTS).forEach(function (word) {
+      var pt = WORD_POINTS[word];
       var line = ns('line');
-      line.setAttribute('x1', String(from.x));
-      line.setAttribute('y1', String(from.y));
-      line.setAttribute('x2', String(to.x));
-      line.setAttribute('y2', String(to.y));
-      line.setAttribute('stroke', WORD_GROUP_COLOR[a.group]);
+      line.setAttribute('x1', String(ORIGIN.x));
+      line.setAttribute('y1', String(ORIGIN.y));
+      line.setAttribute('x2', String(pt.x));
+      line.setAttribute('y2', String(pt.y));
+      line.setAttribute('stroke', GENDER_COLOR);
       line.setAttribute('stroke-width', '3.5');
-      line.setAttribute('stroke-dasharray', '6,5');
-      line.setAttribute('marker-end', 'url(#llm-arrow-' + a.group + ')');
+      line.setAttribute('marker-end', 'url(#llm-arrow-gender)');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      wordPointEls[word] = { point: line };
+    });
+
+    // The dashed grey "-man, +woman" path: starts at king's tip, walks
+    // backward by man's vector, then forward by woman's vector, landing
+    // exactly on queen's tip (guaranteed by construction, see QUEEN
+    // above). This is what actually shows the arithmetic happening, as an
+    // honest walked path rather than an implied/labeled relationship.
+    var bend = { x: KING.x + ORIGIN.x - MAN.x, y: KING.y + ORIGIN.y - MAN.y };
+    [
+      { from: KING, to: bend, symbol: '− man' },
+      { from: bend, to: QUEEN, symbol: '+ woman' }
+    ].forEach(function (seg) {
+      var line = ns('line');
+      line.setAttribute('x1', String(seg.from.x));
+      line.setAttribute('y1', String(seg.from.y));
+      line.setAttribute('x2', String(seg.to.x));
+      line.setAttribute('y2', String(seg.to.y));
+      line.setAttribute('stroke', CHAIN_COLOR);
+      line.setAttribute('stroke-width', '2');
+      line.setAttribute('stroke-dasharray', '5,4');
+      line.setAttribute('marker-end', 'url(#llm-arrow-chain)');
       line.classList.add('llm-fade-el');
       svg.appendChild(line);
       arrowEls.push(line);
 
-      // +/- markers directly on this arrow (only set for man->woman) --
-      // placed just off the line, near each end, rather than on a
-      // separate annotation arrow: this line IS the (woman - man) term,
-      // so the markers belong on it.
-      if (a.minus || a.plus) {
-        var dx = to.x - from.x, dy = to.y - from.y;
-        var len = Math.sqrt(dx * dx + dy * dy);
-        var px = -dy / len, py = dx / len; // unit perpendicular
-        [
-          { word: a.minus, symbol: '−', t: 0.24 },
-          { word: a.plus, symbol: '+', t: 0.76 }
-        ].forEach(function (m) {
-          if (!m.word) return;
-          var mx = from.x + dx * m.t + px * 16;
-          var my = from.y + dy * m.t + py * 16;
-          var symbol = ns('text');
-          symbol.setAttribute('x', String(mx));
-          symbol.setAttribute('y', String(my));
-          symbol.setAttribute('text-anchor', 'middle');
-          symbol.setAttribute('font-size', '24');
-          symbol.setAttribute('font-weight', '700');
-          symbol.setAttribute('fill', '#eee8d5');
-          symbol.textContent = m.symbol;
-          symbol.classList.add('llm-fade-el');
-          svg.appendChild(symbol);
-          arrowEls.push(symbol);
-        });
-      }
+      var mx = (seg.from.x + seg.to.x) / 2;
+      var my = (seg.from.y + seg.to.y) / 2;
+      var dx = seg.to.x - seg.from.x, dy = seg.to.y - seg.from.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      var label = ns('text');
+      label.setAttribute('x', String(mx - (dy / len) * 14));
+      label.setAttribute('y', String(my + (dx / len) * 14));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '20');
+      label.setAttribute('font-weight', '700');
+      label.setAttribute('font-style', 'italic');
+      label.setAttribute('fill', CHAIN_COLOR);
+      label.textContent = seg.symbol;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      arrowEls.push(label);
     });
 
     Object.keys(WORD_POINTS).forEach(function (word) {
       var pt = WORD_POINTS[word];
-      var color = WORD_GROUP_COLOR[pt.group];
 
       var circle = ns('circle');
       circle.setAttribute('cx', String(pt.x));
       circle.setAttribute('cy', String(pt.y));
       circle.setAttribute('r', '8');
       circle.setAttribute('fill', '#eee8d5');
-      circle.setAttribute('stroke', color);
+      circle.setAttribute('stroke', GENDER_COLOR);
       circle.setAttribute('stroke-width', '2.5');
       circle.classList.add('llm-fade-el');
       svg.appendChild(circle);
 
       // Default: label above-right, or above-left (anchor "end") once the
       // point is past the panel's horizontal midpoint, so it doesn't run
-      // off the right edge. `labelPos` overrides this for specific points
-      // whose default side happens to collide with their own arrow's
-      // approach/exit path -- 'below' (king, man: both have arrows exiting
-      // up/right) or 'left' (walked, swam: both have their incoming arrow
-      // approaching from the upper-right, the same side the default would
-      // place the label).
+      // off the right edge. `labelPos` overrides this for points whose
+      // default side would collide with their own vector's approach path
+      // or the dashed chain -- 'below' (king: vector exits up, chain
+      // exits down-right) or 'right' (queen: both its own vector and the
+      // dashed chain approach from lower-left, so force the label right
+      // even past the midpoint threshold).
       var label = ns('text');
       if (pt.labelPos === 'below') {
         label.setAttribute('x', String(pt.x));
         label.setAttribute('y', String(pt.y + 30));
         label.setAttribute('text-anchor', 'middle');
-      } else if (pt.labelPos === 'left') {
-        label.setAttribute('x', String(pt.x - 16));
+      } else if (pt.labelPos === 'right') {
+        label.setAttribute('x', String(pt.x + 16));
         label.setAttribute('y', String(pt.y - 12));
-        label.setAttribute('text-anchor', 'end');
       } else {
         var labelOnLeft = pt.x > 470;
         label.setAttribute('x', String(pt.x + (labelOnLeft ? -16 : 16)));
@@ -347,12 +350,13 @@
       }
       label.setAttribute('font-size', '27');
       label.setAttribute('font-weight', '600');
-      label.setAttribute('fill', color);
+      label.setAttribute('fill', GENDER_COLOR);
       label.textContent = word;
       label.classList.add('llm-fade-el');
       svg.appendChild(label);
 
-      wordPointEls[word] = { point: circle, label: label };
+      wordPointEls[word].label = label;
+      wordPointEls[word].dot = circle;
     });
 
     // Attached once, permanently -- never reparented again, unlike the
@@ -467,14 +471,15 @@
     var seq = FADE_SEQUENCE[seqKey] || { wordPairDelay: 0 };
 
     // Each word has its own per-stage presence ("king" differs from the
-    // other 7 -- it's present in both embeddings and vector-math, so this
+    // other 3 -- it's present in both embeddings and vector-math, so this
     // naturally leaves it untouched whenever its presence doesn't change,
     // CSS transitions only kick in when the value actually flips).
     Object.keys(WORD_POINTS).forEach(function (word) {
       var present = WORD_POINTS[word].present[stageName];
-      applyFade([wordPointEls[word].point, wordPointEls[word].label], present, seq.wordPairDelay, animate);
+      var els = wordPointEls[word];
+      applyFade([els.point, els.label, els.dot], present, seq.wordPairDelay, animate);
     });
-    applyFade(arrowEls, ARROW_PRESENT[stageName], seq.wordPairDelay, animate);
+    applyFade(arrowEls, VM_ONLY[stageName], seq.wordPairDelay, animate);
     applyFade([originEl], ORIGIN_PRESENT[stageName], 0, animate);
   }
 
