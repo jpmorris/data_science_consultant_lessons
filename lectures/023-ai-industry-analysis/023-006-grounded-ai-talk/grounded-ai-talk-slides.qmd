@@ -59,13 +59,13 @@ Everything else in this talk is downstream of that.
 
 # Part 1: The Magic {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
-<!-- STAGE 1/9 (llm-stage-1-language): language: ambiguous word, no numbers yet -->
+<!-- STAGE 1/9 (llm-stage-1-language): language: small constituency tree, "king" glides on to stage 2 -->
 ## The Ingredients of an LLM {#llm-stage-1-language auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-language.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="language"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -78,9 +78,34 @@ Everything else in this talk is downstream of that.
 ::: {.notes}
 This is the raw material every LLM starts from: human language is dense
 (a huge amount of meaning per token) and context-sensitive (the same word
-means different things depending on what's around it) &mdash; "bank" here
-is the simplest example. Nobody engineered this into the model; it's a
-property of the input the model has to somehow represent.
+means different things depending on what's around it). The tree shown is
+a standard constituency parse -- the kind of structure a formal,
+context-free grammar can assign to a sentence, same idea as parsing a
+programming language.
+
+Worth saying out loud, not shown on the slide: natural language actually
+exceeds that. Per the Chomsky hierarchy (regular &sub; context-free &sub;
+context-sensitive &sub; recursively enumerable), natural language is not
+regular and not context-free, and arguably isn't fully captured by any
+formal grammar at all -- unlike programming languages, which are
+deliberately designed to stay context-free so they can be parsed
+efficiently. This tree is a simplification for the sake of legibility,
+not a claim that this fully describes what's really going on.
+
+That gap is also where LLMs' real weakness shows up: DeepMind's "Neural
+Networks and the Chomsky Hierarchy" (Del&eacute;tang et al., ICLR 2023,
+arXiv:2207.02098) tests transformers against tasks at each hierarchy
+level and finds they reliably fail to generalize on tasks needing
+unbounded exact recursion or counting (e.g. matching parentheses nested
+deeper than anything seen in training) -- self-attention has no built-in
+stack. Ironically, transformers can be worse at some simple, formally
+regular languages than they are at messy natural language, because
+natural language is statistically forgiving in a way strict formal
+languages aren't.
+
+Nobody engineered context-sensitivity into the model; it's a property of
+the input the model has to somehow represent -- which is exactly what
+embeddings are for, next slide.
 :::
 
 <!-- STAGE 2/9 (llm-stage-2-embeddings): embeddings: 3 orthogonal axes + 1 point -->

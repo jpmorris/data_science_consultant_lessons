@@ -1,15 +1,28 @@
 <!--
-  JS-driven diagram for the "Ingredients of an LLM" embeddings sequence,
-  spanning three consecutive stages that all share one persistent panel:
-  stage 2 "embeddings" (just "king" as a vector from the shared origin,
-  its raw component numbers printed near the origin) -> stage 3
-  "vector-math" (the numbers fade out; king unchanged; man/woman/queen
-  fade in as their own vectors from the same origin, plus a dashed
-  "-man, +woman" path from king's tip landing on queen) -> stage 4
-  (man/woman/queen fade back out; four verified near-orthogonal words --
-  drill, supernova, photosynthesis, asteroid -- fade in instead, each
-  close to 90deg from king but not exactly, and spread apart from each
-  other too).
+  JS-driven diagram for the "Ingredients of an LLM" sequence, spanning
+  four consecutive stages that all share one persistent panel:
+  stage 1 "language" (a small constituency tree for "The king wore a
+  crown" -- see the speaker notes for why real language actually exceeds
+  what a tree like this can capture) -> stage 2 "embeddings" ("king"
+  glides out of the tree to become a vector from the shared origin, its
+  raw component numbers printed near it) -> stage 3 "vector-math" (the
+  numbers fade out; king unchanged; man/woman/queen fade in as their own
+  vectors from the same origin, plus a dashed "-man, +woman" path from
+  king's tip landing on queen) -> stage 4 (man/woman/queen fade back out;
+  four verified near-orthogonal words -- drill, supernova, photosynthesis,
+  asteroid -- fade in instead, each close to 90deg from king but not
+  exactly, and spread apart from each other too).
+
+  "king" is a single continuous element across all four stages, never
+  recreated -- it starts as one leaf of the stage-1 tree and is literally
+  the same <text> node used as the vector label from stage 2 on. Moving
+  between the tree position and the vector-label position is the one
+  exception to "everything is a plain opacity fade" in this file: see
+  tweenKingLabel, which manually interpolates its x/y attributes over
+  requestAnimationFrame rather than using a CSS transition (SVG elements'
+  CSS `transform` is interpreted in a mix of unit spaces across browsers,
+  and this viewBox doesn't map 1:1 to rendered CSS pixels -- tweening the
+  same x/y attributes everything else already uses sidesteps that).
 
   No coordinate axes anywhere in this version, and no dots marking any
   point on any vector: there's no privileged basis for an embedding space
@@ -28,11 +41,15 @@
   small.
 
   Why this exists instead of auto-animate: reveal.js auto-animate cannot
-  interpolate the `transform` property at all on matched (data-id) elements
-  -- confirmed via direct testing, see AGENT-BRIEFING.md. The fix is to stop
-  asking auto-animate to do it: build the axis lines/labels once via
-  document.createElementNS (not static markup) and drive their rotation
-  entirely with a plain CSS `transition: transform`.
+  interpolate the `transform` property at all on matched (data-id)
+  elements -- confirmed via direct testing, see AGENT-BRIEFING.md. That
+  was the original motivation (an earlier version of this diagram
+  rotated between axis layouts via `transform`); the rotation is gone
+  now, but auto-animate remains unusable for a different reason below
+  (its own opacity handling for matched/unmatched elements fights any
+  opacity transition this script drives itself). Build the SVG content
+  once via document.createElementNS (not static markup) and drive all
+  show/hide entirely with plain CSS `transition: opacity`.
 
   The visible panel is NOT inside .reveal .slides at all -- it's a single
   persistent, `position: fixed` element appended to <body>, repositioned on
@@ -74,14 +91,60 @@
   var SVG_NS = 'http://www.w3.org/2000/svg';
   var ORIGIN = { x: 300, y: 340 };
 
-  var EMB_ONLY = { embeddings: true,  'vector-math': false, 'latent-space': false };
-  var EMB_ALL  = { embeddings: true,  'vector-math': true,  'latent-space': true  };
-  var VM_ONLY  = { embeddings: false, 'vector-math': true,  'latent-space': false };
-  var LS_ONLY  = { embeddings: false, 'vector-math': false, 'latent-space': true  };
+  var LANG_ONLY = { language: true,  embeddings: false, 'vector-math': false, 'latent-space': false };
+  var EMB_ONLY  = { language: false, embeddings: true,  'vector-math': false, 'latent-space': false };
+  var EMB_ALL   = { language: false, embeddings: true,  'vector-math': true,  'latent-space': true  };
+  var VM_ONLY   = { language: false, embeddings: false, 'vector-math': true,  'latent-space': false };
+  var LS_ONLY   = { language: false, embeddings: false, 'vector-math': false, 'latent-space': true  };
+  // king's label (not its vector line) is visible from the very first
+  // stage onward -- it starts inside the sentence tree and never
+  // disappears, just moves.
+  var ALWAYS_PRESENT = { language: true, embeddings: true, 'vector-math': true, 'latent-space': true };
 
   var GENDER_COLOR = '#268bd2';
   var ORTHO_COLOR = '#859900';
   var CHAIN_COLOR = '#eee8d5';
+  var STRUCT_COLOR = '#93a1a1';
+
+  // A small constituency tree for "The king wore a crown" -- just enough
+  // structure to make "dense, context-sensitive" concrete (this is the
+  // kind of tree a context-free grammar assigns to a sentence; see the
+  // speaker notes for why real language actually exceeds context-free).
+  // "king" itself isn't a separate element here -- it's WORD_POINTS.king's
+  // own persistent label, tweened to this position and back (see
+  // tweenKingLabel below) so it's a literal, continuous element gliding
+  // from the tree into the vector diagram, not a copy.
+  // king's text-anchor is 'start' (inherited from its stage-2+ vector
+  // label, unchanged here so that identity carries over exactly) while
+  // every other leaf below is 'middle' -- so king's *attribute* x needs to
+  // sit KING_LABEL_HALF_WIDTH left of where it should visually center to
+  // line up with the row. Measured empirically (getBBox at font-size 27,
+  // font-weight 600) rather than guessed.
+  var KING_LABEL_HALF_WIDTH = 26;
+  var KING_TREE_VISUAL_CENTER = { x: 280, y: 370 };
+  var KING_TREE_POS = { x: KING_TREE_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_TREE_VISUAL_CENTER.y };
+  var TREE_NODES = [
+    { text: 'S',  x: 350, y: 130 },
+    { text: 'NP', x: 180, y: 250 },
+    { text: 'VP', x: 500, y: 250 },
+    { text: 'NP', x: 580, y: 370 }
+  ];
+  var TREE_LEAVES = [
+    { text: 'The',   x: 100, y: 370 },
+    { text: 'wore',  x: 420, y: 370 },
+    { text: 'a',     x: 520, y: 490 },
+    { text: 'crown', x: 640, y: 490 }
+  ];
+  var TREE_EDGES = [
+    [{ x: 350, y: 130 }, { x: 180, y: 250 }],
+    [{ x: 350, y: 130 }, { x: 500, y: 250 }],
+    [{ x: 180, y: 250 }, { x: 100, y: 370 }],
+    [{ x: 180, y: 250 }, KING_TREE_VISUAL_CENTER],
+    [{ x: 500, y: 250 }, { x: 420, y: 370 }],
+    [{ x: 500, y: 250 }, { x: 580, y: 370 }],
+    [{ x: 580, y: 370 }, { x: 520, y: 490 }],
+    [{ x: 580, y: 370 }, { x: 640, y: 490 }]
+  ];
 
   // king/man/woman/queen, each drawn as a genuine vector from the shared
   // origin -- not just a labeled point. This is the standard illustration
@@ -117,7 +180,10 @@
   // exactly which labels moved). Absolute position, overrides whatever
   // labelPos would otherwise compute.
   var WORD_POINTS = {
-    king:  { x: KING.x,  y: KING.y,  present: EMB_ALL, color: GENDER_COLOR, labelAt: { x: 442, y: 291 } },
+    // labelPresent overrides `present` for the label only (not the vector
+    // line): king's label is visible starting in the "language" tree,
+    // before its vector line exists at all.
+    king:  { x: KING.x,  y: KING.y,  present: EMB_ALL, labelPresent: ALWAYS_PRESENT, color: GENDER_COLOR, labelAt: { x: 442, y: 291 } },
     man:   { x: MAN.x,   y: MAN.y,   present: VM_ONLY, color: GENDER_COLOR },
     // Default (right-anchored, extending into the canvas) -- woman sits
     // close to the left edge, so a forced left-anchor label runs off it.
@@ -141,6 +207,7 @@
   var visiblePanel = null;
   var wordPointEls = {};
   var arrowEls = [];
+  var langEls = [];
   var numbersEl = null;
   var currentAxesStage = null;
 
@@ -314,6 +381,49 @@
     numbersEl.classList.add('llm-fade-el');
     svg.appendChild(numbersEl);
 
+    // Small constituency tree for stage 1 ("language") -- see the
+    // TREE_* constants above. king's own leaf is NOT built here; it's
+    // WORD_POINTS.king's persistent label, tweened into KING_TREE_POS by
+    // updateKingLabelPosition below.
+    TREE_EDGES.forEach(function (edge) {
+      var line = ns('line');
+      line.setAttribute('x1', String(edge[0].x));
+      line.setAttribute('y1', String(edge[0].y));
+      line.setAttribute('x2', String(edge[1].x));
+      line.setAttribute('y2', String(edge[1].y));
+      line.setAttribute('stroke', STRUCT_COLOR);
+      line.setAttribute('stroke-width', '1.5');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      langEls.push(line);
+    });
+    TREE_NODES.forEach(function (node) {
+      var label = ns('text');
+      label.setAttribute('x', String(node.x));
+      label.setAttribute('y', String(node.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '16');
+      label.setAttribute('font-style', 'italic');
+      label.setAttribute('fill', STRUCT_COLOR);
+      label.textContent = node.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      langEls.push(label);
+    });
+    TREE_LEAVES.forEach(function (leaf) {
+      var label = ns('text');
+      label.setAttribute('x', String(leaf.x));
+      label.setAttribute('y', String(leaf.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '22');
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', CHAIN_COLOR);
+      label.textContent = leaf.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      langEls.push(label);
+    });
+
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
     // restyle in the same tick suppresses the transition" gotcha from
@@ -349,16 +459,87 @@
     });
   }
 
+  // Tweens king's label between its tree-leaf spot (stage "language") and
+  // its normal vector-label spot (labelAt, every other stage) via a manual
+  // requestAnimationFrame loop over the SVG x/y attributes directly --
+  // deliberately not a CSS `transform` transition, since CSS transforms on
+  // SVG elements are interpreted in a mix of unit spaces across browsers
+  // and this diagram's viewBox doesn't map 1:1 to rendered CSS pixels;
+  // tweening x/y in the same user-unit space everything else already uses
+  // sidesteps that entirely and keeps this verifiable via getAttribute
+  // like everything else in this file.
+  var KING_GLIDE_MS = 500;
+  var kingGlideRaf = null;
+
+  function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
+  function tweenKingLabel(toLanguageStage, animate) {
+    var label = wordPointEls.king.label;
+    var base = WORD_POINTS.king.labelAt;
+    var target = toLanguageStage ? KING_TREE_POS : base;
+
+    if (kingGlideRaf !== null) {
+      cancelAnimationFrame(kingGlideRaf);
+      kingGlideRaf = null;
+    }
+
+    if (!animate) {
+      label.setAttribute('x', String(target.x));
+      label.setAttribute('y', String(target.y));
+      return;
+    }
+
+    var fromX = parseFloat(label.getAttribute('x'));
+    var fromY = parseFloat(label.getAttribute('y'));
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var t = Math.min(1, (ts - start) / KING_GLIDE_MS);
+      var e = easeInOutQuad(t);
+      label.setAttribute('x', String(fromX + (target.x - fromX) * e));
+      label.setAttribute('y', String(fromY + (target.y - fromY) * e));
+      if (t < 1) {
+        kingGlideRaf = requestAnimationFrame(step);
+      } else {
+        kingGlideRaf = null;
+      }
+    }
+    kingGlideRaf = requestAnimationFrame(step);
+  }
+
   function applyStage(stageName, animate) {
     var prevStage = currentAxesStage;
 
     Object.keys(WORD_POINTS).forEach(function (word) {
-      var wasPresent = prevStage ? WORD_POINTS[word].present[prevStage] : false;
-      var present = WORD_POINTS[word].present[stageName];
-      var entering = animate && !wasPresent && present;
+      var wp = WORD_POINTS[word];
       var els = wordPointEls[word];
-      applyFade([els.point, els.label], present, entering ? FADE_MS : 0, animate);
+
+      var wasPresent = prevStage ? wp.present[prevStage] : false;
+      var present = wp.present[stageName];
+      var entering = animate && !wasPresent && present;
+      applyFade([els.point], present, entering ? FADE_MS : 0, animate);
+
+      var labelPresentMap = wp.labelPresent || wp.present;
+      var labelWasPresent = prevStage ? labelPresentMap[prevStage] : false;
+      var labelPresent = labelPresentMap[stageName];
+      var labelEntering = animate && !labelWasPresent && labelPresent;
+      applyFade([els.label], labelPresent, labelEntering ? FADE_MS : 0, animate);
     });
+
+    var wasLanguage = prevStage === 'language';
+    var isLanguage = stageName === 'language';
+    if (wasLanguage !== isLanguage) {
+      tweenKingLabel(isLanguage, animate);
+    } else if (!animate) {
+      tweenKingLabel(isLanguage, false);
+    }
+
+    var langWasPresent = prevStage ? LANG_ONLY[prevStage] : false;
+    var langPresent = LANG_ONLY[stageName];
+    var langEntering = animate && !langWasPresent && langPresent;
+    applyFade(langEls, langPresent, langEntering ? FADE_MS : 0, animate);
 
     var vmWasPresent = prevStage ? VM_ONLY[prevStage] : false;
     var vmPresent = VM_ONLY[stageName];
