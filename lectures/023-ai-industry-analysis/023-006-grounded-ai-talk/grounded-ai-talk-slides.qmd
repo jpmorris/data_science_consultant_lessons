@@ -21,6 +21,7 @@ resources:
   - fonts/Inter-Bold.ttf
   - fonts/Inter-BoldItalic.ttf
   - fonts/Inter-Display-Bold.ttf
+  - fonts/ArchitectsDaughter-Regular.ttf
 jupyter: ds-ai-industry-slides
 ---
 

@@ -41,7 +41,7 @@
   <!-- ================= CALLOUTS (reveal.js fragments, fade in and stay) ================= -->
 
   <!-- 9: next-token probabilities -->
-  <g class="fragment" data-fragment-index="8">
+  <g class="fragment" data-fragment-index="8" font-family="'Architects Daughter', cursive">
     <text x="20" y="65" font-size="20" fill="#eee8d5">The model's guess for</text>
     <text x="20" y="93" font-size="20" fill="#eee8d5">what comes next</text>
     <text x="20" y="122" font-size="17" fill="#b58900">&#8594; e.g., "king"</text>
@@ -49,7 +49,7 @@
   </g>
 
   <!-- 8: linear -> softmax -->
-  <g class="fragment" data-fragment-index="7">
+  <g class="fragment" data-fragment-index="7" font-family="'Architects Daughter', cursive">
     <text x="20" y="180" font-size="20" fill="#eee8d5">Turns the final vector into</text>
     <text x="20" y="208" font-size="20" fill="#eee8d5">token probabilities</text>
     <text x="20" y="236" font-size="17" fill="#93a1a1">[0.01, 0.02, <tspan font-weight="bold" fill="#268bd2">0.89</tspan>, 0.01, 0.01, &#8230;]</text>
@@ -57,14 +57,14 @@
   </g>
 
   <!-- 7: x N fade box -->
-  <g class="fragment" data-fragment-index="6">
+  <g class="fragment" data-fragment-index="6" font-family="'Architects Daughter', cursive">
     <text x="20" y="398" font-size="20" fill="#eee8d5">Repeats N times, each pass</text>
     <text x="20" y="426" font-size="20" fill="#eee8d5">building on the last</text>
     <path d="M360,408 H790" fill="none" stroke="#93a1a1" stroke-width="2" marker-end="url(#calloutArrowGrey)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 6: feed-forward network -->
-  <g class="fragment" data-fragment-index="5">
+  <g class="fragment" data-fragment-index="5" font-family="'Architects Daughter', cursive">
     <text x="20" y="612" font-size="20" fill="#eee8d5">Processes each token individually &#8212;</text>
     <text x="20" y="640" font-size="20" fill="#eee8d5">this is largely where facts about</text>
     <text x="20" y="668" font-size="20" fill="#eee8d5">the world are stored</text>
@@ -72,7 +72,7 @@
   </g>
 
   <!-- 5: masked multi-head self-attention -->
-  <g class="fragment" data-fragment-index="3">
+  <g class="fragment" data-fragment-index="3" font-family="'Architects Daughter', cursive">
     <text x="20" y="920" font-size="20" fill="#eee8d5">Gathers context from earlier</text>
     <text x="20" y="948" font-size="20" fill="#eee8d5">tokens, several ways at once</text>
     <path d="M400,933 H875" fill="none" stroke="#2aa198" stroke-width="2" marker-end="url(#calloutArrowCyan)" filter="url(#sketchy)"/>
@@ -81,21 +81,21 @@
   <!-- 4: KV cache: callout on the RIGHT, since KV Cache is itself the one
        component living outside the main column; a short direct arrow beats
        a long detour around the attention box -->
-  <g class="fragment" data-fragment-index="4">
+  <g class="fragment" data-fragment-index="4" font-family="'Architects Daughter', cursive">
     <text x="1490" y="920" font-size="20" fill="#eee8d5">Stores past keys/values</text>
     <text x="1490" y="948" font-size="20" fill="#eee8d5">so they're not recomputed</text>
     <path d="M1490,933 H1445" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 3: first norm -->
-  <g class="fragment" data-fragment-index="2">
+  <g class="fragment" data-fragment-index="2" font-family="'Architects Daughter', cursive">
     <text x="20" y="1050" font-size="20" fill="#eee8d5">Keeps values in a</text>
     <text x="20" y="1078" font-size="20" fill="#eee8d5">stable range</text>
     <path d="M230,1063 H930" fill="none" stroke="#6c71c4" stroke-width="2" marker-end="url(#calloutArrowViolet)" filter="url(#sketchy)"/>
   </g>
 
   <!-- 2: token + positional embedding -->
-  <g class="fragment" data-fragment-index="1">
+  <g class="fragment" data-fragment-index="1" font-family="'Architects Daughter', cursive">
     <text x="20" y="1160" font-size="20" fill="#eee8d5">Each token becomes a</text>
     <text x="20" y="1188" font-size="20" fill="#eee8d5">vector of numbers, e.g.</text>
     <text x="20" y="1213" font-size="17" fill="#93a1a1">"token" &#8594; [0.12, 0.88, 0.41, &#8230;]</text>
@@ -103,7 +103,7 @@
   </g>
 
   <!-- 1: prompt tokens -->
-  <g class="fragment" data-fragment-index="0">
+  <g class="fragment" data-fragment-index="0" font-family="'Architects Daughter', cursive">
     <text x="20" y="1244" font-size="20" fill="#eee8d5">Split into tokens &#8212;</text>
     <text x="20" y="1272" font-size="20" fill="#eee8d5">not always whole words:</text>
     <g font-size="16" fill="#eee8d5" text-anchor="middle">
