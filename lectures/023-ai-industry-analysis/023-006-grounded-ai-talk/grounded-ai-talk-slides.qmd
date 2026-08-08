@@ -58,6 +58,7 @@ Everything else in this talk is downstream of that.
 # Part 1: The Magic {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 <!-- STAGE 1/8 (llm-stage-1-language): language: ambiguous word, no numbers yet -->
+
 ## The Ingredients of an LLM {#llm-stage-1-language auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -82,6 +83,7 @@ property of the input the model has to somehow represent.
 :::
 
 <!-- STAGE 2/8 (llm-stage-2-embeddings): embeddings: 3 orthogonal axes + 1 point -->
+
 ## The Ingredients of an LLM {#llm-stage-2-embeddings auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -106,6 +108,7 @@ real embedding spaces have hundreds to thousands of dimensions.
 :::
 
 <!-- STAGE 3/8 (llm-stage-3-latent-space): latent space: axes skew, 5 axes total -->
+
 ## The Ingredients of an LLM {#llm-stage-3-latent-space auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -138,6 +141,7 @@ dimensions; real embedding spaces pack in vastly more than that.
 :::
 
 <!-- STAGE 4/8 (llm-stage-4-transformer): transformer: layered schematic -->
+
 ## The Ingredients of an LLM {#llm-stage-4-transformer auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -171,6 +175,7 @@ fixed-window models) structurally cannot represent.
 :::
 
 <!-- STAGE 5/8 (llm-stage-5-data): data: Common Crawl vs. used-after-filtering bars -->
+
 ## The Ingredients of an LLM {#llm-stage-5-data auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -204,6 +209,7 @@ Foundation's Common Crawl report.
 :::
 
 <!-- STAGE 6/8 (llm-stage-6-compute): compute: FLOPs-over-time bars -->
+
 ## The Ingredients of an LLM {#llm-stage-6-compute auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -230,12 +236,12 @@ Epoch AI estimates). Llama 3.1 405B: ~$170M. 2026-era frontier runs:
 estimated 1&times;10^26 to 1&times;10^27 FLOPs, $200&ndash;500M, with
 projections toward $1&ndash;3B by late 2027. Training compute has scaled
 roughly 4&ndash;5x per year historically. Sources: Epoch AI ("Over 30 AI
-models have been trained at the scale of GPT-4"), Stanford HAI AI Index
-2025. Chart above is illustrative only &mdash; the real gap between these
+models have been trained at the scale of GPT-4"), Stanford HAI AI Index 2025. Chart above is illustrative only &mdash; the real gap between these
 numbers is far too large to show on a true linear scale.
 :::
 
 <!-- STAGE 7/8 (llm-stage-7-training): training: descending loss curve -->
+
 ## The Ingredients of an LLM {#llm-stage-7-training auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -266,6 +272,7 @@ millions to billions of times, over weeks. This is what stages 5 and 6
 :::
 
 <!-- STAGE 8/8 (llm-stage-8-inference): inference: prompt -> model -> sampled token -->
+
 ## The Ingredients of an LLM {#llm-stage-8-inference auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -298,30 +305,6 @@ training: no backward pass, no millions of repetitions, no updating billions
 of parameters each step.
 :::
 
-## Word Embeddings, Visually {.heading-accent}
-
-:::: {.columns}
-
-::: {.column width="62%"}
-![](images/word-embedding-illustration.svg){fig-align="center" height="600"}
-:::
-
-::: {.column width="38%"}
-::: {.callout-panel}
-Word embeddings pack meaning into geometry — similar words end up near each
-other, and some relationships become directions you can do arithmetic on.
-:::
-:::
-
-::::
-
-::: {.notes}
-Image: "Word embedding illustration," Wikimedia Commons, CC BY-SA
-4.0. Caveat to say out loud: the famous "king − man + woman ≈ queen" example is
-real but oversold — it only holds cleanly with certain normalization tricks, not
-as a raw, unqualified fact. Say that explicitly if asked.
-:::
-
 ## The Transformer Still Rules {.heading-accent}
 
 ![Encoder-decoder Transformer architecture, from "Attention Is All You Need" (Vaswani et al., 2017).](images/transformer-architecture.png){fig-align="center"
@@ -341,7 +324,7 @@ are real contenders:
   space moves fast. Within "transformer" there's still real variation worth
   mentioning: MoE (mixture-of-experts) routing, different normalization schemes,
   attention variants (sliding window, grouped-query, etc.).
-:::
+  :::
 
 ## It's Next-Token Prediction All the Way Down {.incremental .heading-accent}
 
@@ -404,7 +387,7 @@ Full detail per row, for questions:
 - **GPT-2** ("Language Models are Unsupervised Multitask Learners"): arguably a
   paradigm shift on its own.
 - **GPT-3** ("Language Models are Few-Shot Learners"): paradigm shift.
-:::
+  :::
 
 ## The Chart That Started It All {.heading-accent}
 
@@ -540,6 +523,12 @@ This continues until the low-hanging, cheaply-checkable fruit runs out.
 - Without a real breakthrough, a plateau should happen at some point — no
   scaling law we currently have avoids one
 
+## Other
+
+- We all become a bit more generalists. Some individuals may want or be forced
+  to work across their traditional roles, DevOps may author code more than
+  usual, Managers may dip their feet into more-technical decision making.
+
 ## Long-Term Craziness: Could This Become ASI? {.smaller .heading-accent}
 
 - Most of us are working for years more — some of us close to 40 — and living
@@ -631,6 +620,21 @@ if this talk gets reused later — check for a newer scorecard snapshot.
 
 # Part 3: Your Job {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
+## Broader Industry
+
+- TODO: review of all recent ai job replacment claims
+- TODO: let's find the most suseptable industries (translation, customer
+  support, WEBDEVELOPERS, etc) and go into the communicties and get an on-the-ground take on if
+  they are seeing big changes
+
+## Themes (what is VERY hard for AI to replace)
+
+- Humans need to specify requirements
+- A 99\% sucess rate still means the need for an exprt in the loop (though
+  probably with downward pressure on wages)
+- Does irreducible complexity exist in systems that means an expert needs to be
+  in the loop not just any human
+
 ## How to Read the Next Few Slides {.heading-accent}
 
 - **Replacement** — AI can already do most of the task's mechanics; a human
@@ -697,7 +701,7 @@ Full "why" per task (from content-draft.md):
   is background prep at most.
 - Governance: building consensus among senior stakeholders in a room is
   relational.
-:::
+  :::
 
 ## BA / EM — Business Analysis & Change Management {.smaller .heading-accent}
 
@@ -755,7 +759,7 @@ Full "why" per task (from content-draft.md):
   something AI does directly.
 - Change champion networks: building human networks of trust/influence isn't
   automatable.
-:::
+  :::
 
 ## Scrummaster {.smaller .heading-accent}
 
@@ -792,7 +796,7 @@ Full "why" per task (from content-draft.md):
   find who's blocking, not resolve it.
 - Coaching and conflict resolution: relational/emotional, not meaningfully
   automatable.
-:::
+  :::
 
 ## Software Developer {.smaller .heading-accent}
 
@@ -815,7 +819,8 @@ Full "why" per task (from content-draft.md):
 **Influence**
 
 - Participating in sprint ceremonies
-- Pair programming / knowledge transfer for handoff
+- Pair progr / knowledge transfer for handoffI
+  - A teacher using Claude Cowork for curriculum design, grading, and grade
 
 ::: {.notes}
 
@@ -876,7 +881,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   essential during live incidents even with strong AI assist.
 - Cost optimization: recommendation engines already exist for the analysis;
   implementation decisions are often still human-gated due to risk.
-:::
+  :::
 
 ## UI/UX {.smaller .heading-accent}
 
@@ -913,7 +918,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
 - User research / stakeholder work / usability testing: reading real humans and
   subtle contextual cues, and building trust for feedback, is core human skill;
   AI-moderated research is emerging but not dominant yet.
-:::
+  :::
 
 ## Data Scientist {.smaller .heading-accent}
 
@@ -951,7 +956,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   defense of findings under scrutiny.
 - Collaborating with data engineers: team collaboration dynamic, not really a
   target for automation itself.
-:::
+  :::
 
 # Part 4: What You Should Know {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
@@ -964,6 +969,16 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   - Read-only is safe and still useful
   - Send access is more powerful — and more dangerous
   - Use case: composing a draft email for a chair/committee, human sends it
+- Claude `remote-control`
+- Grocery ordering
+- Daily Summary
+  - Kids school
+
+## You can go multi-agent
+
+- Once you get sick of waiting on agents you'll want to spin up multiple agents
+  - There are simple ways to do this and many different patterns
+- You may want some signal to know when agents are done
 
 ## AI Agents Are Multimodal {.heading-accent}
 
@@ -992,6 +1007,23 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   - GCP text-to-speech to turn any ebook into an audiobook
   - Jira CLI for ticket work
   - Programmatic interface to your own email
+
+## New workflows
+
+- For Workflow managers
+  - A 'coordination agent' that digests current JIRA, the team has agent files
+    have an instruction to summarize agent work automatically to a central
+    location the coordination agent can read to aid in planning
+  - EM/Scrum master team planning workflows can be more proactive "What is
+    James working on now?", "What do you think his next tickets should be?"
+    "What is MLFlow and why do we need it?"
+- Autoprompting
+  - MLFlow + LLM + Initial Human Prompt = many trials for LLM information
+    extraction workflows
+- Internal ask-anything-about-the-org bot
+  - Limited success with Lattice, Slack, My account has tried probably 3
+    times (poor implementation, cant get all the data soruces together, has
+    to be RAG-style)
 
 ## Slash Commands {.heading-accent}
 
