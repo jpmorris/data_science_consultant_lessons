@@ -7,13 +7,13 @@
     .sys   { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
 
     @keyframes fadeInStay { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInOut {
-      0%   { opacity: 0; }
-      22%  { opacity: 1; }
-      78%  { opacity: 1; }
-      100% { opacity: 0; }
-    }
     @keyframes blip { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes wordGlide {
+      0%   { opacity: 0; transform: translate(0,0); }
+      15%  { opacity: 1; transform: translate(0,0); }
+      60%  { opacity: 1; transform: translate(0,0); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+    }
     @keyframes flashSys  { 0%, 100% { fill: #93a1a1; } 50% { fill: #ffffff; } }
     @keyframes flashUser { 0%, 100% { fill: #eee8d5; } 50% { fill: #ffffff; } }
     @keyframes flashAns  { 0%, 100% { fill: #2aa198; } 50% { fill: #ffffff; } }
@@ -28,172 +28,116 @@
       100% { opacity: 0; }
     }
 
-    /* left-pane-only text flashes, in sync with each pulse's box glow --
-       persistent content (system prompt, both user turns, round-1 answer)
-       flashes on every cycle of both rounds, since it's still part of the
-       box that's resent each time. */
-    .sys-text   { animation: flashSys .35s ease 3.20s, flashSys .35s ease 5.40s, flashSys .35s ease 7.60s, flashSys .35s ease 9.80s, flashSys .35s ease 12.00s, flashSys .35s ease 16.30s, flashSys .35s ease 18.50s, flashSys .35s ease 20.70s, flashSys .35s ease 22.90s, flashSys .35s ease 25.10s; }
-    .user1-text { animation: flashUser .35s ease 3.20s, flashUser .35s ease 5.40s, flashUser .35s ease 7.60s, flashUser .35s ease 9.80s, flashUser .35s ease 12.00s, flashUser .35s ease 16.30s, flashUser .35s ease 18.50s, flashUser .35s ease 20.70s, flashUser .35s ease 22.90s, flashUser .35s ease 25.10s; }
-    .user2-text { animation: flashUser .35s ease 16.30s, flashUser .35s ease 18.50s, flashUser .35s ease 20.70s, flashUser .35s ease 22.90s, flashUser .35s ease 25.10s; }
+    /* persistent content flashes on every cycle of both rounds, since it's
+       still part of the prompt that's resent each time. */
+    .sys-text   { animation: flashSys .35s ease 3.51s, flashSys .35s ease 5.71s, flashSys .35s ease 7.91s, flashSys .35s ease 10.11s, flashSys .35s ease 12.31s, flashSys .35s ease 16.82s, flashSys .35s ease 19.02s, flashSys .35s ease 21.22s, flashSys .35s ease 23.42s, flashSys .35s ease 25.62s; }
+    .user1-text { animation: flashUser .35s ease 3.51s, flashUser .35s ease 5.71s, flashUser .35s ease 7.91s, flashUser .35s ease 10.11s, flashUser .35s ease 12.31s, flashUser .35s ease 16.82s, flashUser .35s ease 19.02s, flashUser .35s ease 21.22s, flashUser .35s ease 23.42s, flashUser .35s ease 25.62s; }
+    .user2-text { animation: flashUser .35s ease 16.82s, flashUser .35s ease 19.02s, flashUser .35s ease 21.22s, flashUser .35s ease 23.42s, flashUser .35s ease 25.62s; }
     .answer-label {
-      animation: fadeInStay .3s ease forwards 2.59s,
-        flashAns .35s ease 3.20s, flashAns .35s ease 5.40s, flashAns .35s ease 7.60s, flashAns .35s ease 9.80s, flashAns .35s ease 12.00s, flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s;
+      animation: fadeInStay .3s ease forwards 3.26s,
+        flashAns .35s ease 3.51s, flashAns .35s ease 5.71s, flashAns .35s ease 7.91s, flashAns .35s ease 10.11s, flashAns .35s ease 12.31s, flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s;
     }
     .answer-label2 {
-      animation: fadeInStay .3s ease forwards 15.70s,
-        flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s;
+      animation: fadeInStay .3s ease forwards 16.57s,
+        flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s;
     }
 
     /* left reveals: the model only ever sees the whole line at once, the
-       moment typing finishes on the terminal (right pane) -- never a typing
-       effect on this side. */
-    .u1-left { animation: fadeInStay .3s ease forwards; animation-delay: 2.29s; }
-    .u2-left { animation: fadeInStay .3s ease forwards; animation-delay: 15.40s; }
+       moment typing finishes on the terminal -- never a typing effect here. */
+    .u1-left { animation: fadeInStay .3s ease forwards; animation-delay: 2.96s; }
+    .u2-left { animation: fadeInStay .3s ease forwards; animation-delay: 16.27s; }
 
-    /* terminal typing: prompt symbol appears instantly, then the typed text
-       reveals character-by-character (steps = char count) while a block
-       cursor tracks it, then the cursor blinks a couple times and hides --
-       cursor only ever appears for user input, never the model's response. */
+    /* terminal typing */
     .prompt1 { animation: fadeInStay .1s ease forwards; animation-delay: 1.3s; }
     #type1clip rect { animation: typeWidth .99s steps(18, end) forwards; animation-delay: 1.3s; --full-w: 198px; }
     .cursor1 {
       animation: fadeInStay .05s ease forwards 1.3s,
         cursorMove .99s steps(18, end) forwards 1.3s,
         cursorBlinkOut .8s ease forwards 2.29s;
-      --start-x: 622px; --end-x: 820px;
+      --start-x: 62px; --end-x: 260px;
     }
 
-    .prompt2 { animation: fadeInStay .1s ease forwards; animation-delay: 14.45s; }
-    #type2clip rect { animation: typeWidth .935s steps(17, end) forwards; animation-delay: 14.45s; --full-w: 187px; }
+    .prompt2 { animation: fadeInStay .1s ease forwards; animation-delay: 14.66s; }
+    #type2clip rect { animation: typeWidth .935s steps(17, end) forwards; animation-delay: 14.66s; --full-w: 187px; }
     .cursor2 {
-      animation: fadeInStay .05s ease forwards 14.45s,
-        cursorMove .935s steps(17, end) forwards 14.45s,
-        cursorBlinkOut .8s ease forwards 15.40s;
-      --start-x: 622px; --end-x: 809px;
+      animation: fadeInStay .05s ease forwards 14.66s,
+        cursorMove .935s steps(17, end) forwards 14.66s,
+        cursorBlinkOut .8s ease forwards 15.60s;
+      --start-x: 62px; --end-x: 249px;
     }
 
-    /* round 1 -- 5-word generation, full send/process/emit choreography per word */
-    .pg1  { animation: blip .35s ease forwards; animation-delay: 3.20s; }
-    .a1a1 { animation: blip .25s ease forwards; animation-delay: 3.35s; }
-    .a1b1 { animation: blip .25s ease forwards; animation-delay: 3.47s; }
-    .a1c1 { animation: blip .25s ease forwards; animation-delay: 3.59s; }
-    .lg1  { animation: blip .35s ease forwards; animation-delay: 3.75s; }
-    .w1c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 4.15s; }
-    .a2a1 { animation: blip .25s ease forwards; animation-delay: 4.50s; }
-    .a2b1 { animation: blip .25s ease forwards; animation-delay: 4.62s; }
-    .a2c1 { animation: blip .25s ease forwards; animation-delay: 4.74s; }
-    .w1a  { animation: fadeInStay .3s ease forwards 5.05s, flashAns .35s ease 5.40s, flashAns .35s ease 7.60s, flashAns .35s ease 9.80s, flashAns .35s ease 12.00s, flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr1a { animation: fadeInStay .3s ease forwards; animation-delay: 5.05s; }
+    /* the one real network hop: user's typed message crossing into the LLM's
+       prompt. fires once per round -- everything else below is internal. */
+    .arrow1-line { animation: fadeInStay .2s ease forwards; animation-delay: 2.30s; }
+    .arrow1-a { animation: blip .25s ease forwards; animation-delay: 2.34s; }
+    .arrow1-b { animation: blip .25s ease forwards; animation-delay: 2.46s; }
+    .arrow2-line { animation: fadeInStay .2s ease forwards; animation-delay: 15.61s; }
+    .arrow2-a { animation: blip .25s ease forwards; animation-delay: 15.65s; }
+    .arrow2-b { animation: blip .25s ease forwards; animation-delay: 15.77s; }
 
-    .pg2  { animation: blip .35s ease forwards; animation-delay: 5.40s; }
-    .a1a2 { animation: blip .25s ease forwards; animation-delay: 5.55s; }
-    .a1b2 { animation: blip .25s ease forwards; animation-delay: 5.67s; }
-    .a1c2 { animation: blip .25s ease forwards; animation-delay: 5.79s; }
-    .lg2  { animation: blip .35s ease forwards; animation-delay: 5.95s; }
-    .w2c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 6.35s; }
-    .a2a2 { animation: blip .25s ease forwards; animation-delay: 6.70s; }
-    .a2b2 { animation: blip .25s ease forwards; animation-delay: 6.82s; }
-    .a2c2 { animation: blip .25s ease forwards; animation-delay: 6.94s; }
-    .w2a  { animation: fadeInStay .3s ease forwards 7.25s, flashAns .35s ease 7.60s, flashAns .35s ease 9.80s, flashAns .35s ease 12.00s, flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr2a { animation: fadeInStay .3s ease forwards; animation-delay: 7.25s; }
+    /* round 1 -- 5-word generation. cloud glows (prompt resent), transformer
+       glows (computing), the predicted word appears in the transformer and
+       glides into its place at the end of the prompt. */
+    .pg1  { animation: blip .35s ease forwards; animation-delay: 3.51s; }
+    .lg1  { animation: blip .35s ease forwards; animation-delay: 3.91s; }
+    .w1c  { animation: wordGlide 1s ease forwards; animation-delay: 4.31s; --dx: -92px; --dy: -160px; }
+    .w1a  { animation: fadeInStay .3s ease forwards 5.26s, flashAns .35s ease 5.71s, flashAns .35s ease 7.91s, flashAns .35s ease 10.11s, flashAns .35s ease 12.31s, flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr1a { animation: fadeInStay .3s ease forwards; animation-delay: 5.26s; }
 
-    .pg3  { animation: blip .35s ease forwards; animation-delay: 7.60s; }
-    .a1a3 { animation: blip .25s ease forwards; animation-delay: 7.75s; }
-    .a1b3 { animation: blip .25s ease forwards; animation-delay: 7.87s; }
-    .a1c3 { animation: blip .25s ease forwards; animation-delay: 7.99s; }
-    .lg3  { animation: blip .35s ease forwards; animation-delay: 8.15s; }
-    .w3c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 8.55s; }
-    .a2a3 { animation: blip .25s ease forwards; animation-delay: 8.90s; }
-    .a2b3 { animation: blip .25s ease forwards; animation-delay: 9.02s; }
-    .a2c3 { animation: blip .25s ease forwards; animation-delay: 9.14s; }
-    .w3a  { animation: fadeInStay .3s ease forwards 9.45s, flashAns .35s ease 9.80s, flashAns .35s ease 12.00s, flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr3a { animation: fadeInStay .3s ease forwards; animation-delay: 9.45s; }
+    .pg2  { animation: blip .35s ease forwards; animation-delay: 5.71s; }
+    .lg2  { animation: blip .35s ease forwards; animation-delay: 6.11s; }
+    .w2c  { animation: wordGlide 1s ease forwards; animation-delay: 6.51s; --dx: -21.8px; --dy: -160px; }
+    .w2a  { animation: fadeInStay .3s ease forwards 7.46s, flashAns .35s ease 7.91s, flashAns .35s ease 10.11s, flashAns .35s ease 12.31s, flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr2a { animation: fadeInStay .3s ease forwards; animation-delay: 7.46s; }
 
-    .pg4  { animation: blip .35s ease forwards; animation-delay: 9.80s; }
-    .a1a4 { animation: blip .25s ease forwards; animation-delay: 9.95s; }
-    .a1b4 { animation: blip .25s ease forwards; animation-delay: 10.07s; }
-    .a1c4 { animation: blip .25s ease forwards; animation-delay: 10.19s; }
-    .lg4  { animation: blip .35s ease forwards; animation-delay: 10.35s; }
-    .w4c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 10.75s; }
-    .a2a4 { animation: blip .25s ease forwards; animation-delay: 11.10s; }
-    .a2b4 { animation: blip .25s ease forwards; animation-delay: 11.22s; }
-    .a2c4 { animation: blip .25s ease forwards; animation-delay: 11.34s; }
-    .w4a  { animation: fadeInStay .3s ease forwards 11.65s, flashAns .35s ease 12.00s, flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr4a { animation: fadeInStay .3s ease forwards; animation-delay: 11.65s; }
+    .pg3  { animation: blip .35s ease forwards; animation-delay: 7.91s; }
+    .lg3  { animation: blip .35s ease forwards; animation-delay: 8.31s; }
+    .w3c  { animation: wordGlide 1s ease forwards; animation-delay: 8.71s; --dx: 43px; --dy: -160px; }
+    .w3a  { animation: fadeInStay .3s ease forwards 9.66s, flashAns .35s ease 10.11s, flashAns .35s ease 12.31s, flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr3a { animation: fadeInStay .3s ease forwards; animation-delay: 9.66s; }
 
-    .pg5  { animation: blip .35s ease forwards; animation-delay: 12.00s; }
-    .a1a5 { animation: blip .25s ease forwards; animation-delay: 12.15s; }
-    .a1b5 { animation: blip .25s ease forwards; animation-delay: 12.27s; }
-    .a1c5 { animation: blip .25s ease forwards; animation-delay: 12.39s; }
-    .lg5  { animation: blip .35s ease forwards; animation-delay: 12.55s; }
-    .w5c  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 12.95s; }
-    .a2a5 { animation: blip .25s ease forwards; animation-delay: 13.30s; }
-    .a2b5 { animation: blip .25s ease forwards; animation-delay: 13.42s; }
-    .a2c5 { animation: blip .25s ease forwards; animation-delay: 13.54s; }
-    .w5a  { animation: fadeInStay .3s ease forwards 13.85s, flashAns .35s ease 16.30s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr5a { animation: fadeInStay .3s ease forwards; animation-delay: 13.85s; }
+    .pg4  { animation: blip .35s ease forwards; animation-delay: 10.11s; }
+    .lg4  { animation: blip .35s ease forwards; animation-delay: 10.51s; }
+    .w4c  { animation: wordGlide 1s ease forwards; animation-delay: 10.91s; --dx: 91.6px; --dy: -160px; }
+    .w4a  { animation: fadeInStay .3s ease forwards 11.86s, flashAns .35s ease 12.31s, flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr4a { animation: fadeInStay .3s ease forwards; animation-delay: 11.86s; }
 
-    /* round 2 -- same 5-word choreography as round 1, proving it's not a
-       special case: "What is a token?" -> "A small chunk of text." */
-    .pg1b  { animation: blip .35s ease forwards; animation-delay: 16.30s; }
-    .a1a1b { animation: blip .25s ease forwards; animation-delay: 16.45s; }
-    .a1b1b { animation: blip .25s ease forwards; animation-delay: 16.57s; }
-    .a1c1b { animation: blip .25s ease forwards; animation-delay: 16.69s; }
-    .lg1b  { animation: blip .35s ease forwards; animation-delay: 16.85s; }
-    .w1cb  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 17.25s; }
-    .a2a1b { animation: blip .25s ease forwards; animation-delay: 17.60s; }
-    .a2b1b { animation: blip .25s ease forwards; animation-delay: 17.72s; }
-    .a2c1b { animation: blip .25s ease forwards; animation-delay: 17.84s; }
-    .w1ab  { animation: fadeInStay .3s ease forwards 18.15s, flashAns .35s ease 18.50s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr1ab { animation: fadeInStay .3s ease forwards; animation-delay: 18.15s; }
+    .pg5  { animation: blip .35s ease forwards; animation-delay: 12.31s; }
+    .lg5  { animation: blip .35s ease forwards; animation-delay: 12.71s; }
+    .w5c  { animation: wordGlide 1s ease forwards; animation-delay: 13.11s; --dx: 156.4px; --dy: -160px; }
+    .w5a  { animation: fadeInStay .3s ease forwards 14.06s, flashAns .35s ease 16.82s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr5a { animation: fadeInStay .3s ease forwards; animation-delay: 14.06s; }
 
-    .pg2b  { animation: blip .35s ease forwards; animation-delay: 18.50s; }
-    .a1a2b { animation: blip .25s ease forwards; animation-delay: 18.65s; }
-    .a1b2b { animation: blip .25s ease forwards; animation-delay: 18.77s; }
-    .a1c2b { animation: blip .25s ease forwards; animation-delay: 18.89s; }
-    .lg2b  { animation: blip .35s ease forwards; animation-delay: 19.05s; }
-    .w2cb  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 19.45s; }
-    .a2a2b { animation: blip .25s ease forwards; animation-delay: 19.80s; }
-    .a2b2b { animation: blip .25s ease forwards; animation-delay: 19.92s; }
-    .a2c2b { animation: blip .25s ease forwards; animation-delay: 20.04s; }
-    .w2ab  { animation: fadeInStay .3s ease forwards 20.35s, flashAns .35s ease 20.70s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr2ab { animation: fadeInStay .3s ease forwards; animation-delay: 20.35s; }
+    /* round 2 -- same choreography, proving it's not a special case */
+    .pg1b  { animation: blip .35s ease forwards; animation-delay: 16.82s; }
+    .lg1b  { animation: blip .35s ease forwards; animation-delay: 17.22s; }
+    .w1cb  { animation: wordGlide 1s ease forwards; animation-delay: 17.62s; --dx: -108.2px; --dy: -99px; }
+    .w1ab  { animation: fadeInStay .3s ease forwards 18.57s, flashAns .35s ease 19.02s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr1ab { animation: fadeInStay .3s ease forwards; animation-delay: 18.57s; }
 
-    .pg3b  { animation: blip .35s ease forwards; animation-delay: 20.70s; }
-    .a1a3b { animation: blip .25s ease forwards; animation-delay: 20.85s; }
-    .a1b3b { animation: blip .25s ease forwards; animation-delay: 20.97s; }
-    .a1c3b { animation: blip .25s ease forwards; animation-delay: 21.09s; }
-    .lg3b  { animation: blip .35s ease forwards; animation-delay: 21.25s; }
-    .w3cb  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 21.65s; }
-    .a2a3b { animation: blip .25s ease forwards; animation-delay: 22.00s; }
-    .a2b3b { animation: blip .25s ease forwards; animation-delay: 22.12s; }
-    .a2c3b { animation: blip .25s ease forwards; animation-delay: 22.24s; }
-    .w3ab  { animation: fadeInStay .3s ease forwards 22.55s, flashAns .35s ease 22.90s, flashAns .35s ease 25.10s; }
-    .wr3ab { animation: fadeInStay .3s ease forwards; animation-delay: 22.55s; }
+    .pg2b  { animation: blip .35s ease forwards; animation-delay: 19.02s; }
+    .lg2b  { animation: blip .35s ease forwards; animation-delay: 19.42s; }
+    .w2cb  { animation: wordGlide 1s ease forwards; animation-delay: 19.82s; --dx: -65px; --dy: -99px; }
+    .w2ab  { animation: fadeInStay .3s ease forwards 20.77s, flashAns .35s ease 21.22s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr2ab { animation: fadeInStay .3s ease forwards; animation-delay: 20.77s; }
 
-    .pg4b  { animation: blip .35s ease forwards; animation-delay: 22.90s; }
-    .a1a4b { animation: blip .25s ease forwards; animation-delay: 23.05s; }
-    .a1b4b { animation: blip .25s ease forwards; animation-delay: 23.17s; }
-    .a1c4b { animation: blip .25s ease forwards; animation-delay: 23.29s; }
-    .lg4b  { animation: blip .35s ease forwards; animation-delay: 23.45s; }
-    .w4cb  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 23.85s; }
-    .a2a4b { animation: blip .25s ease forwards; animation-delay: 24.20s; }
-    .a2b4b { animation: blip .25s ease forwards; animation-delay: 24.32s; }
-    .a2c4b { animation: blip .25s ease forwards; animation-delay: 24.44s; }
-    .w4ab  { animation: fadeInStay .3s ease forwards 24.75s, flashAns .35s ease 25.10s; }
-    .wr4ab { animation: fadeInStay .3s ease forwards; animation-delay: 24.75s; }
+    .pg3b  { animation: blip .35s ease forwards; animation-delay: 21.22s; }
+    .lg3b  { animation: blip .35s ease forwards; animation-delay: 21.62s; }
+    .w3cb  { animation: wordGlide 1s ease forwards; animation-delay: 22.02s; --dx: -0.2px; --dy: -99px; }
+    .w3ab  { animation: fadeInStay .3s ease forwards 22.97s, flashAns .35s ease 23.42s, flashAns .35s ease 25.62s; }
+    .wr3ab { animation: fadeInStay .3s ease forwards; animation-delay: 22.97s; }
 
-    .pg5b  { animation: blip .35s ease forwards; animation-delay: 25.10s; }
-    .a1a5b { animation: blip .25s ease forwards; animation-delay: 25.25s; }
-    .a1b5b { animation: blip .25s ease forwards; animation-delay: 25.37s; }
-    .a1c5b { animation: blip .25s ease forwards; animation-delay: 25.49s; }
-    .lg5b  { animation: blip .35s ease forwards; animation-delay: 25.65s; }
-    .w5cb  { animation: fadeInOut .6s ease-in-out forwards; animation-delay: 26.05s; }
-    .a2a5b { animation: blip .25s ease forwards; animation-delay: 26.40s; }
-    .a2b5b { animation: blip .25s ease forwards; animation-delay: 26.52s; }
-    .a2c5b { animation: blip .25s ease forwards; animation-delay: 26.64s; }
-    .w5ab  { animation: fadeInStay .3s ease forwards 26.95s; }
-    .wr5ab { animation: fadeInStay .3s ease forwards; animation-delay: 26.95s; }
+    .pg4b  { animation: blip .35s ease forwards; animation-delay: 23.42s; }
+    .lg4b  { animation: blip .35s ease forwards; animation-delay: 23.82s; }
+    .w4cb  { animation: wordGlide 1s ease forwards; animation-delay: 24.22s; --dx: 48.4px; --dy: -99px; }
+    .w4ab  { animation: fadeInStay .3s ease forwards 25.17s, flashAns .35s ease 25.62s; }
+    .wr4ab { animation: fadeInStay .3s ease forwards; animation-delay: 25.17s; }
+
+    .pg5b  { animation: blip .35s ease forwards; animation-delay: 25.62s; }
+    .lg5b  { animation: blip .35s ease forwards; animation-delay: 26.02s; }
+    .w5cb  { animation: wordGlide 1s ease forwards; animation-delay: 26.42s; --dx: 97px; --dy: -99px; }
+    .w5ab  { animation: fadeInStay .3s ease forwards; animation-delay: 27.37s; }
+    .wr5ab { animation: fadeInStay .3s ease forwards; animation-delay: 27.37s; }
   </style>
 
   <defs>
@@ -208,11 +152,23 @@
       </feMerge>
     </filter>
     <clipPath id="type1clip" clipPathUnits="userSpaceOnUse">
-      <rect x="622" y="70" width="0" height="24"/>
+      <rect x="62" y="70" width="0" height="24"/>
     </clipPath>
     <clipPath id="type2clip" clipPathUnits="userSpaceOnUse">
-      <rect x="622" y="135" width="0" height="24"/>
+      <rect x="62" y="135" width="0" height="24"/>
     </clipPath>
+    <path id="cloudShape" d="
+      M 480,500
+      C 440,500 435,445 465,415
+      C 435,395 435,330 480,310
+      C 460,225 535,165 605,195
+      C 615,110 715,65 780,140
+      C 840,75 940,100 915,195
+      C 970,205 970,285 925,325
+      C 955,365 950,440 895,470
+      C 895,500 855,500 815,500
+      Z
+    "/>
   </defs>
 
   <text class="title fade" x="500" y="34" text-anchor="middle" font-size="36" font-weight="700" fill="#b58900">Simple Prompt</text>
@@ -220,23 +176,69 @@
   <g transform="translate(0,58)">
 
   <!-- pane headers + divider -->
-  <text class="early fade" x="20" y="35" font-size="24" font-style="italic" fill="#93a1a1">Raw context sent to the model</text>
-  <text class="early fade" x="580" y="35" font-size="24" font-style="italic" fill="#93a1a1">What you actually see</text>
-  <line class="early fade" x1="560" y1="20" x2="560" y2="560" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text class="early fade" x="20" y="35" font-size="18" font-style="italic" fill="#93a1a1">Your Computer: What you actually see</text>
+  <text class="early fade" x="444" y="35" font-size="24" font-style="italic" fill="#93a1a1">LLM</text>
+  <line class="early fade" x1="422" y1="20" x2="422" y2="560" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
-  <!-- LEFT PANE: raw growing context -->
+  <!-- LEFT PANE: your computer / terminal -->
+  <rect class="early fade" x="20" y="60" width="380" height="150" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
+
+  <text class="prompt1 fade" x="40" y="90" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="62" y="90" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type1clip)">How do LLMs work?</text>
+  <rect class="cursor1 fade" y="72" width="9" height="20" fill="#eee8d5"/>
+
+  <text x="40" y="120" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
+    <tspan class="wr1a fade">They</tspan>
+    <tspan class="wr2a fade"> predict</tspan>
+    <tspan class="wr3a fade"> the</tspan>
+    <tspan class="wr4a fade"> next</tspan>
+    <tspan class="wr5a fade"> token.</tspan>
+  </text>
+
+  <text class="prompt2 fade" x="40" y="155" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="62" y="155" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type2clip)">What is a token?</text>
+  <rect class="cursor2 fade" y="137" width="9" height="20" fill="#eee8d5"/>
+
+  <text x="40" y="185" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
+    <tspan class="wr1ab fade">A</tspan>
+    <tspan class="wr2ab fade"> small</tspan>
+    <tspan class="wr3ab fade"> chunk</tspan>
+    <tspan class="wr4ab fade"> of</tspan>
+    <tspan class="wr5ab fade"> text.</tspan>
+  </text>
+
+  <!-- the one real network hop: user's message crossing into the LLM -->
+  <line class="arrow1-line fade" x1="402" y1="210" x2="440" y2="210" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
+  <circle class="arrow1-a fade" cx="411" cy="210" r="5" fill="#eee8d5"/>
+  <circle class="arrow1-b fade" cx="426" cy="210" r="5" fill="#eee8d5"/>
+
+  <line class="arrow2-line fade" x1="402" y1="271" x2="440" y2="271" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
+  <circle class="arrow2-a fade" cx="411" cy="271" r="5" fill="#eee8d5"/>
+  <circle class="arrow2-b fade" cx="426" cy="271" r="5" fill="#eee8d5"/>
+
+  <!-- RIGHT PANE: LLM, one boundary, no other boxes except the transformer -->
+  <use href="#cloudShape" class="box fade" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+  <use href="#cloudShape" class="pg1 fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg2 fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg3 fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg4 fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg5 fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg1b fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg2b fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg3b fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg4b fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <use href="#cloudShape" class="pg5b fade" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+
+  <!-- growing prompt text, floating directly inside the cloud -->
   <g class="sys fade">
-    <rect x="20" y="48" width="520" height="232" rx="10" fill="#073642" stroke="#268bd2" stroke-width="2"/>
-    <text class="sys-text" x="40" y="75" font-size="16" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that answers questions.</text>
+    <text class="sys-text" x="500" y="218" font-size="14" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that answers questions.</text>
   </g>
 
   <g class="u1-left fade">
-    <text class="user1-text" x="40" y="102" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: How do LLMs work?</text>
+    <text class="user1-text" x="500" y="245" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: How do LLMs work?</text>
   </g>
-  <line class="box fade" x1="255" y1="280" x2="255" y2="325" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <line class="box fade" x1="305" y1="325" x2="305" y2="280" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
 
-  <text x="40" y="129" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+  <text x="500" y="272" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
     <tspan class="answer-label fade" font-family="'Courier New', monospace">Answer:</tspan>
     <tspan class="w1a fade" font-family="'Courier New', monospace"> They</tspan>
     <tspan class="w2a fade" font-family="'Courier New', monospace"> predict</tspan>
@@ -246,9 +248,10 @@
   </text>
 
   <g class="u2-left fade">
-    <text class="user2-text" x="40" y="163" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: What is a token?</text>
+    <text class="user2-text" x="500" y="306" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: What is a token?</text>
   </g>
-  <text x="40" y="190" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+
+  <text x="500" y="333" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
     <tspan class="answer-label2 fade" font-family="'Courier New', monospace">Answer:</tspan>
     <tspan class="w1ab fade" font-family="'Courier New', monospace"> A</tspan>
     <tspan class="w2ab fade" font-family="'Courier New', monospace"> small</tspan>
@@ -257,139 +260,31 @@
     <tspan class="w5ab fade" font-family="'Courier New', monospace"> text.</tspan>
   </text>
 
-  <!-- LLM box (shared by both rounds) -->
-  <rect class="box fade" x="210" y="330" width="140" height="160" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <text class="box fade" x="280" y="384" text-anchor="middle" font-size="28" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">LLM</text>
+  <!-- the transformer: the only other boundary inside the LLM -->
+  <rect class="box fade" x="590" y="370" width="220" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+  <rect class="lg1 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg2 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg3 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg4 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg5 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg1b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg2b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg3b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg4b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg5b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <text class="box fade" x="700" y="402" text-anchor="middle" font-size="22" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Transformer</text>
 
+  <!-- the predicted word: appears in the transformer, then glides into the prompt -->
+  <text class="w1c fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">They</text>
+  <text class="w2c fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">predict</text>
+  <text class="w3c fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">the</text>
+  <text class="w4c fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">next</text>
+  <text class="w5c fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">token.</text>
+  <text class="w1cb fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">A</text>
+  <text class="w2cb fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">small</text>
+  <text class="w3cb fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">chunk</text>
+  <text class="w4cb fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">of</text>
+  <text class="w5cb fade" x="700" y="432" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">text.</text>
 
-  <!-- completion slot (shared by both rounds) -->
-  <text class="w1c fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">They</text>
-  <text class="w2c fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">predict</text>
-  <text class="w3c fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">the</text>
-  <text class="w4c fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">next</text>
-  <text class="w5c fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">token.</text>
-  <text class="w1cb fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">A</text>
-  <text class="w2cb fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">small</text>
-  <text class="w3cb fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">chunk</text>
-  <text class="w4cb fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">of</text>
-  <text class="w5cb fade" x="280" y="440" text-anchor="middle" font-size="22" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">text.</text>
-
-  <!-- RIGHT PANE: single terminal window, monospace, black -->
-  <rect class="early fade" x="580" y="60" width="380" height="150" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
-
-  <!-- line 1: typed question 1, with tracking cursor -->
-  <text class="prompt1 fade" x="600" y="90" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
-  <text x="622" y="90" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type1clip)">How do LLMs work?</text>
-  <rect class="cursor1 fade" y="72" width="9" height="20" fill="#eee8d5"/>
-
-  <!-- line 2: assistant 1 response, grows word by word, no cursor -->
-  <text x="600" y="120" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
-    <tspan class="wr1a fade">They</tspan>
-    <tspan class="wr2a fade"> predict</tspan>
-    <tspan class="wr3a fade"> the</tspan>
-    <tspan class="wr4a fade"> next</tspan>
-    <tspan class="wr5a fade"> token.</tspan>
-  </text>
-
-  <!-- line 3: typed question 2, with tracking cursor -->
-  <text class="prompt2 fade" x="600" y="155" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
-  <text x="622" y="155" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type2clip)">What is a token?</text>
-  <rect class="cursor2 fade" y="137" width="9" height="20" fill="#eee8d5"/>
-
-  <!-- line 4: assistant 2 response, grows word by word, no cursor -->
-  <text x="600" y="185" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
-    <tspan class="wr1ab fade">A</tspan>
-    <tspan class="wr2ab fade"> small</tspan>
-    <tspan class="wr3ab fade"> chunk</tspan>
-    <tspan class="wr4ab fade"> of</tspan>
-    <tspan class="wr5ab fade"> text.</tspan>
-  </text>
-
-  <!-- per-cycle flow indicators -->
-  <g id="flow-pulses">
-    <rect class="pg1 fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg2 fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg3 fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg4 fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg5 fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg1b fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg2b fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg3b fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg4b fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="pg5b fade" x="20" y="48" width="520" height="232" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-
-    <rect class="lg1 fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg2 fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg3 fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg4 fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg5 fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg1b fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg2b fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg3b fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg4b fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-    <rect class="lg5b fade" x="210" y="330" width="140" height="160" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-
-    <circle class="a1a1 fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b1 fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c1 fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a2 fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b2 fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c2 fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a3 fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b3 fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c3 fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a4 fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b4 fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c4 fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a5 fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b5 fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c5 fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a1b fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b1b fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c1b fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a2b fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b2b fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c2b fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a3b fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b3b fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c3b fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a4b fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b4b fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c4b fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-    <circle class="a1a5b fade" cx="255" cy="290" r="7" fill="#eee8d5"/>
-    <circle class="a1b5b fade" cx="255" cy="305" r="7" fill="#eee8d5"/>
-    <circle class="a1c5b fade" cx="255" cy="320" r="7" fill="#eee8d5"/>
-
-    <circle class="a2a1 fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b1 fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c1 fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a2 fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b2 fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c2 fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a3 fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b3 fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c3 fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a4 fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b4 fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c4 fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a5 fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b5 fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c5 fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a1b fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b1b fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c1b fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a2b fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b2b fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c2b fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a3b fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b3b fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c3b fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a4b fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b4b fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c4b fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-    <circle class="a2a5b fade" cx="305" cy="315" r="7" fill="#eee8d5"/>
-    <circle class="a2b5b fade" cx="305" cy="300" r="7" fill="#eee8d5"/>
-    <circle class="a2c5b fade" cx="305" cy="285" r="7" fill="#eee8d5"/>
-  </g>
   </g>
 </svg>
