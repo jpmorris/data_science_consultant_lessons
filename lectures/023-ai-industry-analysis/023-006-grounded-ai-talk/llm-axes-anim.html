@@ -111,8 +111,13 @@
   var PHOTOSYNTHESIS = { x: 228, y: 140 };
   var ASTEROID = { x: 219, y: 233 };
 
+  // labelAt: hand-tuned in Inkscape (exported the settled state of each
+  // stage as a plain SVG -- same viewBox/coordinate space as this file --
+  // then diffed the edited files against the untouched defaults to find
+  // exactly which labels moved). Absolute position, overrides whatever
+  // labelPos would otherwise compute.
   var WORD_POINTS = {
-    king:  { x: KING.x,  y: KING.y,  present: EMB_ALL, color: GENDER_COLOR },
+    king:  { x: KING.x,  y: KING.y,  present: EMB_ALL, color: GENDER_COLOR, labelAt: { x: 442, y: 291 } },
     man:   { x: MAN.x,   y: MAN.y,   present: VM_ONLY, color: GENDER_COLOR },
     // Default (right-anchored, extending into the canvas) -- woman sits
     // close to the left edge, so a forced left-anchor label runs off it.
@@ -122,14 +127,14 @@
     // force left to clear both.
     queen: { x: QUEEN.x, y: QUEEN.y, present: VM_ONLY, color: GENDER_COLOR, labelPos: 'left' },
 
-    drill:          { x: DRILL.x,          y: DRILL.y,          present: LS_ONLY, color: ORTHO_COLOR },
+    drill:          { x: DRILL.x,          y: DRILL.y,          present: LS_ONLY, color: ORTHO_COLOR, labelAt: { x: 437, y: 536 } },
     // Default (right) label would extend rightward into drill's own
     // vector line -- force left instead.
-    supernova:      { x: SUPERNOVA.x,      y: SUPERNOVA.y,      present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left' },
+    supernova:      { x: SUPERNOVA.x,      y: SUPERNOVA.y,      present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', labelAt: { x: 344, y: 489 } },
     // origin-vector approaches from the lower-right for both of these --
     // force left so the label doesn't sit in its own vector's path.
-    photosynthesis: { x: PHOTOSYNTHESIS.x, y: PHOTOSYNTHESIS.y, present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', fontSize: 22 },
-    asteroid:       { x: ASTEROID.x,       y: ASTEROID.y,       present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left' }
+    photosynthesis: { x: PHOTOSYNTHESIS.x, y: PHOTOSYNTHESIS.y, present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', fontSize: 22, labelAt: { x: 259, y: 131 } },
+    asteroid:       { x: ASTEROID.x,       y: ASTEROID.y,       present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', labelAt: { x: 228, y: 226 } }
   };
 
   var svg = null;
@@ -202,8 +207,10 @@
     [
       // nudgeX pushes the label further right than the perpendicular
       // offset alone -- without it, "- man"'s label sits almost on top of
-      // its own dashed line.
-      { from: KING, to: bend, symbol: '− man', nudgeX: 22 },
+      // its own dashed line. labelAt: hand-tuned in Inkscape, same
+      // methodology as WORD_POINTS.labelAt above -- overrides the
+      // computed midpoint entirely.
+      { from: KING, to: bend, symbol: '− man', nudgeX: 22, labelAt: { x: 498, y: 397 } },
       { from: bend, to: QUEEN, symbol: '+ woman', nudgeX: 0 }
     ].forEach(function (seg) {
       var line = ns('line');
@@ -224,8 +231,13 @@
       var dx = seg.to.x - seg.from.x, dy = seg.to.y - seg.from.y;
       var len = Math.sqrt(dx * dx + dy * dy);
       var label = ns('text');
-      label.setAttribute('x', String(mx - (dy / len) * 14 + seg.nudgeX));
-      label.setAttribute('y', String(my + (dx / len) * 14));
+      if (seg.labelAt) {
+        label.setAttribute('x', String(seg.labelAt.x));
+        label.setAttribute('y', String(seg.labelAt.y));
+      } else {
+        label.setAttribute('x', String(mx - (dy / len) * 14 + seg.nudgeX));
+        label.setAttribute('y', String(my + (dx / len) * 14));
+      }
       label.setAttribute('text-anchor', 'middle');
       label.setAttribute('font-size', '20');
       label.setAttribute('font-weight', '700');
@@ -265,6 +277,13 @@
         label.setAttribute('x', String(pt.x + (labelOnLeft ? -16 : 16)));
         label.setAttribute('y', String(pt.y - 12));
         if (labelOnLeft) label.setAttribute('text-anchor', 'end');
+      }
+      // Hand-tuned absolute position wins if set -- keeps whichever
+      // text-anchor the labelPos branch above chose, just overrides where
+      // it sits.
+      if (pt.labelAt) {
+        label.setAttribute('x', String(pt.labelAt.x));
+        label.setAttribute('y', String(pt.labelAt.y));
       }
       label.setAttribute('font-size', String(pt.fontSize || 27));
       label.setAttribute('font-weight', '600');
