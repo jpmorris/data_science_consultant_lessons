@@ -201,15 +201,19 @@
   // Positions re-derived from measured getBBox() widths at font-size 27 so
   // the gaps between words read as visually even (~18px), same empirical
   // approach as the tree's KING_LABEL_HALF_WIDTH above.
-  var KING_XFMR_VISUAL_CENTER = { x: 498, y: 540 };
+  // Whole row shifted 53px left of dead-center so the gap between
+  // "current" and "UK" (not the middle of a word) lines up with x=350 --
+  // the straight-up input arrow sits at x=350 too, and centering the
+  // sentence naturally put a word, not a gap, at that x.
+  var KING_XFMR_VISUAL_CENTER = { x: 445, y: 540 };
   var KING_XFMR_POS = { x: KING_XFMR_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_XFMR_VISUAL_CENTER.y };
   var SENTENCE_WORDS = [
-    { text: 'Who',     x: 173, y: 540 },
-    { text: 'is',      x: 228, y: 540 },
-    { text: 'the',     x: 273, y: 540 },
-    { text: 'current', x: 352, y: 540 },
-    { text: 'UK',      x: 434, y: 540 },
-    { text: '?',       x: 548, y: 540 }
+    { text: 'Who',     x: 120, y: 540 },
+    { text: 'is',      x: 175, y: 540 },
+    { text: 'the',     x: 220, y: 540 },
+    { text: 'current', x: 299, y: 540 },
+    { text: 'UK',      x: 381, y: 540 },
+    { text: '?',       x: 495, y: 540 }
   ];
   // Dropped a first-pass "stack echo" (offset shadow rects behind the
   // block) for the N-times-repeated indicator -- unclear at a glance.
@@ -217,13 +221,19 @@
   // dashed box, connected to the block below and Final Norm above by
   // short dotted segments. Also dropped the KV-cache stub and attention-
   // head bars from the first pass: too much detail for a silhouette.
+  // Straight up from the sentence's own center (x matches the box/frame
+  // center too), not diagonally from king specifically -- the whole
+  // sentence feeds in, king just happens to be the word riding along in
+  // it, so tying the arrow to king's exact position (which shifts right
+  // as it glides into the row) made the arrow look crooked instead of
+  // like a deliberate "this whole thing goes in" gesture.
   var XFMR_ARROW = {
-    from: { x: 498, y: 505 },
+    from: { x: 350, y: 565 },
     to:   { x: 350, y: 495 }
   };
   var XFMR_OUTPUT_ARROW = {
     from: { x: 350, y: 116 },
-    to:   { x: 350, y: 82 }
+    to:   { x: 350, y: 45 }
   };
   var XFMR_FRAME = { x: 250, y: 105, w: 200, h: 410, rx: 10 };
   var XFMR_OUTPUT = { x: 260, y: 116, w: 180, h: 35, rx: 8 };
