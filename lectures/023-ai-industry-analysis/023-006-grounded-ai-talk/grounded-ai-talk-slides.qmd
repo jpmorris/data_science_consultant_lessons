@@ -1096,6 +1096,20 @@ the human in the loop this slide is pointing at.
 | FunSearch                   | 2023    | **An LLM inside a <span class="crux-word">search loop</span> found new math** — not solving a known benchmark, a previously-unknown improvement to the cap set problem (Romera-Paredes et al., _Nature_) |
 :::
 
+```{=html}
+<template class="slide-citations-source">
+  <ul>
+    <li>Word2Vec: Mikolov et al. (Google), <a href="https://arxiv.org/abs/1301.3781" target="_blank" rel="noopener">"Efficient Estimation of Word Representations in Vector Space"</a> (arXiv:1301.3781)</li>
+    <li>Attention Is All You Need: Vaswani et al. (Google), <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">"Attention Is All You Need"</a> (arXiv:1706.03762)</li>
+    <li>GPT-3: Brown et al. (OpenAI), <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">"Language Models are Few-Shot Learners"</a> (arXiv:2005.14165)</li>
+    <li>Chain-of-Thought prompting: Wei et al. (Google), <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener">"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"</a> (arXiv:2201.11903)</li>
+    <li>ReAct: Yao et al., <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">"ReAct: Synergizing Reasoning and Acting in Language Models"</a> (arXiv:2210.03629)</li>
+    <li>Toolformer: Schick et al. (Meta), <a href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener">"Toolformer: Language Models Can Teach Themselves to Use Tools"</a> (arXiv:2302.04761)</li>
+    <li>FunSearch: Romera-Paredes et al. (Google DeepMind), <a href="https://www.nature.com/articles/s41586-023-06924-6" target="_blank" rel="noopener">"Mathematical discoveries from program search with large language models"</a>, <em>Nature</em> (2023)</li>
+  </ul>
+</template>
+```
+
 ::: {.notes}
 Full detail per row, for questions:
 
@@ -1215,6 +1229,15 @@ anywhere.
   what's actually true or faster
 - This works _because_ these domains have a cheap, formal check. Most
   interesting problems don't.
+
+```{=html}
+<template class="slide-citations-source">
+  <ul>
+    <li>FunSearch — same paper cited on the "What Is Astounding About LLMs?" surprises table; see that slide's sources</li>
+    <li>AlphaEvolve: Novikov et al. (Google DeepMind), <a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/" target="_blank" rel="noopener">"AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms"</a> (2025)</li>
+  </ul>
+</template>
+```
 
 ::: {.notes}
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
