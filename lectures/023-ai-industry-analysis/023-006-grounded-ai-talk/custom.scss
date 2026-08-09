@@ -212,6 +212,13 @@ $body-bg: #073642;
 .llm-citations-dialog-body li {
   margin-bottom: 0.6em;
 }
+.llm-citations-dialog-body a {
+  color: #2aa198;
+  text-decoration: underline;
+}
+.llm-citations-dialog-body a:hover {
+  color: #eee8d5;
+}
 
 // Full-bleed accent treatment for the single "thesis" slide.
 .reveal .slides section.stat-slide blockquote {

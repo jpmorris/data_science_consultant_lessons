@@ -272,9 +272,10 @@ the bottom of the stack -- the full labeled version comes later.
     </ul>
     <template class="slide-citations-source">
       <ul>
-        <li>Common Crawl (~240T tokens): Nemotron-CC (arXiv:2412.02595), FineWeb (HuggingFace/NeurIPS 2024), Mozilla Foundation Common Crawl report</li>
-        <li>Frontier post-filter usage (~15&ndash;20T tokens), GPT-3's ~82% Common Crawl share: model technical reports; 64% of 47 surveyed LLMs (2023 survey)</li>
-        <li>Total stock &amp; ~2028 wall: Villalobos et al., "Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data," ICML 2024 (arXiv:2211.04325)</li>
+        <li>Common Crawl token estimate (~240T): <a href="https://arxiv.org/abs/2412.02595" target="_blank" rel="noopener">Nemotron-CC</a> (arXiv:2412.02595), <a href="https://arxiv.org/abs/2406.17557" target="_blank" rel="noopener">FineWeb</a> (arXiv:2406.17557, NeurIPS 2024)</li>
+        <li>GPT-3's ~82% Common Crawl share (Table 2.2): <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">"Language Models are Few-Shot Learners"</a> (arXiv:2005.14165)</li>
+        <li>64% of 47 surveyed LLMs trained on Common Crawl: Mozilla Foundation, <a href="https://www.mozillafoundation.org/en/research/library/generative-ai-training-data/common-crawl/" target="_blank" rel="noopener">"Training Data for the Price of a Sandwich"</a> (2024)</li>
+        <li>Total stock (~300T) &amp; ~2028 wall: Villalobos et al., <a href="https://arxiv.org/abs/2211.04325" target="_blank" rel="noopener">"Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data"</a>, ICML 2024 (arXiv:2211.04325)</li>
       </ul>
     </template>
   </div>
