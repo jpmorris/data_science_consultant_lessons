@@ -256,8 +256,8 @@ the bottom of the stack -- the full labeled version comes later.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-data-volume.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="data"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -270,6 +270,9 @@ the bottom of the stack -- the full labeled version comes later.
     </ul>
   </div>
 </div>
+<template id="llm-axes-source-data">
+{{< include images/llm-ingredients-data-volume.svg >}}
+</template>
 ```
 
 ::: {.notes}
@@ -290,8 +293,8 @@ Foundation's Common Crawl report.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-compute-scale.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="compute"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -305,6 +308,9 @@ Foundation's Common Crawl report.
     </ul>
   </div>
 </div>
+<template id="llm-axes-source-compute">
+{{< include images/llm-ingredients-compute-scale.svg >}}
+</template>
 ```
 
 ::: {.notes}
@@ -322,8 +328,8 @@ numbers is far too large to show on a true linear scale.
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-training-loop.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="training"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -338,6 +344,9 @@ numbers is far too large to show on a true linear scale.
     </ul>
   </div>
 </div>
+<template id="llm-axes-source-training">
+{{< include images/llm-ingredients-training-loop.svg >}}
+</template>
 ```
 
 ::: {.notes}
@@ -353,8 +362,8 @@ millions to billions of times, over weeks. This is what stages 6 and 7
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-inference-pipeline.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="inference"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -370,6 +379,9 @@ millions to billions of times, over weeks. This is what stages 6 and 7
     </ul>
   </div>
 </div>
+<template id="llm-axes-source-inference">
+{{< include images/llm-ingredients-inference-pipeline.svg >}}
+</template>
 ```
 
 ::: {.notes}

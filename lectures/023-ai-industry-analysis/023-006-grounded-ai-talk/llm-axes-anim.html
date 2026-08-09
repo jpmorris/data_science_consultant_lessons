@@ -1,6 +1,6 @@
 <!--
   JS-driven diagram for the "Ingredients of an LLM" sequence, spanning
-  four consecutive stages that all share one persistent panel:
+  all 9 stages, which all share one persistent panel:
   stage 1 "language" (a small constituency tree for "The king wore a
   crown" -- see the speaker notes for why real language actually exceeds
   what a tree like this can capture) -> stage 2 "embeddings" ("king"
@@ -8,14 +8,23 @@
   raw component numbers printed near it) -> stage 3 "vector-math" (the
   numbers fade out; king unchanged; man/woman/queen fade in as their own
   vectors from the same origin, plus a dashed "-man, +woman" path from
-  king's tip landing on queen) -> stage 4 (man/woman/queen fade back out;
-  four verified near-orthogonal words -- drill, supernova, photosynthesis,
-  asteroid -- fade in instead, each close to 90deg from king but not
-  exactly, and spread apart from each other too).
+  king's tip landing on queen) -> stage 4 "latent-space" (man/woman/queen
+  fade back out; four verified near-orthogonal words -- drill, supernova,
+  photosynthesis, asteroid -- fade in instead, each close to 90deg from
+  king but not exactly, and spread apart from each other too) -> stage 5
+  "transformer" (king glides again into "Who is the current UK king ?",
+  with a blue arrow up into an unlabeled shaded sketch of the
+  decoder-only Transformer, "Charles III" waiting at the top) -> stages
+  6-9 "data"/"compute"/"training"/"inference" (king and the vector/
+  transformer content are gone; these reuse their existing hand-designed
+  static SVGs -- bar charts, a loss curve, the inference pipeline --
+  adopted from <template> elements via adoptTemplateSvg rather than
+  re-derived as hand-coordinated shapes, see the comment there).
 
-  "king" is a single continuous element across all four stages, never
-  recreated -- it starts as one leaf of the stage-1 tree and is literally
-  the same <text> node used as the vector label from stage 2 on. Moving
+  "king" is a single continuous element across every stage it appears in,
+  never recreated -- it starts as one leaf of the stage-1 tree and is
+  literally the same <text> node used as the vector label from stage 2
+  on, and again as the sentence word in stage 5. Moving
   between the tree position and the vector-label position is the one
   exception to "everything is a plain opacity fade" in this file: see
   tweenKingLabel, which manually interpolates its x/y attributes over
@@ -91,16 +100,36 @@
   var SVG_NS = 'http://www.w3.org/2000/svg';
   var ORIGIN = { x: 300, y: 340 };
 
-  var LANG_ONLY = { language: true,  embeddings: false, 'vector-math': false, 'latent-space': false, transformer: false };
-  var EMB_ONLY  = { language: false, embeddings: true,  'vector-math': false, 'latent-space': false, transformer: false };
-  var EMB_ALL   = { language: false, embeddings: true,  'vector-math': true,  'latent-space': true,  transformer: false };
-  var VM_ONLY   = { language: false, embeddings: false, 'vector-math': true,  'latent-space': false, transformer: false };
-  var LS_ONLY   = { language: false, embeddings: false, 'vector-math': false, 'latent-space': true,  transformer: false };
-  var XFMR_ONLY = { language: false, embeddings: false, 'vector-math': false, 'latent-space': false, transformer: true  };
-  // king's label (not its vector line) is visible from the very first
-  // stage onward -- it starts inside the sentence tree and never
-  // disappears, just moves.
-  var ALWAYS_PRESENT = { language: true, embeddings: true, 'vector-math': true, 'latent-space': true, transformer: true };
+  // All 9 stages share this one persistent panel now (stages 6-9 used to
+  // be separate static-SVG includes inside their own '.diagram-panel',
+  // which had different dimensions than this panel's anchor -- switching
+  // between the two mid-deck made the whole box visibly jump/resize
+  // instead of just fading content, see AGENT-BRIEFING.md). Presence maps
+  // are generated from this one canonical list instead of hand-writing
+  // every stage-name key in every map -- that got error-prone once there
+  // were 9 stages to keep in sync.
+  var STAGE_NAMES = ['language', 'embeddings', 'vector-math', 'latent-space', 'transformer', 'data', 'compute', 'training', 'inference'];
+  function stagePresence(trueStages) {
+    var map = {};
+    STAGE_NAMES.forEach(function (s) { map[s] = trueStages.indexOf(s) !== -1; });
+    return map;
+  }
+  var LANG_ONLY = stagePresence(['language']);
+  var EMB_ONLY = stagePresence(['embeddings']);
+  var EMB_ALL = stagePresence(['embeddings', 'vector-math', 'latent-space']);
+  var VM_ONLY = stagePresence(['vector-math']);
+  var LS_ONLY = stagePresence(['latent-space']);
+  var XFMR_ONLY = stagePresence(['transformer']);
+  var DATA_ONLY = stagePresence(['data']);
+  var COMPUTE_ONLY = stagePresence(['compute']);
+  var TRAINING_ONLY = stagePresence(['training']);
+  var INFERENCE_ONLY = stagePresence(['inference']);
+  // king's label (not its vector line) is visible from "language" through
+  // "transformer" -- it starts inside the sentence tree, glides through
+  // the vector diagrams and into the "who is the king" sentence, then
+  // disappears once the deck moves on to data/compute/training/inference,
+  // which aren't part of its throughline.
+  var ALWAYS_PRESENT = stagePresence(['language', 'embeddings', 'vector-math', 'latent-space', 'transformer']);
 
   var GENDER_COLOR = '#268bd2';
   var ORTHO_COLOR = '#859900';
@@ -326,10 +355,32 @@
   var numbersEl = null;
   var bgVectorEls = [];
   var xfmrEls = [];
+  var legacyStageEls = { data: [], compute: [], training: [], inference: [] };
   var currentAxesStage = null;
 
   function ns(tag) {
     return document.createElementNS(SVG_NS, tag);
+  }
+
+  // Stages 6-9 (data/compute/training/inference) reuse their existing
+  // hand-designed static SVG content (bar charts, the loss curve, the
+  // inference pipeline) rather than re-deriving each as hand-coordinated
+  // shapes -- adopts the markup from a <template id="llm-axes-source-X">
+  // (populated by {{< include >}} in the qmd, same viewBox coordinate
+  // space as everything else in this file) into one <g> in this
+  // persistent SVG, exactly like every other fade-controlled element.
+  function adoptTemplateSvg(stageName) {
+    var template = document.getElementById('llm-axes-source-' + stageName);
+    if (!template) return;
+    var sourceSvg = template.content.querySelector('svg');
+    if (!sourceSvg) return;
+    var group = ns('g');
+    Array.prototype.slice.call(sourceSvg.childNodes).forEach(function (node) {
+      group.appendChild(node.cloneNode(true));
+    });
+    group.classList.add('llm-fade-el');
+    svg.appendChild(group);
+    legacyStageEls[stageName].push(group);
   }
 
   function buildSvgOnce() {
@@ -708,6 +759,8 @@
     svg.appendChild(stampLabel);
     xfmrEls.push(stampLabel);
 
+    ['data', 'compute', 'training', 'inference'].forEach(adoptTemplateSvg);
+
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
     // restyle in the same tick suppresses the transition" gotcha from
@@ -839,6 +892,14 @@
 
     applyFade([numbersEl], EMB_ONLY[stageName], 0, animate);
     applyFade(bgVectorEls, EMB_ONLY[stageName], 0, animate);
+
+    [['data', DATA_ONLY], ['compute', COMPUTE_ONLY], ['training', TRAINING_ONLY], ['inference', INFERENCE_ONLY]].forEach(function (pair) {
+      var name = pair[0], presenceMap = pair[1];
+      var wasPresent = prevStage ? presenceMap[prevStage] : false;
+      var present = presenceMap[stageName];
+      var entering = animate && !wasPresent && present;
+      applyFade(legacyStageEls[name], present, entering ? FADE_MS : 0, animate);
+    });
   }
 
   var currentAnchor = null;
