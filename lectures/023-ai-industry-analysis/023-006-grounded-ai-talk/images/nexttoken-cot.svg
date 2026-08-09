@@ -403,9 +403,9 @@
 
   <g transform="translate(0,58)">
 
-  <text class="s2-early fade" x="20" y="26" font-size="16" font-style="italic" fill="#93a1a1">YOUR COMPUTER</text>
+  <text class="s2-early fade" x="20" y="26" font-size="21" font-style="italic" fill="#93a1a1">YOUR COMPUTER</text>
   <text class="s2-early fade" x="20" y="46" font-size="13" font-style="italic" fill="#93a1a1">what you actually see</text>
-  <text class="s2-early fade" x="464" y="26" font-size="16" font-style="italic" fill="#93a1a1">CLOUD - LLM</text>
+  <text class="s2-early fade" x="464" y="26" font-size="21" font-style="italic" fill="#93a1a1">CLOUD - LLM</text>
   <line class="s2-early fade" x1="452" y1="20" x2="452" y2="650" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <rect class="s2-early fade" x="20" y="70" width="420" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>

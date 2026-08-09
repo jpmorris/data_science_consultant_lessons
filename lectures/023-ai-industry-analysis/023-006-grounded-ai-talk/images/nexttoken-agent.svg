@@ -211,9 +211,9 @@
 
   <g transform="translate(0,58)">
 
-  <text class="s3-early fade" x="20" y="26" font-size="16" font-style="italic" fill="#93a1a1">YOUR COMPUTER</text>
+  <text class="s3-early fade" x="20" y="26" font-size="21" font-style="italic" fill="#93a1a1">YOUR COMPUTER</text>
   <text class="s3-early fade" x="20" y="46" font-size="13" font-style="italic" fill="#93a1a1">what you actually see</text>
-  <text class="s3-early fade" x="464" y="26" font-size="16" font-style="italic" fill="#93a1a1">CLOUD - LLM</text>
+  <text class="s3-early fade" x="464" y="26" font-size="21" font-style="italic" fill="#93a1a1">CLOUD - LLM</text>
   <line class="s3-early fade" x1="452" y1="20" x2="452" y2="650" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <rect class="s3-early fade" x="20" y="70" width="420" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
@@ -324,12 +324,12 @@
   <rect class="s3-aw4-lg fade" x="662" y="342" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
   <rect class="s3-aw5-lg fade" x="662" y="342" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
 
-  <line class="s3-box fade" x1="662" y1="387" x2="180" y2="387" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <line class="s3-box fade" x1="612" y1="387" x2="230" y2="387" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
   <rect class="s3-harness-box fade" x="20" y="342" width="160" height="90" rx="10" fill="#0d4a55" stroke="#859900" stroke-width="3"/>
   <text class="s3-box fade" x="100" y="374" text-anchor="middle" font-size="16" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Agent Harness</text>
-  <circle class="s3-dot-h1 fade" cx="542" cy="387" r="6" fill="#eee8d5"/>
+  <circle class="s3-dot-h1 fade" cx="516" cy="387" r="6" fill="#eee8d5"/>
   <circle class="s3-dot-h2 fade" cx="421" cy="387" r="6" fill="#eee8d5"/>
-  <circle class="s3-dot-h3 fade" cx="301" cy="387" r="6" fill="#eee8d5"/>
+  <circle class="s3-dot-h3 fade" cx="326" cy="387" r="6" fill="#eee8d5"/>
 
 
   <line class="s3-box fade" x1="772" y1="447" x2="772" y2="472" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
