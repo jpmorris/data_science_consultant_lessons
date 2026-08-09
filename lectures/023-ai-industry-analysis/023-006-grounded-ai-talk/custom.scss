@@ -57,18 +57,6 @@ $body-bg: #073642;
   height: 100%;
 }
 
-// Canvas panel for the auto-animate ingredients diagram: rounded frame that
-// centers an inline SVG, distinct from the plain slide background.
-.reveal .slides .diagram-panel {
-  background: #0d4a55;
-  border-radius: 12px;
-  padding: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 620px;
-}
-
 // Hand-rolled two-column row for diagram+bullets slides that repeat across
 // an auto-animate sequence. Quarto's own .columns/.column div layout
 // conflicts with reveal.js's auto-animate reflow when the same column
@@ -111,6 +99,166 @@ $body-bg: #073642;
   margin-bottom: 0.2em;
 }
 .reveal .slides .diagram-footnotes strong {
+  color: #eee8d5;
+}
+
+// This deck's revealjs config has center:false (Quarto's own default,
+// not something set explicitly here), so slides are top-aligned by
+// default -- fine for text-only slides, but it left the diagram+bullets
+// row sitting right under the heading with a big dead zone below it,
+// not balanced in the frame. Scoped to just the slides that have a
+// .diagram-split-row (the "Ingredients of an LLM" sequence) rather than
+// flipping center:true globally, which would also shift every other
+// slide's content in ways unrelated to this. The heading stays put at
+// a consistent top position across the sequence (a moving title reads
+// worse than a moving diagram); only the row below it grows to fill the
+// remaining height and centers within that space, reusing the row's
+// own existing align-items:center rather than adding a second one.
+.reveal .slides section:has(.diagram-split-row) {
+  display: flex !important; // reveal's own section.present{display:block} rule ties on specificity and wins without this -- same reason .diagram-split-row below needs it
+  flex-direction: column;
+  height: 100%;
+}
+.reveal .slides section:has(.diagram-split-row) .diagram-split-row {
+  flex: 1;
+}
+
+// Invisible layout-only placeholder, one per stage, for the JS-driven
+// panel shared across all 9 "Ingredients of an LLM" stages (used to be
+// just the latent-space axes diagram; stages 6-9 used to be separate
+// static-SVG includes inside their own differently-sized '.diagram-panel'
+// until that mismatch made the whole box visibly jump on the 5->6
+// transition instead of just fading content -- see AGENT-BRIEFING.md).
+// Reserves layout space (so the flex row doesn't reflow) but renders
+// nothing itself -- the real, visible panel is a separate element living
+// outside .reveal .slides entirely (appended to
+// <body> by llm-axes-anim.html) and positioned on top of this anchor's
+// rect. It has to live outside .slides: giving reveal's auto-animate
+// anything to look at here (even a matched data-id) causes it to recurse
+// into the subtree and apply its own conflicting opacity transition to any
+// non-data-id'd descendant it finds -- see AGENT-BRIEFING.md. This way
+// auto-animate's scan of the section never encounters the diagram at all.
+// Sized to match the SVG's own aspect ratio, not stretched to the column's
+// full width: the SVG's viewBox is 700x600 (widened from a square 600x600
+// to fit the embedding-numbers label without clipping), and a container
+// with a different aspect ratio letterboxes it (scales to fit the smaller
+// dimension, centered, wasting the rest as empty margin) -- which was
+// quietly throwing away most of the available width no matter how far
+// apart the diagram's own coordinates were spread.
+.reveal .slides .llm-axes-anchor {
+  width: 723px;
+  height: 620px;
+  margin: 0 auto;
+  visibility: hidden;
+}
+
+// The real, visible axes panel -- deliberately NOT under .reveal .slides.
+// Position/size are set inline by JS every time it's shown, matching the
+// current .llm-axes-anchor's
+// on-screen rect (in viewport px, which already accounts for reveal's own
+// responsive scale-to-fit transform since getBoundingClientRect reports
+// final rendered coordinates).
+.llm-axes-visible-panel {
+  position: fixed;
+  background: #0d4a55;
+  border-radius: 12px;
+  padding: 3%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.llm-axes-visible-panel .llm-axes-svg {
+  width: 100%;
+  height: 100%;
+}
+
+// Simple opacity-only fade elements in the king/queen vector-math panel
+// (word vectors, labels, the -man/+woman chain, the numbers text) -- no
+// transform anywhere in this diagram anymore (no axes left to rotate),
+// just plain fades.
+.llm-fade-el {
+  transition: opacity 0.5s ease;
+}
+.llm-fade-el.llm-axes-no-transition {
+  transition: none !important;
+}
+
+// Per-slide "Sources" button + shared modal (built by citations.html).
+// Both elements live outside .reveal .slides entirely (appended directly
+// to <body>), same reasoning as .llm-axes-visible-panel above: true
+// position:fixed (not trapped inside reveal's transformed .slides
+// container) and completely outside auto-animate's DOM scan. The button
+// shows/hides per slide but always renders in the same screen corner;
+// the dialog is a real modal overlay, so it can never collide with or
+// get pushed around by slide content underneath it.
+.llm-citations-button {
+  position: fixed;
+  right: 1.5em;
+  bottom: 1.2em;
+  z-index: 20;
+  background: rgba(13, 74, 85, 0.85);
+  border: 1px solid #b58900;
+  border-radius: 6px;
+  color: #b58900;
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+}
+.llm-citations-button:hover {
+  background: #0d4a55;
+}
+.llm-citations-dialog {
+  background: #0d4a55;
+  color: #eee8d5;
+  border: 1px solid #586e75;
+  border-radius: 10px;
+  padding: 0;
+  max-width: 44em;
+  width: 90vw;
+}
+.llm-citations-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+.llm-citations-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em 1.1em;
+  border-bottom: 1px solid #586e75;
+  color: #b58900;
+  font-weight: 600;
+  font-size: 20px;
+}
+.llm-citations-dialog-close {
+  background: none;
+  border: none;
+  color: #eee8d5;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.3em;
+}
+.llm-citations-dialog-body {
+  padding: 1em 1.1em 1.2em;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #93a1a1;
+}
+.llm-citations-dialog-body ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.llm-citations-dialog-body li {
+  margin-bottom: 0.6em;
+}
+.llm-citations-dialog-body a {
+  color: #2aa198;
+  text-decoration: underline;
+}
+.llm-citations-dialog-body a:hover {
   color: #eee8d5;
 }
 

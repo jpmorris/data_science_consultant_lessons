@@ -15,7 +15,10 @@ format:
     height: 1080
     pdf-separate-fragments: false
     pdf-max-pages-per-slide: 1
-    include-after-body: nexttoken-replay.html
+    include-after-body:
+      - nexttoken-replay.html
+      - llm-axes-anim.html
+      - citations.html
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf
@@ -62,14 +65,13 @@ Everything else in this talk is downstream of that.
 
 # Part 1: The Magic {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
-<!-- STAGE 1/8 (llm-stage-1-language): language: ambiguous word, no numbers yet -->
-
+<!-- STAGE 1/9 (llm-stage-1-language): language: small constituency tree, "king" glides on to stage 2 -->
 ## The Ingredients of an LLM {#llm-stage-1-language auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-language.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="language"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -82,19 +84,43 @@ Everything else in this talk is downstream of that.
 ::: {.notes}
 This is the raw material every LLM starts from: human language is dense
 (a huge amount of meaning per token) and context-sensitive (the same word
-means different things depending on what's around it) &mdash; "bank" here
-is the simplest example. Nobody engineered this into the model; it's a
-property of the input the model has to somehow represent.
+means different things depending on what's around it). The tree shown is
+a standard constituency parse -- the kind of structure a formal,
+context-free grammar can assign to a sentence, same idea as parsing a
+programming language.
+
+Worth saying out loud, not shown on the slide: natural language actually
+exceeds that. Per the Chomsky hierarchy (regular &sub; context-free &sub;
+context-sensitive &sub; recursively enumerable), natural language is not
+regular and not context-free, and arguably isn't fully captured by any
+formal grammar at all -- unlike programming languages, which are
+deliberately designed to stay context-free so they can be parsed
+efficiently. This tree is a simplification for the sake of legibility,
+not a claim that this fully describes what's really going on.
+
+That gap is also where LLMs' real weakness shows up: DeepMind's "Neural
+Networks and the Chomsky Hierarchy" (Del&eacute;tang et al., ICLR 2023,
+arXiv:2207.02098) tests transformers against tasks at each hierarchy
+level and finds they reliably fail to generalize on tasks needing
+unbounded exact recursion or counting (e.g. matching parentheses nested
+deeper than anything seen in training) -- self-attention has no built-in
+stack. Ironically, transformers can be worse at some simple, formally
+regular languages than they are at messy natural language, because
+natural language is statistically forgiving in a way strict formal
+languages aren't.
+
+Nobody engineered context-sensitivity into the model; it's a property of
+the input the model has to somehow represent -- which is exactly what
+embeddings are for, next slide.
 :::
 
-<!-- STAGE 2/8 (llm-stage-2-embeddings): embeddings: 3 orthogonal axes + 1 point -->
-
+<!-- STAGE 2/9 (llm-stage-2-embeddings): embeddings: 3 orthogonal axes + 1 point -->
 ## The Ingredients of an LLM {#llm-stage-2-embeddings auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-embeddings.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="embeddings"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
@@ -112,19 +138,54 @@ language at all. This axis diagram is a toy 3-dimensional stand-in;
 real embedding spaces have hundreds to thousands of dimensions.
 :::
 
-<!-- STAGE 3/8 (llm-stage-3-latent-space): latent space: axes skew, 5 axes total -->
-
-## The Ingredients of an LLM {#llm-stage-3-latent-space auto-animate="true" .heading-accent}
+<!-- STAGE 3/9 (llm-stage-3-vector-math): vector math: king-man+woman=queen, two parallel analogy pairs -->
+## The Ingredients of an LLM {#llm-stage-3-vector-math auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-latent-space.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="vector-math"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li><strong>A geometry where semantic relationships become vector arithmetic</strong></li>
+    </ul>
+  </div>
+</div>
+```
+
+::: {.notes}
+The classic demonstration: king &minus; man + woman &approx; queen, shown
+here as an actual walked vector path (king, then subtract man's vector,
+then add woman's vector, landing on queen) rather than just an implied
+relationship between unlabeled points &mdash; the offset from man to woman
+and the offset from king to queen are the same vector, meaning the space
+has learned a consistent "gender" direction without ever being told one
+exists. Classic reference: Mikolov et al., "Linguistic Regularities in
+Continuous Space Word Representations" (NAACL 2013) and the original
+word2vec paper (Mikolov et al. 2013, arXiv:1301.3781). Worth saying out
+loud: this is a genuinely simplified, best-case illustration &mdash; real
+analogy performance is noisier and more brittle than the clean textbook
+examples, and modern LLM embeddings are far higher-
+dimensional and contextual (not one fixed vector per word) than this toy
+picture shows.
+:::
+
+<!-- STAGE 4/9 (llm-stage-4-latent-space): latent space: 4 verified near-orthogonal words fade in around king -->
+## The Ingredients of an LLM {#llm-stage-4-latent-space auto-animate="true" .heading-accent}
+
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="latent-space"></div>
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li>An informationally dense, context-sensitive language</li>
+      <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li><strong>A latent space that relaxes orthogonality to pack in more information</strong></li>
     </ul>
   </div>
@@ -142,25 +203,40 @@ dimensions by encoding them as almost-orthogonal directions, tolerating a
 small amount of cross-feature interference &mdash; especially cheap when
 features are sparse (rarely active at once). Without relaxed orthogonality,
 a model would be limited to roughly as many independent concepts as it has
-dimensions; real embedding spaces pack in vastly more than that.
+dimensions; real embedding spaces pack in vastly more than that (Anthropic's
+"Scaling Monosemanticity" work found millions of interpretable feature
+directions in a model with only a few thousand dimensions &mdash; direct
+evidence this isn't just theoretical). The four words shown here
+(drill/supernova/photosynthesis/asteroid) aren't picked for vibes &mdash;
+checked against real glove-wiki-gigaword-100 embeddings, their cosine
+similarity with "king" is 0.011/0.016/-0.004/-0.019 respectively, genuinely
+within a hair of zero. A tempting fourth candidate ("whiteboard") looked
+just as intuitively unrelated but actually came back at -0.28 &mdash; a
+real example of why it's worth checking instead of assuming.
 :::
 
-<!-- STAGE 4/8 (llm-stage-4-transformer): transformer: layered schematic -->
-
-## The Ingredients of an LLM {#llm-stage-4-transformer auto-animate="true" .heading-accent}
+<!-- STAGE 5/9 (llm-stage-5-transformer): transformer: unlabeled sketch, king glides in as the input -->
+## The Ingredients of an LLM {#llm-stage-5-transformer auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-transformer.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="transformer"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li><strong>A highly parameterized statistical model (the Transformer)</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>Kimi K3 totals (2.8T total, 104B activated per token): Kimi Team (Moonshot AI), <a href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noopener">model card</a> and <a href="https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf" target="_blank" rel="noopener">technical report</a> -- current largest open-weight model, released July 2026, surpassing Kimi K2 (1T, used on this slide previously) and DeepSeek V4 Pro (1.6T)</li>
+        <li>No attention/feed-forward breakdown is shown for K3 (unlike the earlier K2 version of this slide) -- K3 uses a hybrid attention mechanism, mostly a linear "Kimi Delta Attention" plus some full-attention layers, and there's no verified parameter-counting formula on hand for that mechanism the way there was for K2's MLA (cross-checked against DeepSeek-V3's own published figures)</li>
+      </ul>
+    </template>
   </div>
 </div>
 ```
@@ -177,27 +253,79 @@ Transformer's specific contribution is multi-head self-attention: every
 token can directly attend to every other token in context, capturing
 long-range dependencies that lower-capacity models (n-grams, bag-of-words,
 fixed-window models) structurally cannot represent.
+
+The sketch shown here is deliberately unlabeled -- same silhouette as the
+real decoder-only Transformer diagram in "The Transformer Still Rules"
+(embedding at the bottom, a repeated norm/attention/residual/norm/FFN/
+residual block, final norm, then linear+softmax at the top) but shaded
+out and stripped of every label, since none of that detail has been
+introduced yet. "king" is shown gliding in as the input token feeding
+the bottom of the stack -- the full labeled version comes later.
+
+Small note beside the sketch (drawn right in the panel, not a table
+anymore): "2.8 trillion parameters -- Kimi K3, approx." Kimi K3
+(Moonshot AI) is the current largest open-weight model, released July
+2026 -- it superseded an earlier version of this slide that used Kimi
+K2 (1T) with a full attention-vs-feed-forward breakdown. That breakdown
+isn't shown for K3: K3's attention is a hybrid mechanism (mostly a
+linear "Kimi Delta Attention," with some full-attention layers mixed
+in), and there's no verified parameter-counting formula on hand for it
+the way there was for K2's MLA. Rather than publish an unverified split,
+this slide only shows the one number Kimi K3 itself publishes with
+confidence (2.8T total, 104B activated per token -- see Sources).
+
+Worth saying out loud instead, as a general rule rather than a
+K3-specific figure: across transformer architectures, feed-forward
+layers hold noticeably more parameters than attention, and the gap is
+much bigger for Mixture-of-Experts models like this one than for dense
+ones. In a plain dense transformer (no MoE), standard attention (Q/K/V/O
+projections) and a standard 4x-expansion feed-forward block work out to
+roughly a 1:2 ratio -- feed-forward is about two-thirds of the
+attention+feed-forward total, attention about a third. MoE skews that
+much further toward feed-forward, since the model multiplies out many
+parallel expert feed-forward blocks while attention stays roughly
+constant per layer -- on Kimi K2 specifically (verified from its
+published config, not estimated), feed-forward was over 99% of
+attention+feed-forward combined. K3 is an even larger MoE (896 experts
+vs K2's 384), so if asked "roughly how much is feed-forward," "the
+large majority -- often 90%+, sometimes higher still for very sparse
+MoE designs" is a defensible generalization even without a verified K3-
+specific number. The remainder, wherever it lives across these
+architectures, is mostly token embeddings and the output/vocabulary
+projection, plus a genuinely negligible amount in normalization layers
+-- not attention and not feed-forward.
 :::
 
-<!-- STAGE 5/8 (llm-stage-5-data): data: Common Crawl vs. used-after-filtering bars -->
-
-## The Ingredients of an LLM {#llm-stage-5-data auto-animate="true" .heading-accent}
+<!-- STAGE 6/9 (llm-stage-6-data): data: Common Crawl vs. used-after-filtering bars -->
+## The Ingredients of an LLM {#llm-stage-6-data auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-data-volume.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="data"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li><strong>Lots of data</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>Common Crawl token estimate (~240T): <a href="https://arxiv.org/abs/2412.02595" target="_blank" rel="noopener">Nemotron-CC</a> (arXiv:2412.02595), <a href="https://arxiv.org/abs/2406.17557" target="_blank" rel="noopener">FineWeb</a> (arXiv:2406.17557, NeurIPS 2024)</li>
+        <li>GPT-3's ~82% Common Crawl share (Table 2.2): <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">"Language Models are Few-Shot Learners"</a> (arXiv:2005.14165)</li>
+        <li>64% of 47 surveyed LLMs trained on Common Crawl: Mozilla Foundation, <a href="https://www.mozillafoundation.org/en/research/library/generative-ai-training-data/common-crawl/" target="_blank" rel="noopener">"Training Data for the Price of a Sandwich"</a> (2024)</li>
+        <li>Total stock (~300T) &amp; ~2028 wall: Villalobos et al., <a href="https://arxiv.org/abs/2211.04325" target="_blank" rel="noopener">"Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data"</a>, ICML 2024 (arXiv:2211.04325)</li>
+      </ul>
+    </template>
   </div>
 </div>
+<template id="llm-axes-source-data">
+{{< include images/llm-ingredients-data-volume.svg >}}
+</template>
 ```
 
 ::: {.notes}
@@ -208,31 +336,84 @@ GPT-3 drew ~82% of its raw training tokens from Common Crawl; a 2023 survey
 found at least 64% of 47 published LLMs used it. Caveat to say out loud:
 "% of the internet" is a genuinely fuzzy, often-inflated claim in popular
 discourse &mdash; Common Crawl is a large but incomplete, English-skewed,
-spam-heavy crawl of the public web, not literally "the internet." Sources:
-Nemotron-CC (arXiv 2412.02595), FineWeb (HuggingFace/NeurIPS 2024), Mozilla
-Foundation's Common Crawl report.
+spam-heavy crawl of the public web, not literally "the internet."
+
+The third bar (~300T, "the wall"): Villalobos et al., "Will We Run Out of
+Data?" (arXiv:2211.04325; the ~300T figure and 2026&ndash;2032 exhaustion
+window are from the 2024 ICML revision, not the original 2022 arXiv draft
+&mdash; worth knowing since the two versions disagree by ~30x and it's easy
+to accidentally cite the stale one). 90% CI: 100T&ndash;1000T &mdash; say
+the range out loud, this is a highly uncertain estimate, not a precise
+count.
+
+Exactly how 300T relates to Common Crawl's 240T, if asked (this came up
+live and is worth having cold): the paper tracks TWO separate stock
+estimates, not one. "Low-quality" general web text (all of it, including
+Reddit, forums, social media, everything beyond any single crawl) they put
+at ~741 trillion words, with a genuinely huge uncertainty band (68T to
+71,000T) &mdash; so yes, there is more raw text out there than Common Crawl
+alone, that intuition is correct. But the ~300T "effective stock" headline
+number is NOT derived from that 741T low-quality pool. It's built from
+their much smaller "high-quality" branch (books + papers + code + curated
+web, originally ~9T words in 2022), scaled up 5x after they found that
+carefully-filtered web text performs as well as curated corpora, then
+another 2&ndash;5x from multi-epoch training (reusing the same tokens
+across multiple passes). So "300T" measures usable, quality-filtered,
+practically-trainable text, not literally everything that exists &mdash;
+a much bigger low-quality pool exists but doesn't meaningfully extend the
+wall, since redundant/spammy text doesn't add much training value. Books
+specifically, since it's a natural follow-up: the paper's own estimate for
+the ENTIRE stock of books ever published is only 620 billion to 1.8
+trillion words (10&ndash;30 million ebooks) &mdash; real, and legally
+significant (Books3, LibGen, Anthropic's 2025 author settlement), but small
+next to web-scale numbers. One honest gap: the paper only counts publicly
+scrapable text; proprietary licensing deals (Reddit-Google, News Corp-
+OpenAI, etc.) aren't separately quantified, so labs' actual usable pool
+could run somewhat higher, though those deals are mostly about access
+rights to platforms already reflected in the low-quality estimate, not
+undiscovered volume.
+
+At current dataset-size growth trends (each model generation using more
+data than the last), the paper's headline result is that training sets
+converge on the size of the entire effective stock between 2026 and 2032
+(80% CI), median ~2028 at compute-optimal training &mdash; faster
+(2025&ndash;2027) if labs lean into overtraining smaller models on more
+tokens, which is exactly the current industry trend. Beyond that, further
+scaling leans on synthetic data, multimodal data (video/audio/images),
+code, and squeezing more epochs out of existing text.
 :::
 
-<!-- STAGE 6/8 (llm-stage-6-compute): compute: FLOPs-over-time bars -->
-
-## The Ingredients of an LLM {#llm-stage-6-compute auto-animate="true" .heading-accent}
+<!-- STAGE 7/9 (llm-stage-7-compute): compute: FLOPs-over-time bars -->
+## The Ingredients of an LLM {#llm-stage-7-compute auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-compute-scale.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="compute"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li>Lots of data</li>
       <li><strong>Lots of compute to train</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>2019 baseline &amp; 2026 frontier estimate (1e26&ndash;1e27 FLOPs): <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development" target="_blank" rel="noopener">Stanford HAI AI Index 2025</a>, Research and Development chapter</li>
+        <li>GPT-4 (~2e25 FLOPs) and other models trained at GPT-4 scale: Epoch AI, <a href="https://epoch.ai/data-insights/models-over-1e25-flop" target="_blank" rel="noopener">"Over 30 AI models have been trained at the scale of GPT-4"</a></li>
+        <li>Training cost figures (GPT-4 ~$78&ndash;80M, Llama 3.1 405B ~$170M): Stanford HAI AI Index 2025 / Epoch AI cost estimates</li>
+        <li>2030 compute ceiling (~2e29 FLOPs) &amp; power/chip bottleneck: Epoch AI, <a href="https://epoch.ai/publications/can-ai-scaling-continue-through-2030" target="_blank" rel="noopener">"Can AI Scaling Continue Through 2030?"</a></li>
+      </ul>
+    </template>
   </div>
 </div>
+<template id="llm-axes-source-compute">
+{{< include images/llm-ingredients-compute-scale.svg >}}
+</template>
 ```
 
 ::: {.notes}
@@ -240,30 +421,54 @@ GPT-4: ~2.1&times;10^25 FLOPs, ~$78&ndash;80M to train (Stanford AI Index /
 Epoch AI estimates). Llama 3.1 405B: ~$170M. 2026-era frontier runs:
 estimated 1&times;10^26 to 1&times;10^27 FLOPs, $200&ndash;500M, with
 projections toward $1&ndash;3B by late 2027. Training compute has scaled
-roughly 4&ndash;5x per year historically. Sources: Epoch AI ("Over 30 AI
-models have been trained at the scale of GPT-4"), Stanford HAI AI Index 2025. Chart above is illustrative only &mdash; the real gap between these
-numbers is far too large to show on a true linear scale.
+roughly 4&ndash;5x per year historically (note: this is FLOPs growth,
+not cost growth -- Epoch AI separately finds training *cost* has grown
+a slower 2&ndash;3x/year over the past 8 years, since hardware and
+algorithmic efficiency gains absorb some of the compute growth without
+a proportional cost increase).
+
+The fourth bar, if asked "is there a limit?": Epoch AI's "Can AI Scaling
+Continue Through 2030?" (2024) is the closest thing to a real answer.
+Their finding: no hard wall yet, but not unlimited either. Training runs
+around ~2x10^29 FLOPs are likely feasible by 2030 -- roughly the same
+size jump over today's frontier as GPT-4 was over GPT-2. Power is "the
+constraint likely to bind first": frontier training power draw has been
+growing ~2.2x/year and already exceeds 100MW; by 2030 the largest runs
+could need 4&ndash;16 GW, requiring genuinely new power-plant and grid
+buildout, not just more chips. Chip manufacturing capacity (advanced
+packaging/HBM production, not raw fab capacity) binds second -- their
+median 2030 estimate is ~100 million H100-equivalent GPUs dedicated to
+training. Data and network-latency constraints matter less than power
+or chips under current projections. Bottom line for the room: the
+economic/energy wall is real but a few years out, not something we're
+already up against the way the data wall increasingly is.
 :::
 
-<!-- STAGE 7/8 (llm-stage-7-training): training: descending loss curve -->
-
-## The Ingredients of an LLM {#llm-stage-7-training auto-animate="true" .heading-accent}
+<!-- STAGE 8/9 (llm-stage-8-training): training: shared shaded LLM box, now with real FFN/attention-head mini-networks inside it (active teal), plus a training-specific worked example: "The king wore a [blank]" with a data-size caption and input arrow -->
+## The Ingredients of an LLM {#llm-stage-8-training auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-training-loop.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="training"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li>Lots of data</li>
       <li>Lots of compute to train</li>
       <li><strong>A training process</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>405B parameters: Grattafiori et al. (Meta), <a href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">"The Llama 3 Herd of Models"</a> (arXiv:2407.21783) -- same model already cited on the compute slide's "Llama 3.1 405B: ~$170M" bar</li>
+        <li>~15&ndash;20T tokens: same post-filtering figure as the data slide's "used after filtering" bar -- see that slide's sources (Villalobos et al., arXiv:2211.04325)</li>
+      </ul>
+    </template>
   </div>
 </div>
 ```
@@ -272,23 +477,45 @@ numbers is far too large to show on a true linear scale.
 The loop: run the model forward on a batch, compare its prediction to the
 real next token (the loss), compute gradients backward through every
 parameter, nudge every weight slightly to reduce that loss, repeat &mdash;
-millions to billions of times, over weeks. This is what stages 5 and 6
+millions to billions of times, over weeks. This is what stages 6 and 7
 (data and compute) actually get spent on.
+
+Diagram: the same shaded box from stage 5, but its attention and
+feed-forward regions are no longer plain shaded rectangles -- they now
+show small illustrative dots-and-lines networks standing in for the
+model's actual parameters, drawn active/teal this stage to signal
+they're all being adjusted this pass. FFN is 3 columns (2 in, 3
+hidden/expanded, 2 out) -- 2 layers of connections, matching the real
+FFN's up-project-then-down-project shape. Attention is three small
+parallel clusters, a simplified stand-in for multiple heads operating
+in parallel rather than one pooled network. Up top, past the grey
+output arrow (the same slot "Charles III" occupies on the other two
+stages), sits what training actually optimizes for: not the "who is
+the king" question from stage 5, but the exact stage-1 sentence with
+its last word masked out -- "The king wore a [blank]" -- since
+predicting the missing/next word IS the training objective. Down at
+the input, instead of one example sentence, a caption reading "~15-20T
+tokens" feeds into the arrow -- the bulk corpus (same post-filter
+figure as stage 6), not a single instance. Same mini-networks reappear
+on the next slide (inference) with the lines dimmed and lock icons
+beside them instead -- the explicit visual contrast is the point:
+training changes every one of those parameters, inference changes none
+of them.
 :::
 
-<!-- STAGE 8/8 (llm-stage-8-inference): inference: prompt -> model -> sampled token -->
-
-## The Ingredients of an LLM {#llm-stage-8-inference auto-animate="true" .heading-accent}
+<!-- STAGE 9/9 (llm-stage-9-inference): inference: shared shaded LLM box, mini-networks dimmed with a lock icon, reusing stage 5's exact "Who is the current UK king ?" -> "Charles III" worked example instead of a generic token-count figure -->
+## The Ingredients of an LLM {#llm-stage-9-inference auto-animate="true" .heading-accent}
 
 ```{=html}
 <div class="diagram-split-row">
-  <div class="diagram-split-visual diagram-panel">
-    {{< include images/llm-ingredients-inference-pipeline.svg >}}
+  <div class="diagram-split-visual">
+    <div class="llm-axes-anchor" data-axes-stage="inference"></div>
   </div>
   <div class="diagram-split-text">
     <ul>
       <li>An informationally dense, context-sensitive language</li>
       <li>A way to turn words into numbers (embeddings)</li>
+      <li>A geometry where semantic relationships become vector arithmetic</li>
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li>Lots of data</li>
@@ -296,6 +523,11 @@ millions to billions of times, over weeks. This is what stages 5 and 6
       <li>A training process</li>
       <li><strong>An inference process</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>405B parameters: Grattafiori et al. (Meta), <a href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">"The Llama 3 Herd of Models"</a> (arXiv:2407.21783) -- same model already cited on the compute and training slides</li>
+      </ul>
+    </template>
   </div>
 </div>
 ```
@@ -308,6 +540,21 @@ updates, no loss computed. Repeat one token at a time to generate a full
 response. This is why inference is orders of magnitude cheaper than
 training: no backward pass, no millions of repetitions, no updating billions
 of parameters each step.
+
+Diagram: same box, same FFN/attention mini-networks as the training
+slide, same dots, but the lines are dimmed now and a small padlock icon
+sits beside each of the two (one for FFN, one for attention) instead of
+glowing active teal -- none of those parameters change during inference,
+which is exactly why it's so much
+cheaper than training. The input/output side deliberately reuses stage
+5's exact worked example (the same "Who is the current UK king ?"
+sentence, the same input arrow, the same "Charles III" answer, king
+gliding into the same spot) rather than a token-count figure: inference
+is one sentence in, one answer out, not a corpus, so the visual should
+look like a single pass, not a pile of data. Not yet visualized here but
+worth saying out loud if there's time: the KV cache (why generating
+token N+1 doesn't redo the work for tokens 1..N) and the actual sampled
+next-token result -- candidates for a future pass if there's room.
 :::
 
 ## The Transformer Still Rules {.heading-accent}

@@ -1,0 +1,1299 @@
+<!--
+  JS-driven diagram for the "Ingredients of an LLM" sequence, spanning
+  all 9 stages, which all share one persistent panel:
+  stage 1 "language" (a small constituency tree for "The king wore a
+  crown" -- see the speaker notes for why real language actually exceeds
+  what a tree like this can capture) -> stage 2 "embeddings" ("king"
+  glides out of the tree to become a vector from the shared origin, its
+  raw component numbers printed near it) -> stage 3 "vector-math" (the
+  numbers fade out; king unchanged; man/woman/queen fade in as their own
+  vectors from the same origin, plus a dashed "-man, +woman" path from
+  king's tip landing on queen) -> stage 4 "latent-space" (man/woman/queen
+  fade back out; four verified near-orthogonal words -- drill, supernova,
+  photosynthesis, asteroid -- fade in instead, each close to 90deg from
+  king but not exactly, and spread apart from each other too) -> stage 5
+  "transformer" (king glides again into "Who is the current UK king ?",
+  with a blue arrow up into an unlabeled shaded sketch of the LLM,
+  "Charles III" waiting at the top; inside the box, the FFN and
+  attention-head regions aren't just plain shaded rectangles -- they
+  contain small illustrative dots-and-lines networks, architecturally
+  informed: FFN as a 3-column/2-layer expand-then-project network,
+  attention as three small parallel 2x2 clusters standing in for
+  separate heads) -> stage 6 "data" and stage 7 "compute" (king and the
+  sketch are gone; these reuse their existing hand-designed static SVGs
+  -- bar charts -- adopted from <template> elements via adoptTemplateSvg
+  rather than re-derived as hand-coordinated shapes, see the comment
+  there) -> stage 8 "training" (the same box reappears -- xfmrBoxEls,
+  same LLM, reused rather than redrawn; the mini-networks' lines glow
+  active teal; king appears a third time in a new sentence, "The king
+  wore a [blank]", the actual training objective -- predicting the
+  masked word -- with a data-size figure and input arrow feeding in) ->
+  stage 9 "inference" (same box again, mini-network lines dimmed grey
+  with a lock icon beside them -- frozen, not being updated; reuses
+  stage 5's exact "Who is the current UK king ?" -> "Charles III"
+  worked example rather than a generic token-count figure, since
+  inference is one input producing one output, not a corpus).
+
+  "king" is a single continuous element across every stage it appears in,
+  never recreated -- it starts as one leaf of the stage-1 tree, is
+  literally the same <text> node used as the vector label from stage 2
+  on, again as the sentence word in stage 5 ("Who is the current UK
+  king ?"), again in stage 8's training sentence ("The king wore a
+  [blank]"), and again in stage 9 where it reuses stage 5's exact
+  sentence/position. Moving between resting spots (tree, vector label,
+  stage-5/9 sentence, stage-8 sentence) is the one exception to
+  "everything is a plain opacity fade" in this file: see
+  tweenKingLabel, which manually interpolates its x/y attributes over
+  requestAnimationFrame rather than using a CSS transition (SVG elements'
+  CSS `transform` is interpreted in a mix of unit spaces across browsers,
+  and this viewBox doesn't map 1:1 to rendered CSS pixels -- tweening the
+  same x/y attributes everything else already uses sidesteps that).
+
+  No coordinate axes anywhere in this version, and no dots marking any
+  point on any vector: there's no privileged basis for an embedding space
+  (any basis you'd draw is arbitrary up to rotation), and a word's meaning
+  is the vector itself -- its direction -- not a 1-dimensional "location"
+  a dot would imply. Earlier versions of this diagram had both; removed
+  once that distinction got nailed down in conversation.
+
+  The "near-orthogonal" words in stage 4 aren't invented for the demo --
+  cosine similarity with "king" was actually computed against real
+  glove-wiki-gigaword-100 embeddings (drill 0.011, supernova 0.016,
+  photosynthesis -0.004, asteroid -0.019 -- all within a hair of literal
+  zero). A candidate word ("whiteboard", -0.28) that looked intuitively
+  unrelated but wasn't close to zero was dropped after checking -- a live
+  example of why "check, don't assume" matters even for something this
+  small.
+
+  Why this exists instead of auto-animate: reveal.js auto-animate cannot
+  interpolate the `transform` property at all on matched (data-id)
+  elements -- confirmed via direct testing, see AGENT-BRIEFING.md. That
+  was the original motivation (an earlier version of this diagram
+  rotated between axis layouts via `transform`); the rotation is gone
+  now, but auto-animate remains unusable for a different reason below
+  (its own opacity handling for matched/unmatched elements fights any
+  opacity transition this script drives itself). Build the SVG content
+  once via document.createElementNS (not static markup) and drive all
+  show/hide entirely with plain CSS `transition: opacity`.
+
+  The visible panel is NOT inside .reveal .slides at all -- it's a single
+  persistent, `position: fixed` element appended to <body>, repositioned on
+  top of an invisible `.llm-axes-anchor` placeholder (one per stage, in the
+  qmd) every time the current slide changes. This took two earlier failed
+  attempts to get right, both documented in AGENT-BRIEFING.md:
+    1. First attempt reparented the real content into a per-stage mount
+       <div> living inside the section. Reveal's auto-animate faded the
+       WHOLE mount in/out because an unmatched element (no data-id) between
+       two auto-animate slides gets its documented default fade treatment.
+    2. Second attempt gave the mount a matching data-id to stop that fade.
+       This made things *worse*: once the mount became a matched element,
+       reveal started recursing into its subtree looking for ITS OWN
+       unmatched descendants, found our un-data-id'd line/label elements,
+       and started driving its own independent opacity transition on them
+       -- fighting our JS-driven one on the very same elements. That's what
+       looked like axes randomly "dropping in" on navigation.
+  The only reliable fix is what's here: keep the whole diagram outside
+  anything reveal's auto-animate scan ever walks, so neither failure mode
+  can happen regardless of what auto-animate's internal matching decides.
+  The anchor's only job is reserving layout space (via a matching CSS
+  height) inside the two-column row; it renders nothing, so it plainly
+  doesn't matter if auto-animate marks it unmatched/fades it.
+-->
+<script>
+(function () {
+  // Quarto's preview live-reload patches the DOM in place to preserve the
+  // user's current slide position instead of doing a hard page reload,
+  // which re-executes this inline <script> on every edit+render without
+  // clearing the previous run's state. Without this guard, each
+  // re-execution builds its own separate persistent <svg> and registers
+  // its own 'slidechanged' listener, and they pile up and fight over the
+  // same mount -- symptoms look like duplicate/stale axes, one instance
+  // snapping instead of animating, elements "dropping in" out of nowhere.
+  // A hard refresh (not live-reload) clears this, since it resets `window`.
+  if (window.__llmAxesAnimInitialized) return;
+  window.__llmAxesAnimInitialized = true;
+
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var ORIGIN = { x: 300, y: 340 };
+
+  // All 9 stages share this one persistent panel now (stages 6-9 used to
+  // be separate static-SVG includes inside their own '.diagram-panel',
+  // which had different dimensions than this panel's anchor -- switching
+  // between the two mid-deck made the whole box visibly jump/resize
+  // instead of just fading content, see AGENT-BRIEFING.md). Presence maps
+  // are generated from this one canonical list instead of hand-writing
+  // every stage-name key in every map -- that got error-prone once there
+  // were 9 stages to keep in sync.
+  var STAGE_NAMES = ['language', 'embeddings', 'vector-math', 'latent-space', 'transformer', 'data', 'compute', 'training', 'inference'];
+  function stagePresence(trueStages) {
+    var map = {};
+    STAGE_NAMES.forEach(function (s) { map[s] = trueStages.indexOf(s) !== -1; });
+    return map;
+  }
+  var LANG_ONLY = stagePresence(['language']);
+  var EMB_ONLY = stagePresence(['embeddings']);
+  var EMB_ALL = stagePresence(['embeddings', 'vector-math', 'latent-space']);
+  var VM_ONLY = stagePresence(['vector-math']);
+  var LS_ONLY = stagePresence(['latent-space']);
+  // The "Who is the current UK king ?" -> "Charles III" worked example
+  // (sentence words, input arrow, answer text) is shared by "transformer"
+  // and "inference" -- stage 9 reuses it verbatim rather than inventing a
+  // new example, since inference is exactly this: one input sentence in,
+  // one predicted answer out, the same process shown at stage 5 now
+  // happening for real.
+  var XFMR_ONLY = stagePresence(['transformer', 'inference']);
+  // The shaded LLM sketch (xfmrBoxEls) is shared by all three stages that
+  // talk about the same trained model: stage 5 introduces its shape,
+  // stage 8 shows it training, stage 9 shows it running frozen. Same box,
+  // same LLM, reused rather than redrawn.
+  var XFMR_BOX_PRESENT = stagePresence(['transformer', 'training', 'inference']);
+  var DATA_ONLY = stagePresence(['data']);
+  var COMPUTE_ONLY = stagePresence(['compute']);
+  var TRAINING_ONLY = stagePresence(['training']);
+  var INFERENCE_ONLY = stagePresence(['inference']);
+  // The Kimi K2 parameter-count annotation is stage-5-only -- it grounds
+  // "highly parameterized" right when that claim is first made, not on
+  // stages 8/9 where the box is doing other work (training/inference
+  // specifics) and this would just be repeated clutter.
+  var PARAM_TABLE_ONLY = stagePresence(['transformer']);
+  // king's label (not its vector line) is visible everywhere except
+  // data/compute -- it starts inside the sentence tree, glides through
+  // the vector diagrams, into the "who is the king" sentence (transformer
+  // and inference, same position), and into its own training-sentence
+  // spot for stage 8.
+  var ALWAYS_PRESENT = stagePresence(['language', 'embeddings', 'vector-math', 'latent-space', 'transformer', 'training', 'inference']);
+
+  var GENDER_COLOR = '#268bd2';
+  var ORTHO_COLOR = '#859900';
+  var CHAIN_COLOR = '#eee8d5';
+  var STRUCT_COLOR = '#93a1a1';
+  var BG_VECTOR_COLOR = '#4a6a72';
+  // Same amber already used for this deck's accent underline
+  // (.heading-accent h2 in custom.scss) and for "answer" highlights in
+  // the real decoder-only Transformer diagram (Next-token probabilities,
+  // "-> predicted: king") -- reused here for the same reason: it's this
+  // deck's established color for "the thing being highlighted/pointed at."
+  var AMBER_COLOR = '#b58900';
+  // Same teal already used for "current/active" elements elsewhere in
+  // this deck (the "used after filtering" bar, the 2026 frontier-era
+  // callouts) -- reused for the training network's "live, being updated"
+  // state, contrasted with STRUCT_COLOR's muted grey for "frozen."
+  var ACTIVE_COLOR = '#2aa198';
+
+  // Unlabeled grey vectors, shown only in "embeddings" alongside king --
+  // there's nothing special about king's position; the space is full of
+  // other words' vectors too, this just makes that legible instead of
+  // implied. Word vectors are NOT unit-normalized in general (word2vec
+  // and GloVe magnitudes vary and actually correlate with word frequency;
+  // even LLM hidden states aren't L2-normalized to 1, despite LayerNorm
+  // doing something related but distinct) -- varying lengths here are
+  // realistic, not just a visual device. Endpoints generated once
+  // (angles spread around king's own direction with a gap left around it
+  // so king stays visually distinct, lengths randomized) and kept fixed
+  // rather than regenerated per load, same reasoning as the hand-tuned
+  // WORD_POINTS coordinates elsewhere in this file: deterministic beats
+  // re-rolling on every page load.
+  var BG_VECTORS = [
+    { x: 458, y: 345 }, { x: 426, y: 412 }, { x: 411, y: 459 },
+    { x: 363, y: 478 }, { x: 290, y: 531 }, { x: 260, y: 456 },
+    { x: 173, y: 486 }, { x: 219, y: 369 }, { x: 86,  y: 316 },
+    { x: 149, y: 271 }, { x: 238, y: 286 }, { x: 267, y: 258 },
+    { x: 292, y: 226 }, { x: 341, y: 201 }, { x: 436, y: 197 }
+  ];
+
+  // A small constituency tree for "The king wore a crown" -- just enough
+  // structure to make "dense, context-sensitive" concrete (this is the
+  // kind of tree a context-free grammar assigns to a sentence; see the
+  // speaker notes for why real language actually exceeds context-free).
+  // "king" itself isn't a separate element here -- it's WORD_POINTS.king's
+  // own persistent label, tweened to this position and back (see
+  // tweenKingLabel below) so it's a literal, continuous element gliding
+  // from the tree into the vector diagram, not a copy.
+  // king's text-anchor is 'start' (inherited from its stage-2+ vector
+  // label, unchanged here so that identity carries over exactly) while
+  // every other leaf below is 'middle' -- so king's *attribute* x needs to
+  // sit KING_LABEL_HALF_WIDTH left of where it should visually center to
+  // line up with the row. Measured empirically (getBBox at font-size 27,
+  // font-weight 600) rather than guessed.
+  var KING_LABEL_HALF_WIDTH = 26;
+  // Full breakdown, not just the phrasal nodes: S -> NP("The king") + VP
+  // ("wore a crown"); NP -> Det("The") + N("king"); VP -> V("wore") +
+  // NP("a crown"); that inner NP -> Det("a") + N("crown"). Every word gets
+  // its own preterminal POS tag directly above it, one row deeper than
+  // the phrasal (S/NP/VP) row above it.
+  var TREE_FONT = 29; // structure/leaf font size, 22 * 1.3 rounded
+  var KING_TREE_VISUAL_CENTER = { x: 250, y: 390 };
+  var KING_TREE_POS = { x: KING_TREE_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_TREE_VISUAL_CENTER.y };
+  var TREE_NODES = [
+    { text: 'S',   x: 350, y: 90 },
+    { text: 'NP',  x: 180, y: 190 },
+    { text: 'VP',  x: 525, y: 190 },
+    { text: 'Det', x: 110, y: 290 },
+    { text: 'N',   x: 250, y: 290 },
+    { text: 'V',   x: 460, y: 290 },
+    { text: 'NP',  x: 590, y: 290 },
+    { text: 'Det', x: 540, y: 390 },
+    { text: 'N',   x: 640, y: 390 }
+  ];
+  var TREE_LEAVES = [
+    { text: 'The',   x: 110, y: 390 },
+    { text: 'wore',  x: 460, y: 390 },
+    { text: 'a',     x: 540, y: 490 },
+    { text: 'crown', x: 640, y: 490 }
+  ];
+  var TREE_EDGES = [
+    [{ x: 350, y: 90 },  { x: 180, y: 190 }],           // S -> NP
+    [{ x: 350, y: 90 },  { x: 525, y: 190 }],           // S -> VP
+    [{ x: 180, y: 190 }, { x: 110, y: 290 }],           // NP -> Det(The)
+    [{ x: 180, y: 190 }, { x: 250, y: 290 }],           // NP -> N(king)
+    [{ x: 525, y: 190 }, { x: 460, y: 290 }],           // VP -> V(wore)
+    [{ x: 525, y: 190 }, { x: 590, y: 290 }],           // VP -> NP(a crown)
+    [{ x: 110, y: 290 }, { x: 110, y: 390 }],           // Det -> "The"
+    [{ x: 250, y: 290 }, KING_TREE_VISUAL_CENTER],      // N -> "king"
+    [{ x: 460, y: 290 }, { x: 460, y: 390 }],           // V -> "wore"
+    [{ x: 590, y: 290 }, { x: 540, y: 390 }],           // NP -> Det(a)
+    [{ x: 590, y: 290 }, { x: 640, y: 390 }],           // NP -> N(crown)
+    [{ x: 540, y: 390 }, { x: 540, y: 490 }],           // Det -> "a"
+    [{ x: 640, y: 390 }, { x: 640, y: 490 }]            // N -> "crown"
+  ];
+
+  // Stage 5 "transformer": "Who is the current UK king ?" fades in, with
+  // king (still the same persistent element) gliding to its spot in the
+  // sentence, then a blue arrow from king up into an unlabeled, shaded
+  // sketch of the decoder-only Transformer, enclosed in one solid frame
+  // with an unlabeled output arrow poking out its top -- same silhouette
+  // as the real labeled diagram elsewhere in the deck ("The Transformer
+  // Still Rules"): token embedding at the bottom, one repeated norm/
+  // attention/residual/norm/FFN/residual block, a separate small dashed
+  // "repeated N times" indicator connected above it by short dotted
+  // segments (matching that diagram's own convention, not a stack-shadow
+  // effect), final norm, then linear+softmax at the top. No text anywhere
+  // in the sketch -- nothing has been labeled yet at this point in the
+  // talk, it's just a preview of the shape to come.
+  // Positions re-derived from measured getBBox() widths at font-size 27 so
+  // the whole row reads as one evenly-spaced sentence (~18px gaps
+  // throughout, same empirical approach as the tree's
+  // KING_LABEL_HALF_WIDTH above) -- no gap specially widened for the
+  // arrow anymore; the arrow's vertical band no longer overlaps the
+  // sentence's at all (see XFMR_ARROW below), so it doesn't need one.
+  // Baseline sits at 585, not 540, purely so the arrow (which ends at
+  // 530) has clearance above the text's cap-height before reaching it --
+  // widened further than the arrow itself needed, since the arrow was
+  // overlapping the sentence/box at the previous tighter spacing.
+  var KING_XFMR_VISUAL_CENTER = { x: 498, y: 585 };
+  var KING_XFMR_POS = { x: KING_XFMR_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_XFMR_VISUAL_CENTER.y };
+  var SENTENCE_WORDS = [
+    { text: 'Who',     x: 173, y: 585 },
+    { text: 'is',      x: 228, y: 585 },
+    { text: 'the',     x: 273, y: 585 },
+    { text: 'current', x: 352, y: 585 },
+    { text: 'UK',      x: 434, y: 585 },
+    { text: '?',       x: 548, y: 585 }
+  ];
+  // Dropped a first-pass "stack echo" (offset shadow rects behind the
+  // block) for the N-times-repeated indicator -- unclear at a glance.
+  // Matches the real diagram's own convention instead: a separate small
+  // dashed box, connected to the block below and Final Norm above by
+  // short dotted segments. Also dropped the KV-cache stub and attention-
+  // head bars from the first pass: too much detail for a silhouette.
+  // Straight up from the sentence's own center (x matches the box/frame
+  // center too), not diagonally from king specifically -- the whole
+  // sentence feeds in, king just happens to be the word riding along in
+  // it. Hand-tuned in Inkscape (same export/diff methodology as
+  // WORD_POINTS.labelAt elsewhere): exported the settled stage-5 SVG,
+  // dragged both arrows, diffed the edited file against these defaults
+  // to isolate exactly what moved.
+  var XFMR_ARROW = {
+    from: { x: 352, y: 562 },
+    to:   { x: 352, y: 530 }
+  };
+  var XFMR_OUTPUT_ARROW = {
+    from: { x: 350, y: 93 },
+    to:   { x: 350, y: 45 }
+  };
+  var XFMR_ANSWER_TEXT = { x: 350, y: 32 };
+  var XFMR_FRAME = { x: 246, y: 105, w: 208, h: 432, rx: 10 };
+  var XFMR_OUTPUT = { x: 260, y: 116, w: 180, h: 35, rx: 8 };
+  var XFMR_LINSOFT = { x: 280, y: 159, w: 140, h: 28, rx: 6 };
+  var XFMR_FINAL_NORM = { x: 305, y: 197, w: 90, h: 18, rx: 4 };
+  var XFMR_REPEAT_CONNECTOR_1 = { from: { x: 350, y: 223 }, to: { x: 350, y: 215 } }; // repeat box -> final norm
+  var XFMR_REPEAT_BOX = { x: 280, y: 223, w: 140, h: 20, rx: 4 };
+  var XFMR_REPEAT_CONNECTOR_2 = { from: { x: 350, y: 251 }, to: { x: 350, y: 243 } }; // block -> repeat box
+  // Block interior (embedding -> norm1 -> attn -> +res -> norm2 -> ffn ->
+  // +res) is taller than the original silhouette-only version: FFN and
+  // ATTN now each hold a real mini dots-and-lines network (see FFN_NET /
+  // ATTN_NET below) instead of a plain shaded bar, so both regions grow
+  // considerably (FFN 110x34 -> 150x58, ATTN 120x50 -> 160x76) and the
+  // gaps around them tighten to 8px to fit inside the same 700x600 panel.
+  var XFMR_BLOCK_OUTER = { x: 258, y: 251, w: 184, h: 229, rx: 10 };
+  var XFMR_PLUS2 = { x: 350, y: 262 };
+  var XFMR_FFN = { x: 275, y: 270, w: 150, h: 58, rx: 6 };
+  var XFMR_NORM2 = { x: 305, y: 336, w: 90, h: 18, rx: 4 };
+  var XFMR_PLUS1 = { x: 350, y: 362 };
+  var XFMR_ATTN = { x: 270, y: 370, w: 160, h: 76, rx: 6 };
+  var XFMR_NORM1 = { x: 305, y: 454, w: 90, h: 18, rx: 4 };
+  var XFMR_EMBED = { x: 285, y: 492, w: 130, h: 30, rx: 6 };
+
+  // FFN mini-network: 3 columns of dots (2 in, 3 hidden/expanded, 2 out)
+  // fully connected between adjacent columns -- 2 sets of connections
+  // (2x3 + 3x2 = 12 lines) standing in for the real FFN's two linear
+  // layers (up-project/expand, then down-project back to size), which is
+  // genuinely what "2 layers" means architecturally here, not an
+  // arbitrary dot count. Coordinates sit inside XFMR_FFN with margin.
+  var FFN_NET = {
+    dotR: 3,
+    cols: [
+      { x: 305, dots: [288, 310] },
+      { x: 350, dots: [278, 299, 320] },
+      { x: 395, dots: [288, 310] }
+    ]
+  };
+  // ATTN mini-network: three small parallel 2x2 clusters, each its own
+  // tiny fully-connected pair of columns, spaced apart with visible gaps
+  // between them -- a simplified but architecturally-informed stand-in
+  // for multiple attention heads operating in parallel (not one shared
+  // pool of units the way FFN's is), sized down rather than the real
+  // head count (a frontier model's actual head count would be an
+  // illegible smear at this scale). Coordinates sit inside XFMR_ATTN.
+  var ATTN_NET = {
+    dotR: 3,
+    heads: [
+      { cols: [296, 314] },
+      { cols: [341, 359] },
+      { cols: [386, 404] }
+    ],
+    rows: [392, 424]
+  };
+  // Small padlock silhouette (rounded body + arced shackle), shown only
+  // for "inference" -- one beside each mini-network (FFN, ATTN) rather
+  // than a single icon for the whole box, since there are two separate
+  // sets of parameters being frozen. Deliberately overlaps a few dots/
+  // lines rather than being nudged clear of them -- a real icon sitting
+  // right on top of the thing it's freezing reads better than one
+  // hovering nearby to avoid touching it.
+  var LOCK_ICONS = [
+    { cx: XFMR_FFN.x + XFMR_FFN.w - 15, cy: XFMR_FFN.y + XFMR_FFN.h / 2 },
+    { cx: XFMR_ATTN.x + XFMR_ATTN.w - 15, cy: XFMR_ATTN.y + XFMR_ATTN.h / 2 }
+  ];
+
+  // Stage 8 "training": a NEW sentence, not the "Who is the king" one --
+  // this reuses the exact stage-1 sentence ("The king wore a crown") with
+  // its last word blanked out, since fill-in/predict-the-next-word IS the
+  // actual training objective being illustrated, and reusing that exact
+  // sentence (rather than inventing a fresh example) keeps one throughline
+  // running from stage 1 all the way to stage 8. king rides along in this
+  // sentence too, tweened here the same way it's tweened everywhere else.
+  // Sits at the TOP, just past the grey output arrow -- same slot
+  // "Charles III" occupies for transformer/inference -- rather than down
+  // at the input, since the input side now just shows the bulk data
+  // volume (TRAINING_DATA_LABEL/TRAINING_ARROW below) instead of a single
+  // example sentence.
+  var KING_TRAINING_VISUAL_CENTER = { x: 280, y: 32 };
+  var KING_TRAINING_POS = { x: KING_TRAINING_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_TRAINING_VISUAL_CENTER.y };
+  var TRAINING_SENTENCE_WORDS = [
+    { text: 'The',   x: 220, y: 32 },
+    { text: 'wore',  x: 345, y: 32 },
+    { text: 'a',     x: 395, y: 32 },
+    { text: '_____', x: 450, y: 32 } // the blank -- amber, same "thing being predicted" convention as "Charles III"
+  ];
+  var TRAINING_ARROW = {
+    from: { x: 352, y: 558 },
+    to:   { x: 352, y: 530 }
+  };
+  // Same figure as stage 6's "used after filtering" bar (~15-20T tokens)
+  // -- the bulk data volume flowing in at the bottom, now that the
+  // specific example sentence has moved to the top. Centered under the
+  // arrow rather than off to the side, now that there's no sentence row
+  // to share the space with.
+  var TRAINING_DATA_LABEL = { x: 350, y: 585, text: '~15–20 trillion tokens' };
+
+  // Stage 5 only: a small hand-annotated note beside the box, grounding
+  // "highly parameterized" in one current model's actual total rather
+  // than leaving the claim abstract. Used to be a 3-row attention/FFN/
+  // total breakdown of Kimi K2 -- dropped in favor of Kimi K3 (the
+  // actual current largest open-weight model, 2.8T, released after K2)
+  // and just its top-line total, because K3's attention is a genuinely
+  // different, hybrid mechanism (mostly linear/delta-rule "Kimi Delta
+  // Attention", not the MLA that K2 used and that this file's
+  // parameter-counting formula was validated against) -- there's no
+  // verified formula on hand to split K3's params the same confident
+  // way K2's were split, so this doesn't claim a precision it doesn't
+  // have. The general attention-vs-FFN split (not K3-specific) is a
+  // speaker-notes point instead of an on-slide number -- see the .qmd.
+  // NOT the hand-drawn Architects Daughter font used for callouts
+  // elsewhere in this deck -- its decimal points are nearly invisible at
+  // this size. Plain Inter instead, same as the deck's own body text.
+  var PARAM_ANNOT_FONT = "'Inter', sans-serif";
+  var PARAM_TABLE_LABEL_X = 478;
+  var PARAM_NOTE = {
+    mainY: 300, main: '2.8 trillion parameters',
+    subY: 326, sub: 'Kimi K3, approx.'
+  };
+
+  // king/man/woman/queen, each drawn as a genuine vector from the shared
+  // origin -- not just a labeled point. This is the standard illustration
+  // for this specific analogy (confirmed against multiple real references,
+  // not guessed): solid vectors from a common origin for each word, plus a
+  // dashed "-man, +woman" path from king's tip showing the arithmetic as
+  // an actual walked path, landing on queen. queen's position is DERIVED
+  // (king - man + woman), not hand-placed, so the dashed path is
+  // guaranteed to close exactly on it regardless of how king/man/woman get
+  // tuned later. "king" is the through-line across ALL three stages, at
+  // this identical position throughout -- it's the same vector the whole
+  // time, not a replacement. tense (walk/walked/swim/swam) is dropped for
+  // now to keep this legible -- add back later if there's room.
+  var KING = { x: 433, y: 287 };
+  var MAN = { x: 242, y: 123 };
+  var WOMAN = { x: 81, y: 279 };
+  var QUEEN = { x: KING.x - MAN.x + WOMAN.x, y: KING.y - MAN.y + WOMAN.y };
+
+  // Four words verified (not guessed) to sit within a hair of literal-zero
+  // cosine similarity with "king" in real glove-wiki-gigaword-100
+  // embeddings -- see the header comment for the actual numbers. Angles
+  // found by search to land close to 90deg from king's own angle (not
+  // exact -- "close to 90 but not quite" was the ask) while staying
+  // spread apart from each other and within the canvas.
+  var DRILL = { x: 432, y: 512 };
+  var SUPERNOVA = { x: 347, y: 469 };
+  var PHOTOSYNTHESIS = { x: 228, y: 140 };
+  var ASTEROID = { x: 219, y: 233 };
+
+  // labelAt: hand-tuned in Inkscape (exported the settled state of each
+  // stage as a plain SVG -- same viewBox/coordinate space as this file --
+  // then diffed the edited files against the untouched defaults to find
+  // exactly which labels moved). Absolute position, overrides whatever
+  // labelPos would otherwise compute.
+  var WORD_POINTS = {
+    // labelPresent overrides `present` for the label only (not the vector
+    // line): king's label is visible starting in the "language" tree,
+    // before its vector line exists at all.
+    king:  { x: KING.x,  y: KING.y,  present: EMB_ALL, labelPresent: ALWAYS_PRESENT, color: GENDER_COLOR, labelAt: { x: 442, y: 291 } },
+    man:   { x: MAN.x,   y: MAN.y,   present: VM_ONLY, color: GENDER_COLOR },
+    // Default (right-anchored, extending into the canvas) -- woman sits
+    // close to the left edge, so a forced left-anchor label runs off it.
+    woman: { x: WOMAN.x, y: WOMAN.y, present: VM_ONLY, color: GENDER_COLOR },
+    // queen has TWO incoming lines (its own origin-vector from the
+    // upper-right, and the dashed +woman segment from the lower-right) --
+    // force left to clear both.
+    queen: { x: QUEEN.x, y: QUEEN.y, present: VM_ONLY, color: GENDER_COLOR, labelPos: 'left' },
+
+    drill:          { x: DRILL.x,          y: DRILL.y,          present: LS_ONLY, color: ORTHO_COLOR, labelAt: { x: 437, y: 536 } },
+    // Default (right) label would extend rightward into drill's own
+    // vector line -- force left instead.
+    supernova:      { x: SUPERNOVA.x,      y: SUPERNOVA.y,      present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', labelAt: { x: 344, y: 489 } },
+    // origin-vector approaches from the lower-right for both of these --
+    // force left so the label doesn't sit in its own vector's path.
+    photosynthesis: { x: PHOTOSYNTHESIS.x, y: PHOTOSYNTHESIS.y, present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', fontSize: 22, labelAt: { x: 259, y: 131 } },
+    asteroid:       { x: ASTEROID.x,       y: ASTEROID.y,       present: LS_ONLY, color: ORTHO_COLOR, labelPos: 'left', labelAt: { x: 228, y: 226 } }
+  };
+
+  var svg = null;
+  var visiblePanel = null;
+  var wordPointEls = {};
+  var arrowEls = [];
+  var langEls = [];
+  var numbersEl = null;
+  var bgVectorEls = [];
+  // xfmrEls: the "Who is the current UK king?" worked example (sentence,
+  // input arrow, "Charles III" answer) -- shared by stage 5 and stage 9
+  // (see XFMR_ONLY above), reused verbatim for inference rather than
+  // rebuilt, since stage 9 is that exact process happening for real.
+  // xfmrBoxEls: the shaded LLM sketch itself (frame, output arrow, and
+  // everything inside, including the FFN/ATTN mini-networks) -- shared
+  // across stages 5, 8 ("training"), and 9 ("inference"), same box
+  // reused rather than redrawn, since it's the same LLM in all three.
+  // trainingEls: stage-8-only worked example (the "[blank]" sentence,
+  // its own input arrow, the data-size caption) -- king rides in this
+  // sentence too, but the sentence text itself is entirely different
+  // from xfmrEls's, so it isn't shared the way the box is.
+  var xfmrEls = [];
+  var xfmrBoxEls = [];
+  var trainingEls = [];
+  var legacyStageEls = { data: [], compute: [] };
+  // paramLineEls: the FFN + ATTN mini-networks' connection lines (not
+  // their dots, which stay a constant color/opacity throughout) -- these
+  // are what actually change look between the box's three stages: muted
+  // structural grey while just being introduced (stage 5), active teal
+  // while training (stage 8), dimmed grey again for inference (stage 9),
+  // where lockEls also appears beside them.
+  var paramLineEls = [];
+  var lockEls = [];
+  var paramTableEls = [];
+  var currentAxesStage = null;
+
+  function ns(tag) {
+    return document.createElementNS(SVG_NS, tag);
+  }
+
+  // Stages 6-9 (data/compute/training/inference) reuse their existing
+  // hand-designed static SVG content (bar charts, the loss curve, the
+  // inference pipeline) rather than re-deriving each as hand-coordinated
+  // shapes -- adopts the markup from a <template id="llm-axes-source-X">
+  // (populated by {{< include >}} in the qmd, same viewBox coordinate
+  // space as everything else in this file) into one <g> in this
+  // persistent SVG, exactly like every other fade-controlled element.
+  function adoptTemplateSvg(stageName) {
+    var template = document.getElementById('llm-axes-source-' + stageName);
+    if (!template) return;
+    var sourceSvg = template.content.querySelector('svg');
+    if (!sourceSvg) return;
+    var group = ns('g');
+    Array.prototype.slice.call(sourceSvg.childNodes).forEach(function (node) {
+      group.appendChild(node.cloneNode(true));
+    });
+    group.classList.add('llm-fade-el');
+    svg.appendChild(group);
+    legacyStageEls[stageName].push(group);
+  }
+
+  function buildSvgOnce() {
+    if (svg) return svg;
+
+    visiblePanel = document.createElement('div');
+    visiblePanel.className = 'llm-axes-visible-panel';
+    visiblePanel.style.display = 'none';
+    document.body.appendChild(visiblePanel);
+
+    svg = ns('svg');
+    svg.setAttribute('viewBox', '0 0 700 600');
+    svg.setAttribute('width', '560');
+    svg.setAttribute('height', '560');
+    svg.classList.add('llm-axes-svg');
+
+    var arrowDefs = ns('defs');
+    [['llm-arrow-gender', GENDER_COLOR], ['llm-arrow-ortho', ORTHO_COLOR], ['llm-arrow-chain', CHAIN_COLOR], ['llm-arrow-bg', BG_VECTOR_COLOR], ['llm-arrow-struct', STRUCT_COLOR]].forEach(function (m) {
+      var marker = ns('marker');
+      marker.setAttribute('id', m[0]);
+      marker.setAttribute('viewBox', '0 0 10 10');
+      marker.setAttribute('refX', '8');
+      marker.setAttribute('refY', '5');
+      marker.setAttribute('markerWidth', '7');
+      marker.setAttribute('markerHeight', '7');
+      marker.setAttribute('orient', 'auto-start-reverse');
+      var path = ns('path');
+      path.setAttribute('d', 'M0,0 L10,5 L0,10 z');
+      path.setAttribute('fill', m[1]);
+      marker.appendChild(path);
+      arrowDefs.appendChild(marker);
+    });
+    svg.appendChild(arrowDefs);
+
+    // Unlabeled grey background vectors (BG_VECTORS) -- appended before
+    // king's own line so they paint underneath it, keeping king visually
+    // dominant despite sharing the same origin.
+    BG_VECTORS.forEach(function (pt) {
+      var line = ns('line');
+      line.setAttribute('x1', String(ORIGIN.x));
+      line.setAttribute('y1', String(ORIGIN.y));
+      line.setAttribute('x2', String(pt.x));
+      line.setAttribute('y2', String(pt.y));
+      line.setAttribute('stroke', BG_VECTOR_COLOR);
+      line.setAttribute('stroke-width', '2');
+      line.setAttribute('marker-end', 'url(#llm-arrow-bg)');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      bgVectorEls.push(line);
+    });
+
+    // Each word as a genuine solid vector FROM the origin -- no dot marks
+    // any point on it. A word's meaning is the vector itself (direction),
+    // not a 1-dimensional "location" a dot would misleadingly suggest.
+    Object.keys(WORD_POINTS).forEach(function (word) {
+      var pt = WORD_POINTS[word];
+      var line = ns('line');
+      line.setAttribute('x1', String(ORIGIN.x));
+      line.setAttribute('y1', String(ORIGIN.y));
+      line.setAttribute('x2', String(pt.x));
+      line.setAttribute('y2', String(pt.y));
+      line.setAttribute('stroke', pt.color);
+      line.setAttribute('stroke-width', '3.5');
+      line.setAttribute('marker-end', pt.color === ORTHO_COLOR ? 'url(#llm-arrow-ortho)' : 'url(#llm-arrow-gender)');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      wordPointEls[word] = { point: line };
+    });
+
+    // The dashed grey "-man, +woman" path: starts at king's tip, walks
+    // backward by man's vector, then forward by woman's vector, landing
+    // exactly on queen's tip (guaranteed by construction, see QUEEN
+    // above). This is what actually shows the arithmetic happening, as an
+    // honest walked path rather than an implied/labeled relationship.
+    var bend = { x: KING.x + ORIGIN.x - MAN.x, y: KING.y + ORIGIN.y - MAN.y };
+    [
+      // nudgeX pushes the label further right than the perpendicular
+      // offset alone -- without it, "- man"'s label sits almost on top of
+      // its own dashed line. labelAt: hand-tuned in Inkscape, same
+      // methodology as WORD_POINTS.labelAt above -- overrides the
+      // computed midpoint entirely.
+      { from: KING, to: bend, symbol: '− man', nudgeX: 22, labelAt: { x: 498, y: 397 } },
+      { from: bend, to: QUEEN, symbol: '+ woman', nudgeX: 0 }
+    ].forEach(function (seg) {
+      var line = ns('line');
+      line.setAttribute('x1', String(seg.from.x));
+      line.setAttribute('y1', String(seg.from.y));
+      line.setAttribute('x2', String(seg.to.x));
+      line.setAttribute('y2', String(seg.to.y));
+      line.setAttribute('stroke', CHAIN_COLOR);
+      line.setAttribute('stroke-width', '2');
+      line.setAttribute('stroke-dasharray', '5,4');
+      line.setAttribute('marker-end', 'url(#llm-arrow-chain)');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      arrowEls.push(line);
+
+      var mx = (seg.from.x + seg.to.x) / 2;
+      var my = (seg.from.y + seg.to.y) / 2;
+      var dx = seg.to.x - seg.from.x, dy = seg.to.y - seg.from.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      var label = ns('text');
+      if (seg.labelAt) {
+        label.setAttribute('x', String(seg.labelAt.x));
+        label.setAttribute('y', String(seg.labelAt.y));
+      } else {
+        label.setAttribute('x', String(mx - (dy / len) * 14 + seg.nudgeX));
+        label.setAttribute('y', String(my + (dx / len) * 14));
+      }
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '20');
+      label.setAttribute('font-weight', '700');
+      label.setAttribute('font-style', 'italic');
+      label.setAttribute('fill', CHAIN_COLOR);
+      label.textContent = seg.symbol;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      arrowEls.push(label);
+    });
+
+    Object.keys(WORD_POINTS).forEach(function (word) {
+      var pt = WORD_POINTS[word];
+
+      // Default: label above-right, or above-left (anchor "end") once the
+      // point is past the panel's horizontal midpoint, so it doesn't run
+      // off the right edge. `labelPos` overrides this for points whose
+      // default side would collide with their own vector's approach path
+      // or the dashed chain -- 'below' (king: vector exits up, chain
+      // exits down-right), 'right' (forces right past the midpoint
+      // threshold), or 'left' (forces left, e.g. when the vector itself
+      // approaches from the lower-right).
+      var label = ns('text');
+      if (pt.labelPos === 'below') {
+        label.setAttribute('x', String(pt.x));
+        label.setAttribute('y', String(pt.y + 30));
+        label.setAttribute('text-anchor', 'middle');
+      } else if (pt.labelPos === 'right') {
+        label.setAttribute('x', String(pt.x + 16));
+        label.setAttribute('y', String(pt.y - 12));
+      } else if (pt.labelPos === 'left') {
+        label.setAttribute('x', String(pt.x - 16));
+        label.setAttribute('y', String(pt.y - 12));
+        label.setAttribute('text-anchor', 'end');
+      } else {
+        var labelOnLeft = pt.x > 470;
+        label.setAttribute('x', String(pt.x + (labelOnLeft ? -16 : 16)));
+        label.setAttribute('y', String(pt.y - 12));
+        if (labelOnLeft) label.setAttribute('text-anchor', 'end');
+      }
+      // Hand-tuned absolute position wins if set -- keeps whichever
+      // text-anchor the labelPos branch above chose, just overrides where
+      // it sits.
+      if (pt.labelAt) {
+        label.setAttribute('x', String(pt.labelAt.x));
+        label.setAttribute('y', String(pt.labelAt.y));
+      }
+      label.setAttribute('font-size', String(pt.fontSize || 27));
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', pt.color);
+      label.textContent = word;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+
+      wordPointEls[word].label = label;
+    });
+
+    // King's raw component numbers -- a stand-in for what the vector
+    // actually is (a plain array of floats), shown only in "embeddings"
+    // and gone by the time anything else appears. Not real trained
+    // weights, just illustrative -- placed directly under king itself
+    // (same color) rather than the origin, so it reads as "this word" ->
+    // "these numbers", not as a caption for the whole diagram.
+    // labelAt: hand-tuned in Inkscape, same methodology as WORD_POINTS
+    // above -- moved off to king's right rather than straight below it.
+    var numbersLabelAt = { x: 567, y: 316 };
+    numbersEl = ns('text');
+    numbersEl.setAttribute('x', String(numbersLabelAt.x));
+    numbersEl.setAttribute('y', String(numbersLabelAt.y));
+    numbersEl.setAttribute('text-anchor', 'middle');
+    numbersEl.setAttribute('font-size', '20');
+    numbersEl.setAttribute('fill', GENDER_COLOR);
+    numbersEl.textContent = '[ 0.23, −0.45, 0.55, 0.11, … ]';
+    numbersEl.classList.add('llm-fade-el');
+    svg.appendChild(numbersEl);
+
+    // Small constituency tree for stage 1 ("language") -- see the
+    // TREE_* constants above. king's own leaf is NOT built here; it's
+    // WORD_POINTS.king's persistent label, tweened into KING_TREE_POS by
+    // updateKingLabelPosition below.
+    // Edges stop short of each end's text instead of running into it --
+    // insetPoint pulls the endpoint back along the line by a fixed gap.
+    // Gaps differ because they're measured from each node's baseline: the
+    // parent end backs off from a line of text sitting mostly above its
+    // own baseline, the child end backs off from text sitting mostly
+    // below the gap point, so it needs to clear the text's cap-height on
+    // approach.
+    var TREE_EDGE_GAP_FROM_PARENT = 16;
+    var TREE_EDGE_GAP_TO_CHILD = 26;
+    function insetPoint(from, to, gap) {
+      var dx = to.x - from.x, dy = to.y - from.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len === 0) return { x: from.x, y: from.y };
+      return { x: from.x + (dx / len) * gap, y: from.y + (dy / len) * gap };
+    }
+    TREE_EDGES.forEach(function (edge) {
+      var p1 = insetPoint(edge[0], edge[1], TREE_EDGE_GAP_FROM_PARENT);
+      var p2 = insetPoint(edge[1], edge[0], TREE_EDGE_GAP_TO_CHILD);
+      var line = ns('line');
+      line.setAttribute('x1', String(p1.x));
+      line.setAttribute('y1', String(p1.y));
+      line.setAttribute('x2', String(p2.x));
+      line.setAttribute('y2', String(p2.y));
+      line.setAttribute('stroke', STRUCT_COLOR);
+      line.setAttribute('stroke-width', '1.5');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      langEls.push(line);
+    });
+    TREE_NODES.forEach(function (node) {
+      var label = ns('text');
+      label.setAttribute('x', String(node.x));
+      label.setAttribute('y', String(node.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', String(TREE_FONT));
+      label.setAttribute('font-style', 'italic');
+      label.setAttribute('fill', STRUCT_COLOR);
+      label.textContent = node.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      langEls.push(label);
+    });
+    TREE_LEAVES.forEach(function (leaf) {
+      var label = ns('text');
+      label.setAttribute('x', String(leaf.x));
+      label.setAttribute('y', String(leaf.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', String(TREE_FONT));
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', CHAIN_COLOR);
+      label.textContent = leaf.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      langEls.push(label);
+    });
+
+    // Stage 5 "transformer": the sentence (all words but king, which is
+    // WORD_POINTS.king's own persistent label, tweened here the same way
+    // it's tweened into the stage-1 tree), an arrow from king up into an
+    // unlabeled shaded sketch of the decoder-only Transformer's silhouette.
+    SENTENCE_WORDS.forEach(function (word) {
+      var label = ns('text');
+      label.setAttribute('x', String(word.x));
+      label.setAttribute('y', String(word.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '27');
+      label.setAttribute('font-weight', '600');
+      label.setAttribute('fill', CHAIN_COLOR);
+      label.textContent = word.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      xfmrEls.push(label);
+    });
+
+    function xfmrLine(cfg, opts) {
+      opts = opts || {};
+      var line = ns('line');
+      line.setAttribute('x1', String(cfg.from.x));
+      line.setAttribute('y1', String(cfg.from.y));
+      line.setAttribute('x2', String(cfg.to.x));
+      line.setAttribute('y2', String(cfg.to.y));
+      line.setAttribute('stroke', opts.color || GENDER_COLOR);
+      line.setAttribute('stroke-width', String(opts.strokeWidth || 3));
+      if (opts.dotted) line.setAttribute('stroke-dasharray', '1.5,5');
+      line.setAttribute('marker-end', 'url(#' + (opts.marker || 'llm-arrow-gender') + ')');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      (opts.group || xfmrEls).push(line);
+      return line;
+    }
+    xfmrLine(XFMR_ARROW);
+
+    // Shaded, unlabeled sketch -- same silhouette as the real decoder-only
+    // Transformer diagram elsewhere in the deck, bottom (input) to top
+    // (output): embedding -> [repeated block: norm, self-attention,
+    // residual add, norm, feed-forward, residual add] -> a separate small
+    // dashed "repeated N times" indicator, connected to the block below
+    // and Final Norm above by short dotted segments (matches the real
+    // diagram's own convention for showing the repeat -- not a
+    // stack-shadow effect, that read as unclear on the first pass) ->
+    // final norm -> linear+softmax -> output, all inside one solid frame
+    // with an unlabeled output arrow poking out its top.
+    function xfmrRect(cfg, opts) {
+      opts = opts || {};
+      var rect = ns('rect');
+      rect.setAttribute('x', String(cfg.x));
+      rect.setAttribute('y', String(cfg.y));
+      rect.setAttribute('width', String(cfg.w));
+      rect.setAttribute('height', String(cfg.h));
+      rect.setAttribute('rx', String(cfg.rx));
+      rect.setAttribute('fill', STRUCT_COLOR);
+      rect.setAttribute('fill-opacity', String(opts.fillOpacity != null ? opts.fillOpacity : 0.1));
+      rect.setAttribute('stroke', STRUCT_COLOR);
+      rect.setAttribute('stroke-opacity', String(opts.strokeOpacity != null ? opts.strokeOpacity : 0.55));
+      rect.setAttribute('stroke-width', String(opts.strokeWidth || 1.5));
+      if (opts.dashed) rect.setAttribute('stroke-dasharray', '6,5');
+      rect.classList.add('llm-fade-el');
+      svg.appendChild(rect);
+      (opts.group || xfmrEls).push(rect);
+      return rect;
+    }
+    function xfmrPlus(pt, opts) {
+      opts = opts || {};
+      [[-7, 0, 7, 0], [0, -7, 0, 7]].forEach(function (d) {
+        var line = ns('line');
+        line.setAttribute('x1', String(pt.x + d[0]));
+        line.setAttribute('y1', String(pt.y + d[1]));
+        line.setAttribute('x2', String(pt.x + d[2]));
+        line.setAttribute('y2', String(pt.y + d[3]));
+        line.setAttribute('stroke', STRUCT_COLOR);
+        line.setAttribute('stroke-opacity', '0.6');
+        line.setAttribute('stroke-width', '2');
+        line.classList.add('llm-fade-el');
+        svg.appendChild(line);
+        (opts.group || xfmrEls).push(line);
+      });
+    }
+
+    // Everything from here down is the shaded LLM sketch itself -- goes
+    // in xfmrBoxEls (shared: stage 5 "transformer", stage 8 "training",
+    // stage 9 "inference") rather than xfmrEls (the stage-5-only worked
+    // example above: the sentence and its input arrow). Same box, same
+    // LLM, reused rather than redrawn for each stage that needs it.
+    var BOX = { group: xfmrBoxEls };
+    xfmrRect(XFMR_FRAME, { group: xfmrBoxEls, fillOpacity: 0, strokeOpacity: 0.7, strokeWidth: 2 });
+    xfmrRect(XFMR_OUTPUT, BOX);
+    xfmrLine(XFMR_OUTPUT_ARROW, { group: xfmrBoxEls, color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 2 });
+
+    // The one piece of real text in this whole sketch: what actually
+    // comes out the top. Amber, not blue -- this isn't king, it's the
+    // model's answer. Stage-5-specific (xfmrEls): "Charles III" is only
+    // meaningful for this one worked example, not training/inference.
+    var answerLabel = ns('text');
+    answerLabel.setAttribute('x', String(XFMR_ANSWER_TEXT.x));
+    answerLabel.setAttribute('y', String(XFMR_ANSWER_TEXT.y));
+    answerLabel.setAttribute('text-anchor', 'middle');
+    answerLabel.setAttribute('font-size', '26');
+    answerLabel.setAttribute('font-weight', '600');
+    answerLabel.setAttribute('fill', AMBER_COLOR);
+    answerLabel.textContent = 'Charles III';
+    answerLabel.classList.add('llm-fade-el');
+    svg.appendChild(answerLabel);
+    xfmrEls.push(answerLabel);
+
+    xfmrRect(XFMR_LINSOFT, BOX);
+    xfmrRect(XFMR_FINAL_NORM, BOX);
+    xfmrLine(XFMR_REPEAT_CONNECTOR_1, { group: xfmrBoxEls, color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
+    xfmrRect(XFMR_REPEAT_BOX, { group: xfmrBoxEls, dashed: true, fillOpacity: 0, strokeOpacity: 0.5 });
+    xfmrLine(XFMR_REPEAT_CONNECTOR_2, { group: xfmrBoxEls, color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
+    xfmrRect(XFMR_BLOCK_OUTER, { group: xfmrBoxEls, dashed: true, fillOpacity: 0, strokeOpacity: 0.45 });
+    xfmrPlus(XFMR_PLUS2, BOX);
+    xfmrRect(XFMR_FFN, BOX);
+    xfmrRect(XFMR_NORM2, BOX);
+    xfmrPlus(XFMR_PLUS1, BOX);
+    xfmrRect(XFMR_ATTN, BOX);
+    xfmrRect(XFMR_NORM1, BOX);
+    xfmrRect(XFMR_EMBED, BOX);
+
+    // FFN and ATTN mini-networks: dots (units) + lines (weighted
+    // connections), not a literal architecture diagram, drawn on top of
+    // the shaded XFMR_FFN/XFMR_ATTN rects already placed above. Dots stay
+    // a constant color/opacity throughout; the lines (paramLineEls) are
+    // what applyStage restyles per box-stage (neutral grey while just
+    // being introduced at stage 5, active teal while training, dimmed
+    // grey again once frozen for inference).
+    function paramDot(pt) {
+      var dot = ns('circle');
+      dot.setAttribute('cx', String(pt.x));
+      dot.setAttribute('cy', String(pt.y));
+      dot.setAttribute('r', String(pt.r));
+      dot.setAttribute('fill', CHAIN_COLOR);
+      dot.classList.add('llm-fade-el');
+      svg.appendChild(dot);
+      xfmrBoxEls.push(dot);
+    }
+    function paramLine(a, b) {
+      var line = ns('line');
+      line.setAttribute('x1', String(a.x));
+      line.setAttribute('y1', String(a.y));
+      line.setAttribute('x2', String(b.x));
+      line.setAttribute('y2', String(b.y));
+      line.setAttribute('stroke-width', '1');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      xfmrBoxEls.push(line);
+      paramLineEls.push(line);
+    }
+
+    // FFN: 3 columns (2 in, 3 hidden/expanded, 2 out), fully connected
+    // between adjacent columns -- 2 layers of connections, matching the
+    // real FFN's up-project-then-down-project structure.
+    var ffnCols = FFN_NET.cols.map(function (col) {
+      return col.dots.map(function (y) { return { x: col.x, y: y, r: FFN_NET.dotR }; });
+    });
+    for (var fc = 0; fc < ffnCols.length - 1; fc++) {
+      ffnCols[fc].forEach(function (a) {
+        ffnCols[fc + 1].forEach(function (b) { paramLine(a, b); });
+      });
+    }
+    ffnCols.forEach(function (col) { col.forEach(paramDot); });
+
+    // ATTN: three small parallel 2x2 clusters (heads), each independently
+    // fully connected, with visible gaps between clusters so they read as
+    // separate heads rather than one pooled network.
+    ATTN_NET.heads.forEach(function (head) {
+      var headCols = head.cols.map(function (x) {
+        return ATTN_NET.rows.map(function (y) { return { x: x, y: y, r: ATTN_NET.dotR }; });
+      });
+      headCols[0].forEach(function (a) {
+        headCols[1].forEach(function (b) { paramLine(a, b); });
+      });
+      headCols.forEach(function (col) { col.forEach(paramDot); });
+    });
+
+    // Padlock icons -- inference-only (see LOCK_ICONS/lockEls), one beside
+    // each mini-network (FFN, ATTN) -- real shapes rather than relying on
+    // dimmed lines alone to say "frozen."
+    LOCK_ICONS.forEach(function (icon) {
+      var lockBody = ns('rect');
+      lockBody.setAttribute('x', String(icon.cx - 9));
+      lockBody.setAttribute('y', String(icon.cy - 2));
+      lockBody.setAttribute('width', '18');
+      lockBody.setAttribute('height', '15');
+      lockBody.setAttribute('rx', '2');
+      lockBody.setAttribute('fill', STRUCT_COLOR);
+      lockBody.classList.add('llm-fade-el');
+      svg.appendChild(lockBody);
+      lockEls.push(lockBody);
+      var lockShackle = ns('path');
+      var lsx = icon.cx - 6, lsy = icon.cy - 2;
+      lockShackle.setAttribute('d', 'M ' + lsx + ' ' + lsy + ' v -5 a 6 6 0 0 1 12 0 v 5');
+      lockShackle.setAttribute('fill', 'none');
+      lockShackle.setAttribute('stroke', STRUCT_COLOR);
+      lockShackle.setAttribute('stroke-width', '2.5');
+      lockShackle.classList.add('llm-fade-el');
+      svg.appendChild(lockShackle);
+      lockEls.push(lockShackle);
+    });
+
+    // Stage 8 "training": its own sentence ("The king wore a [blank]"),
+    // its own input arrow, and a data-size caption -- entirely separate
+    // from xfmrEls, which stage 9 reuses instead. king rides in this
+    // sentence too (its persistent label, tweened here like everywhere
+    // else); the other words and the blank are built fresh.
+    TRAINING_SENTENCE_WORDS.forEach(function (word) {
+      var label = ns('text');
+      label.setAttribute('x', String(word.x));
+      label.setAttribute('y', String(word.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '27');
+      label.setAttribute('font-weight', '600');
+      // The blank, not a real word: amber, same "thing being predicted"
+      // convention as "Charles III" -- here it's the target the model is
+      // being trained to predict, rather than the model's actual answer.
+      label.setAttribute('fill', word.text === '_____' ? AMBER_COLOR : CHAIN_COLOR);
+      label.textContent = word.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      trainingEls.push(label);
+    });
+    xfmrLine(TRAINING_ARROW, { group: trainingEls });
+    var dataLabel = ns('text');
+    dataLabel.setAttribute('x', String(TRAINING_DATA_LABEL.x));
+    dataLabel.setAttribute('y', String(TRAINING_DATA_LABEL.y));
+    dataLabel.setAttribute('text-anchor', 'middle');
+    dataLabel.setAttribute('font-size', '22');
+    dataLabel.setAttribute('fill', STRUCT_COLOR);
+    dataLabel.textContent = TRAINING_DATA_LABEL.text;
+    dataLabel.classList.add('llm-fade-el');
+    svg.appendChild(dataLabel);
+    trainingEls.push(dataLabel);
+
+    // Stage 5 only: the Kimi K3 parameter note beside the box (see
+    // PARAM_NOTE above) -- just the two lines, no table/rule at all now
+    // that there's no breakdown to organize into columns.
+    function paramNoteText(y, color, text, opts) {
+      opts = opts || {};
+      var el = ns('text');
+      el.setAttribute('x', String(PARAM_TABLE_LABEL_X));
+      el.setAttribute('y', String(y));
+      el.setAttribute('text-anchor', 'start');
+      el.setAttribute('font-family', PARAM_ANNOT_FONT);
+      el.setAttribute('font-size', String(opts.fontSize || 24));
+      el.setAttribute('font-weight', String(opts.fontWeight || 600));
+      el.setAttribute('fill', color);
+      el.textContent = text;
+      el.classList.add('llm-fade-el');
+      svg.appendChild(el);
+      paramTableEls.push(el);
+    }
+
+    paramNoteText(PARAM_NOTE.mainY, AMBER_COLOR, PARAM_NOTE.main, { fontSize: 19 });
+    paramNoteText(PARAM_NOTE.subY, STRUCT_COLOR, PARAM_NOTE.sub, { fontSize: 16, fontWeight: 400 });
+
+    // 'training' and 'inference' don't adopt a static SVG -- they reuse
+    // xfmrBoxEls (see above). Only 'data' and 'compute' still have their
+    // own bar-chart content.
+    ['data', 'compute'].forEach(adoptTemplateSvg);
+
+    // Attached once, permanently -- never reparented again, unlike the
+    // earlier mount-based attempt. That also sidesteps the "reparent and
+    // restyle in the same tick suppresses the transition" gotcha from
+    // AGENT-BRIEFING.md entirely, since there's no more reparenting at all.
+    visiblePanel.appendChild(svg);
+
+    return svg;
+  }
+
+  // No rotation anywhere anymore (there's nothing left to rotate once the
+  // axes are gone), so this is now just plain opacity fades. Content
+  // leaving a stage fades out immediately (delay 0); content entering
+  // waits FADE_MS for whatever's leaving to clear first, so the two
+  // groups (man/woman/queen+chain vs. the near-orthogonal words) never
+  // visually overlap mid-transition. King never changes presence on any
+  // leg it's part of, so it never needs this -- setting its opacity to
+  // the same value again is just a no-op regardless of delay.
+  var FADE_MS = 500;
+
+  function applyFade(els, present, delayMs, animate) {
+    els.forEach(function (el) {
+      if (!animate) {
+        el.classList.add('llm-axes-no-transition');
+      } else {
+        el.style.transitionDelay = delayMs + 'ms';
+      }
+      el.style.opacity = present ? '1' : '0';
+      if (!animate) {
+        void el.getBoundingClientRect();
+        el.classList.remove('llm-axes-no-transition');
+        el.style.transitionDelay = '0ms';
+      }
+    });
+  }
+
+  // Tweens king's label between its tree-leaf spot (stage "language") and
+  // its normal vector-label spot (labelAt, every other stage) via a manual
+  // requestAnimationFrame loop over the SVG x/y attributes directly --
+  // deliberately not a CSS `transform` transition, since CSS transforms on
+  // SVG elements are interpreted in a mix of unit spaces across browsers
+  // and this diagram's viewBox doesn't map 1:1 to rendered CSS pixels;
+  // tweening x/y in the same user-unit space everything else already uses
+  // sidesteps that entirely and keeps this verifiable via getAttribute
+  // like everything else in this file.
+  var KING_GLIDE_MS = 500;
+  var kingGlideRaf = null;
+
+  function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
+  // Four possible resting spots for king's label: the stage-1 tree leaf,
+  // the stage-5/9 sentence (same position, since stage 9 reuses stage 5's
+  // exact worked example), the stage-8 training sentence, or its normal
+  // vector-label spot (labelAt) for every stage in between.
+  function kingTargetForStage(stageName) {
+    if (stageName === 'language') return KING_TREE_POS;
+    if (stageName === 'transformer' || stageName === 'inference') return KING_XFMR_POS;
+    if (stageName === 'training') return KING_TRAINING_POS;
+    return WORD_POINTS.king.labelAt;
+  }
+
+  function tweenKingLabel(target, animate) {
+    var label = wordPointEls.king.label;
+
+    if (kingGlideRaf !== null) {
+      cancelAnimationFrame(kingGlideRaf);
+      kingGlideRaf = null;
+    }
+
+    if (!animate) {
+      label.setAttribute('x', String(target.x));
+      label.setAttribute('y', String(target.y));
+      return;
+    }
+
+    var fromX = parseFloat(label.getAttribute('x'));
+    var fromY = parseFloat(label.getAttribute('y'));
+    if (fromX === target.x && fromY === target.y) return;
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var t = Math.min(1, (ts - start) / KING_GLIDE_MS);
+      var e = easeInOutQuad(t);
+      label.setAttribute('x', String(fromX + (target.x - fromX) * e));
+      label.setAttribute('y', String(fromY + (target.y - fromY) * e));
+      if (t < 1) {
+        kingGlideRaf = requestAnimationFrame(step);
+      } else {
+        kingGlideRaf = null;
+      }
+    }
+    kingGlideRaf = requestAnimationFrame(step);
+  }
+
+  function applyStage(stageName, animate) {
+    var prevStage = currentAxesStage;
+
+    Object.keys(WORD_POINTS).forEach(function (word) {
+      var wp = WORD_POINTS[word];
+      var els = wordPointEls[word];
+
+      var wasPresent = prevStage ? wp.present[prevStage] : false;
+      var present = wp.present[stageName];
+      var entering = animate && !wasPresent && present;
+      applyFade([els.point], present, entering ? FADE_MS : 0, animate);
+
+      var labelPresentMap = wp.labelPresent || wp.present;
+      var labelWasPresent = prevStage ? labelPresentMap[prevStage] : false;
+      var labelPresent = labelPresentMap[stageName];
+      var labelEntering = animate && !labelWasPresent && labelPresent;
+      applyFade([els.label], labelPresent, labelEntering ? FADE_MS : 0, animate);
+    });
+
+    // Only move king when it's actually going to be visible in the
+    // destination stage -- kingTargetForStage falls back to the
+    // embeddings-stage position for any stage it doesn't recognize,
+    // which used to mean leaving to data/compute/training/inference
+    // (none of which show king at all) made it visibly glide to that
+    // fallback spot while simultaneously fading out to nothing. Now it
+    // just stays put and fades in place; next time it's needed
+    // (navigating back to a stage where it's present), the tween finds
+    // it already at the right spot and is a no-op.
+    if (ALWAYS_PRESENT[stageName]) {
+      tweenKingLabel(kingTargetForStage(stageName), animate);
+    }
+
+    var langWasPresent = prevStage ? LANG_ONLY[prevStage] : false;
+    var langPresent = LANG_ONLY[stageName];
+    var langEntering = animate && !langWasPresent && langPresent;
+    applyFade(langEls, langPresent, langEntering ? FADE_MS : 0, animate);
+
+    var xfmrWasPresent = prevStage ? XFMR_ONLY[prevStage] : false;
+    var xfmrPresent = XFMR_ONLY[stageName];
+    var xfmrEntering = animate && !xfmrWasPresent && xfmrPresent;
+    applyFade(xfmrEls, xfmrPresent, xfmrEntering ? FADE_MS : 0, animate);
+
+    var boxWasPresent = prevStage ? XFMR_BOX_PRESENT[prevStage] : false;
+    var boxPresent = XFMR_BOX_PRESENT[stageName];
+    var boxEntering = animate && !boxWasPresent && boxPresent;
+    applyFade(xfmrBoxEls, boxPresent, boxEntering ? FADE_MS : 0, animate);
+
+    // The FFN/ATTN mini-networks' lines: restyled (not re-faded, since
+    // they're already part of xfmrBoxEls above) whenever the box itself
+    // is visible. Neutral grey for stage 5 (just being introduced, not
+    // yet training or running), active teal while training, dimmed grey
+    // again for inference -- paired with the lock icon appearing only
+    // then, since a plain opacity drop alone read as "just faint," not
+    // unambiguously "frozen."
+    if (boxPresent) {
+      var paramColor = STRUCT_COLOR, paramOpacity = '0.5';
+      if (stageName === 'training') { paramColor = ACTIVE_COLOR; paramOpacity = '0.85'; }
+      else if (stageName === 'inference') { paramColor = STRUCT_COLOR; paramOpacity = '0.25'; }
+      paramLineEls.forEach(function (line) {
+        line.style.stroke = paramColor;
+        line.style.strokeOpacity = paramOpacity;
+      });
+    }
+
+    var lockWasPresent = prevStage ? INFERENCE_ONLY[prevStage] : false;
+    var lockPresent = INFERENCE_ONLY[stageName];
+    var lockEntering = animate && !lockWasPresent && lockPresent;
+    applyFade(lockEls, lockPresent, lockEntering ? FADE_MS : 0, animate);
+
+    var trainingWasPresent = prevStage ? TRAINING_ONLY[prevStage] : false;
+    var trainingPresent = TRAINING_ONLY[stageName];
+    var trainingEntering = animate && !trainingWasPresent && trainingPresent;
+    applyFade(trainingEls, trainingPresent, trainingEntering ? FADE_MS : 0, animate);
+
+    var paramTableWasPresent = prevStage ? PARAM_TABLE_ONLY[prevStage] : false;
+    var paramTablePresent = PARAM_TABLE_ONLY[stageName];
+    var paramTableEntering = animate && !paramTableWasPresent && paramTablePresent;
+    applyFade(paramTableEls, paramTablePresent, paramTableEntering ? FADE_MS : 0, animate);
+
+    var vmWasPresent = prevStage ? VM_ONLY[prevStage] : false;
+    var vmPresent = VM_ONLY[stageName];
+    var chainEntering = animate && !vmWasPresent && vmPresent;
+    applyFade(arrowEls, vmPresent, chainEntering ? FADE_MS : 0, animate);
+
+    applyFade([numbersEl], EMB_ONLY[stageName], 0, animate);
+    applyFade(bgVectorEls, EMB_ONLY[stageName], 0, animate);
+
+    [['data', DATA_ONLY], ['compute', COMPUTE_ONLY]].forEach(function (pair) {
+      var name = pair[0], presenceMap = pair[1];
+      var wasPresent = prevStage ? presenceMap[prevStage] : false;
+      var present = presenceMap[stageName];
+      var entering = animate && !wasPresent && present;
+      applyFade(legacyStageEls[name], present, entering ? FADE_MS : 0, animate);
+    });
+  }
+
+  var currentAnchor = null;
+
+  function positionVisiblePanel() {
+    if (!currentAnchor) return;
+    var rect = currentAnchor.getBoundingClientRect();
+    visiblePanel.style.left = rect.left + 'px';
+    visiblePanel.style.top = rect.top + 'px';
+    visiblePanel.style.width = rect.width + 'px';
+    visiblePanel.style.height = rect.height + 'px';
+  }
+
+  function handleSlideChange(slideEl) {
+    if (!slideEl) return;
+    var anchor = slideEl.querySelector('.llm-axes-anchor');
+    if (!anchor) {
+      currentAxesStage = null;
+      currentAnchor = null;
+      visiblePanel.style.display = 'none';
+      return;
+    }
+    currentAnchor = anchor;
+    visiblePanel.style.display = 'flex';
+    positionVisiblePanel();
+
+    var newStage = anchor.dataset.axesStage;
+    var animate = currentAxesStage !== null && currentAxesStage !== newStage;
+    applyStage(newStage, animate);
+    currentAxesStage = newStage;
+  }
+
+  function setup() {
+    buildSvgOnce();
+    handleSlideChange(Reveal.getCurrentSlide());
+    Reveal.on('slidechanged', function (event) {
+      handleSlideChange(event.currentSlide);
+    });
+    window.addEventListener('resize', positionVisiblePanel);
+  }
+
+  function whenRevealAvailable() {
+    if (window.Reveal) {
+      if (typeof Reveal.isReady === 'function' && Reveal.isReady()) {
+        setup();
+      } else {
+        Reveal.on('ready', setup);
+      }
+    } else {
+      setTimeout(whenRevealAvailable, 30);
+    }
+  }
+
+  whenRevealAvailable();
+})();
+</script>

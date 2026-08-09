@@ -64,6 +64,41 @@ output, 1920x1080, dark theme.
   you see `:::` warnings on render, check for fence markers glued to content
   lines and give them their own line.
 
+## Citations: the Sources modal pattern
+
+Any slide needing citations gets a `<template class="slide-citations-source">`
+added to its content div (right after the `<ul>` if there is one):
+```html
+<template class="slide-citations-source">
+  <ul>
+    <li>Some claim: Author et al. (Org), <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">"Paper Title"</a> (arXiv:XXXX.XXXXX)</li>
+  </ul>
+</template>
+```
+That's the *entire* authoring step — a single persistent "Sources" button +
+`<dialog>` modal (built once by `citations.html`, wired in via
+`include-after-body` in the YAML, same as `llm-axes-anim.html`) is already
+appended directly to `<body>` and listens for `Reveal.on('slidechanged', ...)`.
+It shows/hides the button and swaps the dialog's content based on whichever
+slide's own `<template>` is present, hiding the button entirely on slides
+with none. No per-slide JS, no registration step — just add the template.
+
+Architecture reasoning is the same as `llm-axes-anim.html`'s visible panel
+(see the reveal.js finding below): `.reveal .slides` gets a CSS
+`transform: scale(...)` for responsive resizing, so `position: fixed` on any
+descendant of that transformed container doesn't behave like true
+viewport-fixed. Both the button and dialog live outside `.reveal .slides`
+entirely for exactly that reason, and doing it this way also keeps citations
+outside anything auto-animate's DOM scan ever walks.
+
+**Don't**: put citations directly in slide body text, or in a per-slide
+`<details>` element — both tried and rejected (crowds the slide; a
+`<details>` can expand off-screen depending on where it sits on a full
+slide). **Don't** duplicate a citation across slides if the same source is
+reused — cross-reference instead, e.g. `llm-stage-8-training`'s template
+says "same post-filter figure as the data slide's ... bar -- see that
+slide's sources" rather than repeating the Villalobos citation.
+
 ## Critical technical finding: reveal.js auto-animate cannot rotate elements
 
 This took a long, rigorous investigation to nail down — don't rediscover it
@@ -104,17 +139,78 @@ the hard way.
   change get unmatched (unique id per stage) so they cross-fade cleanly
   instead of collapsing.
 
-**Open problem, if you're picking up the rotation work:** the technically
-sound path is JS-created (not statically-declared) SVG elements + a plain
-CSS `transition: transform` + a JS listener on `Reveal.on('slidechanged'
-| 'fragmentshown', ...)`, entirely bypassing auto-animate's `data-id`
-matching. Confirmed: freshly `document.createElementNS`'d SVG elements DO
-correctly interpolate `transform` this way. Unconfirmed/unexplained: the
-exact same technique failed on an SVG element that was part of the page's
-*static* initial HTML (not JS-created) — even after ruling out timing,
-stylesheet-vs-inline-style, and `transform-origin` as causes. If you hit
-this, the known-working fallback is to build the shape via JS from scratch
-rather than starting from static markup.
+**Solved** (llm-stage-2-embeddings ↔ llm-stage-3-latent-space axes, see
+`llm-axes-anim.html`): JS-created (not statically-declared) SVG elements +
+a plain CSS `transition: transform` + a JS listener on
+`Reveal.on('slidechanged', ...)`, entirely bypassing auto-animate's
+`data-id` matching for those elements. Confirmed: freshly
+`document.createElementNS`'d SVG elements DO correctly interpolate
+`transform` this way — reused for any future rotation work. Two gotchas
+that ate real debugging time, both confirmed via `getComputedStyle`
+sampled every `requestAnimationFrame`, not screenshots:
+
+- **The transition silently no-ops if you reparent the element and change
+  its `transform` in the same synchronous tick.** The two style changes
+  collapse into one unobserved recalc — the browser never gets a chance to
+  render the "before" state, so there's nothing to transition *from*, and
+  the element just jumps straight to the final value with zero animation.
+  Fix: force a layout flush (e.g. `void el.getBoundingClientRect()`)
+  between the reparent and the restyle. This explains the earlier
+  "unconfirmed/unexplained" failure noted below for static-markup
+  elements too, if that code path also reparented — worth checking first
+  if you hit an instant-jump instead of a transition on the next thing you
+  build this way.
+- **Auto-animate fades the whole *mount point* if it doesn't share a
+  `data-id` across the two slides**, even though none of the JS-created
+  content inside it is auto-animate's concern. Auto-animate's documented
+  default behavior for anything it can't match between two
+  `auto-animate="true"` slides is to fade it in/out — and an empty mount
+  `<div>` with no `data-id` counts as unmatched, so the *entire panel*
+  (including your genuinely-animating children) flashes on top of your own
+  transition.
+  **The fix that seemed obvious here — give the mount a shared `data-id` so
+  it's "the same element, unchanged" — is a trap, do not do this.** It
+  stops the mount from fading, but makes things *worse*: once the mount
+  becomes a matched element, reveal recurses into its subtree looking for
+  descendants it can independently mark, finds your un-data-id'd
+  JS-created line/label elements, and starts driving its *own* `opacity`
+  transition on them via `[data-auto-animate-target^=unmatched]
+  {opacity:0}` (confirmed by reading reveal's bundled source) — fighting
+  your own JS-driven opacity/transform changes on the exact same elements.
+  This looks like elements randomly "dropping in" or one navigation
+  animating correctly while the next snaps to a wrong pose, and it's
+  intermittent enough to look like a timing bug rather than what it is.
+  **The only reliable fix is to keep the whole diagram outside anything
+  auto-animate's scan ever walks, full stop — not to negotiate with it via
+  data-id.** Concretely: don't put the real content inside the
+  `auto-animate="true"` section's DOM at all. Put an invisible,
+  zero-content placeholder there instead (sized via CSS to reserve the
+  right layout space, e.g. `visibility: hidden`) purely so the flex layout
+  doesn't reflow — auto-animate can do whatever it wants to a placeholder
+  that renders nothing, it's undetectable either way. Build the actual
+  visible content as a single persistent `position: fixed` element
+  appended directly to `<body>` (a sibling of `.reveal`, never a
+  descendant — being nested under anything reveal-owned risks inheriting a
+  `transform` ancestor, which would break `position: fixed`'s
+  viewport-relative behavior), and on every `'slidechanged'` reposition it
+  via `getBoundingClientRect()` of whichever placeholder is in the current
+  slide. This also means the SVG never needs to be reparented at all after
+  its initial creation, which incidentally sidesteps the reparent-timing
+  gotcha above too — one less thing to get wrong. Verified via a 30x rapid
+  next/prev "mash" test (40ms between each, faster than a real keypress
+  cadence) with `getComputedStyle` sampled every frame: zero instances of
+  any line/label element ever acquiring `data-auto-animate-target`, and a
+  fresh page load always converges to exactly one `<svg>` / one panel
+  element, no matter how aggressively you navigate.
+
+Original unconfirmed finding, preserved in case it recurs: the same
+JS-transform technique failed on an SVG element that was part of the
+page's *static* initial HTML (not JS-created) — even after ruling out
+timing, stylesheet-vs-inline-style, and `transform-origin` as causes,
+*before* the reparent-timing gotcha above was known. If you hit this again
+with genuinely no reparenting involved, the known-working fallback is
+still to build the shape via JS from scratch rather than starting from
+static markup.
 
 ## Verification workflow
 
