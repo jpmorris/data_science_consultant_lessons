@@ -1,0 +1,109 @@
+<!--
+  Per-slide "Sources" button + one shared modal, for slides with citations
+  too long to put on the slide itself without crowding it.
+
+  Deliberately NOT a per-slide <details> pinned via `position: fixed`:
+  reveal.js applies a CSS `transform: scale(...)` to .reveal .slides for
+  responsive resizing, and `position: fixed` on a descendant of a
+  transformed ancestor doesn't behave like true viewport-fixed -- it gets
+  trapped relative to that transformed ancestor instead (the same
+  category of quirk that forced llm-axes-anim.html's visible panel to
+  live outside .reveal .slides entirely -- see AGENT-BRIEFING.md). A
+  per-slide element also still sits inside the auto-animate-scanned DOM
+  on the "Ingredients" stages, which is exactly the class of bug that
+  caused the flashing/dropping problems documented there.
+
+  So: one persistent button and one persistent <dialog>, both appended
+  directly to <body> (never inside .reveal .slides), repositioned never
+  (position: fixed relative to the real viewport, which is what you get
+  once you're not nested inside reveal's transformed container). The
+  button shows/hides and the dialog's content gets swapped on
+  Reveal's 'slidechanged' event, driven by a per-slide
+  <template class="slide-citations-source"> that authors drop into
+  whichever slide needs it -- same "author writes a <template>, script
+  adopts its content" pattern already used for stages 6-9's diagrams.
+-->
+<script>
+(function () {
+  if (window.__citationsInitialized) return;
+  window.__citationsInitialized = true;
+
+  var button = null;
+  var dialog = null;
+  var dialogBody = null;
+  var currentSource = null;
+
+  function buildOnce() {
+    button = document.createElement('button');
+    button.className = 'llm-citations-button';
+    button.type = 'button';
+    button.textContent = 'Sources';
+    button.style.display = 'none';
+    button.addEventListener('click', function () {
+      if (!currentSource) return;
+      dialogBody.innerHTML = '';
+      dialogBody.appendChild(currentSource.content.cloneNode(true));
+      dialog.showModal();
+    });
+    document.body.appendChild(button);
+
+    dialog = document.createElement('dialog');
+    dialog.className = 'llm-citations-dialog';
+
+    var header = document.createElement('div');
+    header.className = 'llm-citations-dialog-header';
+    var title = document.createElement('span');
+    title.textContent = 'Sources';
+    var closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'llm-citations-dialog-close';
+    closeBtn.setAttribute('aria-label', 'Close');
+    closeBtn.textContent = '×';
+    closeBtn.addEventListener('click', function () { dialog.close(); });
+    header.appendChild(title);
+    header.appendChild(closeBtn);
+    dialog.appendChild(header);
+
+    dialogBody = document.createElement('div');
+    dialogBody.className = 'llm-citations-dialog-body';
+    dialog.appendChild(dialogBody);
+
+    // Click on the backdrop (the dialog element itself, outside its
+    // content box) closes it -- <dialog> doesn't do this natively.
+    dialog.addEventListener('click', function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+
+    document.body.appendChild(dialog);
+  }
+
+  function handleSlideChange(slideEl) {
+    if (!slideEl) return;
+    currentSource = slideEl.querySelector('.slide-citations-source');
+    button.style.display = currentSource ? '' : 'none';
+    if (!currentSource && dialog.open) dialog.close();
+  }
+
+  function setup() {
+    buildOnce();
+    handleSlideChange(Reveal.getCurrentSlide());
+    Reveal.on('slidechanged', function (event) {
+      handleSlideChange(event.currentSlide);
+    });
+  }
+
+  function whenRevealAvailable() {
+    if (window.Reveal) {
+      if (typeof Reveal.isReady === 'function' && Reveal.isReady()) {
+        setup();
+      } else {
+        Reveal.on('ready', setup);
+      }
+    } else {
+      setTimeout(whenRevealAvailable, 30);
+    }
+  }
+
+  whenRevealAvailable();
+})();
+</script>

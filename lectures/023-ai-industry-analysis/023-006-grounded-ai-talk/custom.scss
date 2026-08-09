@@ -142,39 +142,75 @@ $body-bg: #073642;
   transition: none !important;
 }
 
-// Collapsible per-slide citations, closed by default. Native
-// <details>/<summary> -- no JS needed, and it's plain HTML so it works
-// the same whether it's sitting in a diagram-split-text column or
-// anywhere else. Needs an actual click to open (not clicker-compatible,
-// unlike a .fragment), which is a deliberate tradeoff to get "hidden
-// until wanted, no scrolling, no crowding the slide" instead.
-.reveal .slides details.slide-citations {
-  margin-top: 0.8em;
-  font-size: 0.5em;
-  color: #93a1a1;
-  line-height: 1.4;
-}
-.reveal .slides details.slide-citations summary {
+// Per-slide "Sources" button + shared modal (built by citations.html).
+// Both elements live outside .reveal .slides entirely (appended directly
+// to <body>), same reasoning as .llm-axes-visible-panel above: true
+// position:fixed (not trapped inside reveal's transformed .slides
+// container) and completely outside auto-animate's DOM scan. The button
+// shows/hides per slide but always renders in the same screen corner;
+// the dialog is a real modal overlay, so it can never collide with or
+// get pushed around by slide content underneath it.
+.llm-citations-button {
+  position: fixed;
+  right: 1.5em;
+  bottom: 1.2em;
+  z-index: 20;
+  background: rgba(13, 74, 85, 0.85);
+  border: 1px solid #b58900;
+  border-radius: 6px;
+  color: #b58900;
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0.4em 0.9em;
   cursor: pointer;
+}
+.llm-citations-button:hover {
+  background: #0d4a55;
+}
+.llm-citations-dialog {
+  background: #0d4a55;
+  color: #eee8d5;
+  border: 1px solid #586e75;
+  border-radius: 10px;
+  padding: 0;
+  max-width: 44em;
+  width: 90vw;
+}
+.llm-citations-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+.llm-citations-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em 1.1em;
+  border-bottom: 1px solid #586e75;
   color: #b58900;
   font-weight: 600;
-  list-style: none;
+  font-size: 20px;
 }
-.reveal .slides details.slide-citations summary::-webkit-details-marker {
-  display: none;
+.llm-citations-dialog-close {
+  background: none;
+  border: none;
+  color: #eee8d5;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.3em;
 }
-.reveal .slides details.slide-citations summary::before {
-  content: "\25b8  ";
+.llm-citations-dialog-body {
+  padding: 1em 1.1em 1.2em;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #93a1a1;
 }
-.reveal .slides details.slide-citations[open] summary::before {
-  content: "\25be  ";
+.llm-citations-dialog-body ul {
+  margin: 0;
+  padding-left: 1.2em;
 }
-.reveal .slides details.slide-citations ul {
-  margin: 0.5em 0 0 0;
-  padding-left: 1.3em;
-}
-.reveal .slides details.slide-citations li {
-  margin-bottom: 0.35em;
+.llm-citations-dialog-body li {
+  margin-bottom: 0.6em;
 }
 
 // Full-bleed accent treatment for the single "thesis" slide.

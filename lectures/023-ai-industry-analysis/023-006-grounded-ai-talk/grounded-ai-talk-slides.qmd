@@ -15,7 +15,9 @@ format:
     height: 1080
     pdf-separate-fragments: false
     pdf-max-pages-per-slide: 1
-    include-after-body: llm-axes-anim.html
+    include-after-body:
+      - llm-axes-anim.html
+      - citations.html
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf
@@ -268,14 +270,13 @@ the bottom of the stack -- the full labeled version comes later.
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li><strong>Lots of data</strong></li>
     </ul>
-    <details class="slide-citations">
-      <summary>Sources</summary>
+    <template class="slide-citations-source">
       <ul>
         <li>Common Crawl (~240T tokens): Nemotron-CC (arXiv:2412.02595), FineWeb (HuggingFace/NeurIPS 2024), Mozilla Foundation Common Crawl report</li>
         <li>Frontier post-filter usage (~15&ndash;20T tokens), GPT-3's ~82% Common Crawl share: model technical reports; 64% of 47 surveyed LLMs (2023 survey)</li>
         <li>Total stock &amp; ~2028 wall: Villalobos et al., "Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data," ICML 2024 (arXiv:2211.04325)</li>
       </ul>
-    </details>
+    </template>
   </div>
 </div>
 <template id="llm-axes-source-data">
