@@ -358,6 +358,12 @@ are real contenders:
     </ul>
   </div>
 </div>
+<div class="diagram-footnotes">
+  <ul>
+    <li><strong>Every token gets appended</strong> to the prompt, and the whole thing runs through the transformer again to produce the next one</li>
+    <li><strong>KV-caching</strong> means you only reprocess the newest token, not the entire prompt — but the cache can expire, and when it does, everything runs through from scratch again</li>
+  </ul>
+</div>
 ```
 
 ::: {.notes}
@@ -397,6 +403,12 @@ into the context before the next prediction.
       <li><strong>Reasoning</strong> (chain-of-thought): "thinking" tokens generated before the final answer</li>
     </ul>
   </div>
+</div>
+<div class="diagram-footnotes">
+  <ul>
+    <li><strong>Every token gets appended</strong> to the prompt, and the whole thing runs through the transformer again to produce the next one</li>
+    <li><strong>KV-caching</strong> means you only reprocess the newest token, not the entire prompt — but the cache can expire, and when it does, everything runs through from scratch again</li>
+  </ul>
 </div>
 ```
 
@@ -452,6 +464,12 @@ audience seems to expect the older framing.
       <li><strong>Agent + harness</strong>: give it tools, a loop, and a stopping rule — it acts</li>
     </ul>
   </div>
+</div>
+<div class="diagram-footnotes">
+  <ul>
+    <li><strong>Every token gets appended</strong> to the prompt, and the whole thing runs through the transformer again to produce the next one</li>
+    <li><strong>KV-caching</strong> means you only reprocess the newest token, not the entire prompt — but the cache can expire, and when it does, everything runs through from scratch again</li>
+  </ul>
 </div>
 ```
 

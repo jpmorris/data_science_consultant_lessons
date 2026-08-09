@@ -93,6 +93,26 @@ $body-bg: #073642;
   margin: 0;
 }
 
+// Persistent footnote bullets under the diagram, shared across all stages
+// of the next-token-prediction auto-animate sequence (unlike the
+// .diagram-split-text bullets, this content doesn't accumulate per stage --
+// it's the same two points every time).
+.reveal .slides .diagram-footnotes {
+  margin-top: 0.6em;
+  width: 100%;
+}
+.reveal .slides .diagram-footnotes ul {
+  margin: 0;
+  font-size: 0.65em;
+  color: #93a1a1;
+}
+.reveal .slides .diagram-footnotes li {
+  margin-bottom: 0.2em;
+}
+.reveal .slides .diagram-footnotes strong {
+  color: #eee8d5;
+}
+
 // Full-bleed accent treatment for the single "thesis" slide.
 .reveal .slides section.stat-slide blockquote {
   border: none;
