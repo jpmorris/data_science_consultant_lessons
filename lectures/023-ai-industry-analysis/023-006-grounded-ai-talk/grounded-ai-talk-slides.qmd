@@ -268,6 +268,14 @@ the bottom of the stack -- the full labeled version comes later.
       <li>A highly parameterized statistical model (the Transformer)</li>
       <li><strong>Lots of data</strong></li>
     </ul>
+    <details class="slide-citations">
+      <summary>Sources</summary>
+      <ul>
+        <li>Common Crawl (~240T tokens): Nemotron-CC (arXiv:2412.02595), FineWeb (HuggingFace/NeurIPS 2024), Mozilla Foundation Common Crawl report</li>
+        <li>Frontier post-filter usage (~15&ndash;20T tokens), GPT-3's ~82% Common Crawl share: model technical reports; 64% of 47 surveyed LLMs (2023 survey)</li>
+        <li>Total stock &amp; ~2028 wall: Villalobos et al., "Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data," ICML 2024 (arXiv:2211.04325)</li>
+      </ul>
+    </details>
   </div>
 </div>
 <template id="llm-axes-source-data">
@@ -283,9 +291,51 @@ GPT-3 drew ~82% of its raw training tokens from Common Crawl; a 2023 survey
 found at least 64% of 47 published LLMs used it. Caveat to say out loud:
 "% of the internet" is a genuinely fuzzy, often-inflated claim in popular
 discourse &mdash; Common Crawl is a large but incomplete, English-skewed,
-spam-heavy crawl of the public web, not literally "the internet." Sources:
-Nemotron-CC (arXiv 2412.02595), FineWeb (HuggingFace/NeurIPS 2024), Mozilla
-Foundation's Common Crawl report.
+spam-heavy crawl of the public web, not literally "the internet."
+
+The third bar (~300T, "the wall"): Villalobos et al., "Will We Run Out of
+Data?" (arXiv:2211.04325; the ~300T figure and 2026&ndash;2032 exhaustion
+window are from the 2024 ICML revision, not the original 2022 arXiv draft
+&mdash; worth knowing since the two versions disagree by ~30x and it's easy
+to accidentally cite the stale one). 90% CI: 100T&ndash;1000T &mdash; say
+the range out loud, this is a highly uncertain estimate, not a precise
+count.
+
+Exactly how 300T relates to Common Crawl's 240T, if asked (this came up
+live and is worth having cold): the paper tracks TWO separate stock
+estimates, not one. "Low-quality" general web text (all of it, including
+Reddit, forums, social media, everything beyond any single crawl) they put
+at ~741 trillion words, with a genuinely huge uncertainty band (68T to
+71,000T) &mdash; so yes, there is more raw text out there than Common Crawl
+alone, that intuition is correct. But the ~300T "effective stock" headline
+number is NOT derived from that 741T low-quality pool. It's built from
+their much smaller "high-quality" branch (books + papers + code + curated
+web, originally ~9T words in 2022), scaled up 5x after they found that
+carefully-filtered web text performs as well as curated corpora, then
+another 2&ndash;5x from multi-epoch training (reusing the same tokens
+across multiple passes). So "300T" measures usable, quality-filtered,
+practically-trainable text, not literally everything that exists &mdash;
+a much bigger low-quality pool exists but doesn't meaningfully extend the
+wall, since redundant/spammy text doesn't add much training value. Books
+specifically, since it's a natural follow-up: the paper's own estimate for
+the ENTIRE stock of books ever published is only 620 billion to 1.8
+trillion words (10&ndash;30 million ebooks) &mdash; real, and legally
+significant (Books3, LibGen, Anthropic's 2025 author settlement), but small
+next to web-scale numbers. One honest gap: the paper only counts publicly
+scrapable text; proprietary licensing deals (Reddit-Google, News Corp-
+OpenAI, etc.) aren't separately quantified, so labs' actual usable pool
+could run somewhat higher, though those deals are mostly about access
+rights to platforms already reflected in the low-quality estimate, not
+undiscovered volume.
+
+At current dataset-size growth trends (each model generation using more
+data than the last), the paper's headline result is that training sets
+converge on the size of the entire effective stock between 2026 and 2032
+(80% CI), median ~2028 at compute-optimal training &mdash; faster
+(2025&ndash;2027) if labs lean into overtraining smaller models on more
+tokens, which is exactly the current industry trend. Beyond that, further
+scaling leans on synthetic data, multimodal data (video/audio/images),
+code, and squeezing more epochs out of existing text.
 :::
 
 <!-- STAGE 7/9 (llm-stage-7-compute): compute: FLOPs-over-time bars -->

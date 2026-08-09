@@ -142,6 +142,41 @@ $body-bg: #073642;
   transition: none !important;
 }
 
+// Collapsible per-slide citations, closed by default. Native
+// <details>/<summary> -- no JS needed, and it's plain HTML so it works
+// the same whether it's sitting in a diagram-split-text column or
+// anywhere else. Needs an actual click to open (not clicker-compatible,
+// unlike a .fragment), which is a deliberate tradeoff to get "hidden
+// until wanted, no scrolling, no crowding the slide" instead.
+.reveal .slides details.slide-citations {
+  margin-top: 0.8em;
+  font-size: 0.5em;
+  color: #93a1a1;
+  line-height: 1.4;
+}
+.reveal .slides details.slide-citations summary {
+  cursor: pointer;
+  color: #b58900;
+  font-weight: 600;
+  list-style: none;
+}
+.reveal .slides details.slide-citations summary::-webkit-details-marker {
+  display: none;
+}
+.reveal .slides details.slide-citations summary::before {
+  content: "\25b8  ";
+}
+.reveal .slides details.slide-citations[open] summary::before {
+  content: "\25be  ";
+}
+.reveal .slides details.slide-citations ul {
+  margin: 0.5em 0 0 0;
+  padding-left: 1.3em;
+}
+.reveal .slides details.slide-citations li {
+  margin-bottom: 0.35em;
+}
+
 // Full-bleed accent treatment for the single "thesis" slide.
 .reveal .slides section.stat-slide blockquote {
   border: none;
