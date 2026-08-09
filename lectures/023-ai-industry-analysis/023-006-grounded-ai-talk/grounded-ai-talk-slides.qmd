@@ -27,11 +27,14 @@ jupyter: ds-ai-industry-slides
 
 ## About This Talk {.heading-accent}
 
-- What you're about to hear is one person's opinion.
+- What you're about to hear is one just person's opinion.
 - "Prediction is hard, especially about the future." Take predictions with a
   grain of salt.
+  - We will all work up to 40 years, and some of us will live 80 more, in the
+    long-term horizon all bets are off.
 - Nothing here is Excella policy or an Excella recommendation
 - This talk was built with AI assistance
+  - Fact checking was done by me and errors are my own
 - Universal advice, especially important in the AI age back up your data, and manage risk appropriately
 
 ::: {.notes}
@@ -309,9 +312,11 @@ of parameters each step.
 ## The Transformer Still Rules {.heading-accent}
 
 ::: {style="text-align: center;"}
+
 ```{=html}
 {{< include images/decoder-only-transformer.svg >}}
 ```
+
 :::
 
 ::: {.notes}
@@ -337,7 +342,7 @@ it. "Skip" names the topology (the connection skips over the block);
 "residual" names what the block has to learn — a correction on top of the
 input, rather than the full transformation from scratch.
 Motivation: this comes from ResNet (2015, image classification), which found
-that plain deep networks got *worse* at training error (not just test error)
+that plain deep networks got _worse_ at training error (not just test error)
 as more layers were added — proof it was an optimization problem, not
 overfitting. The residual fixes it by giving gradients a direct identity
 path back to early layers during backprop, so they don't have to be
@@ -381,7 +386,7 @@ What each piece in the diagram is actually for:
 - **KV Cache** — avoids recomputing keys/values for every earlier token at
   every generation step; without it, generating token N would mean
   reprocessing the entire prefix from scratch each time.
-- **Feed-Forward Network** — attention mixes information *across* token
+- **Feed-Forward Network** — attention mixes information _across_ token
   positions; the FFN then transforms each token's own representation
   independently (no cross-token mixing here). It's also where most of a
   model's raw parameter count lives. Meta-characteristic worth stating:
@@ -953,6 +958,9 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
 - Incident response/on-call
 - Cost optimization
 
+- auto- fix agents. Agents constantally scanning logs and any errors and then
+  creates a branch and proposes a fix for review
+
 ::: {.notes}
 
 - Secrets/config management: fairly mechanical and rule-based, a good current
@@ -1057,10 +1065,18 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   - Read-only is safe and still useful
   - Send access is more powerful — and more dangerous
   - Use case: composing a draft email for a chair/committee, human sends it
+  - Autounsubscribe from all emails with the word 'subscribe' in it unless
+    filered
 - Claude `remote-control`
 - Grocery ordering
 - Daily Summary
   - Kids school
+- OpenClaw - A Productivity powerhouse but (increasingly shrinking) security
+  risk.
+- Home Automation - (Opensource FTW here), you can talk your way through home
+  automation.
+- If you wanted to try something new but were worried about the barrier (Linux,
+  Home Automation) you can now talk the way through your hobby.
 
 ## You can go multi-agent
 
@@ -1073,6 +1089,8 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
 - Paste images directly into a terminal — screenshots, diagrams, error messages
 - Speech-to-text tools turn talking into a usable prompt — often faster than
   typing for exploratory work
+- Text-to-Speech means that the agent can talk back to you and can be wired into
+  `/talk` command
 
 ## AI Agents Like Deterministic Oracles With Immediate Feedback {.heading-accent}
 
