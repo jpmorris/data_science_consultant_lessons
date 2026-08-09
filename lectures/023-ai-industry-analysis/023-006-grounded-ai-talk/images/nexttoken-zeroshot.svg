@@ -195,8 +195,8 @@
   <g transform="translate(0,58)">
 
   <!-- pane headers + divider -->
-  <text class="early fade" x="20" y="35" font-size="18" font-style="italic" fill="#93a1a1">Your Computer: What you actually see</text>
-  <text class="early fade" x="444" y="35" font-size="24" font-style="italic" fill="#93a1a1">LLM (cloud)</text>
+  <text class="early fade" x="20" y="35" font-size="18" font-style="italic" fill="#93a1a1">YOUR COMPUTER (what you actually see)</text>
+  <text class="early fade" x="444" y="35" font-size="24" font-style="italic" fill="#93a1a1">CLOUD - LLM</text>
   <line class="early fade" x1="422" y1="20" x2="422" y2="560" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- LEFT PANE: your computer / terminal -->
