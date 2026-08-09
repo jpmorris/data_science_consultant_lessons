@@ -81,6 +81,27 @@ $body-bg: #073642;
   margin: 0;
 }
 
+// This deck's revealjs config has center:false (Quarto's own default,
+// not something set explicitly here), so slides are top-aligned by
+// default -- fine for text-only slides, but it left the diagram+bullets
+// row sitting right under the heading with a big dead zone below it,
+// not balanced in the frame. Scoped to just the slides that have a
+// .diagram-split-row (the "Ingredients of an LLM" sequence) rather than
+// flipping center:true globally, which would also shift every other
+// slide's content in ways unrelated to this. The heading stays put at
+// a consistent top position across the sequence (a moving title reads
+// worse than a moving diagram); only the row below it grows to fill the
+// remaining height and centers within that space, reusing the row's
+// own existing align-items:center rather than adding a second one.
+.reveal .slides section:has(.diagram-split-row) {
+  display: flex !important; // reveal's own section.present{display:block} rule ties on specificity and wins without this -- same reason .diagram-split-row below needs it
+  flex-direction: column;
+  height: 100%;
+}
+.reveal .slides section:has(.diagram-split-row) .diagram-split-row {
+  flex: 1;
+}
+
 // Invisible layout-only placeholder, one per stage, for the JS-driven
 // panel shared across all 9 "Ingredients of an LLM" stages (used to be
 // just the latent-space axes diagram; stages 6-9 used to be separate

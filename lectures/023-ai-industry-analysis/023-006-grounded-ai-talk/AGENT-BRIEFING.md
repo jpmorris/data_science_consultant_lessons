@@ -64,6 +64,41 @@ output, 1920x1080, dark theme.
   you see `:::` warnings on render, check for fence markers glued to content
   lines and give them their own line.
 
+## Citations: the Sources modal pattern
+
+Any slide needing citations gets a `<template class="slide-citations-source">`
+added to its content div (right after the `<ul>` if there is one):
+```html
+<template class="slide-citations-source">
+  <ul>
+    <li>Some claim: Author et al. (Org), <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">"Paper Title"</a> (arXiv:XXXX.XXXXX)</li>
+  </ul>
+</template>
+```
+That's the *entire* authoring step — a single persistent "Sources" button +
+`<dialog>` modal (built once by `citations.html`, wired in via
+`include-after-body` in the YAML, same as `llm-axes-anim.html`) is already
+appended directly to `<body>` and listens for `Reveal.on('slidechanged', ...)`.
+It shows/hides the button and swaps the dialog's content based on whichever
+slide's own `<template>` is present, hiding the button entirely on slides
+with none. No per-slide JS, no registration step — just add the template.
+
+Architecture reasoning is the same as `llm-axes-anim.html`'s visible panel
+(see the reveal.js finding below): `.reveal .slides` gets a CSS
+`transform: scale(...)` for responsive resizing, so `position: fixed` on any
+descendant of that transformed container doesn't behave like true
+viewport-fixed. Both the button and dialog live outside `.reveal .slides`
+entirely for exactly that reason, and doing it this way also keeps citations
+outside anything auto-animate's DOM scan ever walks.
+
+**Don't**: put citations directly in slide body text, or in a per-slide
+`<details>` element — both tried and rejected (crowds the slide; a
+`<details>` can expand off-screen depending on where it sits on a full
+slide). **Don't** duplicate a citation across slides if the same source is
+reused — cross-reference instead, e.g. `llm-stage-8-training`'s template
+says "same post-filter figure as the data slide's ... bar -- see that
+slide's sources" rather than repeating the Villalobos citation.
+
 ## Critical technical finding: reveal.js auto-animate cannot rotate elements
 
 This took a long, rigorous investigation to nail down — don't rediscover it

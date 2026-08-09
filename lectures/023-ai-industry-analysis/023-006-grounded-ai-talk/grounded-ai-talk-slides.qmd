@@ -227,6 +227,12 @@ real example of why it's worth checking instead of assuming.
       <li>A latent space that relaxes orthogonality to pack in more information</li>
       <li><strong>A highly parameterized statistical model (the Transformer)</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>Kimi K3 totals (2.8T total, 104B activated per token): Kimi Team (Moonshot AI), <a href="https://huggingface.co/moonshotai/Kimi-K3" target="_blank" rel="noopener">model card</a> and <a href="https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf" target="_blank" rel="noopener">technical report</a> -- current largest open-weight model, released July 2026, surpassing Kimi K2 (1T, used on this slide previously) and DeepSeek V4 Pro (1.6T)</li>
+        <li>No attention/feed-forward breakdown is shown for K3 (unlike the earlier K2 version of this slide) -- K3 uses a hybrid attention mechanism, mostly a linear "Kimi Delta Attention" plus some full-attention layers, and there's no verified parameter-counting formula on hand for that mechanism the way there was for K2's MLA (cross-checked against DeepSeek-V3's own published figures)</li>
+      </ul>
+    </template>
   </div>
 </div>
 ```
@@ -251,6 +257,39 @@ residual block, final norm, then linear+softmax at the top) but shaded
 out and stripped of every label, since none of that detail has been
 introduced yet. "king" is shown gliding in as the input token feeding
 the bottom of the stack -- the full labeled version comes later.
+
+Small note beside the sketch (drawn right in the panel, not a table
+anymore): "2.8 trillion parameters -- Kimi K3, approx." Kimi K3
+(Moonshot AI) is the current largest open-weight model, released July
+2026 -- it superseded an earlier version of this slide that used Kimi
+K2 (1T) with a full attention-vs-feed-forward breakdown. That breakdown
+isn't shown for K3: K3's attention is a hybrid mechanism (mostly a
+linear "Kimi Delta Attention," with some full-attention layers mixed
+in), and there's no verified parameter-counting formula on hand for it
+the way there was for K2's MLA. Rather than publish an unverified split,
+this slide only shows the one number Kimi K3 itself publishes with
+confidence (2.8T total, 104B activated per token -- see Sources).
+
+Worth saying out loud instead, as a general rule rather than a
+K3-specific figure: across transformer architectures, feed-forward
+layers hold noticeably more parameters than attention, and the gap is
+much bigger for Mixture-of-Experts models like this one than for dense
+ones. In a plain dense transformer (no MoE), standard attention (Q/K/V/O
+projections) and a standard 4x-expansion feed-forward block work out to
+roughly a 1:2 ratio -- feed-forward is about two-thirds of the
+attention+feed-forward total, attention about a third. MoE skews that
+much further toward feed-forward, since the model multiplies out many
+parallel expert feed-forward blocks while attention stays roughly
+constant per layer -- on Kimi K2 specifically (verified from its
+published config, not estimated), feed-forward was over 99% of
+attention+feed-forward combined. K3 is an even larger MoE (896 experts
+vs K2's 384), so if asked "roughly how much is feed-forward," "the
+large majority -- often 90%+, sometimes higher still for very sparse
+MoE designs" is a defensible generalization even without a verified K3-
+specific number. The remainder, wherever it lives across these
+architectures, is mostly token embeddings and the output/vocabulary
+projection, plus a genuinely negligible amount in normalization layers
+-- not attention and not feed-forward.
 :::
 
 <!-- STAGE 6/9 (llm-stage-6-data): data: Common Crawl vs. used-after-filtering bars -->
@@ -401,7 +440,7 @@ economic/energy wall is real but a few years out, not something we're
 already up against the way the data wall increasingly is.
 :::
 
-<!-- STAGE 8/9 (llm-stage-8-training): training: shared shaded LLM box (unique training-specific content TBD) -->
+<!-- STAGE 8/9 (llm-stage-8-training): training: shared shaded LLM box, now with real FFN/attention-head mini-networks inside it (active teal), plus a training-specific worked example: "The king wore a [blank]" with a data-size caption and input arrow -->
 ## The Ingredients of an LLM {#llm-stage-8-training auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -420,6 +459,12 @@ already up against the way the data wall increasingly is.
       <li>Lots of compute to train</li>
       <li><strong>A training process</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>405B parameters: Grattafiori et al. (Meta), <a href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">"The Llama 3 Herd of Models"</a> (arXiv:2407.21783) -- same model already cited on the compute slide's "Llama 3.1 405B: ~$170M" bar</li>
+        <li>~15&ndash;20T tokens: same post-filtering figure as the data slide's "used after filtering" bar -- see that slide's sources (Villalobos et al., arXiv:2211.04325)</li>
+      </ul>
+    </template>
   </div>
 </div>
 ```
@@ -431,13 +476,30 @@ parameter, nudge every weight slightly to reduce that loss, repeat &mdash;
 millions to billions of times, over weeks. This is what stages 6 and 7
 (data and compute) actually get spent on.
 
-Diagram note: this stage currently shows the same shaded LLM box as
-stage 5 (no training-specific content yet) -- forward pass, backward
-pass, and weight updates aren't visually distinguished from stage 5's
-sketch yet. Planned follow-up.
+Diagram: the same shaded box from stage 5, but its attention and
+feed-forward regions are no longer plain shaded rectangles -- they now
+show small illustrative dots-and-lines networks standing in for the
+model's actual parameters, drawn active/teal this stage to signal
+they're all being adjusted this pass. FFN is 3 columns (2 in, 3
+hidden/expanded, 2 out) -- 2 layers of connections, matching the real
+FFN's up-project-then-down-project shape. Attention is three small
+parallel clusters, a simplified stand-in for multiple heads operating
+in parallel rather than one pooled network. Up top, past the grey
+output arrow (the same slot "Charles III" occupies on the other two
+stages), sits what training actually optimizes for: not the "who is
+the king" question from stage 5, but the exact stage-1 sentence with
+its last word masked out -- "The king wore a [blank]" -- since
+predicting the missing/next word IS the training objective. Down at
+the input, instead of one example sentence, a caption reading "~15-20T
+tokens" feeds into the arrow -- the bulk corpus (same post-filter
+figure as stage 6), not a single instance. Same mini-networks reappear
+on the next slide (inference) with the lines dimmed and lock icons
+beside them instead -- the explicit visual contrast is the point:
+training changes every one of those parameters, inference changes none
+of them.
 :::
 
-<!-- STAGE 9/9 (llm-stage-9-inference): inference: shared shaded LLM box (unique inference-specific content TBD) -->
+<!-- STAGE 9/9 (llm-stage-9-inference): inference: shared shaded LLM box, mini-networks dimmed with a lock icon, reusing stage 5's exact "Who is the current UK king ?" -> "Charles III" worked example instead of a generic token-count figure -->
 ## The Ingredients of an LLM {#llm-stage-9-inference auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -457,6 +519,11 @@ sketch yet. Planned follow-up.
       <li>A training process</li>
       <li><strong>An inference process</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>405B parameters: Grattafiori et al. (Meta), <a href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">"The Llama 3 Herd of Models"</a> (arXiv:2407.21783) -- same model already cited on the compute and training slides</li>
+      </ul>
+    </template>
   </div>
 </div>
 ```
@@ -470,10 +537,20 @@ response. This is why inference is orders of magnitude cheaper than
 training: no backward pass, no millions of repetitions, no updating billions
 of parameters each step.
 
-Diagram note: this stage currently shows the same shaded LLM box as
-stage 5 (no inference-specific content yet) -- prompt tokens in, sampled
-token out, and the KV cache aren't visually distinguished from stage 5's
-sketch yet. Planned follow-up.
+Diagram: same box, same FFN/attention mini-networks as the training
+slide, same dots, but the lines are dimmed now and a small padlock icon
+sits beside each of the two (one for FFN, one for attention) instead of
+glowing active teal -- none of those parameters change during inference,
+which is exactly why it's so much
+cheaper than training. The input/output side deliberately reuses stage
+5's exact worked example (the same "Who is the current UK king ?"
+sentence, the same input arrow, the same "Charles III" answer, king
+gliding into the same spot) rather than a token-count figure: inference
+is one sentence in, one answer out, not a corpus, so the visual should
+look like a single pass, not a pile of data. Not yet visualized here but
+worth saying out loud if there's time: the KV cache (why generating
+token N+1 doesn't redo the work for tokens 1..N) and the actual sampled
+next-token result -- candidates for a future pass if there's room.
 :::
 
 ## The Transformer Still Rules {.heading-accent}

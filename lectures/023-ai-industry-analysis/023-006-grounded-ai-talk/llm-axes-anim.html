@@ -14,24 +14,35 @@
   king but not exactly, and spread apart from each other too) -> stage 5
   "transformer" (king glides again into "Who is the current UK king ?",
   with a blue arrow up into an unlabeled shaded sketch of the LLM,
-  "Charles III" waiting at the top) -> stage 6 "data" and stage 7
-  "compute" (king and the sketch are gone; these reuse their existing
-  hand-designed static SVGs -- bar charts -- adopted from <template>
-  elements via adoptTemplateSvg rather than re-derived as hand-
-  coordinated shapes, see the comment there) -> stage 8 "training" and
-  stage 9 "inference" (the shaded LLM sketch from stage 5 reappears --
-  xfmrBoxEls, not xfmrEls: same box, same LLM, reused rather than
-  redrawn, since it's the training/inference process happening to that
-  same model. Currently identical to stage 5's box with no
-  training/inference-specific content added yet -- see the TODO note
-  in each stage's speaker notes in the .qmd).
+  "Charles III" waiting at the top; inside the box, the FFN and
+  attention-head regions aren't just plain shaded rectangles -- they
+  contain small illustrative dots-and-lines networks, architecturally
+  informed: FFN as a 3-column/2-layer expand-then-project network,
+  attention as three small parallel 2x2 clusters standing in for
+  separate heads) -> stage 6 "data" and stage 7 "compute" (king and the
+  sketch are gone; these reuse their existing hand-designed static SVGs
+  -- bar charts -- adopted from <template> elements via adoptTemplateSvg
+  rather than re-derived as hand-coordinated shapes, see the comment
+  there) -> stage 8 "training" (the same box reappears -- xfmrBoxEls,
+  same LLM, reused rather than redrawn; the mini-networks' lines glow
+  active teal; king appears a third time in a new sentence, "The king
+  wore a [blank]", the actual training objective -- predicting the
+  masked word -- with a data-size figure and input arrow feeding in) ->
+  stage 9 "inference" (same box again, mini-network lines dimmed grey
+  with a lock icon beside them -- frozen, not being updated; reuses
+  stage 5's exact "Who is the current UK king ?" -> "Charles III"
+  worked example rather than a generic token-count figure, since
+  inference is one input producing one output, not a corpus).
 
   "king" is a single continuous element across every stage it appears in,
-  never recreated -- it starts as one leaf of the stage-1 tree and is
+  never recreated -- it starts as one leaf of the stage-1 tree, is
   literally the same <text> node used as the vector label from stage 2
-  on, and again as the sentence word in stage 5. Moving
-  between the tree position and the vector-label position is the one
-  exception to "everything is a plain opacity fade" in this file: see
+  on, again as the sentence word in stage 5 ("Who is the current UK
+  king ?"), again in stage 8's training sentence ("The king wore a
+  [blank]"), and again in stage 9 where it reuses stage 5's exact
+  sentence/position. Moving between resting spots (tree, vector label,
+  stage-5/9 sentence, stage-8 sentence) is the one exception to
+  "everything is a plain opacity fade" in this file: see
   tweenKingLabel, which manually interpolates its x/y attributes over
   requestAnimationFrame rather than using a CSS transition (SVG elements'
   CSS `transform` is interpreted in a mix of unit spaces across browsers,
@@ -124,19 +135,33 @@
   var EMB_ALL = stagePresence(['embeddings', 'vector-math', 'latent-space']);
   var VM_ONLY = stagePresence(['vector-math']);
   var LS_ONLY = stagePresence(['latent-space']);
-  var XFMR_ONLY = stagePresence(['transformer']);
-  // The shaded LLM sketch (xfmrBoxEls) is the same box reused across all
-  // three stages that are actually about running this model, not just
-  // the one that first introduces it.
+  // The "Who is the current UK king ?" -> "Charles III" worked example
+  // (sentence words, input arrow, answer text) is shared by "transformer"
+  // and "inference" -- stage 9 reuses it verbatim rather than inventing a
+  // new example, since inference is exactly this: one input sentence in,
+  // one predicted answer out, the same process shown at stage 5 now
+  // happening for real.
+  var XFMR_ONLY = stagePresence(['transformer', 'inference']);
+  // The shaded LLM sketch (xfmrBoxEls) is shared by all three stages that
+  // talk about the same trained model: stage 5 introduces its shape,
+  // stage 8 shows it training, stage 9 shows it running frozen. Same box,
+  // same LLM, reused rather than redrawn.
   var XFMR_BOX_PRESENT = stagePresence(['transformer', 'training', 'inference']);
   var DATA_ONLY = stagePresence(['data']);
   var COMPUTE_ONLY = stagePresence(['compute']);
-  // king's label (not its vector line) is visible from "language" through
-  // "transformer" -- it starts inside the sentence tree, glides through
-  // the vector diagrams and into the "who is the king" sentence, then
-  // disappears once the deck moves on to data/compute/training/inference,
-  // which aren't part of its throughline.
-  var ALWAYS_PRESENT = stagePresence(['language', 'embeddings', 'vector-math', 'latent-space', 'transformer']);
+  var TRAINING_ONLY = stagePresence(['training']);
+  var INFERENCE_ONLY = stagePresence(['inference']);
+  // The Kimi K2 parameter-count annotation is stage-5-only -- it grounds
+  // "highly parameterized" right when that claim is first made, not on
+  // stages 8/9 where the box is doing other work (training/inference
+  // specifics) and this would just be repeated clutter.
+  var PARAM_TABLE_ONLY = stagePresence(['transformer']);
+  // king's label (not its vector line) is visible everywhere except
+  // data/compute -- it starts inside the sentence tree, glides through
+  // the vector diagrams, into the "who is the king" sentence (transformer
+  // and inference, same position), and into its own training-sentence
+  // spot for stage 8.
+  var ALWAYS_PRESENT = stagePresence(['language', 'embeddings', 'vector-math', 'latent-space', 'transformer', 'training', 'inference']);
 
   var GENDER_COLOR = '#268bd2';
   var ORTHO_COLOR = '#859900';
@@ -149,6 +174,11 @@
   // "-> predicted: king") -- reused here for the same reason: it's this
   // deck's established color for "the thing being highlighted/pointed at."
   var AMBER_COLOR = '#b58900';
+  // Same teal already used for "current/active" elements elsewhere in
+  // this deck (the "used after filtering" bar, the 2026 frontier-era
+  // callouts) -- reused for the training network's "live, being updated"
+  // state, contrasted with STRUCT_COLOR's muted grey for "frozen."
+  var ACTIVE_COLOR = '#2aa198';
 
   // Unlabeled grey vectors, shown only in "embeddings" alongside king --
   // there's nothing special about king's position; the space is full of
@@ -246,17 +276,19 @@
   // KING_LABEL_HALF_WIDTH above) -- no gap specially widened for the
   // arrow anymore; the arrow's vertical band no longer overlaps the
   // sentence's at all (see XFMR_ARROW below), so it doesn't need one.
-  // Baseline sits at 570, not 540, purely so the arrow (which ends at
-  // 530) has clearance above the text's cap-height before reaching it.
-  var KING_XFMR_VISUAL_CENTER = { x: 498, y: 570 };
+  // Baseline sits at 585, not 540, purely so the arrow (which ends at
+  // 530) has clearance above the text's cap-height before reaching it --
+  // widened further than the arrow itself needed, since the arrow was
+  // overlapping the sentence/box at the previous tighter spacing.
+  var KING_XFMR_VISUAL_CENTER = { x: 498, y: 585 };
   var KING_XFMR_POS = { x: KING_XFMR_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_XFMR_VISUAL_CENTER.y };
   var SENTENCE_WORDS = [
-    { text: 'Who',     x: 173, y: 570 },
-    { text: 'is',      x: 228, y: 570 },
-    { text: 'the',     x: 273, y: 570 },
-    { text: 'current', x: 352, y: 570 },
-    { text: 'UK',      x: 434, y: 570 },
-    { text: '?',       x: 548, y: 570 }
+    { text: 'Who',     x: 173, y: 585 },
+    { text: 'is',      x: 228, y: 585 },
+    { text: 'the',     x: 273, y: 585 },
+    { text: 'current', x: 352, y: 585 },
+    { text: 'UK',      x: 434, y: 585 },
+    { text: '?',       x: 548, y: 585 }
   ];
   // Dropped a first-pass "stack echo" (offset shadow rects behind the
   // block) for the N-times-repeated indicator -- unclear at a glance.
@@ -272,30 +304,131 @@
   // dragged both arrows, diffed the edited file against these defaults
   // to isolate exactly what moved.
   var XFMR_ARROW = {
-    from: { x: 352, y: 550 },
-    to:   { x: 352, y: 522 }
+    from: { x: 352, y: 562 },
+    to:   { x: 352, y: 530 }
   };
   var XFMR_OUTPUT_ARROW = {
     from: { x: 350, y: 93 },
     to:   { x: 350, y: 45 }
   };
   var XFMR_ANSWER_TEXT = { x: 350, y: 32 };
-  var XFMR_STAMP = { x: 350, y: 315, rotate: -28 };
-  var XFMR_FRAME = { x: 250, y: 105, w: 200, h: 410, rx: 10 };
+  var XFMR_FRAME = { x: 246, y: 105, w: 208, h: 432, rx: 10 };
   var XFMR_OUTPUT = { x: 260, y: 116, w: 180, h: 35, rx: 8 };
-  var XFMR_LINSOFT = { x: 280, y: 163, w: 140, h: 28, rx: 6 };
-  var XFMR_FINAL_NORM = { x: 305, y: 203, w: 90, h: 18, rx: 4 };
-  var XFMR_REPEAT_CONNECTOR_1 = { from: { x: 350, y: 259 }, to: { x: 350, y: 221 } }; // repeat box -> final norm
-  var XFMR_REPEAT_BOX = { x: 280, y: 239, w: 140, h: 20, rx: 4 };
-  var XFMR_REPEAT_CONNECTOR_2 = { from: { x: 350, y: 277 }, to: { x: 350, y: 259 } }; // block -> repeat box
-  var XFMR_BLOCK_OUTER = { x: 270, y: 277, w: 160, h: 178, rx: 10 };
-  var XFMR_PLUS2 = { x: 350, y: 292 };
-  var XFMR_FFN = { x: 295, y: 298, w: 110, h: 34, rx: 6 };
-  var XFMR_NORM2 = { x: 305, y: 342, w: 90, h: 16, rx: 4 };
-  var XFMR_PLUS1 = { x: 350, y: 364 };
-  var XFMR_ATTN = { x: 290, y: 370, w: 120, h: 50, rx: 6 };
-  var XFMR_NORM1 = { x: 305, y: 430, w: 90, h: 16, rx: 4 };
-  var XFMR_EMBED = { x: 285, y: 470, w: 130, h: 30, rx: 6 };
+  var XFMR_LINSOFT = { x: 280, y: 159, w: 140, h: 28, rx: 6 };
+  var XFMR_FINAL_NORM = { x: 305, y: 197, w: 90, h: 18, rx: 4 };
+  var XFMR_REPEAT_CONNECTOR_1 = { from: { x: 350, y: 223 }, to: { x: 350, y: 215 } }; // repeat box -> final norm
+  var XFMR_REPEAT_BOX = { x: 280, y: 223, w: 140, h: 20, rx: 4 };
+  var XFMR_REPEAT_CONNECTOR_2 = { from: { x: 350, y: 251 }, to: { x: 350, y: 243 } }; // block -> repeat box
+  // Block interior (embedding -> norm1 -> attn -> +res -> norm2 -> ffn ->
+  // +res) is taller than the original silhouette-only version: FFN and
+  // ATTN now each hold a real mini dots-and-lines network (see FFN_NET /
+  // ATTN_NET below) instead of a plain shaded bar, so both regions grow
+  // considerably (FFN 110x34 -> 150x58, ATTN 120x50 -> 160x76) and the
+  // gaps around them tighten to 8px to fit inside the same 700x600 panel.
+  var XFMR_BLOCK_OUTER = { x: 258, y: 251, w: 184, h: 229, rx: 10 };
+  var XFMR_PLUS2 = { x: 350, y: 262 };
+  var XFMR_FFN = { x: 275, y: 270, w: 150, h: 58, rx: 6 };
+  var XFMR_NORM2 = { x: 305, y: 336, w: 90, h: 18, rx: 4 };
+  var XFMR_PLUS1 = { x: 350, y: 362 };
+  var XFMR_ATTN = { x: 270, y: 370, w: 160, h: 76, rx: 6 };
+  var XFMR_NORM1 = { x: 305, y: 454, w: 90, h: 18, rx: 4 };
+  var XFMR_EMBED = { x: 285, y: 492, w: 130, h: 30, rx: 6 };
+
+  // FFN mini-network: 3 columns of dots (2 in, 3 hidden/expanded, 2 out)
+  // fully connected between adjacent columns -- 2 sets of connections
+  // (2x3 + 3x2 = 12 lines) standing in for the real FFN's two linear
+  // layers (up-project/expand, then down-project back to size), which is
+  // genuinely what "2 layers" means architecturally here, not an
+  // arbitrary dot count. Coordinates sit inside XFMR_FFN with margin.
+  var FFN_NET = {
+    dotR: 3,
+    cols: [
+      { x: 305, dots: [288, 310] },
+      { x: 350, dots: [278, 299, 320] },
+      { x: 395, dots: [288, 310] }
+    ]
+  };
+  // ATTN mini-network: three small parallel 2x2 clusters, each its own
+  // tiny fully-connected pair of columns, spaced apart with visible gaps
+  // between them -- a simplified but architecturally-informed stand-in
+  // for multiple attention heads operating in parallel (not one shared
+  // pool of units the way FFN's is), sized down rather than the real
+  // head count (a frontier model's actual head count would be an
+  // illegible smear at this scale). Coordinates sit inside XFMR_ATTN.
+  var ATTN_NET = {
+    dotR: 3,
+    heads: [
+      { cols: [296, 314] },
+      { cols: [341, 359] },
+      { cols: [386, 404] }
+    ],
+    rows: [392, 424]
+  };
+  // Small padlock silhouette (rounded body + arced shackle), shown only
+  // for "inference" -- one beside each mini-network (FFN, ATTN) rather
+  // than a single icon for the whole box, since there are two separate
+  // sets of parameters being frozen. Deliberately overlaps a few dots/
+  // lines rather than being nudged clear of them -- a real icon sitting
+  // right on top of the thing it's freezing reads better than one
+  // hovering nearby to avoid touching it.
+  var LOCK_ICONS = [
+    { cx: XFMR_FFN.x + XFMR_FFN.w - 15, cy: XFMR_FFN.y + XFMR_FFN.h / 2 },
+    { cx: XFMR_ATTN.x + XFMR_ATTN.w - 15, cy: XFMR_ATTN.y + XFMR_ATTN.h / 2 }
+  ];
+
+  // Stage 8 "training": a NEW sentence, not the "Who is the king" one --
+  // this reuses the exact stage-1 sentence ("The king wore a crown") with
+  // its last word blanked out, since fill-in/predict-the-next-word IS the
+  // actual training objective being illustrated, and reusing that exact
+  // sentence (rather than inventing a fresh example) keeps one throughline
+  // running from stage 1 all the way to stage 8. king rides along in this
+  // sentence too, tweened here the same way it's tweened everywhere else.
+  // Sits at the TOP, just past the grey output arrow -- same slot
+  // "Charles III" occupies for transformer/inference -- rather than down
+  // at the input, since the input side now just shows the bulk data
+  // volume (TRAINING_DATA_LABEL/TRAINING_ARROW below) instead of a single
+  // example sentence.
+  var KING_TRAINING_VISUAL_CENTER = { x: 280, y: 32 };
+  var KING_TRAINING_POS = { x: KING_TRAINING_VISUAL_CENTER.x - KING_LABEL_HALF_WIDTH, y: KING_TRAINING_VISUAL_CENTER.y };
+  var TRAINING_SENTENCE_WORDS = [
+    { text: 'The',   x: 220, y: 32 },
+    { text: 'wore',  x: 345, y: 32 },
+    { text: 'a',     x: 395, y: 32 },
+    { text: '_____', x: 450, y: 32 } // the blank -- amber, same "thing being predicted" convention as "Charles III"
+  ];
+  var TRAINING_ARROW = {
+    from: { x: 352, y: 558 },
+    to:   { x: 352, y: 530 }
+  };
+  // Same figure as stage 6's "used after filtering" bar (~15-20T tokens)
+  // -- the bulk data volume flowing in at the bottom, now that the
+  // specific example sentence has moved to the top. Centered under the
+  // arrow rather than off to the side, now that there's no sentence row
+  // to share the space with.
+  var TRAINING_DATA_LABEL = { x: 350, y: 585, text: '~15–20 trillion tokens' };
+
+  // Stage 5 only: a small hand-annotated note beside the box, grounding
+  // "highly parameterized" in one current model's actual total rather
+  // than leaving the claim abstract. Used to be a 3-row attention/FFN/
+  // total breakdown of Kimi K2 -- dropped in favor of Kimi K3 (the
+  // actual current largest open-weight model, 2.8T, released after K2)
+  // and just its top-line total, because K3's attention is a genuinely
+  // different, hybrid mechanism (mostly linear/delta-rule "Kimi Delta
+  // Attention", not the MLA that K2 used and that this file's
+  // parameter-counting formula was validated against) -- there's no
+  // verified formula on hand to split K3's params the same confident
+  // way K2's were split, so this doesn't claim a precision it doesn't
+  // have. The general attention-vs-FFN split (not K3-specific) is a
+  // speaker-notes point instead of an on-slide number -- see the .qmd.
+  // NOT the hand-drawn Architects Daughter font used for callouts
+  // elsewhere in this deck -- its decimal points are nearly invisible at
+  // this size. Plain Inter instead, same as the deck's own body text.
+  var PARAM_ANNOT_FONT = "'Inter', sans-serif";
+  var PARAM_TABLE_LABEL_X = 478;
+  var PARAM_NOTE = {
+    mainY: 300, main: '2.8 trillion parameters',
+    subY: 326, sub: 'Kimi K3, approx.'
+  };
 
   // king/man/woman/queen, each drawn as a genuine vector from the shared
   // origin -- not just a labeled point. This is the standard illustration
@@ -362,14 +495,30 @@
   var numbersEl = null;
   var bgVectorEls = [];
   // xfmrEls: the "Who is the current UK king?" worked example (sentence,
-  // input arrow, "Charles III" answer) -- specific to stage 5 only.
+  // input arrow, "Charles III" answer) -- shared by stage 5 and stage 9
+  // (see XFMR_ONLY above), reused verbatim for inference rather than
+  // rebuilt, since stage 9 is that exact process happening for real.
   // xfmrBoxEls: the shaded LLM sketch itself (frame, output arrow, and
-  // everything inside) -- shared across stages 5, 8 ("training"), and 9
-  // ("inference"), same box reused rather than redrawn, since it's the
-  // same LLM being trained/run in all three.
+  // everything inside, including the FFN/ATTN mini-networks) -- shared
+  // across stages 5, 8 ("training"), and 9 ("inference"), same box
+  // reused rather than redrawn, since it's the same LLM in all three.
+  // trainingEls: stage-8-only worked example (the "[blank]" sentence,
+  // its own input arrow, the data-size caption) -- king rides in this
+  // sentence too, but the sentence text itself is entirely different
+  // from xfmrEls's, so it isn't shared the way the box is.
   var xfmrEls = [];
   var xfmrBoxEls = [];
+  var trainingEls = [];
   var legacyStageEls = { data: [], compute: [] };
+  // paramLineEls: the FFN + ATTN mini-networks' connection lines (not
+  // their dots, which stay a constant color/opacity throughout) -- these
+  // are what actually change look between the box's three stages: muted
+  // structural grey while just being introduced (stage 5), active teal
+  // while training (stage 8), dimmed grey again for inference (stage 9),
+  // where lockEls also appears beside them.
+  var paramLineEls = [];
+  var lockEls = [];
+  var paramTableEls = [];
   var currentAxesStage = null;
 
   function ns(tag) {
@@ -762,30 +911,145 @@
     xfmrRect(XFMR_NORM1, BOX);
     xfmrRect(XFMR_EMBED, BOX);
 
-    // Diagonal "LLM" stamp across the whole frame -- names the box as a
-    // single unit without labeling any of its internal parts (nothing
-    // inside has been introduced yet). "LLM", not "TRANSFORMER": the
-    // transformer is only the repeated block portion of this diagram,
-    // not the whole embedding-to-output pipeline the frame encloses.
-    // Full opacity, not a faded watermark -- drawn last so it sits on
-    // top of every box it crosses.
-    var stampLabel = ns('text');
-    stampLabel.setAttribute('x', String(XFMR_STAMP.x));
-    stampLabel.setAttribute('y', String(XFMR_STAMP.y));
-    stampLabel.setAttribute('text-anchor', 'middle');
-    stampLabel.setAttribute('font-size', '64');
-    stampLabel.setAttribute('font-weight', '700');
-    stampLabel.setAttribute('letter-spacing', '1');
-    stampLabel.setAttribute('fill', AMBER_COLOR);
-    stampLabel.setAttribute('transform', 'rotate(' + XFMR_STAMP.rotate + ' ' + XFMR_STAMP.x + ' ' + XFMR_STAMP.y + ')');
-    stampLabel.textContent = 'LLM';
-    stampLabel.classList.add('llm-fade-el');
-    svg.appendChild(stampLabel);
-    xfmrBoxEls.push(stampLabel);
+    // FFN and ATTN mini-networks: dots (units) + lines (weighted
+    // connections), not a literal architecture diagram, drawn on top of
+    // the shaded XFMR_FFN/XFMR_ATTN rects already placed above. Dots stay
+    // a constant color/opacity throughout; the lines (paramLineEls) are
+    // what applyStage restyles per box-stage (neutral grey while just
+    // being introduced at stage 5, active teal while training, dimmed
+    // grey again once frozen for inference).
+    function paramDot(pt) {
+      var dot = ns('circle');
+      dot.setAttribute('cx', String(pt.x));
+      dot.setAttribute('cy', String(pt.y));
+      dot.setAttribute('r', String(pt.r));
+      dot.setAttribute('fill', CHAIN_COLOR);
+      dot.classList.add('llm-fade-el');
+      svg.appendChild(dot);
+      xfmrBoxEls.push(dot);
+    }
+    function paramLine(a, b) {
+      var line = ns('line');
+      line.setAttribute('x1', String(a.x));
+      line.setAttribute('y1', String(a.y));
+      line.setAttribute('x2', String(b.x));
+      line.setAttribute('y2', String(b.y));
+      line.setAttribute('stroke-width', '1');
+      line.classList.add('llm-fade-el');
+      svg.appendChild(line);
+      xfmrBoxEls.push(line);
+      paramLineEls.push(line);
+    }
 
-    // 'training' and 'inference' no longer adopt their own static SVGs --
-    // they show the shared shaded LLM box (xfmrBoxEls) instead. Only
-    // 'data' and 'compute' still have their own bar-chart content.
+    // FFN: 3 columns (2 in, 3 hidden/expanded, 2 out), fully connected
+    // between adjacent columns -- 2 layers of connections, matching the
+    // real FFN's up-project-then-down-project structure.
+    var ffnCols = FFN_NET.cols.map(function (col) {
+      return col.dots.map(function (y) { return { x: col.x, y: y, r: FFN_NET.dotR }; });
+    });
+    for (var fc = 0; fc < ffnCols.length - 1; fc++) {
+      ffnCols[fc].forEach(function (a) {
+        ffnCols[fc + 1].forEach(function (b) { paramLine(a, b); });
+      });
+    }
+    ffnCols.forEach(function (col) { col.forEach(paramDot); });
+
+    // ATTN: three small parallel 2x2 clusters (heads), each independently
+    // fully connected, with visible gaps between clusters so they read as
+    // separate heads rather than one pooled network.
+    ATTN_NET.heads.forEach(function (head) {
+      var headCols = head.cols.map(function (x) {
+        return ATTN_NET.rows.map(function (y) { return { x: x, y: y, r: ATTN_NET.dotR }; });
+      });
+      headCols[0].forEach(function (a) {
+        headCols[1].forEach(function (b) { paramLine(a, b); });
+      });
+      headCols.forEach(function (col) { col.forEach(paramDot); });
+    });
+
+    // Padlock icons -- inference-only (see LOCK_ICONS/lockEls), one beside
+    // each mini-network (FFN, ATTN) -- real shapes rather than relying on
+    // dimmed lines alone to say "frozen."
+    LOCK_ICONS.forEach(function (icon) {
+      var lockBody = ns('rect');
+      lockBody.setAttribute('x', String(icon.cx - 9));
+      lockBody.setAttribute('y', String(icon.cy - 2));
+      lockBody.setAttribute('width', '18');
+      lockBody.setAttribute('height', '15');
+      lockBody.setAttribute('rx', '2');
+      lockBody.setAttribute('fill', STRUCT_COLOR);
+      lockBody.classList.add('llm-fade-el');
+      svg.appendChild(lockBody);
+      lockEls.push(lockBody);
+      var lockShackle = ns('path');
+      var lsx = icon.cx - 6, lsy = icon.cy - 2;
+      lockShackle.setAttribute('d', 'M ' + lsx + ' ' + lsy + ' v -5 a 6 6 0 0 1 12 0 v 5');
+      lockShackle.setAttribute('fill', 'none');
+      lockShackle.setAttribute('stroke', STRUCT_COLOR);
+      lockShackle.setAttribute('stroke-width', '2.5');
+      lockShackle.classList.add('llm-fade-el');
+      svg.appendChild(lockShackle);
+      lockEls.push(lockShackle);
+    });
+
+    // Stage 8 "training": its own sentence ("The king wore a [blank]"),
+    // its own input arrow, and a data-size caption -- entirely separate
+    // from xfmrEls, which stage 9 reuses instead. king rides in this
+    // sentence too (its persistent label, tweened here like everywhere
+    // else); the other words and the blank are built fresh.
+    TRAINING_SENTENCE_WORDS.forEach(function (word) {
+      var label = ns('text');
+      label.setAttribute('x', String(word.x));
+      label.setAttribute('y', String(word.y));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '27');
+      label.setAttribute('font-weight', '600');
+      // The blank, not a real word: amber, same "thing being predicted"
+      // convention as "Charles III" -- here it's the target the model is
+      // being trained to predict, rather than the model's actual answer.
+      label.setAttribute('fill', word.text === '_____' ? AMBER_COLOR : CHAIN_COLOR);
+      label.textContent = word.text;
+      label.classList.add('llm-fade-el');
+      svg.appendChild(label);
+      trainingEls.push(label);
+    });
+    xfmrLine(TRAINING_ARROW, { group: trainingEls });
+    var dataLabel = ns('text');
+    dataLabel.setAttribute('x', String(TRAINING_DATA_LABEL.x));
+    dataLabel.setAttribute('y', String(TRAINING_DATA_LABEL.y));
+    dataLabel.setAttribute('text-anchor', 'middle');
+    dataLabel.setAttribute('font-size', '22');
+    dataLabel.setAttribute('fill', STRUCT_COLOR);
+    dataLabel.textContent = TRAINING_DATA_LABEL.text;
+    dataLabel.classList.add('llm-fade-el');
+    svg.appendChild(dataLabel);
+    trainingEls.push(dataLabel);
+
+    // Stage 5 only: the Kimi K3 parameter note beside the box (see
+    // PARAM_NOTE above) -- just the two lines, no table/rule at all now
+    // that there's no breakdown to organize into columns.
+    function paramNoteText(y, color, text, opts) {
+      opts = opts || {};
+      var el = ns('text');
+      el.setAttribute('x', String(PARAM_TABLE_LABEL_X));
+      el.setAttribute('y', String(y));
+      el.setAttribute('text-anchor', 'start');
+      el.setAttribute('font-family', PARAM_ANNOT_FONT);
+      el.setAttribute('font-size', String(opts.fontSize || 24));
+      el.setAttribute('font-weight', String(opts.fontWeight || 600));
+      el.setAttribute('fill', color);
+      el.textContent = text;
+      el.classList.add('llm-fade-el');
+      svg.appendChild(el);
+      paramTableEls.push(el);
+    }
+
+    paramNoteText(PARAM_NOTE.mainY, AMBER_COLOR, PARAM_NOTE.main, { fontSize: 19 });
+    paramNoteText(PARAM_NOTE.subY, STRUCT_COLOR, PARAM_NOTE.sub, { fontSize: 16, fontWeight: 400 });
+
+    // 'training' and 'inference' don't adopt a static SVG -- they reuse
+    // xfmrBoxEls (see above). Only 'data' and 'compute' still have their
+    // own bar-chart content.
     ['data', 'compute'].forEach(adoptTemplateSvg);
 
     // Attached once, permanently -- never reparented again, unlike the
@@ -839,12 +1103,14 @@
     return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   }
 
-  // Three possible resting spots for king's label: the stage-1 tree leaf,
-  // the stage-5 sentence, or its normal vector-label spot (labelAt) for
-  // every stage in between.
+  // Four possible resting spots for king's label: the stage-1 tree leaf,
+  // the stage-5/9 sentence (same position, since stage 9 reuses stage 5's
+  // exact worked example), the stage-8 training sentence, or its normal
+  // vector-label spot (labelAt) for every stage in between.
   function kingTargetForStage(stageName) {
     if (stageName === 'language') return KING_TREE_POS;
-    if (stageName === 'transformer') return KING_XFMR_POS;
+    if (stageName === 'transformer' || stageName === 'inference') return KING_XFMR_POS;
+    if (stageName === 'training') return KING_TRAINING_POS;
     return WORD_POINTS.king.labelAt;
   }
 
@@ -927,6 +1193,38 @@
     var boxPresent = XFMR_BOX_PRESENT[stageName];
     var boxEntering = animate && !boxWasPresent && boxPresent;
     applyFade(xfmrBoxEls, boxPresent, boxEntering ? FADE_MS : 0, animate);
+
+    // The FFN/ATTN mini-networks' lines: restyled (not re-faded, since
+    // they're already part of xfmrBoxEls above) whenever the box itself
+    // is visible. Neutral grey for stage 5 (just being introduced, not
+    // yet training or running), active teal while training, dimmed grey
+    // again for inference -- paired with the lock icon appearing only
+    // then, since a plain opacity drop alone read as "just faint," not
+    // unambiguously "frozen."
+    if (boxPresent) {
+      var paramColor = STRUCT_COLOR, paramOpacity = '0.5';
+      if (stageName === 'training') { paramColor = ACTIVE_COLOR; paramOpacity = '0.85'; }
+      else if (stageName === 'inference') { paramColor = STRUCT_COLOR; paramOpacity = '0.25'; }
+      paramLineEls.forEach(function (line) {
+        line.style.stroke = paramColor;
+        line.style.strokeOpacity = paramOpacity;
+      });
+    }
+
+    var lockWasPresent = prevStage ? INFERENCE_ONLY[prevStage] : false;
+    var lockPresent = INFERENCE_ONLY[stageName];
+    var lockEntering = animate && !lockWasPresent && lockPresent;
+    applyFade(lockEls, lockPresent, lockEntering ? FADE_MS : 0, animate);
+
+    var trainingWasPresent = prevStage ? TRAINING_ONLY[prevStage] : false;
+    var trainingPresent = TRAINING_ONLY[stageName];
+    var trainingEntering = animate && !trainingWasPresent && trainingPresent;
+    applyFade(trainingEls, trainingPresent, trainingEntering ? FADE_MS : 0, animate);
+
+    var paramTableWasPresent = prevStage ? PARAM_TABLE_ONLY[prevStage] : false;
+    var paramTablePresent = PARAM_TABLE_ONLY[stageName];
+    var paramTableEntering = animate && !paramTableWasPresent && paramTablePresent;
+    applyFade(paramTableEls, paramTablePresent, paramTableEntering ? FADE_MS : 0, animate);
 
     var vmWasPresent = prevStage ? VM_ONLY[prevStage] : false;
     var vmPresent = VM_ONLY[stageName];
