@@ -1,0 +1,377 @@
+<svg width="946" height="619" viewBox="0 0 1100 720">
+  <style>
+    .fade { opacity: 0; }
+    .s3-title { animation: fadeInStay .4s ease forwards; animation-delay: .1s; }
+    .s3-box   { animation: fadeInStay .5s ease forwards; animation-delay: 0s; }
+    .s3-early { animation: fadeInStay .4s ease forwards; animation-delay: .15s; }
+    .s3-sys   { animation: fadeInStay .6s ease forwards; animation-delay: .5s; }
+    .s3-u1-left { animation: fadeInStay .3s ease forwards; animation-delay: 5.48s; }
+
+    @keyframes fadeInStay { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOutStay { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes blip { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes wordGlide {
+      0%   { opacity: 0; transform: translate(0,0); }
+      15%  { opacity: 1; transform: translate(0,0); }
+      55%  { opacity: 1; transform: translate(0,0); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+    }
+    @keyframes blinkOpacity { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+    .s3-blink { animation: blinkOpacity .9s ease-in-out infinite; }
+    @keyframes flashSys  { 0%, 100% { fill: #93a1a1; } 50% { fill: #ffffff; } }
+    @keyframes flashUser { 0%, 100% { fill: #eee8d5; } 50% { fill: #ffffff; } }
+    @keyframes flashBlue { 0%, 100% { fill: #268bd2; } 50% { fill: #ffffff; } }
+    @keyframes flashCyan { 0%, 100% { fill: #2aa198; } 50% { fill: #ffffff; } }
+    @keyframes flashGreen { 0%, 100% { fill: #859900; } 50% { fill: #ffffff; } }
+    @keyframes harnessBoxFlash { 0%, 100% { stroke: #859900; stroke-width: 3; } 40% { stroke: #eee8d5; stroke-width: 5; } }
+    @keyframes typeWidth { from { width: 0; } to { width: var(--full-w); } }
+    @keyframes cursorMove { from { x: var(--start-x); } to { x: var(--end-x); } }
+    @keyframes cursorBlinkOut {
+      0%   { opacity: 1; }
+      20%  { opacity: 0; }
+      40%  { opacity: 1; }
+      60%  { opacity: 0; }
+      80%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .s3-prompt1 { animation: fadeInStay .1s ease forwards; animation-delay: 1.30s; }
+    #s3-type1clip rect { animation: typeWidth 1.705s steps(31, end) forwards; animation-delay: 1.30s; --full-w: 341px; }
+    .s3-cursor1 {
+      animation: fadeInStay .05s ease forwards 1.30s,
+        cursorMove 1.705s steps(31, end) forwards 1.30s,
+        cursorBlinkOut .8s ease forwards 3.01s;
+      --start-x: 62px; --end-x: 403px;
+    }
+    #s3-type2clip rect { animation: typeWidth 1.87s steps(34, end) forwards; animation-delay: 3.01s; --full-w: 374px; }
+    .s3-cursor2 {
+      animation: fadeInStay .05s ease forwards 3.01s,
+        cursorMove 1.87s steps(34, end) forwards 3.01s,
+        cursorBlinkOut .8s ease forwards 4.88s;
+      --start-x: 40px; --end-x: 414px;
+    }
+
+    .s3-arrow-line { animation: fadeInStay .2s ease forwards; animation-delay: 4.90s; }
+    .s3-arrow-a { animation: blip .25s ease forwards; animation-delay: 4.93s; }
+    .s3-arrow-b { animation: blip .25s ease forwards; animation-delay: 5.03s; }
+
+    .s3-running { animation: fadeInStay .3s ease forwards 5.88s, fadeOutStay .2s ease forwards 15.11s; }
+    .s3-harness-box { animation: fadeInStay .5s ease forwards 0s, harnessBoxFlash .3s ease 14.36s; }
+
+    .s3-sys-text  { animation: flashSys .18s ease 5.98s, flashSys .18s ease 7.13s, flashSys .18s ease 8.28s, flashSys .18s ease 9.43s, flashSys .18s ease 10.58s, flashSys .18s ease 11.73s, flashSys .18s ease 12.88s, flashSys .18s ease 15.21s, flashSys .18s ease 16.36s, flashSys .18s ease 17.51s, flashSys .18s ease 18.66s, flashSys .18s ease 19.81s, flashSys .18s ease 20.96s; }
+    .s3-user-text { animation: flashUser .18s ease 5.98s, flashUser .18s ease 7.13s, flashUser .18s ease 8.28s, flashUser .18s ease 9.43s, flashUser .18s ease 10.58s, flashUser .18s ease 11.73s, flashUser .18s ease 12.88s, flashUser .18s ease 15.21s, flashUser .18s ease 16.36s, flashUser .18s ease 17.51s, flashUser .18s ease 18.66s, flashUser .18s ease 19.81s, flashUser .18s ease 20.96s; }
+    .s3-tagOpen-pg  { animation: blip .12s ease forwards; animation-delay: 5.98s; }
+    .s3-tagOpen-ina { animation: blip .08s ease forwards; animation-delay: 6.06s; }
+    .s3-tagOpen-inb { animation: blip .08s ease forwards; animation-delay: 6.14s; }
+    .s3-tagOpen-lg  { animation: blip .15s ease forwards; animation-delay: 6.22s; }
+    .s3-tagOpen-outa { animation: blip .08s ease forwards; animation-delay: 6.38s; }
+    .s3-tagOpen-outb { animation: blip .08s ease forwards; animation-delay: 6.46s; }
+    .s3-tagOpen-wc  { animation: wordGlide .45s ease forwards; animation-delay: 6.56s; --dx: -166px; --dy: -405px; }
+    .s3-tagOpen { animation: fadeInStay .15s ease forwards 6.96s, flashBlue .18s ease 7.13s, flashBlue .18s ease 8.28s, flashBlue .18s ease 9.43s, flashBlue .18s ease 10.58s, flashBlue .18s ease 11.73s, flashBlue .18s ease 12.88s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-bw1-pg  { animation: blip .12s ease forwards; animation-delay: 7.13s; }
+    .s3-bw1-ina { animation: blip .08s ease forwards; animation-delay: 7.21s; }
+    .s3-bw1-inb { animation: blip .08s ease forwards; animation-delay: 7.29s; }
+    .s3-bw1-lg  { animation: blip .15s ease forwards; animation-delay: 7.37s; }
+    .s3-bw1-outa { animation: blip .08s ease forwards; animation-delay: 7.53s; }
+    .s3-bw1-outb { animation: blip .08s ease forwards; animation-delay: 7.61s; }
+    .s3-bw1-wc  { animation: wordGlide .45s ease forwards; animation-delay: 7.71s; --dx: -259px; --dy: -381px; }
+    .s3-bw1 { animation: fadeInStay .15s ease forwards 8.11s, flashBlue .18s ease 8.28s, flashBlue .18s ease 9.43s, flashBlue .18s ease 10.58s, flashBlue .18s ease 11.73s, flashBlue .18s ease 12.88s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-bw2-pg  { animation: blip .12s ease forwards; animation-delay: 8.28s; }
+    .s3-bw2-ina { animation: blip .08s ease forwards; animation-delay: 8.36s; }
+    .s3-bw2-inb { animation: blip .08s ease forwards; animation-delay: 8.44s; }
+    .s3-bw2-lg  { animation: blip .15s ease forwards; animation-delay: 8.52s; }
+    .s3-bw2-outa { animation: blip .08s ease forwards; animation-delay: 8.68s; }
+    .s3-bw2-outb { animation: blip .08s ease forwards; animation-delay: 8.76s; }
+    .s3-bw2-wc  { animation: wordGlide .45s ease forwards; animation-delay: 8.86s; --dx: -209.5px; --dy: -381px; }
+    .s3-bw2 { animation: fadeInStay .15s ease forwards 9.26s, flashBlue .18s ease 9.43s, flashBlue .18s ease 10.58s, flashBlue .18s ease 11.73s, flashBlue .18s ease 12.88s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-bw3-pg  { animation: blip .12s ease forwards; animation-delay: 9.43s; }
+    .s3-bw3-ina { animation: blip .08s ease forwards; animation-delay: 9.51s; }
+    .s3-bw3-inb { animation: blip .08s ease forwards; animation-delay: 9.59s; }
+    .s3-bw3-lg  { animation: blip .15s ease forwards; animation-delay: 9.67s; }
+    .s3-bw3-outa { animation: blip .08s ease forwards; animation-delay: 9.83s; }
+    .s3-bw3-outb { animation: blip .08s ease forwards; animation-delay: 9.91s; }
+    .s3-bw3-wc  { animation: wordGlide .45s ease forwards; animation-delay: 10.01s; --dx: -169px; --dy: -381px; }
+    .s3-bw3 { animation: fadeInStay .15s ease forwards 10.41s, flashBlue .18s ease 10.58s, flashBlue .18s ease 11.73s, flashBlue .18s ease 12.88s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-bw4-pg  { animation: blip .12s ease forwards; animation-delay: 10.58s; }
+    .s3-bw4-ina { animation: blip .08s ease forwards; animation-delay: 10.66s; }
+    .s3-bw4-inb { animation: blip .08s ease forwards; animation-delay: 10.74s; }
+    .s3-bw4-lg  { animation: blip .15s ease forwards; animation-delay: 10.82s; }
+    .s3-bw4-outa { animation: blip .08s ease forwards; animation-delay: 10.98s; }
+    .s3-bw4-outb { animation: blip .08s ease forwards; animation-delay: 11.06s; }
+    .s3-bw4-wc  { animation: wordGlide .45s ease forwards; animation-delay: 11.16s; --dx: -142px; --dy: -381px; }
+    .s3-bw4 { animation: fadeInStay .15s ease forwards 11.56s, flashBlue .18s ease 11.73s, flashBlue .18s ease 12.88s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-bw5-pg  { animation: blip .12s ease forwards; animation-delay: 11.73s; }
+    .s3-bw5-ina { animation: blip .08s ease forwards; animation-delay: 11.81s; }
+    .s3-bw5-inb { animation: blip .08s ease forwards; animation-delay: 11.89s; }
+    .s3-bw5-lg  { animation: blip .15s ease forwards; animation-delay: 11.97s; }
+    .s3-bw5-outa { animation: blip .08s ease forwards; animation-delay: 12.13s; }
+    .s3-bw5-outb { animation: blip .08s ease forwards; animation-delay: 12.21s; }
+    .s3-bw5-wc  { animation: wordGlide .45s ease forwards; animation-delay: 12.31s; --dx: -101.5px; --dy: -381px; }
+    .s3-bw5 { animation: fadeInStay .15s ease forwards 12.71s, flashBlue .18s ease 12.88s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-tagClose-pg  { animation: blip .12s ease forwards; animation-delay: 12.88s; }
+    .s3-tagClose-ina { animation: blip .08s ease forwards; animation-delay: 12.96s; }
+    .s3-tagClose-inb { animation: blip .08s ease forwards; animation-delay: 13.04s; }
+    .s3-tagClose-lg  { animation: blip .15s ease forwards; animation-delay: 13.12s; }
+    .s3-tagClose-outa { animation: blip .08s ease forwards; animation-delay: 13.28s; }
+    .s3-tagClose-outb { animation: blip .08s ease forwards; animation-delay: 13.36s; }
+    .s3-tagClose-wc  { animation: wordGlide .45s ease forwards; animation-delay: 13.46s; --dx: -215.5px; --dy: -357px; }
+    .s3-tagClose { animation: fadeInStay .15s ease forwards 13.86s, flashBlue .18s ease 15.21s, flashBlue .18s ease 16.36s, flashBlue .18s ease 17.51s, flashBlue .18s ease 18.66s, flashBlue .18s ease 19.81s, flashBlue .18s ease 20.96s; }
+
+    .s3-answerLabel-pg  { animation: blip .12s ease forwards; animation-delay: 15.21s; }
+    .s3-answerLabel-ina { animation: blip .08s ease forwards; animation-delay: 15.29s; }
+    .s3-answerLabel-inb { animation: blip .08s ease forwards; animation-delay: 15.37s; }
+    .s3-answerLabel-lg  { animation: blip .15s ease forwards; animation-delay: 15.45s; }
+    .s3-answerLabel-outa { animation: blip .08s ease forwards; animation-delay: 15.61s; }
+    .s3-answerLabel-outb { animation: blip .08s ease forwards; animation-delay: 15.69s; }
+    .s3-answerLabel-wc  { animation: wordGlide .45s ease forwards; animation-delay: 15.79s; --dx: -254.2px; --dy: -306px; }
+    .s3-answerLabel { animation: fadeInStay .15s ease forwards 16.19s, flashCyan .18s ease 16.36s, flashCyan .18s ease 17.51s, flashCyan .18s ease 18.66s, flashCyan .18s ease 19.81s, flashCyan .18s ease 20.96s; }
+
+    .s3-aw1-pg  { animation: blip .12s ease forwards; animation-delay: 16.36s; }
+    .s3-aw1-ina { animation: blip .08s ease forwards; animation-delay: 16.44s; }
+    .s3-aw1-inb { animation: blip .08s ease forwards; animation-delay: 16.52s; }
+    .s3-aw1-lg  { animation: blip .15s ease forwards; animation-delay: 16.60s; }
+    .s3-aw1-outa { animation: blip .08s ease forwards; animation-delay: 16.76s; }
+    .s3-aw1-outb { animation: blip .08s ease forwards; animation-delay: 16.84s; }
+    .s3-aw1-wc  { animation: wordGlide .45s ease forwards; animation-delay: 16.94s; --dx: -200.2px; --dy: -306px; }
+    .s3-aw1 { animation: fadeInStay .15s ease forwards 17.34s, flashCyan .18s ease 17.51s, flashCyan .18s ease 18.66s, flashCyan .18s ease 19.81s, flashCyan .18s ease 20.96s; }
+
+    .s3-aw2-pg  { animation: blip .12s ease forwards; animation-delay: 17.51s; }
+    .s3-aw2-ina { animation: blip .08s ease forwards; animation-delay: 17.59s; }
+    .s3-aw2-inb { animation: blip .08s ease forwards; animation-delay: 17.67s; }
+    .s3-aw2-lg  { animation: blip .15s ease forwards; animation-delay: 17.75s; }
+    .s3-aw2-outa { animation: blip .08s ease forwards; animation-delay: 17.91s; }
+    .s3-aw2-outb { animation: blip .08s ease forwards; animation-delay: 17.99s; }
+    .s3-aw2-wc  { animation: wordGlide .45s ease forwards; animation-delay: 18.09s; --dx: -146.2px; --dy: -306px; }
+    .s3-aw2 { animation: fadeInStay .15s ease forwards 18.49s, flashCyan .18s ease 18.66s, flashCyan .18s ease 19.81s, flashCyan .18s ease 20.96s; }
+
+    .s3-aw3-pg  { animation: blip .12s ease forwards; animation-delay: 18.66s; }
+    .s3-aw3-ina { animation: blip .08s ease forwards; animation-delay: 18.74s; }
+    .s3-aw3-inb { animation: blip .08s ease forwards; animation-delay: 18.82s; }
+    .s3-aw3-lg  { animation: blip .15s ease forwards; animation-delay: 18.90s; }
+    .s3-aw3-outa { animation: blip .08s ease forwards; animation-delay: 19.06s; }
+    .s3-aw3-outb { animation: blip .08s ease forwards; animation-delay: 19.14s; }
+    .s3-aw3-wc  { animation: wordGlide .45s ease forwards; animation-delay: 19.24s; --dx: -22px; --dy: -306px; }
+    .s3-aw3 { animation: fadeInStay .15s ease forwards 19.64s, flashCyan .18s ease 19.81s, flashCyan .18s ease 20.96s; }
+
+    .s3-aw4-pg  { animation: blip .12s ease forwards; animation-delay: 19.81s; }
+    .s3-aw4-ina { animation: blip .08s ease forwards; animation-delay: 19.89s; }
+    .s3-aw4-inb { animation: blip .08s ease forwards; animation-delay: 19.97s; }
+    .s3-aw4-lg  { animation: blip .15s ease forwards; animation-delay: 20.05s; }
+    .s3-aw4-outa { animation: blip .08s ease forwards; animation-delay: 20.21s; }
+    .s3-aw4-outb { animation: blip .08s ease forwards; animation-delay: 20.29s; }
+    .s3-aw4-wc  { animation: wordGlide .45s ease forwards; animation-delay: 20.39s; --dx: 75.2px; --dy: -306px; }
+    .s3-aw4 { animation: fadeInStay .15s ease forwards 20.79s, flashCyan .18s ease 20.96s; }
+
+    .s3-aw5-pg  { animation: blip .12s ease forwards; animation-delay: 20.96s; }
+    .s3-aw5-ina { animation: blip .08s ease forwards; animation-delay: 21.04s; }
+    .s3-aw5-inb { animation: blip .08s ease forwards; animation-delay: 21.12s; }
+    .s3-aw5-lg  { animation: blip .15s ease forwards; animation-delay: 21.20s; }
+    .s3-aw5-outa { animation: blip .08s ease forwards; animation-delay: 21.36s; }
+    .s3-aw5-outb { animation: blip .08s ease forwards; animation-delay: 21.44s; }
+    .s3-aw5-wc  { animation: wordGlide .45s ease forwards; animation-delay: 21.54s; --dx: 129.2px; --dy: -306px; }
+    .s3-aw5 { animation: fadeInStay .15s ease forwards 21.94s; }
+    .s3-aw1-r { animation: fadeInStay .15s ease forwards; animation-delay: 17.34s; }
+    .s3-aw2-r { animation: fadeInStay .15s ease forwards; animation-delay: 18.49s; }
+    .s3-aw3-r { animation: fadeInStay .15s ease forwards; animation-delay: 19.64s; }
+    .s3-aw4-r { animation: fadeInStay .15s ease forwards; animation-delay: 20.79s; }
+    .s3-aw5-r { animation: fadeInStay .15s ease forwards; animation-delay: 21.94s; }
+    .s3-dot-h1 { animation: blip .12s ease forwards; animation-delay: 14.01s; }
+    .s3-dot-h2 { animation: blip .12s ease forwards; animation-delay: 14.11s; }
+    .s3-dot-h3 { animation: blip .12s ease forwards; animation-delay: 14.21s; }
+    .s3-tool-result { animation: fadeInStay .25s ease forwards 14.71s, flashGreen .18s ease 15.21s, flashGreen .18s ease 16.36s, flashGreen .18s ease 17.51s, flashGreen .18s ease 18.66s, flashGreen .18s ease 19.81s, flashGreen .18s ease 20.96s; }
+    .s3-panel-inject-flash { animation: blip .3s ease forwards; animation-delay: 14.71s; }
+  </style>
+
+  <defs>
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#93a1a1"/>
+    </marker>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="s3-type1clip" clipPathUnits="userSpaceOnUse">
+      <rect x="62" y="90" width="0" height="24"/>
+    </clipPath>
+    <clipPath id="s3-type2clip" clipPathUnits="userSpaceOnUse">
+      <rect x="40" y="115" width="0" height="24"/>
+    </clipPath>
+  </defs>
+
+  <text class="s3-title fade" x="550" y="34" text-anchor="middle" font-size="36" font-weight="700" fill="#b58900">Agent + Harness</text>
+
+  <g transform="translate(0,58)">
+
+  <text class="s3-early fade" x="20" y="26" font-size="16" font-style="italic" fill="#93a1a1">YOUR COMPUTER</text>
+  <text class="s3-early fade" x="20" y="46" font-size="13" font-style="italic" fill="#93a1a1">what you actually see</text>
+  <text class="s3-early fade" x="464" y="26" font-size="16" font-style="italic" fill="#93a1a1">CLOUD - LLM</text>
+  <line class="s3-early fade" x1="452" y1="20" x2="452" y2="650" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <rect class="s3-early fade" x="20" y="70" width="420" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
+
+  <text class="s3-prompt1 fade" x="40" y="105" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="62" y="105" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s3-type1clip)">Make a bash script that echoes</text>
+  <rect class="s3-cursor1 fade" y="87" width="9" height="20" fill="#eee8d5"/>
+
+  <text x="40" y="130" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s3-type2clip)">"What is an LLM?" to the terminal</text>
+  <rect class="s3-cursor2 fade" y="112" width="9" height="20" fill="#eee8d5"/>
+
+  <line class="s3-arrow-line fade" x1="443" y1="150" x2="461" y2="150" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
+  <circle class="s3-arrow-a fade" cx="449" cy="150" r="5" fill="#eee8d5"/>
+  <circle class="s3-arrow-b fade" cx="455" cy="150" r="5" fill="#eee8d5"/>
+
+  <g class="s3-running fade">
+    <text class="s3-blink" x="40" y="180" font-family="'Courier New', monospace" font-size="18" font-style="italic" fill="#93a1a1">Running...</text>
+  </g>
+  <text x="40" y="180" font-family="'Courier New', monospace" font-size="17" fill="#2aa198">
+    <tspan class="s3-aw1-r fade">I</tspan>
+    <tspan class="s3-aw2-r fade"> created</tspan>
+    <tspan class="s3-aw3-r fade"> hello-world.sh</tspan>
+    <tspan class="s3-aw4-r fade"> in</tspan>
+    <tspan class="s3-aw5-r fade"> ~/user</tspan>
+  </text>
+
+
+  <rect class="s3-box fade" x="464" y="65" width="616" height="563" rx="14" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+
+
+  <g class="s3-sys fade">
+    <text class="s3-sys-text" x="480" y="110" font-size="15" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that can run bash commands.</text>
+  </g>
+
+  <g class="s3-u1-left fade">
+    <text class="s3-user-text" x="480" y="137" font-size="18" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: Make a bash script that echoes</text>
+    <text class="s3-user-text" x="480" y="161" font-size="18" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">"What is an LLM?" to the terminal</text>
+  </g>
+
+  <text class="s3-tagOpen fade" x="480" y="188" font-size="15" fill="#268bd2" font-family="'Courier New', monospace">&lt;function_calls name=&quot;bash&quot;&gt;</text>
+  <text x="495" y="212" font-size="15" font-style="italic" fill="#268bd2" font-family="'Courier New', monospace">
+    <tspan class="s3-bw1 fade" font-family="'Courier New', monospace">echo</tspan>
+    <tspan class="s3-bw2 fade" font-family="'Courier New', monospace"> "What</tspan>
+    <tspan class="s3-bw3 fade" font-family="'Courier New', monospace"> is</tspan>
+    <tspan class="s3-bw4 fade" font-family="'Courier New', monospace"> an</tspan>
+    <tspan class="s3-bw5 fade" font-family="'Courier New', monospace"> LLM?"</tspan>
+  </text>
+  <text class="s3-tagClose fade" x="480" y="236" font-size="15" fill="#268bd2" font-family="'Courier New', monospace">&lt;/function_calls&gt;</text>
+
+  <text class="s3-tool-result fade" x="480" y="260" font-size="14" fill="#859900" font-family="'Courier New', monospace">&lt;tool_result&gt;Created hello-world.sh&lt;/tool_result&gt;</text>
+
+  <text x="480" y="287" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+    <tspan class="s3-answerLabel fade" font-family="'Courier New', monospace">Answer:</tspan>
+    <tspan class="s3-aw1 fade" font-family="'Courier New', monospace"> I</tspan>
+    <tspan class="s3-aw2 fade" font-family="'Courier New', monospace"> created</tspan>
+    <tspan class="s3-aw3 fade" font-family="'Courier New', monospace"> hello-world.sh</tspan>
+    <tspan class="s3-aw4 fade" font-family="'Courier New', monospace"> in</tspan>
+    <tspan class="s3-aw5 fade" font-family="'Courier New', monospace"> ~/user</tspan>
+  </text>
+
+  <!-- panel flash when the harness's result lands in the context -->
+  <rect class="s3-panel-inject-flash fade" x="464" y="65" width="616" height="563" rx="14" fill="none" stroke="#859900" stroke-width="4" filter="url(#softGlow)"/>
+
+
+  <line class="s3-box fade" x1="772" y1="403" x2="772" y2="428" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <circle class="s3-tagOpen-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-tagOpen-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw1-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw1-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw2-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw2-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw3-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw3-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw4-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw4-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw5-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw5-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-tagClose-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-tagClose-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-answerLabel-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-answerLabel-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw1-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw1-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw2-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw2-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw3-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw3-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw4-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw4-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw5-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw5-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
+
+  <rect class="s3-box fade" x="662" y="438" width="220" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+  <text class="s3-box fade" x="772" y="470" text-anchor="middle" font-size="22" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Transformer</text>
+
+  <rect class="s3-tagOpen-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-bw1-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-bw2-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-bw3-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-bw4-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-bw5-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-tagClose-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-answerLabel-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-aw1-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-aw2-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-aw3-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-aw4-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-aw5-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+
+  <line class="s3-box fade" x1="612" y1="483" x2="230" y2="483" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <rect class="s3-harness-box fade" x="20" y="438" width="160" height="90" rx="10" fill="#0d4a55" stroke="#859900" stroke-width="3"/>
+  <text class="s3-box fade" x="100" y="470" text-anchor="middle" font-size="16" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Agent Harness</text>
+  <circle class="s3-dot-h1 fade" cx="517" cy="483" r="6" fill="#eee8d5"/>
+  <circle class="s3-dot-h2 fade" cx="421" cy="483" r="6" fill="#eee8d5"/>
+  <circle class="s3-dot-h3 fade" cx="326" cy="483" r="6" fill="#eee8d5"/>
+
+
+  <line class="s3-box fade" x1="772" y1="543" x2="772" y2="568" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <circle class="s3-tagOpen-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-tagOpen-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw1-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw1-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw2-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw2-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw3-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw3-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw4-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw4-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw5-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-bw5-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-tagClose-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-tagClose-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-answerLabel-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-answerLabel-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw1-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw1-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw2-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw2-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw3-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw3-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw4-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw4-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw5-outa fade" cx="772" cy="551" r="5" fill="#eee8d5"/>
+  <circle class="s3-aw5-outb fade" cx="772" cy="560" r="5" fill="#eee8d5"/>
+  <text class="s3-tagOpen-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;function_calls name=&quot;bash&quot;&gt;</text>
+  <text class="s3-bw1-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">echo</text>
+  <text class="s3-bw2-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&quot;What</text>
+  <text class="s3-bw3-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">is</text>
+  <text class="s3-bw4-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">an</text>
+  <text class="s3-bw5-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">LLM?&quot;</text>
+  <text class="s3-tagClose-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">&lt;/function_calls&gt;</text>
+  <text class="s3-answerLabel-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">Answer:</text>
+  <text class="s3-aw1-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">I</text>
+  <text class="s3-aw2-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">created</text>
+  <text class="s3-aw3-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">hello-world.sh</text>
+  <text class="s3-aw4-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">in</text>
+  <text class="s3-aw5-wc fade" x="772" y="593" text-anchor="middle" font-size="16" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">~/user</text>
+  </g>
+</svg>

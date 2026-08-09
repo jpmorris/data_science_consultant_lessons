@@ -15,6 +15,7 @@ format:
     height: 1080
     pdf-separate-fragments: false
     pdf-max-pages-per-slide: 1
+    include-after-body: nexttoken-replay.html
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf
@@ -419,14 +420,156 @@ Nothing has dethroned this general shape as the dominant architecture since
   attention variants (sliding window, grouped-query, etc.).
 :::
 
-## It's Next-Token Prediction All the Way Down {.incremental .heading-accent}
+<!-- STAGE 1/3 (nexttoken-stage-1-zeroshot): zero-shot -- animated prompt->LLM->completion loop, 5 words -->
+## It's ALL Next-Token Prediction {#nexttoken-stage-1-zeroshot auto-animate="true" .heading-accent}
 
-- **Zero-shot**: ask a novel question, no examples — it just answers
-- **Chain-of-thought**: ask it to "think step by step" — reasoning improves
-- **Agent + harness**: give it tools, a loop, and a stopping rule — it acts
-  - **Harness** = everything wrapped _around_ the model — prompts, tools,
-    memory, orchestration code, stopping rules. The model isn't getting smarter
-    here; the scaffolding around it is getting better engineered.
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual diagram-panel">
+    {{< include images/nexttoken-zeroshot.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li><strong>Simple prompting</strong>: no reasoning, no tools — the model just answers, one predicted token at a time</li>
+    </ul>
+  </div>
+</div>
+<div class="diagram-footnotes">
+  <ul>
+    <li><strong>Every token gets appended</strong> to the prompt, and the whole thing runs through the transformer again to produce the next one</li>
+    <li><strong>KV-caching</strong> means you only reprocess the newest token, not the entire prompt — but the cache can expire, and when it does, everything runs through from scratch again</li>
+  </ul>
+</div>
+```
+
+::: {.notes}
+Every "answer" is the same mechanism repeated: predict one token, append it
+to the context, predict the next one, repeat. The left pane is the raw
+context the model actually processes; the right pane is what a real chat UI
+shows you — notice the system prompt never appears there. The second
+question in this demo is the key beat: watch the *entire* box (including the
+first answer) glow and pulse through the model again, not just the new
+question. This is the throughline for the rest of the section — reasoning
+and agentic tool use are both just this same loop with more stuff stuffed
+into the context before the next prediction.
+:::
+
+<!-- STAGE 2/3 (nexttoken-stage-2-cot): reasoning -- every tag AND every word
+     (35 tokens total) runs the exact same per-token pipeline as the
+     "Simple Prompt" stage: panel glow -> dots down arrow1 -> LLM glow ->
+     dots down arrow2 -> token lands in the completion slot -> folds into
+     the panel, flashing white; already-revealed tokens keep re-flashing
+     on every later cycle, same as stage 1. Generated via
+     /tmp/pwtest/gen-stage2.mjs + assemble-stage2.mjs (not hand-written --
+     35 tokens x up to 34 flash instances each is impractical to author by
+     hand without transcription errors). Terminal shows "Thinking..."
+     during reasoning, flashes the summary sentence whole (not word-by-word
+     -- deliberately different, it's a separate user-facing generation),
+     then streams the real answer word-by-word once ready -->
+## It's ALL Next-Token Prediction {#nexttoken-stage-2-cot auto-animate="true" .heading-accent}
+
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual diagram-panel">
+    {{< include images/nexttoken-cot.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li>Simple prompting: no reasoning, no tools — the model just answers, one predicted token at a time</li>
+      <li><strong>Reasoning</strong> (chain-of-thought): "thinking" tokens generated before the final answer</li>
+    </ul>
+  </div>
+</div>
+<div class="diagram-footnotes">
+  <ul>
+    <li><strong>Every token gets appended</strong> to the prompt, and the whole thing runs through the transformer again to produce the next one</li>
+    <li><strong>KV-caching</strong> means you only reprocess the newest token, not the entire prompt — but the cache can expire, and when it does, everything runs through from scratch again</li>
+  </ul>
+</div>
+```
+
+::: {.notes}
+Same question as the previous stage, same final answer — the point isn't
+that reasoning changes the answer here, it's that reasoning is the *same
+mechanism*: tokens generated one at a time, just wrapped in a tag and
+usually hidden from you.
+
+`<reasoning>` and `<user summary>` here are **illustrative, not a real
+tag from any lab** — say that explicitly if asked. We don't actually know
+ChatGPT's internal format; OpenAI deliberately hides raw reasoning
+entirely, in both the ChatGPT UI and the API. What you actually see
+flashing in ChatGPT while it works is a *separately generated summary* of
+the reasoning, not the reasoning itself — a distinct generation pass
+whose job is showing you a live-updating gloss, not a transcript. That's
+exactly the distinction the two tag types dramatize here: `<reasoning>`
+= the real internal deliberation (never shown to the user), `<user
+summary>` = the model generating a *different*, shorter piece of text
+whose whole purpose is to be shown. Both are still just next-token
+prediction — that's the point — they're just aimed at different
+audiences.
+
+DeepSeek R1 is the one lab that's a genuine documented exception: its raw
+output literally contains `<think>...</think>` tags, publicly confirmed
+in the R1 paper. Worth mentioning by name if asked which lab (if any)
+actually does this. Anthropic's extended thinking returns structured API
+content blocks (`type: "thinking"`) rather than an inline tag; Google's
+Gemini thinking models show a "Thoughts" summary similar in spirit to
+ChatGPT's. "Ask it to think step by step" describes *prompted* CoT (the
+2022-era technique); by 2026 frontier models increasingly reason natively
+via RL training, not because anyone asked — worth saying out loud if the
+audience seems to expect the older framing.
+:::
+
+<!-- STAGE 3/3 (nexttoken-stage-3-agent): agent + harness -- LLM generates a
+     tool call token-by-token (same mechanism as every other stage), a dot
+     routes it to a second box (Agent Harness) instead of back to the LLM,
+     the harness injects a tool result as one complete block (not
+     LLM-generated, so no token-by-token reveal), then the whole context
+     -- including that result -- resends to the LLM for the final answer -->
+## It's ALL Next-Token Prediction {#nexttoken-stage-3-agent auto-animate="true" .heading-accent}
+
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual diagram-panel">
+    {{< include images/nexttoken-agent.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <ul>
+      <li>Simple prompting: no reasoning, no tools — the model just answers, one predicted token at a time</li>
+      <li>Reasoning (chain-of-thought): "thinking" tokens generated before the final answer</li>
+      <li><strong>Agent + harness</strong>: give it tools, a loop, and a stopping rule — it acts</li>
+    </ul>
+  </div>
+</div>
+<div class="diagram-footnotes">
+  <ul>
+    <li><strong>Every token gets appended</strong> to the prompt, and the whole thing runs through the transformer again to produce the next one</li>
+    <li><strong>KV-caching</strong> means you only reprocess the newest token, not the entire prompt — but the cache can expire, and when it does, everything runs through from scratch again</li>
+  </ul>
+</div>
+```
+
+::: {.notes}
+**Harness** = everything wrapped _around_ the model — prompts, tools,
+memory, orchestration code, stopping rules. The model isn't getting smarter
+here; the scaffolding around it is getting better engineered.
+
+The `<function_calls name="bash">` tag is made up for this demo, not
+borrowed from a real system — say that if asked. There's no single
+universal standard the way DeepSeek R1's `<think>` is real: native
+tool-calling APIs (Claude, GPT-4+) return structured JSON, not inline
+text tags at all; where inline XML-ish tags do appear it varies by
+implementation (Claude's own documented tool-use format is
+`<function_calls><invoke name="..."><parameter name="...">`, more nested
+than what's shown here for simplicity).
+
+The key mechanism this stage is built to get right: the tool *result*
+(`<tool_result>`) is injected by the harness as one complete block, not
+generated by the LLM word-by-word -- it's real data from actually running
+code, not a prediction. Then the *entire* context, result included,
+resends to the model for the final turn, same "whole box flows through
+again" pattern as every other stage.
+:::
 
 ## The Entropy Floor {.heading-accent}
 
