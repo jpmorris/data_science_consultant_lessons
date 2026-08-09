@@ -873,7 +873,18 @@
       applyFade([els.label], labelPresent, labelEntering ? FADE_MS : 0, animate);
     });
 
-    tweenKingLabel(kingTargetForStage(stageName), animate);
+    // Only move king when it's actually going to be visible in the
+    // destination stage -- kingTargetForStage falls back to the
+    // embeddings-stage position for any stage it doesn't recognize,
+    // which used to mean leaving to data/compute/training/inference
+    // (none of which show king at all) made it visibly glide to that
+    // fallback spot while simultaneously fading out to nothing. Now it
+    // just stays put and fades in place; next time it's needed
+    // (navigating back to a stage where it's present), the tween finds
+    // it already at the right spot and is a no-op.
+    if (ALWAYS_PRESENT[stageName]) {
+      tweenKingLabel(kingTargetForStage(stageName), animate);
+    }
 
     var langWasPresent = prevStage ? LANG_ONLY[prevStage] : false;
     var langPresent = LANG_ONLY[stageName];
