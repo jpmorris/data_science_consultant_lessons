@@ -81,6 +81,7 @@ $body-bg: #073642;
   align-items: center;
   gap: 2em;
   width: 100%;
+  margin-top: 1.4em;
 }
 .reveal .slides .diagram-split-row .diagram-split-visual {
   flex: 0 0 55%;
@@ -98,8 +99,8 @@ $body-bg: #073642;
 // .diagram-split-text bullets, this content doesn't accumulate per stage --
 // it's the same two points every time).
 .reveal .slides .diagram-footnotes {
-  margin-top: 0.6em;
-  width: 100%;
+  margin-top: 1.6em;
+  max-width: 62%;
 }
 .reveal .slides .diagram-footnotes ul {
   margin: 0;
