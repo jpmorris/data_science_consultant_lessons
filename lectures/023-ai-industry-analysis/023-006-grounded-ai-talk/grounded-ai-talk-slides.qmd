@@ -573,41 +573,281 @@ again" pattern as every other stage.
 
 ## The Entropy Floor {.heading-accent}
 
-- A model can only be as good as the _irreducible uncertainty_ left in a task
-- Specs, requirements, and structured text lower that floor — they remove
-  ambiguity before the model even starts guessing
-- Tighter, more verifiable tasks let performance get close to "solved"
-- Vaguer tasks keep the floor high — no amount of scale fixes an underspecified
-  question
+```{=html}
+<div class="entropy-defs">
+  <div class="entropy-def"><span class="entropy-def-term">Entropy</span> — how many different, equally reasonable words could come next in a sentence (or steps, in a task).</div>
+  <div class="entropy-def"><span class="entropy-def-term">Entropy floor</span> — what's left even with a perfect model, because the task allows more than one right answer.</div>
+</div>
+<div class="section-label"><span class="section-tick"></span>Natural Language <span class="section-sub">— next-token probabilities, straight out of the softmax layer</span></div>
+<div class="softmax-row">
+  <div class="softmax-card" style="--accent: #2aa198;">
+    <div class="softmax-label">Low Entropy</div>
+    <div class="softmax-sentence">"The capital of France is ___"</div>
+    <div class="softmax-bar">
+      <span class="softmax-token">Paris</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 97%;"></span></span>
+      <span class="softmax-pct">97%</span>
+    </div>
+    <div class="softmax-bar">
+      <span class="softmax-token">Lyon</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 1%;"></span></span>
+      <span class="softmax-pct">1%</span>
+    </div>
+    <div class="softmax-bar">
+      <span class="softmax-token">Rome</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 1%;"></span></span>
+      <span class="softmax-pct">1%</span>
+    </div>
+    <div class="softmax-bar">
+      <span class="softmax-token">…everything else</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 1%;"></span></span>
+      <span class="softmax-pct">1%</span>
+    </div>
+    <div class="softmax-caption">one token owns almost all the probability mass</div>
+  </div>
+  <div class="softmax-card" style="--accent: #cb4b16;">
+    <div class="softmax-label">High Entropy</div>
+    <div class="softmax-sentence">"My favorite color is ___"</div>
+    <div class="softmax-bar">
+      <span class="softmax-token">blue</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 19%;"></span></span>
+      <span class="softmax-pct">19%</span>
+    </div>
+    <div class="softmax-bar">
+      <span class="softmax-token">green</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 17%;"></span></span>
+      <span class="softmax-pct">17%</span>
+    </div>
+    <div class="softmax-bar">
+      <span class="softmax-token">red</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 15%;"></span></span>
+      <span class="softmax-pct">15%</span>
+    </div>
+    <div class="softmax-bar">
+      <span class="softmax-token">…everything else</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 49%;"></span></span>
+      <span class="softmax-pct">49%</span>
+    </div>
+    <div class="softmax-caption">probability spread thin across dozens of plausible words</div>
+  </div>
+</div>
+<div class="section-label"><span class="section-tick"></span>Programming Languages <span class="section-sub">— from a single token to an entire product</span></div>
+<div class="entropy-ladder">
+  <div class="entropy-card" style="--accent: #2aa198;">
+    <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+      <line x1="32" y1="3" x2="32" y2="37"/>
+      <circle cx="32" cy="3" r="2.5"/>
+    </svg>
+    <div class="entropy-level">Token</div>
+    <div class="entropy-example"><code>print("Hello, world!<span class="entropy-code-predicted">")</span></code></div>
+    <div class="entropy-caption">closing the string, then the call — barely any other option</div>
+  </div>
+  <div class="entropy-card" style="--accent: #268bd2;">
+    <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+      <line x1="32" y1="3" x2="8" y2="37"/>
+      <line x1="32" y1="3" x2="32" y2="37"/>
+      <line x1="32" y1="3" x2="56" y2="37"/>
+      <circle cx="32" cy="3" r="2.5"/>
+    </svg>
+    <div class="entropy-level">Function</div>
+    <div class="entropy-example"><code>def add(a, b): <span class="entropy-code-predicted">return a + b</span></code></div>
+    <div class="entropy-caption">a handful of equivalent phrasings</div>
+  </div>
+  <div class="entropy-card" style="--accent: #6c71c4;">
+    <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+      <line x1="32" y1="3" x2="8" y2="37"/>
+      <line x1="32" y1="3" x2="20" y2="37"/>
+      <line x1="32" y1="3" x2="32" y2="37"/>
+      <line x1="32" y1="3" x2="44" y2="37"/>
+      <line x1="32" y1="3" x2="56" y2="37"/>
+      <circle cx="32" cy="3" r="2.5"/>
+    </svg>
+    <div class="entropy-level">Algorithm</div>
+    <div class="entropy-example">"sort this list"</div>
+    <div class="entropy-caption">quicksort? merge sort? <code>sorted()</code>?</div>
+  </div>
+  <div class="entropy-card" style="--accent: #d33682;">
+    <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+      <line x1="32" y1="3" x2="8" y2="37"/>
+      <line x1="32" y1="3" x2="16" y2="37"/>
+      <line x1="32" y1="3" x2="24" y2="37"/>
+      <line x1="32" y1="3" x2="32" y2="37"/>
+      <line x1="32" y1="3" x2="40" y2="37"/>
+      <line x1="32" y1="3" x2="48" y2="37"/>
+      <line x1="32" y1="3" x2="56" y2="37"/>
+      <circle cx="32" cy="3" r="2.5"/>
+    </svg>
+    <div class="entropy-level">Feature</div>
+    <div class="entropy-example">"add user login"</div>
+    <div class="entropy-caption">sessions vs. JWT, which framework, how errors surface</div>
+  </div>
+  <div class="entropy-card" style="--accent: #cb4b16;">
+    <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+      <line x1="32" y1="3" x2="8" y2="37"/>
+      <line x1="32" y1="3" x2="13" y2="37"/>
+      <line x1="32" y1="3" x2="19" y2="37"/>
+      <line x1="32" y1="3" x2="24" y2="37"/>
+      <line x1="32" y1="3" x2="29" y2="37"/>
+      <line x1="32" y1="3" x2="35" y2="37"/>
+      <line x1="32" y1="3" x2="40" y2="37"/>
+      <line x1="32" y1="3" x2="45" y2="37"/>
+      <line x1="32" y1="3" x2="51" y2="37"/>
+      <line x1="32" y1="3" x2="56" y2="37"/>
+      <circle cx="32" cy="3" r="2.5"/>
+    </svg>
+    <div class="entropy-level">Product</div>
+    <div class="entropy-example">"build me a to-do app"</div>
+    <div class="entropy-caption">no single right answer</div>
+  </div>
+</div>
+<div class="entropy-axis">
+  <span>tight, determined</span>
+  <span class="entropy-axis-line"></span>
+  <span>open, underspecified</span>
+</div>
+<div class="entropy-insight">
+  <div class="entropy-insight-step">
+    <span class="entropy-insight-num"></span>
+    <span class="entropy-insight-text">A perfect model doesn't collapse this ladder — the ambiguity lives in the task, not the tool.</span>
+  </div>
+  <div class="entropy-insight-step">
+    <span class="entropy-insight-num"></span>
+    <span class="entropy-insight-text">Requirements, specs, and unit tests lower the floor — but rarely to zero, and only for the entropy you already know is there.</span>
+  </div>
+  <div class="entropy-insight-step">
+    <span class="entropy-insight-num"></span>
+    <span class="entropy-insight-text">In practice, you often don't know what you don't know — a requirement doesn't exist until reality surfaces it.</span>
+  </div>
+</div>
+<blockquote class="entropy-thesis">Software that keeps evolving will probably always need someone to specify it, guide it, and verify it.</blockquote>
+```
 
 ::: {.notes}
 This connects straight back to the intro thesis slide (the oracle
 idea). Say it out loud: "entropy floor" and "do you have a trustworthy checker"
 are basically the same question asked two different ways.
+
+Open with the two definitions at the top — the whole slide is just these two
+ideas made concrete twice, once in natural language, once in software.
+Deliberately no math on the slide, but say the two-step logic out loud:
+
+Step one, language: even *within language itself*, several next words are
+often equally reasonable — that's not a flaw in the model, it's just how
+language works. No model, however good, can collapse that down to one
+"correct" word, because there isn't one.
+
+Step two, the jump: the same is true one level up, of the task the language
+is describing, not just its wording. A spec written in perfectly clear
+English can still have many different, equally defensible implementations.
+More scale doesn't close that gap, because the gap was never about the
+model's competence — it's about the task genuinely not pinning down one
+answer.
+
+(Background only, no need to say out loud: this is Shannon entropy —
+H(p) = −Σ p(x) log₂ p(x) over the model's next-token distribution — and the
+"floor" specifically is the entropy of the *true* distribution of reasonable
+continuations, not the model's estimate of it. Training closes the gap
+between the model's estimate and the true distribution — epistemic
+uncertainty, reducible in principle. Once the model is perfectly calibrated,
+what's left is the entropy *of* that true distribution itself — aleatoric
+uncertainty — and that's the floor. Scale only ever closes the epistemic
+gap.)
+
+Natural Language row: this is literally the softmax layer from the
+transformer diagram a few slides back, made concrete. "The capital of France
+is ___" is low entropy: the model puts ~97% of its probability mass on
+"Paris" and the rest is noise. "My favorite color is ___" is high entropy:
+no single answer dominates, the mass is spread across dozens of plausible
+completions. Same architecture, same softmax, wildly different amount of
+genuine uncertainty — because the *task* constrains the answer differently,
+not because the model is more or less capable in one case than the other.
+
+Programming Languages row: same idea, scaled up from a single token to an
+entire product. Token-level completion is nearly deterministic — there's
+essentially one sane next token. By the time you're at "add user login" or
+"build me a to-do app," there are enormous numbers of equally defensible
+answers, and that's true even in the limit of a perfect model. The fan icons
+are a literal count-of-branches metaphor: one thread at the token level,
+many threads by the product level. Key point to land out loud: this isn't a
+capability gap. A perfect model faced with "build me a to-do app" still has
+to *choose* — React or not, which auth, what feature set — because the
+prompt genuinely underdetermines the answer.
+
+The closing block is the most important part to land slowly, and it's the
+part that's easy to get glib about. The three bullets are deliberately
+unnumbered — they're a loose build-up, not a tight enough causal chain to
+enumerate — and the point is to let the blue line underneath land as a
+single synthesized conclusion, not "bullet four."
+
+Bullet one: a perfect model doesn't get you out of this. The ambiguity is a
+property of the task, not a gap in the model.
+
+Bullet two: room is full of consultants, so name the artifacts they actually
+produce — requirements docs, specs, unit tests — and say "rarely to zero" on
+purpose, worth pausing on if anyone pushes back. A test suite defines a
+pass/fail boundary, not a single implementation: plenty of genuinely
+different code can pass the same tests (different algorithm, different
+structure, different tradeoffs), and plenty of different prose can satisfy
+the same requirements doc. So requirements, specs, and tests shrink the
+space of acceptable answers — they very rarely collapse it to exactly one.
+That's a real, separate point from bullet three, not just hedging: even the
+entropy you *do* know about usually isn't fully eliminated, only bounded.
+
+Bullet three: on top of that, in real projects you frequently don't know
+what you don't know — an edge case, a regulatory requirement, a user
+workflow nobody anticipated, only shows up once the software is in front of
+real use. You can't write a unit test for a requirement you haven't
+discovered yet.
+
+Then the blue line, said slowly, as the payoff of all three: software that
+keeps evolving will probably always need someone to specify it, guide it,
+and verify it. "Probably" is deliberate, not filler — this doesn't rule out
+a future where agents largely run agents, with one human sitting well above
+the loop rather than in it on every task. The claim is narrower and holds up
+either way: *someone*, human or not fully automated away, still has to do
+the specifying/guiding/verifying — the roles don't disappear just because
+who's staffing them changes. "Specify, guide, verify" is doing real work —
+someone has to keep writing the next requirement (specify), keep steering
+the system as it changes (guide), and keep checking it still does what it's
+supposed to (verify). That's the throughline to the job-security question
+this talk keeps circling: as long as new, previously unknown entropy keeps
+showing up,
+something has to notice it, decide what it means, and do all three. That's
+the human in the loop this slide is pointing at.
 :::
 
-## What Is Astounding About LLMs? {.heading-accent}
+## What Is Astounding About LLMs? {.smaller .scrollable .heading-accent}
 
-Nobody was surprised that:
+```{=html}
+<div class="section-label section-label--lg">Nobody Was Surprised</div>
+```
 
-- Words and their meaning correlate with context (Firth)
-- Language is highly predictable from context (Shannon)
-- Neural nets (RNN/LSTM) could encode knowledge in their weights before
-  Transformers existed
-- Words could be embedded to encode meaning geometrically
+::: {.surprise-bullets}
+- **"You shall know a word by the company it keeps."**: words and their
+  meaning correlate with context (Firth)
+- **Language is highly predictable**: from context (Shannon)
+- **Words to numbers**: embeddings encode meaning geometrically
+- **World knowledge is in the weights**: neural nets (RNN/LSTM) could encode
+  it before Transformers existed
+:::
 
-So what _did_ surprise people?
+```{=html}
+<div class="section-label section-label--lg">What Actually Surprised People</div>
+```
 
-## The Actual Surprises {.smaller .scrollable .heading-accent}
-
-| Milestone                   | Date    | Surprise                                                                                                                                        |
-| --------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Chomsky's Universal Grammar | 1957/65 | Contested — is LLM success evidence _against_ innate grammar, or just engineering that says nothing about linguistics? Live debate, not settled |
-| AlexNet                     | 2012    | Deep nets crush hand-crafted vision features — the starting gun for the whole modern deep-learning wave                                         |
-| Word2Vec                    | 2013    | "You can do math with meaning" (king − man + woman ≈ queen) — genuinely unanticipated linear structure                                          |
-| Attention Is All You Need   | 2017    | Recurrence isn't necessary at all — attention alone works, and it parallelizes                                                                  |
-| GPT-2                       | 2019    | Zero-shot multitask competence — violated the field's _own_, just-established fine-tuning assumption                                            |
-| GPT-3                       | 2020    | Few-shot in-context learning from a handful of examples, zero weight updates — nothing in the training objective predicted this                 |
+::: {.table-panel}
+| Milestone                   | Date    | Surprise                                                                                                                                                    |
+| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Chomsky's Universal Grammar | 1957/65 | Contested — is LLM success **evidence against innate grammar**, or just engineering that says nothing about linguistics? Live debate, not settled            |
+| AlexNet                     | 2012    | **Deep nets crush hand-crafted vision features** — the starting gun for the whole modern deep-learning wave                                                   |
+| Word2Vec                    | 2013    | **"You can do math with meaning"** (king − man + woman ≈ queen) — genuinely unanticipated linear structure                                                    |
+| Attention Is All You Need   | 2017    | **Recurrence isn't necessary at all** — attention alone works, and it parallelizes                                                                            |
+| GPT-2                       | 2019    | **Zero-shot <span class="crux-word">multitask</span> competence** — violated the field's _own_, just-established fine-tuning assumption                       |
+| GPT-3                       | 2020    | **Few-shot <span class="crux-word">in-context</span> learning** from a handful of examples, zero weight updates — nothing in the training objective predicted this |
+| Chain-of-Thought Prompting  | 2022    | **Step-by-step <span class="crux-word">reasoning</span> just appears** — an emergent capability that only shows up at scale, never explicitly trained for (Wei et al.; Kojima et al.) |
+| ReAct / Tool-Using Agents   | 2022–23 | **<span class="crux-word">Agentic</span> tool use emerges from prompting alone** — the same next-token predictor plans, calls tools, and self-corrects, no new architecture required (Yao et al.; Schick et al.) |
+| FunSearch                   | 2023    | **An LLM inside a <span class="crux-word">search loop</span> found new math** — not solving a known benchmark, a previously-unknown improvement to the cap set problem (Romera-Paredes et al., _Nature_) |
+:::
 
 ::: {.notes}
 Full detail per row, for questions:
@@ -625,29 +865,6 @@ Full detail per row, for questions:
 - **GPT-3** ("Language Models are Few-Shot Learners"): paradigm shift.
 :::
 
-## The Chart That Started It All {.heading-accent}
-
-![ImageNet top-5 classification error rate by year — the discontinuity in 2012 is AlexNet.](images/imagenet-error-rate-history.svg){fig-align="center"
-height="700"}
-
-::: {.notes}
-Image: "ImageNet error rate history," Wikimedia Commons, CC BY-SA
-4.0. Pre-2012 error rates sat around 25–26%, moving in small increments via
-hand-engineered features + SVMs. AlexNet cut top-5 error to 15.3% in one shot —
-a 10+ point jump when the field was used to fractional-point gains.
-:::
-
-## The Open Question Underneath It All {.heading-accent}
-
-- When an LLM solves a problem it's never seen — grad-level physics, olympiad
-  math — is it because:
-  - It's close enough to its training data that next-word prediction can
-    _express_ the regularity (language is that predictable here), **or**
-  - Something is encoding actual understanding/rationality in the weights, no
-    longer just tracking language statistics?
-- Nobody has a clean answer. This is a live argument between (some) linguists
-  and (some) computer scientists — not settled science.
-
 ## How Do These Models Get Better? {.incremental .heading-accent}
 
 - Pretraining — more data/compute in the base model
@@ -658,6 +875,42 @@ a 10+ point jump when the field was used to fractional-point gains.
 
 Open question: is this purely a **data-and-compute** problem? With infinite data
 and compute, how good could these actually get?
+
+- Counter-argument (Haikonen): architecture quality may depend on tacit
+  organizational context — team history, roadmap, unwritten conventions —
+  that no corpus, however large, could ever contain
+
+::: {.notes}
+TODO (planning note, not for delivery): pull on the "is it in the data at
+all" string further before this talk is finalized. Haikonen's claim is that
+architecture quality isn't a data-scarcity problem, it's a tacit-context
+problem — the reasoning depends on things (team skill level, org history,
+future roadmap) that structurally can't appear in any public corpus. I'm not
+sure I buy the strong form of that: if good architectural reasoning were
+genuinely captured *somewhere* at scale (proprietary codebases, ADRs, design
+docs, code review threads) and just under-represented/hard to access rather
+than fundamentally uncapturable, that's a data problem after all, not a
+tacit-knowledge problem — "if it was in the data, it would be solved" is the
+test to keep applying here. Go find out which one it actually is before
+asserting either version on stage.
+
+TODO (bigger, through-line for the whole talk, don't forget this): there are
+two competing camps running under everything in this talk, and I want the
+audience to walk away having explicitly noticed the tension between them,
+not just seen it mentioned once. Camp A: if it's not in the training data,
+models can't be good at it (data-encodes-the-ceiling). Camp B: reasoning/
+rationality emerges strongly enough at scale that models don't need it in
+the training data anymore (emergence-transcends-the-data). This exact
+tension shows up in at least two places in this talk and I should make the
+audience feel the connection between them explicitly: (1) here, on whether
+good software architecture can be learned without architecture-quality
+examples in the corpus; (2) back on the Knowledge Frontier slide, on whether
+a genuine paradigm-shift-level scientific discovery (Einstein-level) could
+ever come from a system trained only on existing human output, or whether
+that requires something categorically different from more data. Same
+question, two costumes. Build this as the connective thread across the talk
+rather than two disconnected asides.
+:::
 
 ## Moore's Law, or a Plateau? {.smaller .heading-accent}
 
@@ -688,7 +941,7 @@ agentic benchmark-vs-production gap analysis, 2026. All gathered/verified this
 research pass — see references/ folder.
 :::
 
-## AI and the Knowledge Frontier {.heading-accent}
+## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
 
 Three different kinds of "discovery":
 
@@ -701,7 +954,9 @@ AI today is genuinely good at #1, and increasingly good at #2 — **when a cheap
 reliable checker exists**. #3 has not been observed yet, from any system,
 anywhere.
 
-## The Real Frontier-Edge Wins {.smaller .heading-accent}
+```{=html}
+<div class="section-label">The Real Frontier-Edge Wins</div>
+```
 
 - **AlphaEvolve / FunSearch** (Google DeepMind): evolutionary search over code
   and math, scored by a merciless automatic checker (a proof, a benchmark)
@@ -718,7 +973,23 @@ anywhere.
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
 AlphaEvolve (Novikov et al., 2025); framing per the RSI survey §6.1 read this
 session.
+
+This is the same AlphaEvolve/FunSearch result flagged earlier on the "What Is
+Astounding About LLMs?" surprises table (as the "search loop" row) — that was
+a deliberate early foreshadow, and this slide is where it actually gets
+unpacked.
 :::
+
+## The Open Question Underneath It All {.heading-accent}
+
+- When an LLM solves a problem it's never seen — grad-level physics, olympiad
+  math — is it because:
+  - It's close enough to its training data that next-word prediction can
+    _express_ the regularity (language is that predictable here), **or**
+  - Something is encoding actual understanding/rationality in the weights, no
+    longer just tracking language statistics?
+- Nobody has a clean answer. This is a live argument between (some) linguists
+  and (some) computer scientists — not settled science.
 
 # Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
