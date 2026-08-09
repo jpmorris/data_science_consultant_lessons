@@ -231,17 +231,16 @@
   // Straight up from the sentence's own center (x matches the box/frame
   // center too), not diagonally from king specifically -- the whole
   // sentence feeds in, king just happens to be the word riding along in
-  // it. x=350 matches the box/frame center exactly. Tail (530) sits
-  // below the frame's own bottom edge (515) and well above the
-  // sentence's cap-height (~550, baseline 570) -- clear of both. Head
-  // (502) stops just short of the embed box's actual bottom edge (500,
-  // since the arrow approaches from below), not inside it.
+  // it. Hand-tuned in Inkscape (same export/diff methodology as
+  // WORD_POINTS.labelAt elsewhere): exported the settled stage-5 SVG,
+  // dragged both arrows, diffed the edited file against these defaults
+  // to isolate exactly what moved.
   var XFMR_ARROW = {
-    from: { x: 350, y: 530 },
-    to:   { x: 350, y: 502 }
+    from: { x: 352, y: 550 },
+    to:   { x: 352, y: 522 }
   };
   var XFMR_OUTPUT_ARROW = {
-    from: { x: 350, y: 116 },
+    from: { x: 350, y: 93 },
     to:   { x: 350, y: 45 }
   };
   var XFMR_ANSWER_TEXT = { x: 350, y: 32 };
