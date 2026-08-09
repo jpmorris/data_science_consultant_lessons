@@ -358,6 +358,14 @@ code, and squeezing more epochs out of existing text.
       <li>Lots of data</li>
       <li><strong>Lots of compute to train</strong></li>
     </ul>
+    <template class="slide-citations-source">
+      <ul>
+        <li>2019 baseline &amp; 2026 frontier estimate (1e26&ndash;1e27 FLOPs): <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development" target="_blank" rel="noopener">Stanford HAI AI Index 2025</a>, Research and Development chapter</li>
+        <li>GPT-4 (~2e25 FLOPs) and other models trained at GPT-4 scale: Epoch AI, <a href="https://epoch.ai/data-insights/models-over-1e25-flop" target="_blank" rel="noopener">"Over 30 AI models have been trained at the scale of GPT-4"</a></li>
+        <li>Training cost figures (GPT-4 ~$78&ndash;80M, Llama 3.1 405B ~$170M): Stanford HAI AI Index 2025 / Epoch AI cost estimates</li>
+        <li>2030 compute ceiling (~2e29 FLOPs) &amp; power/chip bottleneck: Epoch AI, <a href="https://epoch.ai/publications/can-ai-scaling-continue-through-2030" target="_blank" rel="noopener">"Can AI Scaling Continue Through 2030?"</a></li>
+      </ul>
+    </template>
   </div>
 </div>
 <template id="llm-axes-source-compute">
@@ -370,9 +378,27 @@ GPT-4: ~2.1&times;10^25 FLOPs, ~$78&ndash;80M to train (Stanford AI Index /
 Epoch AI estimates). Llama 3.1 405B: ~$170M. 2026-era frontier runs:
 estimated 1&times;10^26 to 1&times;10^27 FLOPs, $200&ndash;500M, with
 projections toward $1&ndash;3B by late 2027. Training compute has scaled
-roughly 4&ndash;5x per year historically. Sources: Epoch AI ("Over 30 AI
-models have been trained at the scale of GPT-4"), Stanford HAI AI Index 2025. Chart above is illustrative only &mdash; the real gap between these
-numbers is far too large to show on a true linear scale.
+roughly 4&ndash;5x per year historically (note: this is FLOPs growth,
+not cost growth -- Epoch AI separately finds training *cost* has grown
+a slower 2&ndash;3x/year over the past 8 years, since hardware and
+algorithmic efficiency gains absorb some of the compute growth without
+a proportional cost increase).
+
+The fourth bar, if asked "is there a limit?": Epoch AI's "Can AI Scaling
+Continue Through 2030?" (2024) is the closest thing to a real answer.
+Their finding: no hard wall yet, but not unlimited either. Training runs
+around ~2x10^29 FLOPs are likely feasible by 2030 -- roughly the same
+size jump over today's frontier as GPT-4 was over GPT-2. Power is "the
+constraint likely to bind first": frontier training power draw has been
+growing ~2.2x/year and already exceeds 100MW; by 2030 the largest runs
+could need 4&ndash;16 GW, requiring genuinely new power-plant and grid
+buildout, not just more chips. Chip manufacturing capacity (advanced
+packaging/HBM production, not raw fab capacity) binds second -- their
+median 2030 estimate is ~100 million H100-equivalent GPUs dedicated to
+training. Data and network-latency constraints matter less than power
+or chips under current projections. Bottom line for the room: the
+economic/energy wall is real but a few years out, not something we're
+already up against the way the data wall increasingly is.
 :::
 
 <!-- STAGE 8/9 (llm-stage-8-training): training: descending loss curve -->
