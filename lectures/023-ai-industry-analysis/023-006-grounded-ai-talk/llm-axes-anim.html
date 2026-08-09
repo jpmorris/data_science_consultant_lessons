@@ -13,13 +13,18 @@
   photosynthesis, asteroid -- fade in instead, each close to 90deg from
   king but not exactly, and spread apart from each other too) -> stage 5
   "transformer" (king glides again into "Who is the current UK king ?",
-  with a blue arrow up into an unlabeled shaded sketch of the
-  decoder-only Transformer, "Charles III" waiting at the top) -> stages
-  6-9 "data"/"compute"/"training"/"inference" (king and the vector/
-  transformer content are gone; these reuse their existing hand-designed
-  static SVGs -- bar charts, a loss curve, the inference pipeline --
-  adopted from <template> elements via adoptTemplateSvg rather than
-  re-derived as hand-coordinated shapes, see the comment there).
+  with a blue arrow up into an unlabeled shaded sketch of the LLM,
+  "Charles III" waiting at the top) -> stage 6 "data" and stage 7
+  "compute" (king and the sketch are gone; these reuse their existing
+  hand-designed static SVGs -- bar charts -- adopted from <template>
+  elements via adoptTemplateSvg rather than re-derived as hand-
+  coordinated shapes, see the comment there) -> stage 8 "training" and
+  stage 9 "inference" (the shaded LLM sketch from stage 5 reappears --
+  xfmrBoxEls, not xfmrEls: same box, same LLM, reused rather than
+  redrawn, since it's the training/inference process happening to that
+  same model. Currently identical to stage 5's box with no
+  training/inference-specific content added yet -- see the TODO note
+  in each stage's speaker notes in the .qmd).
 
   "king" is a single continuous element across every stage it appears in,
   never recreated -- it starts as one leaf of the stage-1 tree and is
@@ -120,10 +125,12 @@
   var VM_ONLY = stagePresence(['vector-math']);
   var LS_ONLY = stagePresence(['latent-space']);
   var XFMR_ONLY = stagePresence(['transformer']);
+  // The shaded LLM sketch (xfmrBoxEls) is the same box reused across all
+  // three stages that are actually about running this model, not just
+  // the one that first introduces it.
+  var XFMR_BOX_PRESENT = stagePresence(['transformer', 'training', 'inference']);
   var DATA_ONLY = stagePresence(['data']);
   var COMPUTE_ONLY = stagePresence(['compute']);
-  var TRAINING_ONLY = stagePresence(['training']);
-  var INFERENCE_ONLY = stagePresence(['inference']);
   // king's label (not its vector line) is visible from "language" through
   // "transformer" -- it starts inside the sentence tree, glides through
   // the vector diagrams and into the "who is the king" sentence, then
@@ -354,8 +361,15 @@
   var langEls = [];
   var numbersEl = null;
   var bgVectorEls = [];
+  // xfmrEls: the "Who is the current UK king?" worked example (sentence,
+  // input arrow, "Charles III" answer) -- specific to stage 5 only.
+  // xfmrBoxEls: the shaded LLM sketch itself (frame, output arrow, and
+  // everything inside) -- shared across stages 5, 8 ("training"), and 9
+  // ("inference"), same box reused rather than redrawn, since it's the
+  // same LLM being trained/run in all three.
   var xfmrEls = [];
-  var legacyStageEls = { data: [], compute: [], training: [], inference: [] };
+  var xfmrBoxEls = [];
+  var legacyStageEls = { data: [], compute: [] };
   var currentAxesStage = null;
 
   function ns(tag) {
@@ -657,7 +671,7 @@
       line.setAttribute('marker-end', 'url(#' + (opts.marker || 'llm-arrow-gender') + ')');
       line.classList.add('llm-fade-el');
       svg.appendChild(line);
-      xfmrEls.push(line);
+      (opts.group || xfmrEls).push(line);
       return line;
     }
     xfmrLine(XFMR_ARROW);
@@ -688,10 +702,11 @@
       if (opts.dashed) rect.setAttribute('stroke-dasharray', '6,5');
       rect.classList.add('llm-fade-el');
       svg.appendChild(rect);
-      xfmrEls.push(rect);
+      (opts.group || xfmrEls).push(rect);
       return rect;
     }
-    function xfmrPlus(pt) {
+    function xfmrPlus(pt, opts) {
+      opts = opts || {};
       [[-7, 0, 7, 0], [0, -7, 0, 7]].forEach(function (d) {
         var line = ns('line');
         line.setAttribute('x1', String(pt.x + d[0]));
@@ -703,17 +718,24 @@
         line.setAttribute('stroke-width', '2');
         line.classList.add('llm-fade-el');
         svg.appendChild(line);
-        xfmrEls.push(line);
+        (opts.group || xfmrEls).push(line);
       });
     }
 
-    xfmrRect(XFMR_FRAME, { fillOpacity: 0, strokeOpacity: 0.7, strokeWidth: 2 });
-    xfmrRect(XFMR_OUTPUT);
-    xfmrLine(XFMR_OUTPUT_ARROW, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 2 });
+    // Everything from here down is the shaded LLM sketch itself -- goes
+    // in xfmrBoxEls (shared: stage 5 "transformer", stage 8 "training",
+    // stage 9 "inference") rather than xfmrEls (the stage-5-only worked
+    // example above: the sentence and its input arrow). Same box, same
+    // LLM, reused rather than redrawn for each stage that needs it.
+    var BOX = { group: xfmrBoxEls };
+    xfmrRect(XFMR_FRAME, { group: xfmrBoxEls, fillOpacity: 0, strokeOpacity: 0.7, strokeWidth: 2 });
+    xfmrRect(XFMR_OUTPUT, BOX);
+    xfmrLine(XFMR_OUTPUT_ARROW, { group: xfmrBoxEls, color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 2 });
 
     // The one piece of real text in this whole sketch: what actually
     // comes out the top. Amber, not blue -- this isn't king, it's the
-    // model's answer.
+    // model's answer. Stage-5-specific (xfmrEls): "Charles III" is only
+    // meaningful for this one worked example, not training/inference.
     var answerLabel = ns('text');
     answerLabel.setAttribute('x', String(XFMR_ANSWER_TEXT.x));
     answerLabel.setAttribute('y', String(XFMR_ANSWER_TEXT.y));
@@ -726,40 +748,45 @@
     svg.appendChild(answerLabel);
     xfmrEls.push(answerLabel);
 
-    xfmrRect(XFMR_LINSOFT);
-    xfmrRect(XFMR_FINAL_NORM);
-    xfmrLine(XFMR_REPEAT_CONNECTOR_1, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
-    xfmrRect(XFMR_REPEAT_BOX, { dashed: true, fillOpacity: 0, strokeOpacity: 0.5 });
-    xfmrLine(XFMR_REPEAT_CONNECTOR_2, { color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
-    xfmrRect(XFMR_BLOCK_OUTER, { dashed: true, fillOpacity: 0, strokeOpacity: 0.45 });
-    xfmrPlus(XFMR_PLUS2);
-    xfmrRect(XFMR_FFN);
-    xfmrRect(XFMR_NORM2);
-    xfmrPlus(XFMR_PLUS1);
-    xfmrRect(XFMR_ATTN);
-    xfmrRect(XFMR_NORM1);
-    xfmrRect(XFMR_EMBED);
+    xfmrRect(XFMR_LINSOFT, BOX);
+    xfmrRect(XFMR_FINAL_NORM, BOX);
+    xfmrLine(XFMR_REPEAT_CONNECTOR_1, { group: xfmrBoxEls, color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
+    xfmrRect(XFMR_REPEAT_BOX, { group: xfmrBoxEls, dashed: true, fillOpacity: 0, strokeOpacity: 0.5 });
+    xfmrLine(XFMR_REPEAT_CONNECTOR_2, { group: xfmrBoxEls, color: STRUCT_COLOR, marker: 'llm-arrow-struct', strokeWidth: 1.5, dotted: true });
+    xfmrRect(XFMR_BLOCK_OUTER, { group: xfmrBoxEls, dashed: true, fillOpacity: 0, strokeOpacity: 0.45 });
+    xfmrPlus(XFMR_PLUS2, BOX);
+    xfmrRect(XFMR_FFN, BOX);
+    xfmrRect(XFMR_NORM2, BOX);
+    xfmrPlus(XFMR_PLUS1, BOX);
+    xfmrRect(XFMR_ATTN, BOX);
+    xfmrRect(XFMR_NORM1, BOX);
+    xfmrRect(XFMR_EMBED, BOX);
 
-    // Diagonal "TRANSFORMER" stamp across the whole frame -- names the
-    // box as a single unit without labeling any of its internal parts
-    // (nothing inside has been introduced yet). Full opacity, not a
-    // faded watermark -- drawn last so it sits on top of every box it
-    // crosses.
+    // Diagonal "LLM" stamp across the whole frame -- names the box as a
+    // single unit without labeling any of its internal parts (nothing
+    // inside has been introduced yet). "LLM", not "TRANSFORMER": the
+    // transformer is only the repeated block portion of this diagram,
+    // not the whole embedding-to-output pipeline the frame encloses.
+    // Full opacity, not a faded watermark -- drawn last so it sits on
+    // top of every box it crosses.
     var stampLabel = ns('text');
     stampLabel.setAttribute('x', String(XFMR_STAMP.x));
     stampLabel.setAttribute('y', String(XFMR_STAMP.y));
     stampLabel.setAttribute('text-anchor', 'middle');
-    stampLabel.setAttribute('font-size', '26');
+    stampLabel.setAttribute('font-size', '64');
     stampLabel.setAttribute('font-weight', '700');
-    stampLabel.setAttribute('letter-spacing', '0.5');
+    stampLabel.setAttribute('letter-spacing', '1');
     stampLabel.setAttribute('fill', AMBER_COLOR);
     stampLabel.setAttribute('transform', 'rotate(' + XFMR_STAMP.rotate + ' ' + XFMR_STAMP.x + ' ' + XFMR_STAMP.y + ')');
-    stampLabel.textContent = 'TRANSFORMER';
+    stampLabel.textContent = 'LLM';
     stampLabel.classList.add('llm-fade-el');
     svg.appendChild(stampLabel);
-    xfmrEls.push(stampLabel);
+    xfmrBoxEls.push(stampLabel);
 
-    ['data', 'compute', 'training', 'inference'].forEach(adoptTemplateSvg);
+    // 'training' and 'inference' no longer adopt their own static SVGs --
+    // they show the shared shaded LLM box (xfmrBoxEls) instead. Only
+    // 'data' and 'compute' still have their own bar-chart content.
+    ['data', 'compute'].forEach(adoptTemplateSvg);
 
     // Attached once, permanently -- never reparented again, unlike the
     // earlier mount-based attempt. That also sidesteps the "reparent and
@@ -896,6 +923,11 @@
     var xfmrEntering = animate && !xfmrWasPresent && xfmrPresent;
     applyFade(xfmrEls, xfmrPresent, xfmrEntering ? FADE_MS : 0, animate);
 
+    var boxWasPresent = prevStage ? XFMR_BOX_PRESENT[prevStage] : false;
+    var boxPresent = XFMR_BOX_PRESENT[stageName];
+    var boxEntering = animate && !boxWasPresent && boxPresent;
+    applyFade(xfmrBoxEls, boxPresent, boxEntering ? FADE_MS : 0, animate);
+
     var vmWasPresent = prevStage ? VM_ONLY[prevStage] : false;
     var vmPresent = VM_ONLY[stageName];
     var chainEntering = animate && !vmWasPresent && vmPresent;
@@ -904,7 +936,7 @@
     applyFade([numbersEl], EMB_ONLY[stageName], 0, animate);
     applyFade(bgVectorEls, EMB_ONLY[stageName], 0, animate);
 
-    [['data', DATA_ONLY], ['compute', COMPUTE_ONLY], ['training', TRAINING_ONLY], ['inference', INFERENCE_ONLY]].forEach(function (pair) {
+    [['data', DATA_ONLY], ['compute', COMPUTE_ONLY]].forEach(function (pair) {
       var name = pair[0], presenceMap = pair[1];
       var wasPresent = prevStage ? presenceMap[prevStage] : false;
       var present = presenceMap[stageName];

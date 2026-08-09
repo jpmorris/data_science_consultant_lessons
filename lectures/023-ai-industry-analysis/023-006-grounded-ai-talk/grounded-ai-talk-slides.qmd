@@ -401,7 +401,7 @@ economic/energy wall is real but a few years out, not something we're
 already up against the way the data wall increasingly is.
 :::
 
-<!-- STAGE 8/9 (llm-stage-8-training): training: descending loss curve -->
+<!-- STAGE 8/9 (llm-stage-8-training): training: shared shaded LLM box (unique training-specific content TBD) -->
 ## The Ingredients of an LLM {#llm-stage-8-training auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -422,9 +422,6 @@ already up against the way the data wall increasingly is.
     </ul>
   </div>
 </div>
-<template id="llm-axes-source-training">
-{{< include images/llm-ingredients-training-loop.svg >}}
-</template>
 ```
 
 ::: {.notes}
@@ -433,9 +430,14 @@ real next token (the loss), compute gradients backward through every
 parameter, nudge every weight slightly to reduce that loss, repeat &mdash;
 millions to billions of times, over weeks. This is what stages 6 and 7
 (data and compute) actually get spent on.
+
+Diagram note: this stage currently shows the same shaded LLM box as
+stage 5 (no training-specific content yet) -- forward pass, backward
+pass, and weight updates aren't visually distinguished from stage 5's
+sketch yet. Planned follow-up.
 :::
 
-<!-- STAGE 9/9 (llm-stage-9-inference): inference: prompt -> model -> sampled token -->
+<!-- STAGE 9/9 (llm-stage-9-inference): inference: shared shaded LLM box (unique inference-specific content TBD) -->
 ## The Ingredients of an LLM {#llm-stage-9-inference auto-animate="true" .heading-accent}
 
 ```{=html}
@@ -457,9 +459,6 @@ millions to billions of times, over weeks. This is what stages 6 and 7
     </ul>
   </div>
 </div>
-<template id="llm-axes-source-inference">
-{{< include images/llm-ingredients-inference-pipeline.svg >}}
-</template>
 ```
 
 ::: {.notes}
@@ -470,6 +469,11 @@ updates, no loss computed. Repeat one token at a time to generate a full
 response. This is why inference is orders of magnitude cheaper than
 training: no backward pass, no millions of repetitions, no updating billions
 of parameters each step.
+
+Diagram note: this stage currently shows the same shaded LLM box as
+stage 5 (no inference-specific content yet) -- prompt tokens in, sampled
+token out, and the KV cache aren't visually distinguished from stage 5's
+sketch yet. Planned follow-up.
 :::
 
 ## The Transformer Still Rules {.heading-accent}
