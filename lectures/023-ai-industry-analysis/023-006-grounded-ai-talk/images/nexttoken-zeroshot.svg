@@ -79,104 +79,94 @@
        carries it into the transformer, the transformer glows (computing),
        a second arrow carries the predicted word out the opposite side, and
        it glides into its place at the end of the prompt. */
-    .pg1   { animation: blip .35s ease forwards; animation-delay: 3.51s; }
     .in1a  { animation: blip .25s ease forwards; animation-delay: 3.66s; }
     .in1b  { animation: blip .25s ease forwards; animation-delay: 3.78s; }
     .lg1   { animation: blip .35s ease forwards; animation-delay: 4.01s; }
     .out1a { animation: blip .25s ease forwards; animation-delay: 4.31s; }
     .out1b { animation: blip .25s ease forwards; animation-delay: 4.43s; }
-    .w1c   { animation: wordGlide 1s ease forwards; animation-delay: 4.66s; --dx: -92px; --dy: -223px; }
+    .w1c   { animation: wordGlide 1s ease forwards; animation-delay: 4.66s; --dx: -92px; --dy: -286px; }
     .w1a   { animation: fadeInStay .3s ease forwards 5.61s, flashAns .35s ease 6.11s, flashAns .35s ease 8.71s, flashAns .35s ease 11.31s, flashAns .35s ease 13.91s, flashAns .35s ease 18.76s, flashAns .35s ease 21.36s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr1a  { animation: fadeInStay .3s ease forwards; animation-delay: 5.61s; }
 
-    .pg2   { animation: blip .35s ease forwards; animation-delay: 6.11s; }
     .in2a  { animation: blip .25s ease forwards; animation-delay: 6.26s; }
     .in2b  { animation: blip .25s ease forwards; animation-delay: 6.38s; }
     .lg2   { animation: blip .35s ease forwards; animation-delay: 6.61s; }
     .out2a { animation: blip .25s ease forwards; animation-delay: 6.91s; }
     .out2b { animation: blip .25s ease forwards; animation-delay: 7.03s; }
-    .w2c   { animation: wordGlide 1s ease forwards; animation-delay: 7.26s; --dx: -21.8px; --dy: -223px; }
+    .w2c   { animation: wordGlide 1s ease forwards; animation-delay: 7.26s; --dx: -21.8px; --dy: -286px; }
     .w2a   { animation: fadeInStay .3s ease forwards 8.21s, flashAns .35s ease 8.71s, flashAns .35s ease 11.31s, flashAns .35s ease 13.91s, flashAns .35s ease 18.76s, flashAns .35s ease 21.36s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr2a  { animation: fadeInStay .3s ease forwards; animation-delay: 8.21s; }
 
-    .pg3   { animation: blip .35s ease forwards; animation-delay: 8.71s; }
     .in3a  { animation: blip .25s ease forwards; animation-delay: 8.86s; }
     .in3b  { animation: blip .25s ease forwards; animation-delay: 8.98s; }
     .lg3   { animation: blip .35s ease forwards; animation-delay: 9.21s; }
     .out3a { animation: blip .25s ease forwards; animation-delay: 9.51s; }
     .out3b { animation: blip .25s ease forwards; animation-delay: 9.63s; }
-    .w3c   { animation: wordGlide 1s ease forwards; animation-delay: 9.86s; --dx: 43px; --dy: -223px; }
+    .w3c   { animation: wordGlide 1s ease forwards; animation-delay: 9.86s; --dx: 43px; --dy: -286px; }
     .w3a   { animation: fadeInStay .3s ease forwards 10.81s, flashAns .35s ease 11.31s, flashAns .35s ease 13.91s, flashAns .35s ease 18.76s, flashAns .35s ease 21.36s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr3a  { animation: fadeInStay .3s ease forwards; animation-delay: 10.81s; }
 
-    .pg4   { animation: blip .35s ease forwards; animation-delay: 11.31s; }
     .in4a  { animation: blip .25s ease forwards; animation-delay: 11.46s; }
     .in4b  { animation: blip .25s ease forwards; animation-delay: 11.58s; }
     .lg4   { animation: blip .35s ease forwards; animation-delay: 11.81s; }
     .out4a { animation: blip .25s ease forwards; animation-delay: 12.11s; }
     .out4b { animation: blip .25s ease forwards; animation-delay: 12.23s; }
-    .w4c   { animation: wordGlide 1s ease forwards; animation-delay: 12.46s; --dx: 91.6px; --dy: -223px; }
+    .w4c   { animation: wordGlide 1s ease forwards; animation-delay: 12.46s; --dx: 91.6px; --dy: -286px; }
     .w4a   { animation: fadeInStay .3s ease forwards 13.41s, flashAns .35s ease 13.91s, flashAns .35s ease 18.76s, flashAns .35s ease 21.36s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr4a  { animation: fadeInStay .3s ease forwards; animation-delay: 13.41s; }
 
-    .pg5   { animation: blip .35s ease forwards; animation-delay: 13.91s; }
     .in5a  { animation: blip .25s ease forwards; animation-delay: 14.06s; }
     .in5b  { animation: blip .25s ease forwards; animation-delay: 14.18s; }
     .lg5   { animation: blip .35s ease forwards; animation-delay: 14.41s; }
     .out5a { animation: blip .25s ease forwards; animation-delay: 14.71s; }
     .out5b { animation: blip .25s ease forwards; animation-delay: 14.83s; }
-    .w5c   { animation: wordGlide 1s ease forwards; animation-delay: 15.06s; --dx: 156.4px; --dy: -223px; }
+    .w5c   { animation: wordGlide 1s ease forwards; animation-delay: 15.06s; --dx: 156.4px; --dy: -286px; }
     .w5a   { animation: fadeInStay .3s ease forwards 16.01s, flashAns .35s ease 18.76s, flashAns .35s ease 21.36s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr5a  { animation: fadeInStay .3s ease forwards; animation-delay: 16.01s; }
 
     /* round 2 -- same choreography, proving it's not a special case */
-    .pg1b   { animation: blip .35s ease forwards; animation-delay: 18.76s; }
     .in1ab  { animation: blip .25s ease forwards; animation-delay: 18.91s; }
     .in1bb  { animation: blip .25s ease forwards; animation-delay: 19.03s; }
     .lg1b   { animation: blip .35s ease forwards; animation-delay: 19.26s; }
     .out1ab { animation: blip .25s ease forwards; animation-delay: 19.56s; }
     .out1bb { animation: blip .25s ease forwards; animation-delay: 19.68s; }
-    .w1cb   { animation: wordGlide 1s ease forwards; animation-delay: 19.91s; --dx: -108.2px; --dy: -162px; }
+    .w1cb   { animation: wordGlide 1s ease forwards; animation-delay: 19.91s; --dx: -108.2px; --dy: -225px; }
     .w1ab   { animation: fadeInStay .3s ease forwards 20.86s, flashAns .35s ease 21.36s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr1ab  { animation: fadeInStay .3s ease forwards; animation-delay: 20.86s; }
 
-    .pg2b   { animation: blip .35s ease forwards; animation-delay: 21.36s; }
     .in2ab  { animation: blip .25s ease forwards; animation-delay: 21.51s; }
     .in2bb  { animation: blip .25s ease forwards; animation-delay: 21.63s; }
     .lg2b   { animation: blip .35s ease forwards; animation-delay: 21.86s; }
     .out2ab { animation: blip .25s ease forwards; animation-delay: 22.16s; }
     .out2bb { animation: blip .25s ease forwards; animation-delay: 22.28s; }
-    .w2cb   { animation: wordGlide 1s ease forwards; animation-delay: 22.51s; --dx: -65px; --dy: -162px; }
+    .w2cb   { animation: wordGlide 1s ease forwards; animation-delay: 22.51s; --dx: -65px; --dy: -225px; }
     .w2ab   { animation: fadeInStay .3s ease forwards 23.46s, flashAns .35s ease 23.96s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr2ab  { animation: fadeInStay .3s ease forwards; animation-delay: 23.46s; }
 
-    .pg3b   { animation: blip .35s ease forwards; animation-delay: 23.96s; }
     .in3ab  { animation: blip .25s ease forwards; animation-delay: 24.11s; }
     .in3bb  { animation: blip .25s ease forwards; animation-delay: 24.23s; }
     .lg3b   { animation: blip .35s ease forwards; animation-delay: 24.46s; }
     .out3ab { animation: blip .25s ease forwards; animation-delay: 24.76s; }
     .out3bb { animation: blip .25s ease forwards; animation-delay: 24.88s; }
-    .w3cb   { animation: wordGlide 1s ease forwards; animation-delay: 25.11s; --dx: -0.2px; --dy: -162px; }
+    .w3cb   { animation: wordGlide 1s ease forwards; animation-delay: 25.11s; --dx: -0.2px; --dy: -225px; }
     .w3ab   { animation: fadeInStay .3s ease forwards 26.06s, flashAns .35s ease 26.56s, flashAns .35s ease 29.16s; }
     .wr3ab  { animation: fadeInStay .3s ease forwards; animation-delay: 26.06s; }
 
-    .pg4b   { animation: blip .35s ease forwards; animation-delay: 26.56s; }
     .in4ab  { animation: blip .25s ease forwards; animation-delay: 26.71s; }
     .in4bb  { animation: blip .25s ease forwards; animation-delay: 26.83s; }
     .lg4b   { animation: blip .35s ease forwards; animation-delay: 27.06s; }
     .out4ab { animation: blip .25s ease forwards; animation-delay: 27.36s; }
     .out4bb { animation: blip .25s ease forwards; animation-delay: 27.48s; }
-    .w4cb   { animation: wordGlide 1s ease forwards; animation-delay: 27.71s; --dx: 48.4px; --dy: -162px; }
+    .w4cb   { animation: wordGlide 1s ease forwards; animation-delay: 27.71s; --dx: 48.4px; --dy: -225px; }
     .w4ab   { animation: fadeInStay .3s ease forwards 28.66s, flashAns .35s ease 29.16s; }
     .wr4ab  { animation: fadeInStay .3s ease forwards; animation-delay: 28.66s; }
 
-    .pg5b   { animation: blip .35s ease forwards; animation-delay: 29.16s; }
     .in5ab  { animation: blip .25s ease forwards; animation-delay: 29.31s; }
     .in5bb  { animation: blip .25s ease forwards; animation-delay: 29.43s; }
     .lg5b   { animation: blip .35s ease forwards; animation-delay: 29.66s; }
     .out5ab { animation: blip .25s ease forwards; animation-delay: 29.96s; }
     .out5bb { animation: blip .25s ease forwards; animation-delay: 30.08s; }
-    .w5cb   { animation: wordGlide 1s ease forwards; animation-delay: 30.31s; --dx: 97px; --dy: -162px; }
+    .w5cb   { animation: wordGlide 1s ease forwards; animation-delay: 30.31s; --dx: 97px; --dy: -225px; }
     .w5ab   { animation: fadeInStay .3s ease forwards; animation-delay: 31.26s; }
     .wr5ab  { animation: fadeInStay .3s ease forwards; animation-delay: 31.26s; }
   </style>
@@ -193,10 +183,10 @@
       </feMerge>
     </filter>
     <clipPath id="type1clip" clipPathUnits="userSpaceOnUse">
-      <rect x="62" y="70" width="0" height="24"/>
+      <rect x="62" y="90" width="0" height="24"/>
     </clipPath>
     <clipPath id="type2clip" clipPathUnits="userSpaceOnUse">
-      <rect x="62" y="135" width="0" height="24"/>
+      <rect x="62" y="155" width="0" height="24"/>
     </clipPath>
   </defs>
 
@@ -210,13 +200,13 @@
   <line class="early fade" x1="422" y1="20" x2="422" y2="560" stroke="#657b7b" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- LEFT PANE: your computer / terminal -->
-  <rect class="early fade" x="20" y="60" width="380" height="150" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
+  <rect class="early fade" x="20" y="80" width="380" height="150" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
 
-  <text class="prompt1 fade" x="40" y="90" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
-  <text x="62" y="90" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type1clip)">How do LLMs work?</text>
-  <rect class="cursor1 fade" y="72" width="9" height="20" fill="#eee8d5"/>
+  <text class="prompt1 fade" x="40" y="110" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="62" y="110" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type1clip)">How do LLMs work?</text>
+  <rect class="cursor1 fade" y="92" width="9" height="20" fill="#eee8d5"/>
 
-  <text x="40" y="120" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
+  <text x="40" y="140" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
     <tspan class="wr1a fade">They</tspan>
     <tspan class="wr2a fade"> predict</tspan>
     <tspan class="wr3a fade"> the</tspan>
@@ -224,11 +214,11 @@
     <tspan class="wr5a fade"> token.</tspan>
   </text>
 
-  <text class="prompt2 fade" x="40" y="155" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
-  <text x="62" y="155" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type2clip)">What is a token?</text>
-  <rect class="cursor2 fade" y="137" width="9" height="20" fill="#eee8d5"/>
+  <text class="prompt2 fade" x="40" y="175" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text x="62" y="175" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type2clip)">What is a token?</text>
+  <rect class="cursor2 fade" y="157" width="9" height="20" fill="#eee8d5"/>
 
-  <text x="40" y="185" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
+  <text x="40" y="205" font-family="'Courier New', monospace" font-size="18" fill="#2aa198">
     <tspan class="wr1ab fade">A</tspan>
     <tspan class="wr2ab fade"> small</tspan>
     <tspan class="wr3ab fade"> chunk</tspan>
@@ -237,37 +227,27 @@
   </text>
 
   <!-- the one real network hop: user's message crossing into the LLM -->
-  <line class="arrow1-line fade" x1="402" y1="210" x2="440" y2="210" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
-  <circle class="arrow1-a fade" cx="411" cy="210" r="5" fill="#eee8d5"/>
-  <circle class="arrow1-b fade" cx="426" cy="210" r="5" fill="#eee8d5"/>
+  <line class="arrow1-line fade" x1="402" y1="122" x2="440" y2="122" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
+  <circle class="arrow1-a fade" cx="411" cy="122" r="5" fill="#eee8d5"/>
+  <circle class="arrow1-b fade" cx="426" cy="122" r="5" fill="#eee8d5"/>
 
-  <line class="arrow2-line fade" x1="402" y1="271" x2="440" y2="271" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
-  <circle class="arrow2-a fade" cx="411" cy="271" r="5" fill="#eee8d5"/>
-  <circle class="arrow2-b fade" cx="426" cy="271" r="5" fill="#eee8d5"/>
+  <line class="arrow2-line fade" x1="402" y1="187" x2="440" y2="187" stroke="#93a1a1" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrowDown)"/>
+  <circle class="arrow2-a fade" cx="411" cy="187" r="5" fill="#eee8d5"/>
+  <circle class="arrow2-b fade" cx="426" cy="187" r="5" fill="#eee8d5"/>
 
   <!-- RIGHT PANE: LLM, one boundary, no other boxes except the transformer -->
-  <rect class="box fade" x="440" y="100" width="520" height="420" rx="14" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <rect class="pg1 fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg2 fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg3 fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg4 fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg5 fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg1b fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg2b fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg3b fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg4b fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="pg5b fade" x="440" y="100" width="520" height="420" rx="14" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="box fade" x="440" y="65" width="520" height="430" rx="14" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
 
   <!-- growing prompt text, floating directly inside the box -->
   <g class="sys fade">
-    <text class="sys-text" x="500" y="218" font-size="14" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that answers questions.</text>
+    <text class="sys-text" x="500" y="110" font-size="14" font-style="italic" fill="#93a1a1" font-family="'Courier New', monospace">System: You are a chatbot that answers questions.</text>
   </g>
 
   <g class="u1-left fade">
-    <text class="user1-text" x="500" y="245" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: How do LLMs work?</text>
+    <text class="user1-text" x="500" y="137" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: How do LLMs work?</text>
   </g>
 
-  <text x="500" y="272" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+  <text x="500" y="164" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
     <tspan class="answer-label fade" font-family="'Courier New', monospace">Answer:</tspan>
     <tspan class="w1a fade" font-family="'Courier New', monospace"> They</tspan>
     <tspan class="w2a fade" font-family="'Courier New', monospace"> predict</tspan>
@@ -277,10 +257,10 @@
   </text>
 
   <g class="u2-left fade">
-    <text class="user2-text" x="500" y="306" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: What is a token?</text>
+    <text class="user2-text" x="500" y="198" font-size="20" font-weight="600" fill="#eee8d5" font-family="'Courier New', monospace">User: What is a token?</text>
   </g>
 
-  <text x="500" y="333" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
+  <text x="500" y="225" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
     <tspan class="answer-label2 fade" font-family="'Courier New', monospace">Answer:</tspan>
     <tspan class="w1ab fade" font-family="'Courier New', monospace"> A</tspan>
     <tspan class="w2ab fade" font-family="'Courier New', monospace"> small</tspan>
@@ -290,77 +270,77 @@
   </text>
 
   <!-- arrow into the transformer -->
-  <line class="box fade" x1="700" y1="345" x2="700" y2="368" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <circle class="in1a fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in1b fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in2a fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in2b fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in3a fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in3b fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in4a fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in4b fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in5a fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in5b fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in1ab fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in1bb fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in2ab fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in2bb fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in3ab fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in3bb fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in4ab fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in4bb fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
-  <circle class="in5ab fade" cx="700" cy="352" r="5" fill="#eee8d5"/>
-  <circle class="in5bb fade" cx="700" cy="362" r="5" fill="#eee8d5"/>
+  <line class="box fade" x1="700" y1="255" x2="700" y2="280" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <circle class="in1a fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in1b fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in2a fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in2b fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in3a fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in3b fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in4a fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in4b fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in5a fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in5b fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in1ab fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in1bb fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in2ab fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in2bb fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in3ab fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in3bb fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in4ab fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in4bb fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
+  <circle class="in5ab fade" cx="700" cy="262" r="5" fill="#eee8d5"/>
+  <circle class="in5bb fade" cx="700" cy="272" r="5" fill="#eee8d5"/>
 
   <!-- the transformer: the only other boundary inside the LLM -->
-  <rect class="box fade" x="590" y="370" width="220" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
-  <rect class="lg1 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg2 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg3 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg4 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg5 fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg1b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg2b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg3b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg4b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <rect class="lg5b fade" x="590" y="370" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
-  <text class="box fade" x="700" y="425" text-anchor="middle" font-size="22" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Transformer</text>
+  <rect class="box fade" x="590" y="290" width="220" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
+  <rect class="lg1 fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg2 fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg3 fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg4 fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg5 fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg1b fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg2b fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg3b fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg4b fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="lg5b fade" x="590" y="290" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
+  <text class="box fade" x="700" y="322" text-anchor="middle" font-size="22" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Transformer</text>
 
   <!-- arrow out of the transformer, opposite side from where it entered -->
-  <line class="box fade" x1="700" y1="462" x2="700" y2="485" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <circle class="out1a fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out1b fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out2a fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out2b fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out3a fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out3b fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out4a fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out4b fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out5a fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out5b fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out1ab fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out1bb fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out2ab fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out2bb fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out3ab fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out3bb fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out4ab fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out4bb fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
-  <circle class="out5ab fade" cx="700" cy="469" r="5" fill="#eee8d5"/>
-  <circle class="out5bb fade" cx="700" cy="479" r="5" fill="#eee8d5"/>
+  <line class="box fade" x1="700" y1="395" x2="700" y2="420" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <circle class="out1a fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out1b fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out2a fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out2b fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out3a fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out3b fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out4a fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out4b fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out5a fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out5b fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out1ab fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out1bb fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out2ab fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out2bb fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out3ab fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out3bb fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out4ab fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out4bb fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
+  <circle class="out5ab fade" cx="700" cy="402" r="5" fill="#eee8d5"/>
+  <circle class="out5bb fade" cx="700" cy="412" r="5" fill="#eee8d5"/>
 
   <!-- the predicted word: emerges on the far side of the transformer, then
        glides into the prompt -->
-  <text class="w1c fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">They</text>
-  <text class="w2c fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">predict</text>
-  <text class="w3c fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">the</text>
-  <text class="w4c fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">next</text>
-  <text class="w5c fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">token.</text>
-  <text class="w1cb fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">A</text>
-  <text class="w2cb fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">small</text>
-  <text class="w3cb fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">chunk</text>
-  <text class="w4cb fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">of</text>
-  <text class="w5cb fade" x="700" y="495" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">text.</text>
+  <text class="w1c fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">They</text>
+  <text class="w2c fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">predict</text>
+  <text class="w3c fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">the</text>
+  <text class="w4c fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">next</text>
+  <text class="w5c fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">token.</text>
+  <text class="w1cb fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">A</text>
+  <text class="w2cb fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">small</text>
+  <text class="w3cb fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">chunk</text>
+  <text class="w4cb fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">of</text>
+  <text class="w5cb fade" x="700" y="450" text-anchor="middle" font-size="20" font-style="italic" fill="#b58900" font-family="'Courier New', monospace">text.</text>
 
   </g>
 </svg>
