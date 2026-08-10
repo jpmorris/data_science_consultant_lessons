@@ -1234,7 +1234,7 @@ reliable checker exists**. #3 has not been observed yet, from any system,
 anywhere.
 
 ```{=html}
-<div class="diagram-panel" style="height: auto; padding: 1.2em;">
+<div class="diagram-panel-solo">
   {{< include images/knowledge-frontier.svg >}}
 </div>
 ```
@@ -1267,15 +1267,15 @@ anywhere.
 | AlphaFold2                                                 | 2020 / Nobel 2024  | **Harness** — specialized model, not an LLM agent | Predicts protein structure from sequence; 2024 Nobel Prize in Chemistry. A discovery-*enabling* tool more than a discovery itself                            |
 | AlphaEvolve                                                | 2025               | **Harness** — search + verifier                   | The clean edge-of-frontier example above: 48-multiplication 4×4 algorithm, beats Strassen's 49 (1969)                                                        |
 | Erdős Problem 1102                                        | Oct–Nov 2025       | **Non-harness — human-led**                       | Wouter van Doorn, with Terence Tao; van Doorn did the reasoning himself and credits AI-suggested ideas — closest real case to "AI-assisted, not AI-driven"    |
-| "GPT-5 solved 10 Erdős problems" (OpenAI)                 | Oct 2025           | **Lit search — retracted**                        | VP's claim on X; Thomas Bloom (erdosproblems.com) called it "a dramatic misrepresentation" — the solutions already existed in published literature           |
-| Erdős Problem 333                                         | Dec 2025           | **Lit search — false claim**                      | Claimed as "first fully autonomous" LLM solve; Erdős himself had already solved it in a 1977 paper                                                          |
+| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI) | Oct 2025           | **Lit search — retracted**                        | VP's claim on X; Thomas Bloom (erdosproblems.com) called it "a dramatic misrepresentation" — the solutions already existed in published literature           |
+| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333            | Dec 2025           | **Lit search — false claim**                      | Claimed as "first fully autonomous" LLM solve; Erdős himself had already solved it in a 1977 paper                                                          |
 | Erdős Problem 728                                         | Jan 2026           | **Harness**                                       | GPT-5.2 Pro, multi-instance verification loop; co-verified by Terence Tao and Jared Duker Lichtman                                                            |
 | DeepMind systematic Erdős re-check                        | Jan 2026           | **Harness + lit search**                          | 4 new solves, plus "forgotten" solutions to 9 more already-known results — the hole-in-the-cloud example above                                               |
-| Erdős unit-distance disproof (OpenAI)                     | May 2026           | **Harness** — contrary to its own framing         | The claim to double-check before citing as "the one non-harness win" — see notes                                                                             |
+| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI) | May 2026           | **Harness** — contrary to its own framing         | Real result, verified — but the "one model, no tools" framing is the marketing angle, not the more careful outside classification. The claim to double-check before citing as "the one non-harness win" — see notes |
 | AlphaProof Nexus (DeepMind)                                | May 2026           | **Harness** — agent + Lean verifier               | 9 of 353 open Erdős problems, incl. 2 open 50+ years, plus 44 OEIS conjectures; Gemini 3.1 Pro + Lean, ~$100s/problem                                        |
 | Jacobian conjecture counterexample                        | Jul–Aug 2026       | **Undisclosed**                                   | Levent Alpöge (Anthropic) via Claude Fable 5; a 216-character counterexample in 3+ dimensions; exact method not yet made public                               |
 | Sum-product conjecture disproof (over ℝ)                  | Jul 2026           | **Harness** — 3-stage pipeline                    | GPT-5.5 Pro, explicitly built as an agent; succeeded in 7 of 8 independent trials                                                                             |
-| "10 more advances," incl. 3 more Erdős (OpenAI "Astra")   | Aug 2026           | **Harness — unverified**                          | Announced only days before this deck was last updated; no independent verification yet, treat as unconfirmed                                                 |
+| <span class="crux-word">UNVERIFIED</span> — "10 more advances," incl. 3 more Erdős (OpenAI "Astra") | Aug 2026           | **Harness — unverified**                          | Announced only days before this deck was last updated, from the same company that put out the retracted Oct 2025 claim above — no independent verification yet, treat as unconfirmed |
 :::
 
 ```{=html}

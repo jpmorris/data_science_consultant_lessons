@@ -18,6 +18,11 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <!-- fully soft, no sharp core -- for the edge points, so they read as
+         emerging from the haze rather than floating in front of it -->
+    <filter id="dotSoftGlow" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
   </defs>
 
   <!-- region labels -->
@@ -47,24 +52,28 @@
   <circle cx="470" cy="230" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
   <circle cx="340" cy="470" r="16" fill="#0d4a55" filter="url(#holeBlur)"/>
 
-  <!-- edge point 1: harness-based, clean win -->
-  <circle cx="637" cy="165" r="10" fill="#859900" filter="url(#dotGlow)"/>
-  <text x="672" y="140" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#859900">AlphaEvolve (2025) — harness-based</text>
-  <text x="672" y="163" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
-    <tspan x="672" dy="0">Evolutionary code search + an automatic</tspan>
-    <tspan x="672" dy="20">verifier found a 4×4 matrix-multiplication</tspan>
-    <tspan x="672" dy="20">algorithm beating a 56-year-old bound</tspan>
+  <!-- names the cloud itself -->
+  <text x="330" y="558" text-anchor="middle" font-family="Inter, sans-serif" font-size="23" font-weight="700" fill="#eee8d5">Known Human Knowledge</text>
+
+  <!-- edge point 1: harness-based, clean win -- pulled in toward the haze
+       and fully soft, so it reads as emerging from it, not floating outside -->
+  <circle cx="592" cy="165" r="14" fill="#859900" filter="url(#dotSoftGlow)"/>
+  <text x="628" y="140" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#859900">AlphaEvolve (2025) — harness-based</text>
+  <text x="628" y="163" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
+    <tspan x="628" dy="0">Evolutionary code search + an automatic</tspan>
+    <tspan x="628" dy="20">verifier found a 4×4 matrix-multiplication</tspan>
+    <tspan x="628" dy="20">algorithm beating a 56-year-old bound</tspan>
   </text>
 
   <!-- edge point 2: the contested OpenAI claim -->
-  <circle cx="630" cy="480" r="10" fill="#b58900" filter="url(#dotGlow)"/>
-  <text x="667" y="460" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">OpenAI's Erdős disproof (2026)*</text>
-  <text x="667" y="483" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
-    <tspan x="667" dy="0">Marketed as one model's breakthrough —</tspan>
-    <tspan x="667" dy="20">but independent reporting classifies the</tspan>
-    <tspan x="667" dy="20">actual process as harness-based too</tspan>
+  <circle cx="583" cy="480" r="14" fill="#b58900" filter="url(#dotSoftGlow)"/>
+  <text x="620" y="460" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">OpenAI's Erdős disproof (2026)*</text>
+  <text x="620" y="483" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
+    <tspan x="620" dy="0">Marketed as one model's breakthrough —</tspan>
+    <tspan x="620" dy="20">but independent reporting classifies the</tspan>
+    <tspan x="620" dy="20">actual process as harness-based too</tspan>
   </text>
-  <text x="667" y="545" font-family="Inter, sans-serif" font-size="13" font-style="italic" fill="#657b7b">*see notes / discoveries table — not the clean non-harness case it's marketed as</text>
+  <text x="620" y="545" font-family="Inter, sans-serif" font-size="13" font-style="italic" fill="#657b7b">*see notes / discoveries table — not the clean non-harness case it's marketed as</text>
 
   <!-- beyond the haze entirely -->
   <circle cx="985" cy="320" r="11" fill="#6c71c4" filter="url(#dotGlow)"/>

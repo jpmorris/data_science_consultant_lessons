@@ -82,6 +82,32 @@ $body-bg: #073642;
   margin: 0;
 }
 
+// Standalone centered diagram panel -- for a single full-width illustrative
+// diagram that isn't part of a .diagram-split-row (that combo's own
+// .diagram-panel rule doesn't apply standalone; it only styles once paired
+// with .diagram-split-visual). Centered two ways at once (block margin:auto
+// on the panel itself, flex centering inside it) so it doesn't depend on
+// getting flex context from a parent. The svg child is fully responsive
+// (scales via CSS width, not a fixed pixel attribute) so it can't overflow
+// its container at any viewport size -- this is what a fixed-width svg
+// silently breaks: it just sits at its own pixel width inside whatever
+// space it's given, flush to one side, not actually centered.
+.reveal .slides .diagram-panel-solo {
+  background: #0d4a55;
+  border-radius: 12px;
+  padding: 1.2em;
+  margin: 1em auto;
+  max-width: 1150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reveal .slides .diagram-panel-solo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 // Persistent footnote bullets under the diagram, shared across all stages
 // of the next-token-prediction auto-animate sequence (unlike the
 // .diagram-split-text bullets, this content doesn't accumulate per stage --
@@ -597,6 +623,14 @@ $body-bg: #073642;
 // agentic, search loop), one level louder than the surrounding bold crux.
 .reveal .slides .table-panel .crux-word {
   color: #cb4b16;
+}
+// Flags a row that turned out to be false, retracted, or a lesser feat than
+// the media coverage implied -- e.g. a "discovery" that was actually a
+// literature search. Red, not the crux-word orange: this is a caution
+// about the claim itself, not an emphasis within a true one.
+.reveal .slides .table-panel .hype-flag {
+  color: #dc322f;
+  font-weight: 700;
 }
 
 // Lead-in phrase on each "Nobody Was Surprised" bullet -- same reasoning:
