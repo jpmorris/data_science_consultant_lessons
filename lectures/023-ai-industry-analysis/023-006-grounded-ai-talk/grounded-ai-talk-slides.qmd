@@ -736,6 +736,15 @@ into the context before the next prediction.
 ```
 
 ::: {.notes}
+**Reminder for delivery (2026)**: don't let this diagram imply that tags
+mixed into one freetext stream is literally how current models respond.
+Newest-generation Claude returns thinking and text as separate,
+first-class content blocks in the API response — a distinct channel, not
+an XML tag interleaved into a single string of freetext. The
+inline-tag-in-text illustration here is a simplification of the
+*mechanism* (token-by-token generation, one block at a time) for teaching
+purposes, not a claim about the real wire format.
+
 Same question as the previous stage, same final answer — the point isn't
 that reasoning changes the answer here, it's that reasoning is the *same
 mechanism*: tokens generated one at a time, just wrapped in a tag and
@@ -797,6 +806,15 @@ audience seems to expect the older framing.
 ```
 
 ::: {.notes}
+**Reminder for delivery (2026)**: same caveat as the reasoning stage —
+don't present the inline `<function_calls>`/`<tool_result>` tags as
+literally how current models communicate tool use. Newest-generation
+Claude returns tool calls and text as separate first-class content
+blocks in the API response (a `tool_use` block alongside a `text`
+block), not tags mixed into one freetext string. This illustration is
+teaching the *mechanism* (predict, execute, inject result, resend), not
+the real wire format.
+
 **Harness** = everything wrapped _around_ the model — prompts, tools,
 memory, orchestration code, stopping rules. The model isn't getting smarter
 here; the scaffolding around it is getting better engineered.
