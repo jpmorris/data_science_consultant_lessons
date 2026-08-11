@@ -158,15 +158,22 @@ $body-bg: #073642;
 // visibly sliding over to share a line with the floated diagram.
 .reveal .slides .frontier-split-row {
   display: flow-root;
+  margin-top: 1.4em;
 }
 .reveal .slides .frontier-split-diagram {
   float: left;
   width: 54%;
   margin-right: 3%;
 }
-.reveal .slides .frontier-split-diagram .diagram-panel-solo {
-  margin: 0;
-  max-width: 100%;
+// The svg is a direct child here, not wrapped in .diagram-panel-solo (that
+// wrapper was dropped when this became its own column) -- it needs its own
+// explicit responsive sizing, or it falls back to reveal's default
+// max-width:100% and renders at its intrinsic attribute size instead of
+// filling the column.
+.reveal .slides .frontier-split-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 .reveal .slides .frontier-split-table {
   float: right;
