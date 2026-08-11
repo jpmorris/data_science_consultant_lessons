@@ -1222,61 +1222,44 @@ research pass — see references/ folder.
 
 ## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
 
-Three different kinds of "discovery":
-
-1. **Interpolation** — mostly recombination of existing data, a discovery that
-   was in plain sight
-2. **Frontier-edge** — a real, small improvement beyond current knowledge
-3. **Paradigm-shift** — an Einstein/special-relativity-level leap
-
-AI today is genuinely good at #1, and increasingly good at #2 — **when a cheap,
-reliable checker exists**. #3 has not been observed yet, from any system,
-anywhere.
-
 ```{=html}
-<div class="diagram-panel-solo">
+<div class="section-label section-label--lg frontier-diagram-title">
+  <span class="section-tick"></span>Known Human Knowledge
+</div>
+<div class="frontier-legend">
+  <span class="frontier-legend-item"><i style="background:#268bd2"></i>Interpolation — already known, just missed</span>
+  <span class="frontier-legend-item"><i style="background:#b58900"></i>Frontier-edge — a real, small step past known</span>
+  <span class="frontier-legend-item"><i style="background:#6c71c4"></i>Paradigm-shift — an Einstein-level leap</span>
+</div>
+<div class="frontier-split-diagram">
   {{< include images/knowledge-frontier.svg >}}
 </div>
-```
-
-```{=html}
-<div class="section-label">The Real Frontier-Edge Wins</div>
-```
-
-- **AlphaEvolve / FunSearch** (Google DeepMind): evolutionary search over code
-  and math, scored by a merciless automatic checker (a proof, a benchmark)
-  - Improved a decades-old bound on the cap-set problem — published in _Nature_
-  - Discovered faster matrix-multiplication kernels that now feed back into
-    Google's own AI infrastructure
-- The trick: the system isn't being "creative" in the human sense — it generates
-  huge numbers of candidates and lets an **un-gameable verifier** filter for
-  what's actually true or faster
-- This works _because_ these domains have a cheap, formal check. Most
-  interesting problems don't.
-
-```{=html}
-<div class="section-label">The Full Ledger — Every Claimed AI Math Discovery</div>
+<div class="frontier-split-table">
 ```
 
 ::: {.table-panel}
-| Discovery                                                | Date              | Type                                            | Notes                                                                                                                                                        |
-| --------------------------------------------------------- | ----------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Knot theory & representation theory theorems               | 2021               | **Harness** — AI-guided, human-proved             | DeepMind's models surfaced the patterns; mathematicians did the actual proving (Davies et al., _Nature_)                                                     |
-| AlphaTensor (matrix multiplication)                        | 2022               | **Harness** — RL search                           | AlphaZero-style agent found new low-multiplication algorithms via a tensor-decomposition game (Fawzi et al., _Nature_)                                       |
-| FunSearch (cap set problem)                                | 2023               | **Harness** — search loop                         | Already covered above on this slide — LLM inside an evolutionary loop, new bound on cap sets                                                                 |
-| AlphaFold2                                                 | 2020 / Nobel 2024  | **Harness** — specialized model, not an LLM agent | Predicts protein structure from sequence; 2024 Nobel Prize in Chemistry. A discovery-*enabling* tool more than a discovery itself                            |
-| AlphaEvolve                                                | 2025               | **Harness** — search + verifier                   | The clean edge-of-frontier example above: 48-multiplication 4×4 algorithm, beats Strassen's 49 (1969)                                                        |
-| Erdős Problem 1102                                        | Oct–Nov 2025       | **Non-harness — human-led**                       | Wouter van Doorn, with Terence Tao; van Doorn did the reasoning himself and credits AI-suggested ideas — closest real case to "AI-assisted, not AI-driven"    |
-| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI) | Oct 2025           | **Lit search — retracted**                        | VP's claim on X; Thomas Bloom (erdosproblems.com) called it "a dramatic misrepresentation" — the solutions already existed in published literature           |
-| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333            | Dec 2025           | **Lit search — false claim**                      | Claimed as "first fully autonomous" LLM solve; Erdős himself had already solved it in a 1977 paper                                                          |
-| Erdős Problem 728                                         | Jan 2026           | **Harness**                                       | GPT-5.2 Pro, multi-instance verification loop; co-verified by Terence Tao and Jared Duker Lichtman                                                            |
-| DeepMind systematic Erdős re-check                        | Jan 2026           | **Harness + lit search**                          | 4 new solves, plus "forgotten" solutions to 9 more already-known results — the hole-in-the-cloud example above                                               |
-| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI) | May 2026           | **Harness** — contrary to its own framing         | Real result, verified — but the "one model, no tools" framing is the marketing angle, not the more careful outside classification. The claim to double-check before citing as "the one non-harness win" — see notes |
-| AlphaProof Nexus (DeepMind)                                | May 2026           | **Harness** — agent + Lean verifier               | 9 of 353 open Erdős problems, incl. 2 open 50+ years, plus 44 OEIS conjectures; Gemini 3.1 Pro + Lean, ~$100s/problem                                        |
-| Jacobian conjecture counterexample                        | Jul–Aug 2026       | **Undisclosed**                                   | Levent Alpöge (Anthropic) via Claude Fable 5; a 216-character counterexample in 3+ dimensions; exact method not yet made public                               |
-| Sum-product conjecture disproof (over ℝ)                  | Jul 2026           | **Harness** — 3-stage pipeline                    | GPT-5.5 Pro, explicitly built as an agent; succeeded in 7 of 8 independent trials                                                                             |
-| <span class="crux-word">UNVERIFIED</span> — "10 more advances," incl. 3 more Erdős (OpenAI "Astra") | Aug 2026           | **Harness — unverified**                          | Announced only days before this deck was last updated, from the same company that put out the retracted Oct 2025 claim above — no independent verification yet, treat as unconfirmed |
+| Discovery                                                                                            | Date         | Type        |
+| ------------------------------------------------------------------------------------------------------ | ------------ | ----------- |
+| AlphaFold2                                                                                              | 2020         | Harness     |
+| Knot theory & representation theory theorems                                                            | 2021         | Harness     |
+| AlphaTensor (matrix multiplication)                                                                      | 2022         | Harness     |
+| FunSearch (cap set problem)                                                                              | 2023         | Harness     |
+| AlphaEvolve                                                                                              | 2025         | Harness     |
+| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025     | Lit search  |
+| Erdős Problem 1102                                                                                       | Oct–Nov 2025 | Non-harness |
+| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025     | Lit search  |
+| Erdős Problem 728                                                                                        | Jan 2026     | Harness     |
+| DeepMind systematic Erdős re-check                                                                       | Jan 2026     | Lit search  |
+| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026     | Harness     |
+| AlphaProof Nexus (DeepMind)                                                                              | May 2026     | Harness     |
+| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026     | Harness     |
+| Jacobian conjecture counterexample                                                                       | Jul–Aug 2026 | Undisclosed |
+| <span class="crux-word">UNVERIFIED</span> — "10 more advances," incl. 3 more Erdős (OpenAI "Astra")     | Aug 2026     | Harness     |
 :::
+
+```{=html}
+</div>
+```
 
 ```{=html}
 <template class="slide-citations-source">
@@ -1297,6 +1280,55 @@ anywhere.
 ```
 
 ::: {.notes}
+Full ledger, row by row (the table on-slide only shows Discovery/Date/Type —
+this is the detail that used to be its own Notes column):
+
+- **AlphaFold2** (2020, Nobel 2024): predicts protein structure from
+  sequence; 2024 Nobel Prize in Chemistry. A discovery-*enabling* tool more
+  than a discovery itself.
+- **Knot theory & representation theory theorems** (2021): DeepMind's models
+  surfaced the patterns; mathematicians did the actual proving (Davies et
+  al., *Nature*).
+- **AlphaTensor** (2022): AlphaZero-style RL agent found new
+  low-multiplication algorithms via a tensor-decomposition game (Fawzi et
+  al., *Nature*).
+- **FunSearch** (2023): the same cap-set result flagged earlier on the "What
+  Is Astounding About LLMs?" surprises table (as the "search loop" row) —
+  LLM inside an evolutionary loop, new bound on cap sets.
+- **AlphaEvolve** (2025): the clean edge-of-frontier example on this slide's
+  diagram — 48-multiplication 4×4 algorithm, beats Strassen's 49 (1969).
+- **RETRACTED — "GPT-5 solved 10 Erdős problems"** (Oct 2025): VP's claim on
+  X; Thomas Bloom (erdosproblems.com) called it "a dramatic
+  misrepresentation" — the solutions already existed in published
+  literature.
+- **Erdős Problem 1102** (Oct–Nov 2025): Wouter van Doorn, with Terence Tao;
+  van Doorn did the reasoning himself and credits AI-suggested ideas —
+  closest real case to "AI-assisted, not AI-driven."
+- **FALSE CLAIM — Erdős Problem 333** (Dec 2025): claimed as "first fully
+  autonomous" LLM solve; Erdős himself had already solved it in a 1977
+  paper.
+- **Erdős Problem 728** (Jan 2026): GPT-5.2 Pro, multi-instance verification
+  loop; co-verified by Terence Tao and Jared Duker Lichtman.
+- **DeepMind systematic Erdős re-check** (Jan 2026): 4 new solves, plus
+  "forgotten" solutions to 9 more already-known results — the
+  hole-in-the-cloud example on this slide's diagram.
+- **OVERSOLD — Erdős unit-distance disproof (OpenAI)** (May 2026): real
+  result, verified — but the "one model, no tools" framing is the marketing
+  angle, not the more careful outside classification. See the fact-check
+  below before citing this as "the one non-harness win."
+- **AlphaProof Nexus (DeepMind)** (May 2026): 9 of 353 open Erdős problems,
+  incl. 2 open 50+ years, plus 44 OEIS conjectures; Gemini 3.1 Pro + Lean,
+  ~$100s/problem.
+- **Sum-product conjecture disproof over ℝ** (Jul 2026): GPT-5.5 Pro,
+  explicitly built as an agent; succeeded in 7 of 8 independent trials.
+- **Jacobian conjecture counterexample** (Jul–Aug 2026): Levent Alpöge
+  (Anthropic) via Claude Fable 5; a 216-character counterexample in 3+
+  dimensions; exact method not yet made public.
+- **UNVERIFIED — "10 more advances," incl. 3 more Erdős (OpenAI "Astra")**
+  (Aug 2026): announced only days before this deck was last updated, from
+  the same company that put out the retracted Oct 2025 claim above — no
+  independent verification yet, treat as unconfirmed.
+
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
 AlphaEvolve (Novikov et al., 2025); framing per the RSI survey §6.1 read this
 session. Full ledger table sources are on its own citations entry (open the

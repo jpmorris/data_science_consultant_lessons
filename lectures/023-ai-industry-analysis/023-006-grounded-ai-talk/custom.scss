@@ -105,6 +105,77 @@ $body-bg: #073642;
   display: block;
 }
 
+// A .section-label sitting directly above a diagram, standing in for the
+// diagram's own title -- centered rather than left-aligned like the
+// default .section-label, since it's naming the whole figure below it
+// rather than dividing the slide into left-to-right sections.
+.reveal .slides .frontier-diagram-title {
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+// Color key for a diagram that encodes categories by color instead of
+// spelling them out in body text -- keeps the swatch colors as the single
+// source of truth (matched by hand against the fill/stroke colors used in
+// knowledge-frontier.svg) so the legend and the image can't drift apart
+// silently the way a separate written description could.
+.reveal .slides .frontier-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5em 1.8em;
+  margin: 0 0 0.4em;
+  font-size: 0.6em;
+  color: #93a1a1;
+}
+.reveal .slides .frontier-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.reveal .slides .frontier-legend-item i {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+// Diagram + its ledger table side by side instead of stacked, so both fit
+// in one screenful. Floats rather than flex: the table is a separate
+// pandoc-table block compiled from markdown between two raw-html fences
+// (open the wrapping div in one fence, close it after the table in
+// another), not a literal child of a flex container within a single fence
+// -- but plain floats on two block-level siblings don't care how they got
+// there, and the slide's .scrollable section already sets overflow-y:auto,
+// which establishes a block formatting context that contains floats for
+// height/scroll purposes, so no explicit clearfix is needed.
+.reveal .slides .frontier-split-diagram {
+  float: left;
+  width: 56%;
+}
+.reveal .slides .frontier-split-diagram .diagram-panel-solo {
+  margin: 0;
+  max-width: 100%;
+}
+.reveal .slides .frontier-split-table {
+  float: right;
+  width: 42%;
+  font-size: 0.7em;
+}
+.reveal .slides .frontier-split-table .table-panel {
+  width: 100%;
+  margin: 0.2em 0 0;
+  padding: 0.4em 0.9em;
+}
+// The default first-column rule assumes short entries and forces nowrap --
+// this table's discovery names are long phrases, so let them wrap inside
+// this narrower column instead of blowing out the table's width.
+.reveal .slides .frontier-split-table .table-panel td:first-child {
+  white-space: normal;
+  width: auto;
+}
+
 // Persistent footnote bullets under the diagram, shared across all stages
 // of the next-token-prediction auto-animate sequence (unlike the
 // .diagram-split-text bullets, this content doesn't accumulate per stage --
