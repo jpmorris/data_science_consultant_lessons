@@ -93,9 +93,6 @@ $body-bg: #073642;
 // silently breaks: it just sits at its own pixel width inside whatever
 // space it's given, flush to one side, not actually centered.
 .reveal .slides .diagram-panel-solo {
-  background: #0d4a55;
-  border-radius: 12px;
-  padding: 1.2em;
   margin: 1em auto;
   max-width: 1150px;
   display: flex;
