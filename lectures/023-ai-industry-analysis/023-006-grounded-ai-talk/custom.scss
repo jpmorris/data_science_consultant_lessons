@@ -160,10 +160,18 @@ $body-bg: #073642;
   display: flow-root;
   margin-top: 1.4em;
 }
+// This slide showed a real horizontal scrollbar in an actual browser that
+// never reproduced in headless measurement (different font metrics/zoom,
+// most likely) -- rather than chase an exact pixel, hard-clamp overflow on
+// this specific slide by id (not globally on .scrollable) as a safety net,
+// on top of the wider column margins below.
+.reveal .slides section#ai-and-the-knowledge-frontier {
+  overflow-x: hidden;
+}
 .reveal .slides .frontier-split-diagram {
   float: left;
-  width: 54%;
-  margin-right: 3%;
+  width: 51%;
+  margin-right: 5%;
 }
 // The svg is a direct child here, not wrapped in .diagram-panel-solo (that
 // wrapper was dropped when this became its own column) -- it needs its own
@@ -177,10 +185,16 @@ $body-bg: #073642;
 }
 .reveal .slides .frontier-split-table {
   float: right;
-  width: 41%;
-  font-size: 0.8em;
+  width: 38%;
+  font-size: 0.76em;
 }
 .reveal .slides .frontier-split-table .table-panel {
+  // Without this, width:100% is the content box and the left/right padding
+  // below adds on top of it -- that's the actual root cause of the
+  // horizontal scrollbar reported in a real browser but not reproducible
+  // in headless measurement at the same viewport size: this panel was
+  // rendering ~23px wider than its column, consistently, everywhere.
+  box-sizing: border-box;
   width: 100%;
   margin: 0.2em 0 0;
   padding: 0.4em 0.9em;
