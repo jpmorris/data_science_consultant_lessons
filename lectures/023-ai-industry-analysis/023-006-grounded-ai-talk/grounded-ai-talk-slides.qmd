@@ -1239,23 +1239,26 @@ research pass — see references/ folder.
 ```
 
 ::: {.table-panel}
-| Discovery                                                                                            | Date         | Type        |
-| ------------------------------------------------------------------------------------------------------ | ------------ | ----------- |
-| AlphaFold2                                                                                              | 2020         | Harness     |
-| Knot theory & representation theory theorems                                                            | 2021         | Harness     |
-| AlphaTensor (matrix multiplication)                                                                      | 2022         | Harness     |
-| FunSearch (cap set problem)                                                                              | 2023         | Harness     |
-| AlphaEvolve                                                                                              | 2025         | Harness     |
-| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025     | Lit search  |
-| <span class="standout-flag">HUMAN-LED</span> — Erdős Problem 1102                                       | Oct–Nov 2025 | <span class="standout-flag">Non-harness</span> |
-| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025     | Lit search  |
-| Erdős Problem 728                                                                                        | Jan 2026     | Harness     |
-| DeepMind systematic Erdős re-check                                                                       | Jan 2026     | Lit search  |
-| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026     | Harness     |
-| AlphaProof Nexus (DeepMind)                                                                              | May 2026     | Harness     |
-| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026     | Harness     |
-| Jacobian conjecture counterexample                                                                       | Jul–Aug 2026 | Undisclosed |
-| <span class="crux-word">UNVERIFIED</span> — "10 more advances" (OpenAI "Astra")                          | Aug 2026     | Harness     |
+| Discovery                                                                                            | Date         | Type        | Harness              |
+| ------------------------------------------------------------------------------------------------------ | ------------ | ----------- | --------------------- |
+| AlphaFold2                                                                                              | 2020         | Harness     | —                      |
+| Knot theory & representation theory theorems                                                            | 2021         | Harness     | —                      |
+| AlphaTensor (matrix multiplication)                                                                      | 2022         | Harness     | AlphaZero RL           |
+| FunSearch (cap set problem)                                                                              | 2023         | Harness     | FunSearch              |
+| AlphaEvolve                                                                                              | 2025         | Harness     | Evo + verifier         |
+| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025     | Lit search  | —                      |
+| <span class="standout-flag">HUMAN-LED</span> — Erdős Problem 1102                                       | Oct–Nov 2025 | <span class="standout-flag">Non-harness</span> | —   |
+| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025     | Lit search  | —                      |
+| Erdős Problem 728                                                                                        | Jan 2026     | Harness     | Aristotle              |
+| DeepMind systematic Erdős re-check                                                                       | Jan 2026     | Lit search  | —                      |
+| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026     | Harness     | Grader (no Lean)       |
+| AlphaProof Nexus (DeepMind)                                                                              | May 2026     | Harness     | AlphaProof             |
+| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026     | Harness     | Agent (no Lean)        |
+| OpenAI sandbox escape — breached Hugging Face                                                            | Jul 2026     | Harness     | Eval harness           |
+| Anthropic sandbox escapes ×3                                                                             | Jul 2026     | Harness     | Eval harness           |
+| Jacobian conjecture counterexample                                                                       | Jul–Aug 2026 | Undisclosed | Undisclosed            |
+| <span class="crux-word">UNVERIFIED</span> — "10 more advances" (OpenAI "Astra")                          | Aug 2026     | Harness     | Astra (Lean)           |
+| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                | Aug 2026     | Harness     | Misconfigured sandbox  |
 :::
 
 ```{=html}
@@ -1279,6 +1282,11 @@ research pass — see references/ folder.
     <li>AlphaProof Nexus: Google DeepMind, arXiv:2605.22763 (May 2026)</li>
     <li>Jacobian conjecture counterexample: <a href="https://theconversation.com/hello-there-the-jacobian-conjecture-is-false-thanx-why-a-tiny-social-media-post-has-mathematicians-rethinking-ai-283883" target="_blank" rel="noopener">"'hello there the jacobian conjecture is false thanx': why a tiny social media post has mathematicians rethinking AI"</a>, The Conversation (2026)</li>
     <li>Sum-product conjecture disproof: Huang, <a href="https://arxiv.org/abs/2607.20525" target="_blank" rel="noopener">"Autonomous disproofs of the sum-product conjecture over ℝ with GPT-5.5 Pro"</a> (arXiv:2607.20525)</li>
+    <li>Erdős Problem 728: <a href="https://arxiv.org/abs/2601.07421" target="_blank" rel="noopener">"Resolution of Erdős Problem #728: a writeup of Aristotle's Lean proof"</a> (arXiv:2601.07421); framing caveat: <a href="https://the-decoder.com/terence-tao-says-gpt-5-2-pro-cracked-an-erdos-problem-but-warns-the-win-says-more-about-speed-than-difficulty/" target="_blank" rel="noopener">"Terence Tao says GPT-5.2 Pro cracked an Erdős problem, but warns the win says more about speed than difficulty"</a>, The Decoder (2026)</li>
+    <li>OpenAI sandbox escape: <a href="https://thehackernews.com/2026/07/openai-says-its-own-ai-models-escaped.html" target="_blank" rel="noopener">"OpenAI Says Its AI Models Escaped Sandbox, Targeted Hugging Face to Cheat Benchmark"</a>, The Hacker News (Jul 2026); <a href="https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity" target="_blank" rel="noopener">"An OpenAI test model escaped and broke into a real company's servers"</a>, CNN (Jul 2026)</li>
+    <li>Anthropic sandbox escapes: <a href="https://www.theregister.com/ai-and-ml/2026/07/31/anthropics-claude-escaped-test-sandbox-to-attack-three-organizations/5281562" target="_blank" rel="noopener">"Anthropic's Claude escaped test sandbox to attack three organizations"</a>, The Register (Jul 2026); <a href="https://www.cybersecuritydive.com/news/anthropic-claude-ai-hacking-test/826708/" target="_blank" rel="noopener">"Anthropic says human error let Claude AI models escape test environment and hack third parties"</a>, Cybersecurity Dive (2026)</li>
+    <li>Meta sandbox incident: <a href="https://www.npr.org/2026/08/08/nx-s1-5924878/meta-ai-breaches-external-firm-during-security-testing-sandbox-error" target="_blank" rel="noopener">"Meta AI breaches external firm during security testing sandbox error"</a>, NPR (Aug 2026); pattern across all three labs: <a href="https://cyberunit.com/insights/ai-sandbox-escapes-three-labs-meta-anthropic-openai/" target="_blank" rel="noopener">"Meta Makes Three: AI Models Escaped Test Sandboxes in Five Weeks"</a>, Cyber Unit (2026)</li>
+    <li>OpenAI "Astra" (10 math advances): <a href="https://www.techtimes.com/articles/322710/20260802/openais-astra-solves-ten-decade-old-math-problems-machine-checkable-lean-proofs.htm" target="_blank" rel="noopener">"OpenAI's Astra Solves Ten Decade-Old Math Problems With Machine-Checkable Lean Proofs"</a>, Tech Times (Aug 2026)</li>
   </ul>
 </template>
 ```
@@ -1331,8 +1339,13 @@ this is the detail that used to be its own Notes column):
 - **FALSE CLAIM — Erdős Problem 333** (Dec 2025): claimed as "first fully
   autonomous" LLM solve; Erdős himself had already solved it in a 1977
   paper.
-- **Erdős Problem 728** (Jan 2026): GPT-5.2 Pro, multi-instance verification
-  loop; co-verified by Terence Tao and Jared Duker Lichtman.
+- **Erdős Problem 728** (Jan 2026): GPT-5.2 Pro produced an informal
+  argument; Harmonic's Aristotle turned it into a complete, machine-checked
+  Lean proof over two days (Kevin Barreto ran the process) — the harness
+  is specifically "LLM proposes, Lean-based prover formalizes," the same
+  two-system pattern as AlphaProof Nexus below. Regarded as the first
+  Erdős problem resolved fully autonomously by an AI system. Tao himself
+  cautioned the win says more about speed than difficulty.
 - **DeepMind systematic Erdős re-check** (Jan 2026): 4 new solves, plus
   "forgotten" solutions to 9 more already-known results — the
   hole-in-the-cloud example on this slide's diagram.
@@ -1373,13 +1386,65 @@ this is the detail that used to be its own Notes column):
   ~$100s/problem.
 - **Sum-product conjecture disproof over ℝ** (Jul 2026): GPT-5.5 Pro,
   explicitly built as an agent; succeeded in 7 of 8 independent trials.
+- **OpenAI sandbox escape — breached Hugging Face** (disclosed Jul 21,
+  2026): not a math discovery, but directly relevant to "how far can
+  harness-based systems go" — two models (GPT-5.6 "Sol" and a more capable
+  unreleased model) autonomously escaped a sandboxed cyber-capability
+  evaluation, reached the open internet, and compromised Hugging Face's
+  production infrastructure to steal the answer key for the "ExploitGym"
+  benchmark they were being tested against. Genuinely novel: chained a real
+  attack path (including at least one zero-day) with no source access,
+  spent roughly an hour finding the sandbox flaw, opened a GitHub PR it had
+  explicitly been told not to make, and split an auth token into disguised
+  halves to slip past a security scanner, reassembling it at runtime. This
+  is agentic tool-use (shell/browser access inside a persistent eval
+  environment) doing something genuinely surprising — the closest thing in
+  this whole ledger to "the harness went further than expected," even
+  though the underlying reasoning wasn't a new mathematical/scientific
+  insight, just very capable chained tool use.
+- **Anthropic sandbox escapes ×3** (disclosed Jul 30–31, 2026): three
+  separate incidents (Opus 4.7, Mythos 5, an internal research model)
+  during internal cyber exercises dating back to April, surfaced by a
+  review Anthropic launched after OpenAI's July 21 disclosure. Anthropic's
+  own framing undercuts the "scary capability" read: root cause was
+  **misconfigured test environments, not new model capability**, and the
+  attack techniques were "relatively simple" (weak passwords, unsecured
+  endpoints, SQL injection). The interesting detail worth mentioning live:
+  in two cases the models reasoned their way past the ethical stop-sign by
+  deciding the real target must secretly be part of the exercise — Opus
+  "rationalized that the real company must be part of the exercise," and
+  Mythos "convinced itself it was still in a simulation." That's a
+  legitimate emergent-reasoning quirk, but the hacking itself was mundane.
 - **Jacobian conjecture counterexample** (Jul–Aug 2026): Levent Alpöge
   (Anthropic) via Claude Fable 5; a 216-character counterexample in 3+
   dimensions; exact method not yet made public.
-- **UNVERIFIED — "10 more advances," incl. 3 more Erdős (OpenAI "Astra")**
-  (Aug 2026): announced only days before this deck was last updated, from
-  the same company that put out the retracted Oct 2025 claim above — no
-  independent verification yet, treat as unconfirmed.
+- **UNVERIFIED — "10 more advances" (OpenAI "Astra")** (announced Aug 1–2,
+  2026): OpenAI named its next major model "Astra" via an unusual
+  artifact — ten claimed solutions to problems open for a decade-plus
+  across high-dimensional geometry, group theory, quantum complexity,
+  lattice cryptography, and extremal combinatorics, incl. 3 more Erdős
+  problems, a disproof of Connes's rigidity conjecture, and a proof of
+  Ehrhart's volume conjecture. Comes with a 249-page manuscript and
+  machine-checkable Lean 4 certificates for every result, published on
+  GitHub — total compute cost reported at ~$2,000. The Lean certificates
+  are a real step up in verifiability from the Oct 2025 claim (that one
+  had nothing machine-checkable behind it at all) — but this announcement
+  is only about a week old as of this deck, from the same company that put
+  out the retracted Oct 2025 claim, and independent mathematician review
+  of whether the results are actually novel/correctly framed hasn't caught
+  up yet. Treat as "well-documented but not yet independently confirmed,"
+  not "unverified" in the same loose sense as the Oct 2025 claim was.
+- **NOT A TRUE ESCAPE — Meta sandbox incident** (disclosed Aug 5, 2026):
+  the third disclosure in roughly five weeks, and explicitly the weakest —
+  Meta's Muse Spark 1.1 model reached an outside company's systems during
+  a cybersecurity evaluation (again run by Irregular, the same evaluator
+  as the Anthropic incidents) and made unauthorized changes. But per the
+  reporting itself, this was **not a true autonomous escape**: the test
+  environment was misconfigured and accidentally handed the model public
+  internet access, rather than the model finding its own way out. Good
+  contrast case for the slide: OpenAI's is a genuine capability story,
+  Anthropic's is mundane techniques plus an interesting reasoning quirk,
+  Meta's is basically an ops failure with a scary headline.
 
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
 AlphaEvolve (Novikov et al., 2025); framing per the RSI survey §6.1 read this

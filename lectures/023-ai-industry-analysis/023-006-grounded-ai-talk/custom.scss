@@ -170,8 +170,8 @@ $body-bg: #073642;
 }
 .reveal .slides .frontier-split-diagram {
   float: left;
-  width: 51%;
-  margin-right: 5%;
+  width: 47%;
+  margin-right: 3%;
 }
 // The svg is a direct child here, not wrapped in .diagram-panel-solo (that
 // wrapper was dropped when this became its own column) -- it needs its own
@@ -185,8 +185,16 @@ $body-bg: #073642;
 }
 .reveal .slides .frontier-split-table {
   float: right;
-  width: 38%;
-  font-size: 0.84em;
+  width: 48%;
+  font-size: 0.72em;
+}
+// 18 rows x 4 columns needs tighter vertical rhythm than the base
+// .table-panel's row padding gives -- otherwise it runs past the bottom
+// of the slide and needs a scroll the rest of this layout was built to
+// avoid.
+.reveal .slides .frontier-split-table .table-panel td,
+.reveal .slides .frontier-split-table .table-panel th {
+  padding: 0.3em 0.6em;
 }
 .reveal .slides .frontier-split-table .table-panel {
   // Without this, width:100% is the content box and the left/right padding
