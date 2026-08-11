@@ -1247,7 +1247,7 @@ research pass — see references/ folder.
 | FunSearch (cap set problem)                                                                              | 2023         | Harness     |
 | AlphaEvolve                                                                                              | 2025         | Harness     |
 | <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025     | Lit search  |
-| Erdős Problem 1102                                                                                       | Oct–Nov 2025 | Non-harness |
+| <span class="standout-flag">HUMAN-LED</span> — Erdős Problem 1102                                       | Oct–Nov 2025 | <span class="standout-flag">Non-harness</span> |
 | <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025     | Lit search  |
 | Erdős Problem 728                                                                                        | Jan 2026     | Harness     |
 | DeepMind systematic Erdős re-check                                                                       | Jan 2026     | Lit search  |
@@ -1274,6 +1274,8 @@ research pass — see references/ folder.
     <li>OpenAI's Oct 2025 retracted Erdős claim: <a href="https://techcrunch.com/2025/10/19/openais-embarrassing-math/" target="_blank" rel="noopener">"OpenAI's embarrassing math"</a>, TechCrunch (2025)</li>
     <li>OpenAI's May 2026 unit-distance disproof: <a href="https://techcrunch.com/2026/05/20/openai-claims-it-solved-an-80-year-old-math-problem-for-real-this-time/" target="_blank" rel="noopener">"OpenAI claims it solved an 80-year-old math problem — for real this time"</a>, TechCrunch (2026); companion paper: <a href="https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf" target="_blank" rel="noopener">"Remarks on the Disproof of the Unit Distance Conjecture"</a> (OpenAI, 2026)</li>
     <li>Survey of all the above, including the harness/non-harness/lit-search classification used in this table: <a href="https://www.quantamagazine.org/why-the-legendary-erdos-problems-are-falling-to-ai-20260803/" target="_blank" rel="noopener">"Why the Legendary Erdős Problems Are Falling to AI"</a>, Quanta Magazine (Aug 2026)</li>
+    <li>Erdős Problem 1102/1103: van Doorn &amp; Tao, <a href="https://arxiv.org/abs/2512.01087" target="_blank" rel="noopener">"Growth rates of sequences governed by the squarefree properties of its translates"</a> (arXiv:2512.01087, Dec 2025); Tao's own writeup: <a href="https://terrytao.wordpress.com/2025/12/01/growth-rates-of-sequences-governed-by-the-squarefree-properties-of-its-translates/" target="_blank" rel="noopener">"Growth rates of sequences governed by the squarefree properties of its translates"</a>, What's New (Dec 2025) — no AI tools mentioned anywhere in the writeup</li>
+    <li>Post-hoc Lean formalization of the 1102/1103 proof (Feb 2026, Aristotle): <a href="https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems" target="_blank" rel="noopener">"AI contributions to Erdős problems"</a> wiki (teorth/erdosproblems)</li>
     <li>AlphaProof Nexus: Google DeepMind, arXiv:2605.22763 (May 2026)</li>
     <li>Jacobian conjecture counterexample: <a href="https://theconversation.com/hello-there-the-jacobian-conjecture-is-false-thanx-why-a-tiny-social-media-post-has-mathematicians-rethinking-ai-283883" target="_blank" rel="noopener">"'hello there the jacobian conjecture is false thanx': why a tiny social media post has mathematicians rethinking AI"</a>, The Conversation (2026)</li>
     <li>Sum-product conjecture disproof: Huang, <a href="https://arxiv.org/abs/2607.20525" target="_blank" rel="noopener">"Autonomous disproofs of the sum-product conjecture over ℝ with GPT-5.5 Pro"</a> (arXiv:2607.20525)</li>
@@ -1303,9 +1305,29 @@ this is the detail that used to be its own Notes column):
   X; Thomas Bloom (erdosproblems.com) called it "a dramatic
   misrepresentation" — the solutions already existed in published
   literature.
-- **Erdős Problem 1102** (Oct–Nov 2025): Wouter van Doorn, with Terence Tao;
-  van Doorn did the reasoning himself and credits AI-suggested ideas —
-  closest real case to "AI-assisted, not AI-driven."
+- **HUMAN-LED — Erdős Problem 1102** (Oct–Nov 2025): **correction after a
+  deeper research pass, live in conversation** — this is not an
+  AI-assisted case at all, it's the opposite: a fully human solve, later
+  formalized by AI. Wouter van Doorn (an independent/amateur mathematician
+  from the Netherlands, works in customer service, active in the
+  Erdős-problems community) posted progress toward 1102 in Oct–Nov 2025
+  that he'd worked out **without any AI involvement**. Terence Tao engaged,
+  initially thought he'd found a flaw, van Doorn defended the argument and
+  convinced him it was correct — they co-authored "Growth rates of
+  sequences governed by the squarefree properties of its translates"
+  (arXiv:2512.01087, Dec 2025), answering both Problem 1102 and its
+  companion Problem 1103. Tao's own writeup of the paper makes no mention
+  of AI tools anywhere in the mathematical process. The one AI touch: in
+  Feb 2026, months after publication, the completed proof was formalized
+  in Lean by an AI system (Harmonic's Aristotle) — pure post-hoc
+  verification of an already-finished human proof, not part of the
+  discovery. Van Doorn has also solved other Erdős problems (#367, #650)
+  and separately *does* use AI on some of that other work (Gemini
+  Deepthink filled in one congruence-identity lemma for his #367
+  disproof) — worth being careful not to conflate that with 1102, which is
+  clean. His own words on LLMs, worth quoting live: "clearly better at
+  thinking and doing math than I am... but the eventual proofs that I
+  write are simpler, more general, and easier to read."
 - **FALSE CLAIM — Erdős Problem 333** (Dec 2025): claimed as "first fully
   autonomous" LLM solve; Erdős himself had already solved it in a 1977
   paper.
@@ -1351,13 +1373,21 @@ iterative refinement," plus a separate tool (Harmonic Aristotle) used to
 formalize the proof in Lean 4. The "one model just solved it" framing is
 OpenAI's own PR angle, not the more careful outside classification. The
 closest thing to a genuine non-harness win anywhere in this space is Erdős
-Problem 1102 (Wouter van Doorn, Oct–Nov 2025) — and even that was primarily
-*human* reasoning with AI-suggested ideas, not an autonomous AI discovery.
-If asked "which one was really non-harness," the honest answer is: none of
-the AI-attributed ones cleanly are: the harness/non-harness line gets blurry
-fast once "iterative refinement" and "AI-suggested ideas" both count as
-maybe-harness-ish, and the marketing incentive on all sides is to claim the
-cleaner, more impressive-sounding story.
+Problem 1102 (Wouter van Doorn with Terence Tao, Oct–Nov 2025) — but be
+precise about *why* it's the exception: it's not an AI win with a light
+touch, it's **not an AI discovery at all**. Per Quanta and per Tao's own
+writeup of the resulting paper, no AI tool was used anywhere in solving
+it — it's traditional human mathematical reasoning, full stop, the same
+way Erdős problems have always been solved. The only AI contact was a
+Lean formalization of the *already-published* proof several months later
+(Feb 2026), which is verification, not discovery. So if asked "which one
+was really non-harness," the honest answer is: 1102 is real, but it's a
+human-mathematics story that happens to sit on the same website as the
+AI claims, not an "AI zero-shot" story — nobody, anywhere in this table,
+has an AI system autonomously producing this kind of result without a
+harness. Worth being direct about this on stage if the "sparks of AGI"
+framing comes up: this table's one clean non-harness row is evidence
+*against* that framing, not for it.
 
 Also worth flagging live: OpenAI has a *second*, separate, much shakier
 history here — the October 2025 "GPT-5 solved 10 Erdős problems" claim

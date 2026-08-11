@@ -125,7 +125,7 @@ $body-bg: #073642;
   flex-wrap: wrap;
   gap: 0.5em 1.8em;
   margin: 0 0 0.4em;
-  font-size: 0.6em;
+  font-size: 1.05em;
   color: #93a1a1;
 }
 .reveal .slides .frontier-legend-item {
@@ -186,7 +186,7 @@ $body-bg: #073642;
 .reveal .slides .frontier-split-table {
   float: right;
   width: 38%;
-  font-size: 0.76em;
+  font-size: 0.84em;
 }
 .reveal .slides .frontier-split-table .table-panel {
   // Without this, width:100% is the content box and the left/right padding
@@ -729,6 +729,14 @@ $body-bg: #073642;
 // about the claim itself, not an emphasis within a true one.
 .reveal .slides .table-panel .hype-flag {
   color: #dc322f;
+  font-weight: 700;
+}
+// The positive counterpart to .hype-flag -- flags the one row that's
+// genuinely what it claims to be, not oversold or retracted. Green (unused
+// elsewhere in this table's palette) so it reads as a "this one's real"
+// signal rather than another caution color.
+.reveal .slides .table-panel .standout-flag {
+  color: #859900;
   font-weight: 700;
 }
 
