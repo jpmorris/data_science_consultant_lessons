@@ -1351,6 +1351,23 @@ this is the detail that used to be its own Notes column):
   (Will Sawin) found a better explicit lower bound than the AI's own. Fair
   summary: real, useful, AI found something humans hadn't — but multi-attempt
   and human-refined, not a clean single-shot zero-shot proof.
+  **Precision on what kind of "harness," asked directly in conversation**:
+  Lean was *not* used in the original discovery — each individual attempt
+  was the model's own free-text/math reasoning, not a Lean-checked formal
+  proof. But it wasn't one single attempt either: OpenAI's own reporting
+  ("solves the problem only about half the time even at max token budget")
+  implies many generations, and per outside reporting the model's output
+  was run through **an AI grading pipeline that filtered candidates for
+  confidence before a human ever looked at one** — i.e. a *soft*,
+  LLM-judged harness (repeated sampling + automated filtering), not a
+  *hard*, Lean-verified one, and not manual human reruns either. Lean only
+  enters the story ~3 weeks later, as a wholly separate formalization
+  effort (Boris Alexeev, ~1.2M lines, done in one working day by an
+  orchestrated ensemble of Claude, Aristotle, and Codex) — verification
+  of an already-public result, not part of the discovery. Caveat: OpenAI
+  hasn't published exact attempt counts or compute figures, so some of
+  this is informed inference from outside reporting, not an official
+  methodology writeup.
 - **AlphaProof Nexus (DeepMind)** (May 2026): 9 of 353 open Erdős problems,
   incl. 2 open 50+ years, plus 44 OEIS conjectures; Gemini 3.1 Pro + Lean,
   ~$100s/problem.
