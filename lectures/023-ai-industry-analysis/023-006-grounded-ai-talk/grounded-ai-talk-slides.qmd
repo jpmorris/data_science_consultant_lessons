@@ -1223,15 +1223,16 @@ research pass — see references/ folder.
 ## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
 
 ```{=html}
-<div class="section-label section-label--lg frontier-diagram-title">
-  <span class="section-tick"></span>Known Human Knowledge
-</div>
-<div class="frontier-legend">
-  <span class="frontier-legend-item"><i style="background:#268bd2"></i>Interpolation — already known, just missed</span>
-  <span class="frontier-legend-item"><i style="background:#b58900"></i>Frontier-edge — a real, small step past known</span>
-  <span class="frontier-legend-item"><i style="background:#6c71c4"></i>Paradigm-shift — an Einstein-level leap</span>
-</div>
+<div class="frontier-split-row">
 <div class="frontier-split-diagram">
+  <div class="section-label section-label--lg frontier-diagram-title">
+    <span class="section-tick"></span>Known Human Knowledge
+  </div>
+  <div class="frontier-legend">
+    <span class="frontier-legend-item"><i style="background:#268bd2"></i>Interpolation — already known, just missed</span>
+    <span class="frontier-legend-item"><i style="background:#b58900"></i>Frontier-edge — a real, small step past known</span>
+    <span class="frontier-legend-item"><i style="background:#6c71c4"></i>Paradigm-shift — an Einstein-level leap</span>
+  </div>
   {{< include images/knowledge-frontier.svg >}}
 </div>
 <div class="frontier-split-table">
@@ -1254,10 +1255,11 @@ research pass — see references/ folder.
 | AlphaProof Nexus (DeepMind)                                                                              | May 2026     | Harness     |
 | Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026     | Harness     |
 | Jacobian conjecture counterexample                                                                       | Jul–Aug 2026 | Undisclosed |
-| <span class="crux-word">UNVERIFIED</span> — "10 more advances," incl. 3 more Erdős (OpenAI "Astra")     | Aug 2026     | Harness     |
+| <span class="crux-word">UNVERIFIED</span> — "10 more advances" (OpenAI "Astra")                          | Aug 2026     | Harness     |
 :::
 
 ```{=html}
+</div>
 </div>
 ```
 

@@ -147,12 +147,22 @@ $body-bg: #073642;
 // (open the wrapping div in one fence, close it after the table in
 // another), not a literal child of a flex container within a single fence
 // -- but plain floats on two block-level siblings don't care how they got
-// there, and the slide's .scrollable section already sets overflow-y:auto,
-// which establishes a block formatting context that contains floats for
-// height/scroll purposes, so no explicit clearfix is needed.
+// there. This row wrapper needs its own block-formatting context (flow-root)
+// for two reasons: it contains the floats for height purposes, and -- less
+// obviously -- it stops the slide's h2 (which is display:inline-block, for
+// the .heading-accent underline-hugs-the-text trick) from being pulled into
+// the same inline formatting context as these floats and having its own
+// line box reflowed around them, even though the h2 comes first in the
+// document. Floats only respect block-box siblings that precede them;
+// inline-level ones don't count, so without this wrapper the heading was
+// visibly sliding over to share a line with the floated diagram.
+.reveal .slides .frontier-split-row {
+  display: flow-root;
+}
 .reveal .slides .frontier-split-diagram {
   float: left;
-  width: 56%;
+  width: 54%;
+  margin-right: 3%;
 }
 .reveal .slides .frontier-split-diagram .diagram-panel-solo {
   margin: 0;
@@ -160,8 +170,8 @@ $body-bg: #073642;
 }
 .reveal .slides .frontier-split-table {
   float: right;
-  width: 42%;
-  font-size: 0.7em;
+  width: 41%;
+  font-size: 0.8em;
 }
 .reveal .slides .frontier-split-table .table-panel {
   width: 100%;
