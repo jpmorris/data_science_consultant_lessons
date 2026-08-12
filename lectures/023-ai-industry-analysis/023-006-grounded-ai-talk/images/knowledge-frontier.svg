@@ -27,14 +27,15 @@
     <ellipse cx="590" cy="290" rx="150" ry="128" fill="url(#hazeGradient)"/>
   </g>
 
-  <!-- interpolation: a hole -- a discovery already sitting in the known
-       region, just missed. Cream, not blue: blue read poorly against the
-       amber haze. -->
-  <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <!-- interpolation: a hole -- not new theory or new data, just pieces
+       that were already sitting in the known region, unassembled. Green
+       fill (was a plain background-color void) to match "DeepMind, Jan
+       2026" below. -->
+  <circle cx="255" cy="235" r="24" fill="#859900" opacity="0.55" filter="url(#holeBlur)"/>
   <circle cx="255" cy="235" r="24" fill="none" stroke="#eee8d5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
-  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">A hole: already known, just missed</text>
+  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
   <text x="255" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
-    <tspan x="255" dy="0">DeepMind, Jan 2026 — a systematic re-check</tspan>
+    <tspan x="255" dy="0"><tspan fill="#859900">DeepMind, Jan 2026</tspan> — a systematic re-check</tspan>
     <tspan x="255" dy="20">surfaced 9 old Erdős problems that were</tspan>
     <tspan x="255" dy="20">already solved, just never indexed</tspan>
   </text>
@@ -46,6 +47,7 @@
   <!-- paradigm-shift example: deliberately placed OUTSIDE the cloud, below
        it -- this needs to read as a genuine creative leap past the current
        frontier, not something interpolated from what's already known. -->
+  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-style="italic" fill="#6c71c4">Paradigm-shifting discovery few humans could formulate</text>
   <circle cx="300" cy="660" r="15" fill="#6c71c4" filter="url(#dotSoftGlow)"/>
   <text x="300" y="700" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6c71c4">Einstein — Special Relativity (1905)</text>
   <text x="300" y="723" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
@@ -56,6 +58,7 @@
 
   <!-- frontier-edge point 1: harness-based, clean win -- pulled in toward
        the haze so it reads as emerging from it, not floating outside -->
+  <text x="628" y="118" font-family="Inter, sans-serif" font-size="14" font-style="italic" fill="#b58900">Edge of frontier; new discoveries</text>
   <circle cx="592" cy="165" r="14" fill="#b58900" filter="url(#dotSoftGlow)"/>
   <text x="628" y="140" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">AlphaEvolve (2025) — harness-based</text>
   <text x="628" y="163" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
@@ -65,6 +68,7 @@
   </text>
 
   <!-- frontier-edge point 2: the contested OpenAI claim -->
+  <text x="620" y="438" font-family="Inter, sans-serif" font-size="14" font-style="italic" fill="#b58900">Edge of frontier; new discoveries</text>
   <circle cx="583" cy="480" r="14" fill="#b58900" filter="url(#dotSoftGlow)"/>
   <text x="620" y="460" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">OpenAI's Erdős disproof (2026)</text>
   <text x="620" y="483" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">

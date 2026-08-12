@@ -111,7 +111,18 @@ $body-bg: #073642;
 // rather than dividing the slide into left-to-right sections.
 .reveal .slides .frontier-diagram-title {
   justify-content: center;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.2em;
+}
+// Scope caveat for the diagram: it only shows discoveries that are pure
+// theory/math with some cheap mechanical oracle to check them (Lean, a
+// benchmark, a proof checker) -- not embodied/robotics work, and not
+// anything without a fast ground-truth verifier.
+.reveal .slides .frontier-diagram-subtitle {
+  text-align: center;
+  font-size: 0.55em;
+  font-style: italic;
+  color: #657b7b;
+  margin-bottom: 0.6em;
 }
 
 // Diagram + its ledger table side by side instead of stacked, so both fit
