@@ -28,11 +28,11 @@
   </g>
 
   <!-- interpolation: a hole -- a discovery already sitting in the known
-       region, just missed. Dashed outline and heading use the interpolation
-       key color so it reads against the legend. -->
+       region, just missed. Cream, not blue: blue read poorly against the
+       amber haze. -->
   <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
-  <circle cx="255" cy="235" r="24" fill="none" stroke="#268bd2" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
-  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#268bd2">A hole: already known, just missed</text>
+  <circle cx="255" cy="235" r="24" fill="none" stroke="#eee8d5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
+  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">A hole: already known, just missed</text>
   <text x="255" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
     <tspan x="255" dy="0">DeepMind, Jan 2026 — a systematic re-check</tspan>
     <tspan x="255" dy="20">surfaced 9 old Erdős problems that were</tspan>

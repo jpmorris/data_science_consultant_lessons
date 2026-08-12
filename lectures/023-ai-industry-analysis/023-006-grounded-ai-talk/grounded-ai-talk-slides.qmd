@@ -1226,12 +1226,7 @@ research pass — see references/ folder.
 <div class="frontier-split-row">
 <div class="frontier-split-diagram">
   <div class="section-label section-label--lg frontier-diagram-title">
-    <span class="section-tick"></span>Known Human Knowledge
-  </div>
-  <div class="frontier-legend">
-    <span class="frontier-legend-item"><i style="background:#268bd2"></i>Interpolation — already known, just missed</span>
-    <span class="frontier-legend-item"><i style="background:#b58900"></i>Frontier-edge — a real, small step past known</span>
-    <span class="frontier-legend-item"><i style="background:#6c71c4"></i>Paradigm-shift — an Einstein-level leap</span>
+    Known Human Knowledge
   </div>
   {{< include images/knowledge-frontier.svg >}}
 </div>
