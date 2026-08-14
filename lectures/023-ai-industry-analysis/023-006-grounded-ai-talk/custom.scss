@@ -105,6 +105,21 @@ $body-bg: #073642;
   display: block;
 }
 
+// Compact scene-setting bullets above the diagram+table row -- small and
+// tight since this slide is already fighting for vertical space.
+.reveal .slides .frontier-intro-bullets {
+  margin: 0.4em 0 0;
+  font-size: 0.58em;
+  color: #93a1a1;
+  padding-left: 1.2em;
+}
+.reveal .slides .frontier-intro-bullets li {
+  margin-bottom: 0.15em;
+}
+.reveal .slides .frontier-intro-bullets strong {
+  color: #eee8d5;
+}
+
 // A .section-label sitting directly above a diagram, standing in for the
 // diagram's own title -- centered rather than left-aligned like the
 // default .section-label, since it's naming the whole figure below it
@@ -142,7 +157,7 @@ $body-bg: #073642;
 // visibly sliding over to share a line with the floated diagram.
 .reveal .slides .frontier-split-row {
   display: flow-root;
-  margin-top: 1.4em;
+  margin-top: 0.5em;
 }
 // This slide showed a real horizontal scrollbar in an actual browser that
 // never reproduced in headless measurement (different font metrics/zoom,

@@ -1223,6 +1223,15 @@ research pass — see references/ folder.
 ## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
 
 ```{=html}
+<ul class="frontier-intro-bullets">
+  <li>Much of human knowledge is <strong>embodied</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
+  <li><strong>AI progress is most likely in that non-embodied slice</strong> — nothing to build or run in a lab.</li>
+  <li>Two paths there: <strong>think hard, alone</strong> (no harness, no oracle — anywhere from a trivial find to an Einstein-level leap) or <strong>try many things, fast</strong> (needs a harness to attempt candidates, plus an oracle — hard or soft — to check them).</li>
+  <li><strong>Where a real oracle exists — math, mostly — expect a lot of harness-driven progress.</strong> Elsewhere, it's still on the "think hard" path, which AI hasn't demonstrated yet.</li>
+</ul>
+```
+
+```{=html}
 <div class="frontier-split-row">
 <div class="frontier-split-diagram">
   <div class="section-label section-label--lg frontier-diagram-title">
@@ -1237,6 +1246,7 @@ research pass — see references/ folder.
 ::: {.table-panel}
 | Discovery                                                                                            | Date     | Mechanism | Harness       | Oracle |
 | ------------------------------------------------------------------------------------------------------ | -------- | --------- | -------------- | ------ |
+| AlphaGo (Go, beats world champion)                                                                      | 2016     | AI        | Agentic        | Hard   |
 | AlphaFold2                                                                                              | 2020     | ML        | —              | —      |
 | Knot theory & representation theory theorems                                                            | 2021     | ML        | —              | Hard   |
 | AlphaTensor (matrix multiplication)                                                                      | 2022     | AI        | Agentic        | Hard   |
@@ -1267,6 +1277,7 @@ research pass — see references/ folder.
   <ul>
     <li>FunSearch — same paper cited on the "What Is Astounding About LLMs?" surprises table; see that slide's sources</li>
     <li>AlphaEvolve: Novikov et al. (Google DeepMind), <a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/" target="_blank" rel="noopener">"AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms"</a> (2025)</li>
+    <li>AlphaGo: Silver et al. (Google DeepMind), <a href="https://www.nature.com/articles/nature16961" target="_blank" rel="noopener">"Mastering the game of Go with deep neural networks and tree search"</a>, <em>Nature</em> 529, 484–489 (2016)</li>
     <li>Knot theory / representation theory: Davies et al. (Google DeepMind), <a href="https://pubmed.ncbi.nlm.nih.gov/34853458/?dopt=Abstract" target="_blank" rel="noopener">"Advancing mathematics by guiding human intuition with AI"</a>, <em>Nature</em> 600, 70–74 (2021)</li>
     <li>AlphaTensor: Fawzi et al. (Google DeepMind), <a href="https://www.nature.com/articles/s41586-022-05172-4" target="_blank" rel="noopener">"Discovering faster matrix multiplication algorithms with reinforcement learning"</a>, <em>Nature</em> 610, 47–53 (2022)</li>
     <li>AlphaFold2 / Nobel Prize: <a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/" target="_blank" rel="noopener">The Nobel Prize in Chemistry 2024 — press release</a></li>
@@ -1291,6 +1302,19 @@ research pass — see references/ folder.
 Full ledger, row by row (the table on-slide only shows Discovery/Date/Type —
 this is the detail that used to be its own Notes column):
 
+- **AlphaGo** (2016): beat world champion Lee Sedol 4-1. The bridge case
+  between the ML row below and the harness rows after it -- it trains a
+  policy/value network via self-play (the AlphaFold-style piece: a learned
+  model, oracle folded into training), *then* runs a live search harness
+  at play time (Monte Carlo Tree Search, trying many move sequences,
+  guided by that trained model) checked against a genuinely hard oracle:
+  win or lose, unambiguous. Produced real novel strategic knowledge (the
+  famous "Move 37" against Lee Sedol, which professional players had
+  dismissed and later adopted) -- but worth being precise on stage: Go is
+  a closed, fully-specified formal ruleset, not a fact about external
+  reality, so this is a narrower kind of "discovery" than a math theorem
+  or a protein structure, even though the mechanism is a clean preview of
+  everything that came after.
 - **AlphaFold2** (2020, Nobel 2024): predicts protein structure from
   sequence; 2024 Nobel Prize in Chemistry. A discovery-*enabling* tool more
   than a discovery itself.
