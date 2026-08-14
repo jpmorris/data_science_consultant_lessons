@@ -28,17 +28,12 @@
   </g>
 
   <!-- interpolation: a hole -- not new theory or new data, just pieces
-       that were already sitting in the known region, unassembled. Green
-       fill (was a plain background-color void) to match "DeepMind, Jan
-       2026" below. -->
-  <circle cx="255" cy="235" r="24" fill="#859900" opacity="0.55" filter="url(#holeBlur)"/>
-  <circle cx="255" cy="235" r="24" fill="none" stroke="#eee8d5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
+       that were already sitting in the known region, unassembled. Plain
+       background-color void, same treatment as the two unannotated holes
+       below -- no AI example exists for this category yet. -->
+  <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">No AI assistance yet</text>
   <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
-  <text x="255" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#c7d0d0">
-    <tspan x="255" dy="0"><tspan fill="#b5e655">DeepMind, Jan 2026</tspan> — a systematic re-check</tspan>
-    <tspan x="255" dy="20">surfaced 9 old Erdős problems that were</tspan>
-    <tspan x="255" dy="20">already solved, just never indexed</tspan>
-  </text>
 
   <!-- two more holes, deliberately unannotated -->
   <circle cx="470" cy="230" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
@@ -47,33 +42,25 @@
   <!-- paradigm-shift example: deliberately placed OUTSIDE the cloud, below
        it -- this needs to read as a genuine creative leap past the current
        frontier, not something interpolated from what's already known. -->
-  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Paradigm-shifting discovery few humans could formulate</text>
-  <circle cx="300" cy="660" r="15" fill="#6c71c4" filter="url(#dotSoftGlow)"/>
-  <text x="300" y="700" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6c71c4">Einstein — Special Relativity (1905)</text>
-  <text x="300" y="723" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
+  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">No AI assistance yet</text>
+  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Paradigm-shifting discovery few humans could formulate</text>
+  <circle cx="300" cy="680" r="15" fill="#6c71c4" filter="url(#dotSoftGlow)"/>
+  <text x="300" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6c71c4">Example: Einstein — Special Relativity (1905)</text>
+  <text x="300" y="743" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
     <tspan x="300" dy="0">A genuine paradigm shift, not a</tspan>
     <tspan x="300" dy="20">recombination of existing physics.</tspan>
     <tspan x="300" dy="20">No AI system has produced anything like this yet.</tspan>
   </text>
 
-  <!-- frontier-edge point 1: harness-based, clean win -- pulled in toward
+  <!-- frontier-edge point: harness-based, clean win -- pulled in toward
        the haze so it reads as emerging from it, not floating outside -->
-  <text x="628" y="118" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Edge of frontier; new discoveries</text>
-  <circle cx="592" cy="165" r="14" fill="#b58900" filter="url(#dotSoftGlow)"/>
-  <text x="628" y="140" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">AlphaEvolve (2025) — harness-based</text>
-  <text x="628" y="163" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
+  <text x="628" y="98" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">AI, <tspan fill="#b58900">Harness</tspan></text>
+  <text x="628" y="121" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Edge of frontier; new discoveries</text>
+  <circle cx="592" cy="168" r="14" fill="#b58900" filter="url(#dotSoftGlow)"/>
+  <text x="628" y="143" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">Example: AlphaEvolve (2025)</text>
+  <text x="628" y="166" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
     <tspan x="628" dy="0">Evolutionary code search + an automatic</tspan>
     <tspan x="628" dy="20">verifier found a 4×4 matrix-multiplication</tspan>
     <tspan x="628" dy="20">algorithm beating a 56-year-old bound</tspan>
-  </text>
-
-  <!-- frontier-edge point 2: the contested OpenAI claim -->
-  <text x="620" y="438" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Edge of frontier; new discoveries</text>
-  <circle cx="583" cy="480" r="14" fill="#b58900" filter="url(#dotSoftGlow)"/>
-  <text x="620" y="460" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#b58900">OpenAI's Erdős disproof (2026)</text>
-  <text x="620" y="483" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
-    <tspan x="620" dy="0">Marketed as one model's breakthrough —</tspan>
-    <tspan x="620" dy="20">but independent reporting classifies the</tspan>
-    <tspan x="620" dy="20">actual process as harness-based too</tspan>
   </text>
 </svg>

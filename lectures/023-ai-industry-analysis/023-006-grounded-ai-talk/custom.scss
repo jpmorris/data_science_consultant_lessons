@@ -185,15 +185,15 @@ $body-bg: #073642;
 .reveal .slides .frontier-split-table {
   float: right;
   width: 48%;
-  font-size: 0.72em;
+  font-size: 0.83em;
 }
-// 18 rows x 4 columns needs tighter vertical rhythm than the base
+// 19 rows x 5 columns needs tighter vertical rhythm than the base
 // .table-panel's row padding gives -- otherwise it runs past the bottom
 // of the slide and needs a scroll the rest of this layout was built to
 // avoid.
 .reveal .slides .frontier-split-table .table-panel td,
 .reveal .slides .frontier-split-table .table-panel th {
-  padding: 0.3em 0.6em;
+  padding: 0.22em 0.55em;
 }
 .reveal .slides .frontier-split-table .table-panel {
   // Without this, width:100% is the content box and the left/right padding
