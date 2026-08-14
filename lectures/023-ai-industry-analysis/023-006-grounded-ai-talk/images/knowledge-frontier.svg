@@ -34,7 +34,7 @@
   <circle cx="255" cy="235" r="24" fill="#859900" opacity="0.55" filter="url(#holeBlur)"/>
   <circle cx="255" cy="235" r="24" fill="none" stroke="#eee8d5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.8"/>
   <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
-  <text x="255" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
+  <text x="255" y="300" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#c7d0d0">
     <tspan x="255" dy="0"><tspan fill="#b5e655">DeepMind, Jan 2026</tspan> — a systematic re-check</tspan>
     <tspan x="255" dy="20">surfaced 9 old Erdős problems that were</tspan>
     <tspan x="255" dy="20">already solved, just never indexed</tspan>
