@@ -32,8 +32,8 @@
        background-color void, same treatment as the two unannotated holes
        below -- no AI example exists for this category yet. -->
   <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
-  <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">No AI assistance yet</text>
-  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
+  <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
+  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI assistance yet)</text>
 
   <!-- two more holes, deliberately unannotated -->
   <circle cx="470" cy="230" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
@@ -42,8 +42,8 @@
   <!-- paradigm-shift example: deliberately placed OUTSIDE the cloud, below
        it -- this needs to read as a genuine creative leap past the current
        frontier, not something interpolated from what's already known. -->
-  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">No AI assistance yet</text>
-  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Paradigm-shifting discovery few humans could formulate</text>
+  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Paradigm-shifting discovery few humans could formulate</text>
+  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI assistance yet)</text>
   <circle cx="300" cy="680" r="15" fill="#6c71c4" filter="url(#dotSoftGlow)"/>
   <text x="300" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6c71c4">Example: Einstein — Special Relativity (1905)</text>
   <text x="300" y="743" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
