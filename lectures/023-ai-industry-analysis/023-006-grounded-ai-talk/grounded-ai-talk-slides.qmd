@@ -1235,26 +1235,26 @@ research pass — see references/ folder.
 ```
 
 ::: {.table-panel}
-| Discovery                                                                                            | Date         | Type        | Harness              |
-| ------------------------------------------------------------------------------------------------------ | ------------ | ----------- | --------------------- |
-| AlphaFold2                                                                                              | 2020         | Harness     | —                      |
-| Knot theory & representation theory theorems                                                            | 2021         | Harness     | —                      |
-| AlphaTensor (matrix multiplication)                                                                      | 2022         | Harness     | AlphaZero RL           |
-| FunSearch (cap set problem)                                                                              | 2023         | Harness     | FunSearch              |
-| AlphaEvolve                                                                                              | 2025         | Harness     | Evo + verifier         |
-| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025     | Lit search  | —                      |
-| <span class="standout-flag">HUMAN-LED</span> — Erdős Problem 1102                                       | Oct–Nov 2025 | <span class="standout-flag">Non-harness</span> | —   |
-| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025     | Lit search  | —                      |
-| Erdős Problem 728                                                                                        | Jan 2026     | Harness     | Aristotle              |
-| DeepMind systematic Erdős re-check                                                                       | Jan 2026     | Lit search  | —                      |
-| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026     | Harness     | Grader (no Lean)       |
-| AlphaProof Nexus (DeepMind)                                                                              | May 2026     | Harness     | AlphaProof             |
-| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026     | Harness     | Agent (no Lean)        |
-| OpenAI sandbox escape — breached Hugging Face                                                            | Jul 2026     | Harness     | Eval harness           |
-| Anthropic sandbox escapes ×3                                                                             | Jul 2026     | Harness     | Eval harness           |
-| Jacobian conjecture counterexample                                                                       | Jul–Aug 2026 | Undisclosed | Undisclosed            |
-| <span class="crux-word">UNVERIFIED</span> — "10 more advances" (OpenAI "Astra")                          | Aug 2026     | Harness     | Astra (Lean)           |
-| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                | Aug 2026     | Harness     | Misconfigured sandbox  |
+| Discovery                                                                                            | Date     | Type                          |
+| ------------------------------------------------------------------------------------------------------ | -------- | ------------------------------ |
+| AlphaFold2                                                                                              | 2020     | ML (no live check)             |
+| Knot theory & representation theory theorems                                                            | 2021     | ML (human-proved)              |
+| AlphaTensor (matrix multiplication)                                                                      | 2022     | Agentic, hard oracle           |
+| FunSearch (cap set problem)                                                                              | 2023     | Semi-agentic, hard oracle      |
+| AlphaEvolve                                                                                              | 2025     | Semi-agentic, hard oracle      |
+| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025 | Retrieval, no check            |
+| <span class="standout-flag">HUMAN-LED</span> — Erdős Problem 1102                                       | Nov 2025 | <span class="standout-flag">Human, no AI</span> |
+| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025 | Retrieval, no check            |
+| Erdős Problem 728                                                                                        | Jan 2026 | Pipeline, hard oracle          |
+| DeepMind systematic Erdős re-check                                                                       | Jan 2026 | Retrieval, verified            |
+| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026 | Repeat-filter, soft oracle     |
+| AlphaProof Nexus (DeepMind)                                                                              | May 2026 | Pipeline, hard oracle          |
+| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026 | Agentic, soft oracle           |
+| OpenAI sandbox escape — breached Hugging Face                                                            | Jul 2026 | Agentic, hard oracle (real-world) |
+| Anthropic sandbox escapes ×3                                                                             | Jul 2026 | Agentic, hard oracle (real-world) |
+| Jacobian conjecture counterexample                                                                       | Aug 2026 | Unknown / undisclosed          |
+| <span class="crux-word">UNVERIFIED</span> — "10 advances," incl. first non-sofic group (OpenAI "Astra") | Aug 2026 | Pipeline, hard oracle          |
+| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                | Aug 2026 | N/A (not autonomous)           |
 :::
 
 ```{=html}
