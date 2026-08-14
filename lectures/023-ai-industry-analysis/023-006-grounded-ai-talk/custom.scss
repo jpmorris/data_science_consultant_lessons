@@ -128,6 +128,16 @@ $body-bg: #073642;
   justify-content: center;
   margin-bottom: 0.2em;
 }
+// Overrides .section-label's deck-wide amber -- this diagram now uses
+// red/green as its only meaningful accent colors (no AI progress vs.
+// confirmed progress), and amber sitting next to red read as a clash.
+// Muted slate-blue keeps the title tied to the cloud below it without
+// competing with either signal color. Needs the doubled-up selector for
+// specificity: .section-label's own color rule is defined later in this
+// file, and at equal specificity source order would let it win.
+.reveal .slides .section-label.frontier-diagram-title {
+  color: #6fa3b0;
+}
 // Scope caveat for the diagram: it only shows discoveries that are pure
 // theory/math with some cheap mechanical oracle to check them (Lean, a
 // benchmark, a proof checker) -- not embodied/robotics work, and not
