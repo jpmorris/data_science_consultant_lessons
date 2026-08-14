@@ -33,7 +33,7 @@
        below -- no AI example exists for this category yet. -->
   <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
   <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
-  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI assistance yet)</text>
+  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI progress yet)</text>
 
   <!-- two more holes, deliberately unannotated -->
   <circle cx="470" cy="230" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
@@ -43,7 +43,7 @@
        it -- this needs to read as a genuine creative leap past the current
        frontier, not something interpolated from what's already known. -->
   <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Paradigm-shifting discovery few humans could formulate</text>
-  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI assistance yet)</text>
+  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI progress yet)</text>
   <circle cx="300" cy="680" r="15" fill="#6c71c4" filter="url(#dotSoftGlow)"/>
   <text x="300" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6c71c4">Example: Einstein — Special Relativity (1905)</text>
   <text x="300" y="743" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
@@ -63,4 +63,13 @@
     <tspan x="628" dy="20">verifier found a 4×4 matrix-multiplication</tspan>
     <tspan x="628" dy="20">algorithm beating a 56-year-old bound</tspan>
   </text>
+
+  <!-- the empty counterpart to AlphaEvolve above: same edge-of-frontier
+       position, but via pure reasoning instead of a harness. Dim, not a
+       solid glow like the confirmed examples -- there's no real instance
+       of this yet, same status as the hole and Einstein. -->
+  <text x="620" y="395" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Pure thinking, no harness</text>
+  <text x="620" y="418" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Edge of frontier discovery</text>
+  <text x="620" y="441" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">(No AI progress yet)</text>
+  <circle cx="583" cy="480" r="14" fill="#eee8d5" opacity="0.35" filter="url(#dotSoftGlow)"/>
 </svg>
