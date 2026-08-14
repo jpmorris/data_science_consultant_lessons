@@ -31,7 +31,8 @@
        that were already sitting in the known region, unassembled. Plain
        background-color void, same treatment as the two unannotated holes
        below -- no AI example exists for this category yet. -->
-  <circle cx="255" cy="235" r="24" fill="#dc322f" opacity="0.55" filter="url(#holeBlur)"/>
+  <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <circle cx="255" cy="235" r="13" fill="#dc322f" filter="url(#dotSoftGlow)"/>
   <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Missing knowledge gap; pieces all there</text>
   <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">(No AI progress yet)</text>
 
