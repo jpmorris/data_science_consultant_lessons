@@ -1232,7 +1232,6 @@ research pass — see references/ folder.
       <li><strong>Many attempts</strong> — external validation. Needs a harness to try candidates, plus an oracle (hard or soft) to check each one.</li>
     </ul>
   </li>
-  <li><strong>Where a real oracle exists — math, mostly — expect a lot of harness-driven progress.</strong> Elsewhere, it's still on the "think hard" path, which AI hasn't demonstrated yet — though AI as a scientist's idea-generation assistant remains a real possibility, still unproven.</li>
 </ul>
 ```
 
@@ -1538,7 +1537,12 @@ are disputed/apocryphal. Don't assert an author out loud; say "commonly
 attributed to..." if you use the quote at all.
 :::
 
-## Short Term: Harness + Oracle Discoveries {.incremental .heading-accent}
+- Where a real oracle exists — math, mostly — expect a lot of harness-driven
+  progress. Elsewhere, it's still on the "think hard" path, which AI hasn't
+  demonstrated yet — though AI as a scientist's idea-generation assistant
+  remains a real possibility, still unproven.
+
+### Short Term: Harness + Oracle Discoveries
 
 Wherever a cheap, reliable checker exists, AI keeps finding real — if usually
 small — wins:
@@ -1556,7 +1560,7 @@ small — wins:
 
 This continues until the low-hanging, cheaply-checkable fruit runs out.
 
-## Delivery Will Lag the Benchmarks {.heading-accent}
+### Delivery Will Lag the Benchmarks
 
 - Tech companies will keep making AI a "first-class citizen" everywhere — you'll
   see it in products 6–12 months before it's obvious in the room
@@ -1567,7 +1571,7 @@ This continues until the low-hanging, cheaply-checkable fruit runs out.
 - Without a real breakthrough, a plateau should happen at some point — no
   scaling law we currently have avoids one
 
-## Other
+### Other
 
 - We all become a bit more generalists. Some individuals may want or be forced
   to work across their traditional roles, DevOps may author code more than
