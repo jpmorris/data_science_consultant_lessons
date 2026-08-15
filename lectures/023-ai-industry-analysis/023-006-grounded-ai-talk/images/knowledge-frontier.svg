@@ -33,8 +33,8 @@
        below -- no AI example exists for this category yet. -->
   <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
   <circle cx="255" cy="235" r="13" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Knowledge gap; pieces all there</text>
-  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">(No AI progress yet)</text>
+  <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">KNOWLEDGE GAP; PIECES ALL THERE</text>
+  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">No AI progress yet</text>
 
   <!-- two more holes, deliberately unannotated -->
   <circle cx="470" cy="230" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
@@ -43,8 +43,8 @@
   <!-- paradigm-shift example: deliberately placed OUTSIDE the cloud, below
        it -- this needs to read as a genuine creative leap past the current
        frontier, not something interpolated from what's already known. -->
-  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Paradigm-shifting; few humans could formulate</text>
-  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">(No AI progress yet)</text>
+  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">PARADIGM-SHIFTING; FEW HUMANS COULD FORMULATE</text>
+  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">No AI progress yet</text>
   <circle cx="300" cy="680" r="15" fill="#dc322f" filter="url(#dotSoftGlow)"/>
   <text x="300" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">Example: Einstein — Special Relativity (1905)</text>
   <text x="300" y="743" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93a1a1">
@@ -55,7 +55,7 @@
 
   <!-- frontier-edge point: harness-based, clean win -- pulled in toward
        the haze so it reads as emerging from it, not floating outside -->
-  <text x="628" y="98" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Edge of frontier; important jump</text>
+  <text x="628" y="98" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
   <text x="628" y="121" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#859900">AI Progress, Harness</text>
   <circle cx="602" cy="150" r="14" fill="#859900" filter="url(#dotSoftGlow)"/>
   <text x="628" y="143" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#859900">Example: AlphaEvolve (2025)</text>
@@ -68,8 +68,8 @@
   <!-- the empty counterpart to AlphaEvolve above: same edge-of-frontier
        position, but via pure reasoning instead of a harness. Red, like
        the hole and Einstein -- there's no real instance of this yet. -->
-  <circle cx="583" cy="480" r="14" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="620" y="455" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#eee8d5">Edge of frontier; important jump</text>
+  <circle cx="595" cy="489" r="14" fill="#dc322f" filter="url(#dotSoftGlow)"/>
+  <text x="620" y="455" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
   <text x="620" y="478" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">AI Progress, No Harness</text>
   <text x="620" y="501" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#dc322f">No AI progress yet</text>
 </svg>
