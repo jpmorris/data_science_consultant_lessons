@@ -1225,8 +1225,13 @@ research pass — see references/ folder.
 ```{=html}
 <ul class="frontier-intro-bullets">
   <li>Much of human knowledge is <strong>embodied</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
-  <li><strong>AI progress is most likely in that non-embodied slice</strong> — nothing to build or run in a lab.</li>
-  <li>Two paths there: <strong>think hard, alone</strong> (no harness, no oracle — anywhere from a trivial find to an Einstein-level leap) or <strong>try many things, fast</strong> (needs a harness to attempt candidates, plus an oracle — hard or soft — to check them).</li>
+  <li><strong>Current AI progress is of the non-embodied type</strong> — nothing to build or run in a lab.</li>
+  <li>Two paths there:
+    <ul>
+      <li><strong>Think hard</strong> — no harness, no oracle; anywhere from a trivial find to an Einstein-level leap. E.g., Einstein at his blackboard, or an AI reasoning internally: many iterations, but no external trials.</li>
+      <li><strong>Many attempts</strong> — needs a harness to try candidates, plus an oracle (hard or soft) to check them.</li>
+    </ul>
+  </li>
   <li><strong>Where a real oracle exists — math, mostly — expect a lot of harness-driven progress.</strong> Elsewhere, it's still on the "think hard" path, which AI hasn't demonstrated yet — though AI as a scientist's idea-generation assistant remains a real possibility, still unproven.</li>
 </ul>
 ```
