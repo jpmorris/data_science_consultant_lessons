@@ -1575,6 +1575,9 @@ This continues until the low-hanging, cheaply-checkable fruit runs out.
 - The most plausible route to ASI (artificial superintelligence) is **RSI** —
   recursive self-improvement: an AI that improves the next AI, which improves
   the next, and so on
+- _Reminder (live): walk through the actual knobs "improve the next AI" can
+  mean — more parameters, more layers, more/different compute, more or
+  better training data, architecture changes, etc._
 - Two separate ways RSI could simply _not happen_:
   1. **Can't even get to A+1** — no system has yet produced a successor better
      than itself in a genuinely open-ended way
