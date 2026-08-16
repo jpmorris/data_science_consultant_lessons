@@ -1257,7 +1257,7 @@ research pass — see references/ folder.
 | FunSearch (cap set problem)                                                                              | 2023     | AI        | Semi-agentic   | Hard   |
 | AlphaEvolve                                                                                              | 2025     | AI        | Semi-agentic   | Hard   |
 | <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025 | Retrieval | —              | None   |
-| <span class="standout-flag">HUMAN-LED</span> — Erdős Problem 1102                                       | Nov 2025 | <span class="standout-flag">Human</span> | — | —      |
+| Erdős Problem 1102                                       | Nov 2025 | Verification | — | —      |
 | <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025 | Retrieval | —              | None   |
 | Erdős Problem 728                                                                                        | Jan 2026 | AI        | Pipeline       | Hard   |
 | DeepMind systematic Erdős re-check                                                                       | Jan 2026 | Retrieval | —              | Hard   |
