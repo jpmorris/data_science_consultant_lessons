@@ -1228,8 +1228,8 @@ research pass — see references/ folder.
   <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
   <li>Two paths there:
     <ul>
-      <li><strong>Think hard</strong> — no external validation. Anywhere from a trivial find to an Einstein-level leap: Einstein at his blackboard, or an AI reasoning internally — many iterations, but no external trials.</li>
-      <li><strong>Many attempts</strong> — external validation. Needs a harness to try candidates, plus an oracle (hard or soft) to check each one.</li>
+      <li><strong>Think hard, no external verifier</strong> — anywhere from a trivial find to an Einstein-level leap: Einstein at his blackboard, or an AI reasoning internally — many iterations, but no external trials.</li>
+      <li><strong>Many attempts, external verification</strong> — needs a harness to try candidates, plus an oracle (hard or soft) to check each one.</li>
     </ul>
   </li>
 </ul>
