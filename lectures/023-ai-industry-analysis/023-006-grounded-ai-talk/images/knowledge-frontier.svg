@@ -20,11 +20,11 @@
 
   <!-- the haze: several overlapping blurred ellipses sharing one gradient -->
   <g filter="url(#hazeBlur)">
-    <ellipse cx="272" cy="275" rx="253" ry="190" fill="url(#hazeGradient)"/>
-    <ellipse cx="433" cy="178" rx="207" ry="161" fill="url(#hazeGradient)"/>
-    <ellipse cx="462" cy="390" rx="236" ry="201" fill="url(#hazeGradient)"/>
-    <ellipse cx="232" cy="436" rx="201" ry="161" fill="url(#hazeGradient)"/>
-    <ellipse cx="590" cy="290" rx="150" ry="128" fill="url(#hazeGradient)"/>
+    <ellipse cx="272" cy="275" rx="215" ry="162" fill="url(#hazeGradient)"/>
+    <ellipse cx="433" cy="178" rx="176" ry="137" fill="url(#hazeGradient)"/>
+    <ellipse cx="462" cy="390" rx="201" ry="171" fill="url(#hazeGradient)"/>
+    <ellipse cx="232" cy="436" rx="171" ry="137" fill="url(#hazeGradient)"/>
+    <ellipse cx="590" cy="290" rx="128" ry="109" fill="url(#hazeGradient)"/>
   </g>
 
   <!-- interpolation: a hole -- not new theory or new data, just pieces
