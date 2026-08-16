@@ -218,6 +218,23 @@ $body-bg: #073642;
   padding: 0;
   max-width: 44em;
   width: 90vw;
+  // Cap the dialog itself and let only the body scroll, so a long
+  // citation list (some slides may end up with a dozen+ sources) gets a
+  // scrollbar instead of overflowing the viewport or getting clipped --
+  // neither of which <dialog>'s UA-default sizing guarantees on its own.
+  max-height: 80vh;
+}
+// display:flex must be scoped to [open] specifically -- an unscoped
+// `display: flex` on .llm-citations-dialog outcompetes the browser's own
+// `dialog:not([open]) { display: none }` UA rule (author-stylesheet rules
+// beat UA rules regardless of selector specificity), so the dialog never
+// actually disappears after .close() removes the `open` attribute: the
+// backdrop and modal/top-layer state go away correctly, but the box
+// itself stays rendered, un-backed, looking like a stuck transparent
+// panel. Scoping to [open] lets the UA rule win again once it's closed.
+.llm-citations-dialog[open] {
+  display: flex;
+  flex-direction: column;
 }
 .llm-citations-dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
@@ -231,6 +248,7 @@ $body-bg: #073642;
   color: #b58900;
   font-weight: 600;
   font-size: 20px;
+  flex: 0 0 auto;
 }
 .llm-citations-dialog-close {
   background: none;
@@ -246,6 +264,7 @@ $body-bg: #073642;
   font-size: 17px;
   line-height: 1.5;
   color: #93a1a1;
+  overflow-y: auto;
 }
 .llm-citations-dialog-body ul {
   margin: 0;
@@ -603,4 +622,305 @@ $body-bg: #073642;
 // bold weight alone reads too close to the surrounding text's color.
 .reveal .slides .surprise-bullets strong {
   color: #eee8d5;
+}
+
+// Small hand-authored icon primitives (not stock art), reused inside each
+// scaling-law card's header: pretraining shows three generic lined
+// documents (raw undifferentiated text); fine-tuning shows three "P|R"
+// (prompt|response) documents, since that pairing is specific to
+// fine-tuning's labeled data, not pretraining's raw corpus. Both slowly
+// breathe in and out (staggered, ~15s per cycle -- deliberately slow so it
+// reads as ambient motion, not a distraction). RLHF shows a human profile
+// (facing the candidates) alongside two labeled A/B boxes whose emphasis
+// alternates on the same slow cycle, in place of harder-to-read thumb
+// icons. Inference-time is a frozen (weights-don't-change) network, in the
+// card's own accent color like everything else in it rather than gray, so
+// it doesn't read as visually "off" -- enlarged so the loop path visibly
+// wraps around it, with its output fed back into its own input plus a
+// clock -- the mechanism is "spend more time re-processing the same
+// frozen model," not branching search.
+.reveal .slides .im-node { fill: var(--accent); }
+.reveal .slides .im-node-dim { fill: var(--accent); opacity: 0.35; }
+.reveal .slides .im-edge { stroke: var(--accent); stroke-width: 2; opacity: 0.85; fill: none; }
+.reveal .slides .im-edge-dim { stroke: var(--accent); stroke-width: 1.6; opacity: 0.25; fill: none; }
+.reveal .slides .im-edge-highlight { stroke: var(--accent); stroke-width: 3.2; opacity: 1; fill: none; }
+.reveal .slides .im-frozen-node { fill: var(--accent); opacity: 0.65; }
+.reveal .slides .im-frozen-edge { stroke: var(--accent); stroke-width: 1.6; opacity: 0.5; fill: none; }
+@keyframes im-page-fall {
+  0% { opacity: 0.15; }
+  50% { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+.reveal .slides .im-page { animation: im-page-fall 15s ease-in-out infinite; }
+@keyframes rlhf-pick {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+.reveal .slides .rlhf-a { animation: rlhf-pick 15s ease-in-out infinite; }
+.reveal .slides .rlhf-b { animation: rlhf-pick 15s ease-in-out infinite; animation-delay: 7.5s; }
+
+// Scaling-law mini-chart row on "How Do These Models Get Better?" -- four
+// small hand-authored SVG curves (not screenshots of the papers' own
+// figures) illustrating each method's actual empirically-supported shape:
+// pretraining decays toward a floor, fine-tuning keeps climbing but ever
+// more slowly (no ceiling drawn -- Hernandez's power law has no asymptote),
+// RLHF is a genuine inverted-U that reverses past its peak (Gao et al.),
+// inference-time climbs toward a real ceiling (bounded near 100% coverage).
+.reveal .slides .scaling-law-row {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  margin: 0.5em 0 0.7em;
+}
+.reveal .slides .scaling-law-card {
+  flex: 1;
+  background: #0d4a55;
+  border-top: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.55em 0.7em 0.65em;
+  color: var(--accent);
+  text-align: center;
+}
+.reveal .slides .scaling-law-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.35em;
+  margin-bottom: 0.3em;
+}
+.reveal .slides .scaling-law-icon {
+  width: 5.2em;
+  height: 5.2em;
+  flex: 0 0 auto;
+  order: 2;
+}
+.reveal .slides .scaling-law-label {
+  order: 1;
+  font-family: $presentation-heading-font;
+  font-weight: 700;
+  font-size: 1.24em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  margin-bottom: 0;
+}
+.reveal .slides .scaling-law-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.reveal .slides .scaling-law-chart .sl-axis {
+  stroke: #586e75;
+  stroke-width: 1.5;
+}
+.reveal .slides .scaling-law-chart .sl-ref {
+  stroke: #586e75;
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.reveal .slides .scaling-law-chart .sl-curve {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+// Secondary/comparison curve (e.g. "trained from scratch" next to the
+// "pretrained" curve on the fine-tuning chart) -- muted and dashed so the
+// accent-colored curve still reads as the chart's main point.
+.reveal .slides .scaling-law-chart .sl-curve-muted {
+  fill: none;
+  stroke: #586e75;
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+  stroke-linecap: round;
+}
+// Individual-run scatter texture, digitized from the real figure (not
+// invented) -- kept low-opacity so the bold sl-curve (the actual reported
+// fit/trend) still reads as the chart's headline.
+.reveal .slides .scaling-law-chart .sl-scatter {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  opacity: 0.35;
+}
+.reveal .slides .scaling-law-chart .sl-axis-label {
+  fill: #839496;
+  font-size: 9px;
+  font-family: $font-family-sans-serif;
+}
+// "This direction is good" label, planted inside a soft gradient band along
+// whichever axis edge corresponds to the better outcome (bottom, at the
+// x-axis, for loss-down charts; top, at the y-axis's far end, for
+// quality/coverage-up charts) -- solid near the axis, fading away over
+// ~10% of the plot's height, so the fade itself reads as "closer to the
+// axis = better" instead of relying on a static arrowhead.
+.reveal .slides .scaling-law-chart .sl-better-label {
+  fill: currentColor;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: $font-family-sans-serif;
+}
+// RLHF-only: the post-peak segment recolored as a visible "danger zone"
+// instead of continuing in the card's accent color, so the reversal reads
+// as a warning, not just a downward wiggle.
+.reveal .slides .scaling-law-chart .sl-danger {
+  fill: none;
+  stroke: #dc322f;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.reveal .slides .scaling-law-chart .sl-peak-marker {
+  fill: #eee8d5;
+  stroke: #073642;
+  stroke-width: 1;
+}
+.reveal .slides .scaling-law-chart .sl-peak-label {
+  fill: #eee8d5;
+  font-size: 8.5px;
+  font-weight: 700;
+  font-family: $font-family-sans-serif;
+}
+.reveal .slides .scaling-law-formula {
+  color: #eee8d5;
+  font-size: 0.58em;
+  font-family: monospace;
+  margin-top: 0.5em;
+}
+.reveal .slides .scaling-law-callout {
+  color: currentColor;
+  font-weight: 700;
+  font-size: 0.62em;
+  margin-top: 0.3em;
+}
+.reveal .slides .scaling-law-caption {
+  color: #93a1a1;
+  font-size: 0.5em;
+  line-height: 1.3;
+  margin-top: 0.3em;
+}
+.reveal .slides .scaling-law-note {
+  color: #93a1a1;
+  font-size: 0.65em;
+  font-style: italic;
+  margin: 0 0 0.6em;
+}
+
+// Merged evidence row under the four scaling-law cards: what used to be a
+// full separate slide ("The Pretraining/Post-Training Dance"), shrunk into
+// a compact two-column "cloud" so it fits under the cards instead of
+// needing its own slide. No boxes/borders anywhere here on purpose -- free-
+// floating text straight on the slide background. Left: quotes in a
+// newspaper-serif treatment (Georgia, oversized decorative quotation mark)
+// -- the one deliberate register shift away from Inter in the whole deck,
+// chosen from a 5-option comparison; kept level/unrotated per request,
+// with only vertical stagger (alternating margin-top) for a loose feel.
+// Solid vs. dashed still reads as "lab/named-insider" vs "outside analyst
+// guessing" via opacity, just no longer boxed. Right: named disclosed
+// mechanisms as colored words instead of a category tally, colored to
+// match the four cards above (pretraining/RLHF/inference-time); items with
+// no card above (multimodality, MoE, routing) get their own violet, the
+// same one the cut 5th "Engineering" icon used.
+.reveal .slides .merged-evidence-row {
+  display: flex;
+  gap: 1.6em;
+  margin-top: 0.8em;
+  align-items: flex-start;
+}
+.reveal .slides .quote-cloud {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9em 2em;
+  align-content: flex-start;
+}
+.reveal .slides .quote-cloud-chip {
+  flex: 0 0 auto;
+  max-width: 16.5em;
+  position: relative;
+}
+.reveal .slides .quote-cloud-chip.qc-dashed {
+  opacity: 0.7;
+}
+.reveal .slides .qc-text {
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 0.92em;
+  font-style: normal;
+  line-height: 1.35;
+  color: #fdf6e3;
+  position: relative;
+}
+.reveal .slides .qc-text::before {
+  content: '\201C';
+  position: absolute;
+  left: -0.62em;
+  top: -0.28em;
+  font-family: 'Old Standard TT', Georgia, serif;
+  font-size: 2.6em;
+  color: currentColor;
+  opacity: 0.3;
+  line-height: 1;
+}
+.reveal .slides .qc-attr {
+  font-family: $font-family-sans-serif;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #93a1a1;
+  margin-top: 0.4em;
+}
+// Mechanism timeline: same named-mechanism data as before, now positioned
+// top-to-bottom in chronological order along a vertical axis instead of
+// scattered, so color (category) and vertical order (time) both carry
+// information. Positions are evenly spaced by rank, not linearly scaled to
+// the calendar -- a strict date scale crammed three items from early 2025
+// into a few percent of the height and made them collide -- but each item
+// still carries its real month/year as text, so nothing is misrepresented,
+// just laid out for readability. Alternating left/right by chronological
+// order means consecutive-in-time items always land on opposite sides.
+.reveal .slides .mechanism-timeline {
+  flex: 1;
+  position: relative;
+  height: 19em;
+  margin-top: 0.2em;
+}
+.reveal .slides .mt-axis {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #586e75;
+  opacity: 0.5;
+}
+.reveal .slides .mt-item {
+  position: absolute;
+  width: calc(50% - 0.9em);
+  font-size: 0.6em;
+  font-weight: 700;
+  color: var(--mc);
+  line-height: 1.3;
+  transform: translateY(-50%);
+}
+.reveal .slides .mt-left {
+  right: calc(50% + 0.9em);
+  text-align: right;
+}
+.reveal .slides .mt-right {
+  left: calc(50% + 0.9em);
+  text-align: left;
+}
+.reveal .slides .mt-date {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #93a1a1;
+  margin-top: 0.1em;
+}
+.reveal .slides .mechanism-cloud-footnote {
+  font-size: 0.5em;
+  color: #839496;
+  line-height: 1.3;
+  margin-top: 0.5em;
 }

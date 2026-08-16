@@ -26,6 +26,8 @@ resources:
   - fonts/Inter-BoldItalic.ttf
   - fonts/Inter-Display-Bold.ttf
   - fonts/ArchitectsDaughter-Regular.ttf
+  - fonts/OldStandardTT-Regular.ttf
+  - fonts/OldStandardTT-Bold.ttf
 jupyter: ds-ai-industry-slides
 ---
 
@@ -1126,13 +1128,338 @@ Full detail per row, for questions:
 - **GPT-3** ("Language Models are Few-Shot Learners"): paradigm shift.
 :::
 
-## How Do These Models Get Better? {.incremental .heading-accent}
+## How Do These Models Get Better? {.smaller .scrollable .heading-accent}
 
-- Pretraining — more data/compute in the base model
-- Inference-time reasoning — chain-of-thought, more "thinking" per answer
-- Fine-tuning
-- RLHF / preference optimization
-- Engineering — better harnesses, tools, retrieval (not the model itself)
+```{=html}
+<div class="scaling-law-row">
+  <div class="scaling-law-card" style="--accent: #2aa198;">
+    <div class="scaling-law-header">
+      <svg class="scaling-law-icon" viewBox="0 0 120 120">
+        <g class="im-page" style="animation-delay:0s">
+          <rect x="4" y="10" width="20" height="26" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <line x1="8" y1="17" x2="20" y2="17" stroke="var(--accent)" stroke-width="1.6"/>
+          <line x1="8" y1="22" x2="20" y2="22" stroke="var(--accent)" stroke-width="1.6"/>
+          <line x1="8" y1="27" x2="16" y2="27" stroke="var(--accent)" stroke-width="1.6"/>
+        </g>
+        <g class="im-page" style="animation-delay:5s">
+          <rect x="2" y="46" width="20" height="26" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <line x1="6" y1="53" x2="18" y2="53" stroke="var(--accent)" stroke-width="1.6"/>
+          <line x1="6" y1="58" x2="18" y2="58" stroke="var(--accent)" stroke-width="1.6"/>
+          <line x1="6" y1="63" x2="14" y2="63" stroke="var(--accent)" stroke-width="1.6"/>
+        </g>
+        <g class="im-page" style="animation-delay:10s">
+          <rect x="6" y="80" width="20" height="26" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <line x1="10" y1="87" x2="22" y2="87" stroke="var(--accent)" stroke-width="1.6"/>
+          <line x1="10" y1="92" x2="22" y2="92" stroke="var(--accent)" stroke-width="1.6"/>
+          <line x1="10" y1="97" x2="18" y2="97" stroke="var(--accent)" stroke-width="1.6"/>
+        </g>
+        <line x1="30" y1="60" x2="46" y2="60" class="im-edge"/>
+        <polygon points="42,54 52,60 42,66" fill="var(--accent)"/>
+        <g transform="translate(56,20)">
+          <line x1="6" y1="10" x2="30" y2="20" class="im-edge"/>
+          <line x1="6" y1="10" x2="30" y2="40" class="im-edge"/>
+          <line x1="6" y1="35" x2="30" y2="20" class="im-edge"/>
+          <line x1="6" y1="35" x2="30" y2="40" class="im-edge"/>
+          <line x1="6" y1="60" x2="30" y2="20" class="im-edge"/>
+          <line x1="6" y1="60" x2="30" y2="40" class="im-edge"/>
+          <line x1="30" y1="20" x2="54" y2="30" class="im-edge"/>
+          <line x1="30" y1="40" x2="54" y2="30" class="im-edge"/>
+          <circle cx="6" cy="10" r="5" class="im-node"/>
+          <circle cx="6" cy="35" r="5" class="im-node"/>
+          <circle cx="6" cy="60" r="5" class="im-node"/>
+          <circle cx="30" cy="20" r="5" class="im-node"/>
+          <circle cx="30" cy="40" r="5" class="im-node"/>
+          <circle cx="54" cy="30" r="6" class="im-node"/>
+        </g>
+      </svg>
+      <div class="scaling-law-label">Pretraining</div>
+    </div>
+    <svg class="scaling-law-chart" viewBox="0 0 220 130" aria-hidden="true">
+      <defs>
+        <linearGradient id="better-zone-pretraining" x1="0" y1="86" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.04"/>
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0.55"/>
+        </linearGradient>
+      </defs>
+      <line x1="30" y1="100" x2="200" y2="100" class="sl-axis"/>
+      <line x1="30" y1="14" x2="30" y2="100" class="sl-axis"/>
+      <rect x="30" y="86" width="170" height="14" fill="url(#better-zone-pretraining)"/>
+      <text x="110" y="95.5" text-anchor="middle" class="sl-better-label">better</text>
+      <path d="M 43.2,18.8 L 43.7,19.0 L 43.9,19.1 L 44.4,19.6 L 44.8,20.1 L 45.3,20.6 L 45.5,21.0 L 46.0,21.3" class="sl-scatter"/>
+      <path d="M 35.2,18.8 L 36.8,19.9 L 38.7,21.3 L 40.4,22.0 L 42.2,22.6 L 43.9,22.9 L 45.8,23.2 L 47.4,22.4" class="sl-scatter"/>
+      <path d="M 49.5,23.2 L 49.8,23.3 L 50.0,23.3 L 50.2,23.3 L 50.5,23.4 L 50.7,23.4 L 51.0,23.4" class="sl-scatter"/>
+      <path d="M 54.0,18.8 L 54.5,19.0 L 55.0,19.3 L 55.4,19.8 L 55.7,20.1 L 56.1,20.7 L 56.6,21.1 L 57.1,21.8" class="sl-scatter"/>
+      <path d="M 59.7,18.8 L 59.9,18.9 L 60.1,19.1 L 60.4,19.3 L 60.6,19.4 L 60.8,19.7" class="sl-scatter"/>
+      <path d="M 59.9,25.2 L 60.1,25.4 L 60.4,25.5 L 60.6,25.7 L 60.8,25.9 L 61.1,26.1" class="sl-scatter"/>
+      <path d="M 58.3,18.8 L 58.5,19.1 L 59.0,19.3 L 59.2,19.6 L 59.7,20.2 L 59.9,20.4 L 61.1,19.9 L 61.3,20.3" class="sl-scatter"/>
+      <path d="M 51.4,18.8 L 52.8,19.7 L 54.3,21.6 L 55.7,23.3 L 57.3,23.5 L 58.7,23.9 L 60.1,23.2 L 61.6,24.3" class="sl-scatter"/>
+      <path d="M 56.4,18.8 L 57.1,19.3 L 57.5,19.9 L 58.3,20.6 L 59.0,21.3 L 60.4,21.1 L 60.8,21.6 L 61.6,21.2" class="sl-scatter"/>
+      <path d="M 62.3,25.4 L 62.5,25.4 L 62.7,25.7 L 63.0,26.0 L 63.2,26.3" class="sl-scatter"/>
+      <path d="M 62.5,18.8 L 63.0,19.2 L 63.4,19.7 L 63.9,20.3 L 64.1,20.6 L 64.6,21.2 L 65.1,21.7 L 65.6,22.3" class="sl-scatter"/>
+      <path d="M 64.8,29.7 L 65.1,29.8 L 65.3,30.0 L 65.6,30.1 L 65.8,30.3" class="sl-scatter"/>
+      <path d="M 64.4,18.8 L 64.8,19.1 L 65.1,19.2 L 65.6,19.5 L 65.8,19.7 L 66.3,20.3 L 66.5,20.8 L 67.0,21.3" class="sl-scatter"/>
+      <path d="M 64.4,25.4 L 64.6,25.7 L 65.1,26.1 L 65.3,26.4 L 66.0,26.4 L 66.5,25.8 L 67.0,26.4 L 67.2,26.5" class="sl-scatter"/>
+      <path d="M 67.7,30.5 L 68.6,30.3 L 68.8,30.4 L 69.1,30.5" class="sl-scatter"/>
+      <path d="M 68.1,18.8 L 68.4,19.0 L 68.6,19.2 L 68.8,19.3 L 69.1,19.5 L 69.3,19.7" class="sl-scatter"/>
+      <path d="M 68.6,25.3 L 68.8,24.4 L 69.1,24.6 L 69.8,25.5" class="sl-scatter"/>
+      <path d="M 66.5,18.8 L 67.0,19.2 L 67.4,19.5 L 67.9,20.1 L 68.6,20.8 L 69.1,21.5 L 69.8,20.9 L 70.3,20.4" class="sl-scatter"/>
+      <path d="M 66.5,28.9 L 67.0,30.0 L 67.2,29.4 L 68.1,29.0 L 68.4,29.2 L 69.6,29.9 L 69.8,29.8 L 70.5,29.4" class="sl-scatter"/>
+      <path d="M 48.1,18.8 L 51.0,21.8 L 53.8,24.1 L 56.6,26.6 L 59.4,27.0 L 62.3,27.9 L 65.1,28.0 L 70.7,27.9" class="sl-scatter"/>
+      <path d="M 69.6,20.7 L 70.5,21.7 L 70.7,21.9 L 71.0,22.2 L 71.7,21.3 L 71.9,21.5 L 72.1,21.9" class="sl-scatter"/>
+      <path d="M 61.8,22.8 L 63.0,23.0 L 64.4,23.4 L 65.6,24.4 L 67.0,23.6 L 68.4,23.9 L 70.7,25.6 L 72.4,25.8" class="sl-scatter"/>
+      <path d="M 70.7,30.7 L 71.2,31.0 L 71.4,31.1 L 71.9,31.4 L 72.1,31.3 L 73.1,32.2 L 73.3,32.4 L 73.8,32.5" class="sl-scatter"/>
+      <path d="M 72.9,24.1 L 73.1,24.4 L 73.3,24.6 L 73.6,25.0 L 73.8,25.4 L 74.0,25.6" class="sl-scatter"/>
+      <path d="M 72.4,18.8 L 73.3,19.3 L 74.3,20.3 L 75.2,21.6 L 76.1,22.9 L 77.1,24.2 L 78.0,25.4 L 79.0,26.5" class="sl-scatter"/>
+      <path d="M 72.9,29.8 L 73.6,29.3 L 74.7,29.2 L 75.9,30.1 L 76.9,30.8 L 77.6,31.3 L 78.5,31.6 L 79.2,31.1" class="sl-scatter"/>
+      <path d="M 79.4,27.8 L 80.4,28.4 L 81.1,28.6 L 82.0,29.6 L 82.7,30.5 L 83.7,31.7 L 84.4,32.0 L 85.3,31.1" class="sl-scatter"/>
+      <path d="M 85.1,32.8 L 85.3,33.0 L 85.6,33.1 L 85.8,33.4 L 86.7,32.9 L 87.0,32.8" class="sl-scatter"/>
+      <path d="M 79.4,32.7 L 80.6,33.4 L 81.6,33.7 L 82.7,34.7 L 83.9,35.7 L 85.1,36.3 L 86.5,35.7 L 87.7,36.9" class="sl-scatter"/>
+      <path d="M 79.7,18.8 L 80.9,19.5 L 81.8,20.2 L 83.0,21.3 L 84.6,23.6 L 85.8,24.9 L 86.7,26.1 L 87.9,28.1" class="sl-scatter"/>
+      <path d="M 87.9,35.7 L 88.2,35.7 L 88.4,35.8 L 88.6,35.7 L 88.9,35.8 L 89.1,36.0" class="sl-scatter"/>
+      <path d="M 78.0,18.8 L 79.7,20.3 L 81.3,22.5 L 83.0,24.5 L 85.3,27.4 L 87.0,29.0 L 89.3,29.7 L 91.0,30.5" class="sl-scatter"/>
+      <path d="M 75.9,18.8 L 78.5,21.4 L 80.9,24.6 L 83.4,28.0 L 85.8,29.9 L 88.4,32.6 L 90.7,33.0 L 94.0,33.6" class="sl-scatter"/>
+      <path d="M 92.4,34.6 L 92.6,34.8 L 93.3,34.0 L 93.6,34.2 L 94.3,34.7 L 94.5,35.0 L 94.8,35.3" class="sl-scatter"/>
+      <path d="M 92.6,38.6 L 93.3,38.1 L 93.6,38.1 L 93.8,38.2 L 94.0,38.5 L 94.3,38.7 L 94.5,38.8 L 94.8,39.1" class="sl-scatter"/>
+      <path d="M 87.9,38.2 L 89.1,38.7 L 90.7,39.1 L 91.9,39.8 L 92.9,41.1 L 94.0,41.5 L 95.2,41.7 L 96.9,41.6" class="sl-scatter"/>
+      <path d="M 84.2,18.8 L 86.3,20.8 L 88.2,23.3 L 90.3,25.8 L 92.4,28.2 L 94.5,30.6 L 96.4,32.6 L 98.5,34.9" class="sl-scatter"/>
+      <path d="M 90.3,34.5 L 91.2,35.8 L 92.2,36.3 L 93.1,36.8 L 95.2,36.2 L 96.6,37.5 L 97.8,38.7 L 98.8,38.6" class="sl-scatter"/>
+      <path d="M 95.2,43.2 L 95.7,43.3 L 96.2,43.7 L 96.6,44.2 L 97.3,43.5 L 97.8,43.9 L 98.3,43.7 L 98.8,43.8" class="sl-scatter"/>
+      <path d="M 98.3,45.4 L 98.5,45.6 L 98.8,45.7 L 99.0,44.9 L 99.2,45.1" class="sl-scatter"/>
+      <path d="M 99.5,42.6 L 99.7,42.8 L 99.9,42.9 L 100.2,42.9 L 100.4,42.4 L 100.6,42.1 L 100.9,41.7 L 101.1,41.9" class="sl-scatter"/>
+      <path d="M 89.1,18.8 L 91.0,20.5 L 93.1,23.3 L 95.0,25.3 L 97.1,28.0 L 99.0,29.9 L 101.1,32.3 L 103.0,34.4" class="sl-scatter"/>
+      <path d="M 103.2,41.1 L 103.5,41.2 L 103.7,41.6 L 103.9,41.9 L 104.2,42.2 L 104.4,42.4 L 104.6,42.8" class="sl-scatter"/>
+      <path d="M 99.0,36.0 L 99.7,36.6 L 101.3,36.6 L 102.0,36.7 L 103.0,36.7 L 103.9,35.9 L 104.9,36.9 L 105.6,36.8" class="sl-scatter"/>
+      <path d="M 104.9,48.5 L 105.1,48.7 L 105.3,48.7 L 105.8,48.0 L 106.1,48.2 L 106.5,48.7 L 106.8,49.0" class="sl-scatter"/>
+      <path d="M 101.3,44.1 L 102.0,44.3 L 102.8,45.4 L 103.5,46.0 L 104.2,46.8 L 105.6,46.8 L 107.2,48.4 L 107.9,47.8" class="sl-scatter"/>
+      <path d="M 107.0,41.2 L 107.2,41.5 L 107.5,41.8 L 107.7,42.1 L 108.2,42.7 L 108.4,42.8 L 108.6,43.2 L 108.9,44.2" class="sl-scatter"/>
+      <path d="M 102.0,18.8 L 103.0,19.6 L 104.2,20.9 L 105.1,22.3 L 106.3,23.7 L 107.2,24.9 L 108.4,26.3 L 109.3,27.2" class="sl-scatter"/>
+      <path d="M 101.3,38.7 L 102.5,39.8 L 103.9,39.3 L 105.6,38.8 L 107.0,39.0 L 108.2,40.1 L 109.6,42.1 L 110.8,43.5" class="sl-scatter"/>
+      <path d="M 99.9,18.8 L 101.6,20.3 L 103.0,22.1 L 104.6,23.9 L 106.3,25.8 L 107.9,27.7 L 109.3,29.5 L 111.2,29.2" class="sl-scatter"/>
+      <path d="M 109.6,48.2 L 109.8,48.2 L 110.3,48.0 L 110.5,48.0 L 111.5,47.6 L 111.7,48.3 L 112.2,48.7 L 112.4,48.8" class="sl-scatter"/>
+      <path d="M 92.2,18.8 L 95.2,21.3 L 98.0,24.1 L 101.1,27.9 L 103.9,31.3 L 107.0,34.8 L 109.8,38.5 L 112.9,43.2" class="sl-scatter"/>
+      <path d="M 113.6,47.6 L 113.8,47.8 L 114.1,48.3 L 114.3,48.7" class="sl-scatter"/>
+      <path d="M 107.2,18.8 L 108.4,19.8 L 109.3,20.9 L 110.5,22.4 L 111.5,23.9 L 112.6,25.1 L 113.6,26.0 L 114.8,27.4" class="sl-scatter"/>
+      <path d="M 110.3,30.6 L 111.2,31.8 L 111.9,31.6 L 112.9,33.0 L 113.6,33.8 L 114.5,35.2 L 115.2,36.4 L 116.2,36.6" class="sl-scatter"/>
+      <path d="M 104.9,44.4 L 106.8,45.6 L 108.4,45.2 L 110.1,45.5 L 112.2,45.5 L 113.8,44.9 L 115.2,46.7 L 116.6,49.2" class="sl-scatter"/>
+      <path d="M 115.7,45.7 L 115.9,45.8 L 116.2,45.7 L 116.4,45.6 L 116.6,45.7" class="sl-scatter"/>
+      <path d="M 105.6,18.8 L 107.7,21.4 L 109.6,23.4 L 111.7,26.1 L 113.8,28.1 L 115.9,28.6 L 117.8,30.9 L 119.9,33.6" class="sl-scatter"/>
+      <path d="M 97.3,18.8 L 100.9,23.0 L 104.2,26.7 L 107.7,30.9 L 111.0,35.2 L 114.5,40.5 L 117.8,45.7 L 121.4,50.5" class="sl-scatter"/>
+      <path d="M 115.2,29.8 L 116.2,30.9 L 117.4,32.2 L 118.3,33.5 L 119.5,35.1 L 120.4,35.5 L 121.6,36.2 L 122.5,37.5" class="sl-scatter"/>
+      <path d="M 107.9,50.1 L 109.8,50.8 L 111.9,52.1 L 114.1,52.0 L 116.4,53.3 L 119.0,53.6 L 121.1,54.5 L 123.7,55.1" class="sl-scatter"/>
+      <path d="M 115.9,38.7 L 117.1,38.4 L 118.3,40.4 L 119.2,41.1 L 120.7,43.1 L 121.6,44.7 L 122.8,46.5 L 123.7,48.1" class="sl-scatter"/>
+      <path d="M 118.8,43.2 L 119.5,44.2 L 120.2,45.5 L 121.1,46.8 L 121.6,47.8 L 122.3,48.6 L 123.0,49.8 L 123.7,50.6" class="sl-scatter"/>
+      <path d="M 121.1,37.6 L 121.6,38.3 L 121.8,38.6 L 122.3,39.2 L 122.5,39.6 L 123.0,39.1 L 123.2,39.5 L 123.7,39.4" class="sl-scatter"/>
+      <path d="M 122.8,52.7 L 123.0,52.7 L 123.2,52.9 L 123.9,53.0 L 124.2,53.2 L 124.4,53.4 L 124.7,53.7" class="sl-scatter"/>
+      <path d="M 123.5,41.1 L 123.9,40.7 L 124.4,41.5 L 124.9,42.2 L 125.4,43.1 L 125.8,42.7 L 126.3,43.4 L 126.8,44.0" class="sl-scatter"/>
+      <path d="M 125.6,54.8 L 125.8,55.0 L 126.1,55.3 L 126.3,55.4 L 126.5,54.6 L 126.8,54.7 L 127.0,54.9" class="sl-scatter"/>
+      <path d="M 127.7,48.3 L 128.0,48.5 L 128.2,48.8 L 128.4,49.1 L 128.7,49.3 L 128.9,48.6" class="sl-scatter"/>
+      <path d="M 125.8,44.7 L 126.3,45.2 L 126.8,46.5 L 127.2,46.1 L 127.7,45.7 L 128.2,46.9 L 128.7,47.5 L 129.4,48.3" class="sl-scatter"/>
+      <path d="M 128.2,52.5 L 128.4,52.6 L 128.7,52.7 L 128.9,52.6 L 129.1,52.4 L 129.4,52.6" class="sl-scatter"/>
+      <path d="M 129.1,50.2 L 129.4,50.5 L 129.8,50.9 L 130.1,51.0 L 130.5,51.6 L 130.8,52.2 L 131.2,53.0 L 131.5,53.0" class="sl-scatter"/>
+      <path d="M 127.2,55.9 L 128.0,56.3 L 128.7,57.7 L 129.6,58.1 L 130.3,58.5 L 131.0,58.7 L 132.4,57.9 L 133.1,58.3" class="sl-scatter"/>
+      <path d="M 111.0,18.8 L 114.5,23.1 L 118.3,27.4 L 121.8,31.4 L 125.6,36.5 L 129.1,42.2 L 132.9,48.5 L 136.4,54.0" class="sl-scatter"/>
+      <path d="M 136.0,62.4 L 136.7,63.4 L 136.9,63.4 L 137.1,63.5 L 137.4,63.6" class="sl-scatter"/>
+      <path d="M 136.2,56.0 L 136.4,56.0 L 136.7,55.2 L 136.9,55.2 L 137.1,55.3 L 137.4,55.4" class="sl-scatter"/>
+      <path d="M 133.8,59.3 L 134.3,59.4 L 135.0,59.7 L 135.5,59.9 L 136.7,59.2 L 137.1,59.1 L 137.8,60.2 L 138.3,60.8" class="sl-scatter"/>
+      <path d="M 138.5,63.1 L 138.8,63.1 L 139.0,63.2 L 139.3,63.1 L 139.5,62.3 L 139.7,63.1 L 140.0,63.1 L 140.2,63.1" class="sl-scatter"/>
+      <path d="M 139.7,60.8 L 140.0,60.9 L 140.9,60.5 L 141.1,60.8 L 141.4,60.8 L 141.6,61.0" class="sl-scatter"/>
+      <path d="M 138.5,57.8 L 139.0,57.9 L 139.7,58.4 L 140.2,59.5 L 140.7,59.5 L 141.8,58.7 L 142.5,58.9 L 143.0,59.0" class="sl-scatter"/>
+      <path d="M 139.5,65.5 L 140.0,65.6 L 140.9,64.7 L 141.4,64.7 L 142.1,63.9 L 142.5,64.1 L 143.3,65.3 L 143.7,65.5" class="sl-scatter"/>
+      <path d="M 116.2,18.8 L 120.2,23.4 L 124.4,28.1 L 128.4,33.0 L 132.7,39.2 L 136.7,45.9 L 140.9,52.9 L 144.9,59.0" class="sl-scatter"/>
+      <path d="M 143.0,63.2 L 144.0,63.9 L 144.2,63.9 L 144.4,64.0 L 144.7,64.1 L 144.9,64.1" class="sl-scatter"/>
+      <path d="M 143.0,66.3 L 144.0,67.0 L 144.2,67.1 L 144.4,67.1 L 144.7,67.2 L 144.9,67.2" class="sl-scatter"/>
+      <path d="M 142.8,61.0 L 143.3,61.2 L 144.0,61.3 L 144.4,61.4 L 145.1,60.1 L 145.6,60.5 L 146.3,61.3 L 147.0,62.1" class="sl-scatter"/>
+      <path d="M 147.0,67.7 L 147.5,68.0 L 147.7,68.2 L 148.2,68.4 L 148.4,68.4 L 148.9,68.6 L 149.4,68.8 L 149.8,69.0" class="sl-scatter"/>
+      <path d="M 122.1,18.8 L 126.3,23.8 L 130.8,28.4 L 135.0,33.6 L 139.3,39.7 L 143.5,47.1 L 148.0,55.0 L 152.2,61.5" class="sl-scatter"/>
+      <path d="M 149.1,67.1 L 150.3,67.4 L 150.6,67.5 L 151.0,67.6 L 151.5,67.7 L 152.0,67.7 L 152.2,67.8 L 152.7,68.1" class="sl-scatter"/>
+      <path d="M 145.1,65.8 L 146.3,66.1 L 148.0,63.9 L 149.4,64.9 L 151.3,64.5 L 152.7,63.7 L 154.1,64.9 L 155.3,65.7" class="sl-scatter"/>
+      <path d="M 154.1,68.1 L 154.6,68.0 L 155.3,68.1 L 156.2,67.2 L 156.7,67.8 L 157.1,68.0 L 157.9,68.7 L 158.3,68.8" class="sl-scatter"/>
+      <path d="M 150.8,70.4 L 152.2,70.8 L 154.3,71.3 L 155.7,72.1 L 157.1,72.6 L 158.8,72.2 L 160.2,73.5 L 161.6,73.0" class="sl-scatter"/>
+      <path d="M 161.9,74.1 L 162.3,74.2 L 162.8,74.1 L 163.3,74.3 L 164.0,74.4 L 164.4,74.4 L 164.9,75.3 L 165.4,75.7" class="sl-scatter"/>
+      <path d="M 165.6,73.6 L 165.9,73.6 L 166.1,73.7 L 166.3,73.9" class="sl-scatter"/>
+      <path d="M 165.6,77.0 L 165.9,77.0 L 166.1,77.1 L 166.3,77.1 L 166.6,76.3 L 166.8,76.4" class="sl-scatter"/>
+      <path d="M 168.4,75.8 L 169.4,76.2 L 169.6,76.3 L 169.9,76.4" class="sl-scatter"/>
+      <path d="M 167.0,75.0 L 167.5,74.8 L 168.0,74.9 L 168.4,74.3 L 168.7,75.0 L 169.6,74.4 L 170.1,74.5 L 170.6,75.1" class="sl-scatter"/>
+      <path d="M 167.0,78.1 L 168.0,78.6 L 168.9,78.6 L 170.3,79.4 L 171.5,79.8 L 172.5,78.7 L 173.4,78.9 L 174.3,80.5" class="sl-scatter"/>
+      <path d="M 173.6,81.0 L 174.6,81.7 L 174.8,81.8 L 175.0,81.6" class="sl-scatter"/>
+      <path d="M 174.6,79.1 L 174.8,79.3 L 175.3,79.2 L 175.5,79.2 L 175.7,79.3 L 176.0,79.4 L 176.5,79.8 L 176.7,79.8" class="sl-scatter"/>
+      <path d="M 178.1,85.7 L 178.3,85.8 L 178.8,86.0 L 179.3,86.1 L 179.8,86.5 L 180.0,86.6 L 180.5,86.9 L 180.7,86.9" class="sl-scatter"/>
+      <path d="M 171.7,80.9 L 172.9,81.3 L 174.1,83.8 L 175.5,82.3 L 176.9,82.7 L 178.6,82.5 L 179.8,82.7 L 180.9,83.1" class="sl-scatter"/>
+      <path d="M 184.0,87.0 L 184.2,87.4 L 184.5,87.3 L 185.2,87.9 L 185.4,88.2 L 185.6,88.2 L 185.9,88.2" class="sl-scatter"/>
+      <path d="M 176.7,84.9 L 179.3,84.5 L 181.6,85.8 L 183.8,86.1 L 186.1,87.0 L 188.2,89.1 L 190.6,90.1 L 192.7,91.1" class="sl-scatter"/>
+      <path d="M 32.0,14.3 L 34.8,15.7 L 37.5,17.0 L 40.3,18.3 L 43.1,19.6 L 45.8,21.0 L 48.6,22.3 L 51.4,23.6 L 54.1,25.0 L 56.9,26.3 L 59.7,27.6 L 62.4,28.9 L 65.2,30.3 L 68.0,31.6 L 70.7,32.9 L 73.5,34.2 L 76.3,35.6 L 79.0,36.9 L 81.8,38.2 L 84.6,39.5 L 87.3,40.9 L 90.1,42.2 L 92.9,43.5 L 95.6,44.8 L 98.4,46.2 L 101.2,47.5 L 103.9,48.8 L 106.7,50.1 L 109.5,51.5 L 112.2,52.8 L 115.0,54.1 L 117.8,55.5 L 120.5,56.8 L 123.3,58.1 L 126.1,59.4 L 128.8,60.8 L 131.6,62.1 L 134.4,63.4 L 137.1,64.7 L 139.9,66.1 L 142.7,67.4 L 145.4,68.7 L 148.2,70.0 L 151.0,71.4 L 153.7,72.7 L 156.5,74.0 L 159.3,75.3 L 162.0,76.7 L 164.8,78.0 L 167.6,79.3 L 170.3,80.7 L 173.1,82.0 L 175.9,83.3 L 178.6,84.6 L 181.4,86.0 L 184.2,87.3 L 186.9,88.6 L 189.7,89.9 L 192.5,91.3 L 195.2,92.6 L 198.0,93.9" class="sl-curve"/>
+      <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Compute →</text>
+      <text x="14" y="57" class="sl-axis-label" text-anchor="middle" transform="rotate(-90 14 57)">Loss ↓</text>
+    </svg>
+    <div class="scaling-law-formula">L = (C/2.3×10⁸)⁻⁰·⁰⁵⁰</div>
+    <div class="scaling-law-callout">100x compute → ~21% lower loss</div>
+    <div class="scaling-law-caption">102 individually traced training runs (Kaplan, Fig. 1)</div>
+  </div>
+  <div class="scaling-law-card" style="--accent: #268bd2;">
+    <div class="scaling-law-header">
+      <svg class="scaling-law-icon" viewBox="0 0 120 120">
+        <g class="im-page" style="animation-delay:0s">
+          <rect x="4" y="10" width="20" height="26" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <text x="14" y="26" text-anchor="middle" font-size="9" font-family="monospace" font-weight="bold" fill="var(--accent)">P|R</text>
+        </g>
+        <g class="im-page" style="animation-delay:5s">
+          <rect x="2" y="46" width="20" height="26" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <text x="12" y="62" text-anchor="middle" font-size="9" font-family="monospace" font-weight="bold" fill="var(--accent)">P|R</text>
+        </g>
+        <g class="im-page" style="animation-delay:10s">
+          <rect x="6" y="80" width="20" height="26" rx="2" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <text x="16" y="96" text-anchor="middle" font-size="9" font-family="monospace" font-weight="bold" fill="var(--accent)">P|R</text>
+        </g>
+        <line x1="30" y1="60" x2="46" y2="60" class="im-edge"/>
+        <polygon points="42,54 52,60 42,66" fill="var(--accent)"/>
+        <g transform="translate(56,20)">
+          <line x1="6" y1="10" x2="30" y2="20" class="im-edge-dim"/>
+          <line x1="6" y1="10" x2="30" y2="40" class="im-edge-dim"/>
+          <line x1="6" y1="35" x2="30" y2="20" class="im-edge-dim"/>
+          <line x1="6" y1="35" x2="30" y2="40" class="im-edge-dim"/>
+          <line x1="6" y1="60" x2="30" y2="20" class="im-edge-dim"/>
+          <line x1="6" y1="60" x2="30" y2="40" class="im-edge-dim"/>
+          <line x1="30" y1="20" x2="54" y2="30" class="im-edge-highlight"/>
+          <line x1="30" y1="40" x2="54" y2="30" class="im-edge-highlight"/>
+          <circle cx="6" cy="10" r="5" class="im-node-dim"/>
+          <circle cx="6" cy="35" r="5" class="im-node-dim"/>
+          <circle cx="6" cy="60" r="5" class="im-node-dim"/>
+          <circle cx="30" cy="20" r="5" class="im-node"/>
+          <circle cx="30" cy="40" r="5" class="im-node"/>
+          <circle cx="54" cy="30" r="6" class="im-node"/>
+        </g>
+      </svg>
+      <div class="scaling-law-label">Fine-Tuning</div>
+    </div>
+    <svg class="scaling-law-chart" viewBox="0 0 220 130" aria-hidden="true">
+      <defs>
+        <linearGradient id="better-zone-finetuning" x1="0" y1="86" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.04"/>
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0.55"/>
+        </linearGradient>
+      </defs>
+      <line x1="30" y1="100" x2="200" y2="100" class="sl-axis"/>
+      <line x1="30" y1="14" x2="30" y2="100" class="sl-axis"/>
+      <rect x="30" y="86" width="170" height="14" fill="url(#better-zone-finetuning)"/>
+      <text x="110" y="95.5" text-anchor="middle" class="sl-better-label">better</text>
+      <path d="M 32,15 C 55,42 78,62 105,76 C 135,85 168,89 198,90" class="sl-curve-muted"/>
+      <path d="M 32,52 C 60,66 92,77 122,83 C 152,87 178,89 198,89" class="sl-curve"/>
+      <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Fine-tuning data →</text>
+      <text x="14" y="57" class="sl-axis-label" text-anchor="middle" transform="rotate(-90 14 57)">Loss ↓</text>
+    </svg>
+    <div class="scaling-law-formula">D_T = k·D_F^0.18·N^0.38</div>
+    <div class="scaling-law-callout">100x more data → only ~2.3x effective data</div>
+    <div class="scaling-law-caption">Pretrained (solid) vs. from scratch (dashed) (Hernandez)</div>
+  </div>
+  <div class="scaling-law-card" style="--accent: #d33682;">
+    <div class="scaling-law-header">
+      <svg class="scaling-law-icon" viewBox="0 0 120 120">
+        <g transform="translate(19.6,54.4) scale(0.95)" fill="var(--accent)" opacity="0.92">
+          <path d="
+            M -2,-20
+            C 6,-20.5 11,-19 13,-15.5
+            C 14,-13.5 14,-11.5 14,-10
+            C 12.5,-9 12,-7.5 13,-6
+            C 13.6,-5 15.5,-4.3 17,-3
+            C 18,-2 17.5,-1 15.5,-0.3
+            C 14.8,0 14.3,0.5 14,1.2
+            C 14,2 14.7,2.3 15.2,3
+            C 15.8,3.8 14.5,4.3 13.3,4.2
+            C 13,5 13,6 13,7
+            C 12.5,8.5 10.5,9.3 8.5,10
+            C 7,12 6.3,14 6.2,17
+            L 6,18
+            L -9,18
+            C -14,18 -17,14 -18.5,9
+            C -20.5,2 -20.5,-8 -18,-14.5
+            C -16,-19 -10,-21 -2,-20
+            Z" />
+        </g>
+        <g class="rlhf-a">
+          <rect x="42" y="18" width="34" height="28" rx="4" fill="none" stroke="var(--accent)" stroke-width="3"/>
+          <text x="59" y="39" text-anchor="middle" font-size="18" font-weight="bold" font-family="sans-serif" fill="var(--accent)">A</text>
+        </g>
+        <g class="rlhf-b">
+          <rect x="42" y="60" width="34" height="28" rx="4" fill="none" stroke="var(--accent)" stroke-width="3"/>
+          <text x="59" y="81" text-anchor="middle" font-size="18" font-weight="bold" font-family="sans-serif" fill="var(--accent)">B</text>
+        </g>
+      </svg>
+      <div class="scaling-law-label">RLHF</div>
+    </div>
+    <svg class="scaling-law-chart" viewBox="0 0 220 130" aria-hidden="true">
+      <defs>
+        <linearGradient id="better-zone-rlhf" x1="0" y1="14" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0.04"/>
+        </linearGradient>
+      </defs>
+      <line x1="30" y1="100" x2="200" y2="100" class="sl-axis"/>
+      <line x1="30" y1="14" x2="30" y2="100" class="sl-axis"/>
+      <rect x="30" y="14" width="170" height="14" fill="url(#better-zone-rlhf)"/>
+      <text x="160" y="22.5" text-anchor="middle" class="sl-better-label">better</text>
+      <path d="M 32,92 C 50,58 65,42 88,35" class="sl-curve"/>
+      <path d="M 88,35 C 108,41 130,52 150,60 C 170,68 185,74 198,78" class="sl-danger"/>
+      <circle cx="88" cy="35" r="3.2" class="sl-peak-marker"/>
+      <text x="94" y="32" class="sl-peak-label">peak</text>
+      <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Optimization pressure →</text>
+      <text x="14" y="57" class="sl-axis-label" text-anchor="middle" transform="rotate(-90 14 57)">True quality ↑</text>
+    </svg>
+    <div class="scaling-law-formula">R(d) = d·(α − β·log d)</div>
+    <div class="scaling-law-callout">Past the peak: worse, not just flatter</div>
+    <div class="scaling-law-caption">Bigger reward models delay the peak, don't remove it (Gao et al.)</div>
+  </div>
+  <div class="scaling-law-card" style="--accent: #cb4b16;">
+    <div class="scaling-law-header">
+      <svg class="scaling-law-icon" viewBox="0 0 120 120">
+        <path d="M70,85 C104,80 108,20 62,14 C44,12 28,18 18,32" class="im-edge" fill="none" stroke-width="2.4"/>
+        <polygon points="18,32 29,30 23,40" fill="var(--accent)"/>
+        <g transform="translate(8,39) scale(0.95)">
+          <line x1="14" y1="16" x2="32" y2="22" class="im-frozen-edge"/>
+          <line x1="14" y1="16" x2="32" y2="42" class="im-frozen-edge"/>
+          <line x1="14" y1="32" x2="32" y2="22" class="im-frozen-edge"/>
+          <line x1="14" y1="32" x2="32" y2="42" class="im-frozen-edge"/>
+          <line x1="14" y1="48" x2="32" y2="22" class="im-frozen-edge"/>
+          <line x1="14" y1="48" x2="32" y2="42" class="im-frozen-edge"/>
+          <line x1="32" y1="22" x2="50" y2="32" class="im-frozen-edge"/>
+          <line x1="32" y1="42" x2="50" y2="32" class="im-frozen-edge"/>
+          <circle cx="14" cy="16" r="5.5" class="im-frozen-node"/>
+          <circle cx="14" cy="32" r="5.5" class="im-frozen-node"/>
+          <circle cx="14" cy="48" r="5.5" class="im-frozen-node"/>
+          <circle cx="32" cy="22" r="5.5" class="im-frozen-node"/>
+          <circle cx="32" cy="42" r="5.5" class="im-frozen-node"/>
+          <circle cx="50" cy="32" r="7" class="im-frozen-node"/>
+        </g>
+        <g transform="translate(84,18)">
+          <circle cx="0" cy="0" r="13" fill="#0d4a55" stroke="var(--accent)" stroke-width="2.6"/>
+          <line x1="0" y1="0" x2="0" y2="-8" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="0" y1="0" x2="6" y2="2" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div class="scaling-law-label">Inference-Time</div>
+    </div>
+    <svg class="scaling-law-chart" viewBox="0 0 220 130" aria-hidden="true">
+      <defs>
+        <linearGradient id="better-zone-inference" x1="0" y1="22" x2="0" y2="36" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0.04"/>
+        </linearGradient>
+      </defs>
+      <line x1="30" y1="100" x2="200" y2="100" class="sl-axis"/>
+      <line x1="30" y1="14" x2="30" y2="100" class="sl-axis"/>
+      <rect x="30" y="22" width="170" height="14" fill="url(#better-zone-inference)"/>
+      <text x="160" y="30.5" text-anchor="middle" class="sl-better-label">best possible</text>
+      <line x1="30" y1="22" x2="200" y2="22" class="sl-ref"/>
+      <path d="M 32,86 C 70,72 110,62 150,55 C 170,53 185,52 198,51" class="sl-curve"/>
+      <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Samples (log k) →</text>
+      <text x="14" y="57" class="sl-axis-label" text-anchor="middle" transform="rotate(-90 14 57)">Coverage ↑</text>
+    </svg>
+    <div class="scaling-law-formula">coverage ≈ exp(a·k^b)</div>
+    <div class="scaling-law-callout">250x samples → 3.5x coverage (16%→56%)</div>
+    <div class="scaling-law-caption">Real ceiling exists (100%), not reached yet (Brown, SWE-bench Lite)</div>
+  </div>
+</div>
+<p class="scaling-law-note">All four formulas above are <strong>empirically fit</strong> to observed runs, not derived from first principles. Engineering (harnesses, tools, retrieval) doesn't even get that far — no formal scaling law at all, just benchmark swings of 5–20 points from a design choice, not a curve over any resource.</p>
+```
 
 Open question: is this purely a **data-and-compute** problem? With infinite data
 and compute, how good could these actually get?
@@ -1140,6 +1467,70 @@ and compute, how good could these actually get?
 - Counter-argument (Haikonen): architecture quality may depend on tacit
   organizational context — team history, roadmap, unwritten conventions —
   that no corpus, however large, could ever contain
+
+```{=html}
+<div class="merged-evidence-row">
+  <div class="quote-cloud">
+    <div class="quote-cloud-chip qc-solid" style="margin-top:0;">
+      <div class="qc-text">&hellip;the base model remained the same.</div>
+      <div class="qc-attr">OpenAI, o1 System Card</div>
+    </div>
+    <div class="quote-cloud-chip qc-solid" style="margin-top:14px;">
+      <div class="qc-text">Opus 4.1 falls below Anthropic&rsquo;s own &ldquo;new pretraining scale&rdquo; thresholds.</div>
+      <div class="qc-attr">Anthropic, System Card Addendum</div>
+    </div>
+    <div class="quote-cloud-chip qc-solid" style="margin-top:-6px;">
+      <div class="qc-text">Pretraining &ldquo;isn&rsquo;t dead&rdquo; &mdash; paused for &ldquo;a tiny fraction of the cost&rdquo; alternatives.</div>
+      <div class="qc-attr">Bob McGrew, ex-OpenAI CTO</div>
+    </div>
+    <div class="quote-cloud-chip qc-solid" style="margin-top:10px;">
+      <div class="qc-text">Pretraining as we know it will end. We&rsquo;ve &ldquo;achieved peak data.&rdquo;</div>
+      <div class="qc-attr">Ilya Sutskever, NeurIPS</div>
+    </div>
+    <div class="quote-cloud-chip qc-dashed" style="margin-top:-4px;">
+      <div class="qc-text">OpenAI &ldquo;have not completed a successful full-scale pretraining run&rdquo; since GPT-4o.</div>
+      <div class="qc-attr">SemiAnalysis &middot; contested</div>
+    </div>
+    <div class="quote-cloud-chip qc-dashed" style="margin-top:8px;">
+      <div class="qc-text">On the next &ldquo;new base model&rdquo; claim: &ldquo;the evidence is circumstantial.&rdquo;</div>
+      <div class="qc-attr">Independent analyst</div>
+    </div>
+  </div>
+  <div class="mechanism-timeline">
+    <div class="mt-axis"></div>
+    <div class="mt-item mt-left" style="top:5%; --mc:#6c71c4;"><span class="mt-name">Gemini 1.5 Pro</span> &mdash; sparse MoE + infra <span class="mt-date">Feb 2024</span></div>
+    <div class="mt-item mt-right" style="top:18.5%; --mc:#6c71c4;"><span class="mt-name">GPT-4o</span> &mdash; native multimodality <span class="mt-date">May 2024</span></div>
+    <div class="mt-item mt-left" style="top:32%; --mc:#d33682;"><span class="mt-name">o1</span> &mdash; large-scale RL reasoning <span class="mt-date">Dec 2024</span></div>
+    <div class="mt-item mt-right" style="top:45.5%; --mc:#2aa198;"><span class="mt-name">GPT-4.5</span> &mdash; scales pretraining further* <span class="mt-date">Feb 2025</span></div>
+    <div class="mt-item mt-left" style="top:59%; --mc:#6c71c4;"><span class="mt-name">Gemini 2.5</span> &mdash; architecture developments <span class="mt-date">Mar 2025</span></div>
+    <div class="mt-item mt-right" style="top:72.5%; --mc:#d33682;"><span class="mt-name">o3 / o4-mini</span> &mdash; tool-integrated reasoning <span class="mt-date">Apr 2025</span></div>
+    <div class="mt-item mt-left" style="top:86%; --mc:#6c71c4;"><span class="mt-name">GPT-5</span> &mdash; unified router <span class="mt-date">Aug 2025</span></div>
+    <div class="mt-item mt-right" style="top:95%; --mc:#cb4b16;"><span class="mt-name">Opus 4.5</span> &mdash; &ldquo;effort&rdquo; parameter <span class="mt-date">Nov 2025</span></div>
+  </div>
+</div>
+<div class="mechanism-cloud-footnote">*GPT-4.5's card claims new pretraining scale, but its knowledge cutoff is identical to GPT-4o's — real compute, no new data collection.</div>
+```
+
+```{=html}
+<template class="slide-citations-source">
+  <ul>
+    <li>Pretraining: Kaplan et al. (OpenAI), <a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener">"Scaling Laws for Neural Language Models"</a> (arXiv:2001.08361)</li>
+    <li>Pretraining: Hoffmann et al. (Google DeepMind), <a href="https://arxiv.org/abs/2203.15556" target="_blank" rel="noopener">"Training Compute-Optimal Large Language Models"</a> — Chinchilla (arXiv:2203.15556)</li>
+    <li>Fine-tuning: Hernandez et al. (OpenAI), <a href="https://arxiv.org/abs/2102.01293" target="_blank" rel="noopener">"Scaling Laws for Transfer"</a> (arXiv:2102.01293)</li>
+    <li>Fine-tuning: Zhou et al. (Meta), <a href="https://arxiv.org/abs/2305.11206" target="_blank" rel="noopener">"LIMA: Less Is More for Alignment"</a> (arXiv:2305.11206)</li>
+    <li>RLHF / preference optimization: Gao, Schulman &amp; Hilton (OpenAI), <a href="https://arxiv.org/abs/2210.10760" target="_blank" rel="noopener">"Scaling Laws for Reward Model Overoptimization"</a> (arXiv:2210.10760)</li>
+    <li>Inference-time reasoning: Snell et al., <a href="https://arxiv.org/abs/2408.03314" target="_blank" rel="noopener">"Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters"</a> (arXiv:2408.03314)</li>
+    <li>Inference-time reasoning: Brown et al., <a href="https://arxiv.org/abs/2407.21787" target="_blank" rel="noopener">"Large Language Monkeys: Scaling Inference Compute with Repeated Sampling"</a> (arXiv:2407.21787)</li>
+    <li>Data-and-compute open question: Villalobos et al. (Epoch AI), <a href="https://arxiv.org/abs/2211.04325" target="_blank" rel="noopener">"Will We Run Out of Data? Limits of LLM Scaling Based on Human-Generated Data"</a> (arXiv:2211.04325)</li>
+    <li>OpenAI o1 System Card: "the base model remained the same" — <a href="https://cdn.openai.com/o1-system-card-20241205.pdf" target="_blank" rel="noopener">o1 System Card</a> (OpenAI, Dec 2024)</li>
+    <li>Anthropic Opus 4.1 System Card Addendum: falls below both internal "new pretraining scale" triggers — <a href="https://www.anthropic.com/claude-opus-4-1-system-card" target="_blank" rel="noopener">System Card Addendum</a> (Anthropic, Aug 2025)</li>
+    <li>Bob McGrew (former OpenAI CTO): pretraining "isn't dead" — reported in <a href="https://www.transformernews.ai/p/where-have-the-really-big-ai-models-scaling-pretraining-inference-gpt-compute" target="_blank" rel="noopener">Transformer News</a> (Lynette Bye, Oct 2025)</li>
+    <li>Ilya Sutskever: "pretraining as we know it will end" — NeurIPS 2024, reported in <a href="https://www.understandingai.org/p/its-the-end-of-pretraining-as-we" target="_blank" rel="noopener">Understanding AI</a> (Timothy B. Lee, Dec 2024)</li>
+    <li>SemiAnalysis: OpenAI "have not completed a successful full-scale pre-training run... since GPT-4o" — via <a href="https://officechai.com/ai/openai-hasnt-completed-a-successful-full-scale-pretraining-run-since-gpt-4o-in-may-2024-says-semianalysis/" target="_blank" rel="noopener">OfficeChai</a> (Nov 2025) — contested, discussed on <a href="https://news.ycombinator.com/item?id=46126750" target="_blank" rel="noopener">Hacker News</a></li>
+    <li>GPT-4.5 System Card: "Building on GPT-4o, GPT-4.5 scales pre-training further" (OpenAI, Feb 2025) — contradicted by an unchanged knowledge cutoff</li>
+  </ul>
+</template>
+```
 
 ::: {.notes}
 TODO (planning note, not for delivery): pull on the "is it in the data at
@@ -1171,6 +1562,42 @@ ever come from a system trained only on existing human output, or whether
 that requires something categorically different from more data. Same
 question, two costumes. Build this as the connective thread across the talk
 rather than two disconnected asides.
+
+TODO (delivery idea, not yet written into the slide): work in the Hitchhiker's
+Guide to the Galaxy bit on the inference-time card — Deep Thought spends 7.5
+million years computing an answer and produces "42," a famously unhelpful
+non-answer. Good comedic beat for the exact point this chart is making: more
+thinking time is not a free lunch, and past some point you're paying a lot of
+compute for very little extra coverage. Land it right after naming the
+"best possible" band and before moving on to engineering.
+
+The quote cloud and mechanism cloud below the four cards used to be their
+own slide ("The Pretraining/Post-Training Dance"). Merged in and
+deliberately de-tiered — the point isn't "rank these quotes by confidence,"
+it's "look at everything labs have actually said, all at once." Two of the
+quotes (o1, Opus 4.1) are the labs' own words; the rest are named insiders
+or analysts, kept but not labeled as such anymore (solid border = higher
+confidence, dashed = an analyst openly guessing, per the qc-solid/qc-dashed
+classes, if asked to justify the distinction).
+
+Important distinction if asked about Amodei ("scaling is probably going to
+continue") or Altman ("there is no wall"): those quotes answer a different
+question — whether pretraining is EVENTUALLY worth returning to — not
+whether it has been happening FREQUENTLY recently. Not counter-evidence to
+the quote cloud's claim; a separate, more speculative claim about the
+future.
+
+The mechanism cloud is the same disclosed-mechanism data the old timeline
+used, itemized instead of dated or tallied: of everything labs have named
+as "why this got better," pretraining scale shows up once (GPT-4.5) and
+even that's contradicted by its own unchanged knowledge cutoff. Fine-tuning
+has zero named entries deliberately — no lab has publicly credited a
+specific fine-tuning technique the way they have for RL/reasoning,
+architecture, or inference-time. That silence is itself part of the point.
+Colors match the four cards above (pretraining/RLHF/inference-time); the
+architecture/engineering items (multimodality, MoE, unified router) don't
+have a card above, so they get their own violet, matching the original
+5-icon lead-in before Engineering was cut.
 :::
 
 ## Moore's Law, or a Plateau? {.smaller .heading-accent}

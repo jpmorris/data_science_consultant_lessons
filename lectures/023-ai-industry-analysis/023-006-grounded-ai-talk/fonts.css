@@ -38,3 +38,18 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  /* Newspaper-register serif, used only for the pull-quote cloud on "How Do
+     These Models Get Better?" -- OFL-licensed via Google Fonts. Chosen over
+     Libre Caslon Text for its early-20th-century print/book character. */
+  font-family: 'Old Standard TT';
+  src: url('fonts/OldStandardTT-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Old Standard TT';
+  src: url('fonts/OldStandardTT-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
