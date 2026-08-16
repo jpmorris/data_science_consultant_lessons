@@ -82,6 +82,156 @@ $body-bg: #073642;
   margin: 0;
 }
 
+// Standalone centered diagram panel -- for a single full-width illustrative
+// diagram that isn't part of a .diagram-split-row (that combo's own
+// .diagram-panel rule doesn't apply standalone; it only styles once paired
+// with .diagram-split-visual). Centered two ways at once (block margin:auto
+// on the panel itself, flex centering inside it) so it doesn't depend on
+// getting flex context from a parent. The svg child is fully responsive
+// (scales via CSS width, not a fixed pixel attribute) so it can't overflow
+// its container at any viewport size -- this is what a fixed-width svg
+// silently breaks: it just sits at its own pixel width inside whatever
+// space it's given, flush to one side, not actually centered.
+.reveal .slides .diagram-panel-solo {
+  margin: 1em auto;
+  max-width: 1150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reveal .slides .diagram-panel-solo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Compact scene-setting bullets above the diagram+table row -- small and
+// tight since this slide is already fighting for vertical space.
+.reveal .slides .frontier-intro-bullets {
+  margin: 0.4em 0 0;
+  font-size: 1.16em;
+  color: #93a1a1;
+  padding-left: 1.2em;
+}
+.reveal .slides .frontier-intro-bullets li {
+  margin-bottom: 0.15em;
+}
+.reveal .slides .frontier-intro-bullets strong {
+  color: #eee8d5;
+}
+.reveal .slides .frontier-intro-bullets ul {
+  margin: 0.15em 0 0.3em;
+  padding-left: 1.1em;
+  font-size: 0.92em;
+}
+.reveal .slides .frontier-intro-bullets ul li {
+  margin-bottom: 0.1em;
+}
+
+// A .section-label sitting directly above a diagram, standing in for the
+// diagram's own title -- centered rather than left-aligned like the
+// default .section-label, since it's naming the whole figure below it
+// rather than dividing the slide into left-to-right sections.
+.reveal .slides .frontier-diagram-title {
+  justify-content: center;
+  margin-bottom: 0.2em;
+}
+// Overrides .section-label's deck-wide amber -- this diagram now uses
+// red/green as its only meaningful accent colors (no AI progress vs.
+// confirmed progress), and amber sitting next to red read as a clash.
+// Muted slate-blue keeps the title tied to the cloud below it without
+// competing with either signal color. Needs the doubled-up selector for
+// specificity: .section-label's own color rule is defined later in this
+// file, and at equal specificity source order would let it win.
+.reveal .slides .section-label.frontier-diagram-title {
+  color: #6fa3b0;
+}
+// Scope caveat for the diagram: it only shows discoveries that are pure
+// theory/math with some cheap mechanical oracle to check them (Lean, a
+// benchmark, a proof checker) -- not embodied/robotics work, and not
+// anything without a fast ground-truth verifier.
+.reveal .slides .frontier-diagram-subtitle {
+  text-align: center;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #657b7b;
+  margin-bottom: 0.6em;
+}
+
+// Diagram + its ledger table side by side instead of stacked, so both fit
+// in one screenful. Floats rather than flex: the table is a separate
+// pandoc-table block compiled from markdown between two raw-html fences
+// (open the wrapping div in one fence, close it after the table in
+// another), not a literal child of a flex container within a single fence
+// -- but plain floats on two block-level siblings don't care how they got
+// there. This row wrapper needs its own block-formatting context (flow-root)
+// for two reasons: it contains the floats for height purposes, and -- less
+// obviously -- it stops the slide's h2 (which is display:inline-block, for
+// the .heading-accent underline-hugs-the-text trick) from being pulled into
+// the same inline formatting context as these floats and having its own
+// line box reflowed around them, even though the h2 comes first in the
+// document. Floats only respect block-box siblings that precede them;
+// inline-level ones don't count, so without this wrapper the heading was
+// visibly sliding over to share a line with the floated diagram.
+.reveal .slides .frontier-split-row {
+  display: flow-root;
+  margin-top: 0.5em;
+}
+// This slide showed a real horizontal scrollbar in an actual browser that
+// never reproduced in headless measurement (different font metrics/zoom,
+// most likely) -- rather than chase an exact pixel, hard-clamp overflow on
+// this specific slide by id (not globally on .scrollable) as a safety net,
+// on top of the wider column margins below.
+.reveal .slides section#ai-and-the-knowledge-frontier {
+  overflow-x: hidden;
+}
+.reveal .slides .frontier-split-diagram {
+  float: left;
+  width: 36%;
+  margin-right: 2%;
+}
+// The svg is a direct child here, not wrapped in .diagram-panel-solo (that
+// wrapper was dropped when this became its own column) -- it needs its own
+// explicit responsive sizing, or it falls back to reveal's default
+// max-width:100% and renders at its intrinsic attribute size instead of
+// filling the column.
+.reveal .slides .frontier-split-diagram svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.reveal .slides .frontier-split-table {
+  float: right;
+  width: 62%;
+  font-size: 0.78em;
+}
+// 19 rows x 5 columns needs tighter vertical rhythm than the base
+// .table-panel's row padding gives -- otherwise it runs past the bottom
+// of the slide and needs a scroll the rest of this layout was built to
+// avoid.
+.reveal .slides .frontier-split-table .table-panel td,
+.reveal .slides .frontier-split-table .table-panel th {
+  padding: 0.22em 0.55em;
+}
+.reveal .slides .frontier-split-table .table-panel {
+  // Without this, width:100% is the content box and the left/right padding
+  // below adds on top of it -- that's the actual root cause of the
+  // horizontal scrollbar reported in a real browser but not reproducible
+  // in headless measurement at the same viewport size: this panel was
+  // rendering ~23px wider than its column, consistently, everywhere.
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0.2em 0 0;
+  padding: 0.4em 0.9em;
+}
+// The default first-column rule assumes short entries and forces nowrap --
+// this table's discovery names are long phrases, so let them wrap inside
+// this narrower column instead of blowing out the table's width.
+.reveal .slides .frontier-split-table .table-panel td:first-child {
+  white-space: normal;
+  width: auto;
+}
+
 // Persistent footnote bullets under the diagram, shared across all stages
 // of the next-token-prediction auto-animate sequence (unlike the
 // .diagram-split-text bullets, this content doesn't accumulate per stage --
@@ -742,6 +892,22 @@ $body-bg: #073642;
 // agentic, search loop), one level louder than the surrounding bold crux.
 .reveal .slides .table-panel .crux-word {
   color: #cb4b16;
+}
+// Flags a row that turned out to be false, retracted, or a lesser feat than
+// the media coverage implied -- e.g. a "discovery" that was actually a
+// literature search. Red, not the crux-word orange: this is a caution
+// about the claim itself, not an emphasis within a true one.
+.reveal .slides .table-panel .hype-flag {
+  color: #dc322f;
+  font-weight: 700;
+}
+// The positive counterpart to .hype-flag -- flags the one row that's
+// genuinely what it claims to be, not oversold or retracted. Green (unused
+// elsewhere in this table's palette) so it reads as a "this one's real"
+// signal rather than another caution color.
+.reveal .slides .table-panel .standout-flag {
+  color: #859900;
+  font-weight: 700;
 }
 
 // Lead-in phrase on each "Nobody Was Surprised" bullet -- same reasoning:
