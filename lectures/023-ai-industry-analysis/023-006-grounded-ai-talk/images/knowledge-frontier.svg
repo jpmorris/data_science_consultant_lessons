@@ -39,12 +39,14 @@
   <text x="156" y="163" font-family="Inter, sans-serif" font-size="16" fill="#859900">Example: All "Agentic" in Table</text>
 
   <!-- the empty counterpart to the point above: same edge-of-frontier idea,
-       but via pure reasoning instead of a harness -- lower-left, at the
-       haze boundary. Red -- there's no real instance of this yet. -->
-  <circle cx="75" cy="430" r="14" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="101" y="396" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
-  <text x="101" y="419" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
-  <text x="101" y="442" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Pauli's Neutrino (1930)</text>
+       but via pure reasoning instead of a harness -- lower-left, sitting
+       inside the haze as a genuine hole, like the knowledge-gap point.
+       Red -- there's no real instance of this yet. -->
+  <circle cx="200" cy="420" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <circle cx="200" cy="420" r="13" fill="#dc322f" filter="url(#dotSoftGlow)"/>
+  <text x="226" y="386" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
+  <text x="226" y="409" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
+  <text x="226" y="432" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Pauli's Neutrino (1930)</text>
 
   <!-- interpolation: a hole -- not new theory or new data, just pieces
        that were already sitting in the known region, unassembled.
