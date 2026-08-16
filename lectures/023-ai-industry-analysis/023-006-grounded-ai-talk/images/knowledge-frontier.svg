@@ -1,4 +1,4 @@
-<svg width="950" height="720" viewBox="0 30 950 720">
+<svg width="700" height="630" viewBox="0 22 700 630">
   <defs>
     <radialGradient id="hazeGradient" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#4a7d8c" stop-opacity="0.55"/>
@@ -20,47 +20,51 @@
 
   <!-- the haze: several overlapping blurred ellipses sharing one gradient -->
   <g filter="url(#hazeBlur)">
-    <ellipse cx="272" cy="275" rx="215" ry="162" fill="url(#hazeGradient)"/>
-    <ellipse cx="433" cy="178" rx="176" ry="137" fill="url(#hazeGradient)"/>
-    <ellipse cx="462" cy="390" rx="201" ry="171" fill="url(#hazeGradient)"/>
-    <ellipse cx="232" cy="436" rx="171" ry="137" fill="url(#hazeGradient)"/>
-    <ellipse cx="590" cy="290" rx="128" ry="109" fill="url(#hazeGradient)"/>
+    <ellipse cx="300" cy="275" rx="215" ry="162" fill="url(#hazeGradient)"/>
+    <ellipse cx="420" cy="178" rx="176" ry="137" fill="url(#hazeGradient)"/>
+    <ellipse cx="430" cy="390" rx="201" ry="171" fill="url(#hazeGradient)"/>
+    <ellipse cx="260" cy="436" rx="171" ry="137" fill="url(#hazeGradient)"/>
+    <ellipse cx="520" cy="290" rx="128" ry="109" fill="url(#hazeGradient)"/>
   </g>
 
-  <!-- interpolation: a hole -- not new theory or new data, just pieces
-       that were already sitting in the known region, unassembled. Plain
-       background-color void, same treatment as the two unannotated holes
-       below -- no AI example exists for this category yet. -->
-  <circle cx="255" cy="235" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
-  <circle cx="255" cy="235" r="13" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="255" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">KNOWLEDGE GAP; PIECES ALL THERE</text>
-  <text x="255" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
-  <text x="255" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Higgs Mechanism (1964)</text>
+  <!-- two decorative, deliberately unannotated holes -->
+  <circle cx="350" cy="320" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <circle cx="560" cy="500" r="16" fill="#0d4a55" filter="url(#holeBlur)"/>
 
-  <!-- two more holes, deliberately unannotated -->
-  <circle cx="470" cy="230" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
-  <circle cx="340" cy="470" r="16" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <!-- frontier-edge point: harness-based, clean win -- upper-left, pulled to
+       sit right at the haze boundary so it reads as emerging from it -->
+  <circle cx="130" cy="170" r="14" fill="#859900" filter="url(#dotSoftGlow)"/>
+  <text x="156" y="118" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
+  <text x="156" y="141" font-family="Inter, sans-serif" font-size="16" fill="#859900">AI Progress, Harness</text>
+  <text x="156" y="163" font-family="Inter, sans-serif" font-size="16" fill="#859900">Example: All "Agentic" in Table</text>
+
+  <!-- the empty counterpart to the point above: same edge-of-frontier idea,
+       but via pure reasoning instead of a harness -- lower-left, at the
+       haze boundary. Red -- there's no real instance of this yet. -->
+  <circle cx="75" cy="430" r="14" fill="#dc322f" filter="url(#dotSoftGlow)"/>
+  <text x="101" y="396" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
+  <text x="101" y="419" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
+  <text x="101" y="442" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Pauli's Neutrino (1930)</text>
+
+  <!-- interpolation: a hole -- not new theory or new data, just pieces
+       that were already sitting in the known region, unassembled.
+       Center-right, vertically between the two edge-of-frontier points
+       -- same red/no-AI-progress treatment as the two decorative holes
+       above. -->
+  <circle cx="480" cy="300" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <circle cx="480" cy="300" r="13" fill="#dc322f" filter="url(#dotSoftGlow)"/>
+  <text x="480" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">KNOWLEDGE GAP; PIECES ALL THERE</text>
+  <text x="480" y="245" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
+  <text x="480" y="265" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Higgs Mechanism (1964)</text>
 
   <!-- paradigm-shift example: deliberately placed OUTSIDE the cloud, below
-       it -- this needs to read as a genuine creative leap past the current
-       frontier, not something interpolated from what's already known. -->
-  <circle cx="300" cy="680" r="15" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="336" y="628" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">PARADIGM-SHIFTING; FEW HUMANS COULD FORMULATE</text>
-  <text x="336" y="651" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
-  <text x="336" y="673" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Einstein — Special Relativity (1905)</text>
-
-  <!-- frontier-edge point: harness-based, clean win -- pulled in toward
-       the haze so it reads as emerging from it, not floating outside -->
-  <text x="628" y="98" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
-  <text x="628" y="121" font-family="Inter, sans-serif" font-size="16" fill="#859900">AI Progress, Harness</text>
-  <circle cx="602" cy="150" r="14" fill="#859900" filter="url(#dotSoftGlow)"/>
-  <text x="628" y="143" font-family="Inter, sans-serif" font-size="16" fill="#859900">Example: All "Agentic" in Table</text>
-
-  <!-- the empty counterpart to AlphaEvolve above: same edge-of-frontier
-       position, but via pure reasoning instead of a harness. Red, like
-       the hole and Einstein -- there's no real instance of this yet. -->
-  <circle cx="595" cy="489" r="14" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="620" y="455" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">EDGE OF FRONTIER; IMPORTANT JUMP</text>
-  <text x="620" y="478" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
-  <text x="620" y="501" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Pauli's Neutrino (1930)</text>
+       it -- text sits to the right of the dot so the gap between the dot
+       and the haze above stays visible. -->
+  <circle cx="170" cy="620" r="15" fill="#dc322f" filter="url(#dotSoftGlow)"/>
+  <text x="206" y="568" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.02em" fill="#eee8d5">
+    <tspan x="206" dy="0">PARADIGM-SHIFTING;</tspan>
+    <tspan x="206" dy="20">FEW HUMANS COULD FORMULATE</tspan>
+  </text>
+  <text x="206" y="611" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
+  <text x="206" y="634" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Einstein — Special Relativity (1905)</text>
 </svg>
