@@ -270,27 +270,6 @@ $body-bg: #073642;
   font-family: $presentation-heading-font;
 }
 
-// Term/definition strip at the top of the Entropy Floor slide -- plain text,
-// no card chrome, so it reads as a lightweight glossary rather than
-// competing with the softmax/ladder cards below.
-.reveal .slides .entropy-defs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3em;
-  margin: 0.2em 0 1em;
-}
-.reveal .slides .entropy-def {
-  font-size: 0.68em;
-  color: #93a1a1;
-  line-height: 1.4;
-  text-align: left;
-}
-.reveal .slides .entropy-def-term {
-  color: #b58900;
-  font-weight: 700;
-  font-family: $presentation-heading-font;
-}
-
 // Generic in-slide section header -- amber ties back to .heading-accent so
 // it reads as structural/navigational. Originally built for the Entropy
 // Floor slide's Natural Language / Programming Languages split; reused
@@ -494,48 +473,167 @@ $body-bg: #073642;
     #cb4b16
   );
 }
-// Supporting build-up for the closing thesis: three plain bullets (not
-// numbered -- they're loosely sequential, not a strong enough causal chain
-// to justify enumerating) that the big blue conclusion below then
-// synthesizes as a single punchline.
-.reveal .slides .entropy-insight {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4em;
-  max-width: 850px;
-  margin: 0.9em auto 0;
-  text-align: left;
+// Compact modifiers for the softmax cards -- same component, shrunk down so
+// the low/high-entropy example reads as a quick anchor at the top of the
+// slide rather than competing for space with the ladder and the levers
+// below it.
+.reveal .slides .softmax-row--compact {
+  gap: 1.6em;
+  margin-bottom: 0.5em;
 }
-.reveal .slides .entropy-insight-step {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6em;
+.reveal .slides .softmax-card--compact {
+  flex-basis: 320px;
+  padding: 0.45em 0.85em;
 }
-.reveal .slides .entropy-insight-num {
-  flex: 0 0 auto;
-  width: 0.4em;
-  height: 0.4em;
-  border-radius: 50%;
-  background: #b58900;
-  transform: translateY(-0.3em);
+.reveal .slides .softmax-card--compact .softmax-sentence {
+  margin-bottom: 0.35em;
 }
-.reveal .slides .entropy-insight-text {
-  color: #93a1a1;
-  font-size: 0.72em;
-  line-height: 1.35;
+.reveal .slides .softmax-card--compact .softmax-caption {
+  margin-top: 0.25em;
 }
 
-// Big blue conclusion, standalone below the bullets -- this is the payoff
-// the three bullets build toward, not a fourth item in the list.
-.reveal .slides .entropy-thesis {
-  margin: 0.8em 0 0;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: #2aa198;
+// "How Do You Lower The Floor?": two side-by-side levers, each showing a
+// different mechanism (prompt-time context vs. train-time world knowledge)
+// with matching card chrome to the entropy-ladder cards above.
+.reveal .slides .floor-lever-row {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  margin-top: 0.3em;
+}
+.reveal .slides .floor-lever {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #0d4a55;
+  border-top: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.7em 0.9em;
+  text-align: left;
+}
+.reveal .slides .floor-mini-fan-row {
+  flex: 1;
+}
+.reveal .slides .floor-lever-title {
   font-family: $presentation-heading-font;
-  font-size: 1.2em;
-  text-align: center;
+  font-weight: 700;
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 0.2em;
+}
+.reveal .slides .floor-lever-input {
+  color: #93a1a1;
+  font-size: 0.6em;
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+.reveal .slides .floor-lever-caption {
+  color: #93a1a1;
+  font-size: 0.6em;
+  line-height: 1.35;
+  margin-top: 0.5em;
+}
+
+// Context lever: three shrinking fan icons (reusing .entropy-fan) walking
+// left to right as more context gets supplied.
+.reveal .slides .floor-mini-fan-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+.reveal .slides .floor-mini-fan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--accent);
+}
+.reveal .slides .floor-mini-fan .entropy-fan {
+  width: 76px;
+  height: 48px;
+  margin-bottom: 0.2em;
+}
+.reveal .slides .floor-mini-fan span {
+  color: #93a1a1;
+  font-size: 0.62em;
+  white-space: nowrap;
+}
+.reveal .slides .floor-mini-arrow {
+  color: #586e75;
+  font-size: 1.1em;
+  transform: translateY(-0.8em);
+}
+
+// World-knowledge lever: a small neural-net mesh (faint, structural) with
+// several overlapping translucent color blobs standing in for different
+// knowledge domains sharing the same weights rather than living in
+// separable layers -- the whole point being that they can't be pulled apart
+// cleanly, so the blobs are deliberately overlapping, not tiled.
+.reveal .slides .floor-mesh {
+  display: block;
+  width: 100%;
+  height: 190px;
+  margin: 0.1em auto 0;
+}
+.reveal .slides .floor-mesh-blobs path {
+  mix-blend-mode: screen;
+}
+.reveal .slides .floor-mesh-net line {
+  stroke: #93a1a1;
+  stroke-width: 1;
+  opacity: 0.35;
+}
+.reveal .slides .floor-mesh-net circle {
+  fill: #eee8d5;
+  opacity: 0.55;
+}
+.reveal .slides .floor-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7em;
+  margin-top: 0.3em;
+}
+.reveal .slides .floor-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  color: #93a1a1;
+  font-size: 0.56em;
+}
+.reveal .slides .floor-legend-dot {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+// Closing "can't get to zero" bullets under the Entropy Floor slide's lever
+// row -- deliberately plain rows, not a table or card grid, since these are
+// caveats/limits rather than parallel mechanisms like Context/World Knowledge.
+.reveal .slides .floor-limit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32em;
+  margin-top: 0.35em;
+}
+.reveal .slides .floor-limit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55em;
+  color: #93a1a1;
+  font-size: 0.64em;
+  line-height: 1.35;
+}
+.reveal .slides .floor-limit-mark {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: #cb4b16;
+  margin-top: 0.4em;
+  flex: 0 0 auto;
 }
 
 // Table panel: inset card wrapping a plain markdown table, replacing
@@ -581,11 +679,39 @@ $body-bg: #073642;
   white-space: nowrap;
   width: 1%;
 }
-.reveal .slides .table-panel td:nth-child(2) {
+// Date column only applies to 4-column tables (Idea/Milestone, Date, Basis/
+// Surprise, Citation) -- in the 3-column debate table, nth-child(2) is the
+// long-form Debate text instead, which needs to wrap normally like the other
+// stretch column, not get force-narrowed like a date.
+.reveal .slides .table-panel tr:has(td:nth-child(4)) td:nth-child(2) {
   color: #839496;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   width: 1%;
+}
+// Citation column -- always the last column, always narrow/single-line like
+// the date column, one size down since it's reference text, not content.
+.reveal .slides .table-panel td:last-child {
+  color: #839496;
+  white-space: nowrap;
+  width: 1%;
+  font-size: 0.85em;
+}
+// Compact variant -- two table-panels stacked on one slide (e.g. surprises +
+// open debates) need to fit without triggering .scrollable's scrollbar.
+// Shrinks font/padding/margin without changing the color or layout logic.
+.reveal .slides .table-panel--tight {
+  padding: 0.35em 1.1em;
+  margin: 0.35em auto 0;
+}
+.reveal .slides .table-panel--tight th {
+  font-size: 0.85em;
+  padding: 0.28em 0.65em;
+}
+.reveal .slides .table-panel--tight td {
+  font-size: 0.87em;
+  padding: 0.28em 0.65em;
+  line-height: 1.2;
 }
 // Punchline phrase inside the Surprise column -- bold alone doesn't
 // contrast enough against the column's muted body color, so brighten too.
@@ -597,10 +723,4 @@ $body-bg: #073642;
 // agentic, search loop), one level louder than the surrounding bold crux.
 .reveal .slides .table-panel .crux-word {
   color: #cb4b16;
-}
-
-// Lead-in phrase on each "Nobody Was Surprised" bullet -- same reasoning:
-// bold weight alone reads too close to the surrounding text's color.
-.reveal .slides .surprise-bullets strong {
-  color: #eee8d5;
 }

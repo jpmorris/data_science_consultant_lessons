@@ -818,16 +818,12 @@ resends to the model for the final turn, same "whole box flows through
 again" pattern as every other stage.
 :::
 
-## The Entropy Floor {.heading-accent}
+## The Entropy Floor {.smaller .heading-accent}
 
 ```{=html}
-<div class="entropy-defs">
-  <div class="entropy-def"><span class="entropy-def-term">Entropy</span> — how many different, equally reasonable words could come next in a sentence (or steps, in a task).</div>
-  <div class="entropy-def"><span class="entropy-def-term">Entropy floor</span> — what's left even with a perfect model, because the task allows more than one right answer.</div>
-</div>
-<div class="section-label"><span class="section-tick"></span>Natural Language <span class="section-sub">— next-token probabilities, straight out of the softmax layer</span></div>
-<div class="softmax-row">
-  <div class="softmax-card" style="--accent: #2aa198;">
+<div class="section-label">What Is Entropy?</div>
+<div class="softmax-row softmax-row--compact">
+  <div class="softmax-card softmax-card--compact" style="--accent: #2aa198;">
     <div class="softmax-label">Low Entropy</div>
     <div class="softmax-sentence">"The capital of France is ___"</div>
     <div class="softmax-bar">
@@ -836,23 +832,13 @@ again" pattern as every other stage.
       <span class="softmax-pct">97%</span>
     </div>
     <div class="softmax-bar">
-      <span class="softmax-token">Lyon</span>
-      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 1%;"></span></span>
-      <span class="softmax-pct">1%</span>
-    </div>
-    <div class="softmax-bar">
-      <span class="softmax-token">Rome</span>
-      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 1%;"></span></span>
-      <span class="softmax-pct">1%</span>
-    </div>
-    <div class="softmax-bar">
       <span class="softmax-token">…everything else</span>
-      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 1%;"></span></span>
-      <span class="softmax-pct">1%</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 3%;"></span></span>
+      <span class="softmax-pct">3%</span>
     </div>
     <div class="softmax-caption">one token owns almost all the probability mass</div>
   </div>
-  <div class="softmax-card" style="--accent: #cb4b16;">
+  <div class="softmax-card softmax-card--compact" style="--accent: #cb4b16;">
     <div class="softmax-label">High Entropy</div>
     <div class="softmax-sentence">"My favorite color is ___"</div>
     <div class="softmax-bar">
@@ -861,24 +847,14 @@ again" pattern as every other stage.
       <span class="softmax-pct">19%</span>
     </div>
     <div class="softmax-bar">
-      <span class="softmax-token">green</span>
-      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 17%;"></span></span>
-      <span class="softmax-pct">17%</span>
-    </div>
-    <div class="softmax-bar">
-      <span class="softmax-token">red</span>
-      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 15%;"></span></span>
-      <span class="softmax-pct">15%</span>
-    </div>
-    <div class="softmax-bar">
       <span class="softmax-token">…everything else</span>
-      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 49%;"></span></span>
-      <span class="softmax-pct">49%</span>
+      <span class="softmax-bar-track"><span class="softmax-bar-fill" style="width: 64%;"></span></span>
+      <span class="softmax-pct">64%</span>
     </div>
     <div class="softmax-caption">probability spread thin across dozens of plausible words</div>
   </div>
 </div>
-<div class="section-label"><span class="section-tick"></span>Programming Languages <span class="section-sub">— from a single token to an entire product</span></div>
+<div class="section-label">Entropy Floors At Different Levels</div>
 <div class="entropy-ladder">
   <div class="entropy-card" style="--accent: #2aa198;">
     <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
@@ -952,115 +928,227 @@ again" pattern as every other stage.
   <span class="entropy-axis-line"></span>
   <span>open, underspecified</span>
 </div>
-<div class="entropy-insight">
-  <div class="entropy-insight-step">
-    <span class="entropy-insight-num"></span>
-    <span class="entropy-insight-text">A perfect model doesn't collapse this ladder — the ambiguity lives in the task, not the tool.</span>
+<div class="section-label section-label--lg">How Do You Lower The Floor?</div>
+<div class="floor-lever-row">
+  <div class="floor-lever" style="--accent: #268bd2;">
+    <div class="floor-lever-title">Context</div>
+    <div class="floor-lever-input">supplied at prompt time</div>
+    <div class="floor-mini-fan-row">
+      <div class="floor-mini-fan">
+        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+          <line x1="32" y1="3" x2="8" y2="37"/>
+          <line x1="32" y1="3" x2="16" y2="37"/>
+          <line x1="32" y1="3" x2="24" y2="37"/>
+          <line x1="32" y1="3" x2="32" y2="37"/>
+          <line x1="32" y1="3" x2="40" y2="37"/>
+          <line x1="32" y1="3" x2="48" y2="37"/>
+          <line x1="32" y1="3" x2="56" y2="37"/>
+          <circle cx="32" cy="3" r="2.5"/>
+        </svg>
+        <span>vague prompt</span>
+      </div>
+      <span class="floor-mini-arrow">→</span>
+      <div class="floor-mini-fan">
+        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+          <line x1="32" y1="3" x2="8" y2="37"/>
+          <line x1="32" y1="3" x2="32" y2="37"/>
+          <line x1="32" y1="3" x2="56" y2="37"/>
+          <circle cx="32" cy="3" r="2.5"/>
+        </svg>
+        <span>+ requirements</span>
+      </div>
+      <span class="floor-mini-arrow">→</span>
+      <div class="floor-mini-fan">
+        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
+          <line x1="32" y1="3" x2="32" y2="37"/>
+          <circle cx="32" cy="3" r="2.5"/>
+        </svg>
+        <span>+ unit tests</span>
+      </div>
+    </div>
+    <div class="floor-lever-caption">requirements, specs, and tests narrow the space — but rarely to zero, and only for the entropy you already knew was there</div>
   </div>
-  <div class="entropy-insight-step">
-    <span class="entropy-insight-num"></span>
-    <span class="entropy-insight-text">Requirements, specs, and unit tests lower the floor — but rarely to zero, and only for the entropy you already know is there.</span>
-  </div>
-  <div class="entropy-insight-step">
-    <span class="entropy-insight-num"></span>
-    <span class="entropy-insight-text">In practice, you often don't know what you don't know — a requirement doesn't exist until reality surfaces it.</span>
+  <div class="floor-lever" style="--accent: #d33682;">
+    <div class="floor-lever-title">World Knowledge</div>
+    <div class="floor-lever-input">baked in at training time</div>
+    <svg class="floor-mesh" viewBox="0 0 208 140" aria-hidden="true">
+      <defs>
+        <radialGradient id="floor-mesh-grad-blue" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#268bd2" stop-opacity="0.9"/>
+          <stop offset="55%" stop-color="#268bd2" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#268bd2" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="floor-mesh-grad-teal" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2aa198" stop-opacity="0.9"/>
+          <stop offset="55%" stop-color="#2aa198" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#2aa198" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="floor-mesh-grad-amber" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#b58900" stop-opacity="0.9"/>
+          <stop offset="55%" stop-color="#b58900" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#b58900" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="floor-mesh-grad-violet" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#6c71c4" stop-opacity="0.9"/>
+          <stop offset="55%" stop-color="#6c71c4" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#6c71c4" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="floor-mesh-grad-orange" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#cb4b16" stop-opacity="0.85"/>
+          <stop offset="55%" stop-color="#cb4b16" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#cb4b16" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="floor-mesh-blur" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="9"/>
+        </filter>
+      </defs>
+      <g class="floor-mesh-blobs" filter="url(#floor-mesh-blur)">
+        <path d="M70,12 C100,8 130,20 122,50 C118,75 100,92 68,90 C35,88 15,70 18,45 C20,20 42,16 70,12 Z" fill="url(#floor-mesh-grad-blue)"/>
+        <path d="M140,8 C168,5 192,18 188,45 C186,68 168,84 138,82 C108,80 90,64 93,42 C95,20 114,11 140,8 Z" fill="url(#floor-mesh-grad-teal)"/>
+        <path d="M60,60 C86,57 108,72 106,95 C104,116 86,130 58,129 C30,128 13,113 15,92 C17,71 36,63 60,60 Z" fill="url(#floor-mesh-grad-amber)"/>
+        <path d="M150,58 C178,55 200,70 198,95 C196,118 178,132 148,131 C118,130 101,114 103,92 C105,70 124,61 150,58 Z" fill="url(#floor-mesh-grad-violet)"/>
+        <path d="M104,26 C138,22 165,44 163,70 C161,94 138,116 102,114 C66,112 44,92 46,66 C48,42 72,30 104,26 Z" fill="url(#floor-mesh-grad-orange)"/>
+      </g>
+      <g class="floor-mesh-net">
+        <line x1="20" y1="22" x2="62" y2="22"/>
+        <line x1="20" y1="22" x2="62" y2="54"/>
+        <line x1="20" y1="54" x2="62" y2="22"/>
+        <line x1="20" y1="54" x2="62" y2="54"/>
+        <line x1="20" y1="54" x2="62" y2="86"/>
+        <line x1="20" y1="86" x2="62" y2="54"/>
+        <line x1="20" y1="86" x2="62" y2="86"/>
+        <line x1="20" y1="86" x2="62" y2="118"/>
+        <line x1="20" y1="118" x2="62" y2="86"/>
+        <line x1="20" y1="118" x2="62" y2="118"/>
+        <line x1="62" y1="22" x2="104" y2="22"/>
+        <line x1="62" y1="22" x2="104" y2="54"/>
+        <line x1="62" y1="54" x2="104" y2="22"/>
+        <line x1="62" y1="54" x2="104" y2="54"/>
+        <line x1="62" y1="54" x2="104" y2="86"/>
+        <line x1="62" y1="86" x2="104" y2="54"/>
+        <line x1="62" y1="86" x2="104" y2="86"/>
+        <line x1="62" y1="86" x2="104" y2="118"/>
+        <line x1="62" y1="118" x2="104" y2="86"/>
+        <line x1="62" y1="118" x2="104" y2="118"/>
+        <line x1="104" y1="22" x2="146" y2="22"/>
+        <line x1="104" y1="22" x2="146" y2="54"/>
+        <line x1="104" y1="54" x2="146" y2="22"/>
+        <line x1="104" y1="54" x2="146" y2="54"/>
+        <line x1="104" y1="54" x2="146" y2="86"/>
+        <line x1="104" y1="86" x2="146" y2="54"/>
+        <line x1="104" y1="86" x2="146" y2="86"/>
+        <line x1="104" y1="86" x2="146" y2="118"/>
+        <line x1="104" y1="118" x2="146" y2="86"/>
+        <line x1="104" y1="118" x2="146" y2="118"/>
+        <line x1="146" y1="22" x2="188" y2="22"/>
+        <line x1="146" y1="22" x2="188" y2="54"/>
+        <line x1="146" y1="54" x2="188" y2="22"/>
+        <line x1="146" y1="54" x2="188" y2="54"/>
+        <line x1="146" y1="54" x2="188" y2="86"/>
+        <line x1="146" y1="86" x2="188" y2="54"/>
+        <line x1="146" y1="86" x2="188" y2="86"/>
+        <line x1="146" y1="86" x2="188" y2="118"/>
+        <line x1="146" y1="118" x2="188" y2="86"/>
+        <line x1="146" y1="118" x2="188" y2="118"/>
+        <circle cx="20" cy="22" r="2.4"/>
+        <circle cx="20" cy="54" r="2.4"/>
+        <circle cx="20" cy="86" r="2.4"/>
+        <circle cx="20" cy="118" r="2.4"/>
+        <circle cx="62" cy="22" r="2.4"/>
+        <circle cx="62" cy="54" r="2.4"/>
+        <circle cx="62" cy="86" r="2.4"/>
+        <circle cx="62" cy="118" r="2.4"/>
+        <circle cx="104" cy="22" r="2.4"/>
+        <circle cx="104" cy="54" r="2.4"/>
+        <circle cx="104" cy="86" r="2.4"/>
+        <circle cx="104" cy="118" r="2.4"/>
+        <circle cx="146" cy="22" r="2.4"/>
+        <circle cx="146" cy="54" r="2.4"/>
+        <circle cx="146" cy="86" r="2.4"/>
+        <circle cx="146" cy="118" r="2.4"/>
+        <circle cx="188" cy="22" r="2.4"/>
+        <circle cx="188" cy="54" r="2.4"/>
+        <circle cx="188" cy="86" r="2.4"/>
+        <circle cx="188" cy="118" r="2.4"/>
+      </g>
+    </svg>
+    <div class="floor-legend">
+      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#268bd2;"></span>physics</span>
+      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#2aa198;"></span>biology</span>
+      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#b58900;"></span>grammar</span>
+      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#6c71c4;"></span>history</span>
+      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#cb4b16;"></span>code</span>
+    </div>
+    <div class="floor-lever-caption">entangled in the same weights, not separable layers — if a problem has one right answer, and that knowledge is in there, the floor can drop to just that answer</div>
   </div>
 </div>
-<blockquote class="entropy-thesis">Software that keeps evolving will probably always need someone to specify it, guide it, and verify it.</blockquote>
+<div class="section-label section-label--lg">Hard To Lower The Floor To 0</div>
+<div class="floor-limit-list">
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the requirements themselves take search to find — humans don't start out knowing them either</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>requirements change out from under the answer</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>translation loss between what's in your head and what's in the prompt</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>benchmarks score one answer, not a menu of options with tradeoffs — models rarely offer either</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the real fix sometimes lives one level up — the model just answers the question it was asked (the XY problem)</div>
+</div>
 ```
 
 ::: {.notes}
-This connects straight back to the intro thesis slide (the oracle
-idea). Say it out loud: "entropy floor" and "do you have a trustworthy checker"
-are basically the same question asked two different ways.
+No definitions box anymore — say entropy and entropy floor out loud instead
+of reading them off the slide: entropy is how many different, equally
+reasonable next words/steps there are; the floor is what's left even with a
+perfect model, because the task allows more than one right answer. The two
+softmax cards are the concrete anchor for that, so land the idea through the
+example rather than a stated definition.
 
-Open with the two definitions at the top — the whole slide is just these two
-ideas made concrete twice, once in natural language, once in software.
-Deliberately no math on the slide, but say the two-step logic out loud:
-
-Step one, language: even *within language itself*, several next words are
-often equally reasonable — that's not a flaw in the model, it's just how
-language works. No model, however good, can collapse that down to one
-"correct" word, because there isn't one.
-
-Step two, the jump: the same is true one level up, of the task the language
-is describing, not just its wording. A spec written in perfectly clear
-English can still have many different, equally defensible implementations.
-More scale doesn't close that gap, because the gap was never about the
-model's competence — it's about the task genuinely not pinning down one
-answer.
-
-(Background only, no need to say out loud: this is Shannon entropy —
-H(p) = −Σ p(x) log₂ p(x) over the model's next-token distribution — and the
-"floor" specifically is the entropy of the *true* distribution of reasonable
-continuations, not the model's estimate of it. Training closes the gap
-between the model's estimate and the true distribution — epistemic
-uncertainty, reducible in principle. Once the model is perfectly calibrated,
-what's left is the entropy *of* that true distribution itself — aleatoric
-uncertainty — and that's the floor. Scale only ever closes the epistemic
-gap.)
-
-Natural Language row: this is literally the softmax layer from the
+Softmax row (low/high entropy): this is literally the softmax layer from the
 transformer diagram a few slides back, made concrete. "The capital of France
-is ___" is low entropy: the model puts ~97% of its probability mass on
-"Paris" and the rest is noise. "My favorite color is ___" is high entropy:
-no single answer dominates, the mass is spread across dozens of plausible
-completions. Same architecture, same softmax, wildly different amount of
-genuine uncertainty — because the *task* constrains the answer differently,
-not because the model is more or less capable in one case than the other.
+is ___" puts ~97% of the mass on "Paris." "My favorite color is ___" spreads
+mass thin across dozens of completions. Same architecture, same softmax,
+wildly different genuine uncertainty — because the *task* constrains the
+answer differently, not because the model is more or less capable.
 
-Programming Languages row: same idea, scaled up from a single token to an
-entire product. Token-level completion is nearly deterministic — there's
-essentially one sane next token. By the time you're at "add user login" or
-"build me a to-do app," there are enormous numbers of equally defensible
-answers, and that's true even in the limit of a perfect model. The fan icons
-are a literal count-of-branches metaphor: one thread at the token level,
-many threads by the product level. Key point to land out loud: this isn't a
-capability gap. A perfect model faced with "build me a to-do app" still has
-to *choose* — React or not, which auth, what feature set — because the
-prompt genuinely underdetermines the answer.
+Entropy ladder: same idea, scaled from a single token to an entire product.
+Token-level completion is nearly deterministic. By the time you're at "build
+me a to-do app," there are enormous numbers of equally defensible answers,
+even for a perfect model — React or not, which auth, what feature set. The
+fan icons are a literal count-of-branches metaphor. Key point: this isn't a
+capability gap, the prompt genuinely underdetermines the answer.
 
-The closing block is the most important part to land slowly, and it's the
-part that's easy to get glib about. The three bullets are deliberately
-unnumbered — they're a loose build-up, not a tight enough causal chain to
-enumerate — and the point is to let the blue line underneath land as a
-single synthesized conclusion, not "bullet four."
+"How Do You Lower The Floor?" — two mechanisms, deliberately parallel cards
+so the contrast reads visually: one acts at prompt time, the other was baked
+in at training time.
 
-Bullet one: a perfect model doesn't get you out of this. The ambiguity is a
-property of the task, not a gap in the model.
+Context lever: requirements, specs, and unit tests narrow the space --
+"rarely to zero" is worth pausing on if pushed. A test suite defines a
+pass/fail boundary, not a single implementation: different code can pass the
+same tests, different prose can satisfy the same requirements doc. And on
+top of that, in real projects you frequently don't know what you don't know
+-- you can't write a test for a requirement you haven't discovered yet.
 
-Bullet two: room is full of consultants, so name the artifacts they actually
-produce — requirements docs, specs, unit tests — and say "rarely to zero" on
-purpose, worth pausing on if anyone pushes back. A test suite defines a
-pass/fail boundary, not a single implementation: plenty of genuinely
-different code can pass the same tests (different algorithm, different
-structure, different tradeoffs), and plenty of different prose can satisfy
-the same requirements doc. So requirements, specs, and tests shrink the
-space of acceptable answers — they very rarely collapse it to exactly one.
-That's a real, separate point from bullet three, not just hedging: even the
-entropy you *do* know about usually isn't fully eliminated, only bounded.
+World Knowledge lever: this is the payoff of the physics-derivation
+conversation from the "What Is Astounding About LLMs?" slide, one level
+more general. The mesh is deliberately NOT drawn as separable labeled
+layers -- that would misrepresent how these networks actually store
+concepts (see: superposition, e.g. Anthropic's "Toy Models of
+Superposition" -- features share the same weights in overlapping
+combinations, not one clean subspace per topic). That's why the blobs
+overlap rather than tile: physics, biology, grammar, history, and code all
+live entangled in the same numbers, and you can't cleanly pull "the physics
+part" back out even in principle. The caption is deliberately narrow in
+scope: this only helps when the task has one right answer AND that
+knowledge is in there -- for genuinely open or ambiguous questions (edge-of-
+research stuff), this lever doesn't apply and the floor stays wherever the
+task's real ambiguity puts it.
 
-Bullet three: on top of that, in real projects you frequently don't know
-what you don't know — an edge case, a regulatory requirement, a user
-workflow nobody anticipated, only shows up once the software is in front of
-real use. You can't write a unit test for a requirement you haven't
-discovered yet.
-
-Then the blue line, said slowly, as the payoff of all three: software that
-keeps evolving will probably always need someone to specify it, guide it,
-and verify it. "Probably" is deliberate, not filler — this doesn't rule out
-a future where agents largely run agents, with one human sitting well above
-the loop rather than in it on every task. The claim is narrower and holds up
-either way: *someone*, human or not fully automated away, still has to do
-the specifying/guiding/verifying — the roles don't disappear just because
-who's staffing them changes. "Specify, guide, verify" is doing real work —
-someone has to keep writing the next requirement (specify), keep steering
-the system as it changes (guide), and keep checking it still does what it's
-supposed to (verify). That's the throughline to the job-security question
-this talk keeps circling: as long as new, previously unknown entropy keeps
-showing up,
-something has to notice it, decide what it means, and do all three. That's
-the human in the loop this slide is pointing at.
+TODO (planning note, not for delivery): the old closing block from this
+slide -- "a perfect model doesn't get you out of this," the "you don't know
+what you don't know" bullet, and the blue "software that keeps evolving will
+probably always need someone to specify it, guide it, and verify it." thesis
+-- was cut from here on purpose, not lost. It's a strong, fully-formed
+closing beat that belongs on its own slide (the human-in-the-loop /
+specify-guide-verify payoff, tied to the job-security throughline), not
+bolted onto this one. Build that slide before finalizing the talk; don't
+let this thesis quietly disappear from the deck.
 :::
 
 ## What Is Astounding About LLMs? {.smaller .scrollable .heading-accent}
@@ -1069,43 +1157,67 @@ the human in the loop this slide is pointing at.
 <div class="section-label section-label--lg">Nobody Was Surprised</div>
 ```
 
-::: {.surprise-bullets}
-- **"You shall know a word by the company it keeps."**: words and their
-  meaning correlate with context (Firth)
-- **Language is highly predictable**: from context (Shannon)
-- **Words to numbers**: embeddings encode meaning geometrically
-- **World knowledge is in the weights**: neural nets (RNN/LSTM) could encode
-  it before Transformers existed
+::: {.table-panel .table-panel--tight}
+| Idea                                          | Date | Basis                                                       | Citation |
+| ---------------------------------------------- | ---- | ------------------------------------------------------------ | -------- |
+| **"You shall know a word by the company it keeps"** | 1957 | Distributional semantics | Firth, 1957 |
+| **Language is highly predictable from context**     | 1951 | Information theory | Shannon, 1951 |
+| **Words → numbers, meaning encoded geometrically**   | 2003 | First learned word embeddings | Bengio et al., 2003 |
+| **World knowledge lives in the weights**             | 1997 | RNN/LSTM predates Transformers by two decades | Hochreiter & Schmidhuber, 1997 |
 :::
 
 ```{=html}
 <div class="section-label section-label--lg">What Actually Surprised People</div>
 ```
 
-::: {.table-panel}
-| Milestone                   | Date    | Surprise                                                                                                                                                    |
-| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Chomsky's Universal Grammar | 1957/65 | Contested — is LLM success **evidence against innate grammar**, or just engineering that says nothing about linguistics? Live debate, not settled            |
-| AlexNet                     | 2012    | **Deep nets crush hand-crafted vision features** — the starting gun for the whole modern deep-learning wave                                                   |
-| Word2Vec                    | 2013    | **"You can do math with meaning"** (king − man + woman ≈ queen) — genuinely unanticipated linear structure                                                    |
-| Attention Is All You Need   | 2017    | **Recurrence isn't necessary at all** — attention alone works, and it parallelizes                                                                            |
-| GPT-2                       | 2019    | **Zero-shot <span class="crux-word">multitask</span> competence** — violated the field's _own_, just-established fine-tuning assumption                       |
-| GPT-3                       | 2020    | **Few-shot <span class="crux-word">in-context</span> learning** from a handful of examples, zero weight updates — nothing in the training objective predicted this |
-| Chain-of-Thought Prompting  | 2022    | **Step-by-step <span class="crux-word">reasoning</span> just appears** — an emergent capability that only shows up at scale, never explicitly trained for (Wei et al.; Kojima et al.) |
-| ReAct / Tool-Using Agents   | 2022–23 | **<span class="crux-word">Agentic</span> tool use emerges from prompting alone** — the same next-token predictor plans, calls tools, and self-corrects, no new architecture required (Yao et al.; Schick et al.) |
-| FunSearch                   | 2023    | **An LLM inside a <span class="crux-word">search loop</span> found new math** — not solving a known benchmark, a previously-unknown improvement to the cap set problem (Romera-Paredes et al., _Nature_) |
+::: {.table-panel .table-panel--tight}
+| Milestone                   | Date    | Surprise                                                                                                                                                    | Citation |
+| --------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| AlexNet                     | 2012    | **Deep nets crush hand-crafted vision features** — the starting gun for the whole modern deep-learning wave                                                   | Krizhevsky et al., 2012 |
+| Word2Vec                    | 2013    | **"You can do math with meaning"** (king − man + woman ≈ queen) — genuinely unanticipated linear structure                                                    | Mikolov et al., 2013 |
+| Attention Is All You Need   | 2017    | **Recurrence isn't necessary at all** — attention alone works, and it parallelizes                                                                            | Vaswani et al., 2017 |
+| GPT-2                       | 2019    | **Zero-shot <span class="crux-word">multitask</span> competence** — violated the field's _own_, just-established fine-tuning assumption                       | Radford et al., 2019 |
+| GPT-3                       | 2020    | **Few-shot <span class="crux-word">in-context</span> learning** from a handful of examples, zero weight updates — nothing in the training objective predicted this | Brown et al., 2020 |
+| Chain-of-Thought Prompting  | 2022    | **Step-by-step <span class="crux-word">reasoning</span> just appears** — an emergent capability that only shows up at scale, never explicitly trained for | Wei et al., 2022; Kojima et al., 2022 |
+| ReAct / Tool-Using Agents   | 2022–23 | **<span class="crux-word">Agentic</span> tool use emerges from prompting alone** — the same next-token predictor plans, calls tools, and self-corrects, no new architecture required | Yao et al., 2022; Schick et al., 2023 |
+| FunSearch                   | 2023    | **An LLM inside a <span class="crux-word">search loop</span> found new math** — not solving a known benchmark, a previously-unknown improvement to the cap set problem | Romera-Paredes et al., 2023, _Nature_ |
+| Scaling Laws → GPT-3/4      | 2020–23 | **That these models <span class="crux-word">work just so well</span>** — dozens of dependent steps (e.g., a graduate physics derivation) that should compound to failure, but the weights had already learned how they're correlated | — |
+:::
+
+```{=html}
+<div class="section-label section-label--lg">What Is Still Under Debate</div>
+```
+
+::: {.table-panel .table-panel--tight}
+| Question                    | Debate                                                                                                                                                    | Citation |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| Chomsky's Universal Grammar | Contested — **evidence against innate grammar**, or just engineering that says nothing about linguistics? | Chomsky, 1965 |
+| Reasoning, or just generalizing? | Chain-of-thought **looks like reasoning**, but the Reversal Curse shows failures a real reasoner never would — something stranger than either label | Berglund et al., 2023 |
+| Form, or meaning? | Bender & Koller's octopus: a system trained only on **form**, never the world, could talk convincingly without meaning anything by it | Bender & Koller, 2020 |
+| World model, or surface stats? | Othello-GPT found a genuine internal board-state model from move sequences alone — real evidence, but still just a toy domain | Li et al., 2022 |
 :::
 
 ```{=html}
 <template class="slide-citations-source">
   <ul>
+    <li>Firth: J.R. Firth, "A Synopsis of Linguistic Theory, 1930-1955," in <em>Studies in Linguistic Analysis</em> (1957) -- source of "you shall know a word by the company it keeps"</li>
+    <li>Shannon: C.E. Shannon, "Prediction and Entropy of Printed English," <em>Bell System Technical Journal</em>, 30(1), 50-64 (1951)</li>
+    <li>First learned word embeddings: Bengio et al., <a href="https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf" target="_blank" rel="noopener">"A Neural Probabilistic Language Model"</a>, <em>JMLR</em> 3 (2003)</li>
+    <li>LSTM: Hochreiter &amp; Schmidhuber, <a href="https://doi.org/10.1162/neco.1997.9.8.1735" target="_blank" rel="noopener">"Long Short-Term Memory"</a>, <em>Neural Computation</em>, 9(8) (1997)</li>
+    <li>AlexNet: Krizhevsky, Sutskever &amp; Hinton, <a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks" target="_blank" rel="noopener">"ImageNet Classification with Deep Convolutional Neural Networks"</a>, <em>NeurIPS</em> (2012)</li>
     <li>Word2Vec: Mikolov et al. (Google), <a href="https://arxiv.org/abs/1301.3781" target="_blank" rel="noopener">"Efficient Estimation of Word Representations in Vector Space"</a> (arXiv:1301.3781)</li>
     <li>Attention Is All You Need: Vaswani et al. (Google), <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">"Attention Is All You Need"</a> (arXiv:1706.03762)</li>
+    <li>GPT-2: Radford et al. (OpenAI), <a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">"Language Models are Unsupervised Multitask Learners"</a> (2019)</li>
+    <li>Scaling laws: Kaplan et al. (OpenAI), <a href="https://arxiv.org/abs/2001.08361" target="_blank" rel="noopener">"Scaling Laws for Neural Language Models"</a> (arXiv:2001.08361)</li>
     <li>GPT-3: Brown et al. (OpenAI), <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">"Language Models are Few-Shot Learners"</a> (arXiv:2005.14165)</li>
     <li>Chain-of-Thought prompting: Wei et al. (Google), <a href="https://arxiv.org/abs/2201.11903" target="_blank" rel="noopener">"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"</a> (arXiv:2201.11903)</li>
     <li>ReAct: Yao et al., <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">"ReAct: Synergizing Reasoning and Acting in Language Models"</a> (arXiv:2210.03629)</li>
     <li>Toolformer: Schick et al. (Meta), <a href="https://arxiv.org/abs/2302.04761" target="_blank" rel="noopener">"Toolformer: Language Models Can Teach Themselves to Use Tools"</a> (arXiv:2302.04761)</li>
     <li>FunSearch: Romera-Paredes et al. (Google DeepMind), <a href="https://www.nature.com/articles/s41586-023-06924-6" target="_blank" rel="noopener">"Mathematical discoveries from program search with large language models"</a>, <em>Nature</em> (2023)</li>
+    <li>Reversal Curse: Berglund et al., <a href="https://arxiv.org/abs/2309.12288" target="_blank" rel="noopener">"The Reversal Curse: LLMs trained on 'A is B' fail to learn 'B is A'"</a> (arXiv:2309.12288)</li>
+    <li>Octopus thought experiment: Bender &amp; Koller, <a href="https://aclanthology.org/2020.acl-main.463/" target="_blank" rel="noopener">"Climbing towards NLU: On Meaning, Form, and Understanding in the Age of Data"</a> (ACL 2020)</li>
+    <li>Othello-GPT: Li et al., <a href="https://arxiv.org/abs/2210.13382" target="_blank" rel="noopener">"Emergent World Representations: Exploring a Sequence Model Trained on a Synthetic Task"</a> (arXiv:2210.13382)</li>
+    <li>Chomsky's Universal Grammar: Noam Chomsky, <em>Aspects of the Theory of Syntax</em>, MIT Press (1965)</li>
   </ul>
 </template>
 ```
@@ -1113,9 +1225,6 @@ the human in the loop this slide is pointing at.
 ::: {.notes}
 Full detail per row, for questions:
 
-- **Chomsky**: LLM success is claimed by some (Hinton, Piantadosi) as evidence
-  against innateness; Chomsky/Grodzinsky reject this as engineering, not
-  science. Flag as genuinely unresolved, don't pick a side on stage.
 - **AlexNet**: vision, not language, but the shockwave hit everything.
 - **Word2Vec** (Mikolov et al.): "anomaly that contributed to a paradigm shift"
   — see the embeddings-illustration caveat from the earlier slide.
@@ -1123,7 +1232,83 @@ Full detail per row, for questions:
   it wasn't obviously the big deal it turned out to be, at first.
 - **GPT-2** ("Language Models are Unsupervised Multitask Learners"): arguably a
   paradigm shift on its own.
+- **Scaling laws → GPT-3/4** (new row): this is a deliberately different axis
+  from every other row here. The others are about a new *category* of
+  behavior appearing (multitask, in-context, reasoning, agentic, search-loop).
+  This one is about *density and precision* -- given a long, specific,
+  multi-constraint prompt, how reliably does the model satisfy all the
+  constraints at once, correctly? Kaplan's curves (2020) predicted the loss
+  number would keep falling smoothly, and that prediction held -- but nobody
+  had a theory connecting "lower cross-entropy" to "will nail a compound
+  physics question with shown work." That translation was invisible until it
+  had already happened; you don't know what a loss number means until you see
+  what it turns into. Dated 2020-23 rather than a single year because the
+  realization was retrospective and cumulative, not a single paper's result.
+  Deliberately NOT the "emergent abilities" framing (Wei et al.) -- that's
+  about whether capability curves are smooth or sharp, which is a separate,
+  contested question (see Schaeffer et al., "Are Emergent Abilities of LLMs a
+  Mirage?" if asked -- the counterargument that sharp jumps are partly a
+  metric-choice artifact on top of smooth underlying progress). This row is
+  making a narrower claim that doesn't depend on that dispute either way: even
+  granting fully smooth, non-mysterious underlying progress, nobody could read
+  that off a loss curve in advance.
+
+  If asked "doesn't a long derivation have to get every step right, and
+  wouldn't even 99%-per-step reliability compound to near-certain failure over
+  dozens of steps?" -- yes, that math is real, and it's *why* raw single-pass
+  next-token generation is not, in fact, fully reliable on hard multi-step
+  problems (this is a real, open weakness -- see the reliability-gap findings
+  on the "Progress, or a Plateau?" slide). The steps aren't independent coin
+  flips, though: they're draws from one joint distribution the weights
+  learned to concentrate on self-consistent, correct continuations (matching
+  units, matching earlier substitutions, respecting the constraints implied
+  by everything written so far) -- not the model getting lucky many times in
+  a row. That's also the actual mechanism behind chain-of-thought and
+  inference-time "thinking": externalizing steps so the model can check them
+  against that learned consistency structure, rather than trusting a single
+  hidden pass. None of this means it's solved -- it still fails a real
+  fraction of the hardest multi-step problems -- but the fact that it works
+  as often as it does, given how catastrophically compounding error *should*
+  behave, is itself the unexplained part.
+
+  Also worth being ready for: "wasn't it already known that factual world
+  knowledge lives in the weights?" -- yes, and deliberately not the claim
+  here (see the "World knowledge lives in the weights" row in the first
+  table -- Petroni et al.'s 2019 LAMA probing of BERT, and GPT-3's
+  closed-book QA results, both predate this and were read as confirmation,
+  not shock). A single stored fact is an independent lookup. A 20-step
+  derivation is 20 *dependent* decisions that all have to hold together --
+  categorically harder than recall, and not the thing 2019-era "knowledge in
+  the weights" findings were about.
 - **GPT-3** ("Language Models are Few-Shot Learners"): paradigm shift.
+
+New "What Is Still Under Debate" table -- these are open questions the talk
+should flag but not resolve, distinct from the surprises table above (which
+covers empirical events that already happened). Chomsky moved here from the
+surprises table since "is this evidence against innateness" isn't itself a
+surprising empirical result, it's an ongoing interpretive fight about one.
+
+- **Reasoning vs. generalizing**: don't present this as resolved in either
+  direction. The Reversal Curse is good concrete evidence that whatever's
+  happening isn't clean symbolic/compositional reasoning (Fodor & Pylyshyn's
+  1988 objection to connectionism generally, revived against LLMs by Gary
+  Marcus specifically) -- but "very good generalizer" undersells it too, since
+  the failures are oddly specific rather than a uniform degradation you'd
+  expect from pure pattern-matching. "Something stranger than either" is the
+  honest framing.
+- **Form vs. meaning (the octopus)**: deliberately kept separate from the
+  reasoning-vs-generalizing row even though they're adjacent. That row asks
+  "what's the internal mechanism" (empirical/functional). This one asks "even
+  granting a perfect mechanism, can a system with no sensorimotor contact with
+  the world ever be *about* anything" (semantic/philosophical, symbol
+  grounding). Different kind of claim, doesn't resolve by getting better
+  benchmark scores.
+- **World models vs. surface statistics**: included as the row where the two
+  debates above actually get empirical traction -- Othello-GPT is real evidence
+  of structure the model wasn't told to build, but it's a toy domain (a board
+  game with ~60 legal-move vocabulary), and it's genuinely open whether that
+  generalizes to messier real-world domains language actually describes.
+  Framed as suggestive, not conclusive, on purpose.
 :::
 
 ## How Do These Models Get Better? {.incremental .heading-accent}
@@ -1173,33 +1358,102 @@ question, two costumes. Build this as the connective thread across the talk
 rather than two disconnected asides.
 :::
 
-## Moore's Law, or a Plateau? {.smaller .heading-accent}
+## Progress, or a Plateau? {.smaller .heading-accent}
 
-Two very different historical patterns to bet the future on:
-
-- **Moore's Law** — ~50 years of compounding gains, no wall yet
-- **Compression / statistical sampling / symbolic AI** — fast early gains, then
-  a hard plateau
-
-Current evidence (from live tracking, as of this year):
-
-- METR's task-completion time-horizon doubling accelerated to ~3.5 months in
-  2024–25, but is drifting back toward its historical **~7-month** doubling rate
-- An inference-scaling study found only **+7.1 points over plain
-  chain-of-thought, and only at ~20x compute** — a lot of "self-improvement" is
-  buying small gains with a lot of compute, not finding something qualitatively
-  new
-- Real-world deployment (GDPval, enterprise benchmarks) shows a measured
-  **~37-point gap** between lab benchmark scores and production performance
-
-No existing scaling law points to unbounded growth without either a real
-architectural breakthrough or an emergent phenomenon nobody's predicted yet.
+```{=html}
+<div class="diagram-split-row">
+  <div class="diagram-split-visual" style="flex: 0 0 66%;">
+    {{< include images/metr-time-horizon.svg >}}
+  </div>
+  <div class="diagram-split-text">
+    <p>Two very different historical patterns to bet the future on:</p>
+    <ul>
+      <li><strong>Moore's Law</strong> — ~50 years of compounding gains, no wall yet</li>
+      <li><strong>Compression / statistical sampling / symbolic AI</strong> — fast early gains, then a hard plateau</li>
+    </ul>
+    <p>Current evidence (from live tracking, as of this year):</p>
+    <ul>
+      <li>METR's task-completion time-horizon doubling accelerated to ~3.5 months in 2024&ndash;25, but is drifting back toward its historical <strong>~7-month</strong> doubling rate</li>
+      <li>An inference-scaling study found only <strong>+7.1 points over plain chain-of-thought, and only at ~20x compute</strong> — a lot of "self-improvement" is buying small gains with a lot of compute, not finding something qualitatively new</li>
+      <li>Real-world deployment (GDPval, enterprise benchmarks) shows a measured <strong>~37-point gap</strong> between lab benchmark scores and production performance</li>
+    </ul>
+    <p>No existing scaling law points to unbounded growth without either a real architectural breakthrough or an emergent phenomenon nobody's predicted yet.</p>
+    <template class="slide-citations-source">
+      <ul>
+        <li>All 26 real data points (GPT-2 through Claude Mythos preview, Feb 2019&ndash;Apr 2026), across OpenAI, Anthropic, and Google: METR Time Horizon 1.1 live dataset, extracted directly from the JSON embedded in <a href="https://metr.org/time-horizons/" target="_blank" rel="noopener">metr.org/time-horizons</a> (the same data powering METR's own interactive chart) rather than a hand-picked subset; methodology in <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">"Measuring AI Ability to Complete Long Tasks"</a> (arXiv:2503.14499) and the <a href="https://metr.org/blog/2026-1-29-time-horizon-1-1/" target="_blank" rel="noopener">"Time Horizon 1.1"</a> report</li>
+        <li>Fitted trend line: my own least-squares regression (log2(minutes) vs. release date) across all 26 points, not a connect-the-dots line -- implied doubling time ~178 days, close to METR's own reported all-time figure (~188 days, per the same live dataset)</li>
+        <li>"Measurements above 16 hrs are unreliable": METR, same Time Horizon 1.1 report</li>
+        <li>AI 2027's Agent-0 through Agent-4 milestones (definitions shown on the chart, each on its own line): <a href="https://ai-2027.com/" target="_blank" rel="noopener">ai-2027.com</a> (Kokotajlo, Lifland, et al.) -- shown as reference points only, not connected by a trend line; exact task-horizon values for all five are not published as a data table, so their vertical placement is an approximate, illustrative reading of AI 2027's own published chart. Y-axis extended to 1 year to fit Agent-3/Agent-4; x-axis extended to 2030 to show where a possible data/compute wall might land</li>
+        <li>The accelerating (violet) curve and the two faded background lines (slower growth, fits-and-starts) are illustrative only, not sourced to anyone -- not a forecast, just alternative shapes worth having an opinion about. All three share one anchor: today's date, at the point where it meets the fitted trend line</li>
+        <li>Inference-scaling Pareto study cited in the 2607.07663 RSI survey (Wunderlich et al., ref 68)</li>
+        <li>Enterprise agentic benchmark-vs-production gap analysis, 2026 (GDPval)</li>
+      </ul>
+    </template>
+  </div>
+</div>
+```
 
 ::: {.notes}
-Sources: METR Time Horizon 1.1 (Jan 2026); inference-scaling Pareto
-study cited in the 2607.07663 RSI survey (Wunderlich et al., ref 68); enterprise
-agentic benchmark-vs-production gap analysis, 2026. All gathered/verified this
-research pass — see references/ folder.
+Master chart, deliberately dense -- combines several sources at different
+confidence levels. All 26 real METR measurements are shown as dots (colored
+by lab: grey OpenAI, teal Anthropic, blue Google), not connected point-to-
+point -- METR's own chart shows dots plus a *separately fitted* trend line,
+which is what the dashed teal line here actually is: my own least-squares
+regression across all 26 points, not a connect-the-dots line. That fit's
+implied doubling time (~178 days) lands close to METR's own reported
+all-time figure (~188 days) as a sanity check.
+
+A dashed vertical line marks today, at the exact point it crosses the fitted
+trend line -- the accelerating curve and both faded alternatives share that
+single anchor, rather than branching off different real data points (an
+earlier version had them starting from o3 and Mythos separately, which was
+inconsistent). Everything to the right of that line carries a very light
+background tint labeled "Future," instead of a "Today" line in the legend --
+the shading itself communicates that the region past today is speculative,
+so the legend no longer needs a separate entry to say so. AI 2027's Agent-0
+through Agent-4 are shown as amber reference points at their own scenario
+dates only -- there is no drawn AI 2027 trend line connecting them anymore
+(an earlier version connected today straight to Agent-2; removed per
+feedback that the milestones read better as standalone markers than as an
+implied trajectory). Agent-0 and Agent-1's dates (late 2025, early 2026) are
+already in the past relative to today, so they're dimmed; Agent-2/3/4 are
+still ahead. Definitions for all five are in a two-column box below the
+chart, one line per agent (an earlier version paired them two-to-a-line,
+which buried Agent-1 and Agent-3 mid-sentence). (Deliberately NOT labeled
+with the individual forecasters' names -- Daniel Kokotajlo's/Eli Lifland's
+separate "mode"/"median" trajectories from the original AI 2027 chart are
+dropped.) Solid violet is a genuinely accelerating/super-exponential curve
+(doubling time itself shrinking, not constant), same today-anchor. The
+y-axis runs to 1 year (up from 2 weeks) to fit Agent-3/Agent-4's much higher
+capability claims, and the x-axis now runs to 2030 (up from 2028) so the
+illustrative curves reach out to where a possible data/compute wall might
+land.
+
+The two faded background lines (slower/logarithmic, fits-and-starts) share
+that same today-anchor. Fits-and-starts is deliberately monotonic --
+alternating rising segments and flat plateaus, never dipping down -- because
+it represents the *frontier* (best available capability at each point in
+time), which by construction never regresses, not an individual noisy model;
+an earlier version used random noise that could dip, which was wrong. The
+earlier "hard plateau" line is gone entirely: these models keep getting
+better by some amount, a full flatline isn't a serious scenario worth
+showing. This whole illustrative-alternatives concept replaces the old
+separate "What Shape Is Progress?" slide, folded into this one chart instead
+of standing alone. The legend itself was trimmed this pass -- dropped
+"(real)" off the three lab entries, "(all 26 pts)" off the fitted-trend
+entry, "(Agent-0..4)" and the "dimmed = already in the past" aside off the
+AI 2027 entry (folded into "approx." instead), "(frontier only rises)" off
+fits-and-starts, and the "small dots = other real models" line entirely --
+all read as redundant once the chart itself already shows it.
+
+The hatched zone and "measurements above 16 hrs are unreliable" caption are
+METR's own stated methodology caveat, not my own commentary -- note Claude
+Mythos preview's own real measurement already falls inside it.
+
+Sources: METR Time Horizon 1.1 live dataset (Jan 2026); AI 2027 (ai-2027.com);
+inference-scaling Pareto study cited in the 2607.07663 RSI survey (Wunderlich
+et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
+2026. All gathered/verified this research pass — see references/ folder.
 :::
 
 ## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
