@@ -92,6 +92,30 @@ lines.append("- `aggregate.py` — merges everything above into `aggregated.json
              "time-horizon-style benchmarks, linear otherwise) and `aggregated_summary.csv` (one row "
              "per benchmark: point count, date range, score range, saturation flag).")
 lines.append("")
+lines.append("## What each benchmark measures")
+lines.append("")
+lines.append(
+    "One-sentence description per benchmark, grouped the same way as the "
+    "catalog below. Sourced from the per-cluster research notes "
+    "(`notes/*.md`) and, for the long-tail Epoch-hub-only benchmarks not "
+    "individually researched, from direct lookups against "
+    "`epoch.ai/benchmarks/<slug>` — see `descriptions.py` for the full "
+    "source dict."
+)
+lines.append("")
+
+for cat_name, slugs in CATEGORIES:
+    present = [s for s in slugs if s in data]
+    if not present:
+        continue
+    lines.append(f"**{cat_name}**")
+    lines.append("")
+    for slug in present:
+        b = data[slug]
+        desc = b.get("description", "")
+        lines.append(f"- **{b['display_name']}** — {desc}")
+    lines.append("")
+
 lines.append("## Benchmark catalog")
 lines.append("")
 
@@ -150,14 +174,38 @@ lines.append("- **Papers With Code** — effectively shut down (July 2025); no l
 lines.append("- **Hugging Face Open LLM Leaderboard** — archived/retired June 2024, citing benchmark "
              "saturation and compute cost as reasons — itself a small data point for this talk's thesis.")
 lines.append("")
-lines.append("## Benchmarks most commonly cited in 2025-2026 frontier model releases")
+lines.append("## Most popular benchmarks — what labs and leaderboards actually cite")
 lines.append("")
-lines.append("Per the aggregator research pass: GPQA Diamond, SWE-bench Verified/Pro, ARC-AGI-1/2, "
-             "Humanity's Last Exam, AIME, Terminal-Bench, and LMArena Elo recur across GPT-5.x, Claude "
-             "Opus 4.x/5, Gemini 3/3.1 Pro, and Grok 4/4.x release announcements. Labs report against a "
-             "shifting subset of ~5-7 benchmarks rather than one fixed suite, introducing new ones "
-             "(ARC-AGI-2, agentic/tool-use evals) as older ones saturate — itself indirect evidence for "
-             "the \"plateau vs. moved goalposts\" question this project is trying to answer.")
+lines.append("Recurring benchmarks that show up across OpenAI / Anthropic / Google DeepMind / xAI "
+             "release posts and system cards through 2026, with example cited scores:")
+lines.append("")
+lines.append("- **GPQA Diamond** — used by essentially every lab (Gemini 3 Pro: 91.9%; Gemini 3.1 Pro: "
+             "94.3%; Grok 4: 88%; part of GPT-5.5's eval suite).")
+lines.append("- **SWE-bench Verified** (and increasingly **SWE-bench Pro**) — the headline agentic-coding "
+             "number. Claude Opus 4.5 (Nov 2025) led with 80.9%, the first model over 80%; GPT-5.5 "
+             "reported 58.6% on SWE-bench Pro.")
+lines.append("- **ARC-AGI (v1 and v2)** — used as a \"genuine reasoning, not memorization\" flex. Grok 4: "
+             "66.6% (v1), 15.9% (v2); Claude Opus 4.5: 37.6% (v2); Gemini 3 Pro: 31.1% (v2); Gemini 3.1 "
+             "Pro: 77.1% (v2) — the fastest visible jump of any benchmark in this whole project.")
+lines.append("- **Humanity's Last Exam** — cited by xAI (Grok 4 Heavy: 44.4%) and one of the 9 components "
+             "in Artificial Analysis's Intelligence Index.")
+lines.append("- **AIME** (current-year math competition) — Gemini 3 Pro: 95% on AIME 2025; near-ceiling "
+             "performance across frontier models is itself a plateau/saturation signal.")
+lines.append("- **Terminal-Bench** — Claude Opus 4.5: 59.3% vs. Gemini 3 Pro 54.2% vs. GPT-5.1 47.6%.")
+lines.append("- **LMArena / Chatbot Arena Elo** — the human-preference cross-check every lab now cites "
+             "alongside static benchmarks (Gemini 3 Pro: \"tops LMArena at 1501 Elo\"; by Aug 2026, Claude "
+             "Opus 4.7/4.8 and Gemini 3.1 Pro sit above the historic 1500 barrier).")
+lines.append("- **Agentic/tool-use benchmarks** are the newest recurring category (Gemini 3.1 Pro: "
+             "BrowseComp 85.9%, τ2-bench Telecom 99.3%, MCP Atlas 69.2%) — reflects the 2025-2026 shift "
+             "from static Q&A toward long-horizon agent evaluation.")
+lines.append("")
+lines.append("**Pattern:** every major release leans on roughly the same 5-7 benchmark handful (GPQA "
+             "Diamond, SWE-bench, ARC-AGI, HLE, AIME, Terminal-Bench/agentic evals, LMArena Elo) rather "
+             "than one fixed universal suite — labs pick whichever subset makes their model look best, "
+             "and the specific agentic/tool-use benchmarks used change release to release as older ones "
+             "saturate. Labs introducing new evals (ARC-AGI-2 after v1 saturated, Terminal-Bench/agentic "
+             "benchmarks as coding benchmarks saturate) is itself indirect evidence for the "
+             "\"plateau vs. moved goalposts\" question this project is trying to answer.")
 lines.append("")
 lines.append("## Known data-quality caveats")
 lines.append("")

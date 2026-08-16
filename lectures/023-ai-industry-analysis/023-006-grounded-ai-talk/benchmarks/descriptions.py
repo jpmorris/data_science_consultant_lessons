@@ -1,0 +1,131 @@
+"""One-sentence "what it measures" description per benchmark slug.
+Sourced from notes/*.md (hand-researched cluster write-ups) and, for the
+Epoch-hub-only long-tail benchmarks not covered by a dedicated research
+pass, from direct lookups against epoch.ai/benchmarks/<slug> or standard
+NLP-benchmark knowledge. Kept short (one sentence) since this is reused
+verbatim in both the artifact cards and the README catalog.
+"""
+
+DESCRIPTIONS = {
+    # General knowledge / broad reasoning
+    "mmlu": "Multiple-choice knowledge across 57 subjects (humanities, STEM, social science, professional exams) — the field's original general-knowledge headline number.",
+    "mmlu-pro": "A harder, 10-choice, more reasoning-heavy successor to MMLU built specifically to un-saturate it.",
+    "big-bench-hard": "23 hand-picked \"hard\" tasks from BIG-Bench where earlier models scored below average human raters — multi-step logical/algorithmic/commonsense reasoning.",
+    "hellaswag": "Commonsense \"what happens next\" sentence completion, built via adversarial filtering against weaker models.",
+    "arc": "Grade-school multiple-choice science questions (Easy + Challenge splits) — NOT the same benchmark as ARC-AGI below, despite the shared name.",
+    "truthfulqa": "Whether a model avoids repeating common human misconceptions across 817 adversarially-written questions in 38 categories.",
+    "winogrande": "Large-scale, adversarially-filtered pronoun-resolution commonsense reasoning (a scaled-up Winograd Schema Challenge).",
+    "agieval": "Real human standardized exams — SAT, LSAT, math competitions, China's Gaokao, bar exams — used as an AI benchmark instead of a purpose-built eval set.",
+    "bool-q": "Naturally-occurring yes/no reading-comprehension questions paired with a supporting Wikipedia passage.",
+    "piqa": "Physical commonsense reasoning — choosing which of two ways to accomplish a everyday physical goal makes more sense.",
+    "lambada": "Predicting a passage's final word where broad discourse context (not just the last sentence) is required to get it right.",
+    "adversarial-nli": "Natural language inference (entailment/contradiction/neutral) on examples adversarially collected to fool existing models.",
+    "common-sense-qa-2": "True/false commonsense-knowledge statements, built adversarially via a human-vs-model \"gotcha\" collection game.",
+    "superglue": "A harder successor to GLUE bundling several difficult natural-language-understanding tasks into one suite.",
+    "science-qa": "Multimodal, multiple-choice science questions (often with images/diagrams) that also require a supporting explanation.",
+    "open-book-qa": "Elementary science questions answerable by combining a small set of provided core facts with commonsense reasoning.",
+
+    # Elite reasoning & math
+    "gpqa-diamond": "198 graduate-level, \"Google-proof\" science questions in biology, chemistry, and physics — skilled non-experts with internet access score only ~34%.",
+    "hle": "2,500 expert-vetted, frontier-difficulty questions across math, science, and humanities, explicitly designed to resist saturation for years.",
+    "simpleqa": "Short-answer factual recall (no retrieval/tools) on deliberately obscure-but-answerable trivia, graded correct/incorrect/not-attempted.",
+    "simpleqa-verified": "A de-duplicated, rebalanced, relabeled 1,000-question refinement of SimpleQA (Google DeepMind).",
+    "gsm8k": "Grade-school-level multi-step arithmetic word problems.",
+    "math": "12,500 competition-style math problems (AMC/AIME-sourced) across 7 subject areas and 5 difficulty levels.",
+    "aime": "Real yearly American Invitational Mathematics Examination problems, repurposed as a fresh, contamination-resistant-ish annual AI benchmark.",
+    "frontiermath": "Original, unpublished research-to-exploratory-level math problems written by professional mathematicians, all-or-nothing scored, no partial credit.",
+    "mathvista": "Mathematical reasoning that requires reading visual context — charts, geometry diagrams, figures — not just text.",
+    "omni-math": "4,428 olympiad-level competition math problems across 33+ sub-domains with human-annotated difficulty ratings.",
+    "imo": "The real International Mathematical Olympiad — AI systems opportunistically entered against the same problems as human competitors since 2024.",
+    "ioi": "The real International Olympiad in Informatics — a competitive-programming olympiad AI systems have been tested against since 2024.",
+    "otis-mock-aime-2024-2025": "Practice AIME-style contest problems (Olympiad Training and Inspiration Sessions) used as an additional fresh math-benchmark source.",
+    "critpt": "Graduate/research-level critical-thinking physics problems tracked on Epoch AI's benchmarking hub.",
+
+    # Code & software engineering
+    "humaneval": "164 hand-written Python programming problems, graded by functional correctness (pass@1) against hidden unit tests.",
+    "mbpp": "974 crowd-sourced, entry-level Python problems (description + reference solution + tests), graded pass@1.",
+    "swe-bench-verified": "Whether an agent can resolve real GitHub issues — generate a patch that passes the repo's actual hidden tests — on a 500-problem, human-filtered subset.",
+    "swe-bench-lite": "A smaller, cheaper-to-run 300-problem subset of the original SWE-bench.",
+    "swe-bench-multimodal": "SWE-bench extended to issues that involve screenshots, UI mockups, or diagrams.",
+    "swe-bench-pro": "A harder, 1,865-problem SWE-bench successor across 41 actively-maintained repos, designed to resist the contamination that hit the original.",
+    "livecodebench": "Competitive-programming-style coding problems continuously collected after each model's training cutoff, to reduce contamination.",
+    "livecodebench-elo": "A separate, Elo-scored competitive-programming variant of LiveCodeBench (\"LiveCodeBench Pro\") — not on the same scale as the pass@1 version.",
+    "codeforces-elo": "Model solutions submitted to real Codeforces-style competitive-programming judging, reported as a human-comparable Elo rating.",
+    "aider-polyglot": "225 Exercism coding exercises across 6 languages, scored inside Aider's real edit loop (including a second attempt after seeing failing tests) as a proxy for agentic coding-assistant quality.",
+    "scicode": "Code synthesis for real scientific-research problems across 16 natural-science subfields, with scientist-written gold solutions.",
+    "mirrorcode": "Reimplementing a real command-line program from scratch by observing only its input/output behavior, not its source code.",
+    "algotune": "Whether a model can optimize existing code to run measurably faster than a reference implementation while staying correct.",
+    "cursorbench": "Ambiguous, multi-file coding tasks pulled from real Cursor IDE sessions — comprehension, bug-finding, refactoring, review.",
+    "gso": "An Epoch-hub-tracked software/systems engineering benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "frontierswe": "An Epoch-hub-tracked frontier software-engineering benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "frontiercode": "An Epoch-hub-tracked frontier coding benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "webdev-arena": "Head-to-head human-preference voting on AI-generated web app/website builds, arena-style.",
+    "deepswe": "An Epoch-hub-tracked deep software-engineering-agent benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+
+    # Agentic, tool-use & computer-use
+    "gaia": "Real-world questions requiring reasoning, multimodal handling, web browsing, and tool use — easy for humans, hard for AI assistants.",
+    "webarena": "End-to-end task success across 812 long-horizon tasks on self-hosted, fully-functional websites (e-commerce, forums, GitLab, a CMS).",
+    "agentbench": "LLM-as-agent decision-making across 8 environments — OS, database, knowledge graph, card game, house-holding, web shopping/browsing.",
+    "tau-bench": "Tool-using dialogue agents in customer-service domains (retail, airline), graded on task completion AND compliance with the company's stated policy.",
+    "osworld": "Real, executable computer-use tasks (GUI + CLI) in genuine desktop OS environments, execution-graded against a 72%-scoring human baseline.",
+    "androidworld": "Autonomous control of real Android apps across 116 dynamically-parameterized tasks spanning 20 apps.",
+    "browsecomp": "Persistent, multi-hop web browsing to surface hard-to-find, entangled facts — designed to resist saturation by non-agentic models.",
+    "vending-bench": "Long-horizon coherence of an autonomous agent running a simulated vending-machine business over very long task sequences.",
+    "vending-bench-dollars": "Vending-Bench scored by mean simulated-dollar net worth the agent ends with.",
+    "vending-bench-percent": "A percent-scored variant/snapshot of Vending-Bench.",
+    "vending-bench-time": "A survival-time-scored variant/snapshot of Vending-Bench.",
+    "gdpval": "Real work-product tasks (documents, slides, CAD, audio/video) across 44 occupations, graded by blind pairwise comparison against a human expert's actual deliverable.",
+    "gdpval-elo": "A separate Elo-rescoring of GDPval by Artificial Analysis — not on the same scale as OpenAI's original % win-rate metric.",
+    "terminal-bench": "Agent competence in real shell/terminal environments on long-horizon, multi-step tasks including recovery from failed tool calls.",
+    "the-agent-company": "An Epoch-hub-tracked simulated-workplace agent benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "cybench": "Offensive-security capture-the-flag-style cybersecurity challenges used to benchmark agentic exploitation capability.",
+    "exploitbench": "Real-world software vulnerability exploitation tasks used to benchmark agentic offensive-security capability.",
+    "apex-agents": "An Epoch-hub-tracked general agentic-capability benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "deepresearchbench": "Evaluates AI \"deep research\" agents on producing well-sourced, comprehensive research reports from open-ended questions.",
+
+    # Long-horizon autonomy, AI R&D & RSI signal
+    "metr-time-horizon": "The length of task (in human-expert-equivalent hours) a model can complete autonomously with 50% success — METR's flagship autonomy-duration metric.",
+    "metr-cross-domain-time-horizon": "Re-derives the time-horizon doubling trend across ~9 other domains (math, science QA, coding, computer use, self-driving) to test whether it generalizes beyond software.",
+    "re-bench": "Head-to-head AI-agent-vs.-human-expert performance on 7 open-ended ML research-engineering tasks under matched time budgets.",
+    "mle-bench": "Real end-to-end ML engineering on 75 curated Kaggle competitions, scored by \"any-medal rate\" against the competition's actual leaderboard.",
+    "paperbench": "Whether an agent can replicate a real ICML Spotlight/Oral paper from scratch — understand it, write the code, run the experiments — against an author-reviewed rubric.",
+    "ai-scientist": "Fully autonomous research pipelines (hypothesize → experiment → write a paper), quality-scored by LLM-judge panels, not human peer review.",
+    "openai-ai-self-improvement-evals": "Can a model replicate real internal OpenAI engineering pull requests, or diagnose real unsolved internal research bottlenecks — a direct proxy for \"can it do an AI researcher's job.\"",
+    "posttrainbench": "An Epoch-hub-tracked post-training-capability benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+
+    # Multimodal & vision
+    "mmmu": "College-exam-level multimodal reasoning across 30 academic subjects, using real exam figures/diagrams that require expert subject knowledge to interpret.",
+    "mmbench": "Fine-grained multimodal ability across 20 categories, using a circular-evaluation protocol (answer choices rotated) to reduce lucky guessing.",
+    "chartqa": "Question answering over bar/line/pie charts, requiring both visual reading and arithmetic reasoning over the chart's data.",
+    "docvqa": "Question answering over scanned/photographed document images (forms, reports, invoices), requiring layout- and text-aware reading, not just OCR.",
+    "video-mme": "Multimodal understanding of video content across a wide range of durations and domains.",
+    "spatialviz-bench": "Spatial-visualization reasoning from visual input.",
+    "mindcube": "3D/spatial reasoning about objects and their relationships from visual input.",
+    "geobench": "Geography/geolocation reasoning from visual and/or textual clues.",
+
+    # ARC-AGI family
+    "arc-agi-1": "Novel visual-abstraction grid puzzles — infer a transformation rule from a few demonstration pairs and apply it to a held-out test grid, with almost no reliance on world knowledge.",
+    "arc-agi-2": "A harder ARC-AGI successor, curated specifically to defeat brute-force search solvers that had started clearing v1 without genuinely generalizing.",
+    "arc-agi-3": "Small interactive video-game-like environments an agent must explore, form a hypothesis about, and act in over multiple steps — a shift from static puzzles to interactive/embodied reasoning.",
+
+    # Games, puzzles & misc.
+    "chess-puzzles": "Best-next-move identification from chess positions (in FEN notation), judged against the Stockfish engine — a lightweight spatial-reasoning/planning probe.",
+    "mystery-game-puzzles": "Best-next-move identification in an undisclosed game's mid-game positions — the game's identity is kept secret specifically to block benchmark-specific preparation.",
+    "balrog": "Text-based game-playing across six environments of increasing difficulty, from simple grid tasks to complex dungeon exploration (NetHack).",
+    "surface-evolver-bench": "An Epoch-hub-tracked scientific-simulation benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "weirdml": "An Epoch-hub-tracked unconventional machine-learning-reasoning benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "forecastbench": "Whether a model can forecast the outcome of real, currently-unresolved future events as accurately as human forecasters.",
+    "fictionlivebench": "Long-context comprehension and consistency-tracking within long fictional narratives.",
+    "lech-mazur-writing": "Creative-writing quality, judged head-to-head via an LLM-judge tournament (Lech Mazur's ongoing creative-writing benchmark).",
+    "simplebench": "A small set of everyday-reasoning questions that are simple for humans but that language models tend to get wrong.",
+    "rli": "The Remote Labor Index — whether AI agents can complete real, economically valuable freelance work (dev, design, architecture, data, video) to a professional-acceptance standard.",
+    "cl-bench": "An Epoch-hub-tracked \"continual learning\"-flavored benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "cl-bench-life": "A \"life\"/everyday-tasks variant of CL-Bench (bulk-imported; no dedicated deep-dive in this research pass).",
+    "blueprint-bench-2": "Whether an agent can construct an accurate 2D floor plan of an apartment from a set of interior photographs, scored against the true room layout.",
+    "vpct": "An Epoch-hub-tracked visual/perceptual-consistency-testing benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "enigma-eval": "Puzzle-solving across a range of enigma-style logic/lateral-thinking challenges.",
+    "cad-eval": "Whether a model can produce correct computer-aided-design (CAD) outputs from a specification.",
+    "btf3": "An Epoch-hub-tracked benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "proofbench": "Formal or informal mathematical proof-writing/verification tasks.",
+    "gbaeval": "An Epoch-hub-tracked benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+}

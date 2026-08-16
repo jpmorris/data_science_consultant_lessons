@@ -29,6 +29,8 @@ from pathlib import Path
 
 import numpy as np
 
+from descriptions import DESCRIPTIONS
+
 BASE = Path(__file__).parent
 DATA = BASE / "data"
 EPOCH = DATA / "aggregator-epoch-benchmarking-hub"
@@ -386,6 +388,7 @@ for slug, rows in sorted(by_bench.items()):
     fam = unit_family(rows[-1]["score_unit"], rows[-1]["score"])
     out["benchmarks"][slug] = {
         "display_name": display_name(slug),
+        "description": DESCRIPTIONS.get(slug, ""),
         "unit_family": fam,
         "unit_label": rows[-1]["score_unit"],
         "points": [

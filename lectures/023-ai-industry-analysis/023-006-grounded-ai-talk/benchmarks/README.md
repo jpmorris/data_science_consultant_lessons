@@ -12,6 +12,105 @@ Research pass for the "AI Benchmarks" slide: as comprehensive an inventory as we
 - `notes/*.md` — per-cluster research writeups from each research agent: what each benchmark measures, data-quality caveats, and trend read (saturated vs. still climbing).
 - `aggregate.py` — merges everything above into `aggregated.json` (per-benchmark points plus a fitted trend curve: logistic for percent-scale benchmarks, exponential for time-horizon-style benchmarks, linear otherwise) and `aggregated_summary.csv` (one row per benchmark: point count, date range, score range, saturation flag).
 
+## What each benchmark measures
+
+One-sentence description per benchmark, grouped the same way as the catalog below. Sourced from the per-cluster research notes (`notes/*.md`) and, for the long-tail Epoch-hub-only benchmarks not individually researched, from direct lookups against `epoch.ai/benchmarks/<slug>` — see `descriptions.py` for the full source dict.
+
+**General knowledge / broad reasoning**
+
+- **MMLU** — Multiple-choice knowledge across 57 subjects (humanities, STEM, social science, professional exams) — the field's original general-knowledge headline number.
+- **MMLU-Pro** — A harder, 10-choice, more reasoning-heavy successor to MMLU built specifically to un-saturate it.
+- **Big Bench Hard** — 23 hand-picked "hard" tasks from BIG-Bench where earlier models scored below average human raters — multi-step logical/algorithmic/commonsense reasoning.
+- **Hellaswag** — Commonsense "what happens next" sentence completion, built via adversarial filtering against weaker models.
+- **ARC (AI2 Reasoning Challenge)** — Grade-school multiple-choice science questions (Easy + Challenge splits) — NOT the same benchmark as ARC-AGI below, despite the shared name.
+- **Truthfulqa** — Whether a model avoids repeating common human misconceptions across 817 adversarially-written questions in 38 categories.
+- **Winogrande** — Large-scale, adversarially-filtered pronoun-resolution commonsense reasoning (a scaled-up Winograd Schema Challenge).
+- **AGIEval** — Real human standardized exams — SAT, LSAT, math competitions, China's Gaokao, bar exams — used as an AI benchmark instead of a purpose-built eval set.
+- **BoolQ** — Naturally-occurring yes/no reading-comprehension questions paired with a supporting Wikipedia passage.
+- **PIQA** — Physical commonsense reasoning — choosing which of two ways to accomplish a everyday physical goal makes more sense.
+- **LAMBADA** — Predicting a passage's final word where broad discourse context (not just the last sentence) is required to get it right.
+- **Adversarial NLI** — Natural language inference (entailment/contradiction/neutral) on examples adversarially collected to fool existing models.
+- **CommonsenseQA 2.0** — True/false commonsense-knowledge statements, built adversarially via a human-vs-model "gotcha" collection game.
+- **SuperGLUE** — A harder successor to GLUE bundling several difficult natural-language-understanding tasks into one suite.
+- **ScienceQA** — Multimodal, multiple-choice science questions (often with images/diagrams) that also require a supporting explanation.
+
+**Elite reasoning & math**
+
+- **GPQA Diamond** — 198 graduate-level, "Google-proof" science questions in biology, chemistry, and physics — skilled non-experts with internet access score only ~34%.
+- **Humanity's Last Exam** — 2,500 expert-vetted, frontier-difficulty questions across math, science, and humanities, explicitly designed to resist saturation for years.
+- **SimpleQA** — Short-answer factual recall (no retrieval/tools) on deliberately obscure-but-answerable trivia, graded correct/incorrect/not-attempted.
+- **SimpleQA Verified** — A de-duplicated, rebalanced, relabeled 1,000-question refinement of SimpleQA (Google DeepMind).
+- **GSM8K** — Grade-school-level multi-step arithmetic word problems.
+- **Math** — 12,500 competition-style math problems (AMC/AIME-sourced) across 7 subject areas and 5 difficulty levels.
+- **AIME** — Real yearly American Invitational Mathematics Examination problems, repurposed as a fresh, contamination-resistant-ish annual AI benchmark.
+- **FrontierMath** — Original, unpublished research-to-exploratory-level math problems written by professional mathematicians, all-or-nothing scored, no partial credit.
+- **MathVista** — Mathematical reasoning that requires reading visual context — charts, geometry diagrams, figures — not just text.
+- **Omni-MATH** — 4,428 olympiad-level competition math problems across 33+ sub-domains with human-annotated difficulty ratings.
+- **IMO (Intl. Mathematical Olympiad)** — The real International Mathematical Olympiad — AI systems opportunistically entered against the same problems as human competitors since 2024.
+- **IOI (Intl. Olympiad in Informatics)** — The real International Olympiad in Informatics — a competitive-programming olympiad AI systems have been tested against since 2024.
+- **OTIS Mock AIME** — Practice AIME-style contest problems (Olympiad Training and Inspiration Sessions) used as an additional fresh math-benchmark source.
+
+**Code & software engineering**
+
+- **HumanEval** — 164 hand-written Python programming problems, graded by functional correctness (pass@1) against hidden unit tests.
+- **MBPP** — 974 crowd-sourced, entry-level Python problems (description + reference solution + tests), graded pass@1.
+- **SWE-bench Verified** — Whether an agent can resolve real GitHub issues — generate a patch that passes the repo's actual hidden tests — on a 500-problem, human-filtered subset.
+- **SWE-bench Lite** — A smaller, cheaper-to-run 300-problem subset of the original SWE-bench.
+- **SWE-bench Multimodal** — SWE-bench extended to issues that involve screenshots, UI mockups, or diagrams.
+- **SWE-bench Pro** — A harder, 1,865-problem SWE-bench successor across 41 actively-maintained repos, designed to resist the contamination that hit the original.
+- **LiveCodeBench** — Competitive-programming-style coding problems continuously collected after each model's training cutoff, to reduce contamination.
+- **LiveCodeBench Pro (Elo)** — A separate, Elo-scored competitive-programming variant of LiveCodeBench ("LiveCodeBench Pro") — not on the same scale as the pass@1 version.
+- **Codeforces (Elo)** — Model solutions submitted to real Codeforces-style competitive-programming judging, reported as a human-comparable Elo rating.
+- **Aider Polyglot** — 225 Exercism coding exercises across 6 languages, scored inside Aider's real edit loop (including a second attempt after seeing failing tests) as a proxy for agentic coding-assistant quality.
+- **SciCode** — Code synthesis for real scientific-research problems across 16 natural-science subfields, with scientist-written gold solutions.
+- **MirrorCode** — Reimplementing a real command-line program from scratch by observing only its input/output behavior, not its source code.
+- **AlgoTune** — Whether a model can optimize existing code to run measurably faster than a reference implementation while staying correct.
+- **CursorBench** — Ambiguous, multi-file coding tasks pulled from real Cursor IDE sessions — comprehension, bug-finding, refactoring, review.
+
+**Agentic, tool-use & computer-use**
+
+- **GAIA** — Real-world questions requiring reasoning, multimodal handling, web browsing, and tool use — easy for humans, hard for AI assistants.
+- **WebArena** — End-to-end task success across 812 long-horizon tasks on self-hosted, fully-functional websites (e-commerce, forums, GitLab, a CMS).
+- **AgentBench** — LLM-as-agent decision-making across 8 environments — OS, database, knowledge graph, card game, house-holding, web shopping/browsing.
+- **tau-bench** — Tool-using dialogue agents in customer-service domains (retail, airline), graded on task completion AND compliance with the company's stated policy.
+- **OSWorld** — Real, executable computer-use tasks (GUI + CLI) in genuine desktop OS environments, execution-graded against a 72%-scoring human baseline.
+- **AndroidWorld** — Autonomous control of real Android apps across 116 dynamically-parameterized tasks spanning 20 apps.
+- **BrowseComp** — Persistent, multi-hop web browsing to surface hard-to-find, entangled facts — designed to resist saturation by non-agentic models.
+- **Vending-Bench** — Long-horizon coherence of an autonomous agent running a simulated vending-machine business over very long task sequences.
+- **GDPval (real-world expert tasks)** — Real work-product tasks (documents, slides, CAD, audio/video) across 44 occupations, graded by blind pairwise comparison against a human expert's actual deliverable.
+- **GDPval (Elo, Artificial Analysis)** — A separate Elo-rescoring of GDPval by Artificial Analysis — not on the same scale as OpenAI's original % win-rate metric.
+- **Terminal Bench** — Agent competence in real shell/terminal environments on long-horizon, multi-step tasks including recovery from failed tool calls.
+
+**Long-horizon autonomy, AI R&D & "AI researcher" / RSI signal**
+
+- **METR Time Horizon** — The length of task (in human-expert-equivalent hours) a model can complete autonomously with 50% success — METR's flagship autonomy-duration metric.
+- **METR Cross-Domain Time Horizon** — Re-derives the time-horizon doubling trend across ~9 other domains (math, science QA, coding, computer use, self-driving) to test whether it generalizes beyond software.
+- **RE-Bench (METR)** — Head-to-head AI-agent-vs.-human-expert performance on 7 open-ended ML research-engineering tasks under matched time budgets.
+- **MLE-bench** — Real end-to-end ML engineering on 75 curated Kaggle competitions, scored by "any-medal rate" against the competition's actual leaderboard.
+- **Paperbench** — Whether an agent can replicate a real ICML Spotlight/Oral paper from scratch — understand it, write the code, run the experiments — against an author-reviewed rubric.
+- **AI Scientist (Sakana et al.)** — Fully autonomous research pipelines (hypothesize → experiment → write a paper), quality-scored by LLM-judge panels, not human peer review.
+- **OpenAI Self-Improvement Evals** — Can a model replicate real internal OpenAI engineering pull requests, or diagnose real unsolved internal research bottlenecks — a direct proxy for "can it do an AI researcher's job."
+
+**Multimodal & vision**
+
+- **MMMU** — College-exam-level multimodal reasoning across 30 academic subjects, using real exam figures/diagrams that require expert subject knowledge to interpret.
+- **MMBench** — Fine-grained multimodal ability across 20 categories, using a circular-evaluation protocol (answer choices rotated) to reduce lucky guessing.
+- **ChartQA** — Question answering over bar/line/pie charts, requiring both visual reading and arithmetic reasoning over the chart's data.
+- **DocVQA** — Question answering over scanned/photographed document images (forms, reports, invoices), requiring layout- and text-aware reading, not just OCR.
+
+**ARC-AGI family (interactive/abstraction reasoning)**
+
+- **ARC-AGI-1** — Novel visual-abstraction grid puzzles — infer a transformation rule from a few demonstration pairs and apply it to a held-out test grid, with almost no reliance on world knowledge.
+- **ARC-AGI-2** — A harder ARC-AGI successor, curated specifically to defeat brute-force search solvers that had started clearing v1 without genuinely generalizing.
+- **ARC-AGI-3** — Small interactive video-game-like environments an agent must explore, form a hypothesis about, and act in over multiple steps — a shift from static puzzles to interactive/embodied reasoning.
+
+**Games, puzzles & misc. Epoch-run evals**
+
+- **Chess Puzzles (Epoch)** — Best-next-move identification from chess positions (in FEN notation), judged against the Stockfish engine — a lightweight spatial-reasoning/planning probe.
+- **Mystery Game Puzzles (Epoch)** — Best-next-move identification in an undisclosed game's mid-game positions — the game's identity is kept secret specifically to block benchmark-specific preparation.
+- **RLI** — The Remote Labor Index — whether AI agents can complete real, economically valuable freelance work (dev, design, architecture, data, video) to a professional-acceptance standard.
+- **Blueprint Bench 2** — Whether an agent can construct an accurate 2D floor plan of an apartment from a set of interior photographs, scored against the true room layout.
+
 ## Benchmark catalog
 
 ### General knowledge / broad reasoning
@@ -146,9 +245,20 @@ See `notes/aggregators.md` for the full writeup. Summary:
 - **Papers With Code** — effectively shut down (July 2025); no longer a reliable current source, though old SOTA tables were useful for pre-2025 history.
 - **Hugging Face Open LLM Leaderboard** — archived/retired June 2024, citing benchmark saturation and compute cost as reasons — itself a small data point for this talk's thesis.
 
-## Benchmarks most commonly cited in 2025-2026 frontier model releases
+## Most popular benchmarks — what labs and leaderboards actually cite
 
-Per the aggregator research pass: GPQA Diamond, SWE-bench Verified/Pro, ARC-AGI-1/2, Humanity's Last Exam, AIME, Terminal-Bench, and LMArena Elo recur across GPT-5.x, Claude Opus 4.x/5, Gemini 3/3.1 Pro, and Grok 4/4.x release announcements. Labs report against a shifting subset of ~5-7 benchmarks rather than one fixed suite, introducing new ones (ARC-AGI-2, agentic/tool-use evals) as older ones saturate — itself indirect evidence for the "plateau vs. moved goalposts" question this project is trying to answer.
+Recurring benchmarks that show up across OpenAI / Anthropic / Google DeepMind / xAI release posts and system cards through 2026, with example cited scores:
+
+- **GPQA Diamond** — used by essentially every lab (Gemini 3 Pro: 91.9%; Gemini 3.1 Pro: 94.3%; Grok 4: 88%; part of GPT-5.5's eval suite).
+- **SWE-bench Verified** (and increasingly **SWE-bench Pro**) — the headline agentic-coding number. Claude Opus 4.5 (Nov 2025) led with 80.9%, the first model over 80%; GPT-5.5 reported 58.6% on SWE-bench Pro.
+- **ARC-AGI (v1 and v2)** — used as a "genuine reasoning, not memorization" flex. Grok 4: 66.6% (v1), 15.9% (v2); Claude Opus 4.5: 37.6% (v2); Gemini 3 Pro: 31.1% (v2); Gemini 3.1 Pro: 77.1% (v2) — the fastest visible jump of any benchmark in this whole project.
+- **Humanity's Last Exam** — cited by xAI (Grok 4 Heavy: 44.4%) and one of the 9 components in Artificial Analysis's Intelligence Index.
+- **AIME** (current-year math competition) — Gemini 3 Pro: 95% on AIME 2025; near-ceiling performance across frontier models is itself a plateau/saturation signal.
+- **Terminal-Bench** — Claude Opus 4.5: 59.3% vs. Gemini 3 Pro 54.2% vs. GPT-5.1 47.6%.
+- **LMArena / Chatbot Arena Elo** — the human-preference cross-check every lab now cites alongside static benchmarks (Gemini 3 Pro: "tops LMArena at 1501 Elo"; by Aug 2026, Claude Opus 4.7/4.8 and Gemini 3.1 Pro sit above the historic 1500 barrier).
+- **Agentic/tool-use benchmarks** are the newest recurring category (Gemini 3.1 Pro: BrowseComp 85.9%, τ2-bench Telecom 99.3%, MCP Atlas 69.2%) — reflects the 2025-2026 shift from static Q&A toward long-horizon agent evaluation.
+
+**Pattern:** every major release leans on roughly the same 5-7 benchmark handful (GPQA Diamond, SWE-bench, ARC-AGI, HLE, AIME, Terminal-Bench/agentic evals, LMArena Elo) rather than one fixed universal suite — labs pick whichever subset makes their model look best, and the specific agentic/tool-use benchmarks used change release to release as older ones saturate. Labs introducing new evals (ARC-AGI-2 after v1 saturated, Terminal-Bench/agentic benchmarks as coding benchmarks saturate) is itself indirect evidence for the "plateau vs. moved goalposts" question this project is trying to answer.
 
 ## Known data-quality caveats
 

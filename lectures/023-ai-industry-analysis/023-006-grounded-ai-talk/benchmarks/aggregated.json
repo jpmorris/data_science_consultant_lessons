@@ -3,6 +3,7 @@
  "benchmarks": {
   "adversarial-nli": {
    "display_name": "Adversarial NLI",
+   "description": "Natural language inference (entailment/contradiction/neutral) on examples adversarially collected to fool existing models.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -295,6 +296,7 @@
   },
   "agentbench": {
    "display_name": "AgentBench",
+   "description": "LLM-as-agent decision-making across 8 environments \u2014 OS, database, knowledge graph, card game, house-holding, web shopping/browsing.",
    "unit_family": "percent",
    "unit_label": "overall score (0-8 scale; avg across 8 environments)",
    "points": [
@@ -359,6 +361,7 @@
   },
   "agieval": {
    "display_name": "AGIEval",
+   "description": "Real human standardized exams \u2014 SAT, LSAT, math competitions, China's Gaokao, bar exams \u2014 used as an AI benchmark instead of a purpose-built eval set.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -579,6 +582,7 @@
   },
   "ai-scientist": {
    "display_name": "AI Scientist (Sakana et al.)",
+   "description": "Fully autonomous research pipelines (hypothesize \u2192 experiment \u2192 write a paper), quality-scored by LLM-judge panels, not human peer review.",
    "unit_family": "percent",
    "unit_label": "mean paper-quality score, 1-5 scale (LLM-judge synthesis of GPT-5.4/Gemini/Claude reviewers)",
    "points": [
@@ -799,6 +803,7 @@
   },
   "aider-polyglot": {
    "display_name": "Aider Polyglot",
+   "description": "225 Exercism coding exercises across 6 languages, scored inside Aider's real edit loop (including a second attempt after seeing failing tests) as a proxy for agentic coding-assistant quality.",
    "unit_family": "percent",
    "unit_label": "% correct (2nd attempt)",
    "points": [
@@ -1163,6 +1168,7 @@
   },
   "aime": {
    "display_name": "AIME",
+   "description": "Real yearly American Invitational Mathematics Examination problems, repurposed as a fresh, contamination-resistant-ish annual AI benchmark.",
    "unit_family": "percent",
    "unit_label": "percent (AIME 2025",
    "points": [
@@ -1407,6 +1413,7 @@
   },
   "algotune": {
    "display_name": "AlgoTune",
+   "description": "Whether a model can optimize existing code to run measurably faster than a reference implementation while staying correct.",
    "unit_family": "percent",
    "unit_label": "raw",
    "points": [
@@ -1723,6 +1730,7 @@
   },
   "androidworld": {
    "display_name": "AndroidWorld",
+   "description": "Autonomous control of real Android apps across 116 dynamically-parameterized tasks spanning 20 apps.",
    "unit_family": "percent",
    "unit_label": "% success rate pass@1 (AndroidWorld community leaderboard)",
    "points": [
@@ -2007,6 +2015,7 @@
   },
   "arc": {
    "display_name": "ARC (AI2 Reasoning Challenge)",
+   "description": "Grade-school multiple-choice science questions (Easy + Challenge splits) \u2014 NOT the same benchmark as ARC-AGI below, despite the shared name.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -2235,6 +2244,7 @@
   },
   "arc-agi-1": {
    "display_name": "ARC-AGI-1",
+   "description": "Novel visual-abstraction grid puzzles \u2014 infer a transformation rule from a few demonstration pairs and apply it to a held-out test grid, with almost no reliance on world knowledge.",
    "unit_family": "percent",
    "unit_label": "% correct (semi-private eval set)",
    "points": [
@@ -4551,6 +4561,7 @@
   },
   "arc-agi-2": {
    "display_name": "ARC-AGI-2",
+   "description": "A harder ARC-AGI successor, curated specifically to defeat brute-force search solvers that had started clearing v1 without genuinely generalizing.",
    "unit_family": "percent",
    "unit_label": "% correct (semi-private eval set)",
    "points": [
@@ -6763,6 +6774,7 @@
   },
   "arc-agi-3": {
    "display_name": "ARC-AGI-3",
+   "description": "Small interactive video-game-like environments an agent must explore, form a hypothesis about, and act in over multiple steps \u2014 a shift from static puzzles to interactive/embodied reasoning.",
    "unit_family": "percent",
    "unit_label": "% of public demo set solved (official ARC-AGI-3 leaderboard, bare model + minimal harness)",
    "points": [
@@ -7223,6 +7235,7 @@
   },
   "big-bench-hard": {
    "display_name": "Big Bench Hard",
+   "description": "23 hand-picked \"hard\" tasks from BIG-Bench where earlier models scored below average human raters \u2014 multi-step logical/algorithmic/commonsense reasoning.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -7475,6 +7488,7 @@
   },
   "blueprint-bench-2": {
    "display_name": "Blueprint Bench 2",
+   "description": "Whether an agent can construct an accurate 2D floor plan of an apartment from a set of interior photographs, scored against the true room layout.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -7815,6 +7829,7 @@
   },
   "bool-q": {
    "display_name": "BoolQ",
+   "description": "Naturally-occurring yes/no reading-comprehension questions paired with a supporting Wikipedia passage.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -8971,6 +8986,7 @@
   },
   "browsecomp": {
    "display_name": "BrowseComp",
+   "description": "Persistent, multi-hop web browsing to surface hard-to-find, entangled facts \u2014 designed to resist saturation by non-agentic models.",
    "unit_family": "percent",
    "unit_label": "% accuracy",
    "points": [
@@ -9223,6 +9239,7 @@
   },
   "chartqa": {
    "display_name": "ChartQA",
+   "description": "Question answering over bar/line/pie charts, requiring both visual reading and arithmetic reasoning over the chart's data.",
    "unit_family": "percent",
    "unit_label": "% relaxed accuracy (ChartQA test avg.)",
    "points": [
@@ -9483,6 +9500,7 @@
   },
   "chess-puzzles": {
    "display_name": "Chess Puzzles (Epoch)",
+   "description": "Best-next-move identification from chess positions (in FEN notation), judged against the Stockfish engine \u2014 a lightweight spatial-reasoning/planning probe.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -10943,6 +10961,7 @@
   },
   "codeforces-elo": {
    "display_name": "Codeforces (Elo)",
+   "description": "Model solutions submitted to real Codeforces-style competitive-programming judging, reported as a human-comparable Elo rating.",
    "unit_family": "elo",
    "unit_label": "Codeforces Elo",
    "points": [
@@ -11243,6 +11262,7 @@
   },
   "common-sense-qa-2": {
    "display_name": "CommonsenseQA 2.0",
+   "description": "True/false commonsense-knowledge statements, built adversarially via a human-vs-model \"gotcha\" collection game.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -11275,6 +11295,7 @@
   },
   "cursorbench": {
    "display_name": "CursorBench",
+   "description": "Ambiguous, multi-file coding tasks pulled from real Cursor IDE sessions \u2014 comprehension, bug-finding, refactoring, review.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -11695,6 +11716,7 @@
   },
   "docvqa": {
    "display_name": "DocVQA",
+   "description": "Question answering over scanned/photographed document images (forms, reports, invoices), requiring layout- and text-aware reading, not just OCR.",
    "unit_family": "percent",
    "unit_label": "ANLS score (DocVQA test)",
    "points": [
@@ -11955,6 +11977,7 @@
   },
   "frontiermath": {
    "display_name": "FrontierMath",
+   "description": "Original, unpublished research-to-exploratory-level math problems written by professional mathematicians, all-or-nothing scored, no partial credit.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -13535,6 +13558,7 @@
   },
   "gaia": {
    "display_name": "GAIA",
+   "description": "Real-world questions requiring reasoning, multimodal handling, web browsing, and tool use \u2014 easy for humans, hard for AI assistants.",
    "unit_family": "percent",
    "unit_label": "% accuracy",
    "points": [
@@ -13819,6 +13843,7 @@
   },
   "gdpval": {
    "display_name": "GDPval (real-world expert tasks)",
+   "description": "Real work-product tasks (documents, slides, CAD, audio/video) across 44 occupations, graded by blind pairwise comparison against a human expert's actual deliverable.",
    "unit_family": "percent",
    "unit_label": "% GDPval score (OpenAI-reported, launch comparison)",
    "points": [
@@ -14055,6 +14080,7 @@
   },
   "gdpval-elo": {
    "display_name": "GDPval (Elo, Artificial Analysis)",
+   "description": "A separate Elo-rescoring of GDPval by Artificial Analysis \u2014 not on the same scale as OpenAI's original % win-rate metric.",
    "unit_family": "elo",
    "unit_label": "Elo (Artificial Analysis GDPval-AA v2 leaderboard)",
    "points": [
@@ -14259,6 +14285,7 @@
   },
   "gpqa-diamond": {
    "display_name": "GPQA Diamond",
+   "description": "198 graduate-level, \"Google-proof\" science questions in biology, chemistry, and physics \u2014 skilled non-experts with internet access score only ~34%.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -16599,6 +16626,7 @@
   },
   "gsm8k": {
    "display_name": "GSM8K",
+   "description": "Grade-school-level multi-step arithmetic word problems.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -16819,6 +16847,7 @@
   },
   "hellaswag": {
    "display_name": "Hellaswag",
+   "description": "Commonsense \"what happens next\" sentence completion, built via adversarial filtering against weaker models.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -17031,6 +17060,7 @@
   },
   "hle": {
    "display_name": "Humanity's Last Exam",
+   "description": "2,500 expert-vetted, frontier-difficulty questions across math, science, and humanities, explicitly designed to resist saturation for years.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -17267,6 +17297,7 @@
   },
   "humaneval": {
    "display_name": "HumanEval",
+   "description": "164 hand-written Python programming problems, graded by functional correctness (pass@1) against hidden unit tests.",
    "unit_family": "percent",
    "unit_label": "pass@1 %",
    "points": [
@@ -17535,6 +17566,7 @@
   },
   "imo": {
    "display_name": "IMO (Intl. Mathematical Olympiad)",
+   "description": "The real International Mathematical Olympiad \u2014 AI systems opportunistically entered against the same problems as human competitors since 2024.",
    "unit_family": "percent",
    "unit_label": "points out of 42 (perfect score)",
    "points": [
@@ -17739,6 +17771,7 @@
   },
   "ioi": {
    "display_name": "IOI (Intl. Olympiad in Informatics)",
+   "description": "The real International Olympiad in Informatics \u2014 a competitive-programming olympiad AI systems have been tested against since 2024.",
    "unit_family": "percent",
    "unit_label": "percent score (aggregator's IOI scoring methodology)",
    "points": [
@@ -17771,6 +17804,7 @@
   },
   "lambada": {
    "display_name": "LAMBADA",
+   "description": "Predicting a passage's final word where broad discourse context (not just the last sentence) is required to get it right.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -18367,6 +18401,7 @@
   },
   "livecodebench": {
    "display_name": "LiveCodeBench",
+   "description": "Competitive-programming-style coding problems continuously collected after each model's training cutoff, to reduce contamination.",
    "unit_family": "percent",
    "unit_label": "pass@1 %",
    "points": [
@@ -18611,6 +18646,7 @@
   },
   "livecodebench-elo": {
    "display_name": "LiveCodeBench Pro (Elo)",
+   "description": "A separate, Elo-scored competitive-programming variant of LiveCodeBench (\"LiveCodeBench Pro\") \u2014 not on the same scale as the pass@1 version.",
    "unit_family": "elo",
    "unit_label": "Elo (LiveCodeBench Pro)",
    "points": [
@@ -18643,6 +18679,7 @@
   },
   "math": {
    "display_name": "Math",
+   "description": "12,500 competition-style math problems (AMC/AIME-sourced) across 7 subject areas and 5 difficulty levels.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -19727,6 +19764,7 @@
   },
   "mathvista": {
    "display_name": "MathVista",
+   "description": "Mathematical reasoning that requires reading visual context \u2014 charts, geometry diagrams, figures \u2014 not just text.",
    "unit_family": "percent",
    "unit_label": "percent accuracy (testmini)",
    "points": [
@@ -19971,6 +20009,7 @@
   },
   "mbpp": {
    "display_name": "MBPP",
+   "description": "974 crowd-sourced, entry-level Python problems (description + reference solution + tests), graded pass@1.",
    "unit_family": "percent",
    "unit_label": "pass@1 % (MBPP+)",
    "points": [
@@ -20255,6 +20294,7 @@
   },
   "metr-cross-domain-time-horizon": {
    "display_name": "METR Cross-Domain Time Horizon",
+   "description": "Re-derives the time-horizon doubling trend across ~9 other domains (math, science QA, coding, computer use, self-driving) to test whether it generalizes beyond software.",
    "unit_family": "time",
    "unit_label": "approx doubling time (months) of domain-specific time horizon ('~2 years')",
    "points": [
@@ -20295,6 +20335,7 @@
   },
   "metr-time-horizon": {
    "display_name": "METR Time Horizon",
+   "description": "The length of task (in human-expert-equivalent hours) a model can complete autonomously with 50% success \u2014 METR's flagship autonomy-duration metric.",
    "unit_family": "time",
    "unit_label": "hours (human-expert-equivalent task time, 50% success rate)",
    "points": [
@@ -20676,6 +20717,7 @@
   },
   "mirrorcode": {
    "display_name": "MirrorCode",
+   "description": "Reimplementing a real command-line program from scratch by observing only its input/output behavior, not its source code.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -20896,6 +20938,7 @@
   },
   "mle-bench": {
    "display_name": "MLE-bench",
+   "description": "Real end-to-end ML engineering on 75 curated Kaggle competitions, scored by \"any-medal rate\" against the competition's actual leaderboard.",
    "unit_family": "percent",
    "unit_label": "% (any-medal rate, MLE-bench 'All'/split75 comparable subset)",
    "points": [
@@ -21292,6 +21335,7 @@
   },
   "mmbench": {
    "display_name": "MMBench",
+   "description": "Fine-grained multimodal ability across 20 categories, using a circular-evaluation protocol (answer choices rotated) to reduce lucky guessing.",
    "unit_family": "percent",
    "unit_label": "% accuracy (MMBench-EN v1.1, test split, overall)",
    "points": [
@@ -22016,6 +22060,7 @@
   },
   "mmlu": {
    "display_name": "MMLU",
+   "description": "Multiple-choice knowledge across 57 subjects (humanities, STEM, social science, professional exams) \u2014 the field's original general-knowledge headline number.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -22268,6 +22313,7 @@
   },
   "mmlu-pro": {
    "display_name": "MMLU-Pro",
+   "description": "A harder, 10-choice, more reasoning-heavy successor to MMLU built specifically to un-saturate it.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -22536,6 +22582,7 @@
   },
   "mmmu": {
    "display_name": "MMMU",
+   "description": "College-exam-level multimodal reasoning across 30 academic subjects, using real exam figures/diagrams that require expert subject knowledge to interpret.",
    "unit_family": "percent",
    "unit_label": "% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",
    "points": [
@@ -23340,6 +23387,7 @@
   },
   "mystery-game-puzzles": {
    "display_name": "Mystery Game Puzzles (Epoch)",
+   "description": "Best-next-move identification in an undisclosed game's mid-game positions \u2014 the game's identity is kept secret specifically to block benchmark-specific preparation.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -23936,6 +23984,7 @@
   },
   "omni-math": {
    "display_name": "Omni-MATH",
+   "description": "4,428 olympiad-level competition math problems across 33+ sub-domains with human-annotated difficulty ratings.",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
@@ -24172,6 +24221,7 @@
   },
   "openai-ai-self-improvement-evals": {
    "display_name": "OpenAI Self-Improvement Evals",
+   "description": "Can a model replicate real internal OpenAI engineering pull requests, or diagnose real unsolved internal research bottlenecks \u2014 a direct proxy for \"can it do an AI researcher's job.\"",
    "unit_family": "percent",
    "unit_label": "% pass@1 (OpenAI-Proof Q&A)",
    "points": [
@@ -24244,6 +24294,7 @@
   },
   "osworld": {
    "display_name": "OSWorld",
+   "description": "Real, executable computer-use tasks (GUI + CLI) in genuine desktop OS environments, execution-graded against a 72%-scoring human baseline.",
    "unit_family": "percent",
    "unit_label": "% success rate (OSWorld-Verified, best step-budget run)",
    "points": [
@@ -24744,6 +24795,7 @@
   },
   "otis-mock-aime-2024-2025": {
    "display_name": "OTIS Mock AIME",
+   "description": "Practice AIME-style contest problems (Olympiad Training and Inspiration Sessions) used as an additional fresh math-benchmark source.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -26820,6 +26872,7 @@
   },
   "paperbench": {
    "display_name": "Paperbench",
+   "description": "Whether an agent can replicate a real ICML Spotlight/Oral paper from scratch \u2014 understand it, write the code, run the experiments \u2014 against an author-reviewed rubric.",
    "unit_family": "percent",
    "unit_label": "% PaperBench replication score",
    "points": [
@@ -27088,6 +27141,7 @@
   },
   "piqa": {
    "display_name": "PIQA",
+   "description": "Physical commonsense reasoning \u2014 choosing which of two ways to accomplish a everyday physical goal makes more sense.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -28156,6 +28210,7 @@
   },
   "re-bench": {
    "display_name": "RE-Bench (METR)",
+   "description": "Head-to-head AI-agent-vs.-human-expert performance on 7 open-ended ML research-engineering tasks under matched time budgets.",
    "unit_family": "time",
    "unit_label": "normalized score (0=starting solution, 1=reference solution), 8-hour budget",
    "points": [
@@ -28196,6 +28251,7 @@
   },
   "rli": {
    "display_name": "RLI",
+   "description": "The Remote Labor Index \u2014 whether AI agents can complete real, economically valuable freelance work (dev, design, architecture, data, video) to a professional-acceptance standard.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -28464,6 +28520,7 @@
   },
   "scicode": {
    "display_name": "SciCode",
+   "description": "Code synthesis for real scientific-research problems across 16 natural-science subfields, with scientist-written gold solutions.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -29716,6 +29773,7 @@
   },
   "science-qa": {
    "display_name": "ScienceQA",
+   "description": "Multimodal, multiple-choice science questions (often with images/diagrams) that also require a supporting explanation.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -30096,6 +30154,7 @@
   },
   "simpleqa": {
    "display_name": "SimpleQA",
+   "description": "Short-answer factual recall (no retrieval/tools) on deliberately obscure-but-answerable trivia, graded correct/incorrect/not-attempted.",
    "unit_family": "percent",
    "unit_label": "percent correct",
    "points": [
@@ -30324,6 +30383,7 @@
   },
   "simpleqa-verified": {
    "display_name": "SimpleQA Verified",
+   "description": "A de-duplicated, rebalanced, relabeled 1,000-question refinement of SimpleQA (Google DeepMind).",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -31176,6 +31236,7 @@
   },
   "superglue": {
    "display_name": "SuperGLUE",
+   "description": "A harder successor to GLUE bundling several difficult natural-language-understanding tasks into one suite.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -31192,6 +31253,7 @@
   },
   "swe-bench-lite": {
    "display_name": "SWE-bench Lite",
+   "description": "A smaller, cheaper-to-run 300-problem subset of the original SWE-bench.",
    "unit_family": "percent",
    "unit_label": "% resolved",
    "points": [
@@ -31208,6 +31270,7 @@
   },
   "swe-bench-multimodal": {
    "display_name": "SWE-bench Multimodal",
+   "description": "SWE-bench extended to issues that involve screenshots, UI mockups, or diagrams.",
    "unit_family": "percent",
    "unit_label": "% resolved",
    "points": [
@@ -31224,6 +31287,7 @@
   },
   "swe-bench-pro": {
    "display_name": "SWE-bench Pro",
+   "description": "A harder, 1,865-problem SWE-bench successor across 41 actively-maintained repos, designed to resist the contamination that hit the original.",
    "unit_family": "percent",
    "unit_label": "% resolved",
    "points": [
@@ -31444,6 +31508,7 @@
   },
   "swe-bench-verified": {
    "display_name": "SWE-bench Verified",
+   "description": "Whether an agent can resolve real GitHub issues \u2014 generate a patch that passes the repo's actual hidden tests \u2014 on a 500-problem, human-filtered subset.",
    "unit_family": "percent",
    "unit_label": "percent",
    "points": [
@@ -32048,6 +32113,7 @@
   },
   "tau-bench": {
    "display_name": "tau-bench",
+   "description": "Tool-using dialogue agents in customer-service domains (retail, airline), graded on task completion AND compliance with the company's stated policy.",
    "unit_family": "percent",
    "unit_label": "pass^1 % (airline domain)",
    "points": [
@@ -32308,6 +32374,7 @@
   },
   "terminal-bench": {
    "display_name": "Terminal Bench",
+   "description": "Agent competence in real shell/terminal environments on long-horizon, multi-step tasks including recovery from failed tool calls.",
    "unit_family": "percent",
    "unit_label": "% (Terminal-Bench 2.0)",
    "points": [
@@ -32560,6 +32627,7 @@
   },
   "truthfulqa": {
    "display_name": "Truthfulqa",
+   "description": "Whether a model avoids repeating common human misconceptions across 817 adversarially-written questions in 38 categories.",
    "unit_family": "percent",
    "unit_label": "percent accuracy (MC)",
    "points": [
@@ -32780,6 +32848,7 @@
   },
   "vending-bench": {
    "display_name": "Vending-Bench",
+   "description": "Long-horizon coherence of an autonomous agent running a simulated vending-machine business over very long task sequences.",
    "unit_family": "raw",
    "unit_label": "raw",
    "points": [
@@ -33384,6 +33453,7 @@
   },
   "vending-bench-dollars": {
    "display_name": "Vending-Bench ($ balance)",
+   "description": "Vending-Bench scored by mean simulated-dollar net worth the agent ends with.",
    "unit_family": "dollars",
    "unit_label": "mean final balance in simulated $ (5 runs; Vending-Bench 2)",
    "points": [
@@ -33620,6 +33690,7 @@
   },
   "vending-bench-percent": {
    "display_name": "Vending-Bench (%)",
+   "description": "A percent-scored variant/snapshot of Vending-Bench.",
    "unit_family": "percent",
    "unit_label": "raw",
    "points": [
@@ -33652,6 +33723,7 @@
   },
   "vending-bench-time": {
    "display_name": "Vending-Bench (survival time)",
+   "description": "A survival-time-scored variant/snapshot of Vending-Bench.",
    "unit_family": "time",
    "unit_label": "mean net worth in simulated $ (single 5-hour run; Vending-Bench 1)",
    "points": [
@@ -33668,6 +33740,7 @@
   },
   "webarena": {
    "display_name": "WebArena",
+   "description": "End-to-end task success across 812 long-horizon tasks on self-hosted, fully-functional websites (e-commerce, forums, GitLab, a CMS).",
    "unit_family": "percent",
    "unit_label": "% success rate",
    "points": [
@@ -33692,6 +33765,7 @@
   },
   "winogrande": {
    "display_name": "Winogrande",
+   "description": "Large-scale, adversarially-filtered pronoun-resolution commonsense reasoning (a scaled-up Winograd Schema Challenge).",
    "unit_family": "percent",
    "unit_label": "percent accuracy",
    "points": [
