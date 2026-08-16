@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2023-03,GPT-4 (ARC-Challenge),96.3,percent accuracy,https://cdn.openai.com/papers/gpt-4.pdf,"25-shot. This is the AI2 Reasoning Challenge (allenai.org/data/arc, grade-school science QA) — DIFFERENT from ARC-AGI (Chollet's Abstraction and Reasoning Corpus at arcprize.org), which is covered separately"
+2024-07,LLaMA-3.1-405B Base (ARC-Challenge),95.3,percent accuracy,https://arxiv.org/html/2412.19437v1,"25-shot EM, as reported in DeepSeek-V3 technical report's comparison table; matched DeepSeek-V3's own score"
+2024-07,LLaMA-3.1-405B Base (ARC-Easy),98.4,percent accuracy,https://arxiv.org/html/2412.19437v1,"25-shot EM, ARC-Easy subset, from DeepSeek-V3 report comparison table"
+2024-09,Qwen2.5-72B Base (ARC-Challenge),94.5,percent accuracy,https://arxiv.org/html/2412.19437v1,"25-shot EM, from DeepSeek-V3 report comparison table"
+2024-09,Qwen2.5-72B Base (ARC-Easy),98.4,percent accuracy,https://arxiv.org/html/2412.19437v1,"25-shot EM, ARC-Easy subset, from DeepSeek-V3 report comparison table"
+2024-12-26,DeepSeek-V3 Base (ARC-Challenge),95.3,percent accuracy,https://arxiv.org/html/2412.19437v1,25-shot EM
+2024-12-26,DeepSeek-V3 Base (ARC-Easy),98.9,percent accuracy,https://arxiv.org/html/2412.19437v1,"25-shot EM, ARC-Easy subset; highest of the models compared in this report"

@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2021,GPT-3 (few-shot, no fine-tuning),6.9,percent accuracy,https://bounded-regret.ghost.io/forecasting-math-and-mmlu-in-2023/,Original Hendrycks et al. MATH paper era baseline, cited by Jacob Steinhardt's forecasting post
+2022-01,PaLM 540B,8.8,percent accuracy,https://bounded-regret.ghost.io/forecasting-math-and-mmlu-in-2023/,PaLM paper MATH result (few-shot, no calculator)
+2022-06,Minerva 540B,33.6,percent accuracy,https://bounded-regret.ghost.io/forecasting-math-and-mmlu-in-2023/,"Minerva paper; 8B scored 14.1%, 62B scored 27.6%, 540B scored 33.6%"
+2023-03,GPT-3.5-Turbo,34.1,percent accuracy,https://bounded-regret.ghost.io/forecasting-math-and-mmlu-in-2023/,GPT-Fathom / comparative benchmarking writeups
+2023-03,GPT-4,42.5,percent accuracy,https://bounded-regret.ghost.io/forecasting-math-and-mmlu-in-2023/,GPT-4 technical report era result, largely surpassing Minerva
+2024-05,GPT-4o,76.6,percent accuracy,https://community.openai.com/t/education-level-interpretation-of-gpt-4os-benchmarks/763947,OpenAI-reported GPT-4o MATH score cited in community discussion of official benchmarks
+2024-09,OpenAI o1,94.8,percent accuracy (pass@1),https://www.nextbigfuture.com/2024/09/openai-o1-model-sets-new-math-and-complex-reasoning-records.html,o1 launch benchmark reporting, competition-level 12,500-problem MATH set

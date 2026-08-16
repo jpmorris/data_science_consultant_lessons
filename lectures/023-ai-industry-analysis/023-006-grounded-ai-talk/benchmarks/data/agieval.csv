@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2023-07,LLaMA2 7B,22.8,percent accuracy,https://arxiv.org/pdf/2401.02954,"Cited in DeepSeek LLM paper's comparison table; kept as pre-2024 anchor since AGIEval (2023) has few 2024+ data points from frontier labs"
+2023-07,LLaMA2 70B,37.2,percent accuracy,https://arxiv.org/pdf/2401.02954,Same comparison table
+2023-11,DeepSeek 67B Base,41.3,percent accuracy,https://arxiv.org/pdf/2401.02954,Original DeepSeek LLM paper
+2023-11,DeepSeek 67B Chat,46.4,percent accuracy,https://arxiv.org/pdf/2401.02954,"Same paper; note DeepSeek 7B actually DROPPED after chat-tuning (26.4 base -> 19.3 chat), an early example of instruction-tuning sometimes hurting this particular eval"
+2026-07,Gemini 3.1 Pro Preview,94.0,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/agieval-en,"AGIEval English leaderboard, current #1 as of July 2026. Average across the 136 models tracked was only 79.7% (stdev 13.2) — unlike HellaSwag/ARC/Winogrande, AGIEval still shows meaningful spread even near the top, i.e. it has not fully saturated"
+2026-08,DeepSeek V3.2 Exp,90.1,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/agieval-zh,"AGIEval Chinese leaderboard (separate language track of the same benchmark family), current #1 as of Aug 2026. Average across 23 tracked models was 78.7% (stdev 10.3)"

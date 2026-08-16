@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2023-03,GPT-4,87.5,percent accuracy,https://cdn.openai.com/papers/gpt-4.pdf,5-shot
+2024-05,DeepSeek-V2-Base,86.3,percent accuracy,https://arxiv.org/html/2412.19437v1,"5-shot; cited retrospectively in the DeepSeek-V3 technical report's comparison table (Table 3)"
+2024-07,LLaMA-3.1-405B Base,85.2,percent accuracy,https://arxiv.org/html/2412.19437v1,"5-shot; from DeepSeek-V3 report comparison table"
+2024-09,Qwen2.5-72B Base,82.3,percent accuracy,https://arxiv.org/html/2412.19437v1,"5-shot; from DeepSeek-V3 report comparison table"
+2024-12-26,DeepSeek-V3-Base,84.9,percent accuracy,https://arxiv.org/html/2412.19437v1,5-shot

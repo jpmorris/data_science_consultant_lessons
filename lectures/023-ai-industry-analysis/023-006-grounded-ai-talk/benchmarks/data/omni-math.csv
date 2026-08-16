@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2024-10-11,InternLM2-MATH-mixtral8x22B,14.24,percent accuracy,https://arxiv.org/html/2410.07985v2,Omni-MATH paper Table 3, vanilla (non-test-time-scaled) models
+2024-10-11,DeepSeekMATH-7b-RL,16.12,percent accuracy,https://arxiv.org/html/2410.07985v2,Omni-MATH paper Table 3
+2024-10-11,Claude-3.5-Sonnet,26.23,percent accuracy,https://arxiv.org/html/2410.07985v2,Omni-MATH paper Table 3
+2024-10-11,GPT-4o,30.49,percent accuracy,https://arxiv.org/html/2410.07985v2,Omni-MATH paper Table 3
+2024-10-11,Qwen2.5-MATH-72B-Instruct,36.20,percent accuracy,https://arxiv.org/html/2410.07985v2,Omni-MATH paper Table 3; best vanilla (non-test-time-scaled) model
+2024-10-11,OpenAI o1-preview,52.55,percent accuracy,https://arxiv.org/html/2410.07985v2,Omni-MATH paper Table 3, test-time-scaled models category
+2024-10-11,OpenAI o1-mini,60.54,percent accuracy,https://arxiv.org/html/2410.07985v2,"Omni-MATH paper Table 3; top score at paper publication (Oct 2024). Paper notes accuracy drops to 48.56% on problems rated above difficulty level 5/10"
+2025,Phi-4-reasoning-plus,81.9,percent accuracy,https://llm-stats.com/benchmarks/omnimath,"llm-stats.com OmniMath leaderboard snapshot; reported as leading score in a later aggregator snapshot, illustrating substantial progress since the Oct 2024 paper baseline of ~60%"

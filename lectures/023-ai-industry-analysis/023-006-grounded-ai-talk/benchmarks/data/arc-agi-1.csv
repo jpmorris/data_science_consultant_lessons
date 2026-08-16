@@ -1,0 +1,81 @@
+date,model,score,score_unit,source_url,notes
+2019-11-05,Human Panel,98.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Human; $17/task avg cost
+2023-11-03,Icecuber,17.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: ARC Prize 2024; $0.2/task avg cost
+2024-09-12,o1-mini,14.0,% correct (semi-private eval set),https://openai.com/index/openai-o1-mini-advancing-cost-efficient-reasoning/,provider/source group: OpenAI; $0.135/task avg cost
+2024-11-03,ARChitects,56.0,% correct (semi-private eval set),https://github.com/da-fr/arc-prize-2024/blob/main/the_architects.pdf,provider/source group: ARC Prize 2024; $0.2/task avg cost
+2024-11-20,GPT-4o,4.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.05/task avg cost
+2024-12-20,"o3 (Preview, High-compute)",87.5,% correct (semi-private eval set),https://arcprize.org/blog/oai-o3-pub-breakthrough,"High-compute config: 1,024 samples, $456,000 total / $4,560 per task -- 172x the low-compute run's compute. Exceeded the ARC-AGI-Pub $10k cost cap so did not count for the public leaderboard; reported by OpenAI/ARC Prize as a research result alongside the $2,680-total ($26/task) low-compute 75.7% score that did qualify."
+2024-12-20,"o3 (Preview, Low)",75.7,% correct (semi-private eval set),https://arcprize.org/blog/oai-o3-pub-breakthrough,provider/source group: OpenAI; $200/task avg cost
+2025-01-22,Deepseek R1,15.8,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: DeepSeek; $0.06/task avg cost
+2025-01-31,o3-mini (High),34.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.3989/task avg cost
+2025-02-19,Grok 3,5.5,% correct (semi-private eval set),https://x.ai/api#capabilities,provider/source group: xAI; $0.0931/task avg cost
+2025-02-19,Grok 3 Mini (Low),16.5,% correct (semi-private eval set),https://x.ai/api#capabilities,provider/source group: xAI; $0.0099/task avg cost
+2025-02-19,Gemini 2.5 Pro (Preview),33.0,% correct (semi-private eval set),https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/,provider/source group: Google; $0.5694/task avg cost
+2025-02-24,Claude 3.7 (16K),28.6,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $0.33/task avg cost
+2025-02-27,GPT-4.5,10.3,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.29/task avg cost
+2025-04-05,Llama 4 Maverick,4.38,% correct (semi-private eval set),https://www.llama.com/docs/model-cards-and-prompt-formats/llama4_omni/,provider/source group: Meta; $0.0078/task avg cost
+2025-04-14,GPT-4.1,5.5,% correct (semi-private eval set),https://openai.com/index/gpt-4-1/,provider/source group: OpenAI; $0.039/task avg cost
+2025-04-16,o3 (High),60.83,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.5002/task avg cost
+2025-04-16,o4-mini (High),58.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.4058/task avg cost
+2025-05-14,Claude Sonnet 4 (Thinking 16K),40.0,% correct (semi-private eval set),https://www.anthropic.com/news/claude-4,provider/source group: Anthropic; $0.3658/task avg cost
+2025-05-14,Claude Opus 4 (Thinking 16K),35.67,% correct (semi-private eval set),https://www.anthropic.com/news/claude-4,provider/source group: Anthropic; $1.2496/task avg cost
+2025-05-20,Gemini 2.5 Flash (Preview),33.33,% correct (semi-private eval set),https://deepmind.google/models/gemini/flash/,provider/source group: Google; $0.0371/task avg cost
+2025-05-23,Codex Mini (Latest),27.33,% correct (semi-private eval set),https://platform.openai.com/docs/models/codex-mini-latest,provider/source group: OpenAI; $0.1597/task avg cost
+2025-05-28,Deepseek R1 (05/28),21.21,% correct (semi-private eval set),https://api-docs.deepseek.com/news/news250528,provider/source group: DeepSeek; $0.0464/task avg cost
+2025-06-10,o3-Pro (High),59.33,% correct (semi-private eval set),https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/,provider/source group: OpenAI; $4.16/task avg cost
+2025-06-10,Magistral Small,5.0,% correct (semi-private eval set),https://mistral.ai/news/magistral,provider/source group: Mistral; $0.0399/task avg cost
+2025-06-10,Magistral Medium (Thinking),6.12,% correct (semi-private eval set),https://mistral.ai/news/magistral,provider/source group: Mistral; $0.0989/task avg cost
+2025-06-17,Gemini 2.5 Pro (Thinking 16K),41.0,% correct (semi-private eval set),https://cloud.google.com/blog/products/ai-machine-learning/gemini-2-5-flash-lite-flash-pro-ga-vertex-ai,provider/source group: Google; $0.4839/task avg cost
+2025-07-09,Grok 4 (Thinking),66.67,% correct (semi-private eval set),https://x.ai/news,provider/source group: xAI; $1.0136/task avg cost
+2025-07-25,Qwen3-235b-a22b Instruct (25/07),11.0,% correct (semi-private eval set),https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507,provider/source group: Alibaba; $0.0025/task avg cost
+2025-08-07,GPT-5 (High),65.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.5087/task avg cost
+2025-08-07,GPT-5 Mini (High),54.33,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.116/task avg cost
+2025-08-07,GPT-5 Nano (Medium),20.71,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.0124/task avg cost
+2025-08-07,Hierarchical Reasoning Model (HRM),32.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: bespoke; $1.48/task avg cost
+2025-08-07,Grok 4 (Refine.),79.6,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: j_berman; $8.42/task avg cost
+2025-09-29,Claude Sonnet 4.5 (Thinking 32K),63.67,% correct (semi-private eval set),https://www.anthropic.com/claude/sonnet,provider/source group: Anthropic; $0.5193/task avg cost
+2025-10-01,Claude Haiku 4.5 (Thinking 32K),47.67,% correct (semi-private eval set),https://www.anthropic.com/news/claude-haiku-4-5,provider/source group: Anthropic; $0.2558/task avg cost
+2025-10-06,GPT-5 Pro,70.17,% correct (semi-private eval set),https://platform.openai.com/docs/models/gpt-5-pro,provider/source group: OpenAI; $4.7785/task avg cost
+2025-10-07,Tiny Recursion Model (TRM),40.0,% correct (semi-private eval set),https://alexiajm.github.io/2025/09/29/tiny_recursive_models.html,provider/source group: bespoke; $1.7638/task avg cost
+2025-10-21,Grok 4 (Fast Reasoning),48.5,% correct (semi-private eval set),https://x.ai/news/grok-4-fast,provider/source group: xAI; $0.0307/task avg cost
+2025-11-13,"GPT-5.1 (Thinking, High)",72.83,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.674/task avg cost
+2025-11-18,Gemini 3 Pro,75.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Google; $0.4926/task avg cost
+2025-11-24,"Opus 4.5 (Thinking, 64K)",80.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $1.47/task avg cost
+2025-12-01,Deepseek V3.2,57.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: DeepSeek; $0.08/task avg cost
+2025-12-11,GPT-5.2 (XHigh),86.17,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.96/task avg cost
+2025-12-11,GPT-5.2 Pro (XHigh),90.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $11.6542/task avg cost
+2025-12-17,Gemini 3 Flash Preview (High),84.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Google; $0.1743/task avg cost
+2026-01-27,Kimi K2.5,65.33,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Moonshot AI; $0.15/task avg cost
+2026-02-03,GPT-5.2 (Refine.),94.5,% correct (semi-private eval set),https://arxiv.org/abs/2606.31543,provider/source group: johan_land; $11.4/task avg cost
+2026-02-05,"Claude Opus 4.6 (120K, High)",94.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $1.3948/task avg cost
+2026-02-12,Gemini 3 Deep Think (Preview),87.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Google; $44.259/task avg cost
+2026-02-12,Gemini 3 Deep Think (2/26),96.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Google; $7.171/task avg cost
+2026-02-12,Minimax M2.5,63.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Minimax; $0.07/task avg cost
+2026-02-17,Claude Sonnet 4.6 (High),86.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $1.1908/task avg cost
+2026-02-19,Gemini 3.1 Pro (Preview),98.0,% correct (semi-private eval set),https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/,provider/source group: Google; $0.5223/task avg cost
+2026-02-20,GLM-5,44.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Z.ai; $0.17/task avg cost
+2026-03-04,GPT-5.4 (XHigh),93.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.62/task avg cost
+2026-03-04,GPT-5.4 Pro (XHigh),94.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $7.21/task avg cost
+2026-03-09,Grok 4.20 (Reasoning),89.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: xAI; $0.35/task avg cost
+2026-03-17,GPT-5.4 Mini (XHigh),63.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.51/task avg cost
+2026-03-17,GPT-5.4 Nano (XHigh),51.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.13/task avg cost
+2026-04-16,Claude 4.7 (High),93.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $1.41/task avg cost
+2026-04-22,GPT-5.5 (XHigh),95.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.73/task avg cost
+2026-04-23,GPT-5.5 Pro (High),96.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $4.53/task avg cost
+2026-05-19,Gemini 3.5 Flash (High),92.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Google; $0.4278/task avg cost
+2026-06-01,Claude Opus 4.8 (Max),92.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $2.332/task avg cost
+2026-06-09,Claude Fable 5 (Max),98.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Anthropic; $2.1102/task avg cost
+2026-06-13,GLM-5.2,77.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: Z.ai; $0.1916/task avg cost
+2026-07-09,GPT-5.6 Sol (XHigh),97.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.4/task avg cost
+2026-07-09,GPT-5.6 Terra (Max),96.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.55/task avg cost
+2026-07-09,GPT-5.6 Luna (Max),88.0,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.32/task avg cost
+2026-07-15,Inkling,79.5,% correct (semi-private eval set),https://thinkingmachines.ai/news/introducing-inkling/,provider/source group: Thinking Machines; $0.3005/task avg cost
+2026-07-16,Grok 4.5 (Medium),87.17,% correct (semi-private eval set),https://x.ai/news/grok-4-5,provider/source group: xAI; $0.31/task avg cost
+2026-07-16,Kimi K3 (Max),94.5,% correct (semi-private eval set),https://www.kimi.com/blog/kimi-k3,provider/source group: Moonshot AI; $0.7705/task avg cost
+2026-07-21,Gemini 3.5 Flash-Lite (High),53.5,% correct (semi-private eval set),https://deepmind.google/models/gemini/flash-lite/,provider/source group: Google; $0.0929/task avg cost
+2026-07-21,Gemini 3.6 Flash (High),91.17,% correct (semi-private eval set),https://deepmind.google/models/gemini/flash/,provider/source group: Google; $0.3356/task avg cost
+2026-07-24,Claude Opus 5 (High),97.5,% correct (semi-private eval set),https://arcprize.org/results/anthropic-claude-opus-5,provider/source group: Anthropic; $0.47/task avg cost
+2026-07-30,Inkling Small (XHigh),84.0,% correct (semi-private eval set),https://thinkingmachines.ai/news/inkling-small/,provider/source group: Thinking Machines; $0.115/task avg cost
+2026-07-30,GPT-5.6 Luna 2026-07-30 (Max),90.67,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: OpenAI; $0.0654/task avg cost
+2026-07-31,DeepSeek V4 Flash 0731 (Max),89.0,% correct (semi-private eval set),https://arxiv.org/abs/2606.19348,provider/source group: DeepSeek; $0.0205/task avg cost
+2026-08-11,Grok 4.6 (Medium),87.5,% correct (semi-private eval set),https://arcprize.org/leaderboard,provider/source group: xAI; $0.3011/task avg cost

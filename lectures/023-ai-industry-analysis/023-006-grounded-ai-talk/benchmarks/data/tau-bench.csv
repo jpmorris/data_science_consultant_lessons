@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2024-06-01,gpt-4o (tool-calling),60.4,pass^1 % (retail domain),https://github.com/sierra-research/tau-bench/blob/main/README.md,tau-bench (Sierra) original frozen leaderboard.
+2024-06-01,gpt-4o (tool-calling),42.0,pass^1 % (airline domain),https://github.com/sierra-research/tau-bench/blob/main/README.md,
+2024-06-01,claude-3-5-sonnet-20240620 (tool-calling),62.6,pass^1 % (retail domain),https://github.com/sierra-research/tau-bench/blob/main/README.md,
+2024-06-01,claude-3-5-sonnet-20240620 (tool-calling),36.0,pass^1 % (airline domain),https://github.com/sierra-research/tau-bench/blob/main/README.md,
+2024-10-22,claude-3-5-sonnet-20241022 (tool-calling),69.2,pass^1 % (retail domain),https://github.com/sierra-research/tau-bench/blob/main/README.md,"Top of the official frozen tau-bench leaderboard; Sierra has not updated these tasks since, pointing new evaluation at tau2-bench / tau3-bench instead."
+2024-10-22,claude-3-5-sonnet-20241022 (tool-calling),46.0,pass^1 % (airline domain),https://github.com/sierra-research/tau-bench/blob/main/README.md,Top of the official frozen leaderboard (airline).
+2025-02-01,Claude-3.7 Sonnet High (HAL Generalist Agent scaffold),56.0,pass^1 % (airline domain),https://hal.cs.princeton.edu/taubench_airline,"Independent HAL reproduction, not the original frozen Sierra leaderboard."
+2025-04-01,o4-mini High (tool-calling),56.0,pass^1 % (airline domain),https://hal.cs.princeton.edu/taubench_airline,
+2025-04-01,o3 Medium (tool-calling),54.0,pass^1 % (airline domain),https://hal.cs.princeton.edu/taubench_airline,
+2025-05-01,Claude Opus 4 (HAL Generalist Agent scaffold),44.0,pass^1 % (airline domain),https://hal.cs.princeton.edu/taubench_airline,
+2025-08-01,Claude Opus 4.1 (HAL Generalist Agent scaffold),54.0,pass^1 % (airline domain),https://hal.cs.princeton.edu/taubench_airline,

@@ -1,0 +1,11 @@
+date,model,score,score_unit,source_url,notes
+2025-05-22,Claude Opus 4,43.2,% (Terminal-Bench v1),https://www.anthropic.com/news/claude-4,"Cited alongside SWE-bench Verified (72.5%) in the Claude 4 launch post as Anthropic's other headline agentic-coding number; bonus find -- Terminal-Bench (Laude Institute / Harbor, with Snorkel AI) tests shell-based, long-horizon agent tasks and is now reported by most frontier labs alongside SWE-bench Verified."
+2026-02-06,Simple Codex (GPT-5.3-Codex),75.1,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-02-22,Terminus-KIRA (Claude Opus 4.6),74.7,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-02-24,Droid (GPT-5.3-Codex),77.3,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-03-13,SageAgent (GPT-5.3-Codex),78.4,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-04-23,Codex CLI (GPT-5.5),82.2,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-05-14,Meta-Harness (Claude Opus 4.6),76.4,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-05-14,WOZCODE (Claude Opus 4.7),80.2,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-05-14,Capy (GPT-5.5),83.1,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,
+2026-05-14,NexAU-AHE (GPT-5.5),84.7,% (Terminal-Bench 2.0),https://www.tbench.ai/leaderboard/terminal-bench/2.0,"Top of the Terminal-Bench 2.0 leaderboard as of snapshot date, out of 142 tracked submissions (scores ranging 3.1%-84.7%)."

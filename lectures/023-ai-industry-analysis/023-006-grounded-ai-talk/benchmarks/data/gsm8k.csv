@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2021-11,GPT-3 175B (fine-tuned + verifier),55,percent accuracy,https://arxiv.org/pdf/2204.02311,"Cobbe et al. 2021 original GSM8K result, cited in PaLM paper Table 10"
+2022-04,PaLM 540B (8-shot CoT),58,percent accuracy,https://arxiv.org/pdf/2204.02311,PaLM paper, chain-of-thought prompting, new SOTA at the time
+2023-03,GPT-4,92,percent accuracy,https://www.codesota.com/browse/reasoning/mathematical-reasoning/gsm8k,Aggregator citing GPT-4 technical report era result
+2024,GPT-4o / Claude 3.5 / Gemini 1.5 (frontier models),">90 (all exceed 90)",percent accuracy,https://www.emergentmind.com/topics/gsm8k-dataset,"By 2024 all major frontier models exceed 90%, widely cited as saturation point"
+2024-09,OpenAI o1,97.8,percent accuracy,https://www.codesota.com/browse/reasoning/mathematical-reasoning/gsm8k,Aggregator-reported figure for o1 release era
+2025-08,GPT-5,99.2,percent accuracy,https://www.codesota.com/browse/reasoning/mathematical-reasoning/gsm8k,Aggregator-reported figure
+2026-03,ERNIE 5.0,99.7,percent accuracy,https://www.codesota.com/browse/reasoning/mathematical-reasoning/gsm8k,Aggregator-reported figure; near-ceiling score illustrating full saturation

@@ -1,0 +1,11 @@
+date,model,score,score_unit,source_url,notes
+2022-10,PaLM 540B (direct),65.7,percent accuracy,https://benchmarkingagents.com/bigbench-hard/,"Original baseline at BBH's introduction (Suzgun et al. 2022); pre-2024 anchor kept because BBH predates 2024 and this shows the full climb-to-saturation curve"
+2022-10,PaLM 540B (chain-of-thought),78.1,percent accuracy,https://benchmarkingagents.com/bigbench-hard/,Same source as above; CoT prompting
+2023-03,GPT-4 (3-shot CoT),83.1,percent accuracy,https://benchmarkingagents.com/bigbench-hard/,First frontier model reported to exceed 80% on BBH
+2023-12,Gemini Ultra,83.6,percent accuracy,https://benchmarkingagents.com/bigbench-hard/,Per Gemini technical report as cited by this aggregator
+2024-08,Claude 3.5 Sonnet,93.1,percent accuracy,https://benchmarkingagents.com/bigbench-hard/,Per Anthropic model card as cited by this aggregator
+2024-07-23,Llama 3.1 405B,93.10,percent accuracy,https://klu.ai/llm-leaderboard,Leaderboard aggregator figure
+2024-12-26,DeepSeek-V3,87.5,percent accuracy,https://arxiv.org/pdf/2412.19437,3-shot
+2026-06,Gemini 3.1 Pro Preview,96.1,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/bbh,Leaderboard snapshot as of June 30 2026
+2026-06,Qwen3.7 Max,95.8,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/bbh,Leaderboard snapshot as of June 30 2026
+2026-06,Claude Sonnet 4.5,94.4,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/bbh,Leaderboard snapshot as of June 30 2026

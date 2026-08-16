@@ -1216,3 +1216,26 @@ $body-bg: #073642;
   line-height: 1.3;
   margin-top: 0.5em;
 }
+
+// "AI Benchmarks" slide: a comprehensive, deliberately dense named list (74
+// benchmarks) grouped under .section-label category headers, plus a
+// top-of-slide stat line summarizing the saturated/climbing split.
+.reveal .slides .benchmark-stat-line {
+  font-size: 0.8em;
+  color: #93a1a1;
+  margin: 0 0 1em;
+  line-height: 1.5;
+}
+.reveal .slides .benchmark-stat-line strong {
+  color: #eee8d5;
+}
+.reveal .slides .benchmark-list {
+  font-size: 0.72em;
+  line-height: 1.85;
+  color: #cbd3d3;
+  margin: 0 0 0.3em;
+}
+.reveal .slides .benchmark-list sup {
+  color: #859900;
+  font-size: 0.85em;
+}

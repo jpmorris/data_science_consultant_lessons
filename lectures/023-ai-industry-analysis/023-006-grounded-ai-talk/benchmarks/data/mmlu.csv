@@ -1,0 +1,11 @@
+date,model,score,score_unit,source_url,notes
+2023-03,GPT-4,86.4,percent accuracy,https://cdn.openai.com/papers/gpt-4.pdf,"5-shot; original GPT-4 technical report; included as pre-2024 anchor showing MMLU was already near-saturated before the 2024+ model wave"
+2023-12,Gemini Ultra,90.0,percent accuracy,https://arxiv.org/pdf/2312.11805,"CoT@32 (uncertainty-routed chain-of-thought, 32 samples) — non-standard/inflated eval setting; single-response score was 84.0%, below GPT-4's reported 84.2% single-response score; Google framed this as first model to exceed the ~89.8% human-expert baseline"
+2024-03-04,Claude 3 Opus,86.8,percent accuracy,https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf,5-shot
+2024-05-13,GPT-4o,88.7,percent accuracy,https://openai.com/index/hello-gpt-4o/,0-shot
+2024-07-23,Llama 3.1 405B Instruct,87.71,percent accuracy,https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/eval_details.md,"5-shot, macro average, post-trained model"
+2024-09-12,OpenAI o1-preview,90.8,percent accuracy,https://cdn.openai.com/o1-preview-system-card-20240917.pdf,0-shot CoT
+2024-12-05,OpenAI o1,91.8,percent accuracy,https://cdn.openai.com/o1-system-card-20241205.pdf,"Full o1 release; outperformed GPT-4o on 54 of 57 MMLU subcategories per OpenAI"
+2024-12-26,DeepSeek-V3,87.1,percent accuracy,https://arxiv.org/pdf/2412.19437,5-shot
+2025-08-07,GPT-5,87.0,percent accuracy,https://cdn.openai.com/gpt-5-system-card.pdf,"Ranked ~3rd among frontier models at launch time, behind Claude Opus 4.1, per contemporaneous leaderboard aggregation (chatbase.co)"
+2026-04-23,GPT-5.5,92.4,percent accuracy,https://en.wikipedia.org/wiki/GPT-5.5,Released April 23 2026

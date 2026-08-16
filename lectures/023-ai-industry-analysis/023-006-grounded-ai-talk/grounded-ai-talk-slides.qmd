@@ -2210,6 +2210,116 @@ useful contrast to put right next to the May 2026 result when telling this
 story: same company, seven months apart, one real, one not.
 :::
 
+## AI Benchmarks {.smaller .scrollable .heading-accent}
+
+```{=html}
+<p class="benchmark-stat-line"><strong>74 benchmarks/evals tracked</strong> · <strong>2,913</strong> real, sourced (date, model, score) data points · <strong>48</strong> still discriminating between frontier models · <strong>26</strong> likely saturated<sup style="color:#859900;">†</sup> — full historical data, per-benchmark CSVs, and trend charts: see Sources and the <code>benchmarks/</code> research directory alongside this deck.</p>
+
+<div class="section-label section-label--lg">General Knowledge &amp; Broad Reasoning (15)</div>
+<p class="benchmark-list">MMLU<sup>†</sup> · MMLU-Pro<sup>†</sup> · Big Bench Hard<sup>†</sup> · HellaSwag<sup>†</sup> · ARC (AI2 Reasoning Challenge)<sup>†</sup> · TruthfulQA · Winogrande · AGIEval<sup>†</sup> · BoolQ<sup>†</sup> · PIQA · LAMBADA · Adversarial NLI · CommonsenseQA 2.0 · SuperGLUE · ScienceQA<sup>†</sup></p>
+
+<div class="section-label section-label--lg">Elite Reasoning &amp; Math (13)</div>
+<p class="benchmark-list">GPQA Diamond<sup>†</sup> · Humanity's Last Exam · SimpleQA · SimpleQA Verified · GSM8K<sup>†</sup> · MATH<sup>†</sup> · AIME<sup>†</sup> · FrontierMath · MathVista<sup>†</sup> · Omni-MATH · IMO (Intl. Mathematical Olympiad) · IOI (Intl. Olympiad in Informatics)<sup>†</sup> · OTIS Mock AIME<sup>†</sup></p>
+
+<div class="section-label section-label--lg">Code &amp; Software Engineering (14)</div>
+<p class="benchmark-list">HumanEval<sup>†</sup> · MBPP<sup>†</sup> · SWE-bench Verified · SWE-bench Lite · SWE-bench Multimodal · SWE-bench Pro · LiveCodeBench<sup>†</sup> · LiveCodeBench Pro (Elo) · Codeforces (Elo) · Aider Polyglot · SciCode · MirrorCode · AlgoTune · CursorBench</p>
+
+<div class="section-label section-label--lg">Agentic, Tool-Use &amp; Computer-Use (13)</div>
+<p class="benchmark-list">GAIA · WebArena · AgentBench · tau-bench · OSWorld<sup>†</sup> · AndroidWorld<sup>†</sup> · BrowseComp<sup>†</sup> · Vending-Bench ($ balance / % / survival time) · GDPval (real-world expert tasks) · GDPval (Elo, Artificial Analysis) · Terminal-Bench</p>
+
+<div class="section-label section-label--lg">Long-Horizon Autonomy, AI R&amp;D &amp; "AI Researcher" / RSI Signal (7)</div>
+<p class="benchmark-list">METR Time Horizon · METR Cross-Domain Time Horizon · RE-Bench (METR) · MLE-bench · PaperBench · AI Scientist (Sakana et al.) · OpenAI Self-Improvement Evals</p>
+
+<div class="section-label section-label--lg">Multimodal &amp; Vision (4)</div>
+<p class="benchmark-list">MMMU · MMBench · ChartQA<sup>†</sup> · DocVQA<sup>†</sup></p>
+
+<div class="section-label section-label--lg">ARC-AGI Family (3)</div>
+<p class="benchmark-list">ARC-AGI-1<sup>†</sup> · ARC-AGI-2<sup>†</sup> · ARC-AGI-3<sup>†</sup> — <em>note: a completely different benchmark from "ARC" (AI2 Reasoning Challenge) above, despite the name collision</em></p>
+
+<div class="section-label section-label--lg">Games, Puzzles &amp; Misc. (5)</div>
+<p class="benchmark-list">Chess Puzzles (Epoch) · Mystery Game Puzzles (Epoch) · RLI · Blueprint Bench 2 · Vending-Bench (composite)</p>
+```
+
+::: {.notes}
+This is a "here's the landscape" slide, not a deep-dive on any one benchmark
+— the point is breadth. Seven parallel research agents spent real time
+pulling actual historical (date, model, score) data for each of these from
+primary sources (official leaderboards, papers, model system cards),
+cross-checked against aggregators, no fabricated numbers anywhere. Full data
+lives in `benchmarks/` next to this deck: `README.md` (catalog + sources),
+`data/*.csv` (one file per benchmark), `notes/*.md` (per-cluster research
+writeups), plus `aggregated.json`/`aggregated_summary.csv` for the merged
+view.
+
+**The dagger (†) marks "likely saturated"** — top reported score ≥ 90% on a
+percent-scale benchmark. That's a blunt heuristic, not a claim the
+underlying capability has plateaued. Say this out loud: several of these
+(MMLU, HellaSwag, GSM8K, HumanEval, ARC) were saturated *and then retired or
+replaced* by harder successors once frontier models cleared them —
+HellaSwag and Winogrande were dropped from the HF Open LLM Leaderboard in
+June 2024 specifically because they'd stopped discriminating between
+models. A flat top-line on an old, retired benchmark and a flat top-line on
+AI capability are two different claims — this slide's whole point is not to
+conflate them.
+
+**ARC-AGI is the cleanest case study for that distinction.** Each new
+version (1 → 2 → 3) was introduced specifically because the previous one
+was getting saturated by frontier models — o3's Dec 2024 breakthrough on
+ARC-AGI-1 (75.7% at the $10k compute cap, 87.5% uncapped) is what triggered
+ARC-AGI-2's harder task set. ARC-AGI-3 shows an even sharper version of the
+same dynamic within one benchmark: bare frontier models score near 0%, but
+teams with custom agent harnesses hit 100% within months — "saturated"
+depends enormously on scaffolding, not just the underlying model.
+
+**METR's time-horizon benchmark is the flagship RSI-relevant chart here** —
+how long a task (in human-hours-equivalent) a model can autonomously
+complete at 50% success, from GPT-2 (2019, ~3 minutes) to 2026 frontier
+models (approaching 1,000+ hours), doubling roughly every 6 months with no
+sign of leveling off. That's the pure-autonomy axis. The harder,
+more-directly-RSI-relevant axis — can an AI do genuinely novel research as
+well as a human expert (RE-Bench, PaperBench, the AI Scientist evals) —
+shows a real, unclosed gap with much sparser public data. Worth being
+explicit live: these are testing different things, and the dramatic
+autonomy-duration chart shouldn't be read as evidence the novel-research gap
+has closed too.
+
+**GDPval** (OpenAI) is the "real-world tasks experts actually perform"
+benchmark the user was thinking of — 1,320 tasks across 44 occupations,
+graded blind against real human expert deliverables by expert graders from
+the same profession.
+
+**What benchmarks frontier labs actually cite when releasing a model**, per
+the aggregator research pass: GPQA Diamond, SWE-bench Verified/Pro,
+ARC-AGI-1/2, Humanity's Last Exam, AIME, Terminal-Bench, and LMArena Elo
+recur across 2025-2026 GPT-5.x, Claude Opus 4.x/5, Gemini 3/3.1 Pro, and
+Grok 4/4.x announcements — a shifting subset of ~5-7 benchmarks, not one
+fixed suite, with new ones swapped in as old ones saturate. That pattern is
+itself indirect evidence for the "plateau vs. moved goalposts" question this
+slide (and the next few) are circling.
+:::
+
+```{=html}
+<template class="slide-citations-source">
+  <ul>
+    <li>Epoch AI Benchmarking Hub (76-benchmark bulk data export, CC-BY-4.0): <a href="https://epoch.ai/benchmarks" target="_blank" rel="noopener">epoch.ai/benchmarks</a></li>
+    <li>METR: Task-Completion Time Horizon benchmark: <a href="https://metr.org/time-horizons/" target="_blank" rel="noopener">metr.org/time-horizons</a>; "Measuring AI Ability to Complete Long Tasks" (Mar 2025): <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener">metr.org/blog</a>; RE-Bench: <a href="https://metr.org/AI_R_D_Evaluation_Report.pdf" target="_blank" rel="noopener">AI R&amp;D Evaluation Report (PDF)</a></li>
+    <li>ARC Prize (ARC-AGI-1/2/3 official leaderboards): <a href="https://arcprize.org/leaderboard" target="_blank" rel="noopener">arcprize.org/leaderboard</a></li>
+    <li>SWE-bench / SWE-bench Verified: <a href="https://www.swebench.com/" target="_blank" rel="noopener">swebench.com</a>; OpenAI's Verified-subset introduction: <a href="https://openai.com/index/introducing-swe-bench-verified/" target="_blank" rel="noopener">openai.com</a></li>
+    <li>GDPval: OpenAI, <a href="https://arxiv.org/abs/2510.04374" target="_blank" rel="noopener">"GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks"</a> (arXiv:2510.04374)</li>
+    <li>Humanity's Last Exam: Center for AI Safety &amp; Scale AI, <a href="https://lastexam.ai/" target="_blank" rel="noopener">lastexam.ai</a></li>
+    <li>FrontierMath: Epoch AI, <a href="https://epoch.ai/frontiermath" target="_blank" rel="noopener">epoch.ai/frontiermath</a></li>
+    <li>Artificial Analysis (600+ model leaderboard, Intelligence Index): <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">artificialanalysis.ai</a></li>
+    <li>LMArena (formerly LMSYS Chatbot Arena): <a href="https://lmarena.ai/" target="_blank" rel="noopener">lmarena.ai</a>; bulk dataset: <a href="https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset" target="_blank" rel="noopener">HF: lmarena-ai/leaderboard-dataset</a></li>
+    <li>OSWorld (computer-use benchmark): <a href="https://os-world.github.io/" target="_blank" rel="noopener">os-world.github.io</a></li>
+    <li>GAIA: Mialon et al. (Meta/HuggingFace), <a href="https://arxiv.org/abs/2311.12983" target="_blank" rel="noopener">"GAIA: A Benchmark for General AI Assistants"</a> (arXiv:2311.12983)</li>
+    <li>MLE-bench: OpenAI, <a href="https://github.com/openai/mle-bench" target="_blank" rel="noopener">github.com/openai/mle-bench</a></li>
+    <li>Vellum LLM Leaderboard: <a href="https://www.vellum.ai/llm-leaderboard" target="_blank" rel="noopener">vellum.ai/llm-leaderboard</a>; LiveBench: <a href="https://livebench.ai/" target="_blank" rel="noopener">livebench.ai</a>; llm-stats.com: <a href="https://llm-stats.com/" target="_blank" rel="noopener">llm-stats.com</a></li>
+    <li>Hugging Face Open LLM Leaderboard (archived June 2024, citing benchmark saturation): <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank" rel="noopener">huggingface.co</a></li>
+    <li>Full per-benchmark data, sources, and research notes: <code>benchmarks/README.md</code> in this deck's repository</li>
+  </ul>
+</template>
+```
+
 # Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 ## Prediction Is Hard — Especially About the Future {.heading-accent}

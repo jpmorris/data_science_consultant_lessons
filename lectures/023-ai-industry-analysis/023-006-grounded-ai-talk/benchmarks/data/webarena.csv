@@ -1,0 +1,3 @@
+date,model,score,score_unit,source_url,notes
+2023-07-26,GPT-4 (best baseline agent),14.41,% end-to-end task success rate,https://arxiv.org/pdf/2307.13854,"Original WebArena paper (ICLR 2024), 812 tasks across 4 self-hosted site categories. Human performance on the same set: 78.24%."
+2025-01-23,OpenAI CUA (Computer-Using Agent / Operator),58.1,% success rate,https://openai.com/index/computer-using-agent/,"Reported at Operator launch. Same blog post: 87% on WebVoyager, 38.1% on OSWorld for the same model."

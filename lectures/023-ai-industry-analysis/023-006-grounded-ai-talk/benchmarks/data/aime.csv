@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2024-09-12,GPT-4o (baseline cited at o1 launch),12,percent (avg problems solved, AIME 2024; 1.8/15),https://openai.com/index/learning-to-reason-with-llms/,Cited in OpenAI's o1 launch blog as pre-reasoning-model baseline on AIME 2024
+2024-09-12,OpenAI o1,74.4,percent (AIME 2024, pass@1),https://openai.com/index/learning-to-reason-with-llms/,"o1 system card language: 'among the top 500 US students' on AIME qualifier; some secondary sources report 83.3% under a different (majority-vote/high-compute) configuration"
+2024-12-20,OpenAI o3 (high compute),96.7,percent (AIME 2024, pass@1),https://lifearchitect.ai/o3/,"o3 announcement Dec 20 2024; also reported as 91.6% under a different sampling budget/configuration in other secondary sources"
+2025-02,Claude 3.7 Sonnet (extended thinking),80.0,percent (AIME 2024),https://www.anthropic.com/news/claude-3-7-sonnet,Anthropic Claude 3.7 Sonnet launch; uses internal extended/test-time-compute reasoning mode
+2025,DeepSeek R1,79.8,percent (AIME, pass@1),https://blog.promptlayer.com/openai-o3-vs-deepseek-r1-an-analysis-of-reasoning-models/,Comparative writeup citing DeepSeek R1 vs OpenAI o3/o1 on AIME
+2025-06-27,Gemini 2.5 Pro,92.0,percent (AIME 2024, pass@1 single attempt),https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Pro-Model-Card.pdf,Google DeepMind official model card, updated June 27 2025; no majority voting/test-time scaling
+2025-06-27,Gemini 2.5 Pro,86.7,percent (AIME 2025, pass@1 single attempt),https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Pro-Model-Card.pdf,Google DeepMind official model card
+2025-08,GPT-5,94.6,percent (AIME 2025, pass@1 closed-book),https://www.vellum.ai/blog/gpt-5-benchmarks,GPT-5 benchmark writeup citing OpenAI-reported figure
+2026-02,Claude Opus 4.6,99.79,percent (AIME 2025, no tools),https://www-cdn.anthropic.com/0dd865075ad3132672ee0ab40b05a53f14cf5288.pdf,"Anthropic Claude Opus 4.6 system card; near-ceiling score. Some observers flag possible contamination risk since AIME problems/solutions are public"

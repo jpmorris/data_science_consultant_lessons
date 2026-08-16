@@ -1,0 +1,15 @@
+date,model,score,score_unit,source_url,notes
+2023-11-21,GPT-4 + plugins,15,% accuracy (overall),https://arxiv.org/pdf/2311.12983,Original GAIA paper baseline. Human respondents scored 92% on the same set for comparison.
+2024-12-23,Hugging Face Agent,33,% accuracy,https://h2o.ai/blog/2024/h2o-ai-tops-gaia-leaderboard/,GAIA public leaderboard snapshot cited in H2O.ai's blog announcing their #1 result.
+2024-12-23,Microsoft Research (GPT-4o),32,% accuracy,https://h2o.ai/blog/2024/h2o-ai-tops-gaia-leaderboard/,
+2024-12-23,Microsoft Research (OpenAI o1),38,% accuracy,https://h2o.ai/blog/2024/h2o-ai-tops-gaia-leaderboard/,
+2024-12-23,"Tianqiao & Chrissy Chen Institute (o1-preview + ""omne"" agent)",41,% accuracy,https://h2o.ai/blog/2024/h2o-ai-tops-gaia-leaderboard/,
+2024-12-23,Google Langfun Agent,49,% accuracy,https://h2o.ai/blog/2024/h2o-ai-tops-gaia-leaderboard/,
+2024-12-23,H2O.ai h2oGPTe Agent,65,% accuracy,https://h2o.ai/blog/2024/h2o-ai-tops-gaia-leaderboard/,#1 on the public leaderboard at the time.
+2025-02-01,Claude 3.7 Sonnet High (HAL Generalist Agent scaffold),64.24,% accuracy,https://hal.cs.princeton.edu/gaia,Princeton HAL (Holistic Agent Leaderboard) reproduction on GAIA validation set.
+2025-03-17,H2O.ai h2oGPTe Agent,75,% accuracy,https://h2o.ai/blog/2025/h2o-ai-tops-the-general-ai-assistant-test/,Evaluated on the harder GAIA test set (nearly 2x the questions of the validation set); first system to reach GAIA 'Grade C'. OpenAI Deep Research and Manus were evaluated on the easier validation set at the time.
+2025-03-17,DeepSeek R1 (agent framework),45,% accuracy,https://h2o.ai/blog/2025/h2o-ai-tops-the-general-ai-assistant-test/,Approximate figure as cited in H2O.ai's blog post.
+2025-05-01,Claude Opus 4 High (HAL Generalist Agent scaffold),64.85,% accuracy,https://hal.cs.princeton.edu/gaia,
+2025-08-01,Claude Opus 4.1 High (HAL Generalist Agent scaffold),68.48,% accuracy,https://hal.cs.princeton.edu/gaia,
+2025-09-01,Claude Sonnet 4.5 High (HAL Generalist Agent scaffold),70.91,% accuracy,https://hal.cs.princeton.edu/gaia,
+2025-09-01,Claude Sonnet 4.5 (HAL Generalist Agent scaffold),74.55,% accuracy,https://hal.cs.princeton.edu/gaia,Highest score on the HAL GAIA leaderboard; HAL subsequently paused adding new models to focus on an agent-reliability dashboard instead of raw accuracy.

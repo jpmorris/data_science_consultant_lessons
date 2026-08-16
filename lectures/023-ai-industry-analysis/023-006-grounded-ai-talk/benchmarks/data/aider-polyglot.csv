@@ -1,0 +1,25 @@
+date,model,score,score_unit,source_url,notes
+2024-12-21,claude-3-5-haiku-20241022,28.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,Aider Polyglot: 225 Exercism exercises across C++/Go/Java/JS/Python/Rust, scored inside Aider's real edit loop with a second attempt after seeing failing tests.
+2024-12-21,o1-2024-12-17 (high),61.7,% correct (2nd attempt),https://aider.chat/2024/12/21/polyglot.html,"o1 topped the brand-new polyglot leaderboard at launch, well ahead of the field per Aider's own announcement post."
+2024-12-22,gemini-exp-1206,38.2,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2024-12-25,DeepSeek Chat V3 (prev),48.4,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-01-17,claude-3-5-sonnet-20241022,51.6,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-01-20,DeepSeek R1,56.9,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-01-23,DeepSeek R1 + claude-3-5-sonnet,64.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,Two-model architect/editor combination.
+2025-01-31,o3-mini (high),60.4,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-02-24,claude-3-7-sonnet-20250219 (32k thinking),64.9,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-03-24,DeepSeek V3 (0324),55.1,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-04-14,gpt-4.1,52.4,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-04-16,o4-mini (high),72.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-05-07,Gemini 2.5 Pro Preview 05-06,76.9,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-05-09,Qwen3 235B A22B,59.6,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-05-25,claude-opus-4-20250514 (32k thinking),72.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-05-24,claude-sonnet-4-20250514 (32k thinking),61.3,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-06-06,gemini-2.5-pro-preview-06-05 (32k think),83.1,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-06-25,o3 (high),81.3,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-06-28,o3-pro (high),84.9,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-07-11,grok-4 (high),79.6,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-07-17,Kimi K2,59.1,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-08-06,gpt-oss-120b (high),41.8,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
+2025-08-23,gpt-5 (high),88.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,Highest score on Aider's polyglot leaderboard found in this research.
+2025-10-03,DeepSeek-V3.2-Exp (Reasoner),74.2,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,Most recent dated entry found on the leaderboard.
