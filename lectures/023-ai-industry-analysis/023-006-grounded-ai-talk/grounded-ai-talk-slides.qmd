@@ -1224,8 +1224,8 @@ research pass — see references/ folder.
 
 ```{=html}
 <ul class="frontier-intro-bullets">
-  <li>Much of human knowledge is <strong>embodied</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
-  <li><strong>Current AI progress is of the non-embodied type</strong> — nothing to build or run in a lab.</li>
+  <li>Much of human knowledge is <strong>empirical</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
+  <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
   <li>Two paths there:
     <ul>
       <li><strong>Think hard</strong> — no external validation. Anywhere from a trivial find to an Einstein-level leap: Einstein at his blackboard, or an AI reasoning internally — many iterations, but no external trials.</li>
@@ -1241,7 +1241,7 @@ research pass — see references/ folder.
   <div class="section-label section-label--lg frontier-diagram-title">
     Known Human Knowledge
   </div>
-  <div class="frontier-diagram-subtitle">(Only non-embodied, theoretical/oracle-verifier examples given)</div>
+  <div class="frontier-diagram-subtitle">(Only non-empirical, theoretical/oracle-verifier examples given)</div>
   {{< include images/knowledge-frontier.svg >}}
 </div>
 <div class="frontier-split-table">
