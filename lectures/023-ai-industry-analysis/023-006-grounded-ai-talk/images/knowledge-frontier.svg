@@ -1,4 +1,4 @@
-<svg width="950" height="800" viewBox="0 0 950 800">
+<svg width="950" height="720" viewBox="0 30 950 720">
   <defs>
     <radialGradient id="hazeGradient" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#4a7d8c" stop-opacity="0.55"/>
@@ -44,10 +44,10 @@
   <!-- paradigm-shift example: deliberately placed OUTSIDE the cloud, below
        it -- this needs to read as a genuine creative leap past the current
        frontier, not something interpolated from what's already known. -->
-  <text x="300" y="625" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">PARADIGM-SHIFTING; FEW HUMANS COULD FORMULATE</text>
-  <text x="300" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
   <circle cx="300" cy="680" r="15" fill="#dc322f" filter="url(#dotSoftGlow)"/>
-  <text x="300" y="720" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Einstein — Special Relativity (1905)</text>
+  <text x="336" y="628" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">PARADIGM-SHIFTING; FEW HUMANS COULD FORMULATE</text>
+  <text x="336" y="651" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">No AI progress yet</text>
+  <text x="336" y="673" font-family="Inter, sans-serif" font-size="16" fill="#dc322f">Historical Example: Einstein — Special Relativity (1905)</text>
 
   <!-- frontier-edge point: harness-based, clean win -- pulled in toward
        the haze so it reads as emerging from it, not floating outside -->

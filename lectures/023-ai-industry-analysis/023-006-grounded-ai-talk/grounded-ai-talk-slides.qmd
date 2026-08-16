@@ -1241,7 +1241,7 @@ research pass — see references/ folder.
   <div class="section-label section-label--lg frontier-diagram-title">
     Known Human Knowledge
   </div>
-  <div class="frontier-diagram-subtitle">(Only non-empirical, theoretical/oracle-verifier examples given)</div>
+  <div class="frontier-diagram-subtitle">(Only no-external verification examples given)</div>
   {{< include images/knowledge-frontier.svg >}}
 </div>
 <div class="frontier-split-table">
