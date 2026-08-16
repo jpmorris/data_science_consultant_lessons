@@ -1308,6 +1308,19 @@ covers empirical events that already happened). Chomsky moved here from the
 surprises table since "is this evidence against innateness" isn't itself a
 surprising empirical result, it's an ongoing interpretive fight about one.
 
+Also say this out loud somewhere in this section -- it's the old "Open
+Question Underneath It All" slide, folded in here rather than kept as its
+own slide: when an LLM solves a problem it's never seen -- grad-level
+physics, olympiad math -- is it because it's close enough to its training
+data that next-word prediction can *express* the regularity (language is
+that predictable here), or because something is encoding actual
+understanding/rationality in the weights, no longer just tracking language
+statistics? Nobody has a clean answer -- this is a live argument between
+(some) linguists and (some) computer scientists, not settled science. It's
+the same underlying dispute as the reasoning-vs-generalizing row below,
+restated one level more general: predict-vs-understand, rather than
+reason-vs-generalize.
+
 - **Reasoning vs. generalizing**: don't present this as resolved in either
   direction. The Reversal Curse is good concrete evidence that whatever's
   happening isn't clean symbolic/compositional reasoning (Fodor & Pylyshyn's
@@ -2196,17 +2209,6 @@ literature — the model did a literature search, not new math. That's a
 useful contrast to put right next to the May 2026 result when telling this
 story: same company, seven months apart, one real, one not.
 :::
-
-## The Open Question Underneath It All {.heading-accent}
-
-- When an LLM solves a problem it's never seen — grad-level physics, olympiad
-  math — is it because:
-  - It's close enough to its training data that next-word prediction can
-    _express_ the regularity (language is that predictable here), **or**
-  - Something is encoding actual understanding/rationality in the weights, no
-    longer just tracking language statistics?
-- Nobody has a clean answer. This is a live argument between (some) linguists
-  and (some) computer scientists — not settled science.
 
 # Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
