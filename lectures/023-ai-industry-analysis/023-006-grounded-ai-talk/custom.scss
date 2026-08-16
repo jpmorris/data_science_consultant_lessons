@@ -187,8 +187,8 @@ $body-bg: #073642;
 }
 .reveal .slides .frontier-split-diagram {
   float: left;
-  width: 47%;
-  margin-right: 3%;
+  width: 38%;
+  margin-right: 2%;
 }
 // The svg is a direct child here, not wrapped in .diagram-panel-solo (that
 // wrapper was dropped when this became its own column) -- it needs its own
@@ -202,8 +202,8 @@ $body-bg: #073642;
 }
 .reveal .slides .frontier-split-table {
   float: right;
-  width: 48%;
-  font-size: 0.83em;
+  width: 59%;
+  font-size: 0.78em;
 }
 // 19 rows x 5 columns needs tighter vertical rhythm than the base
 // .table-panel's row padding gives -- otherwise it runs past the bottom
