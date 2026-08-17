@@ -172,6 +172,49 @@ def parse_date(s: str):
     return date(int(y), int(mo or 1), int(d or 1)).isoformat()
 
 
+# Domain -> extraction-method classification for hand-researched rows.
+# Derived mechanically from the source_url's domain (not asserted from
+# memory), so it's auditable: re-run this against any source_url and get
+# the same tag. Order matters -- first match wins.
+_URL_METHOD_RULES = [
+    (r"arxiv\.org|aclanthology\.org|openreview\.net|proceedings\.(mlr|neurips)",
+     "arxiv_or_academic_paper"),
+    (r"cdn\.openai\.com|openai\.com|anthropic\.com|deepmind\.google|ai\.google|"
+     r"blog\.google|x\.ai|meta\.com|llama\.com",
+     "primary_lab_source"),
+    (r"arcprize\.org|swebench\.com|metr\.org|tbench\.ai|mmmu-benchmark\.github\.io|"
+     r"mmbench\.opencompass\.org\.cn|aider\.chat|os-world\.github\.io|"
+     r"osworld-v[12]\.xlang\.ai|labs\.scale\.com|agi\.safe\.ai|"
+     r"scicode-bench\.github\.io|mathvista\.github\.io|omni-math\.github\.io|"
+     r"webarena\.dev|andonlabs\.com|google-research\.github\.io|"
+     r"docs\.google\.com/spreadsheets|balrogai\.com|allenai\.org|"
+     r"leaderboard\.allenai\.org|rowanzellers\.com|sylinrl|codeforces\.com",
+     "official_benchmark_leaderboard_or_site"),
+    (r"github\.com|githubusercontent\.com",
+     "github_repo"),
+    (r"huggingface\.co",
+     "huggingface_dataset_or_space"),
+    (r"llm-stats\.com|artificialanalysis\.ai|vals\.ai|pricepertoken\.com|"
+     r"benchlm\.ai|lifearchitect\.ai|codesota\.com|officechai\.com|airank\.dev|"
+     r"llmleaderboard|clickrank\.ai|swfte\.com|iternal\.ai",
+     "third_party_aggregator"),
+    (r"epoch\.ai",
+     "epoch_ai_page"),
+]
+
+
+def classify_extraction_method(url: str, family: str) -> str:
+    if not url:
+        return "unknown_no_source_recorded"
+    if family == "epoch":
+        # handled by caller (needs to know row-source-vs-fallback distinction)
+        pass
+    for pattern, tag in _URL_METHOD_RULES:
+        if re.search(pattern, url, re.IGNORECASE):
+            return tag
+    return "other_web_source"
+
+
 records = []  # each: benchmark_slug, date, model, score, score_unit, org, source, notes, source_family
 
 # ---- 1. hand-researched CSVs ----
@@ -180,6 +223,7 @@ for f in sorted(DATA.glob("*.csv")):
     if f.name.startswith(skip_prefixes):
         continue
     slug = slugify(f.stem)
+    rel_path = str(f.relative_to(BASE))
     with f.open(newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         for row in reader:
@@ -189,6 +233,7 @@ for f in sorted(DATA.glob("*.csv")):
                 score = float(score)
             except ValueError:
                 continue
+            source_url = (row.get("source_url") or "").strip()
             records.append({
                 "benchmark": slug,
                 "date": d,
@@ -196,9 +241,11 @@ for f in sorted(DATA.glob("*.csv")):
                 "score": score,
                 "score_unit": (row.get("score_unit") or "").strip(),
                 "org": "",
-                "source": (row.get("source_url") or "").strip(),
+                "source": source_url,
                 "notes": (row.get("notes") or "").strip(),
                 "family": "hand",
+                "file": rel_path,
+                "extraction_method": classify_extraction_method(source_url, "hand"),
             })
 
 # ---- 2. Epoch AI hub CSVs ----
@@ -213,6 +260,14 @@ if EPOCH.exists():
         if stem in ("README",):
             continue
         target_slug = claimed_target.get(stem, slugify(stem))
+        rel_path = str(f.relative_to(BASE))
+        # Real fallback URL, not a guess: epoch.ai's own benchmark hub page
+        # for this exact benchmark. Confirmed working for chess-puzzles,
+        # mystery-game-puzzles, mirrorcode, algotune, cursorbench, rli, and
+        # blueprint-bench-2 via direct fetch during the contamination-axis
+        # research pass -- the slug pattern (strip "_external", underscores
+        # to hyphens) matches epoch.ai/benchmarks/<slug> reliably.
+        hub_fallback_url = f"https://epoch.ai/benchmarks/{slugify(stem)}"
         with f.open(newline="", encoding="utf-8") as fh:
             reader = csv.DictReader(fh)
             fieldnames = reader.fieldnames or []
@@ -239,6 +294,20 @@ if EPOCH.exists():
                     score = score * 100
                 else:
                     score_unit = "raw"
+                row_source = (row.get("Source link") or "").strip()
+                source_label = (row.get("Source") or "").strip()
+                if not row_source and source_label.startswith("http"):
+                    row_source = source_label  # "Source" col sometimes IS the URL
+                if row_source:
+                    source = row_source
+                    method = classify_extraction_method(row_source, "epoch")
+                else:
+                    # No per-row source in this file's schema (the "mean_score"
+                    # variant -- Log viewer/Logs columns exist but are empty
+                    # for every row checked) -- fall back to the benchmark's
+                    # own hub page rather than leaving provenance blank.
+                    source = hub_fallback_url
+                    method = "epoch_bulk_csv_no_row_source_used_hub_fallback"
                 records.append({
                     "benchmark": target_slug,
                     "date": d,
@@ -246,9 +315,11 @@ if EPOCH.exists():
                     "score": score,
                     "score_unit": score_unit,
                     "org": (row.get("Organization") or "").strip(),
-                    "source": (row.get("Source link") or row.get("Source") or "").strip(),
+                    "source": source,
                     "notes": (row.get("Notes") or "").strip(),
                     "family": "epoch",
+                    "file": rel_path,
+                    "extraction_method": method,
                 })
 
 # ---- filter out records with no usable date ----
@@ -304,6 +375,7 @@ for slug, rows in sorted(by_bench.items()):
     is_percentish = unit_family(unit_guess, rows[-1]["score"]) == "percent"
     max_score = max(scores)
     saturated = is_percentish and max_score >= 90
+    n_no_source = sum(1 for r in rows if not r["source"])
     summary_rows.append({
         "benchmark": slug,
         "display_name": display_name(slug),
@@ -316,6 +388,8 @@ for slug, rows in sorted(by_bench.items()):
         "unit_guess": unit_guess,
         "likely_saturated": saturated,
         "families": ",".join(sorted(set(r["family"] for r in rows))),
+        "n_points_no_source": n_no_source,
+        "source_files": ";".join(sorted(set(r["file"] for r in rows))),
     })
 
 summary_rows.sort(key=lambda r: (-r["n_points"]))
@@ -386,11 +460,17 @@ def fit_trend(rows, family):
 out = {"generated": date.today().isoformat(), "benchmarks": {}}
 for slug, rows in sorted(by_bench.items()):
     fam = unit_family(rows[-1]["score_unit"], rows[-1]["score"])
+    method_counts = {}
+    for r in rows:
+        m = r.get("extraction_method", "unknown_no_source_recorded")
+        method_counts[m] = method_counts.get(m, 0) + 1
     out["benchmarks"][slug] = {
         "display_name": display_name(slug),
         "description": DESCRIPTIONS.get(slug, ""),
         "unit_family": fam,
         "unit_label": rows[-1]["score_unit"],
+        "source_files": sorted(set(r["file"] for r in rows)),
+        "provenance_summary": method_counts,
         "points": [
             {
                 "date": r["date"],
@@ -399,6 +479,7 @@ for slug, rows in sorted(by_bench.items()):
                 "unit": r["score_unit"],
                 "org": r["org"],
                 "source": r["source"],
+                "extraction_method": r.get("extraction_method", "unknown_no_source_recorded"),
             }
             for r in rows
         ],

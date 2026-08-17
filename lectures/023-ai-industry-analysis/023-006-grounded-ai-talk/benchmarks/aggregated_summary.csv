@@ -1,75 +1,75 @@
-benchmark,display_name,n_points,n_models,date_min,date_max,score_min,score_max,unit_guess,likely_saturated,families
-gpqa-diamond,GPQA Diamond,271,271,2023-03-14,2026-08-13,13.226010101010102,94.82323232323232,percent,True,"epoch,hand"
-arc-agi-1,ARC-AGI-1,268,247,2019-11-05,2026-08-11,0.0,98.5,% correct (semi-private eval set),True,"epoch,hand"
-arc-agi-2,ARC-AGI-2,255,240,2023-11-03,2026-08-11,0.0,100.0,% correct (semi-private eval set),True,"epoch,hand"
-otis-mock-aime-2024-2025,OTIS Mock AIME,238,238,2023-03-14,2026-08-13,0.0,100.0,percent,True,epoch
-frontiermath,FrontierMath,176,108,2024-06-20,2026-05-28,0.0,89.0,percent,False,"epoch,hand"
-chess-puzzles,Chess Puzzles (Epoch),161,161,2023-06-13,2026-08-13,0.0,64.0,percent,False,epoch
-scicode,SciCode,135,131,2024-07-18,2026-07-31,1.5,60.2,percent,False,"epoch,hand"
-bool-q,BoolQ,123,65,2019-11-05,2024-08-17,56.3,90.9,percent,True,epoch
-math,Math,114,114,2022-01-01,2025-10-15,3.2854984894259815,98.13066465256797,percent,True,"epoch,hand"
-piqa,PIQA,112,59,2019-11-05,2024-12-26,65.8,88.7,percent,False,epoch
-simpleqa-verified,SimpleQA Verified,85,85,2024-10-22,2026-08-13,5.8999999999999995,77.3,percent,False,"epoch,hand"
-mmmu,MMMU,79,79,2023-11-27,2026-07-01,32.6,88.6,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",False,hand
-mmbench,MMBench,69,69,2023-12-23,2025-08-14,58.0,88.5,"% accuracy (MMBench-EN v1.1, test split, overall)",False,hand
-swe-bench-verified,SWE-bench Verified,54,52,2024-08-13,2026-06-16,30.991735537190085,83.47107438016529,percent,False,"epoch,hand"
-vending-bench,Vending-Bench,54,54,2025-06-17,2026-07-24,-31.18399999999995,11181.87333333333,raw,False,epoch
-lambada,LAMBADA,53,26,2021-12-08,2023-11-30,54.300000000000004,87.15,percent,False,epoch
-mystery-game-puzzles,Mystery Game Puzzles (Epoch),53,53,2025-08-05,2026-08-13,6.0,59.0,percent,False,epoch
-osworld,OSWorld,41,27,2024-05-30,2026-08-01,4.4,90.19,"% success rate (OSWorld-Verified, best step-budget run)",True,"epoch,hand"
-arc-agi-3,ARC-AGI-3,36,36,2025-12-17,2026-08-11,0.01,100.0,"% of public demo set solved (official ARC-AGI-3 leaderboard, bare model + minimal harness)",True,hand
-cursorbench,CursorBench,31,31,2026-01-27,2026-07-24,31.900000000000002,72.9,percent,False,epoch
-mle-bench,MLE-bench,28,28,2024-10-08,2026-03-06,1.6,64.44,"% (any-medal rate, MLE-bench 'All'/split75 comparable subset)",False,hand
-metr-time-horizon,METR Time Horizon,26,26,2019-02-14,2026-04-07,0.0538,1044.7801,"hours (human-expert-equivalent task time, 50% success rate)",False,hand
-science-qa,ScienceQA,26,23,2022-01-27,2024-08-16,36.19,91.3,percent,True,epoch
-aider-polyglot,Aider Polyglot,24,24,2024-12-21,2025-10-03,28.0,88.0,% correct (2nd attempt),False,hand
-blueprint-bench-2,Blueprint Bench 2,21,21,2025-10-15,2026-07-24,0.0,38.61171366594359,percent,False,epoch
-algotune,AlgoTune,18,18,2025-01-20,2026-03-05,1.31,2.05,raw,False,epoch
-codeforces-elo,Codeforces (Elo),16,16,2022-11-01,2026-02-12,0.0,3455.0,Codeforces Elo,False,hand
-adversarial-nli,Adversarial NLI,15,11,2022-01-27,2024-04-23,33.900000000000006,58.099999999999994,percent,False,epoch
-androidworld,AndroidWorld,14,14,2024-05-23,2025-10-14,3.4,97.4,% success rate pass@1 (AndroidWorld community leaderboard),True,hand
-gaia,GAIA,14,13,2023-11-21,2025-09-01,15.0,75.0,% accuracy,False,hand
-mbpp,MBPP,14,14,2024-09-19,2026-08-07,66.9,92.7,pass@1 % (MBPP+),True,hand
-humaneval,HumanEval,12,12,2021-07-14,2026-08-08,28.8,97.6,pass@1 %,True,hand
-mmlu-pro,MMLU-Pro,12,12,2024-06-01,2026-08-01,56.2,91.59,percent accuracy,True,hand
-paperbench,Paperbench,12,12,2024-05-13,2025-04-07,2.6,43.4,% PaperBench replication score,False,hand
-rli,RLI,12,12,2025-06-05,2026-06-09,0.83,16.1,percent,False,epoch
-chartqa,ChartQA,11,11,2024-03-04,2025-02-02,78.1,90.8,% relaxed accuracy (ChartQA test avg.),True,hand
-docvqa,DocVQA,11,11,2024-03-04,2025-02-02,87.2,96.4,ANLS score (DocVQA test),True,hand
-tau-bench,tau-bench,11,8,2024-06-01,2025-08-01,36.0,69.2,pass^1 % (airline domain),False,hand
-big-bench-hard,Big Bench Hard,10,10,2022-10-01,2026-06-01,65.7,96.1,percent accuracy,True,hand
-browsecomp,BrowseComp,10,10,2024-08-06,2026-07-09,0.6,92.2,% accuracy,True,hand
-mmlu,MMLU,10,10,2023-03-01,2026-04-23,86.4,92.4,percent accuracy,True,hand
-terminal-bench,Terminal Bench,10,10,2025-05-22,2026-05-14,43.2,84.7,% (Terminal-Bench 2.0),False,hand
-aime,AIME,9,8,2024-09-12,2026-02-01,12.0,99.79,percent (AIME 2025,True,hand
-livecodebench,LiveCodeBench,9,9,2026-06-05,2026-08-12,3.3,91.7,pass@1 %,True,hand
-mathvista,MathVista,9,9,2023-10-01,2026-01-01,34.8,90.7,percent accuracy (testmini),True,hand
-gdpval,GDPval (real-world expert tasks),8,8,2024-06-01,2026-04-23,12.4,84.9,"% GDPval score (OpenAI-reported, launch comparison)",False,hand
-hle,Humanity's Last Exam,8,8,2025-01-01,2026-08-11,2.7,54.9,percent accuracy,False,hand
-omni-math,Omni-MATH,8,8,2024-10-11,2025-01-01,14.24,81.9,percent accuracy,False,hand
-openai-ai-self-improvement-evals,OpenAI Self-Improvement Evals,8,4,2025-08-13,2025-08-13,1.0,45.0,% pass@1 (OpenAI-Proof Q&A),False,hand
-vending-bench-dollars,Vending-Bench ($ balance),8,8,2025-02-20,2026-07-29,335.46,11182.0,mean final balance in simulated $ (5 runs; Vending-Bench 2),False,hand
-agentbench,AgentBench,7,7,2023-08-07,2023-08-07,0.78,4.01,overall score (0-8 scale; avg across 8 environments),False,hand
-arc,ARC (AI2 Reasoning Challenge),7,7,2023-03-01,2024-12-26,94.5,98.9,percent accuracy,True,hand
-simpleqa,SimpleQA,7,7,2024-10-30,2026-07-31,15.0,62.5,percent correct,False,hand
-agieval,AGIEval,6,6,2023-07-01,2026-08-01,22.8,94.0,percent accuracy,True,hand
-ai-scientist,AI Scientist (Sakana et al.),6,6,2025-02-20,2026-04-18,1.0,42.0,"mean paper-quality score, 1-5 scale (LLM-judge synthesis of GPT-5.4/Gemini/Claude reviewers)",False,hand
-gsm8k,GSM8K,6,6,2021-11-01,2026-03-01,55.0,99.7,percent accuracy,True,hand
-mirrorcode,MirrorCode,6,6,2026-02-19,2026-07-09,8.888888888888888,63.88888888888889,percent,False,epoch
-swe-bench-pro,SWE-bench Pro,6,6,2025-09-19,2026-08-01,23.0,80.0,% resolved,False,hand
-truthfulqa,Truthfulqa,6,6,2023-03-01,2026-08-01,50.18,88.0,percent accuracy (MC),False,hand
-hellaswag,Hellaswag,5,5,2020-05-01,2024-09-01,78.9,95.4,percent accuracy,True,hand
-winogrande,Winogrande,5,5,2023-03-01,2024-12-26,82.3,87.5,percent accuracy,False,hand
-gdpval-elo,"GDPval (Elo, Artificial Analysis)",4,4,2026-07-01,2026-08-01,1725.0,1849.0,Elo (Artificial Analysis GDPval-AA v2 leaderboard),False,hand
-imo,IMO (Intl. Mathematical Olympiad),4,4,2024-07-01,2026-07-22,28.0,42.0,points out of 42 (perfect score),False,hand
-metr-cross-domain-time-horizon,METR Cross-Domain Time Horizon,4,4,2025-07-14,2025-07-14,3.0,24.0,approx doubling time (months) of domain-specific time horizon ('~2 years'),False,hand
-re-bench,RE-Bench (METR),4,4,2024-11-22,2024-11-22,0.46,4.0,"normalized score (0=starting solution, 1=reference solution), 8-hour budget",False,hand
-common-sense-qa-2,CommonsenseQA 2.0,3,3,2022-01-27,2023-07-18,50.0,56.99999999999999,percent,False,epoch
-ioi,IOI (Intl. Olympiad in Informatics),3,3,2026-08-09,2026-08-09,72.25,91.67,percent score (aggregator's IOI scoring methodology),True,hand
-livecodebench-elo,LiveCodeBench Pro (Elo),3,3,2026-02-01,2026-02-01,2316.0,2887.0,Elo (LiveCodeBench Pro),False,hand
-vending-bench-percent,Vending-Bench (%),3,3,2025-09-24,2026-04-17,35.26166666666665,71.56500000000018,raw,False,epoch
-webarena,WebArena,2,2,2023-07-26,2025-01-23,14.41,58.1,% success rate,False,hand
-superglue,SuperGLUE,1,1,2022-01-27,2022-01-27,71.8,71.8,percent,False,epoch
-swe-bench-lite,SWE-bench Lite,1,1,2026-08-07,2026-08-07,62.7,62.7,% resolved,False,hand
-swe-bench-multimodal,SWE-bench Multimodal,1,1,2026-08-01,2026-08-01,59.0,59.0,% resolved,False,hand
-vending-bench-time,Vending-Bench (survival time),1,1,2025-02-20,2025-02-20,844.05,844.05,mean net worth in simulated $ (single 5-hour run; Vending-Bench 1),False,hand
+benchmark,display_name,n_points,n_models,date_min,date_max,score_min,score_max,unit_guess,likely_saturated,families,n_points_no_source,source_files
+gpqa-diamond,GPQA Diamond,271,271,2023-03-14,2026-08-13,13.226010101010102,94.82323232323232,percent,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/gpqa_diamond.csv;data/gpqa-diamond.csv
+arc-agi-1,ARC-AGI-1,268,247,2019-11-05,2026-08-11,0.0,98.5,% correct (semi-private eval set),True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/arc_agi_external.csv;data/arc-agi-1.csv
+arc-agi-2,ARC-AGI-2,255,240,2023-11-03,2026-08-11,0.0,100.0,% correct (semi-private eval set),True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/arc_agi_2_external.csv;data/arc-agi-2.csv
+otis-mock-aime-2024-2025,OTIS Mock AIME,238,238,2023-03-14,2026-08-13,0.0,100.0,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/otis_mock_aime_2024_2025.csv
+frontiermath,FrontierMath,176,108,2024-06-20,2026-05-28,0.0,89.0,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/frontiermath.csv;data/aggregator-epoch-benchmarking-hub/frontiermath_tier_4.csv;data/frontiermath.csv
+chess-puzzles,Chess Puzzles (Epoch),161,161,2023-06-13,2026-08-13,0.0,64.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/chess_puzzles.csv
+scicode,SciCode,135,131,2024-07-18,2026-07-31,1.5,60.2,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/scicode_external.csv;data/scicode.csv
+bool-q,BoolQ,123,65,2019-11-05,2024-08-17,56.3,90.9,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/bool_q_external.csv
+math,Math,114,114,2022-01-01,2025-10-15,3.2854984894259815,98.13066465256797,percent,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/math_level_5.csv;data/math.csv
+piqa,PIQA,112,59,2019-11-05,2024-12-26,65.8,88.7,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/piqa_external.csv
+simpleqa-verified,SimpleQA Verified,85,85,2024-10-22,2026-08-13,5.8999999999999995,77.3,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/simpleqa_verified.csv;data/simpleqa-verified.csv
+mmmu,MMMU,79,79,2023-11-27,2026-07-01,32.6,88.6,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",False,hand,0,data/mmmu.csv
+mmbench,MMBench,69,69,2023-12-23,2025-08-14,58.0,88.5,"% accuracy (MMBench-EN v1.1, test split, overall)",False,hand,0,data/mmbench.csv
+swe-bench-verified,SWE-bench Verified,54,52,2024-08-13,2026-06-16,30.991735537190085,83.47107438016529,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/swe_bench_verified.csv;data/swe-bench-verified.csv
+vending-bench,Vending-Bench,54,54,2025-06-17,2026-07-24,-31.18399999999995,11181.87333333333,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/vending_bench_2_external.csv
+lambada,LAMBADA,53,26,2021-12-08,2023-11-30,54.300000000000004,87.15,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/lambada_external.csv
+mystery-game-puzzles,Mystery Game Puzzles (Epoch),53,53,2025-08-05,2026-08-13,6.0,59.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/mystery_game_puzzles.csv
+osworld,OSWorld,41,27,2024-05-30,2026-08-01,4.4,90.19,"% success rate (OSWorld-Verified, best step-budget run)",True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/os_world_external.csv;data/osworld.csv
+arc-agi-3,ARC-AGI-3,36,36,2025-12-17,2026-08-11,0.01,100.0,"% of public demo set solved (official ARC-AGI-3 leaderboard, bare model + minimal harness)",True,hand,0,data/arc-agi-3.csv
+cursorbench,CursorBench,31,31,2026-01-27,2026-07-24,31.900000000000002,72.9,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/cursorbench_external.csv
+mle-bench,MLE-bench,28,28,2024-10-08,2026-03-06,1.6,64.44,"% (any-medal rate, MLE-bench 'All'/split75 comparable subset)",False,hand,0,data/mle-bench.csv
+metr-time-horizon,METR Time Horizon,26,26,2019-02-14,2026-04-07,0.0538,1044.7801,"hours (human-expert-equivalent task time, 50% success rate)",False,hand,0,data/metr-time-horizon.csv
+science-qa,ScienceQA,26,23,2022-01-27,2024-08-16,36.19,91.3,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/science_qa_external.csv
+aider-polyglot,Aider Polyglot,24,24,2024-12-21,2025-10-03,28.0,88.0,% correct (2nd attempt),False,hand,0,data/aider-polyglot.csv
+blueprint-bench-2,Blueprint Bench 2,21,21,2025-10-15,2026-07-24,0.0,38.61171366594359,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/blueprint_bench_2_external.csv
+algotune,AlgoTune,18,18,2025-01-20,2026-03-05,1.31,2.05,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/algotune_external.csv
+codeforces-elo,Codeforces (Elo),16,16,2022-11-01,2026-02-12,0.0,3455.0,Codeforces Elo,False,hand,0,data/codeforces-elo.csv
+adversarial-nli,Adversarial NLI,15,11,2022-01-27,2024-04-23,33.900000000000006,58.099999999999994,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/adversarial_nli_external.csv
+androidworld,AndroidWorld,14,14,2024-05-23,2025-10-14,3.4,97.4,% success rate pass@1 (AndroidWorld community leaderboard),True,hand,0,data/androidworld.csv
+gaia,GAIA,14,13,2023-11-21,2025-09-01,15.0,75.0,% accuracy,False,hand,0,data/gaia.csv
+mbpp,MBPP,14,14,2024-09-19,2026-08-07,66.9,92.7,pass@1 % (MBPP+),True,hand,0,data/mbpp.csv
+humaneval,HumanEval,12,12,2021-07-14,2026-08-08,28.8,97.6,pass@1 %,True,hand,0,data/humaneval.csv
+mmlu-pro,MMLU-Pro,12,12,2024-06-01,2026-08-01,56.2,91.59,percent accuracy,True,hand,0,data/mmlu-pro.csv
+paperbench,Paperbench,12,12,2024-05-13,2025-04-07,2.6,43.4,% PaperBench replication score,False,hand,0,data/paperbench.csv
+rli,RLI,12,12,2025-06-05,2026-06-09,0.83,16.1,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/rli_external.csv
+chartqa,ChartQA,11,11,2024-03-04,2025-02-02,78.1,90.8,% relaxed accuracy (ChartQA test avg.),True,hand,0,data/chartqa.csv
+docvqa,DocVQA,11,11,2024-03-04,2025-02-02,87.2,96.4,ANLS score (DocVQA test),True,hand,0,data/docvqa.csv
+tau-bench,tau-bench,11,8,2024-06-01,2025-08-01,36.0,69.2,pass^1 % (airline domain),False,hand,0,data/tau-bench.csv
+big-bench-hard,Big Bench Hard,10,10,2022-10-01,2026-06-01,65.7,96.1,percent accuracy,True,hand,0,data/big-bench-hard.csv
+browsecomp,BrowseComp,10,10,2024-08-06,2026-07-09,0.6,92.2,% accuracy,True,hand,0,data/browsecomp.csv
+mmlu,MMLU,10,10,2023-03-01,2026-04-23,86.4,92.4,percent accuracy,True,hand,0,data/mmlu.csv
+terminal-bench,Terminal Bench,10,10,2025-05-22,2026-05-14,43.2,84.7,% (Terminal-Bench 2.0),False,hand,0,data/terminal-bench.csv
+aime,AIME,9,8,2024-09-12,2026-02-01,12.0,99.79,percent (AIME 2025,True,hand,0,data/aime.csv
+livecodebench,LiveCodeBench,9,9,2026-06-05,2026-08-12,3.3,91.7,pass@1 %,True,hand,0,data/livecodebench.csv
+mathvista,MathVista,9,9,2023-10-01,2026-01-01,34.8,90.7,percent accuracy (testmini),True,hand,0,data/mathvista.csv
+gdpval,GDPval (real-world expert tasks),8,8,2024-06-01,2026-04-23,12.4,84.9,"% GDPval score (OpenAI-reported, launch comparison)",False,hand,0,data/gdpval.csv
+hle,Humanity's Last Exam,8,8,2025-01-01,2026-08-11,2.7,54.9,percent accuracy,False,hand,0,data/hle.csv
+omni-math,Omni-MATH,8,8,2024-10-11,2025-01-01,14.24,81.9,percent accuracy,False,hand,0,data/omni-math.csv
+openai-ai-self-improvement-evals,OpenAI Self-Improvement Evals,8,4,2025-08-13,2025-08-13,1.0,45.0,% pass@1 (OpenAI-Proof Q&A),False,hand,0,data/openai-ai-self-improvement-evals.csv
+vending-bench-dollars,Vending-Bench ($ balance),8,8,2025-02-20,2026-07-29,335.46,11182.0,mean final balance in simulated $ (5 runs; Vending-Bench 2),False,hand,0,data/vending-bench.csv
+agentbench,AgentBench,7,7,2023-08-07,2023-08-07,0.78,4.01,overall score (0-8 scale; avg across 8 environments),False,hand,0,data/agentbench.csv
+arc,ARC (AI2 Reasoning Challenge),7,7,2023-03-01,2024-12-26,94.5,98.9,percent accuracy,True,hand,0,data/arc.csv
+simpleqa,SimpleQA,7,7,2024-10-30,2026-07-31,15.0,62.5,percent correct,False,hand,0,data/simpleqa.csv
+agieval,AGIEval,6,6,2023-07-01,2026-08-01,22.8,94.0,percent accuracy,True,hand,0,data/agieval.csv
+ai-scientist,AI Scientist (Sakana et al.),6,6,2025-02-20,2026-04-18,1.0,42.0,"mean paper-quality score, 1-5 scale (LLM-judge synthesis of GPT-5.4/Gemini/Claude reviewers)",False,hand,0,data/ai-scientist.csv
+gsm8k,GSM8K,6,6,2021-11-01,2026-03-01,55.0,99.7,percent accuracy,True,hand,0,data/gsm8k.csv
+mirrorcode,MirrorCode,6,6,2026-02-19,2026-07-09,8.888888888888888,63.88888888888889,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/mirrorcode.csv
+swe-bench-pro,SWE-bench Pro,6,6,2025-09-19,2026-08-01,23.0,80.0,% resolved,False,hand,0,data/swe-bench-pro.csv
+truthfulqa,Truthfulqa,6,6,2023-03-01,2026-08-01,50.18,88.0,percent accuracy (MC),False,hand,0,data/truthfulqa.csv
+hellaswag,Hellaswag,5,5,2020-05-01,2024-09-01,78.9,95.4,percent accuracy,True,hand,0,data/hellaswag.csv
+winogrande,Winogrande,5,5,2023-03-01,2024-12-26,82.3,87.5,percent accuracy,False,hand,0,data/winogrande.csv
+gdpval-elo,"GDPval (Elo, Artificial Analysis)",4,4,2026-07-01,2026-08-01,1725.0,1849.0,Elo (Artificial Analysis GDPval-AA v2 leaderboard),False,hand,0,data/gdpval.csv
+imo,IMO (Intl. Mathematical Olympiad),4,4,2024-07-01,2026-07-22,28.0,42.0,points out of 42 (perfect score),False,hand,0,data/imo.csv
+metr-cross-domain-time-horizon,METR Cross-Domain Time Horizon,4,4,2025-07-14,2025-07-14,3.0,24.0,approx doubling time (months) of domain-specific time horizon ('~2 years'),False,hand,0,data/metr-cross-domain-time-horizon.csv
+re-bench,RE-Bench (METR),4,4,2024-11-22,2024-11-22,0.46,4.0,"normalized score (0=starting solution, 1=reference solution), 8-hour budget",False,hand,0,data/re-bench.csv
+common-sense-qa-2,CommonsenseQA 2.0,3,3,2022-01-27,2023-07-18,50.0,56.99999999999999,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/common_sense_qa_2_external.csv
+ioi,IOI (Intl. Olympiad in Informatics),3,3,2026-08-09,2026-08-09,72.25,91.67,percent score (aggregator's IOI scoring methodology),True,hand,0,data/ioi.csv
+livecodebench-elo,LiveCodeBench Pro (Elo),3,3,2026-02-01,2026-02-01,2316.0,2887.0,Elo (LiveCodeBench Pro),False,hand,0,data/livecodebench.csv
+vending-bench-percent,Vending-Bench (%),3,3,2025-09-24,2026-04-17,35.26166666666665,71.56500000000018,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/vending_bench_2_external.csv
+webarena,WebArena,2,2,2023-07-26,2025-01-23,14.41,58.1,% success rate,False,hand,0,data/webarena.csv
+superglue,SuperGLUE,1,1,2022-01-27,2022-01-27,71.8,71.8,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/superglue_external.csv
+swe-bench-lite,SWE-bench Lite,1,1,2026-08-07,2026-08-07,62.7,62.7,% resolved,False,hand,0,data/swe-bench-lite.csv
+swe-bench-multimodal,SWE-bench Multimodal,1,1,2026-08-01,2026-08-01,59.0,59.0,% resolved,False,hand,0,data/swe-bench-multimodal.csv
+vending-bench-time,Vending-Bench (survival time),1,1,2025-02-20,2025-02-20,844.05,844.05,mean net worth in simulated $ (single 5-hour run; Vending-Bench 1),False,hand,0,data/vending-bench.csv

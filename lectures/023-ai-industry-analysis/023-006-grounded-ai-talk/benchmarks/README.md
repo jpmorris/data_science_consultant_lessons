@@ -111,118 +111,137 @@ One-sentence description per benchmark, grouped the same way as the catalog belo
 - **RLI** — The Remote Labor Index — whether AI agents can complete real, economically valuable freelance work (dev, design, architecture, data, video) to a professional-acceptance standard.
 - **Blueprint Bench 2** — Whether an agent can construct an accurate 2D floor plan of an apartment from a set of interior photographs, scored against the true room layout.
 
+## Data provenance
+
+Every data point in `aggregated.json` carries a `source` URL and an `extraction_method` tag; every benchmark carries a `source_files` list (the exact CSV path(s) on disk backing it) and a `provenance_summary` (point counts by extraction method). Methods are assigned mechanically from the source URL's domain (see `classify_extraction_method()` in `aggregate.py`), not asserted from memory, so re-running the script reproduces the same tags.
+
+**2913 total data points, 0 with an empty source** (breakdown by extraction method):
+
+| Extraction method | Points | What it means |
+| --- | --- | --- |
+| `epoch_bulk_csv_no_row_source_used_hub_fallback` | 1432 | Row came from Epoch AI's bulk CSV export with no per-row source link in Epoch's own schema; falls back to that benchmark's general epoch.ai/benchmarks page (verified to resolve) rather than being left blank. |
+| `arxiv_or_academic_paper` | 455 | URL is arXiv/ACL/OpenReview/NeurIPS-proceedings — a paper's own results table. |
+| `official_benchmark_leaderboard_or_site` | 403 | URL is the benchmark's own official leaderboard/project site (arcprize.org, swebench.com, metr.org, etc.). |
+| `third_party_aggregator` | 206 | URL is a secondary aggregator (llm-stats.com, Artificial Analysis, Vals AI, etc.) — lower confidence than a primary source, flagged per-row. |
+| `primary_lab_source` | 194 | URL is a frontier lab's own blog post, model card, or system card (OpenAI/Anthropic/Google/xAI/Meta). |
+| `other_web_source` | 164 | URL didn't match a known domain pattern above; still a real, cited source, just uncategorized. |
+| `huggingface_dataset_or_space` | 40 | URL is a Hugging Face dataset or Space. |
+| `github_repo` | 19 | URL is a GitHub repo/README — usually a maintained leaderboard table in the benchmark's own code repo. |
+
+**Known fix in this pass:** an earlier version of `aggregate.py` left 1,432 of 2,913 points (49.2%) with an empty `source` field, because 10 of Epoch AI's 76 benchmark CSVs use a different column schema (`Log viewer`/`Logs` instead of `Source`/`Source link`) that the merge script didn't check, and those log-viewer/logs cells are empty for every row in those files anyway. Fixed by falling back to the benchmark's own epoch.ai hub page (a real, verified URL) for any row with no per-row source, tagged distinctly (`epoch_bulk_csv_no_row_source_used_hub_fallback`) so it's never confused with a genuine per-row citation.
+
 ## Benchmark catalog
 
 ### General knowledge / broad reasoning
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **MMLU** (`mmlu`) | 10 | 2023-03-01 → 2026-04-23 | 86.4–92.4 percent accuracy | likely saturated (near ceiling) |
-| **MMLU-Pro** (`mmlu-pro`) | 12 | 2024-06-01 → 2026-08-01 | 56.2–91.59 percent accuracy | likely saturated (near ceiling) |
-| **Big Bench Hard** (`big-bench-hard`) | 10 | 2022-10-01 → 2026-06-01 | 65.7–96.1 percent accuracy | likely saturated (near ceiling) |
-| **Hellaswag** (`hellaswag`) | 5 | 2020-05-01 → 2024-09-01 | 78.9–95.4 percent accuracy | likely saturated (near ceiling) |
-| **ARC (AI2 Reasoning Challenge)** (`arc`) | 7 | 2023-03-01 → 2024-12-26 | 94.5–98.9 percent accuracy | likely saturated (near ceiling) |
-| **Truthfulqa** (`truthfulqa`) | 6 | 2023-03-01 → 2026-08-01 | 50.18–88 percent accuracy (MC) | still discriminating |
-| **Winogrande** (`winogrande`) | 5 | 2023-03-01 → 2024-12-26 | 82.3–87.5 percent accuracy | still discriminating |
-| **AGIEval** (`agieval`) | 6 | 2023-07-01 → 2026-08-01 | 22.8–94 percent accuracy | likely saturated (near ceiling) |
-| **BoolQ** (`bool-q`) | 123 | 2019-11-05 → 2024-08-17 | 56.3–90.9 percent | likely saturated (near ceiling) |
-| **PIQA** (`piqa`) | 112 | 2019-11-05 → 2024-12-26 | 65.8–88.7 percent | still discriminating |
-| **LAMBADA** (`lambada`) | 53 | 2021-12-08 → 2023-11-30 | 54.3–87.15 percent | still discriminating |
-| **Adversarial NLI** (`adversarial-nli`) | 15 | 2022-01-27 → 2024-04-23 | 33.9–58.1 percent | still discriminating |
-| **CommonsenseQA 2.0** (`common-sense-qa-2`) | 3 | 2022-01-27 → 2023-07-18 | 50–57 percent | still discriminating |
-| **SuperGLUE** (`superglue`) | 1 | 2022-01-27 → 2022-01-27 | 71.8–71.8 percent | still discriminating |
-| **ScienceQA** (`science-qa`) | 26 | 2022-01-27 → 2024-08-16 | 36.19–91.3 percent | likely saturated (near ceiling) |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **MMLU** (`mmlu`) | 10 | 2023-03-01 → 2026-04-23 | 86.4–92.4 percent accuracy | likely saturated (near ceiling) | `data/mmlu.csv` |
+| **MMLU-Pro** (`mmlu-pro`) | 12 | 2024-06-01 → 2026-08-01 | 56.2–91.59 percent accuracy | likely saturated (near ceiling) | `data/mmlu-pro.csv` |
+| **Big Bench Hard** (`big-bench-hard`) | 10 | 2022-10-01 → 2026-06-01 | 65.7–96.1 percent accuracy | likely saturated (near ceiling) | `data/big-bench-hard.csv` |
+| **Hellaswag** (`hellaswag`) | 5 | 2020-05-01 → 2024-09-01 | 78.9–95.4 percent accuracy | likely saturated (near ceiling) | `data/hellaswag.csv` |
+| **ARC (AI2 Reasoning Challenge)** (`arc`) | 7 | 2023-03-01 → 2024-12-26 | 94.5–98.9 percent accuracy | likely saturated (near ceiling) | `data/arc.csv` |
+| **Truthfulqa** (`truthfulqa`) | 6 | 2023-03-01 → 2026-08-01 | 50.18–88 percent accuracy (MC) | still discriminating | `data/truthfulqa.csv` |
+| **Winogrande** (`winogrande`) | 5 | 2023-03-01 → 2024-12-26 | 82.3–87.5 percent accuracy | still discriminating | `data/winogrande.csv` |
+| **AGIEval** (`agieval`) | 6 | 2023-07-01 → 2026-08-01 | 22.8–94 percent accuracy | likely saturated (near ceiling) | `data/agieval.csv` |
+| **BoolQ** (`bool-q`) | 123 | 2019-11-05 → 2024-08-17 | 56.3–90.9 percent | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/bool_q_external.csv` |
+| **PIQA** (`piqa`) | 112 | 2019-11-05 → 2024-12-26 | 65.8–88.7 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/piqa_external.csv` |
+| **LAMBADA** (`lambada`) | 53 | 2021-12-08 → 2023-11-30 | 54.3–87.15 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/lambada_external.csv` |
+| **Adversarial NLI** (`adversarial-nli`) | 15 | 2022-01-27 → 2024-04-23 | 33.9–58.1 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/adversarial_nli_external.csv` |
+| **CommonsenseQA 2.0** (`common-sense-qa-2`) | 3 | 2022-01-27 → 2023-07-18 | 50–57 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/common_sense_qa_2_external.csv` |
+| **SuperGLUE** (`superglue`) | 1 | 2022-01-27 → 2022-01-27 | 71.8–71.8 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/superglue_external.csv` |
+| **ScienceQA** (`science-qa`) | 26 | 2022-01-27 → 2024-08-16 | 36.19–91.3 percent | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/science_qa_external.csv` |
 
 ### Elite reasoning & math
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **GPQA Diamond** (`gpqa-diamond`) | 271 | 2023-03-14 → 2026-08-13 | 13.226–94.823 percent | likely saturated (near ceiling) |
-| **Humanity's Last Exam** (`hle`) | 8 | 2025-01-01 → 2026-08-11 | 2.7–54.9 percent accuracy | still discriminating |
-| **SimpleQA** (`simpleqa`) | 7 | 2024-10-30 → 2026-07-31 | 15–62.5 percent correct | still discriminating |
-| **SimpleQA Verified** (`simpleqa-verified`) | 85 | 2024-10-22 → 2026-08-13 | 5.9–77.3 percent | still discriminating |
-| **GSM8K** (`gsm8k`) | 6 | 2021-11-01 → 2026-03-01 | 55–99.7 percent accuracy | likely saturated (near ceiling) |
-| **Math** (`math`) | 114 | 2022-01-01 → 2025-10-15 | 3.285–98.131 percent | likely saturated (near ceiling) |
-| **AIME** (`aime`) | 9 | 2024-09-12 → 2026-02-01 | 12–99.79 percent (AIME 2025 | likely saturated (near ceiling) |
-| **FrontierMath** (`frontiermath`) | 176 | 2024-06-20 → 2026-05-28 | 0–89 percent | still discriminating |
-| **MathVista** (`mathvista`) | 9 | 2023-10-01 → 2026-01-01 | 34.8–90.7 percent accuracy (testmini) | likely saturated (near ceiling) |
-| **Omni-MATH** (`omni-math`) | 8 | 2024-10-11 → 2025-01-01 | 14.24–81.9 percent accuracy | still discriminating |
-| **IMO (Intl. Mathematical Olympiad)** (`imo`) | 4 | 2024-07-01 → 2026-07-22 | 28–42 points out of 42 (perfect score) | still discriminating |
-| **IOI (Intl. Olympiad in Informatics)** (`ioi`) | 3 | 2026-08-09 → 2026-08-09 | 72.25–91.67 percent score (aggregator's IOI scoring methodology) | likely saturated (near ceiling) |
-| **OTIS Mock AIME** (`otis-mock-aime-2024-2025`) | 238 | 2023-03-14 → 2026-08-13 | 0–100 percent | likely saturated (near ceiling) |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **GPQA Diamond** (`gpqa-diamond`) | 271 | 2023-03-14 → 2026-08-13 | 13.226–94.823 percent | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/gpqa_diamond.csv`<br>`data/gpqa-diamond.csv` |
+| **Humanity's Last Exam** (`hle`) | 8 | 2025-01-01 → 2026-08-11 | 2.7–54.9 percent accuracy | still discriminating | `data/hle.csv` |
+| **SimpleQA** (`simpleqa`) | 7 | 2024-10-30 → 2026-07-31 | 15–62.5 percent correct | still discriminating | `data/simpleqa.csv` |
+| **SimpleQA Verified** (`simpleqa-verified`) | 85 | 2024-10-22 → 2026-08-13 | 5.9–77.3 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/simpleqa_verified.csv`<br>`data/simpleqa-verified.csv` |
+| **GSM8K** (`gsm8k`) | 6 | 2021-11-01 → 2026-03-01 | 55–99.7 percent accuracy | likely saturated (near ceiling) | `data/gsm8k.csv` |
+| **Math** (`math`) | 114 | 2022-01-01 → 2025-10-15 | 3.285–98.131 percent | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/math_level_5.csv`<br>`data/math.csv` |
+| **AIME** (`aime`) | 9 | 2024-09-12 → 2026-02-01 | 12–99.79 percent (AIME 2025 | likely saturated (near ceiling) | `data/aime.csv` |
+| **FrontierMath** (`frontiermath`) | 176 | 2024-06-20 → 2026-05-28 | 0–89 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/frontiermath.csv`<br>`data/aggregator-epoch-benchmarking-hub/frontiermath_tier_4.csv`<br>`data/frontiermath.csv` |
+| **MathVista** (`mathvista`) | 9 | 2023-10-01 → 2026-01-01 | 34.8–90.7 percent accuracy (testmini) | likely saturated (near ceiling) | `data/mathvista.csv` |
+| **Omni-MATH** (`omni-math`) | 8 | 2024-10-11 → 2025-01-01 | 14.24–81.9 percent accuracy | still discriminating | `data/omni-math.csv` |
+| **IMO (Intl. Mathematical Olympiad)** (`imo`) | 4 | 2024-07-01 → 2026-07-22 | 28–42 points out of 42 (perfect score) | still discriminating | `data/imo.csv` |
+| **IOI (Intl. Olympiad in Informatics)** (`ioi`) | 3 | 2026-08-09 → 2026-08-09 | 72.25–91.67 percent score (aggregator's IOI scoring methodology) | likely saturated (near ceiling) | `data/ioi.csv` |
+| **OTIS Mock AIME** (`otis-mock-aime-2024-2025`) | 238 | 2023-03-14 → 2026-08-13 | 0–100 percent | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/otis_mock_aime_2024_2025.csv` |
 
 ### Code & software engineering
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **HumanEval** (`humaneval`) | 12 | 2021-07-14 → 2026-08-08 | 28.8–97.6 pass@1 % | likely saturated (near ceiling) |
-| **MBPP** (`mbpp`) | 14 | 2024-09-19 → 2026-08-07 | 66.9–92.7 pass@1 % (MBPP+) | likely saturated (near ceiling) |
-| **SWE-bench Verified** (`swe-bench-verified`) | 54 | 2024-08-13 → 2026-06-16 | 30.992–83.471 percent | still discriminating |
-| **SWE-bench Lite** (`swe-bench-lite`) | 1 | 2026-08-07 → 2026-08-07 | 62.7–62.7 % resolved | still discriminating |
-| **SWE-bench Multimodal** (`swe-bench-multimodal`) | 1 | 2026-08-01 → 2026-08-01 | 59–59 % resolved | still discriminating |
-| **SWE-bench Pro** (`swe-bench-pro`) | 6 | 2025-09-19 → 2026-08-01 | 23–80 % resolved | still discriminating |
-| **LiveCodeBench** (`livecodebench`) | 9 | 2026-06-05 → 2026-08-12 | 3.3–91.7 pass@1 % | likely saturated (near ceiling) |
-| **LiveCodeBench Pro (Elo)** (`livecodebench-elo`) | 3 | 2026-02-01 → 2026-02-01 | 2316–2887 Elo (LiveCodeBench Pro) | still discriminating |
-| **Codeforces (Elo)** (`codeforces-elo`) | 16 | 2022-11-01 → 2026-02-12 | 0–3455 Codeforces Elo | still discriminating |
-| **Aider Polyglot** (`aider-polyglot`) | 24 | 2024-12-21 → 2025-10-03 | 28–88 % correct (2nd attempt) | still discriminating |
-| **SciCode** (`scicode`) | 135 | 2024-07-18 → 2026-07-31 | 1.5–60.2 percent | still discriminating |
-| **MirrorCode** (`mirrorcode`) | 6 | 2026-02-19 → 2026-07-09 | 8.889–63.889 percent | still discriminating |
-| **AlgoTune** (`algotune`) | 18 | 2025-01-20 → 2026-03-05 | 1.31–2.05 raw | still discriminating |
-| **CursorBench** (`cursorbench`) | 31 | 2026-01-27 → 2026-07-24 | 31.9–72.9 percent | still discriminating |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **HumanEval** (`humaneval`) | 12 | 2021-07-14 → 2026-08-08 | 28.8–97.6 pass@1 % | likely saturated (near ceiling) | `data/humaneval.csv` |
+| **MBPP** (`mbpp`) | 14 | 2024-09-19 → 2026-08-07 | 66.9–92.7 pass@1 % (MBPP+) | likely saturated (near ceiling) | `data/mbpp.csv` |
+| **SWE-bench Verified** (`swe-bench-verified`) | 54 | 2024-08-13 → 2026-06-16 | 30.992–83.471 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/swe_bench_verified.csv`<br>`data/swe-bench-verified.csv` |
+| **SWE-bench Lite** (`swe-bench-lite`) | 1 | 2026-08-07 → 2026-08-07 | 62.7–62.7 % resolved | still discriminating | `data/swe-bench-lite.csv` |
+| **SWE-bench Multimodal** (`swe-bench-multimodal`) | 1 | 2026-08-01 → 2026-08-01 | 59–59 % resolved | still discriminating | `data/swe-bench-multimodal.csv` |
+| **SWE-bench Pro** (`swe-bench-pro`) | 6 | 2025-09-19 → 2026-08-01 | 23–80 % resolved | still discriminating | `data/swe-bench-pro.csv` |
+| **LiveCodeBench** (`livecodebench`) | 9 | 2026-06-05 → 2026-08-12 | 3.3–91.7 pass@1 % | likely saturated (near ceiling) | `data/livecodebench.csv` |
+| **LiveCodeBench Pro (Elo)** (`livecodebench-elo`) | 3 | 2026-02-01 → 2026-02-01 | 2316–2887 Elo (LiveCodeBench Pro) | still discriminating | `data/livecodebench.csv` |
+| **Codeforces (Elo)** (`codeforces-elo`) | 16 | 2022-11-01 → 2026-02-12 | 0–3455 Codeforces Elo | still discriminating | `data/codeforces-elo.csv` |
+| **Aider Polyglot** (`aider-polyglot`) | 24 | 2024-12-21 → 2025-10-03 | 28–88 % correct (2nd attempt) | still discriminating | `data/aider-polyglot.csv` |
+| **SciCode** (`scicode`) | 135 | 2024-07-18 → 2026-07-31 | 1.5–60.2 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/scicode_external.csv`<br>`data/scicode.csv` |
+| **MirrorCode** (`mirrorcode`) | 6 | 2026-02-19 → 2026-07-09 | 8.889–63.889 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/mirrorcode.csv` |
+| **AlgoTune** (`algotune`) | 18 | 2025-01-20 → 2026-03-05 | 1.31–2.05 raw | still discriminating | `data/aggregator-epoch-benchmarking-hub/algotune_external.csv` |
+| **CursorBench** (`cursorbench`) | 31 | 2026-01-27 → 2026-07-24 | 31.9–72.9 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/cursorbench_external.csv` |
 
 ### Agentic, tool-use & computer-use
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **GAIA** (`gaia`) | 14 | 2023-11-21 → 2025-09-01 | 15–75 % accuracy | still discriminating |
-| **WebArena** (`webarena`) | 2 | 2023-07-26 → 2025-01-23 | 14.41–58.1 % success rate | still discriminating |
-| **AgentBench** (`agentbench`) | 7 | 2023-08-07 → 2023-08-07 | 0.78–4.01 overall score (0-8 scale; avg across 8 environments) | still discriminating |
-| **tau-bench** (`tau-bench`) | 11 | 2024-06-01 → 2025-08-01 | 36–69.2 pass^1 % (airline domain) | still discriminating |
-| **OSWorld** (`osworld`) | 41 | 2024-05-30 → 2026-08-01 | 4.4–90.19 % success rate (OSWorld-Verified, best step-budget run) | likely saturated (near ceiling) |
-| **AndroidWorld** (`androidworld`) | 14 | 2024-05-23 → 2025-10-14 | 3.4–97.4 % success rate pass@1 (AndroidWorld community leaderboard) | likely saturated (near ceiling) |
-| **BrowseComp** (`browsecomp`) | 10 | 2024-08-06 → 2026-07-09 | 0.6–92.2 % accuracy | likely saturated (near ceiling) |
-| **Vending-Bench** (`vending-bench`) | 54 | 2025-06-17 → 2026-07-24 | -31.184–11181.9 raw | still discriminating |
-| **GDPval (real-world expert tasks)** (`gdpval`) | 8 | 2024-06-01 → 2026-04-23 | 12.4–84.9 % GDPval score (OpenAI-reported, launch comparison) | still discriminating |
-| **GDPval (Elo, Artificial Analysis)** (`gdpval-elo`) | 4 | 2026-07-01 → 2026-08-01 | 1725–1849 Elo (Artificial Analysis GDPval-AA v2 leaderboard) | still discriminating |
-| **Terminal Bench** (`terminal-bench`) | 10 | 2025-05-22 → 2026-05-14 | 43.2–84.7 % (Terminal-Bench 2.0) | still discriminating |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **GAIA** (`gaia`) | 14 | 2023-11-21 → 2025-09-01 | 15–75 % accuracy | still discriminating | `data/gaia.csv` |
+| **WebArena** (`webarena`) | 2 | 2023-07-26 → 2025-01-23 | 14.41–58.1 % success rate | still discriminating | `data/webarena.csv` |
+| **AgentBench** (`agentbench`) | 7 | 2023-08-07 → 2023-08-07 | 0.78–4.01 overall score (0-8 scale; avg across 8 environments) | still discriminating | `data/agentbench.csv` |
+| **tau-bench** (`tau-bench`) | 11 | 2024-06-01 → 2025-08-01 | 36–69.2 pass^1 % (airline domain) | still discriminating | `data/tau-bench.csv` |
+| **OSWorld** (`osworld`) | 41 | 2024-05-30 → 2026-08-01 | 4.4–90.19 % success rate (OSWorld-Verified, best step-budget run) | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/os_world_external.csv`<br>`data/osworld.csv` |
+| **AndroidWorld** (`androidworld`) | 14 | 2024-05-23 → 2025-10-14 | 3.4–97.4 % success rate pass@1 (AndroidWorld community leaderboard) | likely saturated (near ceiling) | `data/androidworld.csv` |
+| **BrowseComp** (`browsecomp`) | 10 | 2024-08-06 → 2026-07-09 | 0.6–92.2 % accuracy | likely saturated (near ceiling) | `data/browsecomp.csv` |
+| **Vending-Bench** (`vending-bench`) | 54 | 2025-06-17 → 2026-07-24 | -31.184–11181.9 raw | still discriminating | `data/aggregator-epoch-benchmarking-hub/vending_bench_2_external.csv` |
+| **GDPval (real-world expert tasks)** (`gdpval`) | 8 | 2024-06-01 → 2026-04-23 | 12.4–84.9 % GDPval score (OpenAI-reported, launch comparison) | still discriminating | `data/gdpval.csv` |
+| **GDPval (Elo, Artificial Analysis)** (`gdpval-elo`) | 4 | 2026-07-01 → 2026-08-01 | 1725–1849 Elo (Artificial Analysis GDPval-AA v2 leaderboard) | still discriminating | `data/gdpval.csv` |
+| **Terminal Bench** (`terminal-bench`) | 10 | 2025-05-22 → 2026-05-14 | 43.2–84.7 % (Terminal-Bench 2.0) | still discriminating | `data/terminal-bench.csv` |
 
 ### Long-horizon autonomy, AI R&D & "AI researcher" / RSI signal
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **METR Time Horizon** (`metr-time-horizon`) | 26 | 2019-02-14 → 2026-04-07 | 0.054–1044.78 hours (human-expert-equivalent task time, 50% success rate) | still discriminating |
-| **METR Cross-Domain Time Horizon** (`metr-cross-domain-time-horizon`) | 4 | 2025-07-14 → 2025-07-14 | 3–24 approx doubling time (months) of domain-specific time horizon ('~2 years') | still discriminating |
-| **RE-Bench (METR)** (`re-bench`) | 4 | 2024-11-22 → 2024-11-22 | 0.46–4 normalized score (0=starting solution, 1=reference solution), 8-hour budget | still discriminating |
-| **MLE-bench** (`mle-bench`) | 28 | 2024-10-08 → 2026-03-06 | 1.6–64.44 % (any-medal rate, MLE-bench 'All'/split75 comparable subset) | still discriminating |
-| **Paperbench** (`paperbench`) | 12 | 2024-05-13 → 2025-04-07 | 2.6–43.4 % PaperBench replication score | still discriminating |
-| **AI Scientist (Sakana et al.)** (`ai-scientist`) | 6 | 2025-02-20 → 2026-04-18 | 1–42 mean paper-quality score, 1-5 scale (LLM-judge synthesis of GPT-5.4/Gemini/Claude reviewers) | still discriminating |
-| **OpenAI Self-Improvement Evals** (`openai-ai-self-improvement-evals`) | 8 | 2025-08-13 → 2025-08-13 | 1–45 % pass@1 (OpenAI-Proof Q&A) | still discriminating |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **METR Time Horizon** (`metr-time-horizon`) | 26 | 2019-02-14 → 2026-04-07 | 0.054–1044.78 hours (human-expert-equivalent task time, 50% success rate) | still discriminating | `data/metr-time-horizon.csv` |
+| **METR Cross-Domain Time Horizon** (`metr-cross-domain-time-horizon`) | 4 | 2025-07-14 → 2025-07-14 | 3–24 approx doubling time (months) of domain-specific time horizon ('~2 years') | still discriminating | `data/metr-cross-domain-time-horizon.csv` |
+| **RE-Bench (METR)** (`re-bench`) | 4 | 2024-11-22 → 2024-11-22 | 0.46–4 normalized score (0=starting solution, 1=reference solution), 8-hour budget | still discriminating | `data/re-bench.csv` |
+| **MLE-bench** (`mle-bench`) | 28 | 2024-10-08 → 2026-03-06 | 1.6–64.44 % (any-medal rate, MLE-bench 'All'/split75 comparable subset) | still discriminating | `data/mle-bench.csv` |
+| **Paperbench** (`paperbench`) | 12 | 2024-05-13 → 2025-04-07 | 2.6–43.4 % PaperBench replication score | still discriminating | `data/paperbench.csv` |
+| **AI Scientist (Sakana et al.)** (`ai-scientist`) | 6 | 2025-02-20 → 2026-04-18 | 1–42 mean paper-quality score, 1-5 scale (LLM-judge synthesis of GPT-5.4/Gemini/Claude reviewers) | still discriminating | `data/ai-scientist.csv` |
+| **OpenAI Self-Improvement Evals** (`openai-ai-self-improvement-evals`) | 8 | 2025-08-13 → 2025-08-13 | 1–45 % pass@1 (OpenAI-Proof Q&A) | still discriminating | `data/openai-ai-self-improvement-evals.csv` |
 
 ### Multimodal & vision
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **MMMU** (`mmmu`) | 79 | 2023-11-27 → 2026-07-01 | 32.6–88.6 % accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score) | still discriminating |
-| **MMBench** (`mmbench`) | 69 | 2023-12-23 → 2025-08-14 | 58–88.5 % accuracy (MMBench-EN v1.1, test split, overall) | still discriminating |
-| **ChartQA** (`chartqa`) | 11 | 2024-03-04 → 2025-02-02 | 78.1–90.8 % relaxed accuracy (ChartQA test avg.) | likely saturated (near ceiling) |
-| **DocVQA** (`docvqa`) | 11 | 2024-03-04 → 2025-02-02 | 87.2–96.4 ANLS score (DocVQA test) | likely saturated (near ceiling) |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **MMMU** (`mmmu`) | 79 | 2023-11-27 → 2026-07-01 | 32.6–88.6 % accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score) | still discriminating | `data/mmmu.csv` |
+| **MMBench** (`mmbench`) | 69 | 2023-12-23 → 2025-08-14 | 58–88.5 % accuracy (MMBench-EN v1.1, test split, overall) | still discriminating | `data/mmbench.csv` |
+| **ChartQA** (`chartqa`) | 11 | 2024-03-04 → 2025-02-02 | 78.1–90.8 % relaxed accuracy (ChartQA test avg.) | likely saturated (near ceiling) | `data/chartqa.csv` |
+| **DocVQA** (`docvqa`) | 11 | 2024-03-04 → 2025-02-02 | 87.2–96.4 ANLS score (DocVQA test) | likely saturated (near ceiling) | `data/docvqa.csv` |
 
 ### ARC-AGI family (interactive/abstraction reasoning)
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **ARC-AGI-1** (`arc-agi-1`) | 268 | 2019-11-05 → 2026-08-11 | 0–98.5 % correct (semi-private eval set) | likely saturated (near ceiling) |
-| **ARC-AGI-2** (`arc-agi-2`) | 255 | 2023-11-03 → 2026-08-11 | 0–100 % correct (semi-private eval set) | likely saturated (near ceiling) |
-| **ARC-AGI-3** (`arc-agi-3`) | 36 | 2025-12-17 → 2026-08-11 | 0.01–100 % of public demo set solved (official ARC-AGI-3 leaderboard, bare model + minimal harness) | likely saturated (near ceiling) |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **ARC-AGI-1** (`arc-agi-1`) | 268 | 2019-11-05 → 2026-08-11 | 0–98.5 % correct (semi-private eval set) | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/arc_agi_external.csv`<br>`data/arc-agi-1.csv` |
+| **ARC-AGI-2** (`arc-agi-2`) | 255 | 2023-11-03 → 2026-08-11 | 0–100 % correct (semi-private eval set) | likely saturated (near ceiling) | `data/aggregator-epoch-benchmarking-hub/arc_agi_2_external.csv`<br>`data/arc-agi-2.csv` |
+| **ARC-AGI-3** (`arc-agi-3`) | 36 | 2025-12-17 → 2026-08-11 | 0.01–100 % of public demo set solved (official ARC-AGI-3 leaderboard, bare model + minimal harness) | likely saturated (near ceiling) | `data/arc-agi-3.csv` |
 
 ### Games, puzzles & misc. Epoch-run evals
 
-| Benchmark | Data points | Date range | Score range | Status |
-| --- | --- | --- | --- | --- |
-| **Chess Puzzles (Epoch)** (`chess-puzzles`) | 161 | 2023-06-13 → 2026-08-13 | 0–64 percent | still discriminating |
-| **Mystery Game Puzzles (Epoch)** (`mystery-game-puzzles`) | 53 | 2025-08-05 → 2026-08-13 | 6–59 percent | still discriminating |
-| **RLI** (`rli`) | 12 | 2025-06-05 → 2026-06-09 | 0.83–16.1 percent | still discriminating |
-| **Blueprint Bench 2** (`blueprint-bench-2`) | 21 | 2025-10-15 → 2026-07-24 | 0–38.612 percent | still discriminating |
+| Benchmark | Data points | Date range | Score range | Status | Source file(s) |
+| --- | --- | --- | --- | --- | --- |
+| **Chess Puzzles (Epoch)** (`chess-puzzles`) | 161 | 2023-06-13 → 2026-08-13 | 0–64 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/chess_puzzles.csv` |
+| **Mystery Game Puzzles (Epoch)** (`mystery-game-puzzles`) | 53 | 2025-08-05 → 2026-08-13 | 6–59 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/mystery_game_puzzles.csv` |
+| **RLI** (`rli`) | 12 | 2025-06-05 → 2026-06-09 | 0.83–16.1 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/rli_external.csv` |
+| **Blueprint Bench 2** (`blueprint-bench-2`) | 21 | 2025-10-15 → 2026-07-24 | 0–38.612 percent | still discriminating | `data/aggregator-epoch-benchmarking-hub/blueprint_bench_2_external.csv` |
 
 ### Other Epoch-hub benchmarks not yet slotted into a category above
 

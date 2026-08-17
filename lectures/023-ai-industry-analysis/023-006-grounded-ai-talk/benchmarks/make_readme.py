@@ -116,6 +116,56 @@ for cat_name, slugs in CATEGORIES:
         lines.append(f"- **{b['display_name']}** — {desc}")
     lines.append("")
 
+lines.append("## Data provenance")
+lines.append("")
+lines.append(
+    "Every data point in `aggregated.json` carries a `source` URL and an "
+    "`extraction_method` tag; every benchmark carries a `source_files` list "
+    "(the exact CSV path(s) on disk backing it) and a `provenance_summary` "
+    "(point counts by extraction method). Methods are assigned mechanically "
+    "from the source URL's domain (see `classify_extraction_method()` in "
+    "`aggregate.py`), not asserted from memory, so re-running the script "
+    "reproduces the same tags."
+)
+lines.append("")
+_all_points = [p for b in data.values() for p in b["points"]]
+_method_counts = {}
+for _p in _all_points:
+    _m = _p.get("extraction_method", "unknown_no_source_recorded")
+    _method_counts[_m] = _method_counts.get(_m, 0) + 1
+lines.append(f"**{len(_all_points)} total data points, 0 with an empty source** (breakdown by extraction method):")
+lines.append("")
+lines.append("| Extraction method | Points | What it means |")
+lines.append("| --- | --- | --- |")
+_method_glossary = {
+    "arxiv_or_academic_paper": "URL is arXiv/ACL/OpenReview/NeurIPS-proceedings — a paper's own results table.",
+    "official_benchmark_leaderboard_or_site": "URL is the benchmark's own official leaderboard/project site (arcprize.org, swebench.com, metr.org, etc.).",
+    "primary_lab_source": "URL is a frontier lab's own blog post, model card, or system card (OpenAI/Anthropic/Google/xAI/Meta).",
+    "third_party_aggregator": "URL is a secondary aggregator (llm-stats.com, Artificial Analysis, Vals AI, etc.) — lower confidence than a primary source, flagged per-row.",
+    "github_repo": "URL is a GitHub repo/README — usually a maintained leaderboard table in the benchmark's own code repo.",
+    "huggingface_dataset_or_space": "URL is a Hugging Face dataset or Space.",
+    "epoch_ai_page": "URL is an epoch.ai page cited directly by the hand-research pass.",
+    "epoch_bulk_csv_no_row_source_used_hub_fallback": "Row came from Epoch AI's bulk CSV export with no per-row source link in Epoch's own schema; falls back to that benchmark's general epoch.ai/benchmarks page (verified to resolve) rather than being left blank.",
+    "other_web_source": "URL didn't match a known domain pattern above; still a real, cited source, just uncategorized.",
+    "unknown_no_source_recorded": "No source URL at all -- should be 0 rows; treat any nonzero count here as a bug to fix.",
+}
+for _m, _c in sorted(_method_counts.items(), key=lambda kv: -kv[1]):
+    lines.append(f"| `{_m}` | {_c} | {_method_glossary.get(_m, '')} |")
+lines.append("")
+lines.append(
+    "**Known fix in this pass:** an earlier version of `aggregate.py` left "
+    "1,432 of 2,913 points (49.2%) with an empty `source` field, because "
+    "10 of Epoch AI's 76 benchmark CSVs use a different column schema "
+    "(`Log viewer`/`Logs` instead of `Source`/`Source link`) that the merge "
+    "script didn't check, and those log-viewer/logs cells are empty for "
+    "every row in those files anyway. Fixed by falling back to the "
+    "benchmark's own epoch.ai hub page (a real, verified URL) for any row "
+    "with no per-row source, tagged distinctly "
+    "(`epoch_bulk_csv_no_row_source_used_hub_fallback`) so it's never "
+    "confused with a genuine per-row citation."
+)
+lines.append("")
+
 lines.append("## Benchmark catalog")
 lines.append("")
 
@@ -125,8 +175,8 @@ for cat_name, slugs in CATEGORIES:
         continue
     lines.append(f"### {cat_name}")
     lines.append("")
-    lines.append("| Benchmark | Data points | Date range | Score range | Status |")
-    lines.append("| --- | --- | --- | --- | --- |")
+    lines.append("| Benchmark | Data points | Date range | Score range | Status | Source file(s) |")
+    lines.append("| --- | --- | --- | --- | --- | --- |")
     for slug in present:
         b = data[slug]
         pts = b["points"]
@@ -136,9 +186,10 @@ for cat_name, slugs in CATEGORIES:
         unit = b.get("unit_label", "")
         fam = b.get("unit_family", "")
         status = "likely saturated (near ceiling)" if (fam == "percent" and smax >= 90) else "still discriminating"
+        files = "<br>".join(f"`{sf}`" for sf in b.get("source_files", []))
         lines.append(
             f"| **{b['display_name']}** (`{slug}`) | {len(pts)} | {dmin} → {dmax} | "
-            f"{smin:g}–{smax:g} {unit} | {status} |"
+            f"{smin:g}–{smax:g} {unit} | {status} | {files} |"
         )
     lines.append("")
 
