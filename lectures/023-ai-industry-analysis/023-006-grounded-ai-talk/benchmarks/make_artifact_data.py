@@ -100,7 +100,7 @@ for slug, b in benchmarks.items():
         "name": b["display_name"],
         "popular": slug in POPULAR_SLUGS,
         "category": slug_category.get(slug, "Uncategorized"),
-        "saturated": sr.get("saturated", "").strip().lower() == "true",
+        "saturated": sr.get("likely_saturated", "").strip().lower() == "true",
         "has_data": True,
         "what": b["description"],
         "dis": c.get("disclosure", "unknown"),
