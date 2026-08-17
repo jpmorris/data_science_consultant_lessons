@@ -1,0 +1,18 @@
+date,model,score,score_unit,source_url,notes
+2024-09-19,Qwen2.5-32B,15.06,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,"MedXpertQA official leaderboard (Zuo et al., arXiv:2501.18362); date is approximate Qwen2.5-32B release date, not evaluation date."
+2024-09-19,Qwen2.5-72B,18.90,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard.
+2024-11-28,QwQ-32B-Preview,18.00,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard; date is QwQ-32B-Preview release.
+2024-12-06,LLaMA-3.3-70B,24.49,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard.
+2024-12-26,DeepSeek-V3,24.16,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard.
+2024-11-04,Claude 3.5 Haiku,17.76,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard.
+2025-01-20,DeepSeek-R1,37.76,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard; leads text-only reasoning models.
+2025-01-31,OpenAI o3-mini (high),37.30,percent accuracy (MedXpertQA Text avg),https://medxpertqa.github.io,MedXpertQA official leaderboard.
+2024-09-19,Qwen2-VL-72B,28.35,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split); date approximate.
+2024-05-14,Gemini 1.5 Pro,34.10,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2024-05-13,GPT-4o,42.80,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2024-06-20,Claude 3.5 Sonnet,33.20,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2024-07-18,GPT-4o mini,28.05,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2024-12-11,Gemini 2.0 Flash,37.20,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2024-12-24,QVQ-72B-Preview,33.55,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2025-01-28,Qwen2.5-VL-72B,29.95,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,MedXpertQA official leaderboard (multimodal split).
+2024-12-05,OpenAI o1,56.28,percent accuracy (MedXpertQA MM avg),https://medxpertqa.github.io,"MedXpertQA official leaderboard; o1 dominates multimodal evaluation, per the leaderboard's own summary."

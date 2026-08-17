@@ -1,0 +1,5 @@
+date,model,score,score_unit,source_url,notes
+2022-01,LED (input 1024),27.06,SCROLLS composite average score (Table 2),https://arxiv.org/abs/2201.03533,SCROLLS paper original baseline; Longformer Encoder-Decoder
+2022-01,BART (input 1024),29.01,SCROLLS composite average score (Table 2),https://arxiv.org/abs/2201.03533,SCROLLS paper original baseline; best BART configuration
+2022-01,LED (input 4096),28.30,SCROLLS composite average score (Table 2),https://arxiv.org/abs/2201.03533,SCROLLS paper original baseline; Longformer Encoder-Decoder
+2022-01,LED (input 16384),29.16,SCROLLS composite average score (Table 2),https://arxiv.org/abs/2201.03533,SCROLLS paper original baseline; best overall score in original paper

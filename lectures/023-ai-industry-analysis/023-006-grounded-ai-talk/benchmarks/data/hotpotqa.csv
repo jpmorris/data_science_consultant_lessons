@@ -1,0 +1,4 @@
+date,model,score,score_unit,source_url,notes
+2018-09-25,Baseline QA model (Clark & Gardner reimplementation),45.46,exact match (distractor test set),https://arxiv.org/abs/1809.09600,"Original HotpotQA paper (Yang et al. 2018), Table 4; human performance on the same split was 83.60 EM"
+2022-10-06,PaLM-540B (standard few-shot prompting),28.7,exact match (distractor-style setting),https://arxiv.org/abs/2210.03629,"ReAct paper, Table 1"
+2022-10-06,PaLM-540B (ReAct -> CoT-SC),35.1,exact match (distractor-style setting),https://arxiv.org/abs/2210.03629,"Table 1; best prompting-only configuration in the paper, still far below the supervised SOTA of 67.5 EM cited in the same table"

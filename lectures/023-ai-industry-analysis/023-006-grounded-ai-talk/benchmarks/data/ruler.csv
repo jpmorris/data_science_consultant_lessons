@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2023-11-06,GPT-4-1106-preview,91.6,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 128K context, effective 64K"
+2024-05-14,Gemini-1.5-Pro,95.8,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 1M context, effective >128K"
+2024-07-23,Llama-3.1-70B-Instruct,89.6,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 128K context, effective 64K"
+2024-07-24,Mistral-Large-2407,80.5,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 128K context, effective 32K; sharp drop at 128K (23.7)"
+2024-08,Jamba-1.5-Large,96.0,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard top score at publication; claimed 256K context, effective >128K"
+2024-08,Command-R-Plus-0824,87.9,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 128K context, effective 64K"
+2024-11,Mistral-Large-2411,86.0,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 128K context, effective 64K"
+2025-01,Qwen2.5-14B-Instruct-1M,95.7,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 1M context, effective >128K"
+2025-04-29,Qwen3-235B-A22B,95.0,percent accuracy (RULER 13-task avg across 4K-128K),https://github.com/NVIDIA/RULER,"RULER leaderboard; claimed 128K context, effective >128K"

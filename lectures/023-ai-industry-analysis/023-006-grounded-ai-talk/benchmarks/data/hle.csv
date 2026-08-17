@@ -2,9 +2,9 @@ date,model,score,score_unit,source_url,notes
 2025-01,GPT-4o,2.7,percent accuracy,https://en.wikipedia.org/wiki/Humanity's_Last_Exam,Reported near HLE launch (Jan 2025) by Center for AI Safety / Scale AI
 2025-01,Claude 3.5 Sonnet,4.1,percent accuracy,https://en.wikipedia.org/wiki/Humanity's_Last_Exam,Reported near HLE launch
 2025-01,OpenAI o1,8.0,percent accuracy,https://en.wikipedia.org/wiki/Humanity's_Last_Exam,Reported near HLE launch; best-performing model at launch
-2026-early,Gemini 3 Pro Preview,37.5,percent accuracy,https://labs.scale.com/leaderboard/humanitys_last_exam,Official Scale AI / CAIS leaderboard, text-only no-tools setting, per early-2026 snapshot
-2026-early,Claude Opus 4.6 Thinking Max,34.4,percent accuracy,https://labs.scale.com/leaderboard/humanitys_last_exam,Official Scale AI / CAIS leaderboard, early-2026 snapshot
-2026-early,GPT-5 Pro,31.6,percent accuracy,https://labs.scale.com/leaderboard/humanitys_last_exam,Official Scale AI / CAIS leaderboard, early-2026 snapshot
-2026-08-11,Claude Fable 5 (Adaptive Reasoning, Max Effort),55.5,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/hle,Aggregator leaderboard snapshot dated Aug 11 2026
+2026-early,Gemini 3 Pro Preview,37.5,percent accuracy,https://labs.scale.com/leaderboard/humanitys_last_exam,"Official Scale AI / CAIS leaderboard, text-only no-tools setting, per early-2026 snapshot"
+2026-early,Claude Opus 4.6 Thinking Max,34.4,percent accuracy,https://labs.scale.com/leaderboard/humanitys_last_exam,"Official Scale AI / CAIS leaderboard, early-2026 snapshot"
+2026-early,GPT-5 Pro,31.6,percent accuracy,https://labs.scale.com/leaderboard/humanitys_last_exam,"Official Scale AI / CAIS leaderboard, early-2026 snapshot"
+2026-08-11,"Claude Fable 5 (Adaptive Reasoning, Max Effort)",55.5,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/hle,Aggregator leaderboard snapshot dated Aug 11 2026
 2026-08-11,Claude Opus 5,54.9,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/hle,Aggregator leaderboard snapshot dated Aug 11 2026
 2026-08-11,GPT-5.6 Sol,49.5,percent accuracy,https://pricepertoken.com/leaderboards/benchmark/hle,Aggregator leaderboard snapshot dated Aug 11 2026

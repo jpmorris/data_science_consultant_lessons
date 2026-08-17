@@ -6,7 +6,7 @@ date,model,score,score_unit,source_url,notes
 2024-09-12,o1-preview,1258,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,Late-2024 OpenAI reasoning model.
 2024-12-01,o1-mini,1650,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
 2025-01-03,o1-mini (CodeElo methodology),1578,Elo (CodeElo benchmark),https://arxiv.org/abs/2501.01257,"CodeElo paper's own rating (submits directly to Codeforces judge); different methodology/date than the officechai o1-mini figure above, hence the different number for the same model."
-2025-01-03,QwQ-32B-Preview,1261,Elo (CodeElo benchmark),https://arxiv.org/abs/2501.01257,CodeElo paper; best open-weight model tested, ~90th percentile of human participants.
+2025-01-03,QwQ-32B-Preview,1261,Elo (CodeElo benchmark),https://arxiv.org/abs/2501.01257,"CodeElo paper; best open-weight model tested, ~90th percentile of human participants."
 2024-12-01,o1 (full),1891,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
 2025-01-31,o3-mini (low),1687,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
 2025-01-31,o3-mini (medium),1997,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,

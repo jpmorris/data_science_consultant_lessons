@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2023-05-18,SpeechGPT,1.15,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper (arXiv:2402.07729), Table 3 (Chat benchmark). Model release date per the SpeechGPT paper (arXiv:2305.11000)."
+2023-09-27,PandaGPT,4.25,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper, Table 3 (Chat benchmark). Model release date per the PandaGPT paper (arXiv:2305.16355)."
+2023-09-27,NExT-GPT,4.13,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper, Table 3 (Chat benchmark). Model release date per the NExT-GPT paper (arXiv:2309.05519)."
+2023-09-28,BLSP,5.33,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper, Table 3 (Chat benchmark). Model release date per the BLSP paper/GitHub release."
+2023-10-11,SALMONN,6.11,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper, Table 3 (Chat benchmark). Model release date per the SALMONN paper (arXiv:2310.13289)."
+2023-11-14,Qwen-Audio-Chat,6.08,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper, Table 3 (Chat benchmark). Model release date per the Qwen-Audio paper (arXiv:2311.07919)."
+2023-11-14,Qwen-Audio Turbo,6.34,AIR-Bench Chat average score (1-10 scale),https://arxiv.org/abs/2402.07729,"AIR-Bench paper, Table 3 (Chat benchmark); highest score among the paper's evaluated open models. Model release date per the Qwen-Audio paper/API release (arXiv:2311.07919)."

@@ -1,0 +1,15 @@
+date,model,score,score_unit,source_url,notes
+2024-05-14,Gemini-1.5-Flash,18.4,"percent accuracy (MRCR v2 8-needle, 128K context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2024-05-14,Gemini-1.5-Flash,10.2,"percent accuracy (MRCR v2 8-needle, 1M context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2024-05-14,Gemini-1.5-Pro,26.2,"percent accuracy (MRCR v2 8-needle, 128K context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2024-05-14,Gemini-1.5-Pro,12.1,"percent accuracy (MRCR v2 8-needle, 1M context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2024-12-11,Gemini-2.0-Flash,19.0,"percent accuracy (MRCR v2 8-needle, 128K context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2024-12-11,Gemini-2.0-Flash,5.3,"percent accuracy (MRCR v2 8-needle, 1M context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2025-02-05,Gemini-2.0-Flash-Lite,11.6,"percent accuracy (MRCR v2 8-needle, 128K context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2025-02-05,Gemini-2.0-Flash-Lite,4.0,"percent accuracy (MRCR v2 8-needle, 1M context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2025-03-25,Gemini-2.5-Pro,58.0,"percent accuracy (MRCR v2 8-needle, 128K context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family); only model in report supporting >1M context
+2025-03-25,Gemini-2.5-Pro,16.4,"percent accuracy (MRCR v2 8-needle, 1M context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2025-04-17,Gemini-2.5-Flash,54.3,"percent accuracy (MRCR v2 8-needle, 128K context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2025-04-17,Gemini-2.5-Flash,21.0,"percent accuracy (MRCR v2 8-needle, 1M context)",https://arxiv.org/abs/2507.06261,Gemini 2.5 technical report Table 3 (MRCR-V2 evaluation of Gemini family)
+2026-02-05,Claude Opus 4.6,84.0,"percent accuracy (MRCR v2 8-needle, 128K average)",https://deepmind.google/models/gemini/pro/,DeepMind Gemini 3.1 Pro model comparison page; cross-lab comparison table
+2026-02-17,Claude Sonnet 4.6,84.9,"percent accuracy (MRCR v2 8-needle, 128K average)",https://deepmind.google/models/gemini/pro/,DeepMind Gemini 3.1 Pro model comparison page; cross-lab comparison table

@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2024-07-18,GPT-4,66.7,percent of Seer werewolf-reveals believed by villagers,https://arxiv.org/pdf/2407.13943,"Werewolf Arena paper (Google Research, arXiv:2407.13943), Table 1 Seer performance; highest Believed% alongside GPT-4o"
+2024-07-18,GPT-4o,90.9,percent of Seer werewolf-reveals believed by villagers,https://arxiv.org/pdf/2407.13943,"Werewolf Arena paper Table 1; best Believed% of all evaluated models"
+2024-07-18,GPT-3.5,20.0,percent of Seer werewolf-reveals believed by villagers,https://arxiv.org/pdf/2407.13943,Werewolf Arena paper Table 1
+2024-07-18,Gemini 1.5 Pro,54.5,percent of Seer werewolf-reveals believed by villagers,https://arxiv.org/pdf/2407.13943,Werewolf Arena paper Table 1
+2024-07-18,Gemini Pro,75.0,percent of Seer werewolf-reveals believed by villagers,https://arxiv.org/pdf/2407.13943,Werewolf Arena paper Table 1
+2024-07-18,Gemini Flash,0.0,percent of Seer werewolf-reveals believed by villagers,https://arxiv.org/pdf/2407.13943,Werewolf Arena paper Table 1

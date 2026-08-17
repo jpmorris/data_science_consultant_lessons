@@ -1,0 +1,26 @@
+date,model,score,score_unit,source_url,notes
+2020-07-31,PubMedBERT,55.8,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2021-06,BioELECTRA,64.0,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2019-09-13,BioBERT (multi-phase tuning),68.1,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard; original PubMedQA paper baseline.
+2019-09-13,Human Performance,78.0,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard; human baseline reported in original paper.
+2022-03-29,BioLinkBERT (base),70.2,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-03-29,BioLinkBERT (large),72.2,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-04-27,PMC-LLaMA,73.4,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-10-17,DRAGON,73.4,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-12-15,PubMedGPT,74.4,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-03-20,GPT-4,75.2,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-05-22,GatorTronGPT,77.6,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-11-16,Galactica,77.6,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-12-20,Codex (5-shot),78.2,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2022-12-26,Flan-PaLM (3-shot),79.0,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-01-11,GPT-3.5 + Z-Code++,79.6,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-04-12,GPT-4-base,80.4,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-07-06,Palmyra-Med,81.1,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-05-16,Med-PaLM 2,81.8,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-11-27,MEDITRON,81.6,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-11-28,GPT-4 (Medprompt),82.0,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2023-12-01,AntGLM-Med,80.6,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2024-03-04,Claude 3,79.7,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2024-03-04,MediSwift-XL,76.8,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2024-03-14,HEAL,78.4,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.
+2024-04-18,Reka Core,74.6,percent accuracy (PubMedQA reasoning-required),https://pubmedqa.github.io/,Official PubMedQA leaderboard.

@@ -1,0 +1,15 @@
+date,model,score,score_unit,source_url,notes
+2025-07-27,GPT-4o,0.42,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,"GAMEBoT paper (ACL 2025, Lin et al.), Table 2; best average outcome score of 17 evaluated LLMs. Date = ACL 2025 conference start (July 27, 2025)"
+2025-07-27,GPT-4o mini,-0.36,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2
+2025-07-27,GPT-4,0.12,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; older GPT-4 outperforms GPT-4o mini
+2025-07-27,Gemini 1.5 Pro,0.19,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2
+2025-07-27,Gemini 1.5 Flash,-0.13,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2
+2025-07-27,Gemini-Pro,-0.10,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2
+2025-07-27,Claude 3.5 Sonnet,0.31,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; strongest average performer alongside GPT-4o
+2025-07-27,Claude 3 Sonnet,0.07,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2
+2025-07-27,Claude 3 Haiku,-0.09,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2
+2025-07-27,LLaMA3.1-405b,0.11,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; open-source model
+2025-07-27,LLaMA3.1-70b,0.20,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; open-source model
+2025-07-27,LLaMA3.1-8b,-0.15,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; open-source model
+2025-07-27,Mistral Nemo,-0.02,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; open-source model
+2025-07-27,Random Player,-0.31,"GAMEBoT avg outcome score (-1 to 1 scale; avg across 8 games, head-to-head win/draw/loss)",https://aclanthology.org/2025.acl-long.378.pdf,GAMEBoT paper Table 2; random-action reference baseline

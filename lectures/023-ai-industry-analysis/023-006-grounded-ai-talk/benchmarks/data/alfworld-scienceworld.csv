@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2021-03-14,Seq2Seq baseline,6.0,"percent success rate (ALFWorld TextWorld, seen)",https://arxiv.org/html/2010.03768,"Shridhar et al., ALFWorld paper (v2), Table 2/5. Pre-LLM RL/imitation-learning baselines."
+2021-03-14,BUTLER (embodied zero-shot transfer),19.0,"percent success rate (ALFWorld embodied, seen)",https://arxiv.org/html/2010.03768,ALFWorld paper Table 2 (zero-shot domain transfer).
+2021-03-14,BUTLER-Oracle (embodied zero-shot transfer),37.0,"percent success rate (ALFWorld embodied, seen)",https://arxiv.org/html/2010.03768,ALFWorld paper Table 2.
+2021-03-14,BUTLER::Brain (TextWorld),40.0,"percent success rate (ALFWorld TextWorld, seen)",https://arxiv.org/html/2010.03768,ALFWorld paper Table 2/5.
+2022-10-06,Act-only (best of 6),45.0,percent success rate (ALFWorld overall),https://arxiv.org/html/2210.03629,"Yao et al., ReAct paper, Table 3. Act-only is a chain-of-thought-free LLM-agent baseline (PaLM-540B)."
+2022-10-06,BUTLER (best of 8),37.0,percent success rate (ALFWorld overall),https://arxiv.org/html/2210.03629,"ReAct paper Table 3 (BUTLER re-reported as comparison baseline; two reported BUTLER variants at 22% and 37%, higher one used here)."
+2022-10-06,ReAct (avg),57.0,percent success rate (ALFWorld overall),https://arxiv.org/html/2210.03629,"ReAct paper Table 3; ReAct = reasoning+acting prompted PaLM-540B agent."
+2022-10-06,ReAct (best of 6),71.0,percent success rate (ALFWorld overall),https://arxiv.org/html/2210.03629,"ReAct paper Table 3; headline result, ""significantly outperforms"" Act-only and BUTLER baselines. No comparable multi-model time-series data was found for ScienceWorld, Habitat-BEHAVIOR, RoboCasa, or EMMOE, so ALFWorld was chosen as the representative benchmark for this cluster per the assignment's guidance."

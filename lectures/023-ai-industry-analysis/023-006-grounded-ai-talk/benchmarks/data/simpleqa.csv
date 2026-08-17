@@ -1,8 +1,8 @@
 date,model,score,score_unit,source_url,notes
 2024-10-30,GPT-4o,38.2,percent correct,https://openai.com/index/introducing-simpleqa/,Original OpenAI SimpleQA introduction blog post
 2024-10-30,OpenAI o1-preview,42.7,percent correct,https://openai.com/index/introducing-simpleqa/,Original OpenAI SimpleQA introduction blog post; top scorer at launch
-2025-02-27,GPT-4.5,62.5,percent correct,https://openai.com/index/gpt-4-5-system-card/,OpenAI GPT-4.5 system card, published Feb 27 2025; also cites GPT-4o 38.2%, o1 47%, o3-mini 15%
+2025-02-27,GPT-4.5,62.5,percent correct,https://openai.com/index/gpt-4-5-system-card/,"OpenAI GPT-4.5 system card, published Feb 27 2025; also cites GPT-4o 38.2%, o1 47%, o3-mini 15%"
 2025-02-27,OpenAI o1,47,percent correct,https://openai.com/index/gpt-4-5-system-card/,Cited within GPT-4.5 system card comparison table
-2025-02-27,OpenAI o3-mini,15,percent correct,https://openai.com/index/gpt-4-5-system-card/,Cited within GPT-4.5 system card comparison table; smaller model, weaker parametric factual recall
-2026-07-16,Gemini 2.5 Pro,53.0,percent correct,https://pricepertoken.com/leaderboards/benchmark/simpleqa,Aggregator leaderboard snapshot dated Jul 16 2026 (SimpleQA, original OpenAI-format version)
+2025-02-27,OpenAI o3-mini,15,percent correct,https://openai.com/index/gpt-4-5-system-card/,"Cited within GPT-4.5 system card comparison table; smaller model, weaker parametric factual recall"
+2026-07-16,Gemini 2.5 Pro,53.0,percent correct,https://pricepertoken.com/leaderboards/benchmark/simpleqa,"Aggregator leaderboard snapshot dated Jul 16 2026 (SimpleQA, original OpenAI-format version)"
 2026-07-31,DeepSeek V4 Pro (Max),57.9,percent correct,https://pricepertoken.com/leaderboards/benchmark/simpleqa,Aggregator leaderboard snapshot dated Jul 31 2026

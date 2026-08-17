@@ -1,5 +1,5 @@
 date,model,score,score_unit,source_url,notes
-2024-07-23,Llama 3 (405B, Instruct),78.8,pass@1 %,https://www.codesota.com/llm/humaneval-mbpp,CodeSOTA aggregator table (MBPP practical-scripting split).
+2024-07-23,"Llama 3 (405B, Instruct)",78.8,pass@1 %,https://www.codesota.com/llm/humaneval-mbpp,CodeSOTA aggregator table (MBPP practical-scripting split).
 2024-09-19,Qwen2.5 72B Instruct,88.2,pass@1 %,https://airank.dev/benchmarks/mbpp,AIRank MBPP leaderboard.
 2024-09-19,DeepSeek-Coder-V2-Instruct,89.4,pass@1 %,https://www.codesota.com/llm/humaneval-mbpp,CodeSOTA aggregator table.
 2024-11-12,Qwen2.5-Coder 32B Instruct,90.2,pass@1 %,https://airank.dev/benchmarks/mbpp,AIRank MBPP leaderboard.

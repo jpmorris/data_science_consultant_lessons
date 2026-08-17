@@ -7,6 +7,6 @@ date,model,score,score_unit,source_url,notes
 2024-05-24,Gemini 1.5 Pro,93.1,ANLS score (DocVQA test),https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf,"As evaluated by Anthropic, Table 2 of the Claude 3.5 Sonnet Model Card Addendum. Independently cross-confirmed at the same 93.1 by the Qwen2.5-VL technical report (arXiv:2502.13923, Table 5)."
 2024-06-20,Claude 3.5 Sonnet,95.2,ANLS score (DocVQA test),https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf,"Anthropic's own reported number, Table 2 of the Claude 3.5 Sonnet Model Card Addendum. Same 95.2 figure also appears in the Qwen2.5-VL technical report's comparison table."
 2024-12-10,InternVL2.5-78B,95.1,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,"Qwen2.5-VL Technical Report, Table 5. Model release date per the OpenGVLab InternVL2.5-78B model card (huggingface.co/OpenGVLab/InternVL2_5-78B)."
-2025-02-02,Qwen2.5-VL-3B,93.9,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,Qwen2.5-VL Technical Report, Table 5.
-2025-02-02,Qwen2.5-VL-7B,95.7,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,Qwen2.5-VL Technical Report, Table 5.
-2025-02-02,Qwen2.5-VL-72B,96.4,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,Qwen2.5-VL Technical Report, Table 5. Highest DocVQA score identified for this research pass; benchmark is widely considered near-saturated above 95.
+2025-02-02,Qwen2.5-VL-3B,93.9,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,"Qwen2.5-VL Technical Report, Table 5."
+2025-02-02,Qwen2.5-VL-7B,95.7,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,"Qwen2.5-VL Technical Report, Table 5."
+2025-02-02,Qwen2.5-VL-72B,96.4,ANLS score (DocVQA test),https://arxiv.org/pdf/2502.13923,"Qwen2.5-VL Technical Report, Table 5. Highest DocVQA score identified for this research pass; benchmark is widely considered near-saturated above 95."

@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2021-01-06,RoBERTa (gold paragraphs + decomposition),72.0,percent accuracy,https://arxiv.org/abs/2101.02235,"Original StrategyQA paper (Geva et al. 2021), Table 9; best baseline reported at release, vs. human accuracy of ~87%"
+2022-01-28,GPT-3 175B (chain-of-thought),65.4,percent accuracy,https://arxiv.org/abs/2201.11903,"Chain-of-Thought Prompting paper (Wei et al. 2022), Table 4 / Appendix B"
+2022-01-28,Codex (chain-of-thought),73.2,percent accuracy,https://arxiv.org/abs/2201.11903,Table 4 / Appendix B
+2022-01-28,LaMDA 137B (chain-of-thought),65.4,percent accuracy,https://arxiv.org/abs/2201.11903,Table 4 / Appendix B
+2022-01-28,PaLM 540B (chain-of-thought),77.8,percent accuracy,https://arxiv.org/abs/2201.11903,"Table 4 / Appendix B; new state-of-the-art at the time, surpassing prior best of 69.4%"

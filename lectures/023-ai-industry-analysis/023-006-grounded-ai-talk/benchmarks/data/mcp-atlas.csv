@@ -1,0 +1,31 @@
+date,model,score,score_unit,source_url,notes
+2026-04-08,Muse Spark 1.1,88.10,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,"Scale AI's own MCP-Atlas leaderboard, main ranked card view. All rows use the leaderboard's single 'Updated April 8, 2026' snapshot date since Scale does not publish per-submission dates; treat date as leaderboard-refresh date, not model release date."
+2026-04-08,claude-opus-5 (xhigh),85.80,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gemini-3.5-flash (high),83.60,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,Claude Fable 5,83.30,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,kimi-k3 (max),82.30,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-opus-4-8 (max),82.20,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,Muse Spark,82.20,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Distinct entry from 'Muse Spark 1.1' above -- appears to be the original paper-baseline version (matches the arXiv 2602.00933 abstract's cited 'up to 82.2%' top score).
+2026-04-08,gpt-5.6 (sol),81.80,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,Inkling-small,79.20,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-opus-4-7 (max),79.10,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gemini-3.1-pro-preview (high),78.20,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,glm-5p2,77.80,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-opus-4-6 (max),76.80,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,Inkling (xHigh),76.00,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,glm-5p1,75.60,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gpt-5.5 (xhigh),75.30,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gpt-5.4 (xhigh),70.60,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,"Cited in this project's own README 'Most Popular' section as Gemini 3.1 Pro's MCP-Atlas score (69.2%), which does not match either this row or the gemini-3.1-pro-preview row below -- the README figure could not be corroborated on the live leaderboard and should be revisited."
+2026-04-08,gemini-3-pro-preview,70.30,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-opus-4-5 (high),69.80,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-sonnet-4-6,69.50,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gpt-5.2 (xhigh),67.60,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,kimi-k2p5,64.40,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gemini-3-flash-preview,62.00,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-sonnet-4-5 (thinking),59.50,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,glm-4p7,58.10,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gemini-3.1-flash-lite (high),57.10,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gpt-5.4-mini (xhigh),56.70,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,gpt-5.1 (high),50.10,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,o3-pro,44.50,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Leaderboard snapshot date 2026-04-08 (see note above).
+2026-04-08,claude-haiku-4-5,40.20,% pass rate (All 1000 tasks),https://labs.scale.com/leaderboard/mcp_atlas,Lowest-ranked model shown on the leaderboard as of this snapshot. Date = leaderboard snapshot date.

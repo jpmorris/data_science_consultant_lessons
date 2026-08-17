@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2023-09-12,BAAI bge-large-en-v1.5,64.23,MTEB average (56 tasks),https://huggingface.co/BAAI/bge-large-en-v1.5,"Model card comparison table; v1.5 release also logged in FlagEmbedding repo changelog for 2023-09-12."
+2023-12-31,E5-Mistral-7B-Instruct,66.63,MTEB average (56 tasks),https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct,"Score cited in gte-Qwen2-7B-instruct model card comparison table; matches figure in source paper arXiv:2401.00368, submitted 2023-12-31."
+2024-06-01,Alibaba-NLP gte-Qwen2-7B-instruct,70.24,MTEB average (56 tasks),https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct,"Model card states score 'as of June 2024'; exact release day not specified so first-of-month used."
+2024-08-30,NVIDIA NV-Embed-v2,72.31,MTEB average (56 tasks),https://huggingface.co/nvidia/NV-Embed-v2,"Model card states rank #1 on MTEB leaderboard 'as of Aug 30, 2024'."
+2025-03-07,Gemini Embedding (gemini-embedding-001),68.32,mean task score (MTEB Multilingual leaderboard),https://developers.googleblog.com/en/gemini-embedding-text-model-now-available-gemini-api/,"Google Developers Blog launch post; MTEB Multilingual leaderboard, not directly comparable to MTEB(eng) scores above -- margin of +5.81 over next-best model at announcement."

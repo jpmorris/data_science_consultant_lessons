@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2026-08-17,Claude Fable 5,50.34,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17; top-ranked model on Expanded Eval Set
+2026-08-17,Claude Opus 4.6,48.05,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,Gemini 3.5 Flash,48.05,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,Gemini 3 Flash Preview,47.82,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,Claude Opus 4.7,43.45,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,GPT-5.5 (Reasoning: M),40.69,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,GPT-5.4 (Reasoning: M),40.23,"Roblox Open Game Eval pass@1 (Expanded Eval Set, 87 evals)",https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,Claude Fable 5,64.67,Roblox Open Game Eval pass@1 (Debug Eval Leaderboard),https://github.com/Roblox/open-game-eval,"Live LLM_LEADERBOARD.md snapshot observed 2026-08-17; separate debugging-task eval set, top-ranked model"
+2026-08-17,Gemini 3.1 Pro,56.67,Roblox Open Game Eval pass@1 (Debug Eval Leaderboard),https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,GLM 5,56.00,Roblox Open Game Eval pass@1 (Debug Eval Leaderboard),https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17
+2026-08-17,Claude Sonnet 4.6,46.00,Roblox Open Game Eval pass@1 (Debug Eval Leaderboard),https://github.com/Roblox/open-game-eval,Live LLM_LEADERBOARD.md snapshot observed 2026-08-17

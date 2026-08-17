@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2019-03-01,NAQANet,47.01,F1 (test set),https://arxiv.org/abs/1903.00161,"Original DROP paper (Dua et al. 2019), Table 4; best baseline at release vs. human F1 of 96.42"
+2020-05-28,GPT-3 175B (few-shot),36.5,F1 (few-shot),https://arxiv.org/abs/2005.14165,"GPT-3 paper, Table 3.7; contemporaneous fine-tuned SOTA was 89.1 F1"
+2022-04-05,PaLM 540B (1-shot),70.8,F1 (1-shot),https://arxiv.org/abs/2204.02311,"PaLM paper, Table 4; described as new prior-SOTA-beating result for a prompted (non-fine-tuned) model"
+2023-03-15,GPT-3.5,64.1,F1,https://arxiv.org/abs/2303.08774,"GPT-4 Technical Report, Table 2"
+2023-03-15,GPT-4,80.9,F1,https://arxiv.org/abs/2303.08774,"Table 2; report notes GPT-4 beats benchmark-specific-trained SOTA on every listed academic benchmark except DROP"

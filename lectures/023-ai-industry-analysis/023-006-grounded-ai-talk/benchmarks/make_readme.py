@@ -51,6 +51,65 @@ CATEGORIES = [
         "simplebench", "rli", "cl-bench", "cl-bench-life", "blueprint-bench-2",
         "vpct", "enigma-eval", "cad-eval", "btf3", "proofbench", "gbaeval",
     ]),
+    ("Web & computer-use agents", [
+        "workarena", "visualwebarena", "online-mind2web", "webvoyager",
+        "webbench", "assistantbench", "windows-agent-arena", "appworld",
+        "mind2web", "miniwob-plus-plus", "assistgui", "spa-bench",
+    ]),
+    ("Tool-use & function-calling", [
+        "bfcl", "tau2-bench-telecom", "mcp-atlas", "toolbench", "mint-bench",
+        "crmarena-pro",
+    ]),
+    ("Games & interactive environments", [
+        "kaggle-game-arena", "lmgame-bench", "videogamebench",
+        "werewolf-arena", "dsgbench", "gamebench", "gamebot", "gama-bench",
+        "llm-hanabi", "orak", "gamedevbench", "roblox-open-game-eval",
+        "classic-rl-suites", "kaggle-game-arena-elo",
+    ]),
+    ("Safety, alignment & red-teaming", [
+        "wmdp", "harmbench", "jailbreakbench", "agentharm", "agentdojo",
+        "mask", "realtoxicityprompts", "halueval", "factscore",
+        "vectara-hallucination-leaderboard",
+    ]),
+    ("Instruction-following & chat quality", [
+        "ifeval", "ifbench", "followbench", "mt-bench", "alpacaeval-2",
+        "wildbench", "multichallenge",
+    ]),
+    ("Long-context & memory", [
+        "ruler", "longbench-v2", "infinitebench", "babilong", "scrolls",
+        "mrcr-v2",
+    ]),
+    ("Multilingual", [
+        "belebele", "mgsm", "indicgenbench", "mmlu-prox",
+    ]),
+    ("Domain-professional (medicine, law, finance)", [
+        "healthbench", "medxpertqa", "medqa", "medmcqa", "pubmedqa",
+        "legalbench", "casehold", "finben", "financebench",
+    ]),
+    ("Coding & data (extended)", [
+        "spider-2", "bird-sql", "ds-1000", "bigcodebench", "evalplus",
+        "apps-bench", "swe-lancer",
+    ]),
+    ("Embedding & retrieval (different capability axis)", [
+        "mteb",
+    ]),
+    ("Multimodal (extended: image, video, audio)", [
+        "heim", "genai-bench", "realworldqa", "mme", "seed-bench",
+        "audiobench", "air-bench-audio",
+    ]),
+    ("Reasoning, planning & social cognition", [
+        "planbench", "tombench", "musr", "strategyqa", "clutrr", "hotpotqa",
+        "drop", "narrativeqa",
+    ]),
+    ("Scientific-agent & AI-researcher (extends RSI cluster)", [
+        "astabench", "airs-bench", "scienceagentbench",
+    ]),
+    ("Embodied & robotics", [
+        "embodiedbench", "alfworld-scienceworld",
+    ]),
+    ("Multi-agent & social reasoning", [
+        "multiagentbench",
+    ]),
 ]
 
 categorized = set()

@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2023-10-20,SALMONN,60.85,"CN-College-Listen speech-QA accuracy, LLM-judged (AudioBench Table 2)",https://arxiv.org/abs/2406.16020,"AudioBench paper (arXiv:2406.16020), Table 2. Model release date per the SALMONN paper (arXiv:2310.13289)."
+2023-11-14,Qwen-Audio-Chat,65.43,"CN-College-Listen speech-QA accuracy, LLM-judged (AudioBench Table 2)",https://arxiv.org/abs/2406.16020,"AudioBench paper, Table 2. Model release date per the Qwen-Audio paper (arXiv:2311.07919)."
+2024-03-31,WavLLM,74.50,"CN-College-Listen speech-QA accuracy, LLM-judged (AudioBench Table 2)",https://arxiv.org/abs/2406.16020,"AudioBench paper, Table 2. Model release date per the WavLLM paper (arXiv:2404.00656)."
+2024-06-15,AudioBench (paper release),50.51,"CN-College-Listen speech-QA accuracy, LLM-judged (AudioBench Table 2)",https://arxiv.org/abs/2406.16020,"AudioBench paper, Table 2; score is for the Whisper+Llama3 cascade baseline constructed for this paper (not an independently released model), dated to the paper's own publication."
+2024-07-15,Qwen2-Audio-Instruct,85.25,"CN-College-Listen speech-QA accuracy, LLM-judged (AudioBench Table 2)",https://arxiv.org/abs/2406.16020,"AudioBench paper, Table 2; highest score among the paper's evaluated models. Model release date per the Qwen2-Audio paper (arXiv:2407.10759)."

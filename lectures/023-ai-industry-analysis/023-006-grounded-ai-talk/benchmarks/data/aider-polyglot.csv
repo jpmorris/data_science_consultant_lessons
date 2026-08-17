@@ -1,5 +1,5 @@
 date,model,score,score_unit,source_url,notes
-2024-12-21,claude-3-5-haiku-20241022,28.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,Aider Polyglot: 225 Exercism exercises across C++/Go/Java/JS/Python/Rust, scored inside Aider's real edit loop with a second attempt after seeing failing tests.
+2024-12-21,claude-3-5-haiku-20241022,28.0,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,"Aider Polyglot: 225 Exercism exercises across C++/Go/Java/JS/Python/Rust, scored inside Aider's real edit loop with a second attempt after seeing failing tests."
 2024-12-21,o1-2024-12-17 (high),61.7,% correct (2nd attempt),https://aider.chat/2024/12/21/polyglot.html,"o1 topped the brand-new polyglot leaderboard at launch, well ahead of the field per Aider's own announcement post."
 2024-12-22,gemini-exp-1206,38.2,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,
 2024-12-25,DeepSeek Chat V3 (prev),48.4,% correct (2nd attempt),https://aider.chat/docs/leaderboards/,

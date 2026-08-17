@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2023-11,GPT-4-Turbo (closed book),9,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,"Islam et al., FinanceBench paper, Table 2. All configurations tested November 2023."
+2023-11,Llama2 (shared vector store),19,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,FinanceBench paper Table 2.
+2023-11,GPT-4-Turbo (shared vector store),19,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,FinanceBench paper Table 2.
+2023-11,Llama2 (single vector store),41,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,FinanceBench paper Table 2.
+2023-11,GPT-4-Turbo (single vector store),50,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,FinanceBench paper Table 2.
+2023-11,Claude 2 (long context),76,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,FinanceBench paper Table 2.
+2023-11,GPT-4-Turbo (long context),79,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,FinanceBench paper Table 2.
+2023-11,GPT-4-Turbo (oracle retrieval),85,"percent correct (FinanceBench, 150-case subset)",https://arxiv.org/abs/2311.11944,"FinanceBench paper Table 2; oracle = correct source document given directly, upper bound on retrieval quality. Without retrieval (closed book), GPT-4-Turbo answered or refused incorrectly 81%+ of the time, the headline finding of the paper. No DocFinQA-specific multi-model comparative data was located separately."

@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2025-05-29,GPT-4o,23.3,pass@1 % (SWE-Lancer Full: IC SWE + SWE Manager combined),https://arxiv.org/abs/2502.12115,"SWE-Lancer paper (OpenAI), Table 1, ""SWE-Lancer Full"" row; earned $304k of $1M total payout pool."
+2025-05-29,OpenAI o1,32.9,pass@1 % (SWE-Lancer Full: IC SWE + SWE Manager combined),https://arxiv.org/abs/2502.12115,"SWE-Lancer paper, Table 1, ""SWE-Lancer Full"" row (High reasoning effort); earned $380k of $1M."
+2025-05-29,Claude 3.5 Sonnet,33.7,pass@1 % (SWE-Lancer Full: IC SWE + SWE Manager combined),https://arxiv.org/abs/2502.12115,"SWE-Lancer paper, Table 1, ""SWE-Lancer Full"" row; strongest model tested, earned $403k of $1M."
+2025-05-29,GPT-4o,23.3,pass@1 % (SWE-Lancer Diamond: IC SWE + SWE Manager combined),https://arxiv.org/abs/2502.12115,"SWE-Lancer paper, Table 1, ""SWE-Lancer Diamond"" row (open-sourced 502-task subset, $500.8k payout pool); earned $139k."
+2025-05-29,OpenAI o1,29.7,pass@1 % (SWE-Lancer Diamond: IC SWE + SWE Manager combined),https://arxiv.org/abs/2502.12115,"SWE-Lancer paper, Table 1, ""SWE-Lancer Diamond"" row (High reasoning effort); earned $166k."
+2025-05-29,Claude 3.5 Sonnet,36.1,pass@1 % (SWE-Lancer Diamond: IC SWE + SWE Manager combined),https://arxiv.org/abs/2502.12115,"SWE-Lancer paper, Table 1, ""SWE-Lancer Diamond"" row; earned $208k, best on this subset."

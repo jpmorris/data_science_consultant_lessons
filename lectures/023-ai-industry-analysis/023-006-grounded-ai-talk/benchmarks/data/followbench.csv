@@ -1,0 +1,14 @@
+date,model,score,score_unit,source_url,notes
+2023-07-18,LLaMA2-Chat-7B,46.3,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,"FollowBench (Jiang et al., ACL 2024), Table 2. HSR = % of instructions where ALL added constraints are fully satisfied, averaged across difficulty levels 1-5. Date = model release date. No live/updated leaderboard was found beyond this paper's own (image-only) GitHub leaderboard, so this is a single research-pass snapshot, not a continuously tracked benchmark."
+2023-07-18,LLaMA2-Chat-13B,49.2,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-07-18,LLaMA2-Chat-70B,47.5,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2; paper notes this model underperforms its own smaller 13B sibling on some constraint categories (scaling doesn't cleanly apply). Date = model release date.
+2023-07-29,Vicuna-7B-V1.5,42.4,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-07-29,Vicuna-13B-V1.5,50.1,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-07-01,WizardLM-13B-V1.2,52.8,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date is release month only (day not confirmed).
+2023-08-03,Qwen-Chat-7B,33.1,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-09-06,Baichuan2-Chat-7B,40.2,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-09-25,Qwen-Chat-14B,47.3,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-10-27,ChatGLM3-6B,38.7,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-11-06,GPT-3.5-Turbo-1106,66.2,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.
+2023-11-06,GPT-4-Preview-1106,73.4,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,"Table 2; top score in the paper. Paper also finds even GPT-4's 'Consistent Satisfaction Level' tops out around 3 stacked constraints (CSL=3.3), i.e. no model reliably handles 4+ simultaneous constraints. Date = model release date."
+2023-11-30,Qwen-Chat-72B,65.6,Hard Satisfaction Rate % avg across L1-L5 (FollowBench),https://arxiv.org/pdf/2310.20410,Table 2. Date = model release date.

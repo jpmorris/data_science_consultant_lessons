@@ -1,0 +1,13 @@
+date,model,score,score_unit,source_url,notes
+2023-05-01,GPT-4,79.3,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; date is the month label EvalPlus uses for this GPT-4 snapshot (""May 2023""), approximate."
+2024-03-01,Claude 3 Opus,77.4,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""Mar 2024""), approximate."
+2024-03-01,Claude 3 Opus,73.3,pass@1 % (MBPP+),https://evalplus.github.io/leaderboard.html,EvalPlus leaderboard MBPP+ score for same snapshot; distinct model/date pair from the single MBPP+ row already in mbpp.csv (Kimi K2.6).
+2024-04-01,GPT-4-Turbo,86.6,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""April 2024""), approximate."
+2024-06-01,Claude 3.5 Sonnet,81.7,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""June 2024""), approximate."
+2024-06-01,Claude 3.5 Sonnet,74.3,pass@1 % (MBPP+),https://evalplus.github.io/leaderboard.html,EvalPlus leaderboard MBPP+ score for same snapshot.
+2024-09-01,OpenAI o1-preview,89.0,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""Sept 2024""), approximate."
+2024-09-01,OpenAI o1-mini,89.0,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""Sept 2024""), approximate; ties o1-preview on this metric."
+2024-11-01,DeepSeek-V2.5,83.5,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""Nov 2024""), approximate."
+2024-11-01,DeepSeek-V3,86.6,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,"EvalPlus leaderboard; month label as shown (""Nov 2024""), approximate."
+2024-11-12,Qwen2.5-Coder-32B-Instruct,87.2,pass@1 % (HumanEval+),https://evalplus.github.io/leaderboard.html,EvalPlus leaderboard; release date matches this model's entry already tracked in mbpp.csv.
+2024-11-12,Qwen2.5-Coder-32B-Instruct,77.0,pass@1 % (MBPP+),https://evalplus.github.io/leaderboard.html,EvalPlus leaderboard MBPP+ score for same model/date.

@@ -1,0 +1,15 @@
+date,model,score,score_unit,source_url,notes
+2025-10-06,Llama-3.1-8B,3.47,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,"LLM-Hanabi paper (arXiv:2510.04980, EMNLP 2025), Table 1"
+2025-10-06,Llama-3.1-70B,4.13,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1
+2025-10-06,Llama-3.1-405B,5.84,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1
+2025-10-06,Llama-3.3-70B,7.20,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1
+2025-10-06,Llama-4-Scout,5.12,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1
+2025-10-06,Llama-4-Maverick,20.08,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1
+2025-10-06,GPT-4.1-nano,5.36,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1
+2025-10-06,GPT-4.1-mini,25.60,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,"LLM-Hanabi paper Table 1; notable outlier, comparable to top LRMs"
+2025-10-06,GPT-4.1,28.56,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,"LLM-Hanabi paper Table 1; best score among standard LLMs, comparable to top reasoning models"
+2025-10-06,Qwen3-8b,22.88,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1; large-reasoning-model (LRM) category
+2025-10-06,Qwen3-30b,19.60,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1; LRM category
+2025-10-06,QwQ-32B,28.27,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1; LRM category
+2025-10-06,Gemini-2.5-Flash,25.04,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1; LRM category
+2025-10-06,DeepSeek-R1,30.00,"LLM-Hanabi cooperative game score (0-25 scale; 5-player, CoT prompting)",https://arxiv.org/pdf/2510.04980,LLM-Hanabi paper Table 1; best score overall of all evaluated models
