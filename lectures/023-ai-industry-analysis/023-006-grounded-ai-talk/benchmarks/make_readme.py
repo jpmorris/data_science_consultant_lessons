@@ -10,7 +10,10 @@ CATEGORIES = [
     ("General knowledge / broad reasoning", [
         "mmlu", "mmlu-pro", "big-bench-hard", "hellaswag", "arc", "truthfulqa",
         "winogrande", "agieval", "bool-q", "piqa", "lambada", "adversarial-nli",
-        "common-sense-qa-2", "superglue", "science-qa", "open-book-qa",
+        "common-sense-qa-2", "superglue", "science-qa", "open-book-qa", "trivia-qa",
+    ]),
+    ("General-purpose & human-preference leaderboards", [
+        "live-bench", "lmarena-elo",
     ]),
     ("Elite reasoning & math", [
         "gpqa-diamond", "hle", "simpleqa", "simpleqa-verified", "gsm8k", "math",
@@ -22,7 +25,7 @@ CATEGORIES = [
         "swe-bench-multimodal", "swe-bench-pro", "livecodebench",
         "livecodebench-elo", "codeforces-elo", "aider-polyglot", "scicode",
         "mirrorcode", "algotune", "cursorbench", "gso", "frontierswe",
-        "frontiercode", "webdev-arena", "deepswe",
+        "frontiercode", "webdev-arena", "deepswe", "ale-bench",
     ]),
     ("Agentic, tool-use & computer-use", [
         "gaia", "webarena", "agentbench", "tau-bench", "osworld", "androidworld",

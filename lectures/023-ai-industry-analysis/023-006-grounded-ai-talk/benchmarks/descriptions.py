@@ -40,6 +40,12 @@ DESCRIPTIONS = {
     "ioi": "The real International Olympiad in Informatics — a competitive-programming olympiad AI systems have been tested against since 2024.",
     "otis-mock-aime-2024-2025": "Practice AIME-style contest problems (Olympiad Training and Inspiration Sessions) used as an additional fresh math-benchmark source.",
     "critpt": "Graduate/research-level critical-thinking physics problems tracked on Epoch AI's benchmarking hub.",
+    "live-bench": "General-purpose benchmark with new questions released monthly from fresh sources (recent papers, news, forum posts), objectively scored with no LLM judge — explicitly designed to resist contamination.",
+    "lmarena-elo": "Human-preference Elo from blind pairwise model battles (\"overall\" category — this pull doesn't include the style-controlled variant, which filters out the verbosity/formatting bias).",
+    "ale-bench": "An Epoch-hub-tracked algorithmic-engineering benchmark (bulk-imported; no dedicated deep-dive in this research pass).",
+    "trivia-qa": "Open-domain trivia question answering with distantly-supervised evidence documents.",
+    "epoch-capabilities-index": "Epoch AI's own composite capability index aggregating performance across many of their tracked benchmarks into one score.",
+    "epoch-capabilities-index-percent": "A percent-scaled variant/snapshot of the Epoch Capabilities Index.",
 
     # Code & software engineering
     "humaneval": "164 hand-written Python programming problems, graded by functional correctness (pass@1) against hidden unit tests.",

@@ -1,33 +1,76 @@
 benchmark,display_name,n_points,n_models,date_min,date_max,score_min,score_max,unit_guess,likely_saturated,families,n_points_no_source,source_files
+epoch-capabilities-index,Epoch Capabilities Index,498,498,2023-02-24,2026-08-02,101.84,161.65,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/epoch_capabilities_index.csv
+lmarena-elo,LMArena Elo,389,389,2026-08-12,2026-08-12,833.629163755814,1507.7846352769857,Elo,False,lmarena_bulk,0,data/aggregator-lmarena-text-latest.csv
 gpqa-diamond,GPQA Diamond,271,271,2023-03-14,2026-08-13,13.226010101010102,94.82323232323232,percent,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/gpqa_diamond.csv;data/gpqa-diamond.csv
 arc-agi-1,ARC-AGI-1,268,247,2019-11-05,2026-08-11,0.0,98.5,% correct (semi-private eval set),True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/arc_agi_external.csv;data/arc-agi-1.csv
 arc-agi-2,ARC-AGI-2,255,240,2023-11-03,2026-08-11,0.0,100.0,% correct (semi-private eval set),True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/arc_agi_2_external.csv;data/arc-agi-2.csv
 otis-mock-aime-2024-2025,OTIS Mock AIME,238,238,2023-03-14,2026-08-13,0.0,100.0,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/otis_mock_aime_2024_2025.csv
+mmlu,MMLU,225,144,2021-08-05,2026-04-23,23.9,92.4,percent accuracy,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/mmlu_external.csv;data/mmlu.csv
+terminal-bench,Terminal Bench,212,69,2025-05-22,2026-05-14,3.1,84.7,% (Terminal-Bench 2.0),False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/terminalbench_external.csv;data/terminal-bench.csv
 frontiermath,FrontierMath,176,108,2024-06-20,2026-05-28,0.0,89.0,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/frontiermath.csv;data/aggregator-epoch-benchmarking-hub/frontiermath_tier_4.csv;data/frontiermath.csv
+gsm8k,GSM8K,168,91,2020-06-22,2026-03-01,0.7000000000000001,99.7,percent accuracy,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/gsm8k_external.csv;data/gsm8k.csv
 chess-puzzles,Chess Puzzles (Epoch),161,161,2023-06-13,2026-08-13,0.0,64.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/chess_puzzles.csv
+weirdml,Weirdml,161,160,2023-06-13,2026-07-31,1.73,91.94,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/weirdml_external.csv
+winogrande,Winogrande,142,85,2019-11-05,2024-12-26,51.5,89.2,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/wino_grande_external.csv;data/winogrande.csv
+arc,ARC (AI2 Reasoning Challenge),140,83,2019-11-05,2024-12-26,23.200000000000003,98.9,percent,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/arc_ai2_external.csv;data/arc.csv
+critpt,CritPT,135,135,2024-07-23,2026-07-31,0.0,32.300000000000004,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/critpt_external.csv
 scicode,SciCode,135,131,2024-07-18,2026-07-31,1.5,60.2,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/scicode_external.csv;data/scicode.csv
 bool-q,BoolQ,123,65,2019-11-05,2024-08-17,56.3,90.9,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/bool_q_external.csv
 math,Math,114,114,2022-01-01,2025-10-15,3.2854984894259815,98.13066465256797,percent,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/math_level_5.csv;data/math.csv
+trivia-qa,Trivia Qa,113,38,2021-12-08,2024-12-26,43.5,87.6,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/trivia_qa_external.csv
+hellaswag,Hellaswag,112,75,2019-11-05,2024-12-26,40.0,95.4,percent,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/hella_swag_external.csv;data/hellaswag.csv
 piqa,PIQA,112,59,2019-11-05,2024-12-26,65.8,88.7,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/piqa_external.csv
+ale-bench,Ale Bench,101,101,2024-12-03,2026-07-31,137.78,2176.88,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/ale_bench_external.csv
+big-bench-hard,Big Bench Hard,98,59,2022-10-01,2026-06-01,28.000000000000004,96.1,percent accuracy,True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/bbh_external.csv;data/big-bench-hard.csv
+webdev-arena,Webdev Arena,98,97,2025-06-17,2026-07-24,1139.0,1711.88,Elo,False,epoch,0,data/aggregator-epoch-benchmarking-hub/webdev_arena_external.csv
+aider-polyglot,Aider Polyglot,96,92,2024-03-26,2025-12-01,3.6,88.0,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/aider_polyglot_external.csv;data/aider-polyglot.csv
+simplebench,Simplebench,91,91,2024-02-29,2026-07-09,10.7,81.9,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/simplebench_external.csv
 simpleqa-verified,SimpleQA Verified,85,85,2024-10-22,2026-08-13,5.8999999999999995,77.3,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/simpleqa_verified.csv;data/simpleqa-verified.csv
 mmmu,MMMU,79,79,2023-11-27,2026-07-01,32.6,88.6,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",False,hand,0,data/mmmu.csv
+forecastbench,Forecastbench,75,75,2023-06-13,2026-05-28,50.4,62.5,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/forecastbench_external.csv
+open-book-qa,OpenBookQA,70,42,2019-11-05,2024-04-23,22.400000000000002,88.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/open_book_qa_external.csv
 mmbench,MMBench,69,69,2023-12-23,2025-08-14,58.0,88.5,"% accuracy (MMBench-EN v1.1, test split, overall)",False,hand,0,data/mmbench.csv
+hle,Humanity's Last Exam,59,54,2024-09-24,2026-08-11,2.7,54.9,percent accuracy,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/hle_external.csv;data/hle.csv
+apex-agents,APEX Agents,55,55,2024-11-20,2026-07-24,1.1,45.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/apex_agents_external.csv
 swe-bench-verified,SWE-bench Verified,54,52,2024-08-13,2026-06-16,30.991735537190085,83.47107438016529,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/swe_bench_verified.csv;data/swe-bench-verified.csv
 vending-bench,Vending-Bench,54,54,2025-06-17,2026-07-24,-31.18399999999995,11181.87333333333,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/vending_bench_2_external.csv
 lambada,LAMBADA,53,26,2021-12-08,2023-11-30,54.300000000000004,87.15,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/lambada_external.csv
 mystery-game-puzzles,Mystery Game Puzzles (Epoch),53,53,2025-08-05,2026-08-13,6.0,59.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/mystery_game_puzzles.csv
-osworld,OSWorld,41,27,2024-05-30,2026-08-01,4.4,90.19,"% success rate (OSWorld-Verified, best step-budget run)",True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/os_world_external.csv;data/osworld.csv
+live-bench,LiveBench,52,50,2024-02-29,2025-11-13,22.08,82.35,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/live_bench_external.csv
+osworld,OSWorld,51,35,2024-05-30,2026-08-01,2.8,90.19,"% success rate (OSWorld-Verified, best step-budget run)",True,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/os_world_external.csv;data/aggregator-epoch-benchmarking-hub/osworld_2_external.csv;data/osworld.csv
+deepswe,Deepswe,50,50,2026-02-17,2026-07-24,1.5486725663716814,73.64864864864865,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/deepswe_external.csv
+proofbench,Proofbench,50,50,2025-08-07,2026-07-24,0.0,78.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/proofbench_external.csv
+video-mme,Video-MME,50,50,2023-08-20,2025-06-18,37.9,79.7,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/video_mme_external.csv
+lech-mazur-writing,Lech Mazur Writing,49,49,2024-07-18,2025-08-07,6.05,8.6,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/lech_mazur_writing_external.csv
+enigma-eval,Enigma Eval,46,46,2024-02-29,2026-07-09,0.38,39.28,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/enigma_eval_external.csv
+fictionlivebench,Fictionlivebench,42,42,2024-12-17,2026-01-27,18.8,100.0,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/fictionlivebench_external.csv
+gdpval,GDPval (real-world expert tasks),40,40,2024-06-01,2026-07-24,8.0,84.9,percent,False,"epoch,hand",0,data/aggregator-epoch-benchmarking-hub/gdp_pdf_external.csv;data/aggregator-epoch-benchmarking-hub/gdpval_external.csv;data/gdpval.csv
+gso,Gso,38,38,2024-10-22,2026-06-30,0.0,47.06,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/gso_external.csv
+vpct,Vpct,38,38,2024-06-20,2025-12-17,30.0,91.0,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/vpct_external.csv
 arc-agi-3,ARC-AGI-3,36,36,2025-12-17,2026-08-11,0.01,100.0,"% of public demo set solved (official ARC-AGI-3 leaderboard, bare model + minimal harness)",True,hand,0,data/arc-agi-3.csv
+balrog,Balrog,36,35,2024-05-13,2026-02-19,3.6999999999999997,58.099999999999994,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/balrog_external.csv
+deepresearchbench,DeepResearch Bench,35,35,2025-01-21,2026-05-28,29.189999999999998,55.31381702863989,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/deepresearchbench_external.csv
+posttrainbench,PostTrainBench,35,32,2025-09-24,2026-07-24,7.249999999999999,41.79,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/posttrainbench_external.csv
+geobench,GeoBench,32,31,2024-07-18,2025-12-17,2131.0,4333.0,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/geobench_external.csv
 cursorbench,CursorBench,31,31,2026-01-27,2026-07-24,31.900000000000002,72.9,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/cursorbench_external.csv
 mle-bench,MLE-bench,28,28,2024-10-08,2026-03-06,1.6,64.44,"% (any-medal rate, MLE-bench 'All'/split75 comparable subset)",False,hand,0,data/mle-bench.csv
 metr-time-horizon,METR Time Horizon,26,26,2019-02-14,2026-04-07,0.0538,1044.7801,"hours (human-expert-equivalent task time, 50% success rate)",False,hand,0,data/metr-time-horizon.csv
 science-qa,ScienceQA,26,23,2022-01-27,2024-08-16,36.19,91.3,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/science_qa_external.csv
-aider-polyglot,Aider Polyglot,24,24,2024-12-21,2025-10-03,28.0,88.0,% correct (2nd attempt),False,hand,0,data/aider-polyglot.csv
+surface-evolver-bench,Surface Evolver Bench,24,24,2025-08-05,2026-07-16,15.625,95.0,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/surface_evolver_bench_external.csv
+gbaeval,Gbaeval,23,23,2026-02-05,2026-07-24,0.0,79.59852171423216,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/gbaeval_external.csv
+cl-bench,Cl Bench,22,22,2025-04-16,2026-03-31,11.4,27.900000000000002,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/cl_bench_external.csv
+cybench,Cybench,22,22,2024-02-15,2026-02-05,5.0,93.0,percent,True,epoch,0,data/aggregator-epoch-benchmarking-hub/cybench_external.csv
 blueprint-bench-2,Blueprint Bench 2,21,21,2025-10-15,2026-07-24,0.0,38.61171366594359,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/blueprint_bench_2_external.csv
-algotune,AlgoTune,18,18,2025-01-20,2026-03-05,1.31,2.05,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/algotune_external.csv
+epoch-capabilities-index-percent,Epoch Capabilities Index Percent,20,20,2023-02-24,2024-11-29,62.01,99.65,raw,True,epoch,0,data/aggregator-epoch-benchmarking-hub/epoch_capabilities_index.csv
+exploitbench,ExploitBench,20,9,2025-10-15,2026-04-23,13.3,73.8,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/exploitbench_external.csv
+frontiercode,Frontiercode,20,20,2026-04-07,2026-07-24,9.4,53.5,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/frontiercode_external.csv
+algotune,AlgoTune,18,18,2025-01-20,2026-03-05,1.31,2.05,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/algotune_external.csv
+cl-bench-life,Cl Bench Life,16,16,2025-09-29,2026-04-24,6.3,22.2,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/cl_bench_life_external.csv
 codeforces-elo,Codeforces (Elo),16,16,2022-11-01,2026-02-12,0.0,3455.0,Codeforces Elo,False,hand,0,data/codeforces-elo.csv
+the-agent-company,TheAgentCompany,16,14,2024-06-07,2025-09-29,4.2,52.400000000000006,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/the_agent_company_external.csv
 adversarial-nli,Adversarial NLI,15,11,2022-01-27,2024-04-23,33.900000000000006,58.099999999999994,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/adversarial_nli_external.csv
 androidworld,AndroidWorld,14,14,2024-05-23,2025-10-14,3.4,97.4,% success rate pass@1 (AndroidWorld community leaderboard),True,hand,0,data/androidworld.csv
+cad-eval,Cad Eval,14,14,2024-03-07,2025-04-16,12.0,74.0,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/cad_eval_external.csv
 gaia,GAIA,14,13,2023-11-21,2025-09-01,15.0,75.0,% accuracy,False,hand,0,data/gaia.csv
 mbpp,MBPP,14,14,2024-09-19,2026-08-07,66.9,92.7,pass@1 % (MBPP+),True,hand,0,data/mbpp.csv
 humaneval,HumanEval,12,12,2021-07-14,2026-08-08,28.8,97.6,pass@1 %,True,hand,0,data/humaneval.csv
@@ -37,29 +80,23 @@ rli,RLI,12,12,2025-06-05,2026-06-09,0.83,16.1,percent,False,epoch,0,data/aggrega
 chartqa,ChartQA,11,11,2024-03-04,2025-02-02,78.1,90.8,% relaxed accuracy (ChartQA test avg.),True,hand,0,data/chartqa.csv
 docvqa,DocVQA,11,11,2024-03-04,2025-02-02,87.2,96.4,ANLS score (DocVQA test),True,hand,0,data/docvqa.csv
 tau-bench,tau-bench,11,8,2024-06-01,2025-08-01,36.0,69.2,pass^1 % (airline domain),False,hand,0,data/tau-bench.csv
-big-bench-hard,Big Bench Hard,10,10,2022-10-01,2026-06-01,65.7,96.1,percent accuracy,True,hand,0,data/big-bench-hard.csv
 browsecomp,BrowseComp,10,10,2024-08-06,2026-07-09,0.6,92.2,% accuracy,True,hand,0,data/browsecomp.csv
-mmlu,MMLU,10,10,2023-03-01,2026-04-23,86.4,92.4,percent accuracy,True,hand,0,data/mmlu.csv
-terminal-bench,Terminal Bench,10,10,2025-05-22,2026-05-14,43.2,84.7,% (Terminal-Bench 2.0),False,hand,0,data/terminal-bench.csv
 aime,AIME,9,8,2024-09-12,2026-02-01,12.0,99.79,percent (AIME 2025,True,hand,0,data/aime.csv
+btf3,Btf3,9,7,2026-04-23,2026-07-24,11.799999999999999,15.4,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/btf3_external.csv
 livecodebench,LiveCodeBench,9,9,2026-06-05,2026-08-12,3.3,91.7,pass@1 %,True,hand,0,data/livecodebench.csv
 mathvista,MathVista,9,9,2023-10-01,2026-01-01,34.8,90.7,percent accuracy (testmini),True,hand,0,data/mathvista.csv
-gdpval,GDPval (real-world expert tasks),8,8,2024-06-01,2026-04-23,12.4,84.9,"% GDPval score (OpenAI-reported, launch comparison)",False,hand,0,data/gdpval.csv
-hle,Humanity's Last Exam,8,8,2025-01-01,2026-08-11,2.7,54.9,percent accuracy,False,hand,0,data/hle.csv
 omni-math,Omni-MATH,8,8,2024-10-11,2025-01-01,14.24,81.9,percent accuracy,False,hand,0,data/omni-math.csv
 openai-ai-self-improvement-evals,OpenAI Self-Improvement Evals,8,4,2025-08-13,2025-08-13,1.0,45.0,% pass@1 (OpenAI-Proof Q&A),False,hand,0,data/openai-ai-self-improvement-evals.csv
+spatialviz-bench,SpatialViz-Bench,8,8,2024-01-18,2025-06-17,31.78,44.66,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/spatialviz_bench_external.csv
 vending-bench-dollars,Vending-Bench ($ balance),8,8,2025-02-20,2026-07-29,335.46,11182.0,mean final balance in simulated $ (5 runs; Vending-Bench 2),False,hand,0,data/vending-bench.csv
 agentbench,AgentBench,7,7,2023-08-07,2023-08-07,0.78,4.01,overall score (0-8 scale; avg across 8 environments),False,hand,0,data/agentbench.csv
-arc,ARC (AI2 Reasoning Challenge),7,7,2023-03-01,2024-12-26,94.5,98.9,percent accuracy,True,hand,0,data/arc.csv
 simpleqa,SimpleQA,7,7,2024-10-30,2026-07-31,15.0,62.5,percent correct,False,hand,0,data/simpleqa.csv
 agieval,AGIEval,6,6,2023-07-01,2026-08-01,22.8,94.0,percent accuracy,True,hand,0,data/agieval.csv
 ai-scientist,AI Scientist (Sakana et al.),6,6,2025-02-20,2026-04-18,1.0,42.0,"mean paper-quality score, 1-5 scale (LLM-judge synthesis of GPT-5.4/Gemini/Claude reviewers)",False,hand,0,data/ai-scientist.csv
-gsm8k,GSM8K,6,6,2021-11-01,2026-03-01,55.0,99.7,percent accuracy,True,hand,0,data/gsm8k.csv
 mirrorcode,MirrorCode,6,6,2026-02-19,2026-07-09,8.888888888888888,63.88888888888889,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/mirrorcode.csv
 swe-bench-pro,SWE-bench Pro,6,6,2025-09-19,2026-08-01,23.0,80.0,% resolved,False,hand,0,data/swe-bench-pro.csv
 truthfulqa,Truthfulqa,6,6,2023-03-01,2026-08-01,50.18,88.0,percent accuracy (MC),False,hand,0,data/truthfulqa.csv
-hellaswag,Hellaswag,5,5,2020-05-01,2024-09-01,78.9,95.4,percent accuracy,True,hand,0,data/hellaswag.csv
-winogrande,Winogrande,5,5,2023-03-01,2024-12-26,82.3,87.5,percent accuracy,False,hand,0,data/winogrande.csv
+mindcube,MindCube,5,5,2024-06-13,2025-05-22,29.460000000000004,46.67,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/mindcube_external.csv
 gdpval-elo,"GDPval (Elo, Artificial Analysis)",4,4,2026-07-01,2026-08-01,1725.0,1849.0,Elo (Artificial Analysis GDPval-AA v2 leaderboard),False,hand,0,data/gdpval.csv
 imo,IMO (Intl. Mathematical Olympiad),4,4,2024-07-01,2026-07-22,28.0,42.0,points out of 42 (perfect score),False,hand,0,data/imo.csv
 metr-cross-domain-time-horizon,METR Cross-Domain Time Horizon,4,4,2025-07-14,2025-07-14,3.0,24.0,approx doubling time (months) of domain-specific time horizon ('~2 years'),False,hand,0,data/metr-cross-domain-time-horizon.csv
@@ -67,7 +104,7 @@ re-bench,RE-Bench (METR),4,4,2024-11-22,2024-11-22,0.46,4.0,"normalized score (0
 common-sense-qa-2,CommonsenseQA 2.0,3,3,2022-01-27,2023-07-18,50.0,56.99999999999999,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/common_sense_qa_2_external.csv
 ioi,IOI (Intl. Olympiad in Informatics),3,3,2026-08-09,2026-08-09,72.25,91.67,percent score (aggregator's IOI scoring methodology),True,hand,0,data/ioi.csv
 livecodebench-elo,LiveCodeBench Pro (Elo),3,3,2026-02-01,2026-02-01,2316.0,2887.0,Elo (LiveCodeBench Pro),False,hand,0,data/livecodebench.csv
-vending-bench-percent,Vending-Bench (%),3,3,2025-09-24,2026-04-17,35.26166666666665,71.56500000000018,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/vending_bench_2_external.csv
+vending-bench-percent,Vending-Bench (%),3,3,2025-09-24,2026-04-17,0.5440000000000417,71.56500000000018,raw,False,epoch,0,data/aggregator-epoch-benchmarking-hub/vending_bench_2_external.csv
 webarena,WebArena,2,2,2023-07-26,2025-01-23,14.41,58.1,% success rate,False,hand,0,data/webarena.csv
 superglue,SuperGLUE,1,1,2022-01-27,2022-01-27,71.8,71.8,percent,False,epoch,0,data/aggregator-epoch-benchmarking-hub/superglue_external.csv
 swe-bench-lite,SWE-bench Lite,1,1,2026-08-07,2026-08-07,62.7,62.7,% resolved,False,hand,0,data/swe-bench-lite.csv

@@ -62,6 +62,64 @@ ALIAS = {
 }
 EPOCH_ALREADY_CLAIMED = {v for vs in ALIAS.values() for v in vs}
 
+# Epoch's 76-file bulk export does NOT use one consistent score-column name --
+# confirmed by inspecting every file's header directly (not assumed). Files
+# not listed here use "Score" or "mean_score" if present. Value is either a
+# column name (auto-detect fraction-vs-percent-vs-raw scale from the data) or
+# a (column, unit_hint) tuple when the scale needs to be pinned explicitly.
+# Files mapped to None are deliberately excluded, with the reason noted.
+SCORE_COLUMN_OVERRIDES = {
+    "aider_polyglot_external": "Percent correct",
+    "ale_bench_external": "Performance",
+    "apex_agents_external": "Pass@1 score",
+    "arc_ai2_external": "Challenge score",
+    "balrog_external": "Average progress",
+    "bbh_external": "Average",
+    "btf3_external": "Pooled score",
+    "cad_eval_external": "Overall pass (%)",
+    "cl_bench_external": "Overall",
+    "cl_bench_life_external": "Overall",
+    "critpt_external": "Accuracy",
+    "cybench_external": "Unguided % Solved",
+    "deepresearchbench_external": "Average score",
+    "deepswe_external": "Pass@1",
+    "enigma_eval_external": "Accuracy",
+    "epoch_capabilities_index": "ECI Score",
+    "exploitbench_external": "Mean capability",
+    "fictionlivebench_external": "120k token score",
+    "forecastbench_external": "Overall score",
+    "frontiercode_external": "Main score",
+    "frontierswe_external": None,  # ranking metric (Average rank), not a score -- doesn't fit this project's percent/time/Elo axes
+    "gbaeval_external": "Overall score",
+    "gdp_pdf_external": "GDP.pdf score",
+    "gdpval_external": "Win Rate (%)",
+    "geobench_external": "ACW Avg Score",
+    "gso_external": "Score OPT@1",
+    "gsm8k_external": "EM",
+    "hella_swag_external": "Overall accuracy",
+    "hle_external": "Accuracy",
+    "lech_mazur_writing_external": "Mean score",
+    "live_bench_external": ("Global average", "percent"),  # already 0-100, not a 0-1 fraction
+    "metr_time_horizons_external": None,  # already have richer primary-source time-horizon data in metr-time-horizon.csv; this file's raw hours would silently mis-scale under the generic fraction/percent heuristic
+    "mindcube_external": "Overall score",
+    "mmlu_external": "EM",
+    "open_book_qa_external": "Accuracy",
+    "osworld_2_external": "Binary accuracy",
+    "posttrainbench_external": "Average (%)",
+    "proofbench_external": "Accuracy",
+    "simplebench_external": "Score (AVG@5)",
+    "spatialviz_bench_external": "Overall score",
+    "surface_evolver_bench_external": "Mean score",
+    "terminalbench_external": "Accuracy mean",
+    "the_agent_company_external": "% Score",
+    "trivia_qa_external": "EM",
+    "video_mme_external": "Overall (no subtitles)",
+    "vpct_external": "Correct",
+    "webdev_arena_external": ("Arena Score", "Elo"),  # Elo-like scale, not a fraction
+    "weirdml_external": "Accuracy",
+    "wino_grande_external": "Accuracy",
+}
+
 DISPLAY_NAME_OVERRIDES = {
     "hle": "Humanity's Last Exam",
     "arc": "ARC (AI2 Reasoning Challenge)",
@@ -145,6 +203,8 @@ DISPLAY_NAME_OVERRIDES = {
     "rli": "RLI",
     "blueprint-bench-2": "Blueprint Bench 2",
     "critpt": "CritPT",
+    "lmarena-elo": "LMArena Elo",
+    "live-bench": "LiveBench",
 }
 
 
@@ -271,14 +331,45 @@ if EPOCH.exists():
         with f.open(newline="", encoding="utf-8") as fh:
             reader = csv.DictReader(fh)
             fieldnames = reader.fieldnames or []
-            # Two Epoch schemas seen: the "_external" per-benchmark leaderboard
-            # schema (Model version/Score/Release date/...) and a couple of
-            # bespoke ones (e.g. epoch_capabilities_index.csv). Skip files that
-            # don't match the expected schema rather than guess.
-            score_col = "Score" if "Score" in fieldnames else ("mean_score" if "mean_score" in fieldnames else None)
+            # Every file's header was inspected directly (see
+            # SCORE_COLUMN_OVERRIDES) -- most use a bespoke score-column name,
+            # not "Score"/"mean_score". Check the override map first.
+            unit_hint = None
+            if stem in SCORE_COLUMN_OVERRIDES:
+                override = SCORE_COLUMN_OVERRIDES[stem]
+                if override is None:
+                    continue  # deliberately excluded, reason noted at the map above
+                if isinstance(override, tuple):
+                    score_col, unit_hint = override
+                else:
+                    score_col = override
+                if score_col not in fieldnames:
+                    continue  # header drifted since the map was built -- skip, don't guess
+            else:
+                score_col = "Score" if "Score" in fieldnames else ("mean_score" if "mean_score" in fieldnames else None)
             if score_col is None or "Release date" not in fieldnames:
                 continue
             model_col = "Model version" if "Model version" in fieldnames else "Name"
+            file_scores = []
+            for row in reader:
+                raw = (row.get(score_col) or "").strip()
+                try:
+                    file_scores.append(float(raw))
+                except ValueError:
+                    pass
+            fh.seek(0)
+            reader = csv.DictReader(fh)
+            # Decide the file's scale once, from its own data, rather than
+            # per-row: some files report a 0-1 fraction, some already report
+            # 0-100, and a few (Elo, ECI) are on a different scale entirely.
+            if unit_hint:
+                file_scale = unit_hint
+            elif file_scores and max(file_scores) <= 1.5:
+                file_scale = "fraction"
+            elif file_scores and max(file_scores) <= 100:
+                file_scale = "percent"
+            else:
+                file_scale = "raw"
             for row in reader:
                 d = parse_date(row.get("Release date", ""))
                 raw_score = (row.get(score_col) or "").strip()
@@ -286,14 +377,12 @@ if EPOCH.exists():
                     score = float(raw_score)
                 except ValueError:
                     continue
-                # Epoch scores are fractions (0-1) for percent-like benchmarks;
-                # normalize to 0-100 when in that range. Leave larger-scale
-                # scores (e.g. Elo, time-horizon hours) untouched.
-                score_unit = "percent"
-                if 0 <= score <= 1:
-                    score = score * 100
+                if file_scale == "fraction":
+                    score, score_unit = score * 100, "percent"
+                elif file_scale == "percent":
+                    score_unit = "percent"
                 else:
-                    score_unit = "raw"
+                    score_unit = file_scale  # "Elo", "raw", etc.
                 row_source = (row.get("Source link") or "").strip()
                 source_label = (row.get("Source") or "").strip()
                 if not row_source and source_label.startswith("http"):
@@ -321,6 +410,36 @@ if EPOCH.exists():
                     "file": rel_path,
                     "extraction_method": method,
                 })
+
+# ---- 3. LMArena bulk export (current-standings snapshot, not a time series --
+# every row shares one leaderboard_publish_date since this is the "latest"
+# split of the HF dataset, not the "full" historical split) ----
+LMARENA_FILE = DATA / "aggregator-lmarena-text-latest.csv"
+if LMARENA_FILE.exists():
+    rel_path = str(LMARENA_FILE.relative_to(BASE))
+    with LMARENA_FILE.open(newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        for row in reader:
+            if row.get("category") != "overall":
+                continue  # style-controlled Elo specifically wasn't in this pull -- "overall" is the plain human-preference Elo
+            d = parse_date(row.get("leaderboard_publish_date", ""))
+            try:
+                score = float(row.get("rating") or "")
+            except ValueError:
+                continue
+            records.append({
+                "benchmark": "lmarena-elo",
+                "date": d,
+                "model": (row.get("model_name") or "").strip(),
+                "score": score,
+                "score_unit": "Elo",
+                "org": (row.get("organization") or "").strip(),
+                "source": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+                "notes": f"category=overall (not style-controlled); rank={row.get('rank')}; votes={row.get('vote_count')}",
+                "family": "lmarena_bulk",
+                "file": rel_path,
+                "extraction_method": "huggingface_dataset_or_space",
+            })
 
 # ---- filter out records with no usable date ----
 records = [r for r in records if r["date"]]
