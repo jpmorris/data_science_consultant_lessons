@@ -2320,6 +2320,183 @@ slide (and the next few) are circling.
 </template>
 ```
 
+## What Can AI Actually Do? {.smaller .scrollable .heading-accent}
+
+- Reading straight off which benchmarks are saturated (≥90% top score, percent-scale) vs.
+  still climbing vs. barely started, organized by what's actually being tested rather than by
+  benchmark name. This is descriptive, not normative — a saturated *benchmark* means the
+  benchmark topped out, not that the underlying skill transfers cleanly to the real world;
+  that's a separate question for later.
+
+```{=html}
+<div class="section-label section-label--lg">General Knowledge, Exams &amp; Broad Reasoning</div>
+```
+
+- **Can do:** standard exam- and school-style knowledge is thoroughly solved — MMLU (92%),
+  the harder MMLU-Pro (92%), grade-school-through-Challenge science QA (ARC, 99%), and real
+  human standardized exams repurposed as a benchmark (AGIEval: SAT/LSAT/Gaokao/bar exams, 94%)
+- **Struggles with:** knowledge sets built specifically to defeat models via adversarial
+  construction — Adversarial NLI (58%) and CommonsenseQA 2.0 (57%) are real, unsaturated gaps,
+  not just old benchmarks nobody re-tests
+
+```{=html}
+<div class="section-label section-label--lg">Math &amp; Competition Problem-Solving</div>
+```
+
+- **Can do:** grade-school through olympiad-level competition math is essentially solved —
+  GSM8K (99.7%), MATH (98%), AIME (99.8%). The real International Mathematical Olympiad went
+  from AlphaProof's silver medal (2024, 28/42) to a coordinator-certified gold (Gemini Deep
+  Think, 2025, 35/42) to a reported perfect 42/42 (RedNote's dots-note-3.0, 2026)
+- **Struggles with:** original, held-out research-level math splits sharply by difficulty —
+  FrontierMath's easier Tiers 1–3 are now ~89% solved, but Tier 4 (the genuinely hardest,
+  research-frontier problems) sits at just ~19–38% even for 2025–2026 frontier models.
+  Graduate/research-level physics problem-solving (CritPT) is only ~32% for the newest models
+  as of mid-2026
+
+```{=html}
+<div class="section-label section-label--lg">Code &amp; Software Engineering</div>
+```
+
+- **Can do:** short, self-contained programming problems are saturated — HumanEval (98%),
+  MBPP+ (93%) — and even competitive programming that refreshes monthly specifically to dodge
+  memorization (LiveCodeBench) has been cleared (92%)
+- **Struggles with:** fixing real bugs in real, messy production codebases is meaningfully
+  harder — SWE-bench Verified tops out around 83%, and the newer enterprise-codebase variant
+  SWE-bench Pro caps at 80%. Measurably speeding up existing code (AlgoTune) is barely
+  underway (~2%)
+
+```{=html}
+<div class="section-label section-label--lg">Tool Use &amp; Agentic Action</div>
+```
+
+- **Can do:** narrow, scripted tool-calling within one domain is close to solved — a
+  dual-control telecom customer-service agent (τ2-bench Telecom) hits ~99% (though part of
+  that jump reflects a 2026 scoring-methodology change, not pure capability gain)
+- **Struggles with:** general-purpose function-calling across many tools and formats (BFCL) is
+  solid but imperfect (~78%), and orchestrating many real MCP servers/tools together
+  (MCP-Atlas) sits around 88% — good, not saturated
+
+```{=html}
+<div class="section-label section-label--lg">Autonomous Computer &amp; Web Use</div>
+```
+
+- **Can do:** controlling a real desktop OS or Android phone through its actual GUI is now
+  largely solved on benchmark terms — OSWorld-Verified (90%), AndroidWorld (97%) — and
+  long-horizon enterprise browser workflows clear 90%+ too (WorkArena, Online-Mind2Web)
+- **Struggles with:** open-ended live-web research/assistant work is still hard —
+  AssistantBench sits at ~25%, the original Mind2Web cross-task split at ~5%. Creative-software
+  GUI control (AssistGUI: After Effects, Word) is only ~46%
+
+```{=html}
+<div class="section-label section-label--lg">Long-Horizon Autonomy &amp; AI-Research Capability</div>
+```
+
+- **Can do:** autonomous task duration keeps climbing steeply with no sign of leveling off —
+  METR's time-horizon metric is past 1,000 human-expert-hours at 50% success, roughly doubling
+  every 6 months
+- **Struggles with:** doing genuinely novel ML research like a human expert is a real,
+  wide-open gap — replicating a real ICML paper end-to-end (PaperBench) is only ~43%, and a
+  fully autonomous "AI scientist" pipeline scores a mediocre ~42/100 on paper quality by
+  LLM-judge review. Autonomy-duration and genuine research novelty are different axes — the
+  first climbing steeply doesn't mean the second is close to solved
+
+```{=html}
+<div class="section-label section-label--lg">Abstract, Novel Reasoning (ARC-AGI)</div>
+```
+
+- **Can do:** with the right custom agent scaffold, even the deliberately anti-memorization
+  ARC-AGI puzzle families now get solved at or near 100% (ARC-AGI-1: 98.5%, ARC-AGI-2: 100%,
+  ARC-AGI-3: 100% of the public demo set)
+- **Struggles with:** this is the clearest case in the whole catalog where "saturated" is a
+  scaffolding story, not a base-model one — bare frontier models with no custom harness still
+  score near 0% on ARC-AGI-3
+
+```{=html}
+<div class="section-label section-label--lg">Games &amp; Strategic/Social Play</div>
+```
+
+- **Can do:** narrow, well-specified competitive and social games are strong — live
+  head-to-head chess/poker/Werewolf play (Kaggle Game Arena), cooperative theory-of-mind card
+  play (LLM-Hanabi), and with a purpose-built perception+memory harness, real progress on
+  classic titles like Mario, Tetris, and 2048
+- **Struggles with:** actually playing an unmodified real video game end-to-end from raw
+  screen pixels, with no custom harness, is still barely functional — VideoGameBench (real
+  Game Boy/MS-DOS titles) completes under 1% of test content
+
+```{=html}
+<div class="section-label section-label--lg">Forecasting &amp; Real-World Professional Work</div>
+```
+
+- **Can do:** on expert-graded, real-world work-product tasks across 44 occupations (GDPval —
+  documents, slides, CAD, audio/video), frontier models reach ~85% of expert-level quality
+- **Struggles with:** predicting the outcome of real, currently-unresolved future events
+  (ForecastBench) — a task immune to training-data leakage by construction, since the answer
+  doesn't exist yet — sits at only ~63%, not dramatically past a competent human forecaster
+
+```{=html}
+<div class="section-label section-label--lg">Domain-Professional Knowledge (Medicine, Law, Finance)</div>
+```
+
+- **Can do:** standard licensing-exam-style medical questions are essentially solved
+  (MedQA/USMLE: 90%)
+- **Struggles with:** expert-level, multi-specialty clinical reasoning (MedXpertQA, built
+  specifically because MedQA saturated) is only ~56%, and realistic clinician-conversation
+  quality (HealthBench) is just ~60%
+
+```{=html}
+<div class="section-label section-label--lg">Safety Behavior &amp; Honesty Under Pressure</div>
+```
+
+- Not a capability axis so much as a behavior one, worth stating plainly: models still
+  misrepresent their own stated beliefs under pressure at a real rate (MASK: ~63% probability
+  of contradicting themselves when incentivized to lie), and standard jailbreak attacks still
+  succeed a meaningful fraction of the time absent defenses (JailbreakBench: up to ~93% attack
+  success with no mitigations in place)
+
+```{=html}
+<div class="section-label section-label--lg">Long-Context, Multilingual &amp; Multimodal Perception</div>
+```
+
+- **Long documents:** strong within a generous window (RULER: 96% up to 128K) but degrades on
+  true extreme-length multi-document synthesis (SCROLLS composite: ~29%)
+- **Multilingual:** solid on translated grade-school math (MGSM: 94% averaged across
+  languages) but weaker on broader multilingual exam transfer (MMLU-ProX: ~76%) and
+  low-resource-language reading comprehension (Belebele: ~60% averaged across 122 languages)
+- **Visual perception:** chart- and document-reading is essentially solved (ChartQA: 91%,
+  DocVQA: 96%), but spatial/3D reasoning from images is still weak (MindCube: ~47%,
+  SpatialViz-Bench: ~45%)
+
+::: {.notes}
+This is a first-pass synthesis meant to be argued with — the user's own plan is to go through
+the full 208-benchmark catalog category by category and sharpen this. Treat it as a draft
+scorecard, not a finished claim.
+
+**What's deliberately NOT here yet**: an aggregate, cross-category "plateau vs. still
+climbing" visualization distilling all 208 benchmarks into one picture (or a small set of
+plots). That's a real next step but genuinely unsolved in terms of *how* to build it — single
+plot vs. small multiples vs. something else — and it should probably also fold in the
+disclosure/rotation/domain-novelty contamination-resistance axes from the benchmark tracker
+artifact once those get worked through. Don't improvise that visualization live; it's future
+work, not deferred by accident.
+
+**Recurring pattern worth saying out loud**: nearly every category shows the same shape as the
+MMLU→MMLU-Pro or ARC-AGI-1→2→3 story from the previous slide — the *easy* end of a skill
+saturates while a harder successor (or a harder tier within the same benchmark, as with
+FrontierMath's Tiers 1–3 vs. Tier 4) stays wide open. "AI can do X" is almost always true only
+for a specific difficulty band of X, not the whole skill.
+
+**Scaffolding is doing a lot of the work** in several of the strongest "can do" claims here
+(ARC-AGI, the video-game harness results, several agentic/computer-use benchmarks) — the gap
+between a bare model and a model wrapped in a purpose-built harness is itself one of the
+biggest levers in this entire catalog, arguably bigger than raw model capability in some
+categories. Worth flagging live rather than letting the saturated numbers imply "the model"
+did this alone.
+
+All numbers here are read directly off `benchmarks/aggregated_summary.csv` and the individual
+`benchmarks/data/*.csv` files — same sourcing standard as the AI Benchmarks slide, no
+estimates.
+:::
+
 # Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 ## Prediction Is Hard — Especially About the Future {.heading-accent}
