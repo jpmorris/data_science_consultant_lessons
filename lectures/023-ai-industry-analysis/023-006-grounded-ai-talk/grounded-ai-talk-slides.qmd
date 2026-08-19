@@ -1955,14 +1955,18 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025 | Retrieval | —              | None | No |
 | Erdős Problem 728                                                                                        | Jan 2026 | AI        | Pipeline       | Hard | No |
 | DeepMind systematic Erdős re-check                                                                       | Jan 2026 | Retrieval | —              | Hard | No |
+| Erdős Problem 1196 (primitive sets, proved)                                                              | Apr 2026 | AI        | —              | Hard | Yes |
 | <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026 | AI        | Repeat-filter  | Soft | No |
 | AlphaProof Nexus (DeepMind)                                                                              | May 2026 | AI        | Pipeline       | Hard | No |
 | Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026 | AI        | Agentic        | Soft | No |
 | OpenAI sandbox escape — breached Hugging Face                                                            | Jul 2026 | AI        | Agentic        | Hard | No |
 | Anthropic sandbox escapes ×3                                                                             | Jul 2026 | AI        | Agentic        | Hard | No |
-| Jacobian conjecture counterexample                                                                       | Aug 2026 | Unknown   | Unknown        | Unknown | No |
+| Jacobian conjecture counterexample (dim ≥3, pending review)                                              | Jul 2026 | AI        | Unknown        | Hard | No |
+| Dinitz–Garg–Goemans conjecture disproof                                                                  | Jul 2026 | AI        | —              | Hard | Yes |
+| <span class="crux-word">UNVERIFIED</span> — 6 Erdős problems in 5 days (Shouqiao Wang)                   | Jul 2026 | AI        | Agentic        | Soft | No |
 | <span class="crux-word">UNVERIFIED</span> — "10 advances," incl. first non-sofic group (OpenAI "Astra") | Aug 2026 | AI        | Pipeline       | Hard | No |
 | <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                | Aug 2026 | —         | —              | — | No |
+| Claude raises Riemann-zeta critical-line bound (41.6%→67.2%)                                             | Aug 2026 | AI        | Agentic        | Hard | No |
 :::
 
 ```{=html}
@@ -1985,7 +1989,11 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     <li>Erdős Problem 1102/1103: van Doorn &amp; Tao, <a href="https://arxiv.org/abs/2512.01087" target="_blank" rel="noopener">"Growth rates of sequences governed by the squarefree properties of its translates"</a> (arXiv:2512.01087, Dec 2025); Tao's own writeup: <a href="https://terrytao.wordpress.com/2025/12/01/growth-rates-of-sequences-governed-by-the-squarefree-properties-of-its-translates/" target="_blank" rel="noopener">"Growth rates of sequences governed by the squarefree properties of its translates"</a>, What's New (Dec 2025) — no AI tools mentioned anywhere in the writeup</li>
     <li>Post-hoc Lean formalization of the 1102/1103 proof (Feb 2026, Aristotle): <a href="https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems" target="_blank" rel="noopener">"AI contributions to Erdős problems"</a> wiki (teorth/erdosproblems)</li>
     <li>AlphaProof Nexus: Google DeepMind, arXiv:2605.22763 (May 2026)</li>
-    <li>Jacobian conjecture counterexample: <a href="https://theconversation.com/hello-there-the-jacobian-conjecture-is-false-thanx-why-a-tiny-social-media-post-has-mathematicians-rethinking-ai-283883" target="_blank" rel="noopener">"'hello there the jacobian conjecture is false thanx': why a tiny social media post has mathematicians rethinking AI"</a>, The Conversation (2026)</li>
+    <li>Jacobian conjecture counterexample: <a href="https://theconversation.com/hello-there-the-jacobian-conjecture-is-false-thanx-why-a-tiny-social-media-post-has-mathematicians-rethinking-ai-283883" target="_blank" rel="noopener">"'hello there the jacobian conjecture is false thanx': why a tiny social media post has mathematicians rethinking AI"</a>, The Conversation (2026); Terence Tao, <a href="https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/" target="_blank" rel="noopener">"A digestion of the Jacobian conjecture counterexample"</a>, What's New (Jul 2026)</li>
+    <li>Erdős Problem 1196 (Liam Price / GPT-5.4 Pro): <a href="https://arxiv.org/abs/2605.00301" target="_blank" rel="noopener">"Primitive sets and von Mangoldt chains: Erdős Problem #1196 and beyond"</a> (arXiv:2605.00301, Alexeev, Barreto, Li, Lichtman, Price, Shah, Tang, Tao); <a href="https://www.scientificamerican.com/article/amateur-armed-with-chatgpt-vibe-maths-a-60-year-old-problem/" target="_blank" rel="noopener">"Amateur armed with ChatGPT 'vibe maths' a 60-year-old problem"</a>, Scientific American (2026); <a href="https://www.erdosproblems.com/1196" target="_blank" rel="noopener">Erdős Problem #1196</a>, erdosproblems.com</li>
+    <li>Dinitz–Garg–Goemans conjecture disproof (Dmitry Rybin / GPT-5.6 Pro): <a href="https://x.com/DmitryRybin1/status/2079904005652893709" target="_blank" rel="noopener">original announcement</a>, X (Jul 22, 2026) — note: the linked ChatGPT share transcript is no longer accessible and has no Wayback Machine snapshot; <a href="https://zenodo.org/records/21554259" target="_blank" rel="noopener">"An independent exact verification of the 2026 counterexample to Goemans' unsplittable-flow cost conjecture, with the violation constant it forces"</a>, Zenodo (2026); <a href="https://vibemathed.com/problem/dinitz-garg-goemans-unsplittable-flow" target="_blank" rel="noopener">Dinitz-Garg-Goemans Conjecture tracker</a>, VibeMathed (status: unreviewed)</li>
+    <li>6 Erdős problems in 5 days (Shouqiao Wang / GPT-5.6 Sol + Codex): <a href="https://x.com/Qiaoqiao2001/status/2080003441821163958" target="_blank" rel="noopener">original announcement thread</a>, X (2026)</li>
+    <li>Claude raises Riemann-zeta critical-line bound to 67.2%: Anthropic, <a href="https://www.anthropic.com/research/riemann-zeta" target="_blank" rel="noopener">official research announcement</a> (Aug 10, 2026); <a href="https://www.techtimes.com/articles/324173/20260812/claude-raises-riemann-zeta-zeros-672-two-papers-no-one-had-combined.htm" target="_blank" rel="noopener">"Claude Raises Riemann Zeta Zeros to 67.2%: Two Papers No One Had Combined"</a>, Tech Times (2026)</li>
     <li>Sum-product conjecture disproof: Huang, <a href="https://arxiv.org/abs/2607.20525" target="_blank" rel="noopener">"Autonomous disproofs of the sum-product conjecture over ℝ with GPT-5.5 Pro"</a> (arXiv:2607.20525)</li>
     <li>Erdős Problem 728: <a href="https://arxiv.org/abs/2601.07421" target="_blank" rel="noopener">"Resolution of Erdős Problem #728: a writeup of Aristotle's Lean proof"</a> (arXiv:2601.07421); framing caveat: <a href="https://the-decoder.com/terence-tao-says-gpt-5-2-pro-cracked-an-erdos-problem-but-warns-the-win-says-more-about-speed-than-difficulty/" target="_blank" rel="noopener">"Terence Tao says GPT-5.2 Pro cracked an Erdős problem, but warns the win says more about speed than difficulty"</a>, The Decoder (2026)</li>
     <li>OpenAI sandbox escape: <a href="https://thehackernews.com/2026/07/openai-says-its-own-ai-models-escaped.html" target="_blank" rel="noopener">"OpenAI Says Its AI Models Escaped Sandbox, Targeted Hugging Face to Cheat Benchmark"</a>, The Hacker News (Jul 2026); <a href="https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity" target="_blank" rel="noopener">"An OpenAI test model escaped and broke into a real company's servers"</a>, CNN (Jul 2026)</li>
@@ -2067,6 +2075,19 @@ this is the detail that used to be its own Notes column):
 - **DeepMind systematic Erdős re-check** (Jan 2026): 4 new solves, plus
   "forgotten" solutions to 9 more already-known results — the
   hole-in-the-cloud example on this slide's diagram.
+- **Erdős Problem 1196 (proved)** (Apr 13, 2026): the cleanest "Yes" in the
+  Think-hard column anywhere in this table. Liam Price — 23, no graduate
+  math training, self-described as "vibe maths-ing" — typed the problem (a
+  1968 Erdős/Sárközy/Szemerédi question on primitive sets, open ~58 years)
+  into GPT-5.4 Pro; a proof sketch came back in about 80 minutes from a
+  single prompt, using a Markov-chain/von-Mangoldt-weight method no human
+  had applied to this problem before. No search harness, no repeated
+  sampling reported — one shot, then humans took over: Terence Tao read it
+  within 24 hours and called it "a meaningful contribution to the anatomy
+  of integers," and the result is now formally Lean-verified and published
+  (arXiv:2605.00301, Alexeev, Barreto, Li, Lichtman, Price, Shah, Tang, and
+  Tao) with erdosproblems.com marking #1196 "PROVED." Good contrast case
+  against the harness-heavy rows around it.
 - **OVERSOLD — Erdős unit-distance disproof (OpenAI)** (May 2026): real
   result, verified — but the "one model, no tools" framing is the marketing
   angle, not the more careful outside classification. See the fact-check
@@ -2133,9 +2154,48 @@ this is the detail that used to be its own Notes column):
   "rationalized that the real company must be part of the exercise," and
   Mythos "convinced itself it was still in a simulation." That's a
   legitimate emergent-reasoning quirk, but the hacking itself was mundane.
-- **Jacobian conjecture counterexample** (Jul–Aug 2026): Levent Alpöge
-  (Anthropic) via Claude Fable 5; a 216-character counterexample in 3+
-  dimensions; exact method not yet made public.
+- **Jacobian conjecture counterexample** (announced Jul 20, 2026; Tao's
+  writeup Jul 21; wider coverage Jul 22): Levent Alpöge, a mathematician at
+  Anthropic (problem suggested by Akhil Mathew), used Claude Fable 5 to
+  produce a degree-7 polynomial counterexample in dimension 3+ (the plane
+  case is still open) — a constant Jacobian determinant of −2 that still
+  sends multiple inputs to the same output, so not reversible. Notable
+  because the counterexample itself is short enough to fit in a social-media
+  post; per outside reporting the hard part was navigating a huge space of
+  candidate polynomial maps, not the final construction. Other
+  mathematicians verified it by direct computation, but Alpöge/Anthropic
+  haven't disclosed the exact process (single reasoning pass vs. an
+  internal search), so **Harness stays Unknown and Think-hard stays No by
+  default rather than assumed** — flag this one live as the table's one
+  real open question on that column, not a confirmed non-harness win.
+  Still tracked as pending peer review.
+- **Dinitz–Garg–Goemans conjecture disproof** (Jul 22, 2026): the table's
+  cleanest second "Yes" in the Think-hard column. Dmitry Rybin used GPT-5.6
+  Pro to disprove a ~30-year-old flow-cost conjecture (Goemans' cost-focused
+  strengthening of the Dinitz-Garg-Goemans unsplittable-flow theorem) with
+  4 prompts totaling 58 words in one continuous chat — no tools, no
+  repeated sampling reported. The model returned a 7-node/9-edge directed
+  graph: fractional flow cost 58, but any unsplittable flow (capacity
+  violation ≤ 15) costs at least 60. Checkable by hand, and it was — several
+  mathematicians independently re-derived the arithmetic, one (Hensen
+  Juang) generalized it into an infinite 3-parameter family on the same 7
+  nodes, and an independent exact-rational-enumeration verification is
+  posted on Zenodo. **The original ChatGPT share link Rybin posted is dead
+  and has no Wayback Machine snapshot** — the X thread itself
+  (@DmitryRybin1) and the Zenodo write-up are the best remaining primary
+  sources. Not yet peer-reviewed / formally closed.
+- **UNVERIFIED — 6 Erdős problems in 5 days (Shouqiao Wang)** (~Jul 24,
+  2026, same week as the two rows above): Wang — a Peking University alum
+  now a Columbia PhD student — ran a Codex-based agentic workflow around
+  GPT-5.6 Sol: pick problems mathematicians already actively discuss, have
+  the model draft candidate solutions, then require a separate adversarial
+  agent to try to break each candidate before accepting it. ~13 attempts,
+  ~46% success rate, one task ran continuously for 32 hours. Flagged
+  UNVERIFIED (not FALSE CLAIM or RETRACTED) because, unlike every other row
+  around it, no independent peer review, Lean formalization, or outside
+  mathematician sign-off has been reported anywhere — only the adversarial
+  AI agent's own internal check. Weakest verification story in this whole
+  July cluster; worth saying so directly if it comes up on stage.
 - **UNVERIFIED — "10 more advances" (OpenAI "Astra")** (announced Aug 1–2,
   2026): OpenAI named its next major model "Astra" via an unusual
   artifact — ten claimed solutions to problems open for a decade-plus
@@ -2163,6 +2223,26 @@ this is the detail that used to be its own Notes column):
   contrast case for the slide: OpenAI's is a genuine capability story,
   Anthropic's is mundane techniques plus an interesting reasoning quirk,
   Meta's is basically an ops failure with a scary headline.
+- **Claude raises the Riemann-zeta critical-line bound** (Aug 10, 2026,
+  updated Aug 13): started as an off-hours experiment — Anthropic engineer
+  Jarred Sumner (creator of the Bun JS runtime) prompted an unreleased
+  Claude to "take a real stab" at the Riemann Hypothesis itself, leaving
+  the mathematical approach entirely up to the model. First pass: 650
+  generated ideas, zero that worked. Sumner told it to try again; the model
+  spent a day and a half coordinating ~60 Claude subagents, running 2,400
+  shell commands and hundreds of Python scripts, cross-checking against
+  known zeta zeros — 31M output tokens across the two sessions. It didn't
+  prove RH (nobody has), but it raised the proportion of zeros provably on
+  the critical line from 41.6% to 67.2%, combining two existing papers'
+  techniques nobody had put together before. Verified by two Anthropic
+  mathematicians (Levent Alpöge — the same person behind the Jacobian
+  counterexample row above — and Ralph Furman), two outside number-theory
+  experts (Brian Conrey, Dan Goldston), and a Lean-formalized proof of the
+  specific claims. The most heavily-verified row in this entire July–August
+  cluster, and a good closing contrast: the human intent here was "prove
+  the famous unsolved problem" and the model didn't — the actual result was
+  an unplanned byproduct of letting a many-agent harness grind for 36
+  hours, not a targeted "think hard" insight.
 
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
 AlphaEvolve (Novikov et al., 2025); framing per the RSI survey §6.1 read this
