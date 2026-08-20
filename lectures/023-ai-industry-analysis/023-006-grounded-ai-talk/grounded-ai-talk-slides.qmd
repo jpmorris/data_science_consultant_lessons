@@ -1954,6 +1954,9 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | Erdős Problem 1102 (human-only, no AI)                                                                       | Nov 2025    | Human             | N/A | N/A |
 | <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                              | Dec 2025    | Literature search | No | No |
 | DeepMind systematic Erdős re-check                                                                          | Jan 2026    | Literature search | No | No |
+| OpenAI sandbox escape — breached Hugging Face                                                                | Jul 2026    | Harness (agentic tool-use) | Yes | No |
+| Anthropic sandbox escapes ×3                                                                                 | Jul 2026    | Harness (agentic tool-use) | Yes | No |
+| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                    | Aug 2026    | —                 | No | No |
 | **97 VibeMathed "many attempts" cases** — Lean-verified/checked (incl. Erdős 728, AlphaProof Nexus, unit-distance disproof, Sum-product disproof, OpenAI "Astra," Riemann-zeta bound) | Jan–Aug 2026 | Harness           | Yes | No |
 | GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness (12h scaffolded proof search) | Yes | No |
 | Simplicity of the Hodge Bundle                                                                               | Mar 2026    | Proof, single prompt | No | No proof/disproof |
@@ -1962,13 +1965,10 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | Huneke–Wiegand Conjecture (Son-Pham)                                                                          | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
 | Dinitz–Garg–Goemans conjecture disproof                                                                      | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
 | Jacobian conjecture counterexample (dim ≥3, pending review)                                                  | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
-| OpenAI sandbox escape — breached Hugging Face                                                                | Jul 2026    | Harness (agentic tool-use) | Yes | No |
-| Anthropic sandbox escapes ×3                                                                                 | Jul 2026    | Harness (agentic tool-use) | Yes | No |
 | The Mihail–Vazirani Conjecture                                                                                | Aug 2026    | Counterexample, single prompt | Yes | No proof/disproof |
 | Middle Stair of Parallel Chip-Firing                                                                          | Aug 2026    | Proof, single prompt | No | No proof/disproof |
 | Facial Distance Patterns in Planar Graphs                                                                     | Aug 2026    | Proof, single prompt | No | No proof/disproof |
 | Perfectly Complete Quantum Key Agreement from OWFs                                                            | Aug 2026    | Proof, single prompt | No | No proof/disproof |
-| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                    | Aug 2026    | —                 | No | No |
 :::
 
 ```{=html}
