@@ -1942,7 +1942,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 ```
 
 ::: {.table-panel}
-| Discovery                                                                                                | Date        | Mechanism         | In-loop verifier | Superhuman?      |
+| Discovery                                                                                                | Date        | Mechanism         | In-loop verifier | Superhuman reasoning?      |
 | ---------------------------------------------------------------------------------------------------------- | ----------- | ------------------ | ------------------ | ------------------ |
 | AlphaGo (Go, beats world champion)                                                                          | 2016        | Harness           | Yes | No |
 | AlphaFold2                                                                                                  | 2020        | ML                | No | No |
@@ -1959,16 +1959,16 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                    | Aug 2026    | —                 | No | No |
 | **97 VibeMathed "many attempts" cases** — Lean-verified/checked (incl. Erdős 728, AlphaProof Nexus, unit-distance disproof, Sum-product disproof, OpenAI "Astra," Riemann-zeta bound) | Jan–Aug 2026 | Harness           | Yes | No |
 | GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness (12h scaffolded proof search) | Yes | No |
-| Simplicity of the Hodge Bundle                                                                               | Mar 2026    | Proof, single prompt | No | No proof/disproof |
-| Erdős Problem 1196 (primitive sets, proved; later Lean-verified)                                             | Apr 2026    | Proof, single prompt | No | No proof/disproof |
-| Fill's Spectral Gap Equality                                                                                 | Apr 2026    | Proof, single prompt | No | No proof/disproof |
-| Huneke–Wiegand Conjecture (Son-Pham)                                                                          | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
-| Dinitz–Garg–Goemans conjecture disproof                                                                      | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
-| Jacobian conjecture counterexample (dim ≥3, pending review)                                                  | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
-| The Mihail–Vazirani Conjecture                                                                                | Aug 2026    | Counterexample, single prompt | Yes | No proof/disproof |
-| Middle Stair of Parallel Chip-Firing                                                                          | Aug 2026    | Proof, single prompt | No | No proof/disproof |
-| Facial Distance Patterns in Planar Graphs                                                                     | Aug 2026    | Proof, single prompt | No | No proof/disproof |
-| Perfectly Complete Quantum Key Agreement from OWFs                                                            | Aug 2026    | Proof, single prompt | No | No proof/disproof |
+| Simplicity of the Hodge Bundle                                                                               | Mar 2026    | Proof, single prompt | No | Unknown |
+| Erdős Problem 1196 (primitive sets, proved; later Lean-verified)                                             | Apr 2026    | Proof, single prompt | No | Unknown |
+| Fill's Spectral Gap Equality                                                                                 | Apr 2026    | Proof, single prompt | No | Unknown |
+| Huneke–Wiegand Conjecture (Son-Pham)                                                                          | Jul 2026    | Counterexample, single prompt | Yes | Unknown |
+| Dinitz–Garg–Goemans conjecture disproof                                                                      | Jul 2026    | Counterexample, single prompt | Yes | Unknown |
+| Jacobian conjecture counterexample (dim ≥3, pending review)                                                  | Jul 2026    | Counterexample, single prompt | Yes | Unknown |
+| The Mihail–Vazirani Conjecture                                                                                | Aug 2026    | Counterexample, single prompt | Yes | Unknown |
+| Middle Stair of Parallel Chip-Firing                                                                          | Aug 2026    | Proof, single prompt | No | Unknown |
+| Facial Distance Patterns in Planar Graphs                                                                     | Aug 2026    | Proof, single prompt | No | Unknown |
+| Perfectly Complete Quantum Key Agreement from OWFs                                                            | Aug 2026    | Proof, single prompt | No | Unknown |
 :::
 
 ```{=html}
@@ -2002,7 +2002,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     <li>Anthropic sandbox escapes: <a href="https://www.theregister.com/ai-and-ml/2026/07/31/anthropics-claude-escaped-test-sandbox-to-attack-three-organizations/5281562" target="_blank" rel="noopener">"Anthropic's Claude escaped test sandbox to attack three organizations"</a>, The Register (Jul 2026); <a href="https://www.cybersecuritydive.com/news/anthropic-claude-ai-hacking-test/826708/" target="_blank" rel="noopener">"Anthropic says human error let Claude AI models escape test environment and hack third parties"</a>, Cybersecurity Dive (2026)</li>
     <li>Meta sandbox incident: <a href="https://www.npr.org/2026/08/08/nx-s1-5924878/meta-ai-breaches-external-firm-during-security-testing-sandbox-error" target="_blank" rel="noopener">"Meta AI breaches external firm during security testing sandbox error"</a>, NPR (Aug 2026); pattern across all three labs: <a href="https://cyberunit.com/insights/ai-sandbox-escapes-three-labs-meta-anthropic-openai/" target="_blank" rel="noopener">"Meta Makes Three: AI Models Escaped Test Sandboxes in Five Weeks"</a>, Cyber Unit (2026)</li>
     <li>OpenAI "Astra" (10 math advances): <a href="https://www.techtimes.com/articles/322710/20260802/openais-astra-solves-ten-decade-old-math-problems-machine-checkable-lean-proofs.htm" target="_blank" rel="noopener">"OpenAI's Astra Solves Ten Decade-Old Math Problems With Machine-Checkable Lean Proofs"</a>, Tech Times (Aug 2026)</li>
-    <li>The "97 VibeMathed many attempts" rollup: full methodology, field/verification crosstabs, and the 25 hand-reviewed cases behind this table's "No proof/disproof" rows are in <code>vibemathed-research/README.md</code> alongside this deck; source dataset: <a href="https://vibemathed.com" target="_blank" rel="noopener">vibemathed.com</a> (CC BY 4.0)</li>
+    <li>The "97 VibeMathed many attempts" rollup: full methodology, field/verification crosstabs, and the 25 hand-reviewed cases behind this table's "Unknown" rows are in <code>vibemathed-research/README.md</code> alongside this deck; source dataset: <a href="https://vibemathed.com" target="_blank" rel="noopener">vibemathed.com</a> (CC BY 4.0)</li>
     <li>GPT-5.2 gluon-amplitude result: OpenAI, <a href="https://openai.com/index/new-result-theoretical-physics/" target="_blank" rel="noopener">"GPT-5.2 derives a new result in theoretical physics"</a> (2026); skeptical technical assessment: David Louapre, <a href="https://huggingface.co/blog/dlouapre/gpt-single-minus-gluons" target="_blank" rel="noopener">"Did GPT-5.2 make a breakthrough discovery in theoretical physics?"</a>, Hugging Face (2026)</li>
     <li>Simplicity of the Hodge Bundle, Fill's Spectral Gap Equality, Facial Distance Patterns in Planar Graphs, Perfectly Complete Quantum Key Agreement from OWFs, the Mihail–Vazirani Conjecture, Middle Stair of Parallel Chip-Firing, Huneke–Wiegand Conjecture: sourced via each problem's <a href="https://vibemathed.com" target="_blank" rel="noopener">VibeMathed</a> entry (<code>vibemathed-research/resolved-437-enriched.csv</code> alongside this deck has the full writeups and source links for each)</li>
     <li>FrontierMath v2 Tier 4, current record 83% (Aug 7 2026): <a href="https://benchlm.ai/benchmarks/frontiermathv2tier4" target="_blank" rel="noopener">FrontierMath v2 (Tier 4) Leaderboard</a>, BenchLM.ai; see <code>benchmarks/data/frontiermath.csv</code> alongside this deck</li>
@@ -2020,9 +2020,9 @@ inequality? yes/no), so even a "no external harness" search for one plausibly
 still checked candidates internally, just invisibly. A *proof* has no such
 cheap internal check available during search — that's the real "no in-loop
 verifier" case, closer to the Einstein analogy than any counterexample is,
-even a one-shot one. **"Superhuman?" is never "Yes" anywhere in this table** —
+even a one-shot one. **"Superhuman reasoning?" is never "Yes" anywhere in this table** —
 only "No" (a real alternative explanation exists — harness, literature search,
-domain-expert says it's not that hard) or "No proof/disproof" (genuinely
+domain-expert says it's not that hard) or "Unknown" (genuinely
 unresolved: no independent verification, no visible CoT, could still be a
 hidden 100,000-attempt internal search wearing a "4 prompts" costume).
 
@@ -2210,11 +2210,11 @@ this is the detail that used to be its own Notes column):
   candidate polynomial maps, not the final construction. Other
   mathematicians verified it by direct computation, but Alpöge/Anthropic
   haven't disclosed the exact process (single reasoning pass vs. an
-  internal search) — flag this one live as "Superhuman?: No proof/disproof,"
+  internal search) — flag this one live as "Superhuman reasoning?: Unknown,"
   not a confirmed non-harness win. Still tracked as pending peer review.
   Counterexample, so In-loop verifier: Yes even without a visible harness.
 - **Dinitz–Garg–Goemans conjecture disproof** (Jul 22, 2026): the table's
-  other strongest No-proof/disproof candidate. Dmitry Rybin used GPT-5.6
+  other strongest Unknown candidate. Dmitry Rybin used GPT-5.6
   Pro to disprove a ~30-year-old flow-cost conjecture (Goemans' cost-focused
   strengthening of the Dinitz-Garg-Goemans unsplittable-flow theorem) with
   4 prompts totaling 58 words in one continuous chat — no tools, no
@@ -2333,10 +2333,10 @@ literature — the model did a literature search, not new math. That's a
 useful contrast to put right next to the unit-distance result when telling
 this story: same company, seven months apart, one real, one not.
 
-**On the "Superhuman?" column specifically, asked directly in
-conversation**: why is every value "No" or "No proof/disproof," never "Yes"?
+**On the "Superhuman reasoning?" column specifically, asked directly in
+conversation**: why is every value "No" or "Unknown," never "Yes"?
 Because nothing survives the checklist for an actual "Yes" claim: (1) none
-of the No-proof/disproof candidates are independently verified or
+of the Unknown candidates are independently verified or
 published; (2) there's no visible chain-of-thought for any of them — "4
 prompts" describes how little a human typed, not how much hidden reasoning
 happened, and hidden-CoT research shows reasoning-token volume scales with
