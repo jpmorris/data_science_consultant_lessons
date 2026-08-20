@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-17",
+ "generated": "2026-08-20",
  "benchmarks": {
   "adversarial-nli": {
    "display_name": "Adversarial NLI",
@@ -35340,7 +35340,7 @@
    "display_name": "FrontierMath",
    "description": "Original, unpublished research-to-exploratory-level math problems written by professional mathematicians, all-or-nothing scored, no partial credit.",
    "unit_family": "percent",
-   "unit_label": "percent",
+   "unit_label": "percent solved (FrontierMath v2, Tier 4)",
    "source_files": [
     "data/aggregator-epoch-benchmarking-hub/frontiermath.csv",
     "data/aggregator-epoch-benchmarking-hub/frontiermath_tier_4.csv",
@@ -35348,7 +35348,7 @@
    ],
    "provenance_summary": {
     "epoch_bulk_csv_no_row_source_used_hub_fallback": 173,
-    "third_party_aggregator": 2,
+    "third_party_aggregator": 3,
     "other_web_source": 2
    },
    "points": [
@@ -36944,6 +36944,15 @@
      "org": "Anthropic",
      "source": "https://epoch.ai/benchmarks/frontiermath-tier-4",
      "extraction_method": "epoch_bulk_csv_no_row_source_used_hub_fallback"
+    },
+    {
+     "date": "2026-08-07",
+     "model": "GPT-5.6 Sol",
+     "score": 83.0,
+     "unit": "percent solved (FrontierMath v2, Tier 4)",
+     "org": "",
+     "source": "https://benchlm.ai/benchmarks/frontiermathv2tier4",
+     "extraction_method": "third_party_aggregator"
     }
    ],
    "trend": {
@@ -36951,163 +36960,163 @@
     "points": [
      {
       "date": "2024-06-20",
-      "score": 0.536
+      "score": 0.51
      },
      {
-      "date": "2024-07-08",
-      "score": 0.597
+      "date": "2024-07-10",
+      "score": 0.577
      },
      {
-      "date": "2024-07-26",
-      "score": 0.666
+      "date": "2024-07-30",
+      "score": 0.652
      },
      {
-      "date": "2024-08-13",
-      "score": 0.743
+      "date": "2024-08-19",
+      "score": 0.737
      },
      {
-      "date": "2024-09-01",
-      "score": 0.828
+      "date": "2024-09-08",
+      "score": 0.832
      },
      {
-      "date": "2024-09-19",
-      "score": 0.923
+      "date": "2024-09-28",
+      "score": 0.94
      },
      {
-      "date": "2024-10-07",
-      "score": 1.028
+      "date": "2024-10-18",
+      "score": 1.062
      },
      {
-      "date": "2024-10-25",
-      "score": 1.146
+      "date": "2024-11-07",
+      "score": 1.2
      },
      {
-      "date": "2024-11-12",
-      "score": 1.277
+      "date": "2024-11-27",
+      "score": 1.355
      },
      {
-      "date": "2024-11-30",
-      "score": 1.422
-     },
-     {
-      "date": "2024-12-18",
-      "score": 1.584
+      "date": "2024-12-17",
+      "score": 1.53
      },
      {
       "date": "2025-01-05",
-      "score": 1.764
+      "score": 1.727
      },
      {
-      "date": "2025-01-24",
-      "score": 1.965
+      "date": "2025-01-25",
+      "score": 1.949
      },
      {
-      "date": "2025-02-11",
-      "score": 2.187
+      "date": "2025-02-14",
+      "score": 2.199
      },
      {
-      "date": "2025-03-01",
-      "score": 2.434
+      "date": "2025-03-06",
+      "score": 2.48
      },
      {
-      "date": "2025-03-19",
-      "score": 2.708
+      "date": "2025-03-26",
+      "score": 2.795
      },
      {
-      "date": "2025-04-06",
-      "score": 3.012
+      "date": "2025-04-15",
+      "score": 3.15
      },
      {
-      "date": "2025-04-24",
-      "score": 3.348
+      "date": "2025-05-05",
+      "score": 3.548
      },
      {
-      "date": "2025-05-12",
-      "score": 3.721
+      "date": "2025-05-25",
+      "score": 3.995
      },
      {
-      "date": "2025-05-30",
-      "score": 4.134
+      "date": "2025-06-14",
+      "score": 4.495
      },
      {
-      "date": "2025-06-18",
-      "score": 4.591
-     },
-     {
-      "date": "2025-07-06",
-      "score": 5.095
+      "date": "2025-07-04",
+      "score": 5.054
      },
      {
       "date": "2025-07-24",
-      "score": 5.651
+      "score": 5.679
      },
      {
-      "date": "2025-08-11",
-      "score": 6.264
+      "date": "2025-08-13",
+      "score": 6.376
      },
      {
-      "date": "2025-08-29",
-      "score": 6.938
+      "date": "2025-09-02",
+      "score": 7.152
      },
      {
-      "date": "2025-09-16",
-      "score": 7.679
+      "date": "2025-09-22",
+      "score": 8.014
      },
      {
-      "date": "2025-10-04",
-      "score": 8.492
+      "date": "2025-10-12",
+      "score": 8.97
      },
      {
-      "date": "2025-10-22",
-      "score": 9.383
+      "date": "2025-11-01",
+      "score": 10.028
      },
      {
-      "date": "2025-11-10",
-      "score": 10.356
+      "date": "2025-11-21",
+      "score": 11.195
      },
      {
-      "date": "2025-11-28",
-      "score": 11.417
+      "date": "2025-12-11",
+      "score": 12.479
      },
      {
-      "date": "2025-12-16",
-      "score": 12.572
+      "date": "2025-12-31",
+      "score": 13.888
      },
      {
-      "date": "2026-01-03",
-      "score": 13.826
-     },
-     {
-      "date": "2026-01-21",
-      "score": 15.182
+      "date": "2026-01-20",
+      "score": 15.427
      },
      {
       "date": "2026-02-08",
-      "score": 16.647
+      "score": 17.103
      },
      {
-      "date": "2026-02-26",
-      "score": 18.222
+      "date": "2026-02-28",
+      "score": 18.921
      },
      {
-      "date": "2026-03-16",
-      "score": 19.91
+      "date": "2026-03-20",
+      "score": 20.883
      },
      {
-      "date": "2026-04-04",
-      "score": 21.714
+      "date": "2026-04-09",
+      "score": 22.99
      },
      {
-      "date": "2026-04-22",
-      "score": 23.632
+      "date": "2026-04-29",
+      "score": 25.243
      },
      {
-      "date": "2026-05-10",
-      "score": 25.665
+      "date": "2026-05-19",
+      "score": 27.637
      },
      {
-      "date": "2026-05-28",
-      "score": 27.809
+      "date": "2026-06-08",
+      "score": 30.166
+     },
+     {
+      "date": "2026-06-28",
+      "score": 32.822
+     },
+     {
+      "date": "2026-07-18",
+      "score": 35.593
+     },
+     {
+      "date": "2026-08-07",
+      "score": 38.464
      }
     ]
    }

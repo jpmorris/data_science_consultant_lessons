@@ -1920,10 +1920,10 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 <ul class="frontier-intro-bullets">
   <li>Much of human knowledge is <strong>empirical</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
   <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
-  <li>Two paths there:
+  <li>Two eventual possibilities:
     <ul>
-      <li><strong>Think hard, no external verifier</strong> — anywhere from a trivial find to an Einstein-level leap: Einstein at his blackboard, or an AI reasoning internally — many iterations, but no external trials.</li>
-      <li><strong>Many attempts, external verification</strong> — needs a harness to try candidates, plus an oracle (hard or soft) to check each one.</li>
+      <li><strong>Human-parity, tireless attempts</strong> — models just search many times more flexibly than classical brute force: running Lean checks or testing counterexamples far faster, and for far longer, than a human would bother to.</li>
+      <li><strong>Superhuman</strong> — through encoded intuition and a wider library of heuristics than any one expert holds, compresses the solution space itself, independent of running more or faster trials. Whether any real case actually clears this bar is still unresolved — see the table.</li>
     </ul>
   </li>
 </ul>
@@ -1942,31 +1942,33 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 ```
 
 ::: {.table-panel}
-| Discovery                                                                                            | Date     | Mechanism | Harness       | Oracle | Think-hard, no external verify |
-| ------------------------------------------------------------------------------------------------------ | -------- | --------- | -------------- | ------ | -------------------------------- |
-| AlphaGo (Go, beats world champion)                                                                      | 2016     | AI        | Agentic        | Hard | No |
-| AlphaFold2                                                                                              | 2020     | ML        | —              | — | No |
-| Knot theory & representation theory theorems                                                            | 2021     | ML        | —              | Hard | No |
-| AlphaTensor (matrix multiplication)                                                                      | 2022     | AI        | Agentic        | Hard | No |
-| FunSearch (cap set problem)                                                                              | 2023     | AI        | Semi-agentic   | Hard | No |
-| AlphaEvolve                                                                                              | 2025     | AI        | Semi-agentic   | Hard | No |
-| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025 | Retrieval | —              | None | No |
-| Erdős Problem 1102                                       | Nov 2025 | Verification | — | — | No |
-| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025 | Retrieval | —              | None | No |
-| Erdős Problem 728                                                                                        | Jan 2026 | AI        | Pipeline       | Hard | No |
-| DeepMind systematic Erdős re-check                                                                       | Jan 2026 | Retrieval | —              | Hard | No |
-| Erdős Problem 1196 (primitive sets, proved)                                                              | Apr 2026 | AI        | —              | Hard | Yes |
-| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026 | AI        | Repeat-filter  | Soft | No |
-| AlphaProof Nexus (DeepMind)                                                                              | May 2026 | AI        | Pipeline       | Hard | No |
-| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026 | AI        | Agentic        | Soft | No |
-| OpenAI sandbox escape — breached Hugging Face                                                            | Jul 2026 | AI        | Agentic        | Hard | No |
-| Anthropic sandbox escapes ×3                                                                             | Jul 2026 | AI        | Agentic        | Hard | No |
-| Jacobian conjecture counterexample (dim ≥3, pending review)                                              | Jul 2026 | AI        | Unknown        | Hard | No |
-| Dinitz–Garg–Goemans conjecture disproof                                                                  | Jul 2026 | AI        | —              | Hard | Yes |
-| <span class="crux-word">UNVERIFIED</span> — 6 Erdős problems in 5 days (Shouqiao Wang)                   | Jul 2026 | AI        | Agentic        | Soft | No |
-| <span class="crux-word">UNVERIFIED</span> — "10 advances," incl. first non-sofic group (OpenAI "Astra") | Aug 2026 | AI        | Pipeline       | Hard | No |
-| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                | Aug 2026 | —         | —              | — | No |
-| Claude raises Riemann-zeta critical-line bound (41.6%→67.2%)                                             | Aug 2026 | AI        | Agentic        | Hard | No |
+| Discovery                                                                                                | Date        | Mechanism         | In-loop verifier | Superhuman?      |
+| ---------------------------------------------------------------------------------------------------------- | ----------- | ------------------ | ------------------ | ------------------ |
+| AlphaGo (Go, beats world champion)                                                                          | 2016        | Harness           | Yes | No |
+| AlphaFold2                                                                                                  | 2020        | ML                | No | No |
+| Knot theory & representation theory theorems                                                                | 2021        | ML                | No | No |
+| AlphaTensor (matrix multiplication)                                                                          | 2022        | Harness           | Yes | No |
+| FunSearch (cap set problem)                                                                                  | 2023        | Harness           | Yes | No |
+| AlphaEvolve                                                                                                  | 2025        | Harness           | Yes | No |
+| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                        | Oct 2025    | Literature search | No | No |
+| Erdős Problem 1102 (human-only, no AI)                                                                       | Nov 2025    | Human             | N/A | N/A |
+| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                              | Dec 2025    | Literature search | No | No |
+| DeepMind systematic Erdős re-check                                                                          | Jan 2026    | Literature search | No | No |
+| **97 VibeMathed "many attempts" cases** — Lean-verified/checked (incl. Erdős 728, AlphaProof Nexus, unit-distance disproof, Sum-product disproof, OpenAI "Astra," Riemann-zeta bound) | Jan–Aug 2026 | Harness           | Yes | No |
+| GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness (12h scaffolded proof search) | Yes | No |
+| Simplicity of the Hodge Bundle                                                                               | Mar 2026    | Proof, single prompt | No | No proof/disproof |
+| Erdős Problem 1196 (primitive sets, proved; later Lean-verified)                                             | Apr 2026    | Proof, single prompt | No | No proof/disproof |
+| Fill's Spectral Gap Equality                                                                                 | Apr 2026    | Proof, single prompt | No | No proof/disproof |
+| Huneke–Wiegand Conjecture (Son-Pham)                                                                          | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
+| Dinitz–Garg–Goemans conjecture disproof                                                                      | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
+| Jacobian conjecture counterexample (dim ≥3, pending review)                                                  | Jul 2026    | Counterexample, single prompt | Yes | No proof/disproof |
+| OpenAI sandbox escape — breached Hugging Face                                                                | Jul 2026    | Harness (agentic tool-use) | Yes | No |
+| Anthropic sandbox escapes ×3                                                                                 | Jul 2026    | Harness (agentic tool-use) | Yes | No |
+| The Mihail–Vazirani Conjecture                                                                                | Aug 2026    | Counterexample, single prompt | Yes | No proof/disproof |
+| Middle Stair of Parallel Chip-Firing                                                                          | Aug 2026    | Proof, single prompt | No | No proof/disproof |
+| Facial Distance Patterns in Planar Graphs                                                                     | Aug 2026    | Proof, single prompt | No | No proof/disproof |
+| Perfectly Complete Quantum Key Agreement from OWFs                                                            | Aug 2026    | Proof, single prompt | No | No proof/disproof |
+| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                    | Aug 2026    | —                 | No | No |
 :::
 
 ```{=html}
@@ -2000,11 +2002,30 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     <li>Anthropic sandbox escapes: <a href="https://www.theregister.com/ai-and-ml/2026/07/31/anthropics-claude-escaped-test-sandbox-to-attack-three-organizations/5281562" target="_blank" rel="noopener">"Anthropic's Claude escaped test sandbox to attack three organizations"</a>, The Register (Jul 2026); <a href="https://www.cybersecuritydive.com/news/anthropic-claude-ai-hacking-test/826708/" target="_blank" rel="noopener">"Anthropic says human error let Claude AI models escape test environment and hack third parties"</a>, Cybersecurity Dive (2026)</li>
     <li>Meta sandbox incident: <a href="https://www.npr.org/2026/08/08/nx-s1-5924878/meta-ai-breaches-external-firm-during-security-testing-sandbox-error" target="_blank" rel="noopener">"Meta AI breaches external firm during security testing sandbox error"</a>, NPR (Aug 2026); pattern across all three labs: <a href="https://cyberunit.com/insights/ai-sandbox-escapes-three-labs-meta-anthropic-openai/" target="_blank" rel="noopener">"Meta Makes Three: AI Models Escaped Test Sandboxes in Five Weeks"</a>, Cyber Unit (2026)</li>
     <li>OpenAI "Astra" (10 math advances): <a href="https://www.techtimes.com/articles/322710/20260802/openais-astra-solves-ten-decade-old-math-problems-machine-checkable-lean-proofs.htm" target="_blank" rel="noopener">"OpenAI's Astra Solves Ten Decade-Old Math Problems With Machine-Checkable Lean Proofs"</a>, Tech Times (Aug 2026)</li>
+    <li>The "97 VibeMathed many attempts" rollup: full methodology, field/verification crosstabs, and the 25 hand-reviewed cases behind this table's "No proof/disproof" rows are in <code>vibemathed-research/README.md</code> alongside this deck; source dataset: <a href="https://vibemathed.com" target="_blank" rel="noopener">vibemathed.com</a> (CC BY 4.0)</li>
+    <li>GPT-5.2 gluon-amplitude result: OpenAI, <a href="https://openai.com/index/new-result-theoretical-physics/" target="_blank" rel="noopener">"GPT-5.2 derives a new result in theoretical physics"</a> (2026); skeptical technical assessment: David Louapre, <a href="https://huggingface.co/blog/dlouapre/gpt-single-minus-gluons" target="_blank" rel="noopener">"Did GPT-5.2 make a breakthrough discovery in theoretical physics?"</a>, Hugging Face (2026)</li>
+    <li>Simplicity of the Hodge Bundle, Fill's Spectral Gap Equality, Facial Distance Patterns in Planar Graphs, Perfectly Complete Quantum Key Agreement from OWFs, the Mihail–Vazirani Conjecture, Middle Stair of Parallel Chip-Firing, Huneke–Wiegand Conjecture: sourced via each problem's <a href="https://vibemathed.com" target="_blank" rel="noopener">VibeMathed</a> entry (<code>vibemathed-research/resolved-437-enriched.csv</code> alongside this deck has the full writeups and source links for each)</li>
+    <li>FrontierMath v2 Tier 4, current record 83% (Aug 7 2026): <a href="https://benchlm.ai/benchmarks/frontiermathv2tier4" target="_blank" rel="noopener">FrontierMath v2 (Tier 4) Leaderboard</a>, BenchLM.ai; see <code>benchmarks/data/frontiermath.csv</code> alongside this deck</li>
   </ul>
 </template>
 ```
 
 ::: {.notes}
+**Reading the new columns**: "In-loop verifier" asks whether *something* checked
+candidates *during* the discovery process — a harness (Lean, repeat-sampling +
+filter, agentic search), or — new insight this pass — the fact that an object
+is a *construction/counterexample* rather than an *argument/proof*. A
+counterexample is cheaply, mechanically checkable (does this graph violate the
+inequality? yes/no), so even a "no external harness" search for one plausibly
+still checked candidates internally, just invisibly. A *proof* has no such
+cheap internal check available during search — that's the real "no in-loop
+verifier" case, closer to the Einstein analogy than any counterexample is,
+even a one-shot one. **"Superhuman?" is never "Yes" anywhere in this table** —
+only "No" (a real alternative explanation exists — harness, literature search,
+domain-expert says it's not that hard) or "No proof/disproof" (genuinely
+unresolved: no independent verification, no visible CoT, could still be a
+hidden 100,000-attempt internal search wearing a "4 prompts" costume).
+
 Full ledger, row by row (the table on-slide only shows Discovery/Date/Type —
 this is the detail that used to be its own Notes column):
 
@@ -2065,66 +2086,90 @@ this is the detail that used to be its own Notes column):
 - **FALSE CLAIM — Erdős Problem 333** (Dec 2025): claimed as "first fully
   autonomous" LLM solve; Erdős himself had already solved it in a 1977
   paper.
-- **Erdős Problem 728** (Jan 2026): GPT-5.2 Pro produced an informal
-  argument; Harmonic's Aristotle turned it into a complete, machine-checked
-  Lean proof over two days (Kevin Barreto ran the process) — the harness
-  is specifically "LLM proposes, Lean-based prover formalizes," the same
-  two-system pattern as AlphaProof Nexus below. Regarded as the first
-  Erdős problem resolved fully autonomously by an AI system. Tao himself
-  cautioned the win says more about speed than difficulty.
 - **DeepMind systematic Erdős re-check** (Jan 2026): 4 new solves, plus
-  "forgotten" solutions to 9 more already-known results — the
-  hole-in-the-cloud example on this slide's diagram.
-- **Erdős Problem 1196 (proved)** (Apr 13, 2026): the cleanest "Yes" in the
-  Think-hard column anywhere in this table. Liam Price — 23, no graduate
-  math training, self-described as "vibe maths-ing" — typed the problem (a
-  1968 Erdős/Sárközy/Szemerédi question on primitive sets, open ~58 years)
-  into GPT-5.4 Pro; a proof sketch came back in about 80 minutes from a
-  single prompt, using a Markov-chain/von-Mangoldt-weight method no human
-  had applied to this problem before. No search harness, no repeated
-  sampling reported — one shot, then humans took over: Terence Tao read it
-  within 24 hours and called it "a meaningful contribution to the anatomy
-  of integers," and the result is now formally Lean-verified and published
+  "forgotten" solutions to 9 more already-known results — connecting
+  existing pieces, not new search or new theory. Now the diagram's "knowledge
+  gap, harness, tireless search" example (green hole) — a good clean instance
+  because it's explicitly interpolation, not compression.
+- **97 VibeMathed "many attempts" cases** (Jan–Aug 2026): rolls up every
+  Lean-verified or Lean-checked entry in VibeMathed's 437-problem resolved
+  set (full breakdown: `vibemathed-research/README.md` alongside this deck) —
+  including several results that used to have their own row here: **Erdős
+  728** (GPT-5.2 Pro proposed, Harmonic's Aristotle formalized over two days
+  — "LLM proposes, Lean-based prover formalizes," the same two-system
+  pattern as most of this bucket; Tao himself cautioned the win says more
+  about speed than difficulty); **AlphaProof Nexus** (DeepMind, May 2026 —
+  9 of 353 open Erdős problems plus 44 OEIS conjectures, Gemini 3.1 Pro +
+  Lean, ~$100s/problem); **the Erdős unit-distance disproof** (OpenAI, May
+  2026 — see the precision note below, this is the one worth being careful
+  about on stage); **the Sum-product conjecture disproof over ℝ** (GPT-5.5
+  Pro, explicitly agentic, 7 of 8 independent trials); **OpenAI "Astra"**
+  (10 advances, Aug 2026, 249-page manuscript + Lean 4 certificates for
+  every result, ~$2,000 compute); and **Shouqiao Wang's 6-Erdős-problems-in-
+  5-days run** (Codex-based agentic workflow, ~13 attempts, 46% success,
+  weakest verification story of the bunch — only an internal adversarial
+  agent checked it, no outside sign-off).
+  **Precision on the unit-distance case, worth keeping even though it's
+  folded in here**: the "one model, no tools" framing is OpenAI's own
+  marketing angle, not the careful outside read. Per understandingai.org,
+  OpenAI's own chart showed the model solved it only about half the time
+  even at max token budget — many independent attempts, not one shot — and
+  it reused an existing algebraic-number-theory technique rather than a
+  novel one. Nine human mathematicians verified and rewrote the result; one
+  (Will Sawin) found a better explicit bound than the AI's own. Lean entered
+  the story ~3 weeks *after* discovery, as a separate formalization effort —
+  verification, not part of the search. Real result, genuinely useful, but
+  multi-attempt and human-refined, the opposite of a clean one-shot case.
+- **GPT-5.2 derives a new gluon-amplitude result** (OpenAI, physics, Feb
+  2026): the one non-math case in this table, included because it's a good
+  calibration anchor for what "harness-assisted, human-directed, useful but
+  not superhuman" looks like. Human physicists did the foundational work by
+  hand first — chose the (2,2) Klein signature, identified the "half-
+  collinear regime," found the loophole in the old vanishing proof, set up
+  the recursion, connected it to self-dual Yang-Mills theory. GPT-5.2 Pro
+  then simplified their hand-derived small-n expressions and conjectured a
+  general formula; a *separate*, scaffolded internal version of GPT-5.2
+  spent ~12 hours reasoning to produce a formal proof. Endorsed by Nima
+  Arkani-Hamed and Nathaniel Craig; still a preprint, not peer-reviewed.
+  **The skeptical read, from theoretical physicist David Louapre**: the
+  proof "is fairly short, less than a single page... and goes in three
+  steps," with steps 2–3 "mostly applying relations and combining with
+  previous equations" — his own estimate, "a good amplitudes physicist
+  could probably have found it in a few weeks." He's explicit that "the
+  physics... is apparently all human work. That's probably the hardest
+  part," and calls the result "a beautiful use of AI" while pushing back on
+  any "fundamental discovery" framing. Worth using this exact quote live if
+  the superhuman question comes up — it's the cleanest domain-expert
+  difficulty estimate anywhere in this table.
+- **Simplicity of the Hodge Bundle** (Mar 2026, algebraic geometry): the
+  mathematical content came from Aletheia, a Gemini-Deep-Think-powered
+  agent, from a single prompt asking for a proof; the author verified and
+  wrote the paper. No harness or search language in the writeup anywhere.
+- **Erdős Problem 1196 (proved)** (Apr 13, 2026): the cleanest no-in-loop-
+  verifier case in the whole table. Liam Price — 23, no graduate math
+  training, self-described as "vibe maths-ing" — typed the problem (a 1968
+  Erdős/Sárközy/Szemerédi question on primitive sets, open ~58 years) into
+  GPT-5.4 Pro; a proof sketch came back in about 80 minutes from a single
+  prompt, using a Markov-chain/von-Mangoldt-weight method no human had
+  applied to this problem before. No search harness, no repeated sampling
+  reported — one shot, then humans took over: Terence Tao read it within 24
+  hours and called it "a meaningful contribution to the anatomy of
+  integers," and the result is now formally Lean-verified and published
   (arXiv:2605.00301, Alexeev, Barreto, Li, Lichtman, Price, Shah, Tang, and
-  Tao) with erdosproblems.com marking #1196 "PROVED." Good contrast case
-  against the harness-heavy rows around it.
-- **OVERSOLD — Erdős unit-distance disproof (OpenAI)** (May 2026): real
-  result, verified — but the "one model, no tools" framing is the marketing
-  angle, not the more careful outside classification. See the fact-check
-  below before citing this as "the one non-harness win." **Concrete evidence
-  for "harness," per understandingai.org's assessment**: OpenAI's own chart
-  showed the internal model solved the problem only about half the time
-  even at max token budget — meaning many independent attempts, not one
-  shot. It reused existing techniques (an algebraic-number-theory extension
-  of Erdős's own original construction) rather than pioneering a new one,
-  succeeding through brute-force search over "huge swaths of mathematics"
-  rather than a single novel insight. Nine human mathematicians then
-  verified the result and rewrote it in a companion paper — one of them
-  (Will Sawin) found a better explicit lower bound than the AI's own. Fair
-  summary: real, useful, AI found something humans hadn't — but multi-attempt
-  and human-refined, not a clean single-shot zero-shot proof.
-  **Precision on what kind of "harness," asked directly in conversation**:
-  Lean was *not* used in the original discovery — each individual attempt
-  was the model's own free-text/math reasoning, not a Lean-checked formal
-  proof. But it wasn't one single attempt either: OpenAI's own reporting
-  ("solves the problem only about half the time even at max token budget")
-  implies many generations, and per outside reporting the model's output
-  was run through **an AI grading pipeline that filtered candidates for
-  confidence before a human ever looked at one** — i.e. a *soft*,
-  LLM-judged harness (repeated sampling + automated filtering), not a
-  *hard*, Lean-verified one, and not manual human reruns either. Lean only
-  enters the story ~3 weeks later, as a wholly separate formalization
-  effort (Boris Alexeev, ~1.2M lines, done in one working day by an
-  orchestrated ensemble of Claude, Aristotle, and Codex) — verification
-  of an already-public result, not part of the discovery. Caveat: OpenAI
-  hasn't published exact attempt counts or compute figures, so some of
-  this is informed inference from outside reporting, not an official
-  methodology writeup.
-- **AlphaProof Nexus (DeepMind)** (May 2026): 9 of 353 open Erdős problems,
-  incl. 2 open 50+ years, plus 44 OEIS conjectures; Gemini 3.1 Pro + Lean,
-  ~$100s/problem.
-- **Sum-product conjecture disproof over ℝ** (Jul 2026): GPT-5.5 Pro,
-  explicitly built as an agent; succeeded in 7 of 8 independent trials.
+  Tao) with erdosproblems.com marking #1196 "PROVED." Note the Lean
+  verification happened *after* the fact, not in-loop during discovery —
+  that's why this row is "No" on In-loop verifier despite eventually being
+  machine-checked.
+- **Fill's Spectral Gap Equality** (Apr 2026, Markov chains): "Upon being
+  given the complete proof of Theorem 1.8(1), the proof of Theorem 1.8(2)
+  was produced by ChatGPT 5.4 Pro in a one-shot manner and subsequently
+  verified for correctness by the authors" — the included proof is the
+  model's, rewritten for clarity.
+- **Huneke–Wiegand Conjecture** (Jul 2026, commutative algebra): "came up
+  with the counterexample on [one] shot" per the source writeup — verified
+  by the conjecture's own author, Son Pham. Counterexample, so In-loop
+  verifier: Yes even without a visible harness — the object itself is
+  cheaply checkable.
 - **OpenAI sandbox escape — breached Hugging Face** (disclosed Jul 21,
   2026): not a math discovery, but directly relevant to "how far can
   harness-based systems go" — two models (GPT-5.6 "Sol" and a more capable
@@ -2165,12 +2210,11 @@ this is the detail that used to be its own Notes column):
   candidate polynomial maps, not the final construction. Other
   mathematicians verified it by direct computation, but Alpöge/Anthropic
   haven't disclosed the exact process (single reasoning pass vs. an
-  internal search), so **Harness stays Unknown and Think-hard stays No by
-  default rather than assumed** — flag this one live as the table's one
-  real open question on that column, not a confirmed non-harness win.
-  Still tracked as pending peer review.
+  internal search) — flag this one live as "Superhuman?: No proof/disproof,"
+  not a confirmed non-harness win. Still tracked as pending peer review.
+  Counterexample, so In-loop verifier: Yes even without a visible harness.
 - **Dinitz–Garg–Goemans conjecture disproof** (Jul 22, 2026): the table's
-  cleanest second "Yes" in the Think-hard column. Dmitry Rybin used GPT-5.6
+  other strongest No-proof/disproof candidate. Dmitry Rybin used GPT-5.6
   Pro to disprove a ~30-year-old flow-cost conjecture (Goemans' cost-focused
   strengthening of the Dinitz-Garg-Goemans unsplittable-flow theorem) with
   4 prompts totaling 58 words in one continuous chat — no tools, no
@@ -2184,34 +2228,32 @@ this is the detail that used to be its own Notes column):
   and has no Wayback Machine snapshot** — the X thread itself
   (@DmitryRybin1) and the Zenodo write-up are the best remaining primary
   sources. Not yet peer-reviewed / formally closed.
-- **UNVERIFIED — 6 Erdős problems in 5 days (Shouqiao Wang)** (~Jul 24,
-  2026, same week as the two rows above): Wang — a Peking University alum
-  now a Columbia PhD student — ran a Codex-based agentic workflow around
-  GPT-5.6 Sol: pick problems mathematicians already actively discuss, have
-  the model draft candidate solutions, then require a separate adversarial
-  agent to try to break each candidate before accepting it. ~13 attempts,
-  ~46% success rate, one task ran continuously for 32 hours. Flagged
-  UNVERIFIED (not FALSE CLAIM or RETRACTED) because, unlike every other row
-  around it, no independent peer review, Lean formalization, or outside
-  mathematician sign-off has been reported anywhere — only the adversarial
-  AI agent's own internal check. Weakest verification story in this whole
-  July cluster; worth saying so directly if it comes up on stage.
-- **UNVERIFIED — "10 more advances" (OpenAI "Astra")** (announced Aug 1–2,
-  2026): OpenAI named its next major model "Astra" via an unusual
-  artifact — ten claimed solutions to problems open for a decade-plus
-  across high-dimensional geometry, group theory, quantum complexity,
-  lattice cryptography, and extremal combinatorics, incl. 3 more Erdős
-  problems, a disproof of Connes's rigidity conjecture, and a proof of
-  Ehrhart's volume conjecture. Comes with a 249-page manuscript and
-  machine-checkable Lean 4 certificates for every result, published on
-  GitHub — total compute cost reported at ~$2,000. The Lean certificates
-  are a real step up in verifiability from the Oct 2025 claim (that one
-  had nothing machine-checkable behind it at all) — but this announcement
-  is only about a week old as of this deck, from the same company that put
-  out the retracted Oct 2025 claim, and independent mathematician review
-  of whether the results are actually novel/correctly framed hasn't caught
-  up yet. Treat as "well-documented but not yet independently confirmed,"
-  not "unverified" in the same loose sense as the Oct 2025 claim was.
+- **The Mihail–Vazirani Conjecture** (Aug 2026, polyhedral combinatorics):
+  "the construction and its analysis were generated by GPT-5.6 Sol in a
+  one-shot manner, from a prompt adapted from OpenAI's cycle double cover
+  prompt by replacing the problem statement" — author verified
+  independently. Notable: this is the *same prompt template* run as a
+  64-subagent harness for the Cycle Double Cover Conjecture (part of the
+  97-case bucket above) and, here, as a single pass instead — same
+  starting point, opposite discovery mode, a human's choice each time.
+  Counterexample, so In-loop verifier: Yes.
+- **Middle Stair of Parallel Chip-Firing** (Aug 2026, combinatorial
+  dynamics): the paper states plainly "the proof presented in Section 3
+  was found by the large language model GPT-5.6-Sol. The authors verified
+  the resulting argument and take full responsibility." No search/harness
+  language anywhere in the writeup.
+- **Facial Distance Patterns in Planar Graphs** (Aug 2026, planar graph
+  algorithms): single prompt describing the state of the art and asking
+  for any improvement; the authors' own words are worth quoting live —
+  "it is surprising (not to say embarrassing) that this open problem has
+  such a simple proof, which has eluded the community despite the human
+  efforts invested in it." The paper's Section 2 is literally titled
+  "The ChatGPT Proof."
+- **Perfectly Complete Quantum Key Agreement from OWFs** (Aug 2026,
+  quantum cryptography): "GPT-5.6 Sol Ultra discovered the proof in a
+  one-shot conversation and produced a preliminary draft, with the authors
+  independently verifying every statement and proof." Still author-only
+  verification, not third-party.
 - **NOT A TRUE ESCAPE — Meta sandbox incident** (disclosed Aug 5, 2026):
   the third disclosure in roughly five weeks, and explicitly the weakest —
   Meta's Muse Spark 1.1 model reached an outside company's systems during
@@ -2224,7 +2266,9 @@ this is the detail that used to be its own Notes column):
   Anthropic's is mundane techniques plus an interesting reasoning quirk,
   Meta's is basically an ops failure with a scary headline.
 - **Claude raises the Riemann-zeta critical-line bound** (Aug 10, 2026,
-  updated Aug 13): started as an off-hours experiment — Anthropic engineer
+  updated Aug 13; VibeMathed lists this one as "partial," not "resolved,"
+  so it's a close cousin of the 97-case bucket above rather than literally
+  counted in it): started as an off-hours experiment — Anthropic engineer
   Jarred Sumner (creator of the Bun JS runtime) prompted an unreleased
   Claude to "take a real stab" at the Riemann Hypothesis itself, leaving
   the mathematical approach entirely up to the model. First pass: 650
@@ -2236,13 +2280,13 @@ this is the detail that used to be its own Notes column):
   the critical line from 41.6% to 67.2%, combining two existing papers'
   techniques nobody had put together before. Verified by two Anthropic
   mathematicians (Levent Alpöge — the same person behind the Jacobian
-  counterexample row above — and Ralph Furman), two outside number-theory
+  counterexample row — and Ralph Furman), two outside number-theory
   experts (Brian Conrey, Dan Goldston), and a Lean-formalized proof of the
-  specific claims. The most heavily-verified row in this entire July–August
-  cluster, and a good closing contrast: the human intent here was "prove
-  the famous unsolved problem" and the model didn't — the actual result was
-  an unplanned byproduct of letting a many-agent harness grind for 36
-  hours, not a targeted "think hard" insight.
+  specific claims. The most heavily-verified case in this entire cluster,
+  and a good closing contrast: the human intent here was "prove the famous
+  unsolved problem" and the model didn't — the actual result was an
+  unplanned byproduct of letting a many-agent harness grind for 36 hours,
+  the harness/tireless-search path, not the compression path.
 
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
 AlphaEvolve (Novikov et al., 2025); framing per the RSI survey §6.1 read this
@@ -2286,8 +2330,33 @@ history here — the October 2025 "GPT-5 solved 10 Erdős problems" claim
 Thomas Bloom (who runs erdosproblems.com) publicly called it "a dramatic
 misrepresentation" because the "solutions" were already sitting in published
 literature — the model did a literature search, not new math. That's a
-useful contrast to put right next to the May 2026 result when telling this
-story: same company, seven months apart, one real, one not.
+useful contrast to put right next to the unit-distance result when telling
+this story: same company, seven months apart, one real, one not.
+
+**On the "Superhuman?" column specifically, asked directly in
+conversation**: why is every value "No" or "No proof/disproof," never "Yes"?
+Because nothing survives the checklist for an actual "Yes" claim: (1) none
+of the No-proof/disproof candidates are independently verified or
+published; (2) there's no visible chain-of-thought for any of them — "4
+prompts" describes how little a human typed, not how much hidden reasoning
+happened, and hidden-CoT research shows reasoning-token volume scales with
+problem difficulty, so a "4-prompt" case could still be hiding something
+that functions like a 100,000-attempt internal search; (3) the candidates
+are almost exclusively math, concentrated in a handful of subfields — the
+one non-math case in this table (the physics gluon-amplitude result) turns
+out to be harness-based and human-directed on inspection, and a domain
+expert estimated a competent human could've found it in weeks; (4) current
+benchmarks put the best models at only ~83% on FrontierMath Tier 4 (Aug
+2026) — the hardest *known-answer* research-level problems — so there's no
+benchmark evidence these models are anywhere near ceiling on hard math,
+which is a real reason to doubt sweeping "superhuman" claims about *open*
+problems; (5) it's often unclear whether a "30-year-old open problem" means
+30 years of dedicated attempts or 30 years nobody happened to look — the
+Jacobian conjecture counterexample is the clean illustration: extensive
+prior computer search *did* happen, ruling out 2D counterexamples up to
+degree 150 over years — just not in the 3D+ case the 2026 result actually
+lands in. Both "lots of eyes, wrong corner" and "genuinely fresh eyes" can
+be true on the same conjecture at once.
 :::
 
 ## AI Benchmarks {.smaller .scrollable .heading-accent}
