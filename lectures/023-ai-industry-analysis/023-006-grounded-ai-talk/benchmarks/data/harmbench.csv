@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2024-02-06,GPT-3.5 Turbo 0613,21.3,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; 'DR' column = no-jailbreak direct-ask baseline ASR"
+2024-02-06,GPT-3.5 Turbo 1106,33.0,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"
+2024-02-06,GPT-4 0613,21.0,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"
+2024-02-06,GPT-4 Turbo 1106,9.3,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"
+2024-02-06,Claude 1,5.0,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"
+2024-02-06,Claude 2,2.0,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"
+2024-02-06,Claude 2.1,2.0,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"
+2024-02-06,Gemini Pro,18.0,percent attack success rate (Direct Request; standard behaviors),https://arxiv.org/abs/2402.04249,"HarmBench paper main results table; DR column"

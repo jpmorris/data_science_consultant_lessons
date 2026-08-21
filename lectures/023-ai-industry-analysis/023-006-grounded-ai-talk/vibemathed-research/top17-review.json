@@ -1,0 +1,1093 @@
+{
+ "count": 17,
+ "rows": [
+  {
+   "slug": "gaussian-moments-conjecture",
+   "name": "Gaussian Moments Conjecture",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "without human intervention after the initial prompt",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/gaussian-moments-conjecture",
+    "paper": "https://arxiv.org/abs/2607.18186",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Probability & statistics",
+    "field": "Probability, Commutative Algebra",
+    "model": "GPT-5.6 Sol Pro, Claude Fable 5",
+    "modelMaker": "OpenAI, Anthropic",
+    "solveDate": "2026-07-20",
+    "significance": 25,
+    "resolutionMethod": "construction",
+    "verification": "site-confirmed"
+   },
+   "aiRole_excerpt": "Per the paper's AI-provenance section, the four-variable construction was produced by ChatGPT 5.6 Sol Pro without human intervention after the initial prompt, which told it the Jacobian conjecture had been disproved and asked whether a small Gaussian-moments counterexample might follow; shown that example, Claude Fable 5 found the three-variable construction and supplied independent algebraic checks. The author bears responsibility for the mathematics and exposition.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "site-confirmed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "hodge-bundle-simplicity",
+   "name": "Simplicity of the Hodge Bundle",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "single prompt, no further hints (already on slide)",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/hodge-bundle-simplicity",
+    "paper": "https://arxiv.org/abs/2603.19052",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Algebra",
+    "field": "Algebraic geometry",
+    "model": "Aletheia (Gemini Deep Think)",
+    "modelMaker": "Google DeepMind",
+    "solveDate": "2026-03-21",
+    "significance": 15,
+    "resolutionMethod": "argument",
+    "verification": "expert-verified"
+   },
+   "aiRole_excerpt": "The mathematical content came from Aletheia, a Gemini-Deep-Think-powered agent, from a single prompt asking for a proof; the author verified and wrote the paper.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "expert-verified",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "kaul-mudrock-unlabeled-donner-conjecture",
+   "name": "Kaul-Mudrock Conjecture on the Unlabeled List Color Function",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "Gowers: model picked problem unprompted, solved it",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/kaul-mudrock-unlabeled-donner-conjecture",
+    "paper": "https://arxiv.org/abs/2607.16810",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Combinatorics",
+    "field": "Graph coloring",
+    "model": "ChatGPT 5.5 Pro",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-07-18",
+    "significance": 9,
+    "resolutionMethod": "argument",
+    "verification": "site-confirmed"
+   },
+   "aiRole_excerpt": "As part of an experiment, Gowers asked ChatGPT 5.5 Pro to find an open combinatorics problem it considered approachable and try to solve it. The model picked this conjecture unprompted and produced an affirmative proof, which Gowers passed to the authors and they confirmed correct. The authors had reached the same theorem independently by a shifting argument, so the model does not hold priority, but its proof is genuinely different (a shadow inequality in the style of the local LYM inequality) and appears in the appendix. Its output also revealed the general form of Corollary 1.6, which the authors had previously established only for complete graphs. Asked to settle the underlying question for all graphs, the model could not.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "site-confirmed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "makeev-s-conjecture-on-universal-cover",
+   "name": "Makeev's conjecture on universal cover",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "wrote paper and code without human mathematical input",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/makeev-s-conjecture-on-universal-cover",
+    "paper": "https://github.com/simplex4/math-results/blob/main/makeev-code/a4/makeev_d4_d5.pdf",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Geometry & topology",
+    "field": "Metric geometry",
+    "model": "ChatGPT 5.6 Pro",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-08-10",
+    "significance": 15,
+    "resolutionMethod": "construction",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "AI found the counterexample in dimensions 4 and 5 and wrote the paper and code without human mathematical input.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "mihail-vazirani-conjecture",
+   "name": "The Mihail-Vazirani Conjecture",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "generated in a one-shot manner (already on slide)",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/mihail-vazirani-conjecture",
+    "paper": "https://arxiv.org/abs/2608.01870",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Combinatorics",
+    "field": "Polyhedral combinatorics",
+    "model": "GPT-5.6 Sol",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-08-03",
+    "significance": 30,
+    "resolutionMethod": "construction",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "The AI use section states that the construction and its analysis were generated by GPT-5.6 Sol in a one-shot manner, from a prompt adapted from OpenAI's cycle double cover prompt by replacing the problem statement. The author verified the result independently.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "rethlas-commutative-algebra-problems",
+   "name": "Open Problems in Commutative Algebra Resolved by Rethlas",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "no human intervention by Rethlas (batch entry)",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/rethlas-commutative-algebra-problems",
+    "paper": "https://arxiv.org/abs/2605.25259",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Algebra",
+    "field": "Commutative algebra",
+    "model": "Rethlas",
+    "modelMaker": "Frenzy Math",
+    "solveDate": "2026-05-24",
+    "significance": 15,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "The paper's claim is the strongest form of attribution in this catalog: for each problem it records a self-contained proof produced with no human intervention by Rethlas, which the authors then verified. The humans chose the problems and checked the output.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "son-pham",
+   "name": "Huneke-Wiegand Conjecture",
+   "one_shot_confidence": 9,
+   "one_shot_reason": "came up with the counterexample on [one] shot",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/son-pham",
+    "paper": "https://github.com/sonpham-org/huneke-wiegand-candidate-verification",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Algebra",
+    "field": "Commutative Algebra",
+    "model": "GPT-5.6-Pro",
+    "modelMaker": null,
+    "solveDate": "2026-07-29",
+    "significance": 20,
+    "resolutionMethod": "construction",
+    "verification": "expert-verified"
+   },
+   "aiRole_excerpt": "Came up with the counterexample on shot. GPT-share chat for proof:\n\nhttps://chatgpt.com/c/6a6529a6-fb04-83ea-a397-a64ffed0b3d6",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "expert-verified",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "bounded-oracle-noise-nonconvex-lower-bound",
+   "name": "Bounded Oracle Error in Nonconvex Stochastic Optimization",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "generated during a 2-hour session, human only checked",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/bounded-oracle-noise-nonconvex-lower-bound",
+    "paper": "https://arxiv.org/abs/2608.09004",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Algorithms & optimization",
+    "field": "Stochastic optimization",
+    "model": "GPT-5.6 Sol",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-08-10",
+    "significance": 12,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "Stated in the abstract itself, not buried in an acknowledgment: \"The proof was independently generated with GPT-5.6 Sol in Codex's Ultra mode during a two-hour session. The human author supplied the prompt and was responsible only for checking the proof and revising and polishing the manuscript.\"",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "chernoff-density-strong-log-concavity",
+   "name": "Strong Log-Concavity of Chernoff's Density",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "proof generated in its entirety, authors checked",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/chernoff-density-strong-log-concavity",
+    "paper": "https://arxiv.org/abs/2607.18619",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Probability & statistics",
+    "field": "Probability & statistics",
+    "model": "GPT-5.6 Sol",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-07-21",
+    "significance": 10,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "The proof was generated in its entirety by GPT-5.6 Sol; the authors checked it and prepared the manuscript.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "chip-firing-middle-stair",
+   "name": "The Middle Stair of Parallel Chip-Firing",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "found by GPT-5.6-Sol (already on slide)",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/chip-firing-middle-stair",
+    "paper": "https://arxiv.org/abs/2608.04153",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Combinatorics",
+    "field": "Combinatorial dynamics",
+    "model": "GPT-5.6 Sol",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-08-04",
+    "significance": 12,
+    "resolutionMethod": "argument",
+    "verification": "expert-verified"
+   },
+   "aiRole_excerpt": "The paper presents the proof plainly as found by the model: \"The proof presented in Section 3 was found by the large language model GPT-5.6-Sol. The authors verified the resulting argument and take full responsibility.\"",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "expert-verified",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "erdos-1091",
+   "name": "Erd\u0151s Problem #1091",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "same 'internal model' series as erdos-987/960",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/erdos-1091",
+    "paper": "https://www.erdosproblems.com/1091",
+    "erdosproblems": "https://www.erdosproblems.com/1091"
+   },
+   "meta": {
+    "fieldGroup": "Combinatorics",
+    "field": "Graph Theory, Chromatic Number",
+    "model": "OpenAI internal model",
+    "modelMaker": null,
+    "solveDate": "2026-04-09",
+    "significance": 10,
+    "resolutionMethod": "argument",
+    "verification": "site-confirmed"
+   },
+   "aiRole_excerpt": "From \"Short proofs in combinatorics, probability and number theory II\": \"The proofs in this manuscript are due to an internal model at OpenAI... The role of the human authors was simply to digest the proofs and modify the write-ups for clarity and elegance.\" This is the one place in the paper where the humans changed the mathematics: the model's original proof gave the same family of example graphs but deduced colour-criticality from a presentation the authors reworked.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "site-confirmed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "erdos-960",
+   "name": "Erd\u0151s Problem #960",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "'proofs due to internal model, humans simply digest write-ups'",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/erdos-960",
+    "paper": "https://www.erdosproblems.com/960",
+    "erdosproblems": "https://www.erdosproblems.com/960"
+   },
+   "meta": {
+    "fieldGroup": "Geometry & topology",
+    "field": "Geometry",
+    "model": "OpenAI internal model",
+    "modelMaker": null,
+    "solveDate": "2026-04-09",
+    "significance": 10,
+    "resolutionMethod": "construction",
+    "verification": "site-confirmed"
+   },
+   "aiRole_excerpt": "From \"Short proofs in combinatorics, probability and number theory II\": \"The proofs in this manuscript are due to an internal model at OpenAI... The role of the human authors was simply to digest the proofs and modify the write-ups for clarity and elegance.\" The authors also re-ran the public model: ChatGPT-5.4 Pro solved this problem in one of five independent attempts, by a similar route through a cyclic subgroup of a real elliptic curve, though slightly weaker in that it did not resolve the r = 3 case.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "site-confirmed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "erdos-987",
+   "name": "Erd\u0151s Problem #987",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "'proofs due to internal model, humans simply digest write-ups'",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/erdos-987",
+    "paper": "https://www.erdosproblems.com/987",
+    "erdosproblems": "https://www.erdosproblems.com/987"
+   },
+   "meta": {
+    "fieldGroup": "Analysis",
+    "field": "Analysis, Discrepancy",
+    "model": "OpenAI internal model",
+    "modelMaker": null,
+    "solveDate": "2026-04-09",
+    "significance": 11,
+    "resolutionMethod": "argument",
+    "verification": "site-confirmed"
+   },
+   "aiRole_excerpt": "From \"Short proofs in combinatorics, probability and number theory II\": \"The proofs in this manuscript are due to an internal model at OpenAI... The role of the human authors was simply to digest the proofs and modify the write-ups for clarity and elegance.\" The question is Erdos's, recorded as Problem 7.21 in Hayman's problem list before reaching the Erdos problems site.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "site-confirmed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "facial-distance-patterns-planar",
+   "name": "Facial Distance Patterns in Planar Graphs",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "single prompt, authors candid re: surprise (already on slide)",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/facial-distance-patterns-planar",
+    "paper": "https://arxiv.org/abs/2608.07187",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Algorithms & optimization",
+    "field": "Planar graph algorithms",
+    "model": "GPT-5.6 Sol",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-08-07",
+    "significance": 15,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "\"The simple proof was found by OpenAI's GPT 5.6-Sol model\", and the paper says it came from a single prompt describing the state of the art and asking for any improvement on the upper bound. The authors are candid about what that means: \"It is surprising (not to say embarrasing) that this open problem has such a simple proof, which has eluded the community despite the human efforts invested in it.\" Section 2 of the paper is titled The ChatGPT Proof.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "garamvolgyi-jackson-jordan-cliques",
+   "name": "Garamv\u00f6lgyi-Jackson-Jord\u00e1n Conjecture on Cliques in Minimally Globally Rigid Graphs",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "author withheld own intuition as a test, model found it independently",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/garamvolgyi-jackson-jordan-cliques",
+    "paper": "https://arxiv.org/abs/2604.27989",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Combinatorics",
+    "field": "Rigidity theory",
+    "model": "ChatGPT 5.5",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-04-30",
+    "significance": 8,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "\"The proof is entirely generated by ChatGPT 5.5.\" The author had an intuition about the natural stress-matrix strategy but deliberately withheld it from the prompt; the model independently identified the same strategy, resolved the algebraic difficulty the author was stuck on, and produced the proof, which the author checked and edited.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "perfectly-complete-quantum-key-agreement-owf",
+   "name": "Perfectly Complete Quantum Key Agreement from One-Way Functions",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "one-shot conversation (already on slide)",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/perfectly-complete-quantum-key-agreement-owf",
+    "paper": "https://arxiv.org/abs/2608.03824",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Quantum information & computing",
+    "field": "Quantum cryptography",
+    "model": "GPT-5.6 Sol Ultra",
+    "modelMaker": "OpenAI",
+    "solveDate": "2026-08-04",
+    "significance": 15,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "The acknowledgment states that GPT-5.6 Sol Ultra discovered the proof in a one-shot conversation and produced a preliminary draft, with the authors independently verifying every statement and proof, then simplifying and refining the argument.",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  },
+  {
+   "slug": "thiele-voter-interval",
+   "name": "Thiele Rules on the Voter Interval Domain",
+   "one_shot_confidence": 8,
+   "one_shot_reason": "obtained in a single call to Gemini Deep Think",
+   "links": {
+    "vibemathed": "https://vibemathed.com/problem/thiele-voter-interval",
+    "paper": "https://arxiv.org/abs/2604.05953",
+    "erdosproblems": null
+   },
+   "meta": {
+    "fieldGroup": "Algorithms & optimization",
+    "field": "Computational social choice",
+    "model": "Gemini Deep Think",
+    "modelMaker": "Google DeepMind",
+    "solveDate": "2026-04-07",
+    "significance": 12,
+    "resolutionMethod": "argument",
+    "verification": "unreviewed"
+   },
+   "aiRole_excerpt": "\"The main structural theorem used by the algorithm was obtained in a single call to Gemini Deep Think.\"",
+   "defeaters": {
+    "1_is_it_easy": {
+     "verdict": null,
+     "evidence_sources": [
+      "erdosproblems forum/progress-notes (if applicable)",
+      "paper's own citation/related-work history",
+      "any independent skeptic commentary found"
+     ],
+     "notes": null
+    },
+    "2_was_it_really_one_shot": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage/acknowledgments section (already excerpted above, may need fuller read)",
+      "erdosproblems comment thread (if applicable) -- often has richer detail than the tracker page"
+     ],
+     "notes": null
+    },
+    "3_did_human_do_most_of_the_work": {
+     "verdict": null,
+     "evidence_sources": [
+      "paper's AI-usage section / author contribution statement",
+      "erdosproblems 'Additional thanks' field or forum comments naming the human's role"
+     ],
+     "notes": null
+    },
+    "4_is_it_verified_published": {
+     "verdict": "unreviewed",
+     "evidence_sources": [
+      "VibeMathed verification tier (already populated from structured data)"
+     ],
+     "notes": "populated automatically -- this is the one defeater we can already answer from data on hand"
+    },
+    "5_could_an_expert_have_done_it_anyway": {
+     "verdict": null,
+     "evidence_sources": [
+      "same sources as #1 (prior-attempt evidence) -- if experts tried and failed, weaker case for 'expert could have'",
+      "any named expert commentary on the result's difficulty (e.g. Tao-style commentary, if any)"
+     ],
+     "notes": null
+    }
+   }
+  }
+ ]
+}

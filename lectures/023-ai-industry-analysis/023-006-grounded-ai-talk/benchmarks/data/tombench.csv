@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2024-02-23,ChatGLM3-6B,40.3,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,"ToMBench paper (ACL 2024), Table 2"
+2024-02-23,Mixtral-8x7B,53.3,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,Table 2
+2024-02-23,Qwen-14B-Chat,56.7,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,Table 2
+2024-02-23,GPT-3.5-Turbo-0613,57.5,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,Table 2
+2024-02-23,GPT-3.5-Turbo-1106,59.5,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,Table 2
+2024-02-23,GPT-4-0613,69.5,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,Table 2
+2024-02-23,GPT-4-1106,74.0,"percent accuracy (English subset, task-oriented average)",https://arxiv.org/abs/2402.15052,"Table 2; best model, still ~11 points below human baseline of 85.4%"

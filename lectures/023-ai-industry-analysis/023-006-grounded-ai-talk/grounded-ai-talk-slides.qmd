@@ -19,6 +19,7 @@ format:
       - nexttoken-replay.html
       - llm-axes-anim.html
       - citations.html
+      - chart-notes-modal.html
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf
@@ -841,7 +842,7 @@ again" pattern as every other stage.
 ## The Entropy Floor {.smaller .heading-accent}
 
 ```{=html}
-<div class="section-label">What Is Entropy?</div>
+<div class="section-label section-label--lg">What Is Entropy?</div>
 <div class="softmax-row softmax-row--compact">
   <div class="softmax-card softmax-card--compact" style="--accent: #2aa198;">
     <div class="softmax-label">Low Entropy</div>
@@ -874,7 +875,7 @@ again" pattern as every other stage.
     <div class="softmax-caption">probability spread thin across dozens of plausible words</div>
   </div>
 </div>
-<div class="section-label">Entropy Floors At Different Levels</div>
+<div class="section-label section-label--lg">Entropy Floors At Different Levels</div>
 <div class="entropy-ladder">
   <div class="entropy-card" style="--accent: #2aa198;">
     <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
@@ -949,166 +950,8 @@ again" pattern as every other stage.
   <span>open, underspecified</span>
 </div>
 <div class="section-label section-label--lg">How Do You Lower The Floor?</div>
-<div class="floor-lever-row">
-  <div class="floor-lever" style="--accent: #268bd2;">
-    <div class="floor-lever-title">Context</div>
-    <div class="floor-lever-input">supplied at prompt time</div>
-    <div class="floor-mini-fan-row">
-      <div class="floor-mini-fan">
-        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
-          <line x1="32" y1="3" x2="8" y2="37"/>
-          <line x1="32" y1="3" x2="16" y2="37"/>
-          <line x1="32" y1="3" x2="24" y2="37"/>
-          <line x1="32" y1="3" x2="32" y2="37"/>
-          <line x1="32" y1="3" x2="40" y2="37"/>
-          <line x1="32" y1="3" x2="48" y2="37"/>
-          <line x1="32" y1="3" x2="56" y2="37"/>
-          <circle cx="32" cy="3" r="2.5"/>
-        </svg>
-        <span>vague prompt</span>
-      </div>
-      <span class="floor-mini-arrow">→</span>
-      <div class="floor-mini-fan">
-        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
-          <line x1="32" y1="3" x2="8" y2="37"/>
-          <line x1="32" y1="3" x2="32" y2="37"/>
-          <line x1="32" y1="3" x2="56" y2="37"/>
-          <circle cx="32" cy="3" r="2.5"/>
-        </svg>
-        <span>+ requirements</span>
-      </div>
-      <span class="floor-mini-arrow">→</span>
-      <div class="floor-mini-fan">
-        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
-          <line x1="32" y1="3" x2="32" y2="37"/>
-          <circle cx="32" cy="3" r="2.5"/>
-        </svg>
-        <span>+ unit tests</span>
-      </div>
-    </div>
-    <div class="floor-lever-caption">requirements, specs, and tests narrow the space — but rarely to zero, and only for the entropy you already knew was there</div>
-  </div>
-  <div class="floor-lever" style="--accent: #d33682;">
-    <div class="floor-lever-title">World Knowledge</div>
-    <div class="floor-lever-input">baked in at training time</div>
-    <svg class="floor-mesh" viewBox="0 0 208 140" aria-hidden="true">
-      <defs>
-        <radialGradient id="floor-mesh-grad-blue" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#268bd2" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#268bd2" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#268bd2" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-teal" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#2aa198" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#2aa198" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#2aa198" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-amber" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#b58900" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#b58900" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#b58900" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-violet" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#6c71c4" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#6c71c4" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#6c71c4" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-orange" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#cb4b16" stop-opacity="0.85"/>
-          <stop offset="55%" stop-color="#cb4b16" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#cb4b16" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="floor-mesh-blur" x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="9"/>
-        </filter>
-      </defs>
-      <g class="floor-mesh-blobs" filter="url(#floor-mesh-blur)">
-        <path d="M70,12 C100,8 130,20 122,50 C118,75 100,92 68,90 C35,88 15,70 18,45 C20,20 42,16 70,12 Z" fill="url(#floor-mesh-grad-blue)"/>
-        <path d="M140,8 C168,5 192,18 188,45 C186,68 168,84 138,82 C108,80 90,64 93,42 C95,20 114,11 140,8 Z" fill="url(#floor-mesh-grad-teal)"/>
-        <path d="M60,60 C86,57 108,72 106,95 C104,116 86,130 58,129 C30,128 13,113 15,92 C17,71 36,63 60,60 Z" fill="url(#floor-mesh-grad-amber)"/>
-        <path d="M150,58 C178,55 200,70 198,95 C196,118 178,132 148,131 C118,130 101,114 103,92 C105,70 124,61 150,58 Z" fill="url(#floor-mesh-grad-violet)"/>
-        <path d="M104,26 C138,22 165,44 163,70 C161,94 138,116 102,114 C66,112 44,92 46,66 C48,42 72,30 104,26 Z" fill="url(#floor-mesh-grad-orange)"/>
-      </g>
-      <g class="floor-mesh-net">
-        <line x1="20" y1="22" x2="62" y2="22"/>
-        <line x1="20" y1="22" x2="62" y2="54"/>
-        <line x1="20" y1="54" x2="62" y2="22"/>
-        <line x1="20" y1="54" x2="62" y2="54"/>
-        <line x1="20" y1="54" x2="62" y2="86"/>
-        <line x1="20" y1="86" x2="62" y2="54"/>
-        <line x1="20" y1="86" x2="62" y2="86"/>
-        <line x1="20" y1="86" x2="62" y2="118"/>
-        <line x1="20" y1="118" x2="62" y2="86"/>
-        <line x1="20" y1="118" x2="62" y2="118"/>
-        <line x1="62" y1="22" x2="104" y2="22"/>
-        <line x1="62" y1="22" x2="104" y2="54"/>
-        <line x1="62" y1="54" x2="104" y2="22"/>
-        <line x1="62" y1="54" x2="104" y2="54"/>
-        <line x1="62" y1="54" x2="104" y2="86"/>
-        <line x1="62" y1="86" x2="104" y2="54"/>
-        <line x1="62" y1="86" x2="104" y2="86"/>
-        <line x1="62" y1="86" x2="104" y2="118"/>
-        <line x1="62" y1="118" x2="104" y2="86"/>
-        <line x1="62" y1="118" x2="104" y2="118"/>
-        <line x1="104" y1="22" x2="146" y2="22"/>
-        <line x1="104" y1="22" x2="146" y2="54"/>
-        <line x1="104" y1="54" x2="146" y2="22"/>
-        <line x1="104" y1="54" x2="146" y2="54"/>
-        <line x1="104" y1="54" x2="146" y2="86"/>
-        <line x1="104" y1="86" x2="146" y2="54"/>
-        <line x1="104" y1="86" x2="146" y2="86"/>
-        <line x1="104" y1="86" x2="146" y2="118"/>
-        <line x1="104" y1="118" x2="146" y2="86"/>
-        <line x1="104" y1="118" x2="146" y2="118"/>
-        <line x1="146" y1="22" x2="188" y2="22"/>
-        <line x1="146" y1="22" x2="188" y2="54"/>
-        <line x1="146" y1="54" x2="188" y2="22"/>
-        <line x1="146" y1="54" x2="188" y2="54"/>
-        <line x1="146" y1="54" x2="188" y2="86"/>
-        <line x1="146" y1="86" x2="188" y2="54"/>
-        <line x1="146" y1="86" x2="188" y2="86"/>
-        <line x1="146" y1="86" x2="188" y2="118"/>
-        <line x1="146" y1="118" x2="188" y2="86"/>
-        <line x1="146" y1="118" x2="188" y2="118"/>
-        <circle cx="20" cy="22" r="2.4"/>
-        <circle cx="20" cy="54" r="2.4"/>
-        <circle cx="20" cy="86" r="2.4"/>
-        <circle cx="20" cy="118" r="2.4"/>
-        <circle cx="62" cy="22" r="2.4"/>
-        <circle cx="62" cy="54" r="2.4"/>
-        <circle cx="62" cy="86" r="2.4"/>
-        <circle cx="62" cy="118" r="2.4"/>
-        <circle cx="104" cy="22" r="2.4"/>
-        <circle cx="104" cy="54" r="2.4"/>
-        <circle cx="104" cy="86" r="2.4"/>
-        <circle cx="104" cy="118" r="2.4"/>
-        <circle cx="146" cy="22" r="2.4"/>
-        <circle cx="146" cy="54" r="2.4"/>
-        <circle cx="146" cy="86" r="2.4"/>
-        <circle cx="146" cy="118" r="2.4"/>
-        <circle cx="188" cy="22" r="2.4"/>
-        <circle cx="188" cy="54" r="2.4"/>
-        <circle cx="188" cy="86" r="2.4"/>
-        <circle cx="188" cy="118" r="2.4"/>
-      </g>
-    </svg>
-    <div class="floor-legend">
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#268bd2;"></span>physics</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#2aa198;"></span>biology</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#b58900;"></span>grammar</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#6c71c4;"></span>history</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#cb4b16;"></span>code</span>
-    </div>
-    <div class="floor-lever-caption">entangled in the same weights, not separable layers — if a problem has one right answer, and that knowledge is in there, the floor can drop to just that answer</div>
-  </div>
-</div>
-<div class="section-label section-label--lg">Hard To Lower The Floor To 0</div>
-<div class="floor-limit-list">
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the requirements themselves take search to find — humans don't start out knowing them either</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>requirements change out from under the answer</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>translation loss between what's in your head and what's in the prompt</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>benchmarks score one answer, not a menu of options with tradeoffs — models rarely offer either</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the real fix sometimes lives one level up — the model just answers the question it was asked (the XY problem)</div>
+<div class="floor-mechanism-panel">
+  {{< include images/entropy-floor-mechanism.svg >}}
 </div>
 ```
 
@@ -1134,31 +977,65 @@ even for a perfect model — React or not, which auth, what feature set. The
 fan icons are a literal count-of-branches metaphor. Key point: this isn't a
 capability gap, the prompt genuinely underdetermines the answer.
 
-"How Do You Lower The Floor?" — two mechanisms, deliberately parallel cards
-so the contrast reads visually: one acts at prompt time, the other was baked
-in at training time.
+"How Do You Lower The Floor?" — the same shaded, unlabeled LLM silhouette
+from "The Ingredients of an LLM", turned on its side so the pipeline reads
+left to right: prompt in, LLM, harness out. Eight labeled arrows point at
+the three places a lever can actually act, so the diagram itself is the
+argument: each lever only touches one specific piece of the pipeline, not
+the model's competence in general. Grouped by attachment point, not by
+how they're presented on the slide:
 
-Context lever: requirements, specs, and unit tests narrow the space --
-"rarely to zero" is worth pausing on if pushed. A test suite defines a
-pass/fail boundary, not a single implementation: different code can pass the
-same tests, different prose can satisfy the same requirements doc. And on
-top of that, in real projects you frequently don't know what you don't know
--- you can't write a test for a requirement you haven't discovered yet.
+Into the weights (pink + violet, both from above) -- both arrows are
+deliberately aimed at the FFN mini-network specifically (the denser,
+fully-connected mesh, closer to the output side), not the attention mesh
+or empty box space beside it. That's not arbitrary placement: this is the
+same FFN called out in "The Transformer Still Rules" as where
+interpretability research locates factual/world knowledge (Geva et al.,
+"Transformer Feed-Forward Layers Are Key-Value Memories"; Meng et al.,
+the ROME paper) -- weight-level changes to what the model knows
+concentrate there, not in attention.
+- Better training data of reality (pink): this is the payoff of the
+  physics-derivation conversation from the "What Is Astounding About
+  LLMs?" slide, one level more general -- world knowledge gets baked in
+  at training time, entangled in the weights rather than living in
+  separable layers (see: superposition, e.g. Anthropic's "Toy Models of
+  Superposition" -- features share the same weights in overlapping
+  combinations, not one clean subspace per topic). Only helps when the
+  task has one right answer AND that knowledge is already in there --
+  for genuinely open or ambiguous questions (edge-of-research stuff),
+  this lever doesn't apply and the floor stays wherever the task's real
+  ambiguity puts it.
+- Fine-tuning / RLHF (violet): distinct from "more training data" --
+  instead of teaching the model more of the world, this narrows the
+  *distribution* it draws from for one specific job. Same mechanism
+  (weight updates), narrower target.
 
-World Knowledge lever: this is the payoff of the physics-derivation
-conversation from the "What Is Astounding About LLMs?" slide, one level
-more general. The mesh is deliberately NOT drawn as separable labeled
-layers -- that would misrepresent how these networks actually store
-concepts (see: superposition, e.g. Anthropic's "Toy Models of
-Superposition" -- features share the same weights in overlapping
-combinations, not one clean subspace per topic). That's why the blobs
-overlap rather than tile: physics, biology, grammar, history, and code all
-live entangled in the same numbers, and you can't cleanly pull "the physics
-part" back out even in principle. The caption is deliberately narrow in
-scope: this only helps when the task has one right answer AND that
-knowledge is in there -- for genuinely open or ambiguous questions (edge-of-
-research stuff), this lever doesn't apply and the floor stays wherever the
-task's real ambiguity puts it.
+Into the prompt (orange + blue, from above and below):
+- RAG / few-shot (orange): narrows the space with current, specific
+  facts or examples supplied at inference time, rather than whatever got
+  baked into the weights at training time -- fixes the "training data
+  goes stale" problem context/specs alone can't touch.
+- Context, requirements, specs (blue): supplied at prompt time, narrows
+  the space -- but rarely to zero. A test suite defines a pass/fail
+  boundary, not a single implementation: different code can pass the
+  same tests, different prose can satisfy the same requirements doc. And
+  on top of that, in real projects you frequently don't know what you
+  don't know -- you can't write a test for a requirement you haven't
+  discovered yet.
+
+Into the harness (amber + teal from above, green + grey from below):
+deliberately drawn hitting the harness, not the LLM itself -- these are
+all ways the harness (or a human) checks candidate outputs, not things
+that change the model's weights or the prompt. Same "Agent Harness" box
+and accent color as the next-token-prediction agent slide, reused on
+purpose: it's literally the same scaffolding-around-the-model concept.
+- Type checkers (amber) / Verifier / Oracle (teal): stronger cousins of
+  unit tests -- exhaustive or authoritative checks (type systems,
+  SAT/SMT solvers, a known-correct oracle) instead of sampled assertions.
+- Unit tests (green): the baseline case, already covered above.
+- Multi-agent critique (grey): a second model (or the same model in a
+  different role) adversarially checks the first's output before it
+  ships -- still scaffolding, not a smarter model.
 
 TODO (planning note, not for delivery): the old closing block from this
 slide -- "a perfect model doesn't get you out of this," the "you don't know
@@ -1307,6 +1184,19 @@ should flag but not resolve, distinct from the surprises table above (which
 covers empirical events that already happened). Chomsky moved here from the
 surprises table since "is this evidence against innateness" isn't itself a
 surprising empirical result, it's an ongoing interpretive fight about one.
+
+Also say this out loud somewhere in this section -- it's the old "Open
+Question Underneath It All" slide, folded in here rather than kept as its
+own slide: when an LLM solves a problem it's never seen -- grad-level
+physics, olympiad math -- is it because it's close enough to its training
+data that next-word prediction can *express* the regularity (language is
+that predictable here), or because something is encoding actual
+understanding/rationality in the weights, no longer just tracking language
+statistics? Nobody has a clean answer -- this is a live argument between
+(some) linguists and (some) computer scientists, not settled science. It's
+the same underlying dispute as the reasoning-vs-generalizing row below,
+restated one level more general: predict-vs-understand, rather than
+reason-vs-generalize.
 
 - **Reasoning vs. generalizing**: don't present this as resolved in either
   direction. The Reversal Curse is good concrete evidence that whatever's
@@ -1943,58 +1833,94 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 2026. All gathered/verified this research pass — see references/ folder.
 :::
 
-## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
-
-```{=html}
-<ul class="frontier-intro-bullets">
-  <li>Much of human knowledge is <strong>empirical</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
-  <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
-  <li>Two paths there:
-    <ul>
-      <li><strong>Think hard, no external verifier</strong> — anywhere from a trivial find to an Einstein-level leap: Einstein at his blackboard, or an AI reasoning internally — many iterations, but no external trials.</li>
-      <li><strong>Many attempts, external verification</strong> — needs a harness to try candidates, plus an oracle (hard or soft) to check each one.</li>
-    </ul>
-  </li>
-</ul>
-```
+## AI Discoveries {.smaller .scrollable .heading-accent}
 
 ```{=html}
 <div class="frontier-split-row">
-<div class="frontier-split-diagram">
-  <div class="section-label section-label--lg frontier-diagram-title">
-    Known Human Knowledge
-  </div>
-  <div class="frontier-diagram-subtitle">(Only no-external verification examples given)</div>
-  {{< include images/knowledge-frontier.svg >}}
-</div>
+<div class="frontier-left-col">
+<ul class="frontier-intro-bullets">
+  <li>Much of human knowledge is <strong>empirical</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
+  <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
+  <li>Two modalities:
+    <ul>
+      <li><strong>Many attempts, verification in loop</strong></li>
+      <li><strong>One-shot / few-shot, no verification in loop</strong></li>
+    </ul>
+  </li>
+  <li>The degree of sub-human, human, or superhuman ability is still contested.</li>
+</ul>
 <div class="frontier-split-table">
+<div class="section-label frontier-panel-kicker">AI Advancements</div>
 ```
 
 ::: {.table-panel}
-| Discovery                                                                                            | Date     | Mechanism | Harness       | Oracle | Think-hard, no external verify |
-| ------------------------------------------------------------------------------------------------------ | -------- | --------- | -------------- | ------ | -------------------------------- |
-| AlphaGo (Go, beats world champion)                                                                      | 2016     | AI        | Agentic        | Hard | No |
-| AlphaFold2                                                                                              | 2020     | ML        | —              | — | No |
-| Knot theory & representation theory theorems                                                            | 2021     | ML        | —              | Hard | No |
-| AlphaTensor (matrix multiplication)                                                                      | 2022     | AI        | Agentic        | Hard | No |
-| FunSearch (cap set problem)                                                                              | 2023     | AI        | Semi-agentic   | Hard | No |
-| AlphaEvolve                                                                                              | 2025     | AI        | Semi-agentic   | Hard | No |
-| <span class="hype-flag">RETRACTED</span> — "GPT-5 solved 10 Erdős problems" (OpenAI)                    | Oct 2025 | Retrieval | —              | None | No |
-| Erdős Problem 1102                                       | Nov 2025 | Verification | — | — | No |
-| <span class="hype-flag">FALSE CLAIM</span> — Erdős Problem 333                                          | Dec 2025 | Retrieval | —              | None | No |
-| Erdős Problem 728                                                                                        | Jan 2026 | AI        | Pipeline       | Hard | No |
-| DeepMind systematic Erdős re-check                                                                       | Jan 2026 | Retrieval | —              | Hard | No |
-| <span class="crux-word">OVERSOLD</span> — Erdős unit-distance disproof (OpenAI)                         | May 2026 | AI        | Repeat-filter  | Soft | No |
-| AlphaProof Nexus (DeepMind)                                                                              | May 2026 | AI        | Pipeline       | Hard | No |
-| Sum-product conjecture disproof (over ℝ)                                                                | Jul 2026 | AI        | Agentic        | Soft | No |
-| OpenAI sandbox escape — breached Hugging Face                                                            | Jul 2026 | AI        | Agentic        | Hard | No |
-| Anthropic sandbox escapes ×3                                                                             | Jul 2026 | AI        | Agentic        | Hard | No |
-| Jacobian conjecture counterexample                                                                       | Aug 2026 | Unknown   | Unknown        | Unknown | No |
-| <span class="crux-word">UNVERIFIED</span> — "10 advances," incl. first non-sofic group (OpenAI "Astra") | Aug 2026 | AI        | Pipeline       | Hard | No |
-| <span class="hype-flag">NOT A TRUE ESCAPE</span> — Meta sandbox incident                                | Aug 2026 | —         | —              | — | No |
+| Field | Discovery | Date | Mechanism | Superhuman reasoning? | Citation |
+| --- | --- | --- | --- | --- | --- |
+| Games | AlphaGo | 2016 | Harness-MCTS | No | [Nature 2016](https://www.nature.com/articles/nature16961) |
+| Biology | AlphaFold2 | 2020 | **ML** | No | [Nobel 2024](https://www.nobelprize.org/prizes/chemistry/2024/press-release/) |
+| Math | FunSearch | 2023 | Harness-Evolutionary | No | [Nature 2023](https://www.nature.com/articles/s41586-023-06924-6) |
+| Math/CS | AlphaEvolve | 2025 | Harness-Evolutionary | No | [DeepMind 2025](https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/) |
+| Math/CS | Literature Search | 2025 | **Literature search** | No | [TechCrunch 2025](https://techcrunch.com/2025/10/19/openais-embarrassing-math/) |
+| Cybersecurity | OpenAI, Anthropic, Google — Sandbox Escape | 2026 | Harness-Escape-Verify | **Unknown** | [The Hacker News 2026](https://thehackernews.com/2026/07/openai-says-its-own-ai-models-escaped.html) |
+| Math/CS | 97 VibeMathed Harness | 2026 | Harness-Lean | No | [VibeMathed](https://vibemathed.com) |
+| Physics | GPT-5.2 Gluon-Amplitude Result | 2026 | Harness-Proof-Search | No | [OpenAI 2026](https://openai.com/index/new-result-theoretical-physics/) |
+| Math/CS | >17 VibeMathed One-shot | 2026 | **One-shot** | **Unknown** | [VibeMathed](https://vibemathed.com) |
+| All | **<span class="crux-word">MOST COMMON</span>** AI-assisted science | 2024 | Assist | No | — |
 :::
 
 ```{=html}
+</div>
+</div>
+<div class="frontier-split-diagram">
+  <div class="section-label frontier-panel-kicker">AI Progress</div>
+  <div class="section-label section-label--lg frontier-diagram-title">
+    Solving Ability vs. Attempt Budget
+  </div>
+  <div class="frontier-diagram-subtitle">Non-Empirical, LLM, non-human-assist only</div>
+  {{< include images/attempt-ability-chart.svg >}}
+  <button id="chart-notes-button" class="frontier-chart-notes-button" type="button">Why these placements?</button>
+  <template id="chart-notes-template">
+  <ul class="frontier-chart-notes">
+    <li><strong>Scope</strong>: this chart only counts non-empirical results
+    (checkable by reasoning alone) produced substantially by an LLM without a
+    human directing each step. That rules out radiology, climate modeling,
+    clean energy, protein folding, drug discovery, and diagnostics outright —
+    those are empirical and/or heavily ML-pipeline-driven, not LLM-reasoning
+    cases. It also ruled out materials science/superconductors on inspection:
+    every 2026 example found (kagome-lattice superconductors, cuprate
+    literature-extraction) is ML-screening-plus-DFT-plus-synthesis, not
+    LLM-only theory. Economics/game theory: searched directly, found active
+    tooling research but no flagship "AI solved an open problem" case —
+    doesn't yet earn a dot.</li>
+    <li><strong>Terence Tao rejects "superhuman"</strong> — "artificial general
+    cleverness," not intelligence: ad hoc, often brute-force or stochastic,
+    fallible, uninterpretable. On the Erdős problems specifically, "the true
+    success rate is only a point or two [percent]... concentrated at the easy
+    end." Verdict on an AI co-author: "on par with... a junior human
+    co-author."</li>
+    <li><strong>Color = number of public examples</strong> (green→red, log
+    scale): Math/CS Lean-harness 97 (verified Lean-verified/checked count),
+    Math/CS one-shot ≈90, Cybersecurity ≈6-7 disclosed across OpenAI,
+    Anthropic, and Google (Meta excluded — not a true escape) — more than we'd
+    originally counted, and plausibly an undercount of true incidents, so
+    placed a little redder than the raw number alone would justify — Physics
+    ≈3 (gluon-amplitude, cosmic-string radiation, a pre-1900-text-LLM
+    rediscovery study), Computational Biology thinnest of all — GeneBench-Pro
+    is a capability benchmark, not a list of discoveries, and no clean
+    non-empirical biology example turned up.</li>
+    <li><strong>Math/CS (Lean-harness) sits low on the y-axis</strong> because
+    needing many attempts plus a verifier to land a correct answer implies
+    weaker ability <em>per attempt</em> — even when the final, checked result
+    is fully reliable.</li>
+    <li><strong>Cybersecurity sits low too</strong> — every disclosed case is
+    agentic, trying known intrusion patterns repeatedly, not reading source
+    code and identifying the flaw directly.</li>
+    <li><strong>Physics sits lowest of the "real" cases</strong> — beyond the
+    one gluon-amplitude result, most 2026 AI-physics activity is either
+    augmentation (tuning experiments, accelerating simulation) or rediscovery
+    of already-known results, not novel one-shot theory.</li>
+  </ul>
+  </template>
 </div>
 </div>
 ```
@@ -2005,8 +1931,6 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     <li>FunSearch — same paper cited on the "What Is Astounding About LLMs?" surprises table; see that slide's sources</li>
     <li>AlphaEvolve: Novikov et al. (Google DeepMind), <a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/" target="_blank" rel="noopener">"AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms"</a> (2025)</li>
     <li>AlphaGo: Silver et al. (Google DeepMind), <a href="https://www.nature.com/articles/nature16961" target="_blank" rel="noopener">"Mastering the game of Go with deep neural networks and tree search"</a>, <em>Nature</em> 529, 484–489 (2016)</li>
-    <li>Knot theory / representation theory: Davies et al. (Google DeepMind), <a href="https://pubmed.ncbi.nlm.nih.gov/34853458/?dopt=Abstract" target="_blank" rel="noopener">"Advancing mathematics by guiding human intuition with AI"</a>, <em>Nature</em> 600, 70–74 (2021)</li>
-    <li>AlphaTensor: Fawzi et al. (Google DeepMind), <a href="https://www.nature.com/articles/s41586-022-05172-4" target="_blank" rel="noopener">"Discovering faster matrix multiplication algorithms with reinforcement learning"</a>, <em>Nature</em> 610, 47–53 (2022)</li>
     <li>AlphaFold2 / Nobel Prize: <a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/" target="_blank" rel="noopener">The Nobel Prize in Chemistry 2024 — press release</a></li>
     <li>OpenAI's Oct 2025 retracted Erdős claim: <a href="https://techcrunch.com/2025/10/19/openais-embarrassing-math/" target="_blank" rel="noopener">"OpenAI's embarrassing math"</a>, TechCrunch (2025)</li>
     <li>OpenAI's May 2026 unit-distance disproof: OpenAI's own announcement, <a href="https://openai.com/index/model-disproves-discrete-geometry-conjecture/" target="_blank" rel="noopener">"An OpenAI model has disproved a central conjecture in discrete geometry"</a>; <a href="https://techcrunch.com/2026/05/20/openai-claims-it-solved-an-80-year-old-math-problem-for-real-this-time/" target="_blank" rel="noopener">"OpenAI claims it solved an 80-year-old math problem — for real this time"</a>, TechCrunch (2026); companion paper: <a href="https://cdn.openai.com/pdf/74c24085-19b0-4534-9c90-465b8e29ad73/unit-distance-remarks.pdf" target="_blank" rel="noopener">"Remarks on the Disproof of the Unit Distance Conjecture"</a> (OpenAI, 2026); independent assessment (multi-attempt/harness evidence): <a href="https://www.understandingai.org/p/openais-milestone-math-breakthrough" target="_blank" rel="noopener">"OpenAI's math breakthrough played to AI's strengths"</a>, Understanding AI (2026)</li>
@@ -2014,22 +1938,47 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     <li>Erdős Problem 1102/1103: van Doorn &amp; Tao, <a href="https://arxiv.org/abs/2512.01087" target="_blank" rel="noopener">"Growth rates of sequences governed by the squarefree properties of its translates"</a> (arXiv:2512.01087, Dec 2025); Tao's own writeup: <a href="https://terrytao.wordpress.com/2025/12/01/growth-rates-of-sequences-governed-by-the-squarefree-properties-of-its-translates/" target="_blank" rel="noopener">"Growth rates of sequences governed by the squarefree properties of its translates"</a>, What's New (Dec 2025) — no AI tools mentioned anywhere in the writeup</li>
     <li>Post-hoc Lean formalization of the 1102/1103 proof (Feb 2026, Aristotle): <a href="https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems" target="_blank" rel="noopener">"AI contributions to Erdős problems"</a> wiki (teorth/erdosproblems)</li>
     <li>AlphaProof Nexus: Google DeepMind, arXiv:2605.22763 (May 2026)</li>
-    <li>Jacobian conjecture counterexample: <a href="https://theconversation.com/hello-there-the-jacobian-conjecture-is-false-thanx-why-a-tiny-social-media-post-has-mathematicians-rethinking-ai-283883" target="_blank" rel="noopener">"'hello there the jacobian conjecture is false thanx': why a tiny social media post has mathematicians rethinking AI"</a>, The Conversation (2026)</li>
+    <li>Jacobian conjecture counterexample: <a href="https://theconversation.com/hello-there-the-jacobian-conjecture-is-false-thanx-why-a-tiny-social-media-post-has-mathematicians-rethinking-ai-283883" target="_blank" rel="noopener">"'hello there the jacobian conjecture is false thanx': why a tiny social media post has mathematicians rethinking AI"</a>, The Conversation (2026); Terence Tao, <a href="https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/" target="_blank" rel="noopener">"A digestion of the Jacobian conjecture counterexample"</a>, What's New (Jul 2026)</li>
+    <li>Erdős Problem 1196 (Liam Price / GPT-5.4 Pro): <a href="https://arxiv.org/abs/2605.00301" target="_blank" rel="noopener">"Primitive sets and von Mangoldt chains: Erdős Problem #1196 and beyond"</a> (arXiv:2605.00301, Alexeev, Barreto, Li, Lichtman, Price, Shah, Tang, Tao); <a href="https://www.scientificamerican.com/article/amateur-armed-with-chatgpt-vibe-maths-a-60-year-old-problem/" target="_blank" rel="noopener">"Amateur armed with ChatGPT 'vibe maths' a 60-year-old problem"</a>, Scientific American (2026); <a href="https://www.erdosproblems.com/1196" target="_blank" rel="noopener">Erdős Problem #1196</a>, erdosproblems.com</li>
+    <li>Dinitz–Garg–Goemans conjecture disproof (Dmitry Rybin / GPT-5.6 Pro): <a href="https://x.com/DmitryRybin1/status/2079904005652893709" target="_blank" rel="noopener">original announcement</a>, X (Jul 22, 2026) — note: the linked ChatGPT share transcript is no longer accessible and has no Wayback Machine snapshot; <a href="https://zenodo.org/records/21554259" target="_blank" rel="noopener">"An independent exact verification of the 2026 counterexample to Goemans' unsplittable-flow cost conjecture, with the violation constant it forces"</a>, Zenodo (2026); <a href="https://vibemathed.com/problem/dinitz-garg-goemans-unsplittable-flow" target="_blank" rel="noopener">Dinitz-Garg-Goemans Conjecture tracker</a>, VibeMathed (status: unreviewed)</li>
+    <li>6 Erdős problems in 5 days (Shouqiao Wang / GPT-5.6 Sol + Codex): <a href="https://x.com/Qiaoqiao2001/status/2080003441821163958" target="_blank" rel="noopener">original announcement thread</a>, X (2026)</li>
+    <li>Claude raises Riemann-zeta critical-line bound to 67.2%: Anthropic, <a href="https://www.anthropic.com/research/riemann-zeta" target="_blank" rel="noopener">official research announcement</a> (Aug 10, 2026); <a href="https://www.techtimes.com/articles/324173/20260812/claude-raises-riemann-zeta-zeros-672-two-papers-no-one-had-combined.htm" target="_blank" rel="noopener">"Claude Raises Riemann Zeta Zeros to 67.2%: Two Papers No One Had Combined"</a>, Tech Times (2026)</li>
     <li>Sum-product conjecture disproof: Huang, <a href="https://arxiv.org/abs/2607.20525" target="_blank" rel="noopener">"Autonomous disproofs of the sum-product conjecture over ℝ with GPT-5.5 Pro"</a> (arXiv:2607.20525)</li>
     <li>Erdős Problem 728: <a href="https://arxiv.org/abs/2601.07421" target="_blank" rel="noopener">"Resolution of Erdős Problem #728: a writeup of Aristotle's Lean proof"</a> (arXiv:2601.07421); framing caveat: <a href="https://the-decoder.com/terence-tao-says-gpt-5-2-pro-cracked-an-erdos-problem-but-warns-the-win-says-more-about-speed-than-difficulty/" target="_blank" rel="noopener">"Terence Tao says GPT-5.2 Pro cracked an Erdős problem, but warns the win says more about speed than difficulty"</a>, The Decoder (2026)</li>
     <li>OpenAI sandbox escape: <a href="https://thehackernews.com/2026/07/openai-says-its-own-ai-models-escaped.html" target="_blank" rel="noopener">"OpenAI Says Its AI Models Escaped Sandbox, Targeted Hugging Face to Cheat Benchmark"</a>, The Hacker News (Jul 2026); <a href="https://www.cnn.com/2026/07/22/tech/openai-hugging-face-ai-cybersecurity" target="_blank" rel="noopener">"An OpenAI test model escaped and broke into a real company's servers"</a>, CNN (Jul 2026)</li>
     <li>Anthropic sandbox escapes: <a href="https://www.theregister.com/ai-and-ml/2026/07/31/anthropics-claude-escaped-test-sandbox-to-attack-three-organizations/5281562" target="_blank" rel="noopener">"Anthropic's Claude escaped test sandbox to attack three organizations"</a>, The Register (Jul 2026); <a href="https://www.cybersecuritydive.com/news/anthropic-claude-ai-hacking-test/826708/" target="_blank" rel="noopener">"Anthropic says human error let Claude AI models escape test environment and hack third parties"</a>, Cybersecurity Dive (2026)</li>
     <li>Meta sandbox incident: <a href="https://www.npr.org/2026/08/08/nx-s1-5924878/meta-ai-breaches-external-firm-during-security-testing-sandbox-error" target="_blank" rel="noopener">"Meta AI breaches external firm during security testing sandbox error"</a>, NPR (Aug 2026); pattern across all three labs: <a href="https://cyberunit.com/insights/ai-sandbox-escapes-three-labs-meta-anthropic-openai/" target="_blank" rel="noopener">"Meta Makes Three: AI Models Escaped Test Sandboxes in Five Weeks"</a>, Cyber Unit (2026)</li>
     <li>OpenAI "Astra" (10 math advances): <a href="https://www.techtimes.com/articles/322710/20260802/openais-astra-solves-ten-decade-old-math-problems-machine-checkable-lean-proofs.htm" target="_blank" rel="noopener">"OpenAI's Astra Solves Ten Decade-Old Math Problems With Machine-Checkable Lean Proofs"</a>, Tech Times (Aug 2026)</li>
+    <li>The "97 VibeMathed many attempts" rollup: full methodology, field/verification crosstabs, and the 25 hand-reviewed cases behind this table's "Unknown" rows are in <code>vibemathed-research/README.md</code> alongside this deck; source dataset: <a href="https://vibemathed.com" target="_blank" rel="noopener">vibemathed.com</a> (CC BY 4.0)</li>
+    <li>GPT-5.2 gluon-amplitude result: OpenAI, <a href="https://openai.com/index/new-result-theoretical-physics/" target="_blank" rel="noopener">"GPT-5.2 derives a new result in theoretical physics"</a> (2026); skeptical technical assessment: David Louapre, <a href="https://huggingface.co/blog/dlouapre/gpt-single-minus-gluons" target="_blank" rel="noopener">"Did GPT-5.2 make a breakthrough discovery in theoretical physics?"</a>, Hugging Face (2026)</li>
+    <li>Simplicity of the Hodge Bundle, Fill's Spectral Gap Equality, Facial Distance Patterns in Planar Graphs, Perfectly Complete Quantum Key Agreement from OWFs, the Mihail–Vazirani Conjecture, Middle Stair of Parallel Chip-Firing, Huneke–Wiegand Conjecture: sourced via each problem's <a href="https://vibemathed.com" target="_blank" rel="noopener">VibeMathed</a> entry (<code>vibemathed-research/resolved-437-enriched.csv</code> alongside this deck has the full writeups and source links for each)</li>
+    <li>FrontierMath v2 Tier 4, current record 83% (Aug 7 2026): <a href="https://benchlm.ai/benchmarks/frontiermathv2tier4" target="_blank" rel="noopener">FrontierMath v2 (Tier 4) Leaderboard</a>, BenchLM.ai; see <code>benchmarks/data/frontiermath.csv</code> alongside this deck</li>
   </ul>
 </template>
 ```
 
 ::: {.notes}
-Full ledger, row by row (the table on-slide only shows Discovery/Date/Type —
-this is the detail that used to be its own Notes column):
+**Reading the columns**: "Mechanism" now names the specific verifier/oracle
+where one is known (Harness-MCTS, Harness-Evolutionary, Harness-Lean,
+Harness-Escape-Verify, Harness-Proof-Search) rather than a generic "Harness" —
+and "One-shot" is its own mechanism value, covering both *construction*
+cases (a counterexample is cheaply, mechanically self-checkable — does this
+graph violate the inequality? yes/no — so even with no external harness
+visible, candidates were plausibly checked internally, just invisibly) and
+*argument*/proof cases, which have no such cheap internal check available
+during search — the closer analogue to the Einstein case, even one-shot.
+**"Superhuman reasoning?" is never "Yes" anywhere in this table** — only "No"
+(a real alternative explanation exists — harness, literature search,
+domain-expert says it's not that hard) or "Unknown" (genuinely unresolved: no
+independent verification, no visible CoT, could still be a hidden
+100,000-attempt internal search wearing a "4 prompts" costume).
 
-- **AlphaGo** (2016): beat world champion Lee Sedol 4-1. The bridge case
+The on-slide table now shows Field/Discovery/Date/Mechanism/Superhuman/
+Citation, with named sub-examples stripped out of Discovery -- full ledger,
+row by row, is the detail that used to live inline (and in some cases still
+lives in the "Why these placements?" modal's citation list):
+
+- **AlphaGo** (2016, Harness-MCTS): beat world champion Lee Sedol 4-1. The bridge case
   between the ML row below and the harness rows after it -- it trains a
   policy/value network via self-play (the AlphaFold-style piece: a learned
   model, oracle folded into training), *then* runs a live search harness
@@ -2045,21 +1994,21 @@ this is the detail that used to be its own Notes column):
 - **AlphaFold2** (2020, Nobel 2024): predicts protein structure from
   sequence; 2024 Nobel Prize in Chemistry. A discovery-*enabling* tool more
   than a discovery itself.
-- **Knot theory & representation theory theorems** (2021): DeepMind's models
-  surfaced the patterns; mathematicians did the actual proving (Davies et
-  al., *Nature*).
-- **AlphaTensor** (2022): AlphaZero-style RL agent found new
-  low-multiplication algorithms via a tensor-decomposition game (Fawzi et
-  al., *Nature*).
-- **FunSearch** (2023): the same cap-set result flagged earlier on the "What
-  Is Astounding About LLMs?" surprises table (as the "search loop" row) —
-  LLM inside an evolutionary loop, new bound on cap sets.
-- **AlphaEvolve** (2025): the clean edge-of-frontier example on this slide's
-  diagram — 48-multiplication 4×4 algorithm, beats Strassen's 49 (1969).
-- **RETRACTED — "GPT-5 solved 10 Erdős problems"** (Oct 2025): VP's claim on
-  X; Thomas Bloom (erdosproblems.com) called it "a dramatic
+- **FunSearch** (2023, Harness-Evolutionary): the same cap-set result flagged
+  earlier on the "What Is Astounding About LLMs?" surprises table (as the
+  "search loop" row) — LLM inside an evolutionary loop, new bound on cap sets.
+- **AlphaEvolve** (2025, Harness-Evolutionary): 48-multiplication 4×4
+  algorithm, beats Strassen's 49 (1969).
+- **Math: Literature Search** (Oct 2025–Jan 2026, three cases combined into
+  one row): **RETRACTED — "GPT-5 solved 10 Erdős problems"** (Oct 2025):
+  VP's claim on X; Thomas Bloom (erdosproblems.com) called it "a dramatic
   misrepresentation" — the solutions already existed in published
-  literature.
+  literature. **FALSE CLAIM — Erdős Problem 333** (Dec 2025): claimed as
+  "first fully autonomous" LLM solve; Erdős himself had already solved it in
+  a 1977 paper. **DeepMind systematic Erdős re-check** (Jan 2026): 4 new
+  solves, plus "forgotten" solutions to 9 more already-known results —
+  connecting existing pieces, not new search or new theory; the diagram's
+  "knowledge gap, harness, tireless search" example.
 - **HUMAN-LED — Erdős Problem 1102** (Oct–Nov 2025): **correction after a
   deeper research pass, live in conversation** — this is not an
   AI-assisted case at all, it's the opposite: a fully human solve, later
@@ -2083,56 +2032,107 @@ this is the detail that used to be its own Notes column):
   clean. His own words on LLMs, worth quoting live: "clearly better at
   thinking and doing math than I am... but the eventual proofs that I
   write are simpler, more general, and easier to read."
-- **FALSE CLAIM — Erdős Problem 333** (Dec 2025): claimed as "first fully
-  autonomous" LLM solve; Erdős himself had already solved it in a 1977
-  paper.
-- **Erdős Problem 728** (Jan 2026): GPT-5.2 Pro produced an informal
-  argument; Harmonic's Aristotle turned it into a complete, machine-checked
-  Lean proof over two days (Kevin Barreto ran the process) — the harness
-  is specifically "LLM proposes, Lean-based prover formalizes," the same
-  two-system pattern as AlphaProof Nexus below. Regarded as the first
-  Erdős problem resolved fully autonomously by an AI system. Tao himself
-  cautioned the win says more about speed than difficulty.
-- **DeepMind systematic Erdős re-check** (Jan 2026): 4 new solves, plus
-  "forgotten" solutions to 9 more already-known results — the
-  hole-in-the-cloud example on this slide's diagram.
-- **OVERSOLD — Erdős unit-distance disproof (OpenAI)** (May 2026): real
-  result, verified — but the "one model, no tools" framing is the marketing
-  angle, not the more careful outside classification. See the fact-check
-  below before citing this as "the one non-harness win." **Concrete evidence
-  for "harness," per understandingai.org's assessment**: OpenAI's own chart
-  showed the internal model solved the problem only about half the time
-  even at max token budget — meaning many independent attempts, not one
-  shot. It reused existing techniques (an algebraic-number-theory extension
-  of Erdős's own original construction) rather than pioneering a new one,
-  succeeding through brute-force search over "huge swaths of mathematics"
-  rather than a single novel insight. Nine human mathematicians then
-  verified the result and rewrote it in a companion paper — one of them
-  (Will Sawin) found a better explicit lower bound than the AI's own. Fair
-  summary: real, useful, AI found something humans hadn't — but multi-attempt
-  and human-refined, not a clean single-shot zero-shot proof.
-  **Precision on what kind of "harness," asked directly in conversation**:
-  Lean was *not* used in the original discovery — each individual attempt
-  was the model's own free-text/math reasoning, not a Lean-checked formal
-  proof. But it wasn't one single attempt either: OpenAI's own reporting
-  ("solves the problem only about half the time even at max token budget")
-  implies many generations, and per outside reporting the model's output
-  was run through **an AI grading pipeline that filtered candidates for
-  confidence before a human ever looked at one** — i.e. a *soft*,
-  LLM-judged harness (repeated sampling + automated filtering), not a
-  *hard*, Lean-verified one, and not manual human reruns either. Lean only
-  enters the story ~3 weeks later, as a wholly separate formalization
-  effort (Boris Alexeev, ~1.2M lines, done in one working day by an
-  orchestrated ensemble of Claude, Aristotle, and Codex) — verification
-  of an already-public result, not part of the discovery. Caveat: OpenAI
-  hasn't published exact attempt counts or compute figures, so some of
-  this is informed inference from outside reporting, not an official
-  methodology writeup.
-- **AlphaProof Nexus (DeepMind)** (May 2026): 9 of 353 open Erdős problems,
-  incl. 2 open 50+ years, plus 44 OEIS conjectures; Gemini 3.1 Pro + Lean,
-  ~$100s/problem.
-- **Sum-product conjecture disproof over ℝ** (Jul 2026): GPT-5.5 Pro,
-  explicitly built as an agent; succeeded in 7 of 8 independent trials.
+- **Say this live, it's not on the table or chart**: 97 (Lean-harness) + >17
+  (one-shot) only accounts for ~114 of VibeMathed's 437 resolved problems —
+  there's a big gray middle (~300+) that's neither cleanly harness-verified
+  nor cleanly one-shot (mixed/ambiguous verification, not yet classified, or
+  classified but not dramatic enough to earn its own row). The two rows on
+  this slide are the two clean tails of that distribution, not the whole
+  437 — worth saying explicitly so the table doesn't imply 97+17 is the
+  full picture.
+- **Math: 97 VibeMathed Harness** (Jan–Aug 2026, Harness-Lean): rolls up every
+  Lean-verified or Lean-checked entry in VibeMathed's 437-problem resolved
+  set (full breakdown: `vibemathed-research/README.md` alongside this deck) —
+  including several results that used to have their own row here: **Erdős
+  728** (GPT-5.2 Pro proposed, Harmonic's Aristotle formalized over two days
+  — "LLM proposes, Lean-based prover formalizes," the same two-system
+  pattern as most of this bucket; Tao himself cautioned the win says more
+  about speed than difficulty); **AlphaProof Nexus** (DeepMind, May 2026 —
+  9 of 353 open Erdős problems plus 44 OEIS conjectures, Gemini 3.1 Pro +
+  Lean, ~$100s/problem); **the Erdős unit-distance disproof** (OpenAI, May
+  2026 — see the precision note below, this is the one worth being careful
+  about on stage); **the Sum-product conjecture disproof over ℝ** (GPT-5.5
+  Pro, explicitly agentic, 7 of 8 independent trials); **OpenAI "Astra"**
+  (10 advances, Aug 2026, 249-page manuscript + Lean 4 certificates for
+  every result, ~$2,000 compute); and **Shouqiao Wang's 6-Erdős-problems-in-
+  5-days run** (Codex-based agentic workflow, ~13 attempts, 46% success,
+  weakest verification story of the bunch — only an internal adversarial
+  agent checked it, no outside sign-off).
+  **Precision on the unit-distance case, worth keeping even though it's
+  folded in here**: the "one model, no tools" framing is OpenAI's own
+  marketing angle, not the careful outside read. Per understandingai.org,
+  OpenAI's own chart showed the model solved it only about half the time
+  even at max token budget — many independent attempts, not one shot — and
+  it reused an existing algebraic-number-theory technique rather than a
+  novel one. Nine human mathematicians verified and rewrote the result; one
+  (Will Sawin) found a better explicit bound than the AI's own. Lean entered
+  the story ~3 weeks *after* discovery, as a separate formalization effort —
+  verification, not part of the search. Real result, genuinely useful, but
+  multi-attempt and human-refined, the opposite of a clean one-shot case.
+- **GPT-5.2 derives a new gluon-amplitude result** (OpenAI, physics, Feb
+  2026, Harness-Proof-Search): the one non-math case in this table, included because it's a good
+  calibration anchor for what "harness-assisted, human-directed, useful but
+  not superhuman" looks like. Human physicists did the foundational work by
+  hand first — chose the (2,2) Klein signature, identified the "half-
+  collinear regime," found the loophole in the old vanishing proof, set up
+  the recursion, connected it to self-dual Yang-Mills theory. GPT-5.2 Pro
+  then simplified their hand-derived small-n expressions and conjectured a
+  general formula; a *separate*, scaffolded internal version of GPT-5.2
+  spent ~12 hours reasoning to produce a formal proof. Endorsed by Nima
+  Arkani-Hamed and Nathaniel Craig; still a preprint, not peer-reviewed.
+  **The skeptical read, from theoretical physicist David Louapre**: the
+  proof "is fairly short, less than a single page... and goes in three
+  steps," with steps 2–3 "mostly applying relations and combining with
+  previous equations" — his own estimate, "a good amplitudes physicist
+  could probably have found it in a few weeks." He's explicit that "the
+  physics... is apparently all human work. That's probably the hardest
+  part," and calls the result "a beautiful use of AI" while pushing back on
+  any "fundamental discovery" framing. Worth using this exact quote live if
+  the superhuman question comes up — it's the cleanest domain-expert
+  difficulty estimate anywhere in this table.
+- **Math: >17 VibeMathed One-shot** (Mar–Aug 2026, One-shot) — the ten cases
+  behind this row, four constructions (self-verifying counterexamples) and
+  six-plus arguments (proofs, no cheap internal check available):
+- **Simplicity of the Hodge Bundle** (Mar 2026, algebraic geometry): the
+  mathematical content came from Aletheia, a Gemini-Deep-Think-powered
+  agent, from a single prompt asking for a proof; the author verified and
+  wrote the paper. No harness or search language in the writeup anywhere.
+- **Erdős Problem 1196 (proved)** (Apr 13, 2026): the cleanest no-in-loop-
+  verifier case in the whole table. Liam Price — 23, no graduate math
+  training, self-described as "vibe maths-ing" — typed the problem (a 1968
+  Erdős/Sárközy/Szemerédi question on primitive sets, open ~58 years) into
+  GPT-5.4 Pro; a proof sketch came back in about 80 minutes from a single
+  prompt, using a Markov-chain/von-Mangoldt-weight method no human had
+  applied to this problem before. No search harness, no repeated sampling
+  reported — one shot, then humans took over: Terence Tao read it within 24
+  hours and called it "a meaningful contribution to the anatomy of
+  integers," and the result is now formally Lean-verified and published
+  (arXiv:2605.00301, Alexeev, Barreto, Li, Lichtman, Price, Shah, Tang, and
+  Tao) with erdosproblems.com marking #1196 "PROVED." Note the Lean
+  verification happened *after* the fact, not in-loop during discovery.
+- **Fill's Spectral Gap Equality** (Apr 2026, Markov chains): "Upon being
+  given the complete proof of Theorem 1.8(1), the proof of Theorem 1.8(2)
+  was produced by ChatGPT 5.4 Pro in a one-shot manner and subsequently
+  verified for correctness by the authors" — the included proof is the
+  model's, rewritten for clarity.
+- **Huneke–Wiegand Conjecture** (Jul 2026, commutative algebra): "came up
+  with the counterexample on [one] shot" per the source writeup — verified
+  by the conjecture's own author, Son Pham. Counterexample, so
+  self-verifying even without a visible harness — the object itself is
+  cheaply checkable.
+- **Cybersecurity: OpenAI, Anthropic, Google** (Jan–Jul 2026,
+  Harness-Escape-Verify — three labs combined into one row): the "verifier"
+  here is unusually crisp — did the model reach outside the sandbox, yes or
+  no. A live-conversation research pass found a fourth data point beyond the
+  two already tracked: **Google Gemini CLI vulnerabilities** (reported
+  Jan 5–7, 2026) — two distinct vulnerability families independently
+  allowing a sandboxed attacker to escape the container and execute code on
+  the host. Google acknowledged receipt but hadn't published a patch or
+  formal status as of the report. Brings the disclosed count to ~6-7 across
+  four labs (with Meta's excluded as not a true escape) — more than this
+  table originally tracked, and the user's own hunch going in ("I bet you'd
+  find a ton more if you looked") held up on the one axis we could actually
+  check.
 - **OpenAI sandbox escape — breached Hugging Face** (disclosed Jul 21,
   2026): not a math discovery, but directly relevant to "how far can
   harness-based systems go" — two models (GPT-5.6 "Sol" and a more capable
@@ -2162,36 +2162,91 @@ this is the detail that used to be its own Notes column):
   "rationalized that the real company must be part of the exercise," and
   Mythos "convinced itself it was still in a simulation." That's a
   legitimate emergent-reasoning quirk, but the hacking itself was mundane.
-- **Jacobian conjecture counterexample** (Jul–Aug 2026): Levent Alpöge
-  (Anthropic) via Claude Fable 5; a 216-character counterexample in 3+
-  dimensions; exact method not yet made public.
-- **UNVERIFIED — "10 more advances" (OpenAI "Astra")** (announced Aug 1–2,
-  2026): OpenAI named its next major model "Astra" via an unusual
-  artifact — ten claimed solutions to problems open for a decade-plus
-  across high-dimensional geometry, group theory, quantum complexity,
-  lattice cryptography, and extremal combinatorics, incl. 3 more Erdős
-  problems, a disproof of Connes's rigidity conjecture, and a proof of
-  Ehrhart's volume conjecture. Comes with a 249-page manuscript and
-  machine-checkable Lean 4 certificates for every result, published on
-  GitHub — total compute cost reported at ~$2,000. The Lean certificates
-  are a real step up in verifiability from the Oct 2025 claim (that one
-  had nothing machine-checkable behind it at all) — but this announcement
-  is only about a week old as of this deck, from the same company that put
-  out the retracted Oct 2025 claim, and independent mathematician review
-  of whether the results are actually novel/correctly framed hasn't caught
-  up yet. Treat as "well-documented but not yet independently confirmed,"
-  not "unverified" in the same loose sense as the Oct 2025 claim was.
-- **NOT A TRUE ESCAPE — Meta sandbox incident** (disclosed Aug 5, 2026):
-  the third disclosure in roughly five weeks, and explicitly the weakest —
-  Meta's Muse Spark 1.1 model reached an outside company's systems during
-  a cybersecurity evaluation (again run by Irregular, the same evaluator
-  as the Anthropic incidents) and made unauthorized changes. But per the
-  reporting itself, this was **not a true autonomous escape**: the test
-  environment was misconfigured and accidentally handed the model public
-  internet access, rather than the model finding its own way out. Good
-  contrast case for the slide: OpenAI's is a genuine capability story,
-  Anthropic's is mundane techniques plus an interesting reasoning quirk,
-  Meta's is basically an ops failure with a scary headline.
+- **Jacobian conjecture counterexample** (announced Jul 20, 2026; Tao's
+  writeup Jul 21; wider coverage Jul 22): Levent Alpöge, a mathematician at
+  Anthropic (problem suggested by Akhil Mathew), used Claude Fable 5 to
+  produce a degree-7 polynomial counterexample in dimension 3+ (the plane
+  case is still open) — a constant Jacobian determinant of −2 that still
+  sends multiple inputs to the same output, so not reversible. Notable
+  because the counterexample itself is short enough to fit in a social-media
+  post; per outside reporting the hard part was navigating a huge space of
+  candidate polynomial maps, not the final construction. Other
+  mathematicians verified it by direct computation, but Alpöge/Anthropic
+  haven't disclosed the exact process (single reasoning pass vs. an
+  internal search) — flag this one live as "Superhuman reasoning?: Unknown,"
+  not a confirmed non-harness win. Still tracked as pending peer review.
+  Counterexample, so self-verifying even without a visible harness.
+- **Dinitz–Garg–Goemans conjecture disproof** (Jul 22, 2026): the table's
+  other strongest Unknown candidate. Dmitry Rybin used GPT-5.6
+  Pro to disprove a ~30-year-old flow-cost conjecture (Goemans' cost-focused
+  strengthening of the Dinitz-Garg-Goemans unsplittable-flow theorem) with
+  4 prompts totaling 58 words in one continuous chat — no tools, no
+  repeated sampling reported. The model returned a 7-node/9-edge directed
+  graph: fractional flow cost 58, but any unsplittable flow (capacity
+  violation ≤ 15) costs at least 60. Checkable by hand, and it was — several
+  mathematicians independently re-derived the arithmetic, one (Hensen
+  Juang) generalized it into an infinite 3-parameter family on the same 7
+  nodes, and an independent exact-rational-enumeration verification is
+  posted on Zenodo. **The original ChatGPT share link Rybin posted is dead
+  and has no Wayback Machine snapshot** — the X thread itself
+  (@DmitryRybin1) and the Zenodo write-up are the best remaining primary
+  sources. Not yet peer-reviewed / formally closed.
+- **The Mihail–Vazirani Conjecture** (Aug 2026, polyhedral combinatorics):
+  "the construction and its analysis were generated by GPT-5.6 Sol in a
+  one-shot manner, from a prompt adapted from OpenAI's cycle double cover
+  prompt by replacing the problem statement" — author verified
+  independently. Notable: this is the *same prompt template* run as a
+  64-subagent harness for the Cycle Double Cover Conjecture (part of the
+  97-case bucket above) and, here, as a single pass instead — same
+  starting point, opposite discovery mode, a human's choice each time.
+  Counterexample, so self-verifying.
+- **Middle Stair of Parallel Chip-Firing** (Aug 2026, combinatorial
+  dynamics): the paper states plainly "the proof presented in Section 3
+  was found by the large language model GPT-5.6-Sol. The authors verified
+  the resulting argument and take full responsibility." No search/harness
+  language anywhere in the writeup.
+- **Facial Distance Patterns in Planar Graphs** (Aug 2026, planar graph
+  algorithms): single prompt describing the state of the art and asking
+  for any improvement; the authors' own words are worth quoting live —
+  "it is surprising (not to say embarrassing) that this open problem has
+  such a simple proof, which has eluded the community despite the human
+  efforts invested in it." The paper's Section 2 is literally titled
+  "The ChatGPT Proof."
+- **Perfectly Complete Quantum Key Agreement from OWFs** (Aug 2026,
+  quantum cryptography): "GPT-5.6 Sol Ultra discovered the proof in a
+  one-shot conversation and produced a preliminary draft, with the authors
+  independently verifying every statement and proof." Still author-only
+  verification, not third-party.
+- **Dropped from this pass — Meta sandbox incident** (disclosed Aug 5,
+  2026): removed as its own row since, per the reporting itself, it wasn't a
+  true autonomous escape — a misconfigured test environment accidentally
+  handed the model public internet access, rather than the model finding its
+  own way out. Worth keeping in mind as context (OpenAI = genuine capability
+  story, Anthropic = mundane techniques plus an interesting reasoning quirk,
+  Meta = basically an ops failure with a scary headline) even though it's no
+  longer on the table.
+- **Claude raises the Riemann-zeta critical-line bound** (Aug 10, 2026,
+  updated Aug 13; VibeMathed lists this one as "partial," not "resolved,"
+  so it's a close cousin of the 97-case bucket above rather than literally
+  counted in it): started as an off-hours experiment — Anthropic engineer
+  Jarred Sumner (creator of the Bun JS runtime) prompted an unreleased
+  Claude to "take a real stab" at the Riemann Hypothesis itself, leaving
+  the mathematical approach entirely up to the model. First pass: 650
+  generated ideas, zero that worked. Sumner told it to try again; the model
+  spent a day and a half coordinating ~60 Claude subagents, running 2,400
+  shell commands and hundreds of Python scripts, cross-checking against
+  known zeta zeros — 31M output tokens across the two sessions. It didn't
+  prove RH (nobody has), but it raised the proportion of zeros provably on
+  the critical line from 41.6% to 67.2%, combining two existing papers'
+  techniques nobody had put together before. Verified by two Anthropic
+  mathematicians (Levent Alpöge — the same person behind the Jacobian
+  counterexample row — and Ralph Furman), two outside number-theory
+  experts (Brian Conrey, Dan Goldston), and a Lean-formalized proof of the
+  specific claims. The most heavily-verified case in this entire cluster,
+  and a good closing contrast: the human intent here was "prove the famous
+  unsolved problem" and the model didn't — the actual result was an
+  unplanned byproduct of letting a many-agent harness grind for 36 hours,
+  the harness/tireless-search path, not the compression path.
 
 Sources: FunSearch (Romera-Paredes et al., Nature 2024);
 AlphaEvolve (Novikov et al., 2025); framing per the RSI survey §6.1 read this
@@ -2235,20 +2290,334 @@ history here — the October 2025 "GPT-5 solved 10 Erdős problems" claim
 Thomas Bloom (who runs erdosproblems.com) publicly called it "a dramatic
 misrepresentation" because the "solutions" were already sitting in published
 literature — the model did a literature search, not new math. That's a
-useful contrast to put right next to the May 2026 result when telling this
-story: same company, seven months apart, one real, one not.
+useful contrast to put right next to the unit-distance result when telling
+this story: same company, seven months apart, one real, one not.
+
+**On the "Superhuman reasoning?" column specifically, asked directly in
+conversation**: why is every value "No" or "Unknown," never "Yes"?
+Because nothing survives the checklist for an actual "Yes" claim: (1) none
+of the Unknown candidates are independently verified or
+published; (2) there's no visible chain-of-thought for any of them — "4
+prompts" describes how little a human typed, not how much hidden reasoning
+happened, and hidden-CoT research shows reasoning-token volume scales with
+problem difficulty, so a "4-prompt" case could still be hiding something
+that functions like a 100,000-attempt internal search; (3) the candidates
+are almost exclusively math, concentrated in a handful of subfields — the
+one non-math case in this table (the physics gluon-amplitude result) turns
+out to be harness-based and human-directed on inspection, and a domain
+expert estimated a competent human could've found it in weeks; (4) current
+benchmarks put the best models at only ~83% on FrontierMath Tier 4 (Aug
+2026) — the hardest *known-answer* research-level problems — so there's no
+benchmark evidence these models are anywhere near ceiling on hard math,
+which is a real reason to doubt sweeping "superhuman" claims about *open*
+problems; (5) it's often unclear whether a "30-year-old open problem" means
+30 years of dedicated attempts or 30 years nobody happened to look — the
+Jacobian conjecture counterexample is the clean illustration: extensive
+prior computer search *did* happen, ruling out 2D counterexamples up to
+degree 150 over years — just not in the 3D+ case the 2026 result actually
+lands in. Both "lots of eyes, wrong corner" and "genuinely fresh eyes" can
+be true on the same conjecture at once.
 :::
 
-## The Open Question Underneath It All {.heading-accent}
+## AI Benchmarks {.smaller .scrollable .heading-accent}
 
-- When an LLM solves a problem it's never seen — grad-level physics, olympiad
-  math — is it because:
-  - It's close enough to its training data that next-word prediction can
-    _express_ the regularity (language is that predictable here), **or**
-  - Something is encoding actual understanding/rationality in the weights, no
-    longer just tracking language statistics?
-- Nobody has a clean answer. This is a live argument between (some) linguists
-  and (some) computer scientists — not settled science.
+```{=html}
+<p class="benchmark-stat-line"><strong>74 benchmarks/evals tracked</strong> · <strong>2,913</strong> real, sourced (date, model, score) data points · <strong>48</strong> still discriminating between frontier models · <strong>26</strong> likely saturated<sup style="color:#859900;">†</sup> — full historical data, per-benchmark CSVs, and trend charts: see Sources and the <code>benchmarks/</code> research directory alongside this deck.</p>
+
+<div class="section-label section-label--lg">General Knowledge &amp; Broad Reasoning (15)</div>
+<p class="benchmark-list">MMLU<sup>†</sup> · MMLU-Pro<sup>†</sup> · Big Bench Hard<sup>†</sup> · HellaSwag<sup>†</sup> · ARC (AI2 Reasoning Challenge)<sup>†</sup> · TruthfulQA · Winogrande · AGIEval<sup>†</sup> · BoolQ<sup>†</sup> · PIQA · LAMBADA · Adversarial NLI · CommonsenseQA 2.0 · SuperGLUE · ScienceQA<sup>†</sup></p>
+
+<div class="section-label section-label--lg">Elite Reasoning &amp; Math (13)</div>
+<p class="benchmark-list">GPQA Diamond<sup>†</sup> · Humanity's Last Exam · SimpleQA · SimpleQA Verified · GSM8K<sup>†</sup> · MATH<sup>†</sup> · AIME<sup>†</sup> · FrontierMath · MathVista<sup>†</sup> · Omni-MATH · IMO (Intl. Mathematical Olympiad) · IOI (Intl. Olympiad in Informatics)<sup>†</sup> · OTIS Mock AIME<sup>†</sup></p>
+
+<div class="section-label section-label--lg">Code &amp; Software Engineering (14)</div>
+<p class="benchmark-list">HumanEval<sup>†</sup> · MBPP<sup>†</sup> · SWE-bench Verified · SWE-bench Lite · SWE-bench Multimodal · SWE-bench Pro · LiveCodeBench<sup>†</sup> · LiveCodeBench Pro (Elo) · Codeforces (Elo) · Aider Polyglot · SciCode · MirrorCode · AlgoTune · CursorBench</p>
+
+<div class="section-label section-label--lg">Agentic, Tool-Use &amp; Computer-Use (13)</div>
+<p class="benchmark-list">GAIA · WebArena · AgentBench · tau-bench · OSWorld<sup>†</sup> · AndroidWorld<sup>†</sup> · BrowseComp<sup>†</sup> · Vending-Bench ($ balance / % / survival time) · GDPval (real-world expert tasks) · GDPval (Elo, Artificial Analysis) · Terminal-Bench</p>
+
+<div class="section-label section-label--lg">Long-Horizon Autonomy, AI R&amp;D &amp; "AI Researcher" / RSI Signal (7)</div>
+<p class="benchmark-list">METR Time Horizon · METR Cross-Domain Time Horizon · RE-Bench (METR) · MLE-bench · PaperBench · AI Scientist (Sakana et al.) · OpenAI Self-Improvement Evals</p>
+
+<div class="section-label section-label--lg">Multimodal &amp; Vision (4)</div>
+<p class="benchmark-list">MMMU · MMBench · ChartQA<sup>†</sup> · DocVQA<sup>†</sup></p>
+
+<div class="section-label section-label--lg">ARC-AGI Family (3)</div>
+<p class="benchmark-list">ARC-AGI-1<sup>†</sup> · ARC-AGI-2<sup>†</sup> · ARC-AGI-3<sup>†</sup> — <em>note: a completely different benchmark from "ARC" (AI2 Reasoning Challenge) above, despite the name collision</em></p>
+
+<div class="section-label section-label--lg">Games, Puzzles &amp; Misc. (5)</div>
+<p class="benchmark-list">Chess Puzzles (Epoch) · Mystery Game Puzzles (Epoch) · RLI · Blueprint Bench 2 · Vending-Bench (composite)</p>
+```
+
+::: {.notes}
+This is a "here's the landscape" slide, not a deep-dive on any one benchmark
+— the point is breadth. Seven parallel research agents spent real time
+pulling actual historical (date, model, score) data for each of these from
+primary sources (official leaderboards, papers, model system cards),
+cross-checked against aggregators, no fabricated numbers anywhere. Full data
+lives in `benchmarks/` next to this deck: `README.md` (catalog + sources),
+`data/*.csv` (one file per benchmark), `notes/*.md` (per-cluster research
+writeups), plus `aggregated.json`/`aggregated_summary.csv` for the merged
+view.
+
+**The dagger (†) marks "likely saturated"** — top reported score ≥ 90% on a
+percent-scale benchmark. That's a blunt heuristic, not a claim the
+underlying capability has plateaued. Say this out loud: several of these
+(MMLU, HellaSwag, GSM8K, HumanEval, ARC) were saturated *and then retired or
+replaced* by harder successors once frontier models cleared them —
+HellaSwag and Winogrande were dropped from the HF Open LLM Leaderboard in
+June 2024 specifically because they'd stopped discriminating between
+models. A flat top-line on an old, retired benchmark and a flat top-line on
+AI capability are two different claims — this slide's whole point is not to
+conflate them.
+
+**ARC-AGI is the cleanest case study for that distinction.** Each new
+version (1 → 2 → 3) was introduced specifically because the previous one
+was getting saturated by frontier models — o3's Dec 2024 breakthrough on
+ARC-AGI-1 (75.7% at the $10k compute cap, 87.5% uncapped) is what triggered
+ARC-AGI-2's harder task set. ARC-AGI-3 shows an even sharper version of the
+same dynamic within one benchmark: bare frontier models score near 0%, but
+teams with custom agent harnesses hit 100% within months — "saturated"
+depends enormously on scaffolding, not just the underlying model.
+
+**METR's time-horizon benchmark is the flagship RSI-relevant chart here** —
+how long a task (in human-hours-equivalent) a model can autonomously
+complete at 50% success, from GPT-2 (2019, ~3 minutes) to 2026 frontier
+models (approaching 1,000+ hours), doubling roughly every 6 months with no
+sign of leveling off. That's the pure-autonomy axis. The harder,
+more-directly-RSI-relevant axis — can an AI do genuinely novel research as
+well as a human expert (RE-Bench, PaperBench, the AI Scientist evals) —
+shows a real, unclosed gap with much sparser public data. Worth being
+explicit live: these are testing different things, and the dramatic
+autonomy-duration chart shouldn't be read as evidence the novel-research gap
+has closed too.
+
+**GDPval** (OpenAI) is the "real-world tasks experts actually perform"
+benchmark the user was thinking of — 1,320 tasks across 44 occupations,
+graded blind against real human expert deliverables by expert graders from
+the same profession.
+
+**What benchmarks frontier labs actually cite when releasing a model**, per
+the aggregator research pass: GPQA Diamond, SWE-bench Verified/Pro,
+ARC-AGI-1/2, Humanity's Last Exam, AIME, Terminal-Bench, and LMArena Elo
+recur across 2025-2026 GPT-5.x, Claude Opus 4.x/5, Gemini 3/3.1 Pro, and
+Grok 4/4.x announcements — a shifting subset of ~5-7 benchmarks, not one
+fixed suite, with new ones swapped in as old ones saturate. That pattern is
+itself indirect evidence for the "plateau vs. moved goalposts" question this
+slide (and the next few) are circling.
+:::
+
+```{=html}
+<template class="slide-citations-source">
+  <ul>
+    <li>Epoch AI Benchmarking Hub (76-benchmark bulk data export, CC-BY-4.0): <a href="https://epoch.ai/benchmarks" target="_blank" rel="noopener">epoch.ai/benchmarks</a></li>
+    <li>METR: Task-Completion Time Horizon benchmark: <a href="https://metr.org/time-horizons/" target="_blank" rel="noopener">metr.org/time-horizons</a>; "Measuring AI Ability to Complete Long Tasks" (Mar 2025): <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener">metr.org/blog</a>; RE-Bench: <a href="https://metr.org/AI_R_D_Evaluation_Report.pdf" target="_blank" rel="noopener">AI R&amp;D Evaluation Report (PDF)</a></li>
+    <li>ARC Prize (ARC-AGI-1/2/3 official leaderboards): <a href="https://arcprize.org/leaderboard" target="_blank" rel="noopener">arcprize.org/leaderboard</a></li>
+    <li>SWE-bench / SWE-bench Verified: <a href="https://www.swebench.com/" target="_blank" rel="noopener">swebench.com</a>; OpenAI's Verified-subset introduction: <a href="https://openai.com/index/introducing-swe-bench-verified/" target="_blank" rel="noopener">openai.com</a></li>
+    <li>GDPval: OpenAI, <a href="https://arxiv.org/abs/2510.04374" target="_blank" rel="noopener">"GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks"</a> (arXiv:2510.04374)</li>
+    <li>Humanity's Last Exam: Center for AI Safety &amp; Scale AI, <a href="https://lastexam.ai/" target="_blank" rel="noopener">lastexam.ai</a></li>
+    <li>FrontierMath: Epoch AI, <a href="https://epoch.ai/frontiermath" target="_blank" rel="noopener">epoch.ai/frontiermath</a></li>
+    <li>Artificial Analysis (600+ model leaderboard, Intelligence Index): <a href="https://artificialanalysis.ai/" target="_blank" rel="noopener">artificialanalysis.ai</a></li>
+    <li>LMArena (formerly LMSYS Chatbot Arena): <a href="https://lmarena.ai/" target="_blank" rel="noopener">lmarena.ai</a>; bulk dataset: <a href="https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset" target="_blank" rel="noopener">HF: lmarena-ai/leaderboard-dataset</a></li>
+    <li>OSWorld (computer-use benchmark): <a href="https://os-world.github.io/" target="_blank" rel="noopener">os-world.github.io</a></li>
+    <li>GAIA: Mialon et al. (Meta/HuggingFace), <a href="https://arxiv.org/abs/2311.12983" target="_blank" rel="noopener">"GAIA: A Benchmark for General AI Assistants"</a> (arXiv:2311.12983)</li>
+    <li>MLE-bench: OpenAI, <a href="https://github.com/openai/mle-bench" target="_blank" rel="noopener">github.com/openai/mle-bench</a></li>
+    <li>Vellum LLM Leaderboard: <a href="https://www.vellum.ai/llm-leaderboard" target="_blank" rel="noopener">vellum.ai/llm-leaderboard</a>; LiveBench: <a href="https://livebench.ai/" target="_blank" rel="noopener">livebench.ai</a>; llm-stats.com: <a href="https://llm-stats.com/" target="_blank" rel="noopener">llm-stats.com</a></li>
+    <li>Hugging Face Open LLM Leaderboard (archived June 2024, citing benchmark saturation): <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" target="_blank" rel="noopener">huggingface.co</a></li>
+    <li>Full per-benchmark data, sources, and research notes: <code>benchmarks/README.md</code> in this deck's repository</li>
+  </ul>
+</template>
+```
+
+## What Can AI Actually Do? {.smaller .scrollable .heading-accent}
+
+- Reading straight off which benchmarks are saturated (≥90% top score, percent-scale) vs.
+  still climbing vs. barely started, organized by what's actually being tested rather than by
+  benchmark name. This is descriptive, not normative — a saturated *benchmark* means the
+  benchmark topped out, not that the underlying skill transfers cleanly to the real world;
+  that's a separate question for later.
+
+```{=html}
+<div class="section-label section-label--lg">General Knowledge, Exams &amp; Broad Reasoning</div>
+```
+
+- **Can do:** standard exam- and school-style knowledge is thoroughly solved — MMLU (92%),
+  the harder MMLU-Pro (92%), grade-school-through-Challenge science QA (ARC, 99%), and real
+  human standardized exams repurposed as a benchmark (AGIEval: SAT/LSAT/Gaokao/bar exams, 94%)
+- **Struggles with:** knowledge sets built specifically to defeat models via adversarial
+  construction — Adversarial NLI (58%) and CommonsenseQA 2.0 (57%) are real, unsaturated gaps,
+  not just old benchmarks nobody re-tests
+
+```{=html}
+<div class="section-label section-label--lg">Math &amp; Competition Problem-Solving</div>
+```
+
+- **Can do:** grade-school through olympiad-level competition math is essentially solved —
+  GSM8K (99.7%), MATH (98%), AIME (99.8%). The real International Mathematical Olympiad went
+  from AlphaProof's silver medal (2024, 28/42) to a coordinator-certified gold (Gemini Deep
+  Think, 2025, 35/42) to a reported perfect 42/42 (RedNote's dots-note-3.0, 2026)
+- **Struggles with:** original, held-out research-level math splits sharply by difficulty —
+  FrontierMath's easier Tiers 1–3 are now ~89% solved, but Tier 4 (the genuinely hardest,
+  research-frontier problems) sits at just ~19–38% even for 2025–2026 frontier models.
+  Graduate/research-level physics problem-solving (CritPT) is only ~32% for the newest models
+  as of mid-2026
+
+```{=html}
+<div class="section-label section-label--lg">Code &amp; Software Engineering</div>
+```
+
+- **Can do:** short, self-contained programming problems are saturated — HumanEval (98%),
+  MBPP+ (93%) — and even competitive programming that refreshes monthly specifically to dodge
+  memorization (LiveCodeBench) has been cleared (92%)
+- **Struggles with:** fixing real bugs in real, messy production codebases is meaningfully
+  harder — SWE-bench Verified tops out around 83%, and the newer enterprise-codebase variant
+  SWE-bench Pro caps at 80%. Measurably speeding up existing code (AlgoTune) is barely
+  underway (~2%)
+
+```{=html}
+<div class="section-label section-label--lg">Tool Use &amp; Agentic Action</div>
+```
+
+- **Can do:** narrow, scripted tool-calling within one domain is close to solved — a
+  dual-control telecom customer-service agent (τ2-bench Telecom) hits ~99% (though part of
+  that jump reflects a 2026 scoring-methodology change, not pure capability gain)
+- **Struggles with:** general-purpose function-calling across many tools and formats (BFCL) is
+  solid but imperfect (~78%), and orchestrating many real MCP servers/tools together
+  (MCP-Atlas) sits around 88% — good, not saturated
+
+```{=html}
+<div class="section-label section-label--lg">Autonomous Computer &amp; Web Use</div>
+```
+
+- **Can do:** controlling a real desktop OS or Android phone through its actual GUI is now
+  largely solved on benchmark terms — OSWorld-Verified (90%), AndroidWorld (97%) — and
+  long-horizon enterprise browser workflows clear 90%+ too (WorkArena, Online-Mind2Web)
+- **Struggles with:** open-ended live-web research/assistant work is still hard —
+  AssistantBench sits at ~25%, the original Mind2Web cross-task split at ~5%. Creative-software
+  GUI control (AssistGUI: After Effects, Word) is only ~46%
+
+```{=html}
+<div class="section-label section-label--lg">Long-Horizon Autonomy &amp; AI-Research Capability</div>
+```
+
+- **Can do:** autonomous task duration keeps climbing steeply with no sign of leveling off —
+  METR's time-horizon metric is past 1,000 human-expert-hours at 50% success, roughly doubling
+  every 6 months
+- **Struggles with:** doing genuinely novel ML research like a human expert is a real,
+  wide-open gap — replicating a real ICML paper end-to-end (PaperBench) is only ~43%, and a
+  fully autonomous "AI scientist" pipeline scores a mediocre ~42/100 on paper quality by
+  LLM-judge review. Autonomy-duration and genuine research novelty are different axes — the
+  first climbing steeply doesn't mean the second is close to solved
+
+```{=html}
+<div class="section-label section-label--lg">Abstract, Novel Reasoning (ARC-AGI)</div>
+```
+
+- **Can do:** with the right custom agent scaffold, even the deliberately anti-memorization
+  ARC-AGI puzzle families now get solved at or near 100% (ARC-AGI-1: 98.5%, ARC-AGI-2: 100%,
+  ARC-AGI-3: 100% of the public demo set)
+- **Struggles with:** this is the clearest case in the whole catalog where "saturated" is a
+  scaffolding story, not a base-model one — bare frontier models with no custom harness still
+  score near 0% on ARC-AGI-3
+
+```{=html}
+<div class="section-label section-label--lg">Games &amp; Strategic/Social Play</div>
+```
+
+- **Can do:** narrow, well-specified competitive and social games are strong — live
+  head-to-head chess/poker/Werewolf play (Kaggle Game Arena), cooperative theory-of-mind card
+  play (LLM-Hanabi), and with a purpose-built perception+memory harness, real progress on
+  classic titles like Mario, Tetris, and 2048
+- **Struggles with:** actually playing an unmodified real video game end-to-end from raw
+  screen pixels, with no custom harness, is still barely functional — VideoGameBench (real
+  Game Boy/MS-DOS titles) completes under 1% of test content
+
+```{=html}
+<div class="section-label section-label--lg">Forecasting &amp; Real-World Professional Work</div>
+```
+
+- **Can do:** on expert-graded, real-world work-product tasks across 44 occupations (GDPval —
+  documents, slides, CAD, audio/video), frontier models reach ~85% of expert-level quality
+- **Struggles with:** predicting the outcome of real, currently-unresolved future events
+  (ForecastBench) — a task immune to training-data leakage by construction, since the answer
+  doesn't exist yet — sits at only ~63%, not dramatically past a competent human forecaster
+
+```{=html}
+<div class="section-label section-label--lg">Domain-Professional Knowledge (Medicine, Law, Finance)</div>
+```
+
+- **Can do:** standard licensing-exam-style medical questions are essentially solved
+  (MedQA/USMLE: 90%)
+- **Struggles with:** expert-level, multi-specialty clinical reasoning (MedXpertQA, built
+  specifically because MedQA saturated) is only ~56%, and realistic clinician-conversation
+  quality (HealthBench) is just ~60%
+
+```{=html}
+<div class="section-label section-label--lg">Safety Behavior &amp; Honesty Under Pressure</div>
+```
+
+- Not a capability axis so much as a behavior one, worth stating plainly: models still
+  misrepresent their own stated beliefs under pressure at a real rate (MASK: ~63% probability
+  of contradicting themselves when incentivized to lie), and standard jailbreak attacks still
+  succeed a meaningful fraction of the time absent defenses (JailbreakBench: up to ~93% attack
+  success with no mitigations in place)
+
+```{=html}
+<div class="section-label section-label--lg">Long-Context, Multilingual &amp; Multimodal Perception</div>
+```
+
+- **Long documents:** strong within a generous window (RULER: 96% up to 128K) but degrades on
+  true extreme-length multi-document synthesis (SCROLLS composite: ~29%)
+- **Multilingual:** solid on translated grade-school math (MGSM: 94% averaged across
+  languages) but weaker on broader multilingual exam transfer (MMLU-ProX: ~76%) and
+  low-resource-language reading comprehension (Belebele: ~60% averaged across 122 languages)
+- **Visual perception:** chart- and document-reading is essentially solved (ChartQA: 91%,
+  DocVQA: 96%), but spatial/3D reasoning from images is still weak (MindCube: ~47%,
+  SpatialViz-Bench: ~45%)
+
+::: {.notes}
+This is a first-pass synthesis meant to be argued with — the user's own plan is to go through
+the full 208-benchmark catalog category by category and sharpen this. Treat it as a draft
+scorecard, not a finished claim.
+
+**What's deliberately NOT here yet**: an aggregate, cross-category "plateau vs. still
+climbing" visualization distilling all 208 benchmarks into one picture (or a small set of
+plots). That's a real next step but genuinely unsolved in terms of *how* to build it — single
+plot vs. small multiples vs. something else — and it should probably also fold in the
+disclosure/rotation/domain-novelty contamination-resistance axes from the benchmark tracker
+artifact once those get worked through. Don't improvise that visualization live; it's future
+work, not deferred by accident.
+
+**Recurring pattern worth saying out loud**: nearly every category shows the same shape as the
+MMLU→MMLU-Pro or ARC-AGI-1→2→3 story from the previous slide — the *easy* end of a skill
+saturates while a harder successor (or a harder tier within the same benchmark, as with
+FrontierMath's Tiers 1–3 vs. Tier 4) stays wide open. "AI can do X" is almost always true only
+for a specific difficulty band of X, not the whole skill.
+
+**Scaffolding is doing a lot of the work** in several of the strongest "can do" claims here
+(ARC-AGI, the video-game harness results, several agentic/computer-use benchmarks) — the gap
+between a bare model and a model wrapped in a purpose-built harness is itself one of the
+biggest levers in this entire catalog, arguably bigger than raw model capability in some
+categories. Worth flagging live rather than letting the saturated numbers imply "the model"
+did this alone.
+
+All numbers here are read directly off `benchmarks/aggregated_summary.csv` and the individual
+`benchmarks/data/*.csv` files — same sourcing standard as the AI Benchmarks slide, no
+estimates.
+:::
+
+## Limits of LLMs {.heading-accent}
+
+```{=html}
+<div class="section-label section-label--lg">Hard To Lower The Floor To 0</div>
+<div class="floor-limit-list">
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the requirements themselves take search to find — humans don't start out knowing them either</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>requirements change out from under the answer</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>translation loss between what's in your head and what's in the prompt</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>benchmarks score one answer, not a menu of options with tradeoffs — models rarely offer either</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the real fix sometimes lives one level up — the model just answers the question it was asked (the XY problem)</div>
+</div>
+```
 
 # Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 

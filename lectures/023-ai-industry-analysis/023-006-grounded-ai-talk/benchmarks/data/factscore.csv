@@ -1,0 +1,4 @@
+date,model,score,score_unit,source_url,notes
+2023-05-23,InstructGPT,42.5,FActScore (percent atomic facts supported),https://arxiv.org/abs/2305.14251,FActScore paper Table 1 (biography generation task)
+2023-05-23,ChatGPT,58.3,FActScore (percent atomic facts supported),https://arxiv.org/abs/2305.14251,FActScore paper Table 1 (biography generation task)
+2023-05-23,PerplexityAI,71.5,FActScore (percent atomic facts supported),https://arxiv.org/abs/2305.14251,FActScore paper Table 1 (biography generation task); only model in this set that used retrieval/search

@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2024-10-07,Llama-3.1-Instruct-70B,13.7,"success rate % (self-debug, no expert knowledge)",https://arxiv.org/abs/2410.05080,"ScienceAgentBench paper Table 3, self-debug framework (best-performing framework for most models tested)."
+2024-10-07,Mistral-Large-2,23.5,"success rate % (self-debug, no expert knowledge)",https://arxiv.org/abs/2410.05080,"ScienceAgentBench paper Table 3, self-debug framework."
+2024-10-07,GPT-4o,22.6,"success rate % (self-debug, no expert knowledge)",https://arxiv.org/abs/2410.05080,"ScienceAgentBench paper Table 3, self-debug framework."
+2024-10-07,Llama-3.1-Instruct-405B,14.7,"success rate % (self-debug, no expert knowledge)",https://arxiv.org/abs/2410.05080,"ScienceAgentBench paper Table 3, self-debug framework."
+2024-10-07,Claude-3.5-Sonnet,32.4,"success rate % (self-debug, no expert knowledge)",https://arxiv.org/abs/2410.05080,"ScienceAgentBench paper Table 3, self-debug framework; best non-reasoning model."
+2024-10-07,OpenAI o1-preview,42.2,"success rate % (direct prompting + self-debug, no expert knowledge)",https://arxiv.org/abs/2410.05080,"ScienceAgentBench paper; top overall score, at >10x the inference cost of other models per the paper."

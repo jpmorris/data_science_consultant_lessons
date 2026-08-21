@@ -1,0 +1,20 @@
+date,model,score,score_unit,source_url,notes
+2024-08-13,GPT-4o,33.2,% resolved,https://openai.com/index/introducing-swe-bench-verified/,"OpenAI's post introducing the human-filtered 500-problem SWE-bench Verified subset, with GPT-4o baseline."
+2024-10-22,Claude 3.5 Sonnet (upgraded),49.0,% resolved,https://www.anthropic.com/news/swe-bench-sonnet,"Anthropic's own agent scaffold; up from 33.4% for the original June 2024 Claude 3.5 Sonnet, and above o1-preview at the time."
+2024-12-17,o1,48.9,% resolved,https://www.anthropic.com/news/claude-3-7-sonnet,Cited as comparison point in Claude 3.7 Sonnet announcement.
+2025-01-31,o3-mini,49.3,% resolved,https://www.anthropic.com/news/claude-3-7-sonnet,Cited as comparison point in Claude 3.7 Sonnet announcement.
+2025-02-24,Claude 3.7 Sonnet,62.3,% resolved,https://www.anthropic.com/news/claude-3-7-sonnet,Score without custom scaffold.
+2025-02-24,Claude 3.7 Sonnet (custom scaffold),70.3,% resolved,https://www.anthropic.com/news/claude-3-7-sonnet,SOTA at launch with Anthropic-tuned agent scaffold.
+2025-03-25,Gemini 2.5 Pro,63.8,% resolved,https://www.vals.ai/benchmarks/swebench,"Reported with a custom agent setup; between o3-mini and Claude 3.7 Sonnet on independent trackers."
+2025-04-14,GPT-4.1,54.6,% resolved,https://www.vals.ai/benchmarks/swebench,Independent leaderboard aggregator entry.
+2025-05-22,Claude Opus 4,72.5,% resolved,https://www.anthropic.com/news/claude-4,"Anthropic: ""best coding model in the world,"" leading SWE-bench Verified at launch."
+2025-05-22,Claude Sonnet 4,72.7,% resolved,https://www.anthropic.com/news/claude-4,Slightly edged out Opus 4 on this specific benchmark at the same launch.
+2025-06-25,o3 (full),69.1,% resolved,https://www.vals.ai/benchmarks/swebench,Independent leaderboard aggregator entry.
+2025-08-07,GPT-5,74.9,% resolved,https://openai.com/index/introducing-gpt-5-for-developers/,"OpenAI: GPT-5 state-of-the-art across coding benchmarks, up from o3's 69.1%."
+2025-08-05,Opus 4.1,74.5,% resolved,https://www.vellum.ai/blog/claude-opus-4-6-benchmarks,"Up from Opus 4's 72.5%, per third-party benchmark tracker."
+2025-09-29,Claude Sonnet 4.5,77.2,% resolved,https://caylent.com/blog/claude-sonnet-4-5-highest-scoring-claude-model-yet-on-swe-bench,"Billed as ""highest-scoring Claude model yet"" on SWE-bench at launch."
+2025-11-24,Claude Opus 4.5,80.9,% resolved,https://www.anthropic.com/news/claude-opus-4-5,First model to cross 80% on SWE-bench Verified per Anthropic/coverage.
+2025-12-11,GPT-5.2,80.0,% resolved,https://introl.com/blog/gpt-5-2-vs-gemini-3-benchmark-comparison-2026,Third-party benchmark comparison article.
+2025-11-18,Gemini 3 Pro,76.2,% resolved,https://introl.com/blog/gpt-5-2-vs-gemini-3-benchmark-comparison-2026,Third-party benchmark comparison article.
+2025-12-17,Gemini 3 Flash,78.0,% resolved,https://introl.com/blog/gpt-5-2-vs-gemini-3-benchmark-comparison-2026,"Reported as outperforming Gemini 3 Pro on this benchmark despite being the smaller/faster tier."
+2026-04-01,Claude Sonnet 5,82.1,% resolved,https://www.siliconreport.com/anthropics-claude-sonnet-5-breaks-80-on-swe-bench-verified-widens-benchmarks-over-competit-220e6417,"Up from Claude Sonnet 4.6's 79.6%, continuing the incremental climb through 2026."

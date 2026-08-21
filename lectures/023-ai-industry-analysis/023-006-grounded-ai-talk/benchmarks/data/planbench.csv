@@ -1,0 +1,16 @@
+date,model,score,score_unit,source_url,notes
+2023-11-26,GPT-4,34.3,percent accuracy (206/600 Blocksworld Plan Generation),https://arxiv.org/abs/2206.10498,"Original PlanBench paper (Kambhampati group), Table 1; v4 revision (Nov 2023) is the version that added GPT-4 results (paper first posted June 2022 with only GPT-3 results)"
+2023-11-26,Instruct-GPT3 (text-davinci-002),6.8,percent accuracy (41/600 Blocksworld Plan Generation),https://arxiv.org/abs/2206.10498,Same Table 1 as above
+2024-10-02,GPT-4,34.6,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,"'Planning in Strawberry Fields' paper, Table 1; near-identical to the original PlanBench GPT-4 figure, confirming metric comparability"
+2024-10-02,GPT-4 Turbo,40.1,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,GPT-4o,35.5,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,GPT-4o-mini,8.8,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,Claude 3 Opus,59.3,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,Claude 3.5 Sonnet,54.8,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,Gemini 1 Pro,0.5,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,Gemini 1.5 Pro,23.8,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,LLaMA 3 70B,34.16,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,Table 1
+2024-10-02,LLaMA 3.1 405B,62.6,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,"Table 1; best non-reasoning LLM on standard Blocksworld"
+2024-10-02,o1-mini,56.6,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,"Table 2, o1 vs Fast Downward comparison; matches the karthikv792/LLMs-Planning leaderboard figure"
+2024-10-02,o1-preview,97.8,percent accuracy (zero-shot Blocksworld NL),https://arxiv.org/abs/2410.02162,"Table 2; large jump attributed to inference-time reasoning ('LRM' class)"
+2025-01,DeepSeek R1,99.1,percent accuracy (zero-shot Blocksworld NL),https://github.com/karthikv792/LLMs-Planning,"PlanBench static-test-set leaderboard in the official repo README; date is approximate (DeepSeek R1 released Jan 2025), exact leaderboard-update date not shown on the page"

@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2022-11-21,Codex (code-davinci-002),38.8,pass@1 % (mean over 1000 problems),https://github.com/xlang-ai/DS-1000/blob/main/results/codex002-result.txt,Official DS-1000 repo results file; original paper baseline.
+2023-06-13,GPT-3.5-Turbo (0613),38.6,pass@1 % (mean over 1000 problems),https://github.com/xlang-ai/DS-1000/blob/main/results/gpt-3.5-turbo-0613-result.txt,Official DS-1000 repo results file.
+2023-06-13,GPT-4 (0613),51.0,pass@1 % (mean over 1000 problems),https://github.com/xlang-ai/DS-1000/blob/main/results/gpt-4-0613-result.txt,Official DS-1000 repo results file.
+2024-01-25,GPT-3.5-Turbo (0125),39.4,pass@1 % (mean over 1000 problems),https://github.com/xlang-ai/DS-1000/blob/main/results/gpt-3.5-turbo-0125-result.txt,Official DS-1000 repo results file.
+2024-04-09,GPT-4 Turbo (2024-04-09),53.9,pass@1 % (mean over 1000 problems),https://github.com/xlang-ai/DS-1000/blob/main/results/gpt-4-turbo-2024-04-09-result.txt,"Official DS-1000 repo results file; highest score in the repo's own tracked results as of research (April 2024), no newer official runs found."

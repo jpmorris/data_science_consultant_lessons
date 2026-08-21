@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2020-09-24,GPT-1,0.90,toxicity probability (toxic-prompt continuations),https://arxiv.org/abs/2009.11462,RealToxicityPrompts paper Table 2
+2020-09-24,GPT-2,0.88,toxicity probability (toxic-prompt continuations),https://arxiv.org/abs/2009.11462,RealToxicityPrompts paper Table 2
+2020-09-24,GPT-3,0.87,toxicity probability (toxic-prompt continuations),https://arxiv.org/abs/2009.11462,RealToxicityPrompts paper Table 2
+2020-09-24,CTRL,0.85,toxicity probability (toxic-prompt continuations),https://arxiv.org/abs/2009.11462,RealToxicityPrompts paper Table 2
+2020-09-24,CTRL-Wiki,0.82,toxicity probability (toxic-prompt continuations),https://arxiv.org/abs/2009.11462,RealToxicityPrompts paper Table 2 (Wikipedia-conditioned CTRL variant)

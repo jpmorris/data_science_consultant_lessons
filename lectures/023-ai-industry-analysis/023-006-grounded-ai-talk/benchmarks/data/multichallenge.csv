@@ -1,0 +1,31 @@
+date,model,score,score_unit,source_url,notes
+2025-03-05,deepseek-v3p1,46.10,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,"Scale AI's own MultiChallenge leaderboard; judged by Gemini 2.5 Pro. Date is the leaderboard entry's recorded 'createdAt' timestamp (submission/eval date), which may lag the model's actual public release date. Max observed score on this leaderboard is 81.96 (asymptotic ceiling reported by the site), so treat all scores as relative to that, not 100."
+2025-03-05,gpt-oss-120b,45.34,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-04-16,claude-opus-4-1-20250805-thinking,57.20,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-04-16,o3-pro-2025-06-10-reasoning-high,62.40,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-05-20,claude-haiku-4-5-20251001-thinking,50.49,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-05-23,claude-3-7-sonnet-thinking,51.58,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-05-24,kimi-k2-thinking,55.42,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-06-05,o4-mini-2025-04-16-reasoning-high,44.90,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-06-26,gemini-3-pro-preview,65.67,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-07-23,qwen3-235b-a22b,41.22,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-08-07,gpt-5-thinking,63.19,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-08-08,gemini-2-5-pro,53.62,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-08-08,o3-2025-04-16-reasoning-high,56.62,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-08-22,gpt-4.1,39.43,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-10-02,claude-sonnet-4-5-20250929-thinking,55.32,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-11-06,claude-4-sonnet-thinking,57.11,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-11-19,gpt-5.1-2025-11-13-thinking,63.41,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-11-26,claude-4-opus-thinking,58.62,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-11-26,claude-opus-4-5-20251101-thinking,58.97,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-11-26,gemini-2-0-flash,36.35,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-11-26,gpt-5.1-2025-11-13-instant,51.23,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2025-12-15,gpt-5-mini-thinking,58.99,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-02-12,kimi-k2.5,61.39,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-02-17,claude-opus-4-6 (Non-Thinking),56.02,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-02-17,claude-opus-4-6-thinking-max,37.15,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,"Notably lower than the non-thinking variant of the same model on this row above -- an inversion worth flagging, not an error in this transcription."
+2026-03-23,gemini-3.1-flash-lite-preview,60.61,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-03-23,gpt-5.4-pro-2026-03-05,69.23,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-03-25,gemini-3.1-pro-preview,71.37,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-04-08,Muse Spark,75.52,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Date = leaderboard entry createdAt timestamp.
+2026-07-09,Muse Spark 1.1,75.30,"% accuracy (MultiChallenge, Scale AI leaderboard)",https://scale.com/leaderboard/multichallenge,Most recent entry on this leaderboard as of this research pass; tied for rank 1 with the March 'Muse Spark' entry above.

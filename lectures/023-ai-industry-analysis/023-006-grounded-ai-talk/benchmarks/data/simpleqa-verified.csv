@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2025-09-09,Gemini 2.5 Pro,55.6,percent F1,https://arxiv.org/html/2509.07968v1,"SimpleQA Verified paper (Google DeepMind), published 2025-09-09; F1-score on de-duplicated/rebalanced 1,000-question set"
+2025-09-09,GPT-5,52.3,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper
+2025-09-09,OpenAI o3,51.9,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper
+2025-09-09,GPT-4.1,39.9,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper
+2025-09-09,GPT-4o,34.9,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper
+2025-09-09,DeepSeek R1,33.3,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper
+2025-09-09,Claude Opus 4,28.3,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper
+2025-09-09,Gemini 2.5 Flash,28.2,percent F1,https://arxiv.org/html/2509.07968v1,SimpleQA Verified paper

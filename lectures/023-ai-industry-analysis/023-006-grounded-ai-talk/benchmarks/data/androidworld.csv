@@ -1,0 +1,15 @@
+date,model,score,score_unit,source_url,notes
+2024-05-23,Human,80.0,"% success rate (AndroidWorld, 116 tasks)",https://arxiv.org/html/2405.14573v4,"Original AndroidWorld paper, Table 3 (published ICLR 2025)."
+2024-05-23,SeeAct (GPT-4 Turbo),15.5,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,Web-agent baseline adapted to Android.
+2024-05-23,M3A-Simple (Gemma 2),3.4,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,
+2024-05-23,M3A-Simple (Gemini 1.5 Pro),14.7,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,
+2024-05-23,M3A-Simple (GPT-4 Turbo),19.8,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,Minimal-prompting variant of M3A (no guidelines/reflection).
+2024-05-23,"M3A (Gemma 2, a11y tree)",9.5,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,
+2024-05-23,"M3A (Gemini 1.5 Pro, a11y tree)",19.4,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,
+2024-05-23,"M3A (Gemini 1.5 Pro, screenshot+a11y/SoM)",22.8,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,
+2024-05-23,"M3A (GPT-4 Turbo, screenshot+a11y/SoM)",25.4,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,
+2024-05-23,"M3A (GPT-4 Turbo, a11y tree)",30.6,% success rate (AndroidWorld),https://arxiv.org/html/2405.14573v4,Best-performing configuration in the original paper.
+2025-08-01,GUI-Owl-7B,66.4,% success rate pass@1 (AndroidWorld community leaderboard),https://docs.google.com/spreadsheets/d/1cchzP9dlTZ3WXQTfYNhh3avxoLipqHN75v1Tb86uhHo/edit?gid=0,"Official AndroidWorld (google-research) community leaderboard, linked from the project's GitHub README. Leaderboard is explicitly labeled 'self-reported, not independently verified' - treat as directional, not certified."
+2025-09-19,K2-Agent,76.7,% success rate pass@1 (AndroidWorld community leaderboard),https://docs.google.com/spreadsheets/d/1cchzP9dlTZ3WXQTfYNhh3avxoLipqHN75v1Tb86uhHo/edit?gid=0,Self-reported community leaderboard entry (Qwen2.5-VL-72B+7B hierarchical agent).
+2025-10-06,DroidRun (GPT-5 + Gemini 2.5 Pro),91.4,% success rate pass@1 (AndroidWorld community leaderboard),https://docs.google.com/spreadsheets/d/1cchzP9dlTZ3WXQTfYNhh3avxoLipqHN75v1Tb86uhHo/edit?gid=0,Self-reported; same team's score climbed from 63.0% (2025-08) to 78.4% (2025-09) to 91.4% (2025-10) in under two months per the leaderboard's own changelog notes.
+2025-10-14,AGI-0,97.4,% success rate pass@1 (AndroidWorld community leaderboard),https://docs.google.com/spreadsheets/d/1cchzP9dlTZ3WXQTfYNhh3avxoLipqHN75v1Tb86uhHo/edit?gid=0,"Self-reported; effectively at parity with (or above) the paper's original 80% human baseline, and the top score has stayed pinned near 97.4% through at least three later 2026 submissions - suggestive of near-saturation on the original 116-task suite."

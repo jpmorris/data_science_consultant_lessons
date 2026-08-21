@@ -1,0 +1,80 @@
+date,model,score,score_unit,source_url,notes
+2023-11-27,GPT-4V(ision) (Playground),56.8,"% accuracy (MMMU validation set, overall)",https://openai.com/contributions/gpt-4v,
+2023-12-06,Gemini 1.0 Ultra,59.4,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/#introduction,
+2023-12-06,Gemini 1.0 Pro,47.9,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/#introduction,
+2023-12-06,Gemini Nano2,32.6,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/#introduction,
+2023-12-15,Qwen-VL-PLUS,45.2,"% accuracy (MMMU validation set, overall)",https://github.com/QwenLM/Qwen-VL?tab=readme-ov-file#qwen-vl-plus,
+2024-01-16,Marco-VL,41.2,"% accuracy (MMMU validation set, overall)",https://mmmu-benchmark.github.io/,
+2024-01-27,Qwen-VL-MAX,51.4,"% accuracy (MMMU validation set, overall)",https://github.com/QwenLM/Qwen-VL/tree/master,
+2024-01-31,Human Expert (High),88.6,"% accuracy (MMMU validation set, overall)",https://mmmu-benchmark.github.io/,"Human baseline from the original MMMU paper (college-educated human annotators, varying expertise tiers)."
+2024-01-31,Human Expert (Medium),82.6,"% accuracy (MMMU validation set, overall)",https://mmmu-benchmark.github.io/,"Human baseline from the original MMMU paper (college-educated human annotators, varying expertise tiers)."
+2024-01-31,Human Expert (Low),76.2,"% accuracy (MMMU validation set, overall)",https://mmmu-benchmark.github.io/,"Human baseline from the original MMMU paper (college-educated human annotators, varying expertise tiers)."
+2024-01-31,Adept Fuyu-Heavy,48.3,"% accuracy (MMMU validation set, overall)",https://www.adept.ai/blog/adept-fuyu-heavy,
+2024-03-05,Claude 3 Opus,59.4,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-3-family,
+2024-03-05,Claude 3 Sonnet,53.1,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-3-family,
+2024-03-05,Claude 3 Haiku,50.2,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-3-family,
+2024-03-09,Marco-VL-Plus,46.2,"% accuracy (MMMU validation set, overall)",https://mmmu-benchmark.github.io/,
+2024-03-16,HPT Pro,52.0,"% accuracy (MMMU validation set, overall)",https://huggingface.co/HyperGAI,
+2024-04-23,Reka Core,56.3,"% accuracy (MMMU validation set, overall)",https://publications.reka.ai/reka-core-tech-report.pdf,
+2024-04-23,SenseChat-Vision-0423-Preview,54.6,"% accuracy (MMMU validation set, overall)",https://platform.sensenova.cn/doc?path=/model/mllm.md,
+2024-04-23,Reka Flash,53.3,"% accuracy (MMMU validation set, overall)",https://reka.ai/reka-flash-an-efficient-and-capable-multimodal-language-model/,
+2024-04-23,Reka Edge,42.8,"% accuracy (MMMU validation set, overall)",https://www.reka.ai/,
+2024-05-13,GPT-4o (0513),69.1,"% accuracy (MMMU validation set, overall)",https://openai.com/index/hello-gpt-4o/,
+2024-05-23,Gemini 1.5 Pro (0523),62.2,"% accuracy (MMMU validation set, overall)",https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf,
+2024-05-23,Gemini 1.5 Flash,56.1,"% accuracy (MMMU validation set, overall)",https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf,
+2024-05-30,Skywork-VL,51.4,"% accuracy (MMMU validation set, overall)",https://www.kunlun.com/en/,
+2024-06-20,Claude 3.5 Sonnet,68.3,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-3-5-sonnet,
+2024-07-04,InternVL2-Pro,62.0,"% accuracy (MMMU validation set, overall)",https://internvl.github.io/blog/2024-07-02-InternVL-2.0/,
+2024-07-18,GPT-4o mini,59.4,"% accuracy (MMMU validation set, overall)",https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/,
+2024-08-01,Gemini 1.5 Pro (0801),65.8,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/pro/,
+2024-08-29,Qwen2-VL-72B,64.5,"% accuracy (MMMU validation set, overall)",https://github.com/QwenLM/Qwen2-VL,
+2024-09-12,o1,78.2,"% accuracy (MMMU validation set, overall)",https://openai.com/index/introducing-openai-o1-preview/,
+2024-11-18,TeleMM,61.4,"% accuracy (MMMU validation set, overall)",https://cloud.siliconflow.cn/playground/chat/17885302607,
+2024-11-20,GPT-4o (1120),70.7,"% accuracy (MMMU validation set, overall)",https://openai.com/index/hello-gpt-4o/,
+2024-12-09,ILLUME,38.2,"% accuracy (MMMU validation set, overall)",https://arxiv.org/pdf/2412.06673,
+2024-12-11,HyViLM,41.8,"% accuracy (MMMU validation set, overall)",https://arxiv.org/abs/2412.08378,
+2024-12-12,SynerGen-VL,34.2,"% accuracy (MMMU validation set, overall)",https://arxiv.org/abs/2412.09604,
+2024-12-13,EVLM-KTO,53.0,"% accuracy (MMMU validation set, overall)",https://arxiv.org/abs/2412.10566,
+2024-12-19,MetaMorph,41.8,"% accuracy (MMMU validation set, overall)",https://tsb0601.github.io/metamorph/,
+2025-01-22,Spark4.0-Turbo,70.4,"% accuracy (MMMU validation set, overall)",https://xinghuo.xfyun.cn/spark,
+2025-02-05,Gemini 2.0 Flash-Lite,68.0,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/,
+2025-02-05,Gemini 2.0 Flash,71.7,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/,
+2025-02-05,Gemini 2.0 Pro,72.7,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/,
+2025-02-19,Grok 3 Beta,78.0,"% accuracy (MMMU validation set, overall)",https://x.ai/news/grok-3,
+2025-02-24,Claude 3.7 Sonnet,75.0,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/claude/sonnet,
+2025-02-28,GPT‑4.5,74.4,"% accuracy (MMMU validation set, overall)",GPT‑4.5,
+2025-04-05,Llama 4 Behemoth,76.1,"% accuracy (MMMU validation set, overall)",https://ai.meta.com/blog/llama-4-multimodal-intelligence/,
+2025-04-16,o3,82.9,"% accuracy (MMMU validation set, overall)",https://openai.com/index/introducing-o3-and-o4-mini/,
+2025-04-16,o4-mini,81.6,"% accuracy (MMMU validation set, overall)",https://openai.com/index/introducing-o3-and-o4-mini/,
+2025-04-30,Nova Premier,68.0,"% accuracy (MMMU validation set, overall)",https://www.amazon.science/publications/amazon-nova-premier-technical-report-and-model-card,
+2025-04-30,Nova Pro,62.0,"% accuracy (MMMU validation set, overall)",https://www.amazon.science/publications/amazon-nova-premier-technical-report-and-model-card,
+2025-05-06,Gemini 2.5 Pro 05-06,79.6,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/pro/,
+2025-05-13,Seed 1.5-VL,73.6,"% accuracy (MMMU validation set, overall)",https://seed.bytedance.com/en/tech/seed1_5_vl,
+2025-05-13,Seed 1.5-VL Thinking,77.9,"% accuracy (MMMU validation set, overall)",https://seed.bytedance.com/en/tech/seed1_5_vl,
+2025-05-20,Gemini 2.5 Pro Deep-Think,84.0,"% accuracy (MMMU validation set, overall)",https://deepmind.google/technologies/gemini/pro/,
+2025-05-20,Gemini 2.5 Flash 05-20,79.7,"% accuracy (MMMU validation set, overall)",https://deepmind.google/models/gemini/flash/,
+2025-05-23,Claude Sonnet 4,74.4,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-4,
+2025-05-23,Claude Opus 4,76.5,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-4,
+2025-06-25,Seed 1.6-Thinking,74.8,"% accuracy (MMMU validation set, overall)",https://seed.bytedance.com/en/seed1_6,
+2025-08-05,Claude Opus 4.1,77.1,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-opus-4-1,
+2025-08-07,GPT-5 w/ thinking,84.2,"% accuracy (MMMU validation set, overall)",https://openai.com/gpt-5/,
+2025-08-07,GPT-5 w/o thinking,74.4,"% accuracy (MMMU validation set, overall)",https://openai.com/gpt-5/,
+2025-08-31,KiQ-v0,72.6,"% accuracy (MMMU validation set, overall)",https://uark-cviu.github.io/projects/papers/BiMax.pdf,
+2025-09-05,DreamPRM-1.5 (GPT-5-mini w/ thinking),84.6,"% accuracy (MMMU validation set, overall)",https://github.com/coder-qicao/DreamPRM-1.5,
+2025-09-29,Claude Sonnet 4.5,77.8,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-sonnet-4-5,
+2025-09-29,Claude Sonnet 4.5 w/o tools,63.4,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://www.anthropic.com/news/claude-sonnet-4-5,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2025-11-13,GPT-5.1 Thinking,79.0,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://openai.com/index/gpt-5-1-for-developers/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2025-11-13,GPT-5.1,85.4,"% accuracy (MMMU validation set, overall)",https://openai.com/index/gpt-5-1-for-developers/,
+2025-11-18,Gemini 3.0 Pro,81.0,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://blog.google/products/gemini/gemini-3/#gemini-3,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2025-11-24,Claude Opus 4.5,80.7,"% accuracy (MMMU validation set, overall)",https://www.anthropic.com/news/claude-opus-4-5,
+2025-12-11,GPT-5.2 Thinking w/o tools,79.5,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://openai.com/index/introducing-gpt-5-2/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2025-12-11,GPT-5.2 Thinking w/o Python,80.4,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://openai.com/index/introducing-gpt-5-2/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-02-05,Claude Opus 4.6 w/o tools,73.9,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://www.anthropic.com/news/claude-opus-4-6,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-02-05,Claude Opus 4.6 w/ tools,77.3,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://www.anthropic.com/news/claude-opus-4-6,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-02-17,Claude Sonnet 4.6 w/o tools,74.5,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://www.anthropic.com/news/claude-sonnet-4-6,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-02-17,Claude Sonnet 4.6 w/ tools,75.6,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://www.anthropic.com/news/claude-sonnet-4-6,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-02-19,Gemini 3.1 Pro Thinking (High),80.5,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://deepmind.google/models/gemini/pro/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-03-05,GPT-5.4 Thinking w/o tools,81.2,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://openai.com/index/introducing-gpt-5-4/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-03-05,GPT-5.4 Thinking w/ tools,82.1,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://openai.com/index/introducing-gpt-5-4/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-04-08,Muse Spark Thinking,80.4,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://ai.meta.com/blog/introducing-muse-spark-msl/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."
+2026-07-01,Chance Vision 1.5,86.9,"% accuracy (MMMU-Pro, overall -- harder 10-option variant; used because this snapshot did not report a standard MMMU-validation score)",https://www.chance.vision/,"MMMU-Pro score, not directly comparable to earlier MMMU-validation rows in this file."

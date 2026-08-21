@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2020-05,GPT-3 175B,78.9,percent accuracy,https://arxiv.org/pdf/2005.14165,"Zero-shot; original GPT-3 paper. Kept as pre-2024 anchor since HellaSwag (2019) was already trending toward saturation well before 2024 — useful to show the full climb"
+2023-10,Mistral 7B,81.3,percent accuracy,https://arxiv.org/pdf/2310.06825,Original Mistral 7B paper
+2023-03,GPT-4,95.3,percent accuracy,https://cdn.openai.com/papers/gpt-4.pdf,10-shot; original GPT-4 technical report
+2024-03-04,Claude 3 Opus,95.4,percent accuracy,https://llm-stats.com/benchmarks/hellaswag,"Leaderboard aggregator; at/above the ~95.6% reported human baseline"
+2024-09,Qwen2.5 32B Instruct,85.2,percent accuracy,https://llm-stats.com/models/compare/gpt-4o-2024-08-06-vs-qwen-2.5-32b-instruct,Mid-size model shown for contrast; frontier models were already saturated by this point

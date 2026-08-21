@@ -1,0 +1,114 @@
+slug,disclosure,rotation,domain_novelty,justification
+mmlu,fully_public,static,low,"57-subject exam questions with published answer keys, released once in 2020, drawing on ordinary school/professional-exam content that pervades pretraining corpora."
+mmlu-pro,fully_public,static,low,"Same public-answer, one-time-release model as MMLU, just with 10 choices instead of 4 and harder questions -- domain itself is still standard exam knowledge."
+big-bench-hard,fully_public,static,low,"23 fixed, fully public BIG-Bench tasks with published answers; the underlying algorithmic/logical puzzle types are common training-data genres."
+hellaswag,fully_public,static,low,"Public sentence-completion dataset with published gold answers, unchanged since 2019; commonsense continuation is a well-trodden pretraining genre."
+arc,fully_public,static,low,"Public grade-school science MCQs with published answers, static since 2018."
+truthfulqa,fully_public,static,medium,"Public questions/answers, but targets common human misconceptions specifically -- a genre models must resist reproducing rather than just recall."
+winogrande,fully_public,static,low,"Public pronoun-resolution set with published answers, static since 2019; adversarial filtering doesn't change that answers are public."
+agieval,fully_public,static,low,"Real, publicly-available human standardized exams (SAT/LSAT/Gaokao) with published answer keys -- about as trainable a domain as exists."
+bool-q,fully_public,static,low,"Public yes/no QA over public Wikipedia passages, static since 2019."
+piqa,fully_public,static,low,"Public physical-commonsense QA, static, published answers."
+lambada,fully_public,static,low,"Public last-word-prediction set drawn from public books, static since 2016."
+adversarial-nli,fully_public,static,low,"Public NLI dataset with published labels; adversarial collection targeted 2019-era models, not later ones."
+common-sense-qa-2,fully_public,static,low,Public true/false commonsense set with published labels.
+superglue,fully_public,static,low,"Bundle of public NLU tasks with published labels/leaderboard, static since 2019."
+science-qa,fully_public,static,medium,Public multimodal science QA with published answers; image+explanation format is somewhat less common training-data genre than plain text QA.
+open-book-qa,fully_public,static,low,Public elementary science QA with a published core-fact set and answers.
+trivia-qa,fully_public,static,low,"Large public trivia QA dataset with published answers, static since 2017 -- general trivia is a maximally well-trodden pretraining domain."
+live-bench,fully_public,periodic_rotation,medium,"Explicitly designed to avoid contamination: questions are pulled from recent sources (papers, news, forums) and the set is refreshed monthly, though task types themselves (math, coding, reasoning) are ordinary."
+lmarena-elo,fully_public,periodic_rotation,medium,"Human raters submit real, unscripted prompts continuously and vote pairwise live -- no fixed test set exists to leak, though the prompt distribution (general chat) is common."
+gpqa-diamond,questions_public_answers_hidden,static,low,"Questions are public but deliberately written to be ""Google-proof"" -- skilled non-experts with search access still only reach ~34% -- though the underlying graduate-science domain itself is well-represented in training data."
+hle,fully_public,static,high,"Questions and answers are both published, but were expert-curated across 1,000+ contributors specifically to sit past the frontier of what's discoverable/memorizable online at release time."
+simpleqa,fully_public,static,low,Public short-answer trivia questions with published gold answers; deliberately obscure but still ordinary factual-recall content.
+simpleqa-verified,fully_public,static,low,"Same profile as SimpleQA, just de-duplicated/relabeled."
+gsm8k,fully_public,static,low,"Public grade-school arithmetic word problems with published answers, static since 2021 -- one of the most heavily-cited (and likely most-memorized) benchmarks in existence."
+math,fully_public,static,low,"Public competition-style math problems with published solutions, static since 2021; AMC/AIME-style problems circulate widely online independent of this specific dataset."
+aime,fully_public,natural_annual_refresh,low,"Each year's real AIME problems and official solutions are published publicly soon after the exam, refreshing the pool annually -- but competition math itself is an extremely well-trodden domain, so freshness alone doesn't fully block contamination (Anthropic's own Claude Opus 4.6 system card flagged its 99.79% AIME 2025 score as a possible contamination risk)."
+frontiermath,private,static,high,"Original, unpublished research-level math problems written specifically to be held out; Epoch AI does not publish solutions, though a 2025 licensing controversy revealed OpenAI had access to a subset pre-release."
+mathvista,fully_public,static,medium,"Public math problems with published answers, but requires reading visual context (charts/diagrams) alongside text -- a less purely-text-memorizable genre than MATH/GSM8K."
+omni-math,fully_public,static,low,Public olympiad-level problems with published answers and difficulty ratings; olympiad math circulates widely online regardless of this specific compilation.
+imo,fully_public,natural_annual_refresh,low,"The real IMO's problems and official solutions are published publicly each year by the organizing committee, independent of any AI benchmark -- refreshes annually but is an extremely well-known competition genre."
+ioi,fully_public,natural_annual_refresh,medium,"Real IOI problems/solutions are published publicly each year; competitive programming is well-trodden, but the exact judge/test-case format adds some execution-grounded novelty over pure math olympiads."
+otis-mock-aime-2024-2025,fully_public,natural_annual_refresh,low,"Publicly published mock-AIME practice problems, refreshed each cycle; same well-trodden competition-math domain as AIME itself."
+critpt,unknown,unknown,unknown,Epoch-hub bulk-imported physics-competition-style benchmark with no dedicated research pass in this project -- disclosure/rotation model not independently confirmed.
+humaneval,fully_public,static,low,"164 public hand-written Python problems with published canonical solutions, static since 2021 -- extremely widely cited and almost certainly memorized to some degree by frontier models."
+mbpp,fully_public,static,low,"~1,000 public crowd-sourced Python problems with published solutions, static since 2021."
+swe-bench-verified,questions_public_answers_hidden,static,low,"Task descriptions come from real, fully public GitHub issues, but the verifying test patches used for grading are held out by the maintainers -- though the underlying repos themselves are public training-data content."
+swe-bench-lite,questions_public_answers_hidden,static,low,"Same held-out-test-patch model as SWE-bench Verified, smaller subset."
+swe-bench-multimodal,questions_public_answers_hidden,static,low,"Same model, extended to visual (frontend/UI) GitHub issues."
+swe-bench-pro,questions_public_answers_hidden,static,medium,"Newer, harder SWE-bench variant with held-out test patches; drawn from enterprise-style codebases somewhat less publicly indexed than the original's popular OSS repos."
+livecodebench,fully_public,periodic_rotation,low,"Explicitly time-stamps problems by release date and lets evaluators filter to only post-training-cutoff problems -- a real rotation-based contamination defense, though competitive-programming content itself is common."
+livecodebench-elo,fully_public,periodic_rotation,low,"Same rotation-based design as LiveCodeBench, Elo-scored variant."
+codeforces-elo,fully_public,periodic_rotation,low,"Codeforces runs genuinely new rated contests continuously; problems become public only after each contest closes, giving real ongoing freshness despite the well-trodden competitive-programming domain."
+aider-polyglot,fully_public,static,low,"Public Exercism-sourced exercises across several languages, fixed set, published solutions/tests."
+scicode,fully_public,static,medium,"Public scientific-computing coding problems drawn from real research code, less commonly represented in generic pretraining than typical LeetCode-style problems."
+mirrorcode,unknown,unknown,unknown,Epoch-hub bulk-imported coding benchmark with no dedicated research pass -- exact disclosure/rotation model not independently confirmed.
+algotune,unknown,unknown,medium,"Epoch-hub benchmark testing algorithm optimization/speed, not just correctness -- a less commonly-trained objective than pass/fail correctness, but exact disclosure model unconfirmed."
+cursorbench,unknown,unknown,unknown,Epoch-hub bulk-imported benchmark with no dedicated research pass -- disclosure/rotation model not independently confirmed.
+gso,unknown,unknown,medium,Epoch-hub software-optimization benchmark; exact disclosure/rotation model not independently confirmed.
+frontierswe,unknown,unknown,medium,Epoch-hub SWE benchmark; exact disclosure/rotation model not independently confirmed.
+frontiercode,unknown,unknown,medium,Epoch-hub coding benchmark; exact disclosure/rotation model not independently confirmed.
+webdev-arena,fully_public,periodic_rotation,medium,"Live head-to-head web-app-building arena (LMArena-style), continuously fed new user prompts rather than a fixed test set."
+deepswe,unknown,unknown,medium,Epoch-hub SWE benchmark; exact disclosure/rotation model not independently confirmed.
+ale-bench,fully_public,periodic_rotation,medium,"Built on AtCoder Heuristic Contest problems, which are published after each real contest closes -- ongoing rotation, algorithmic-optimization domain less common than plain correctness coding."
+gaia,questions_public_answers_hidden,static,medium,"Validation-split questions/answers are public, but the true test-set answers are held out on the official leaderboard; requires real multi-step tool use, a less purely-memorizable genre than QA."
+webarena,fully_public,static,medium,"Public task set on reproducible self-hosted sandboxed websites (not live internet), published success criteria."
+agentbench,fully_public,static,medium,"Public multi-environment agent task suite, published evaluation code."
+tau-bench,fully_public,static,medium,Public airline/retail customer-service task suite with published rules and grading; multi-turn tool-use is less memorizable than static QA.
+osworld,questions_public_answers_hidden,static,high,"Task instructions are public, but grading uses held-out verification scripts checking real desktop-application end states -- genuinely hard to memorize since success depends on live OS/app state, not a text answer."
+androidworld,questions_public_answers_hidden,static,high,"Same held-out-verifier-script model as OSWorld, applied to real Android app state."
+browsecomp,private,static,high,OpenAI deliberately designed tasks to be very hard to find via search even with tool access; answers are not published.
+vending-bench,fully_public,static,high,A genuinely novel simulated-business-management scenario (running a vending machine over simulated long horizons) with essentially no direct internet precedent as a training-data genre.
+vending-bench-dollars,fully_public,static,high,"Same Vending-Bench scenario, dollar-balance metric."
+vending-bench-percent,fully_public,static,high,"Same Vending-Bench scenario, percent-of-target metric."
+vending-bench-time,fully_public,static,high,"Same Vending-Bench scenario, survival-time metric."
+gdpval,private,static,high,"OpenAI's real economically-valuable professional tasks with expert grading rubrics; not published, to preserve grading integrity."
+gdpval-elo,private,static,high,"Same held-out GDPval task set, Elo-scored via Artificial Analysis' independent evaluation."
+the-agent-company,fully_public,static,medium,Public simulated-workplace task suite (Slack/GitLab/ownCloud-style tools) with published tasks.
+terminal-bench,fully_public,static,medium,Public terminal/CLI task suite with published tasks and test scripts.
+cybench,questions_public_answers_hidden,static,medium,Real CTF-style challenges with published prompts but held-out flags for grading; cybersecurity CTFs are a moderately-represented online genre.
+exploitbench,questions_public_answers_hidden,static,medium,"Similar CTF/exploit-development structure to Cybench, held-out grading."
+apex-agents,unknown,unknown,medium,Epoch-hub agentic benchmark; exact disclosure/rotation model not independently confirmed.
+deepresearchbench,fully_public,static,medium,Public long-horizon research-synthesis task suite with published grading rubrics.
+metr-time-horizon,private,periodic_rotation,high,"METR maintains its own private, continuously-expanded task suite specifically to avoid models training on the eval itself; tasks are deliberately varied-difficulty engineering work."
+metr-cross-domain-time-horizon,private,periodic_rotation,high,"Same METR methodology, extended across additional task domains."
+re-bench,private,static,high,METR's ML-research-engineering task suite; tasks and reference solutions are held privately to preserve eval integrity.
+mle-bench,questions_public_answers_hidden,static,medium,"Built on real, fully public Kaggle competitions, but OpenAI holds out final test-set labels/leaderboard scoring; ML engineering itself is a well-represented skill in pretraining."
+paperbench,questions_public_answers_hidden,static,high,"Real published ML papers (public) must be reproduced from scratch, but OpenAI's detailed grading rubrics are held out -- full end-to-end replication is not a memorizable single answer."
+ai-scientist,fully_public,static,high,"Open framework/paper with no fixed held-out answer key; success is evaluated via novel generated research output, which by construction can't be pre-memorized."
+openai-ai-self-improvement-evals,private,unknown,high,Internal OpenAI evals for recursive self-improvement-relevant capability; not published in detail.
+posttrainbench,unknown,unknown,high,Epoch-hub post-training/RSI-adjacent benchmark; exact disclosure/rotation model not independently confirmed.
+mmmu,fully_public,static,medium,Public college-level multimodal exam questions with published answers; image-grounded reasoning is less purely text-memorizable than plain QA.
+mmbench,fully_public,static,medium,Public multimodal MCQ benchmark with published answers and a circular-eval robustness check.
+chartqa,fully_public,static,low,"Public chart-reading QA with published answers, static since 2022 -- now considered near-saturated."
+docvqa,fully_public,static,low,"Public document-image QA with published answers, static since 2020 -- now considered near-saturated."
+video-mme,fully_public,static,medium,Public video-understanding QA with published answers; long-video temporal reasoning is a less commonly pretrained-on modality than static image or text.
+spatialviz-bench,unknown,unknown,high,"Epoch-hub spatial-visualization benchmark; exact disclosure/rotation model not independently confirmed, but spatial-reasoning-from-visuals is a plausibly under-represented pretraining genre."
+mindcube,unknown,unknown,medium,Epoch-hub benchmark; exact disclosure/rotation model not independently confirmed.
+geobench,unknown,unknown,medium,Epoch-hub geography/geospatial benchmark; exact disclosure/rotation model not independently confirmed.
+arc-agi-1,questions_public_answers_hidden,periodic_rotation,high,"A public training/evaluation set exists, but the official leaderboard's true test set is held privately by the ARC Prize Foundation; the abstract-grid-puzzle genre was deliberately designed to have essentially no internet precedent."
+arc-agi-2,questions_public_answers_hidden,periodic_rotation,high,"Same held-out-test-set model as ARC-AGI-1, a harder successor released when the first version saturated."
+arc-agi-3,questions_public_answers_hidden,periodic_rotation,high,"Same held-out model, extended toward interactive/agentic puzzle environments rather than static grids."
+chess-puzzles,fully_public,static,low,"Real chess puzzle positions (commonly Lichess-sourced), publicly known FEN + solution, judged against Stockfish -- chess is an extremely well-trodden pretraining domain."
+mystery-game-puzzles,private,static,high,The game's own identity/rules are deliberately kept secret from participants specifically to block benchmark-specific preparation -- by design one of the most opacity-resistant entries in the whole catalog.
+balrog,fully_public,static,medium,"Public suite of well-known games (NetHack, Crafter, BabyAI, etc.) with published rules; NetHack specifically is a famously hard-to-memorize procedurally-generated game."
+surface-evolver-bench,unknown,unknown,high,"Epoch-hub scientific-simulation benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed, but the physics-simulation task genre is plausibly under-represented in generic pretraining."
+weirdml,unknown,unknown,high,"Epoch-hub ""unconventional ML reasoning"" benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed, but deliberately unconventional-by-design tasks likely resist memorization."
+forecastbench,fully_public,periodic_rotation,high,"Uses real, currently-unresolved future events as questions -- the correct answer literally does not exist yet at evaluation time, making it structurally contamination-proof regardless of question publicity."
+fictionlivebench,fully_public,periodic_rotation,medium,Uses long fictional narratives for comprehension/consistency testing; refreshed periodically with new stories to stay ahead of contamination.
+lech-mazur-writing,fully_public,periodic_rotation,medium,"An ongoing public creative-writing tournament, continuously refreshed with new head-to-head judged rounds."
+simplebench,fully_public,static,medium,"Public everyday-reasoning questions selected specifically because models (despite being simple for humans) tend to fail them -- an adversarial-selection design, not a common training-data genre for correct answers."
+rli,private,periodic_rotation,high,"Real, live freelance economically-valuable work tasks (dev/design/data/video) drawn from ongoing freelance markets; grading is against real client-acceptance standards, not a published answer key."
+cl-bench,unknown,unknown,high,"Epoch-hub ""continual learning""-flavored benchmark with no dedicated deep-dive -- continual-learning task design is plausibly resistant to static memorization by construction."
+cl-bench-life,unknown,unknown,high,"""Life""/everyday-tasks variant of CL-Bench; same continual-learning-resistant design logic."
+blueprint-bench-2,fully_public,static,high,Constructing an accurate 2D floor plan from interior photographs has no obvious internet-pretraining precedent as a paired (photos -> verified floor plan) training signal.
+vpct,unknown,unknown,medium,Epoch-hub visual/perceptual-consistency benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed.
+enigma-eval,fully_public,static,medium,Public enigma-style lateral-thinking puzzles; individual puzzles may circulate online but the specific compiled/graded format is less commonly reproduced.
+cad-eval,unknown,unknown,high,"Epoch-hub CAD-generation benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed, but correct CAD output from a spec is a niche, likely under-represented pretraining genre."
+btf3,unknown,unknown,unknown,Epoch-hub bulk-imported benchmark with no dedicated deep-dive -- name/methodology not independently confirmed.
+proofbench,unknown,unknown,medium,Epoch-hub formal/informal proof-writing benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed.
+gbaeval,unknown,unknown,unknown,Epoch-hub bulk-imported benchmark with no dedicated deep-dive -- name/methodology not independently confirmed.
+epoch-capabilities-index,unknown,periodic_rotation,unknown,A composite index Epoch computes across many underlying benchmarks (each with its own disclosure model) rather than a single benchmark with one disclosure/novelty profile; Epoch updates it as new model results arrive.
+epoch-capabilities-index-percent,unknown,periodic_rotation,unknown,"Same composite-index caveat as Epoch Capabilities Index, expressed on a percent scale."
+kaggle-game-arena-elo,fully_public,periodic_rotation,low,"Live head-to-head chess play with a public, continuously-updated Elo leaderboard; chess itself is a well-trodden domain even though each individual game is fresh."

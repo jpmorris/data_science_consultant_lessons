@@ -1,0 +1,13 @@
+date,model,score,score_unit,source_url,notes
+2026-06-05,GPT-4o,3.3,pass@1 %,https://www.timetoact-group.at/en/insights/llm-benchmarks/llm-benchmarks-april-2025,Non-reasoning model baseline; large gap vs reasoning models below.
+2026-06-05,Claude Sonnet 4,26.1,pass@1 %,https://www.timetoact-group.at/en/insights/llm-benchmarks/llm-benchmarks-april-2025,LLM Benchmarks tracker snapshot.
+2026-06-05,o3-mini,31.5,pass@1 %,https://www.timetoact-group.at/en/insights/llm-benchmarks/llm-benchmarks-april-2025,LLM Benchmarks tracker snapshot.
+2026-06-05,o3 Mini High,38.4,pass@1 %,https://www.timetoact-group.at/en/insights/llm-benchmarks/llm-benchmarks-april-2025,LLM Benchmarks tracker snapshot.
+2026-06-05,o3-high,52.7,pass@1 %,https://www.timetoact-group.at/en/insights/llm-benchmarks/llm-benchmarks-april-2025,LLM Benchmarks tracker snapshot.
+2026-06-05,o4 Mini High,63.5,pass@1 %,https://www.timetoact-group.at/en/insights/llm-benchmarks/llm-benchmarks-april-2025,LLM Benchmarks tracker snapshot.
+2026-08-12,DeepSeek V3.2 Speciale,89.6,pass@1 %,https://artificialanalysis.ai/evaluations/livecodebench,Artificial Analysis LiveCodeBench leaderboard snapshot.
+2026-08-12,Gemini 3 Flash Preview (Reasoning),90.8,pass@1 %,https://artificialanalysis.ai/evaluations/livecodebench,Artificial Analysis LiveCodeBench leaderboard snapshot.
+2026-08-12,Gemini 3 Pro Preview (high),91.7,pass@1 %,https://artificialanalysis.ai/evaluations/livecodebench,"Top of Artificial Analysis's LiveCodeBench leaderboard as of snapshot date; 343 models tracked, average score 50.4%."
+2026-02-01,Gemini 3 Flash,2316,Elo (LiveCodeBench Pro),https://llm-stats.com/benchmarks/livecodebench-pro,"LiveCodeBench Pro variant uses competitive-programming-style Elo instead of pass rate; not directly comparable to the pass@1 rows above."
+2026-02-01,Gemini 3 Pro,2439,Elo (LiveCodeBench Pro),https://llm-stats.com/benchmarks/livecodebench-pro,LiveCodeBench Pro Elo leaderboard.
+2026-02-01,Gemini 3.1 Pro,2887,Elo (LiveCodeBench Pro),https://llm-stats.com/benchmarks/livecodebench-pro,"Top of LiveCodeBench Pro Elo leaderboard as of snapshot date."

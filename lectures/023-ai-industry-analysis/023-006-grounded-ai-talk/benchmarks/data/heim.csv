@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2022-04-06,DALL-E 2,0.971,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper (arXiv:2311.04287), Table 5; highest alignment win rate among the 26 text-to-image models evaluated. Model release date per OpenAI's DALL-E 2 announcement."
+2022-08-22,Stable Diffusion v1.4,0.691,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Model release date per CompVis/Stability AI's Stable Diffusion v1.4 release."
+2022-10-20,Stable Diffusion v1.5,0.531,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Model release date per RunwayML/Stability AI's Stable Diffusion v1.5 release."
+2022-11-24,Stable Diffusion v2 base,0.514,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Model release date per Stability AI's Stable Diffusion v2 release."
+2022-12-07,Stable Diffusion v2.1 base,0.314,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Model release date per Stability AI's Stable Diffusion v2.1 release."
+2022-04-06,DALL-E mini,0.44,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Craiyon/DALL-E mini; note this is a distinct, unaffiliated open-source model despite the name."
+2021-12-14,minDALL-E,0.154,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Model release date per Kakao Brain's minDALL-E GitHub release."
+2022-05-27,CogView2,0.074,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5; lowest alignment win rate among evaluated models. Model release date per the CogView2 paper (arXiv:2204.14217)."
+2023-04-28,DeepFloyd IF X-Large,0.589,"alignment win rate (HEIM Table 5, 0-1 scale)",https://arxiv.org/abs/2311.04287,"HEIM paper, Table 5. Model release date per Stability AI/DeepFloyd's IF release."

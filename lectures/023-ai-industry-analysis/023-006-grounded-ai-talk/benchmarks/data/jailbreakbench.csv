@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2023-03-01,GPT-3.5-Turbo-1106,0,percent attack success rate (AIM attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2023-03-01,GPT-4-0125-Preview,0,percent attack success rate (AIM attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2023-07-27,GPT-3.5-Turbo-1106,47,percent attack success rate (GCG attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2023-07-27,GPT-4-0125-Preview,4,percent attack success rate (GCG attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2023-10-12,GPT-3.5-Turbo-1106,71,percent attack success rate (PAIR attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2023-10-12,GPT-4-0125-Preview,34,percent attack success rate (PAIR attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2024-04-02,GPT-3.5-Turbo-1106,93,percent attack success rate (Prompt with Random Search attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"
+2024-04-02,GPT-4-0125-Preview,78,percent attack success rate (Prompt with Random Search attack; no defense),https://jailbreakbench.github.io/,"JailbreakBench official leaderboard, closed-source models table"

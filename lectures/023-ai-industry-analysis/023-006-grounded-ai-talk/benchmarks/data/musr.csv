@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2023-10-24,Vicuna 7B v1.5,34.83,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,"Original MuSR paper, Table 5; average of the three domain scores (48.4/29.7/26.4)"
+2023-10-24,Vicuna 33B v1.3,36.93,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,Table 5; average of (49.6/31.2/30.0)
+2023-10-24,Llama 2 7B Chat,39.03,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,Table 5; average of (50.8/29.3/36.8)
+2023-10-24,Vicuna 13B v1.5,39.07,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,Table 5; average of (50.8/34.4/32.0)
+2023-10-24,Llama 2 70B Chat,45.27,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,Table 5; average of (48.8/42.2/44.8)
+2023-10-24,GPT-3.5,49.63,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,Table 5; average of (61.6/46.9/40.4)
+2023-10-24,GPT-4,69.9,percent accuracy (avg of murder mystery/object placement/team allocation),https://arxiv.org/abs/2310.16049,"Table 5; average of (80.4/60.9/68.4); still well below human eval average of ~96%"

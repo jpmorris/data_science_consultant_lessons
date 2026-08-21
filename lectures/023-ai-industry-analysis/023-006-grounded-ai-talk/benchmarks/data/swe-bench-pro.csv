@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2025-09-19,top model at launch (unspecified),23,% resolved (public set),https://labs.scale.com/papers/swe_bench_pro,"Scale AI + collaborators launched SWE-bench Pro on 2025-09-19: 1,865 problems from 41 actively-maintained repos, designed to resist contamination; top models scored around 23% on the public set vs 70%+ on SWE-bench Verified at the time."
+2026-08-01,GPT-5.4 (xHigh),59.1,% resolved,https://www.morphllm.com/swe-bench-pro,"Top score on Scale's standardized public SWE-bench Pro set as of snapshot date."
+2026-08-01,Claude Fable 5,80.0,% resolved,https://www.morphllm.com/swe-bench-pro,"llm-stats.com vendor-aggregate SWE-bench Pro score (different methodology/scaffold than Scale's public-set numbers above, hence higher)."
+2026-08-01,Claude Mythos Preview,77.8,% resolved,https://www.morphllm.com/swe-bench-pro,llm-stats.com vendor-aggregate SWE-bench Pro score.
+2026-08-01,Claude Opus 4.8,69.2,% resolved,https://www.morphllm.com/swe-bench-pro,llm-stats.com vendor-aggregate SWE-bench Pro score.
+2026-08-01,Qwen3.8 Max,67.7,% resolved,https://www.morphllm.com/swe-bench-pro,llm-stats.com vendor-aggregate SWE-bench Pro score.

@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2023-01-30,BLIP-2,46.35,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper (arXiv:2307.16125), Table 3. Model release date per the BLIP-2 paper (arXiv:2301.12597)."
+2023-03-28,OpenFlamingo,33.14,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the OpenFlamingo v1 GitHub release."
+2023-04-17,LLaVA,33.52,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the LLaVA paper (arXiv:2304.08485)."
+2023-04-20,MiniGPT-4,42.84,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the MiniGPT-4 paper (arXiv:2304.10592)."
+2023-04-27,mPLUG-Owl,34.01,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the mPLUG-Owl paper (arXiv:2304.14178)."
+2023-04-28,LLaMA-Adapter V2,32.73,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the LLaMA-Adapter V2 paper (arXiv:2304.15010)."
+2023-05-03,Otter,33.91,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the Otter paper (arXiv:2305.03726)."
+2023-05-08,MultiModal-GPT,33.15,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the MultiModal-GPT paper (arXiv:2305.04790)."
+2023-05-11,InstructBLIP (Vicuna-7B),53.37,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Highest score among the paper's baselines. Model release date per the InstructBLIP paper (arXiv:2305.06500)."
+2023-05-11,InstructBLIP (Flan-T5-XL),52.73,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3. Model release date per the InstructBLIP paper (arXiv:2305.06500)."
+2023-06-08,Video-ChatGPT,31.17,percent accuracy (SEED-Bench overall),https://arxiv.org/abs/2307.16125,"SEED-Bench paper, Table 3 (VideoLLM baseline). Model release date per the Video-ChatGPT paper (arXiv:2306.05424)."

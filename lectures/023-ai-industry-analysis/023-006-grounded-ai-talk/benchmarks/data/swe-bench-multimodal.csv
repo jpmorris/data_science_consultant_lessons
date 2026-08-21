@@ -1,0 +1,2 @@
+date,model,score,score_unit,source_url,notes
+2026-08-01,Claude Mythos Preview,59.0,% resolved,https://llm-stats.com/benchmarks/swe-bench-multimodal,"Top of llm-stats.com's SWE-bench Multimodal leaderboard as of snapshot date. Benchmark extends SWE-bench to tasks with visual inputs (screenshots, UI mockups, diagrams). Only one clean sourced data point found; this variant is reported far less often than Verified."

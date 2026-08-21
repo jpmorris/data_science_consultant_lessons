@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2023-08,Llama-2-70B-chat (zero-shot instruction),41.5,percent accuracy (avg across 122 languages),https://arxiv.org/abs/2308.16884,Belebele paper Table 2; zero-shot instruction-following setting
+2023-08,GPT-3.5-turbo (zero-shot instruction),51.1,percent accuracy (avg across 122 languages),https://arxiv.org/abs/2308.16884,Belebele paper Table 2; zero-shot instruction-following setting; strongest LLM reported in original paper
+2023-08,Llama 2 70B (5-shot in-context),48.0,percent accuracy (avg across 122 languages),https://arxiv.org/abs/2308.16884,Belebele paper Table 2; 5-shot in-context learning setting
+2023-08,"InfoXLM-large (translate-train-all, fine-tuned)",60.0,percent accuracy (avg across 122 languages),https://arxiv.org/abs/2308.16884,"Belebele paper Table 2; masked-LM baseline fine-tuned on machine-translated training data, not a general-purpose chat model"
+2023-08,"XLM-V-large (translate-train-all, fine-tuned)",60.2,percent accuracy (avg across 122 languages),https://arxiv.org/abs/2308.16884,"Belebele paper Table 2; masked-LM baseline fine-tuned on machine-translated training data, not a general-purpose chat model"

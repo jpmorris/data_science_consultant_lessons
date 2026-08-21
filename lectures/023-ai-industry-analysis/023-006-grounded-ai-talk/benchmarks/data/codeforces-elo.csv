@@ -1,0 +1,17 @@
+date,model,score,score_unit,source_url,notes
+2022-11-01,GPT-3.5,0,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,Effectively no competitive-programming rating.
+2023-03-01,GPT-4,392,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,Early GPT-4 era.
+2023-12-01,AlphaCode 2 (DeepMind),87,percentile (not Elo),https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,"Reported as 87th percentile rather than an Elo number; included for historical context, not directly comparable to Elo rows."
+2024-06-01,GPT-4o,808,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,~11th percentile of human competitors per the source.
+2024-09-12,o1-preview,1258,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,Late-2024 OpenAI reasoning model.
+2024-12-01,o1-mini,1650,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
+2025-01-03,o1-mini (CodeElo methodology),1578,Elo (CodeElo benchmark),https://arxiv.org/abs/2501.01257,"CodeElo paper's own rating (submits directly to Codeforces judge); different methodology/date than the officechai o1-mini figure above, hence the different number for the same model."
+2025-01-03,QwQ-32B-Preview,1261,Elo (CodeElo benchmark),https://arxiv.org/abs/2501.01257,"CodeElo paper; best open-weight model tested, ~90th percentile of human participants."
+2024-12-01,o1 (full),1891,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
+2025-01-31,o3-mini (low),1687,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
+2025-01-31,o3-mini (medium),1997,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
+2025-01-31,o3-mini (high),2073,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,
+2025-04-16,o3 (full),2727,Codeforces Elo,https://officechai.com/ai/how-openais-models-got-exponentially-better-at-coding-over-the-last-2-years/,"Ranked ~175th, i.e. ahead of all but 174 human competitive programmers, per the source."
+2026-02-01,Claude Opus 4.6 (Thinking Max),2352,Codeforces Elo,https://officechai.com/ai/google-gemini-3-deep-think-scores-3455-on-codeforces-is-now-better-than-all-but-7-human-programmers/,
+2026-02-01,Gemini 3 Pro Preview,2512,Codeforces Elo,https://officechai.com/ai/google-gemini-3-deep-think-scores-3455-on-codeforces-is-now-better-than-all-but-7-human-programmers/,
+2026-02-12,Gemini 3 Deep Think,3455,Codeforces Elo,https://officechai.com/ai/google-gemini-3-deep-think-scores-3455-on-codeforces-is-now-better-than-all-but-7-human-programmers/,"""Legendary Grandmaster"" territory; ranked 7th among recently-active human Codeforces competitors, behind only users like Benq (3792) and ecnerwala (3715)."

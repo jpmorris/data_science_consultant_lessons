@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2024-01-24,CogVLM (multimodal),0.33,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; open-source VLM baseline."
+2024-01-24,IDEFICS-80B-Instruct (multimodal),0.77,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; open-source VLM baseline."
+2024-01-24,Llama-2-70B (text-only),1.10,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; text-only accessibility-tree agent."
+2024-01-24,Llama-2-70B + captions,0.66,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; text-only agent augmented with BLIP-2-T5XL image captions."
+2024-01-24,GPT-4 (text-only),7.25,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; best text-only accessibility-tree agent."
+2024-01-24,GPT-4 + captions,12.75,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; GPT-4 augmented with BLIP-2-T5XL image captions."
+2024-01-24,GPT-4V (multimodal),15.05,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; native multimodal agent, screenshot + accessibility tree."
+2024-01-24,GPT-4V + Set-of-Marks,16.37,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), Table 3; best overall baseline reported in the paper, using Set-of-Marks visual prompting."
+2024-01-24,Human,88.70,percent success rate (VisualWebArena),https://arxiv.org/abs/2401.13649,"Original VisualWebArena paper (ACL 2024), human performance baseline reported alongside Table 3."

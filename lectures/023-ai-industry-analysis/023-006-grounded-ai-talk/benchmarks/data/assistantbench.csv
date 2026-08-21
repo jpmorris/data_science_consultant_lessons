@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2024-07-22,SeeAct (GPT-4 Turbo backbone),4.1,percent accuracy (AssistantBench test set),https://assistantbench.github.io,"Original AssistantBench paper (EMNLP 2024) leaderboard/Table; web-browsing agent baseline adapted from SeeAct."
+2024-07-22,SPA closed-book-transfer (GPT-4 Turbo backbone),11.1,percent accuracy (AssistantBench test set),https://assistantbench.github.io,"Original AssistantBench paper (EMNLP 2024) leaderboard/Table; the paper's own web-browsing agent, base variant."
+2024-07-22,Retrieval-augmented LM 1-shot (GPT-4 Turbo backbone),10.7,percent accuracy (AssistantBench test set),https://assistantbench.github.io,Original AssistantBench paper (EMNLP 2024) leaderboard/Table.
+2024-07-22,Closed-book LM 0-shot (GPT-4 Turbo backbone),16.5,percent accuracy (AssistantBench test set),https://assistantbench.github.io,Original AssistantBench paper (EMNLP 2024) leaderboard/Table.
+2024-07-22,Closed-book LM 1-shot (GPT-4 Turbo backbone),22.2,percent accuracy (AssistantBench test set),https://assistantbench.github.io,Original AssistantBench paper (EMNLP 2024) leaderboard/Table.
+2024-07-22,SeeAct -> Closed-book (GPT-4 Turbo backbone),23.4,percent accuracy (AssistantBench test set),https://assistantbench.github.io,"Original AssistantBench paper (EMNLP 2024) leaderboard/Table; SeeAct browsing output fed into a closed-book answerer."
+2024-07-22,SPA -> Closed-book (GPT-4 Turbo backbone),25.2,percent accuracy (AssistantBench test set),https://assistantbench.github.io,"Original AssistantBench paper (EMNLP 2024) leaderboard/Table; best result reported, no model reaches 27%+ accuracy on the 214 realistic time-consuming tasks."

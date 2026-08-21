@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2022-03-10,BERT Base,33.0,"percent test accuracy (MedMCQA, no context)",https://medmcqa.github.io/,Official MedMCQA leaderboard.
+2022-03-10,PubmedBERT,41.0,"percent test accuracy (MedMCQA, no context)",https://medmcqa.github.io/,Official MedMCQA leaderboard.
+2022-12-05,Codex (5-shot CoT),60.0,"percent test accuracy (MedMCQA, no context)",https://medmcqa.github.io/,Official MedMCQA leaderboard.
+2022-09-23,VOD BioLinkBERT,58.0,"percent test accuracy (MedMCQA, with context)",https://medmcqa.github.io/,Official MedMCQA leaderboard (with-context setting).
+2023-05-16,GPT-4 (5-shot),72.4,percent accuracy (MedMCQA dev),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table.
+2023-05-16,Med-PaLM 2 (Ensemble Refinement / best),72.3,percent accuracy (MedMCQA dev),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table; ER and best-of variants both reported at 72.3%.
+2023-05-16,GPT-4-base,73.7,percent accuracy (MedMCQA dev),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table.
+2023-05-16,Flan-PaLM,57.6,percent accuracy (MedMCQA dev),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table.

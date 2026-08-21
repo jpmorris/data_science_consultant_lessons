@@ -1,0 +1,11 @@
+date,model,score,score_unit,source_url,notes
+2024-05-23,Aya-23-32B,25.6,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,"MMLU-ProX paper Table 3; Cohere multilingual-optimized open model, lowest score among frontier-scale models reported"
+2024-12-06,Llama-3.3-70B,55.8,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2024-12-26,DeepSeek-V3,70.5,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2025-01-20,DeepSeek-R1,75.5,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3; top score reported in paper
+2025-03-12,Gemma-3-27B,56.6,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2025-03-17,Mistral-Small-3.1-24B,45.9,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2025-04-14,GPT-4.1,72.7,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2025-04-16,o4-mini,69.3,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2025-04-29,Qwen3-32B (Thinking),66.3,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3
+2025-04-29,Qwen3-235B-A22B (Thinking),74.9,percent accuracy (avg across 29 languages),https://arxiv.org/abs/2503.10497,MMLU-ProX paper Table 3

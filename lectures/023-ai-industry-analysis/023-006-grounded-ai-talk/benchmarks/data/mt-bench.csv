@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2023-02-24,LLaMA-13B,2.61,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,"Original MT-Bench paper (Zheng et al., LMSYS/UC Berkeley), Table 8. Date = LLaMA model release date; MT-Bench itself introduced in this June 2023 paper alongside Chatbot Arena."
+2023-02-24,LLaMA-7B,2.74,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,Table 8. Date = LLaMA model release date.
+2023-03-13,Alpaca-13B,4.53,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,Table 8. Date = Stanford Alpaca release date.
+2023-03-13,Alpaca-7B,4.54,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,Table 8. Date = Stanford Alpaca release date.
+2023-03-30,Vicuna-7B (selected),5.95,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,Table 8; fine-tuned on a small (4.8M-token) curated ShareGPT subset. Date = Vicuna release date.
+2023-03-30,Vicuna-7B (all),6.00,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,Table 8; fine-tuned on the full 370M-token ShareGPT dataset. Date = Vicuna release date.
+2023-03-30,Vicuna-13B (all),6.39,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,Table 8. Date = Vicuna release date.
+2023-03-01,GPT-3.5,7.94,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,"Table 8; exact GPT-3.5 checkpoint not specified in the paper. Date = approximate gpt-3.5-turbo API release (month only, day not confirmed)."
+2023-03-14,GPT-4,8.99,"MT-Bench score (1-10, GPT-4-judged)",https://arxiv.org/pdf/2306.05685,"Table 8; top score in the original paper, near the 10-point ceiling. Date = GPT-4 public announcement date. MT-Bench has not been widely re-run on frontier 2025-2026 models in citable sources found during this pass -- it appears to have been effectively superseded by newer chat-quality benchmarks (WildBench, AlpacaEval 2.0, MultiChallenge) once GPT-4-era models approached its ceiling."

@@ -1,0 +1,1612 @@
+{
+ "adversarial-nli": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public NLI dataset with published labels; adversarial collection targeted 2019-era models, not later ones.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "agentbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public multi-environment agent task suite, published evaluation code.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "agentdojo": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "The environments, tasks, attacks and defenses are all open-source on GitHub with a public, continuously-growing results table; the underlying task suite itself is fixed since release, but realistic tool-augmented agent environments combined with live prompt-injection attacks have little direct internet precedent to memorize against.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "agentharm": {
+  "disclosure": "private",
+  "domain_novelty": "medium",
+  "justification": "The official Inspect Evals implementation exposes explicit test_public and test_private splits, and only a partial subset of behaviors (44/66 test, 8/11 validation) has ever been released publicly, with the private split deliberately withheld to prevent gaming; agentic tool-use harm scenarios are a newer paradigm but tool-calling trajectories are increasingly common in training data.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "agieval": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Real, publicly-available human standardized exams (SAT/LSAT/Gaokao) with published answer keys -- about as trainable a domain as exists.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "ai-scientist": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Open framework/paper with no fixed held-out answer key; success is evaluated via novel generated research output, which by construction can't be pre-memorized.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "aider-polyglot": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public Exercism-sourced exercises across several languages, fixed set, published solutions/tests.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "aime": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Each year's real AIME problems and official solutions are published publicly soon after the exam, refreshing the pool annually -- but competition math itself is an extremely well-trodden domain, so freshness alone doesn't fully block contamination (Anthropic's own Claude Opus 4.6 system card flagged its 99.79% AIME 2025 score as a possible contamination risk).",
+  "rotation": "natural_annual_refresh",
+  "source_file": "original-catalog.csv"
+ },
+ "air-bench-2024": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "AIR-Bench 2024 maps prompts to a regulatory hazard taxonomy (OpenAI/Anthropic/EU AI Act policies) with an LLM-judge-based grading rubric that is not a simple public answer key, and a follow-on paper (\\AIR-Bench Live: An Evolving Safety Benchmark for Foundation Models\\\") confirms the family is now explicitly designed to rotate; the regulatory-mapped risk categories are moderately specialized but build on well-known harm taxonomies.\"",
+  "rotation": "periodic_rotation",
+  "source_file": "safety-alignment.csv"
+ },
+ "air-bench-audio": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "AIR-Bench's Foundation tasks draw on public audio datasets but its Chat benchmark is scored by a proprietary foundation-model judge (GPT-4-class) against an internal rubric rather than a released answer key, and the authors describe the evaluation as dynamically generated, giving it some resistance to static memorization; audio instruction-following is a novel domain relative to the rest of the catalog.",
+  "rotation": "periodic_rotation",
+  "source_file": "multimodal-meta.csv"
+ },
+ "airs-bench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Task specs (problem-dataset-metric triplets) are public but scores are computed against a held-out human-SOTA baseline via Meta's official leaderboard, with a single dated snapshot and no evidence of task rotation, covering autonomous ML-research-replication tasks across NLP/biochem/time-series.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "ale-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Built on AtCoder Heuristic Contest problems, which are published after each real contest closes -- ongoing rotation, algorithmic-optimization domain less common than plain correctness coding.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "alfred-virtualhome": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Both ALFRED (2019) and VirtualHome (2018) publish full task/trajectory data and evaluation code; embodied step-by-step household action sequencing has little representation in generic internet text, though both benchmarks are old enough that derivative walkthroughs/solutions may now be indexed on the web.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "alfworld-scienceworld": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "ALFWorld (chosen as representative; text/embodied-linked TextWorld environments) publishes full game files and code on GitHub with no held-out answer key since agents are evaluated by live environment interaction, and simulated multi-step household task execution has little generic-pretraining precedent -- though extensive published agent transcripts (ReAct, Reflexion, AgentBench, etc.) mean specific task solutions are increasingly discoverable.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "algotune": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub benchmark testing algorithm optimization/speed, not just correctness -- a less commonly-trained objective than pass/fail correctness, but exact disclosure model unconfirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "alpacaeval-2": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The 805 test instructions and reference model outputs are public in the tatsu-lab/alpaca_eval GitHub repo (length-controlled win-rate vs. a fixed GPT-4-Preview-1106 baseline), unchanged since introduction; general single-turn instruction-following/chat quality is extremely well represented in pretraining and RLHF data, and the repo's own leaderboard has gone stale since Dec 2024, consistent with saturation.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "androidworld": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Same held-out-verifier-script model as OSWorld, applied to real Android app state.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "apex-agents": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub agentic benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "apps-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Fully open dataset from the original 2021 paper with no ongoing leaderboard or refresh, now largely superseded by LiveCodeBench/Codeforces-Elo which are already tracked in this catalog.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "appworld": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "The 750 tasks, 457 simulated APIs, and state-based grading code are open-sourced (ACL'24 Best Resource Paper, appworld.dev), and the official leaderboard has continued accepting new dated submissions from mid-2024 through 2026, but the fixed task set itself has not been refreshed; grading against resulting application state (not an LLM judge) is closer to code-execution testing, giving it moderate novelty versus generic text QA.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "arc": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public grade-school science MCQs with published answers, static since 2018.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "arc-agi-1": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "A public training/evaluation set exists, but the official leaderboard's true test set is held privately by the ARC Prize Foundation; the abstract-grid-puzzle genre was deliberately designed to have essentially no internet precedent.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "arc-agi-2": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Same held-out-test-set model as ARC-AGI-1, a harder successor released when the first version saturated.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "arc-agi-3": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Same held-out model, extended toward interactive/agentic puzzle environments rather than static grids.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "assistantbench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Task prompts are public via the AssistantBench Hugging Face dataset and paper, but the official test-set gold answers are held out behind a leaderboard submission process typical of academic benchmarks; long-horizon, expert-level 'time-consuming assistant request' tasks requiring multi-page synthesis are a task genre with comparatively little direct internet precedent, reflected in every model scoring under 27% accuracy at release.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "assistgui": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "The 100 tasks and project files are shared for the 2023 paper, but milestone-based success grading is implemented via bespoke scripts/critic prompts rather than a published fixed answer key; screenshot-level GUI action sequences inside complex creative/productivity software (After Effects, Premiere, MS Word) are a task genre with very little direct internet precedent, reflected in a 46% best-case success rate even with GPT-4 as both planner and actor.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "astabench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Task categories are described publicly but scoring runs through an AI2-hosted leaderboard with held-out grading, and the benchmark is updated in periodic versioned rounds (e.g. an August 2025 round versus an April 2026 round) covering end-to-end agentic scientific-discovery tasks distinct from standard NLP/code benchmarks.",
+  "rotation": "periodic_rotation",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "audiobench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "AudioBench aggregates 26 existing public audio datasets with openly available audio/questions and an LLM-judged scoring rubric described in the paper, and it is the catalog's first audio-modality benchmark, a domain with essentially no prior coverage here.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "babilong": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "BABILong's generation code and HF datasets are fully public, and the actively-maintained leaderboard has expanded to new context lengths and models over time, but the underlying reasoning tasks are the classic, well-known bAbI task set merely embedded in longer background text, analogous to a translated version of a common task.",
+  "rotation": "periodic_rotation",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "balrog": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public suite of well-known games (NetHack, Crafter, BabyAI, etc.) with published rules; NetHack specifically is a famously hard-to-memorize procedurally-generated game.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "bbq": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The full ambiguous/disambiguated question set with labeled answers and attested-bias annotations is released on GitHub under CC-BY 4.0, has not been updated since its 2021/2022 release and is now mostly absorbed into composite suites like HELM Safety, and the underlying social-stereotype associations it probes are extensively represented in general web text and fairness literature.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "beir": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Datasets and qrels are fully downloadable with no hidden holdout, and the benchmark has been a fixed ~18-dataset set since 2021 with no refresh cadence, now largely absorbed into MTEB's retrieval split.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "belebele": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Belebele's 122-language reading-comprehension questions and answers were released once by Meta on GitHub/HuggingFace with no rotation mechanism; reading comprehension is a long-established task format, so the broad language coverage does not raise its domain novelty.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "bfcl": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Berkeley's dataset, eval harness, and versioned test categories (v1-v4) are fully open on GitHub, and the 'Live' function-calling categories are explicitly sourced from ongoing community/user contributions and periodically expanded (v4 added Web Search and Memory categories in 2025), unlike a one-time-frozen set; function/tool-calling schemas are moderately represented in pretraining but the newer agentic categories (web search loops, KV/vector/recursive-summarization memory) are less so.",
+  "rotation": "periodic_rotation",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "big-bench-hard": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "23 fixed, fully public BIG-Bench tasks with published answers; the underlying algorithmic/logical puzzle types are common training-data genres.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "bigcodebench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The full dataset and unit tests are public on Hugging Face with a fixed test set since April 2024, functioning as an extension of HumanEval/MBPP-style function-calling rather than a new domain.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "bird-sql": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Dev set and gold SQL are public but the test set is scored via a hidden submission leaderboard that has been fixed since 2023, covering standard cross-domain SQL less novel than Spider 2.0's enterprise focus.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "blueprint-bench-2": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Constructing an accurate 2D floor plan from interior photographs has no obvious internet-pretraining precedent as a paired (photos -> verified floor plan) training signal.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "bool-q": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public yes/no QA over public Wikipedia passages, static since 2019.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "browsecomp": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "OpenAI deliberately designed tasks to be very hard to find via search even with tool access; answers are not published.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "browserarena": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Modeled explicitly on Chatbot/Copilot Arena, BrowserArena scores agents via continuously arriving user-submitted tasks and step-level human (Prolific) or LLM-judge feedback on the live open web rather than any published, fixed answer key, making fresh task supply and a changing live-web environment its core anti-contamination design; open-web browsing under adversarial conditions (CAPTCHAs, pop-ups) is a moderately novel stress test even though basic browsing is common in pretraining.",
+  "rotation": "periodic_rotation",
+  "source_file": "web-agents.csv"
+ },
+ "browsergym-agentlab": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "BrowserGym/AgentLab is an open-source harness unifying already-public web-agent benchmarks (WebArena, WorkArena, VisualWebArena, MiniWoB, AssistantBench) under one evaluation API; the harness itself doesn't rotate tasks and doesn't introduce a capability domain beyond the web-agent benchmarks it wraps.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "btf3": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "Epoch-hub bulk-imported benchmark with no dedicated deep-dive -- name/methodology not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "cad-eval": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Epoch-hub CAD-generation benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed, but correct CAD output from a spec is a niche, likely under-represented pretraining genre.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "casehold": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Derived from public US case law (Harvard's Caselaw Access Project) with holdings and multiple-choice distractors published alongside the dataset; case law is extensively represented in legal pretraining corpora.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "chartqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public chart-reading QA with published answers, static since 2022 -- now considered near-saturated.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "chess-puzzles": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Real chess puzzle positions (commonly Lichess-sourced), publicly known FEN + solution, judged against Stockfish -- chess is an extremely well-trodden pretraining domain.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "cl-bench": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Epoch-hub \"continual learning\"-flavored benchmark with no dedicated deep-dive -- continual-learning task design is plausibly resistant to static memorization by construction.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "cl-bench-life": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "\"Life\"/everyday-tasks variant of CL-Bench; same continual-learning-resistant design logic.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "classic-rl-suites": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Environments such as NetHack LE, Crafter, BabyAI, MiniHack, TextWorld, and Procgen are fully open-source with public source code and no hidden test set (illustrated by the BALROG leaderboard, which tracks LLM/VLM agents on this exact cluster with dated, per-model % Progress scores); mechanics are knowable from source and, for NetHack especially, decades of public player-written spoilers, but procedurally-generated specific instances are not memorizable, giving moderate net novelty.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "clutrr": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The dataset, generator code, and gold kinship-relation labels are fully public and static, but synthetic templated family-relation stories are an unusual, low-natural-frequency text domain relative to typical corpora.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "codecontests": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Dataset of Codeforces/AtCoder/CodeChef problems is fully public with no active multi-model leaderboard found, covering the same competitive-programming territory as the already-tracked codeforces-elo and livecodebench benchmarks.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "codeforces-elo": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Codeforces runs genuinely new rated contests continuously; problems become public only after each contest closes, giving real ongoing freshness despite the well-trodden competitive-programming domain.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "common-sense-qa-2": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public true/false commonsense set with published labels.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "critpt": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "Epoch-hub bulk-imported physics-competition-style benchmark with no dedicated research pass in this project -- disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "crmarena-pro": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Salesforce released the CRMArena-Pro paper, code, and a Hugging Face results leaderboard, but it is unclear from available sources whether the underlying synthetic Salesforce-CRM task/data generation seeds are fully public or partly held out for grading integrity; realistic enterprise CRM workflows (business-process policy compliance, confidentiality handling, multi-turn case resolution) are a domain with comparatively little representation in general-purpose pretraining corpora.",
+  "rotation": "unknown",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "cursorbench": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "Epoch-hub bulk-imported benchmark with no dedicated research pass -- disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "cybench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Real CTF-style challenges with published prompts but held-out flags for grading; cybersecurity CTFs are a moderately-represented online genre.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "deepresearchbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public long-horizon research-synthesis task suite with published grading rubrics.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "deepswe": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub SWE benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "docvqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public document-image QA with published answers, static since 2020 -- now considered near-saturated.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "drop": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Dev-set answers are public but AI2's official leaderboard withholds test-set gold answers; Wikipedia-paragraph numerical reasoning QA has been a standard eval since 2019 with very high cumulative web/paper exposure.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "ds-1000": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The entire dataset, reference solutions, and test harness are public on GitHub/Hugging Face and unchanged since 2022, covering a data-science-library domain distinct from general coding but well-trodden by now.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "dsgbench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Evaluation happens through live interaction with real-time and turn-based strategy game environments rather than a published question/answer set, and the game suite is fixed as released in the paper; strategic planning and social reasoning content is documented online, but the multi-dimensional real-time-decision and team-collaboration evaluation format is less commonly represented in pretraining.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "embodiedbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Code, environments (EB-ALFRED/EB-Habitat/EB-Navigation/EB-Manipulation), and eval scripts are open on GitHub, but grounding multi-step action sequences in simulated 3D environments has little precedent in generic text pretraining, especially for low-level manipulation.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "enigma-eval": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public enigma-style lateral-thinking puzzles; individual puzzles may circulate online but the specific compiled/graded format is less commonly reproduced.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "epoch-capabilities-index": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "A composite index Epoch computes across many underlying benchmarks (each with its own disclosure model) rather than a single benchmark with one disclosure/novelty profile; Epoch updates it as new model results arrive.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "epoch-capabilities-index-percent": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "Same composite-index caveat as Epoch Capabilities Index, expressed on a percent scale.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "evalplus": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Test cases and augmented test suites for the same 164 HumanEval problems (plus MBPP) have been open on GitHub since 2023 with no rotation, differing from HumanEval/MBPP only in stricter testing rigor.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "exploitbench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Similar CTF/exploit-development structure to Cybench, held-out grading.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "factscore": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The atomic-fact decomposition pipeline, prompts and human annotations are released on GitHub with full methodology, the benchmark has not been refreshed since the 2023 paper, and it evaluates factuality of biography generation against Wikipedia, a domain saturating pretraining corpora.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "fictionlivebench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Uses long fictional narratives for comprehension/consistency testing; refreshed periodically with new stories to stay ahead of contamination.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "financebench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "The public HF release intentionally withholds ~30% of gold answers/evidence to deter contamination, and grounding open-ended answers in specific real 10-K/10-Q filings pushes past generic finance-textbook knowledge, though the filings themselves are public web documents.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "finben": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "FinBen's 36 datasets and evaluation code are open on GitHub (some sub-tasks reuse existing public financial NLP datasets), but a few sub-tasks (e.g. live stock-trading decision simulation) inject genuinely novel sequential-decision structure not just recalled financial trivia.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "flores-200": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "FLORES-200's parallel professional-translation sentence set was collected once and released fully open (facebookresearch/flores) without periodic refresh; sentence-level translation quality is a classic, well-understood MT evaluation task.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "followbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Full English/Chinese datasets and constraint-evolution paths are open on GitHub/HF with no updates since the Nov 2023 (v2) paper; the multi-level incremental-constraint-stacking structure (up to 5 compounding constraints per instruction) is a less common training signal than single-constraint IFEval-style data, though the underlying constraint types themselves are ordinary.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "forecastbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Uses real, currently-unresolved future events as questions -- the correct answer literally does not exist yet at evaluation time, making it structurally contamination-proof regardless of question publicity.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "frontiercode": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub coding benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "frontiermath": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "Original, unpublished research-level math problems written specifically to be held out; Epoch AI does not publish solutions, though a 2025 licensing controversy revealed OpenAI had access to a subset pre-release.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "frontierswe": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub SWE benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "gaia": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Validation-split questions/answers are public, but the true test-set answers are held out on the official leaderboard; requires real multi-step tool use, a less purely-memorizable genre than QA.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "gama-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Game code and a leaderboard are openly published on GitHub (ICLR 2025), and the nine-game set is fixed while only the roster of evaluated models is periodically updated; the games are classic game-theory/economics scenarios (auctions, bargaining, guessing games) that are extensively studied and documented online.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "gamebench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Code, game environments, and prompts are openly released on GitHub with no hidden test set, and the eight games are a fixed one-time selection; games were deliberately chosen because they lack dedicated online strategy forums or published guides, making this one of the more explicitly contamination-resistant designs in the cluster.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "gamebot": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Game environments, CoT prompts, and rule-based ground-truth-generation code are all openly released, and the eight-game suite (Othello, Pong, Surround, Checkers, TicTacToe, Connect4, Texas Hold'em, Negotiation v2) is fixed as published; contamination resistance instead comes from dynamic head-to-head matchups rather than game obscurity, since these are all extremely well-documented mainstream games.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "gamedevbench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "The 333 Godot game-development tasks are described publicly, but the automated pass/fail verification (visual scene validation, shader/animation checks) that backs the live leaderboard is not published as an answer key, and the task set is fixed for the ICML 2026 release; combining codebase editing with visual QA in a specific game engine is a task genre with little direct internet precedent, unlike general coding benchmarks.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "gbaeval": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "Epoch-hub bulk-imported benchmark with no dedicated deep-dive -- name/methodology not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "gdpval": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "OpenAI's real economically-valuable professional tasks with expert grading rubrics; not published, to preserve grading integrity.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "gdpval-elo": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "Same held-out GDPval task set, Elo-scored via Artificial Analysis' independent evaluation.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "genai-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The 1,600+ compositional prompts and 80k+ human ratings are released publicly on GitHub/arXiv with a fixed prompt set (v1 split), so a model or judge could be tuned against the known prompt distribution over time.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "geobench": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub geography/geospatial benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "global-mmlu": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Global-MMLU is a fully public, one-time human-and-machine translation of MMLU into 42 languages with labels released on HuggingFace; it is a translated version of an already-common multiple-choice knowledge task, so novelty stays low despite the language expansion.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "gpqa-diamond": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Questions are public but deliberately written to be \"Google-proof\" -- skilled non-experts with search access still only reach ~34% -- though the underlying graduate-science domain itself is well-represented in training data.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "gsm8k": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public grade-school arithmetic word problems with published answers, static since 2021 -- one of the most heavily-cited (and likely most-memorized) benchmarks in existence.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "gso": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub software-optimization benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "halueval": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The QA/dialogue/summarization/general hallucination samples and generation scripts are openly released on GitHub (RUCAIBox/HaluEval) with an answer key, the 2.0 extension is a one-time addition rather than a rolling refresh, and detecting hallucinations in standard QA/dialogue/summarization content draws on knowledge domains heavily present in pretraining.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "harmbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The 400 standard/contextual behaviors and the public HarmBench-Llama-2-13b-cls grading classifier are released on GitHub, and the behavior set has stayed fixed since the Feb 2024 paper with no announced refresh cadence.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "healthbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "5,000 scenarios and physician rubrics were released openly by OpenAI on GitHub, so the exact eval set is scrapable and clinician-conversation style QA is well-represented in medical-web pretraining data.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "heim": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "All prompts, generated images, and per-model win-rate results are published on the open HEIM/HELM dashboard with a largely fixed core scenario set, so contamination pressure comes mainly from the small closed pool of 12 evaluation dimensions being well-known rather than any hidden data.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "hellaswag": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public sentence-completion dataset with published gold answers, unchanged since 2019; commonsense continuation is a well-trodden pretraining genre.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "helm": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "HELM is an open framework that publishes every scenario, prompt, and per-instance model prediction, and Stanford CRFM continuously adds new scenarios/models/versions over time; because it mostly re-wraps benchmarks (MMLU-Pro, GPQA, IFEval) already tracked elsewhere in this catalog, its own composite score adds little novel domain coverage.",
+  "rotation": "periodic_rotation",
+  "source_file": "multimodal-meta.csv"
+ },
+ "hle": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Questions and answers are both published, but were expert-curated across 1,000+ contributors specifically to sit past the frontier of what's discoverable/memorizable online at release time.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "hotpotqa": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Dev-set questions/answers are public but the official CodaLab leaderboard's test-set gold answers are held out; multi-hop Wikipedia QA is one of the most heavily used and cited QA formats since 2018, so contamination risk from dev-set exposure is high.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "humaneval": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "164 public hand-written Python problems with published canonical solutions, static since 2021 -- extremely widely cited and almost certainly memorized to some degree by frontier models.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "ifbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Ai2 released the full 58-constraint test set and verification code on HF (allenai/IFBench_test) and GitHub as a fixed set, not periodically rotated; it was purpose-built to hold out constraint types unseen during typical IFEval-style RLVR training, so individual questions generalize less well to memorization even though the set itself is public and static.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "ifeval": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The ~541 prompts and their rule-based, auto-checkable verification functions are fully open on the HF dataset (google/IFEval) and GitHub since the Nov 2023 release with no refresh since; generic instruction-following (word counts, keywords, formatting) is heavily represented in pretraining and RLHF data, and by 2024-2026 frontier models were already near-saturated on it.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "imo": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The real IMO's problems and official solutions are published publicly each year by the organizing committee, independent of any AI benchmark -- refreshes annually but is an extremely well-known competition genre.",
+  "rotation": "natural_annual_refresh",
+  "source_file": "original-catalog.csv"
+ },
+ "indicgenbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "IndicGenBench's generative tasks (cross-lingual summarization via CrossSum-In, QA via XQuAD-In, etc.) and labels were released once on GitHub for 29 Indic languages with no rotation; the task types themselves (summarization, extractive QA) are standard formats applied to an underrepresented language family.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "infinitebench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "InfiniteBench's 12-task dataset and answers were released once on GitHub/HuggingFace with no ongoing rotation, and while several subtasks (retrieval, code debug, math) are standard formats just stretched to 100K+ tokens, others (dialogue coreference, code run) are less common task types.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "ioi": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Real IOI problems/solutions are published publicly each year; competitive programming is well-trodden, but the exact judge/test-case format adds some execution-grounded novelty over pure math olympiads.",
+  "rotation": "natural_annual_refresh",
+  "source_file": "original-catalog.csv"
+ },
+ "jailbreakbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The JBB-Behaviors dataset (100 harmful + 100 benign behaviors) and the scoring functions are public on Hugging Face/GitHub, and the underlying behavior set is static even though the public leaderboard keeps accepting new attack/defense/model submissions over time.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "kaggle-game-arena": {
+  "disclosure": "private",
+  "domain_novelty": "low",
+  "justification": "Matches are played live against unseen opponents rather than against a fixed released question set, and the game library (Chess, Poker, Werewolf, Reversi, Dark Hex, etc.) is continuously expanded, but the flagship games themselves are classic, exhaustively documented board/card games with huge internet strategy corpora.",
+  "rotation": "periodic_rotation",
+  "source_file": "games.csv"
+ },
+ "kaggle-game-arena-elo": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Live head-to-head chess play with a public, continuously-updated Elo leaderboard; chess itself is a well-trodden domain even though each individual game is fresh.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "lambada": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public last-word-prediction set drawn from public books, static since 2016.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "lech-mazur-writing": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "An ongoing public creative-writing tournament, continuously refreshed with new head-to-head judged rounds.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "legalbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "All 162 tasks and answer keys are open on GitHub/HuggingFace (crowd-built via a public workshop); legal issue-spotting/rule-recall over standard doctrine is well represented in web and legal-corpus pretraining, and Vals AI's live tracking layer reruns the same public tasks rather than rotating them.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "live-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Explicitly designed to avoid contamination: questions are pulled from recent sources (papers, news, forums) and the set is refreshed monthly, though task types themselves (math, coding, reasoning) are ordinary.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "livecodebench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Explicitly time-stamps problems by release date and lets evaluators filter to only post-training-cutoff problems -- a real rotation-based contamination defense, though competitive-programming content itself is common.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "livecodebench-elo": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Same rotation-based design as LiveCodeBench, Elo-scored variant.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "llm-hanabi": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The Hanabi ruleset, environment, and evaluation code are openly released on GitHub as a single fixed benchmark; Hanabi itself is a moderately documented board game, but the paper's core innovation -- an LLM-as-judge scoring first- and second-order theory-of-mind rationale inference from hint-giving -- is a comparatively novel evaluation construct with little internet precedent.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "lmarena-elo": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Human raters submit real, unscripted prompts continuously and vote pairwise live -- no fixed test set exists to leak, though the prompt distribution (general chat) is common.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "lmgame-bench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "The six games (Mario, Sokoban, Tetris, 2048, Candy Crush, Ace Attorney) and harness code are public, but scoring comes from live game-engine interaction rather than a released answer key, and the paper explicitly built vision/text contamination checks; the underlying games are extremely well-known commercial titles with vast walkthrough/wiki coverage, so domain novelty is low despite the contamination tooling.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "longbench-v2": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "LongBench v2 publishes its 503 questions but the authors withhold official answer keys behind a leaderboard submission process to slow contamination, and it is a fixed one-time question set covering real-world long documents across specialized domains rather than a common QA format.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "mask": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "The full MASK dataset is published on Hugging Face (cais/mask) with no private component, was released as a single 2025 snapshot with no rotation mechanism, and the core construct -- catching a model contradicting its own previously stated beliefs under pressure -- is a behavioral consistency probe that cannot be memorized from internet text the way factual QA can.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "math": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public competition-style math problems with published solutions, static since 2021; AMC/AIME-style problems circulate widely online independent of this specific dataset.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mathvista": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public math problems with published answers, but requires reading visual context (charts/diagrams) alongside text -- a less purely-text-memorizable genre than MATH/GSM8K.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mbpp": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "~1,000 public crowd-sourced Python problems with published solutions, static since 2021.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mcp-atlas": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Scale AI explicitly splits the 1,000 tasks into 500 public (released on HF as ScaleAI/MCP-Atlas) and 500 held-out private tasks used for official leaderboard scoring, and the task set itself has not been described as periodically refreshed; evaluating tool discovery/parameterization across 36 real, current MCP servers with deliberately placed distractor tools is a recent (2025-2026) evaluation paradigm with minimal representation in any model's pretraining data.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "medmcqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "194K questions drawn from public Indian medical entrance exam prep material with answers included in the public dataset, making it highly susceptible to memorization.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "medqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "MedQA-USMLE questions and answers have been fully public since 2020 and are now considered saturated/contaminated by the field, with GPT-4-class models exceeding 90% via prompting alone.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "medxpertqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Questions and gold answers are both public on the GitHub repo/HF dataset, and USMLE-style expert medical reasoning is a well-trodden pretraining genre despite being explicitly built to be harder than MedQA.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "metr-cross-domain-time-horizon": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "Same METR methodology, extended across additional task domains.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "metr-time-horizon": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "METR maintains its own private, continuously-expanded task suite specifically to avoid models training on the eval itself; tasks are deliberately varied-difficulty engineering work.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "mgsm": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "MGSM is a fixed, fully public translation of the GSM8K test set into 10 languages with labels released alongside the original paper; per the task's own framing, a translated version of a common task (grade-school math) counts as low novelty.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "mind2web": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The full dataset, 2,000+ annotated tasks across 137 real (2023-era) websites, and test-set answers were released in full on Hugging Face/GitHub for the original 2023 NeurIPS paper and have not been refreshed since; general web element-selection/DOM interaction closely resembles common crawled HTML data, and this predecessor benchmark is now explicitly described as superseded by its own successor (Online-Mind2Web).",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "mindcube": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "miniwob-plus-plus": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The 100+ simulated-browser micro-tasks and their programmatic reward functions have been fully open-source since 2017/2018 and unchanged since; simple synthetic UI widgets (buttons, forms, sliders) are low-novelty and, given the benchmark's age and its ubiquity as an RL/agent-training target for nearly a decade, carry real risk of direct training-data leakage despite the low intrinsic task complexity.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "mint-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "MINT-Bench (ICLR 2024) is explicitly built by repurposing existing, extremely well-known public datasets (GSM8K, HotpotQA, MATH, MMLU, HumanEval, MBPP, ALFWorld) into a multi-turn tool-and-feedback wrapper; the wrapper/interaction structure is somewhat novel but the underlying question content itself is heavily memorized/public, and no live leaderboard update was found beyond the original paper.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "mirrorcode": {
+  "disclosure": "unknown",
+  "domain_novelty": "unknown",
+  "justification": "Epoch-hub bulk-imported coding benchmark with no dedicated research pass -- exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "mlcommons-ailuminate": {
+  "disclosure": "private",
+  "domain_novelty": "low",
+  "justification": "MLCommons publishes only a 1,200-prompt demo and a 12,000-prompt public practice set on GitHub while explicitly reserving a separate 12,000-prompt private set for the official graded benchmark; the standard is versioned and actively extended (v1.0, EU-language variants, ongoing working-group updates) and the hazard categories are common general-purpose chat-safety compliance topics well represented in existing safety-tuning data.",
+  "rotation": "periodic_rotation",
+  "source_file": "safety-alignment.csv"
+ },
+ "mle-bench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Built on real, fully public Kaggle competitions, but OpenAI holds out final test-set labels/leaderboard scoring; ML engineering itself is a well-represented skill in pretraining.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mmbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public multimodal MCQ benchmark with published answers and a circular-eval robustness check.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mme": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "MME's images and yes/no questions are distributed openly for download and the 14-subtask perception+cognition structure has remained fixed since its 2023 release, keeping it moderately exposed to memorization despite manually designed items intended to resist leakage.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "mmlu": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "57-subject exam questions with published answer keys, released once in 2020, drawing on ordinary school/professional-exam content that pervades pretraining corpora.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mmlu-pro": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Same public-answer, one-time-release model as MMLU, just with 10 choices instead of 4 and harder questions -- domain itself is still standard exam knowledge.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mmlu-prox": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "MMLU-ProX is a fixed, fully public expert-post-edited machine translation of MMLU-Pro into 13-29 languages with labels released alongside the paper; like MGSM and Global-MMLU, translating an already-common multiple-choice reasoning task into new languages does not raise its domain novelty.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "mmmu": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public college-level multimodal exam questions with published answers; image-grounded reasoning is less purely text-memorizable than plain QA.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "mrcr-v2": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "MRCR v2 is not released as a public dataset -- it appears only inside lab-internal evaluations cited in technical reports and comparison pages (e.g. Google DeepMind, and referenced for OpenAI/Anthropic models), and its distinctive multi-round conversational coreference-under-distraction format is unlike standard QA or retrieval tasks.",
+  "rotation": "unknown",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "mt-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The 80 questions have been public in the FastChat GitHub repo since June 2023 with no rotation; open-ended multi-turn chat-quality Q&A is one of the most heavily represented data types in modern chat-model post-training, and GPT-4-era models were already scoring near the 10-point ceiling in the original paper itself.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "mteb": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "All task datasets and qrels are open and scored via the open mteb library with no hidden test set, though the task suite is periodically extended/versioned (e.g. new language and domain splits); task types (classification/clustering/retrieval/STS/reranking) have been fixed since 2022.",
+  "rotation": "periodic_rotation",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "multiagentbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Code, environments, and evaluation harness (MARBLE) are fully open source with no hidden answer key; because scores emerge from live multi-agent interaction (negotiation, Werewolf, cooperative building) rather than static lookup of a fixed answer, outcomes vary run-to-run and cannot be memorized the way a fixed Q&A pair can, despite the scenario set itself not rotating.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "multichallenge": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Scale AI runs MultiChallenge as a hosted, continuously-scored leaderboard (scale.com/leaderboard/multichallenge) rather than releasing a full public answer key, consistent with Scale's general private-eval pattern (seen explicitly in MCP-Atlas's public/private task split); it targets multi-turn instruction retention, inference memory, and self-coherence across conversation turns, a structurally harder/less-memorizable target than single-turn win-rate.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "musr": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Instances and answers are fully released, but they are algorithmically generated narratives (murder mysteries, team allocations) unlikely to appear verbatim anywhere in pretraining corpora, and the free-text-reasoning-over-narrative format is atypical for standard benchmarks.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "mystery-game-puzzles": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "The game's own identity/rules are deliberately kept secret from participants specifically to block benchmark-specific preparation -- by design one of the most opacity-resistant entries in the whole catalog.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "narrativeqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "All question-answer pairs across train/valid/test are released openly with no hidden leaderboard; grounding in full books/movie scripts is a less common QA format than generic passage QA, though the source narratives themselves (public-domain and popular books) may be individually memorized to varying degrees.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "niah-2": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The canonical Needle-in-a-Haystack methodology and code (e.g. gkamradt/LLMTest_NeedleInAHaystack) are fully open and typically re-randomize needle/haystack combinations per run, but the underlying single-fact-retrieval task is simple and now considered a saturated baseline rather than a novel domain.",
+  "rotation": "periodic_rotation",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "omni-math": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public olympiad-level problems with published answers and difficulty ratings; olympiad math circulates widely online regardless of this specific compilation.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "online-mind2web": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Task prompts are public, but grading now runs against continuously updated human-annotation snapshots (dated files from mid-2025 through late 2025) and a live-web judge, and the leaderboard keeps adding fresh model submissions through mid-2026 -- the paper's own thesis is that agents' 'illusion of progress' shows up only when re-tested live on real, currently-changing high-traffic sites; the underlying skill (mainstream consumer site navigation) is well represented in pretraining.",
+  "rotation": "periodic_rotation",
+  "source_file": "web-agents.csv"
+ },
+ "open-book-qa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public elementary science QA with a published core-fact set and answers.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "open-llm-leaderboard-v2": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "v2 is a fixed six-benchmark composite (IFEval, BBH, MATH-Hard, GPQA, MuSR, MMLU-Pro) that has not changed its component set since launch, and it mixes fully public components with GPQA's partially gated answers; it is a recombination of already-tracked/candidate benchmarks rather than a new capability domain.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "openai-ai-self-improvement-evals": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "Internal OpenAI evals for recursive self-improvement-relevant capability; not published in detail.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "orak": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "The benchmark code and a public leaderboard are hosted on GitHub/GitHub Pages, but scoring depends on live interaction with real commercial game engines rather than a published answer key, and the fixed 12-game set (StarCraft II, Pokemon Red, Minecraft, Stardew Valley, etc.) has not been reported to rotate; these are all extremely well-documented mainstream games with abundant online walkthroughs and strategy content.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "osworld": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Task instructions are public, but grading uses held-out verification scripts checking real desktop-application end states -- genuinely hard to memorize since success depends on live OS/app state, not a text answer.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "otis-mock-aime-2024-2025": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Publicly published mock-AIME practice problems, refreshed each cycle; same well-trodden competition-math domain as AIME itself.",
+  "rotation": "natural_annual_refresh",
+  "source_file": "original-catalog.csv"
+ },
+ "paperbench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Real published ML papers (public) must be reproduced from scratch, but OpenAI's detailed grading rubrics are held out -- full end-to-end replication is not a memorizable single answer.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "piqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public physical-commonsense QA, static, published answers.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "planbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "PDDL problem instances, correct plans, and validators are all openly released and machine-checkable, but classical Blocksworld/Logistics planning is a decades-old, extensively documented AI subfield with heavy pretraining-corpus presence.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "pokeagent-challenge": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "The competition's public pages showed team names and bracket results but no populated numeric leaderboard at time of research, so the exact scoring/disclosure mechanism could not be confirmed; it is a single NeurIPS 2025 competition edition (not yet a recurring/rotating benchmark), and while Pokemon content is widely documented online, long-horizon opponent modeling and RPG speedrunning agent orchestration are less common evaluation genres.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "posttrainbench": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Epoch-hub post-training/RSI-adjacent benchmark; exact disclosure/rotation model not independently confirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "proofbench": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub formal/informal proof-writing benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "pubmedqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Questions, contexts (PubMed abstracts), and labels are all public; based on standard biomedical literature comprehension, a skill heavily represented in web/PubMed pretraining corpora.",
+  "rotation": "static",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "re-bench": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "METR's ML-research-engineering task suite; tasks and reference solutions are held privately to preserve eval integrity.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "realtoxicityprompts": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The prompt set and Perspective API toxicity annotations are fully public (allenai project release accompanying the 2020 paper), it has never been refreshed, and toxic-language generation propensity is a domain thoroughly represented in general pretraining corpora.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "realworldqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "xAI released the full 765-image RealWorldQA set with questions and answers openly on Hugging Face and it has not been revised or expanded since its 2024 introduction, but its physical-world dashcam/photo spatial-reasoning content is a genuinely distinct domain from the catalog's mostly document/exam-style multimodal benchmarks.",
+  "rotation": "static",
+  "source_file": "multimodal-meta.csv"
+ },
+ "repobench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Dataset and evaluation code are public with no active leaderboard tracking frontier models over time, and it covers repository-level completion adjacent to existing codebase-context benchmarks.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "rli": {
+  "disclosure": "private",
+  "domain_novelty": "high",
+  "justification": "Real, live freelance economically-valuable work tasks (dev/design/data/video) drawn from ongoing freelance markets; grading is against real client-acceptance standards, not a published answer key.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "roblox-open-game-eval": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "The framework is open-sourced with a live, continuously-updated model leaderboard, but task-level grading is done via automated checks inside Roblox Studio whose full verification logic was not confirmed to be published; Roblox/Luau scripting has moderate online documentation, but this specific game-dev-and-debugging evaluation workflow is a comparatively narrow, platform-specific genre.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "ruler": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "RULER's task generator and scoring code are fully open on GitHub, but every task instance (needles, haystacks, variable-tracking chains) is procedurally synthesized so fresh, uncontaminated instances can be generated at will, and the algorithmic retrieval/tracing task format is not a naturally-occurring text genre.",
+  "rotation": "periodic_rotation",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "safeagentbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "The 750-task dataset (detailed/abstract/long-horizon) and evaluators are released on GitHub with no held-out private split found, the task set has not been refreshed since the Dec 2024 paper, and embodied physical-world hazard task planning in AI2-THOR has essentially no internet pretraining precedent.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "scale-seal": {
+  "disclosure": "private",
+  "domain_novelty": "medium",
+  "justification": "Scale explicitly markets SEAL/PRBench as keeping datasets and gold answers unpublished specifically to resist gaming, with new prompts added over time; professional-reasoning tasks (incl. legal) sit atop generic domain knowledge, limiting true novelty.",
+  "rotation": "periodic_rotation",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "scicode": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public scientific-computing coding problems drawn from real research code, less commonly represented in generic pretraining than typical LeetCode-style problems.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "science-qa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public multimodal science QA with published answers; image+explanation format is somewhat less common training-data genre than plain text QA.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "scienceagentbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "The 102-task dataset with gold reference programs is openly released on GitHub/Hugging Face with no refresh mechanism, covering multi-domain real scientific-workflow coding (bioinformatics, chemistry, geography, psychology).",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "scrolls": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "SCROLLS follows a GLUE-style hidden-test-set leaderboard submission pattern from its 2022 paper, and the project is now dormant (the official leaderboard domain has been squatted); its real long-document tasks (legal contracts, government reports, TV transcripts) add some domain diversity beyond typical QA/summarization corpora.",
+  "rotation": "static",
+  "source_file": "longcontext-multilingual.csv"
+ },
+ "seed-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "SEED-Bench's ~19K multiple-choice items and answer keys are fully public on Hugging Face/GitHub, but the benchmark family has been periodically superseded by new versions (SEED-Bench-2, SEED-Bench-2-Plus) that refresh the item pool rather than keeping one static set forever.",
+  "rotation": "periodic_rotation",
+  "source_file": "multimodal-meta.csv"
+ },
+ "simplebench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public everyday-reasoning questions selected specifically because models (despite being simple for humans) tend to fail them -- an adversarial-selection design, not a common training-data genre for correct answers.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "simpleqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public short-answer trivia questions with published gold answers; deliberately obscure but still ordinary factual-recall content.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "simpleqa-verified": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Same profile as SimpleQA, just de-duplicated/relabeled.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "spa-bench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "The 340 cross-app, bilingual (English/Chinese) Android tasks and full evaluation pipeline are public (ICLR'25 Spotlight, GitHub), but automated success detection relies on a GPT-4o MLLM judge rather than a disclosed fixed answer key, and the task set has not been refreshed since the October 2024 release; smartphone app GUI automation has moderate representation in pretraining, lower for Chinese-language apps specifically.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "spatialviz-bench": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Epoch-hub spatial-visualization benchmark; exact disclosure/rotation model not independently confirmed, but spatial-reasoning-from-visuals is a plausibly under-represented pretraining genre.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "spider-2": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "high",
+  "justification": "Enterprise-DB text-to-SQL (BigQuery/Snowflake/DuckDB) scored via execution-based hidden-gold submission leaderboard against a fixed 547-example set since 2024, a genuinely novel domain versus typical coding benchmarks.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "strategyqa": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Train/dev questions and answers are public, but the original official leaderboard held out hidden test-set answers; implicit multi-hop commonsense trivia has been extensively replicated and discussed since 2021, giving it low remaining novelty.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "superglue": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Bundle of public NLU tasks with published labels/leaderboard, static since 2019.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "surface-evolver-bench": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Epoch-hub scientific-simulation benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed, but the physics-simulation task genre is plausibly under-represented in generic pretraining.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "swe-bench-lite": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Same held-out-test-patch model as SWE-bench Verified, smaller subset.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "swe-bench-multimodal": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Same model, extended to visual (frontend/UI) GitHub issues.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "swe-bench-pro": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Newer, harder SWE-bench variant with held-out test patches; drawn from enterprise-style codebases somewhat less publicly indexed than the original's popular OSS repos.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "swe-bench-verified": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "Task descriptions come from real, fully public GitHub issues, but the verifying test patches used for grading are held out by the maintainers -- though the underlying repos themselves are public training-data content.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "swe-lancer": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Task descriptions come from public Expensify GitHub issues but end-to-end grading tests are held privately for most of the task set (only the 502-task Diamond subset is open-sourced), covering real freelance full-stack work broader than typical unit-test coding evals.",
+  "rotation": "static",
+  "source_file": "coding-embedding-science.csv"
+ },
+ "tau-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public airline/retail customer-service task suite with published rules and grading; multi-turn tool-use is less memorizable than static QA.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "tau2-bench-telecom": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Sierra open-sourced the full dual-control environment, task generator, and grading code on GitHub, and has actively extended it (new telecom/banking-knowledge/voice domains and a v1.0.1 grading update through 2026), with Artificial Analysis independently re-running it against new model releases over time; the dual-control paradigm (both agent AND simulated user can act on a shared, stateful world) is a genuinely novel interaction structure with little precedent in standard pretraining or single-control agent benchmarks.",
+  "rotation": "periodic_rotation",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "terminal-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public terminal/CLI task suite with published tasks and test scripts.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "textarena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Game code, rules, and a real-time TrueSkill leaderboard are all openly published on GitHub and textarena.ai, and the environment suite keeps growing (57+ to 74+ games) with continuous live play against new opponents/models; skill mix ranges from very common domains (poker, tic-tac-toe, negotiation) to more novel dialogue/deduction games, giving moderate overall novelty.",
+  "rotation": "periodic_rotation",
+  "source_file": "games.csv"
+ },
+ "the-agent-company": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public simulated-workplace task suite (Slack/GitLab/ownCloud-style tools) with published tasks.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "tombench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "All 2,860 questions and gold labels across 8 ToM task types are released openly on GitHub as a fixed static set; social-cognition/false-belief scenarios are less common in typical web/pretraining text than generic QA, giving moderate novelty.",
+  "rotation": "static",
+  "source_file": "reasoning-social.csv"
+ },
+ "toolbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The full 16,000+-API dataset, ToolLLaMA training data, and ToolEval code have been open on GitHub/HF since 2023 with no updates found since (the repo's changelog stops before 2024); real-API tool-use framed as ReACT/DFSDT tool call sequences is now a well-represented pattern in agentic post-training data, and the benchmark has been effectively superseded by BFCL in current citation frequency.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "toxigen": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "The 274K-statement machine-generated dataset with human/AI toxicity labels is public on GitHub/Hugging Face, was released once in 2022 with no refresh cadence, and implicit hate-speech/toxicity detection is a heavily studied, internet-text-representative domain.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "trivia-qa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Large public trivia QA dataset with published answers, static since 2017 -- general trivia is a maximally well-trodden pretraining domain.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "truthfulqa": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public questions/answers, but targets common human misconceptions specifically -- a genre models must resist reproducing rather than just recall.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "uk-aisi-inspect-cyber": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Inspect Evals/Inspect Cyber is a framework bundling many separately-authored eval packages (Cybench, CyberGym, CyberSecEval 3, CTI-REALM, etc.) each with its own disclosure policy, so no single classification applies, but AISI continuously adds new eval packages and the offensive CTF-style tasks require live exploitation with little internet precedent.",
+  "rotation": "periodic_rotation",
+  "source_file": "safety-alignment.csv"
+ },
+ "vals-index": {
+  "disclosure": "private",
+  "domain_novelty": "medium",
+  "justification": "Vals AI markets its underlying task sets as private/proprietary enterprise benchmarks with a live leaderboard that adds new models continuously, but exact rotation cadence and task composition are not publicly documented, and composite GDP-weighted domain coverage is not independently verifiable -- treat with caution (see report).",
+  "rotation": "periodic_rotation",
+  "source_file": "domain-professional-embodied.csv"
+ },
+ "vectara-hallucination-leaderboard": {
+  "disclosure": "private",
+  "domain_novelty": "low",
+  "justification": "The README explicitly states the source documents used for scoring are 'Not publicly available to avoid overfitting by any LLM,' the leaderboard is actively and frequently updated with newly released models (last updated dates change continuously, over 100 models tracked), and RAG/summarization faithfulness over generic documents is a well-represented task type in pretraining and instruction-tuning data.",
+  "rotation": "periodic_rotation",
+  "source_file": "safety-alignment.csv"
+ },
+ "vending-bench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "A genuinely novel simulated-business-management scenario (running a vending machine over simulated long horizons) with essentially no direct internet precedent as a training-data genre.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "vending-bench-dollars": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Same Vending-Bench scenario, dollar-balance metric.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "vending-bench-percent": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Same Vending-Bench scenario, percent-of-target metric.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "vending-bench-time": {
+  "disclosure": "fully_public",
+  "domain_novelty": "high",
+  "justification": "Same Vending-Bench scenario, survival-time metric.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "video-mme": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public video-understanding QA with published answers; long-video temporal reasoning is a less commonly pretrained-on modality than static image or text.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "videogamebench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Seven of the ten test-set games are public but three are deliberately kept secret on a private evaluation server specifically to block generalization-by-memorization, and it is a single fixed test/dev split with no rotation; the 1990s game content itself is broadly documented online, but real-time raw-pixel control without game-specific scaffolding is an atypical pretraining task, giving medium novelty.",
+  "rotation": "static",
+  "source_file": "games.csv"
+ },
+ "visualwebarena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The 910 tasks, environment configs, and evaluation scripts have been fully open-sourced on GitHub since the January 2024 release with no refresh since; visually-grounded web interaction (screenshots + Set-of-Marks) has moderate internet precedent, less than pure text/DOM tasks.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "vpct": {
+  "disclosure": "unknown",
+  "domain_novelty": "medium",
+  "justification": "Epoch-hub visual/perceptual-consistency benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "webarena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Public task set on reproducible self-hosted sandboxed websites (not live internet), published success criteria.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "webbench": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "medium",
+  "justification": "Task descriptions are published on Hugging Face but grading/eval infrastructure is run by the vendor (Halluminate) and the dataset has been actively expanded and re-run (452 live sites, updated May 2025 and again by mid-2026); READ/WRITE coverage including auth, CAPTCHAs, and file downloads is less represented in pretraining than simple browsing.",
+  "rotation": "periodic_rotation",
+  "source_file": "web-agents.csv"
+ },
+ "webdev-arena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Live head-to-head web-app-building arena (LMArena-style), continuously fed new user prompts rather than a fixed test set.",
+  "rotation": "periodic_rotation",
+  "source_file": "original-catalog.csv"
+ },
+ "webvoyager": {
+  "disclosure": "questions_public_answers_hidden",
+  "domain_novelty": "low",
+  "justification": "The 643 tasks and code are public on GitHub, but there is no fixed answer key -- correctness is judged live by a GPT-4V evaluator against the current state of 15 real, currently-live consumer websites (Amazon, Google, Booking, etc.), a task genre extremely well represented in pretraining; the task list itself has not been refreshed since the 2024 release.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "weirdml": {
+  "disclosure": "unknown",
+  "domain_novelty": "high",
+  "justification": "Epoch-hub \"unconventional ML reasoning\" benchmark with no dedicated deep-dive -- exact disclosure model unconfirmed, but deliberately unconventional-by-design tasks likely resist memorization.",
+  "rotation": "unknown",
+  "source_file": "original-catalog.csv"
+ },
+ "werewolf-arena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The framework, prompts, and game code are fully open-sourced on GitHub with no held-out test set, and because roles/names/dialogue are randomly generated at each run, effectively every match is a freshly generated instance rather than a fixed dataset; Werewolf/Mafia strategy is a well-known game genre online, but the bidding-based dynamic turn-taking and multi-agent deception task format is less commonly represented, giving medium novelty.",
+  "rotation": "periodic_rotation",
+  "source_file": "games.csv"
+ },
+ "wildbench": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The released WildBench set (HF allenai/WildBench) is a fixed, one-time curated sample of real Chatbot Arena user queries, not periodically refreshed (the HF Space itself went inactive after Aug 2024); sourcing from real, diverse in-the-wild user traffic gives broader task-type coverage than hand-curated benchmarks, though the frozen released set can still be scraped/memorized once public.",
+  "rotation": "static",
+  "source_file": "instruction-tooluse.csv"
+ },
+ "windows-agent-arena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "All 150+ tasks, the reproducible Azure-based evaluation harness, and even the scoring scripts are open-sourced on GitHub with no refresh since the September 2024 release; Windows desktop GUI control (icons, keyboard shortcuts, Office apps) has less pretraining representation than web/text tasks, evidenced by the ~20% ceiling for the best zero-shot VLM agent vs. 74.5% human performance.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ },
+ "winogrande": {
+  "disclosure": "fully_public",
+  "domain_novelty": "low",
+  "justification": "Public pronoun-resolution set with published answers, static since 2019; adversarial filtering doesn't change that answers are public.",
+  "rotation": "static",
+  "source_file": "original-catalog.csv"
+ },
+ "wmdp": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "The 3668-question MCQ set with answers is openly released on Hugging Face (cais/wmdp, confirmed non-private) and was a one-time 2024 release with no evidence of scheduled refresh, but the hazardous bio/cyber knowledge domain is more specialized than generic pretraining text.",
+  "rotation": "static",
+  "source_file": "safety-alignment.csv"
+ },
+ "workarena": {
+  "disclosure": "fully_public",
+  "domain_novelty": "medium",
+  "justification": "Tasks, ServiceNow environment configs, and cheat-function grading code are all open-sourced on GitHub (WorkArena/WorkArena++), but scores are run live against a real ServiceNow enterprise instance whose demo data can drift over time; enterprise ITSM/knowledge-work workflows are less represented in generic pretraining than consumer web browsing.",
+  "rotation": "static",
+  "source_file": "web-agents.csv"
+ }
+}

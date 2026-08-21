@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2024-02-21,ChatGLM3-6B-128K,10.48,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table
+2024-02-21,YaRN-Mistral-7B,27.95,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table
+2024-02-21,Yi-6B-200K,36.68,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table
+2024-02-21,Yi-34B-200K,38.43,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table
+2024-02-21,Claude-2,62.88,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table
+2024-02-21,GPT-4,67.25,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table
+2024-02-21,Kimi-Chat,72.49,"percent accuracy (En.MC subtask, 100K+ context multiple-choice)",https://github.com/OpenBMB/InfiniteBench,InfiniteBench paper/repo results table; top scorer on this subtask

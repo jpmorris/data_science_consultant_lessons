@@ -1,0 +1,13 @@
+date,model,score,score_unit,source_url,notes
+2024-06,GPT-4o,72.6,percent accuracy,https://arxiv.org/abs/2406.01574,"CoT; from original MMLU-Pro paper (Wang et al. 2024) Table 2, top closed-source model at benchmark's introduction"
+2024-06,Gemini-1.5-Pro,69.0,percent accuracy,https://arxiv.org/abs/2406.01574,CoT; MMLU-Pro paper Table 2
+2024-06,Claude-3-Opus,68.5,percent accuracy,https://arxiv.org/abs/2406.01574,CoT; MMLU-Pro paper Table 2
+2024-06,GPT-4-Turbo,63.7,percent accuracy,https://arxiv.org/abs/2406.01574,CoT; MMLU-Pro paper Table 2
+2024-06,Llama-3-70B-Instruct,56.2,percent accuracy,https://arxiv.org/abs/2406.01574,CoT; MMLU-Pro paper Table 2; best open-source model in original paper
+2024-07-23,Llama 3.1 405B Instruct,72.2,percent accuracy,https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/eval_details.md,"5-shot CoT, macro average, post-trained"
+2024-12-26,DeepSeek-V3,64.4,percent accuracy,https://arxiv.org/pdf/2412.19437,5-shot
+2025-09,Claude Sonnet 4.5,86.0,percent accuracy,https://www.mindstudio.ai/models/claude-4-5-sonnet,Vendor/aggregator-reported score
+2025-11,Gemini 3 Pro Preview (high),89.8,percent accuracy,https://artificialanalysis.ai/evaluations/mmlu-pro,"Independently benchmarked by Artificial Analysis; cited by lifearchitect.ai as the point where MMLU-Pro effectively saturated (~90% ceiling)"
+2025-11,Claude Opus 4.5 (Reasoning),89.5,percent accuracy,https://artificialanalysis.ai/evaluations/mmlu-pro,Independently benchmarked by Artificial Analysis
+2026-08,Qwen3.7 Max,89.6,percent accuracy,https://benchlm.ai/benchmarks/mmlu-pro,Leaderboard aggregator
+2026-08,Claude Opus 5,91.59,percent accuracy,https://www.vals.ai/benchmarks/mmlu_pro,Leaderboard aggregator; current top score as of August 2026

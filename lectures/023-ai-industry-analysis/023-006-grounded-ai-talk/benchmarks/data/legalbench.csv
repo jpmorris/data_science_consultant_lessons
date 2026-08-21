@@ -1,0 +1,13 @@
+date,model,score,score_unit,source_url,notes
+2023-08-20,GPT-3.5,60.9,percent accuracy (LegalBench issue-spotting),https://arxiv.org/html/2308.11462,"Original LegalBench paper (Guha et al.), Table 2. Testing period May-Aug 2023."
+2023-08-20,Claude-1,58.1,percent accuracy (LegalBench issue-spotting),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2; Claude-1 tested July 2023.
+2023-08-20,GPT-4,82.9,percent accuracy (LegalBench issue-spotting),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,GPT-3.5,66.7,percent accuracy (LegalBench rhetorical-understanding),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,Claude-1,68.9,percent accuracy (LegalBench rhetorical-understanding),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,GPT-4,79.4,percent accuracy (LegalBench rhetorical-understanding),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,GPT-3.5,78.0,percent accuracy (LegalBench rule-conclusion),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,Claude-1,79.5,percent accuracy (LegalBench rule-conclusion),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,GPT-4,89.9,percent accuracy (LegalBench rule-conclusion),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2.
+2023-08-20,GPT-3.5,58.5,percent correctness (LegalBench rule-application),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2 (rule-application correctness sub-score).
+2023-08-20,Claude-1,61.4,percent correctness (LegalBench rule-application),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2 (rule-application correctness sub-score).
+2023-08-20,GPT-4,82.2,percent correctness (LegalBench rule-application),https://arxiv.org/html/2308.11462,Original LegalBench paper Table 2 (rule-application correctness sub-score).

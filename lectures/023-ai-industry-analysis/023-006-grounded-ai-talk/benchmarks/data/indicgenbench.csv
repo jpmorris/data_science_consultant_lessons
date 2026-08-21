@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2024-04,LLaMA-65B,4.6,"ROUGE-L (CrossSum-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2
+2024-04,Gemma-7B-IT,11.6,"ROUGE-L (CrossSum-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2
+2024-04,GPT-3.5,16.3,"ROUGE-L (CrossSum-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2
+2024-04,GPT-4,17.6,"ROUGE-L (CrossSum-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2
+2024-04,PaLM-2-L,21.2,"ROUGE-L (CrossSum-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2; best score on this task
+2024-04,GPT-3.5,33.2,"F1 (XQuAD-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2
+2024-04,GPT-4,55.7,"F1 (XQuAD-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2
+2024-04,PaLM-2-L,69.3,"F1 (XQuAD-In, one-shot)",https://arxiv.org/abs/2404.16816,IndicGenBench paper Table 2; best score on this task
