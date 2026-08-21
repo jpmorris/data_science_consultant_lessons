@@ -1937,6 +1937,25 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
   </div>
   <div class="frontier-diagram-subtitle">Draft placements -- discuss live</div>
   {{< include images/attempt-ability-chart.svg >}}
+  <ul class="frontier-chart-notes">
+    <li><strong>Tao himself rejects "superhuman"</strong> — "artificial general
+    cleverness," not intelligence: ad hoc, often brute-force or stochastic,
+    fallible, uninterpretable. On the Erdős problems specifically, "the true
+    success rate is only a point or two [percent]... concentrated at the easy
+    end." His verdict on an AI co-author: "on par with... a junior human
+    co-author."</li>
+    <li><strong>Math (Lean-harness) sits low</strong> because needing many
+    attempts plus a verifier to land a correct answer implies weaker ability
+    <em>per attempt</em> — even when the final, checked result is fully
+    reliable.</li>
+    <li><strong>Cybersecurity sits low too</strong> — every disclosed case is
+    agentic, trying known intrusion patterns repeatedly, not reading source
+    code and identifying the flaw directly.</li>
+    <li><strong>Physics sits lowest of the "real" cases</strong> — beyond the
+    one gluon-amplitude result, most 2026 AI-physics activity is either
+    augmentation (tuning experiments, accelerating simulation) or rediscovery
+    of already-known results, not novel one-shot theory.</li>
+  </ul>
 </div>
 <div class="frontier-split-table">
 ```
