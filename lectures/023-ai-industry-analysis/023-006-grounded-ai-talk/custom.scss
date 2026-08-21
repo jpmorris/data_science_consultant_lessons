@@ -431,6 +431,30 @@ $body-bg: #073642;
   color: #eee8d5;
 }
 
+// "Why these placements?" button for the capability chart on the Knowledge
+// Frontier slide. Unlike .llm-citations-button, this one is a normal inline
+// element in the slide's own content flow (sits directly below the chart,
+// not pinned to a screen corner) -- it doesn't need position:fixed, since
+// only the resulting <dialog> (built by chart-notes-modal.html, reusing the
+// .llm-citations-dialog classes above) needs to escape reveal's transformed
+// .slides container.
+.frontier-chart-notes-button {
+  display: block;
+  margin: 0.9em auto 0;
+  background: rgba(38, 139, 210, 0.12);
+  border: 1px solid #268bd2;
+  border-radius: 6px;
+  color: #268bd2;
+  font-family: $font-family-sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+}
+.frontier-chart-notes-button:hover {
+  background: rgba(38, 139, 210, 0.24);
+}
+
 // Full-bleed accent treatment for the single "thesis" slide.
 .reveal .slides section.stat-slide blockquote {
   border: none;

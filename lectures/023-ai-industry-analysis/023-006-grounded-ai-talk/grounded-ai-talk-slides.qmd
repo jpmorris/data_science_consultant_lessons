@@ -19,6 +19,7 @@ format:
       - nexttoken-replay.html
       - llm-axes-anim.html
       - citations.html
+      - chart-notes-modal.html
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf
@@ -1937,6 +1938,8 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
   </div>
   <div class="frontier-diagram-subtitle">Non-Empirical, LLM, non-human-assist only -- draft, discuss live</div>
   {{< include images/attempt-ability-chart.svg >}}
+  <button id="chart-notes-button" class="frontier-chart-notes-button" type="button">Why these placements?</button>
+  <template id="chart-notes-template">
   <ul class="frontier-chart-notes">
     <li><strong>Scope</strong>: this chart only counts non-empirical results
     (checkable by reasoning alone) produced substantially by an LLM without a
@@ -1977,6 +1980,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     augmentation (tuning experiments, accelerating simulation) or rediscovery
     of already-known results, not novel one-shot theory.</li>
   </ul>
+  </template>
 </div>
 <div class="frontier-split-table">
 ```
