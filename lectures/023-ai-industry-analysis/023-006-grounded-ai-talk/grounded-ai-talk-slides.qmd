@@ -1952,16 +1952,16 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     LLM-only theory. Economics/game theory: searched directly, found active
     tooling research but no flagship "AI solved an open problem" case —
     doesn't yet earn a dot.</li>
-    <li><strong>Tao himself rejects "superhuman"</strong> — "artificial general
+    <li><strong>Terence Tao rejects "superhuman"</strong> — "artificial general
     cleverness," not intelligence: ad hoc, often brute-force or stochastic,
     fallible, uninterpretable. On the Erdős problems specifically, "the true
     success rate is only a point or two [percent]... concentrated at the easy
-    end." His verdict on an AI co-author: "on par with... a junior human
+    end." Verdict on an AI co-author: "on par with... a junior human
     co-author."</li>
     <li><strong>Color = number of public examples</strong> (green→red, log
-    scale): Math/CS Lean-harness ≈200 (roughly a third of VibeMathed's 599
-    tracked problems), Math/CS one-shot ≈90, Cybersecurity ≈6-7 disclosed
-    across four labs (OpenAI, Anthropic, Google, Meta) — more than we'd
+    scale): Math/CS Lean-harness 97 (verified Lean-verified/checked count),
+    Math/CS one-shot ≈90, Cybersecurity ≈6-7 disclosed across OpenAI,
+    Anthropic, and Google (Meta excluded — not a true escape) — more than we'd
     originally counted, and plausibly an undercount of true incidents, so
     placed a little redder than the raw number alone would justify — Physics
     ≈3 (gluon-amplitude, cosmic-string radiation, a pre-1900-text-LLM
@@ -1992,13 +1992,13 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | AlphaFold2                                                                                                  | 2020        | ML                | No |
 | FunSearch (cap set problem)                                                                                  | 2023        | Harness-Evolutionary | No |
 | AlphaEvolve                                                                                                  | 2025        | Harness-Evolutionary | No |
-| Math/CS: Literature Search — <span class="hype-flag">RETRACTED</span> "GPT-5 solved 10 Erdős problems" (OpenAI), <span class="hype-flag">FALSE CLAIM</span> Erdős 333, DeepMind systematic re-check | Oct 2025–Jan 2026 | Literature search | No |
+| Math/CS: Literature Search — RETRACTED "GPT-5 solved 10 Erdős problems" (OpenAI), FALSE CLAIM Erdős 333, DeepMind systematic re-check | Oct 2025–Jan 2026 | Literature search | No |
 | Erdős Problem 1102 (human-only, no AI)                                                                       | Nov 2025    | Human             | N/A |
 | Cybersecurity: OpenAI, Anthropic, Google (Meta excluded -- not a true escape) | Jan–Jul 2026 | Harness-Escape-Verify | No |
-| **Math/CS: 97 VibeMathed Harness** — Lean-verified/checked (incl. Erdős 728, AlphaProof Nexus, unit-distance disproof, Sum-product disproof, OpenAI "Astra," Riemann-zeta bound) | Jan–Aug 2026 | Harness-Lean      | No |
+| **Math/CS: 97 VibeMathed Harness** — Lean-verified/checked | Jan–Aug 2026 | Harness-Lean      | No |
 | GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness-Proof-Search | No |
-| **Math/CS: >17 VibeMathed One-shot** — incl. 4 self-verifying counterexamples (DGG, Jacobian, Son-Pham, Mihail-Vazirani) and 6+ single-prompt proofs (Hodge Bundle, Erdős 1196, Fill's Spectral Gap, Chip-Firing, Facial Distance Patterns, Quantum Key Agreement) | Mar–Aug 2026 | One-shot          | Unknown |
-| **AI-assisted science** (all fields, current) — every field is using LLM assistance at some level (literature search, code, drafting, brainstorming); this is the median case, not the tail this slide is actually about | 2024–present | Assist            | No |
+| **Math/CS: >17 VibeMathed One-shot** — self-verifying counterexamples and single-prompt proofs | Mar–Aug 2026 | One-shot          | Unknown |
+| <span class="hype-flag">MOST COMMON</span> AI-assisted science (all fields, current) — every field is using LLM assistance at some level | 2024–present | Assist            | No |
 :::
 
 ```{=html}
