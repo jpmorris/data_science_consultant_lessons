@@ -20,6 +20,8 @@ format:
       - llm-axes-anim.html
       - citations.html
       - chart-notes-modal.html
+revealjs-plugins:
+  - pointer-sync
 resources:
   - fonts/Inter-Regular.ttf
   - fonts/Inter-Italic.ttf
