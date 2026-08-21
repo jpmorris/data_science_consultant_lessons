@@ -1921,12 +1921,13 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 <ul class="frontier-intro-bullets">
   <li>Much of human knowledge is <strong>empirical</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
   <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
-  <li>Two eventual possibilities:
+  <li>Two modalities:
     <ul>
-      <li><strong>Human-parity, tireless attempts</strong> — models just search many times more flexibly than classical brute force: running Lean checks or testing counterexamples far faster, and for far longer, than a human would bother to.</li>
-      <li><strong>Superhuman</strong> — through encoded intuition and a wider library of heuristics than any one expert holds, compresses the solution space itself, independent of running more or faster trials. Whether any real case actually clears this bar is still unresolved — see the table.</li>
+      <li><strong>Many attempts, verification in loop</strong></li>
+      <li><strong>One-shot / few-shot, no verification in loop</strong></li>
     </ul>
   </li>
+  <li>The degree of sub-human or superhuman ability is still contested.</li>
 </ul>
 ```
 
