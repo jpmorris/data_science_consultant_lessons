@@ -1918,6 +1918,8 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 ## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
 
 ```{=html}
+<div class="frontier-split-row">
+<div class="frontier-left-col">
 <ul class="frontier-intro-bullets">
   <li>Much of human knowledge is <strong>empirical</strong> — it needs a real-world experiment to verify. Some isn't: pure theory, checkable by reasoning alone.</li>
   <li><strong>Current AI progress is of the non-empirical type</strong> — nothing to build or run in a lab.</li>
@@ -1929,10 +1931,27 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
   </li>
   <li>The degree of sub-human, human, or superhuman ability is still contested.</li>
 </ul>
+<div class="frontier-split-table">
 ```
 
+::: {.table-panel}
+| Field | Discovery | Date | Mechanism | Superhuman reasoning? | Citation |
+| --- | --- | --- | --- | --- | --- |
+| Games | AlphaGo | 2016 | Harness-MCTS | No | [Nature 2016](https://www.nature.com/articles/nature16961) |
+| Biology | AlphaFold2 | 2020 | **ML** | No | [Nobel 2024](https://www.nobelprize.org/prizes/chemistry/2024/press-release/) |
+| Math | FunSearch | 2023 | Harness-Evolutionary | No | [Nature 2023](https://www.nature.com/articles/s41586-023-06924-6) |
+| Math/CS | AlphaEvolve | 2025 | Harness-Evolutionary | No | [DeepMind 2025](https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/) |
+| Math/CS | Literature Search | 2025 | **Literature search** | No | [TechCrunch 2025](https://techcrunch.com/2025/10/19/openais-embarrassing-math/) |
+| Cybersecurity | OpenAI, Anthropic, Google — Sandbox Escape | 2026 | Harness-Escape-Verify | **Unknown** | [The Hacker News 2026](https://thehackernews.com/2026/07/openai-says-its-own-ai-models-escaped.html) |
+| Math/CS | 97 VibeMathed Harness | 2026 | Harness-Lean | No | [VibeMathed](https://vibemathed.com) |
+| Physics | GPT-5.2 Gluon-Amplitude Result | 2026 | Harness-Proof-Search | No | [OpenAI 2026](https://openai.com/index/new-result-theoretical-physics/) |
+| Math/CS | >17 VibeMathed One-shot | 2026 | **One-shot** | **Unknown** | [VibeMathed](https://vibemathed.com) |
+| All | **<span class="crux-word">MOST COMMON</span>** AI-assisted science | 2024 | Assist | No | — |
+:::
+
 ```{=html}
-<div class="frontier-split-row">
+</div>
+</div>
 <div class="frontier-split-diagram">
   <div class="section-label section-label--lg frontier-diagram-title">
     Solving Ability vs. Attempt Budget
@@ -1982,26 +2001,6 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
     of already-known results, not novel one-shot theory.</li>
   </ul>
   </template>
-</div>
-<div class="frontier-split-table">
-```
-
-::: {.table-panel}
-| Field | Discovery | Date | Mechanism | Superhuman reasoning? | Citation |
-| --- | --- | --- | --- | --- | --- |
-| Games | AlphaGo | 2016 | Harness-MCTS | No | [Nature 2016](https://www.nature.com/articles/nature16961) |
-| Biology | AlphaFold2 | 2020 | ML | No | [Nobel 2024](https://www.nobelprize.org/prizes/chemistry/2024/press-release/) |
-| Math | FunSearch | 2023 | Harness-Evolutionary | No | [Nature 2023](https://www.nature.com/articles/s41586-023-06924-6) |
-| Math/CS | AlphaEvolve | 2025 | Harness-Evolutionary | No | [DeepMind 2025](https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/) |
-| Math/CS | Literature Search | 2025 | Literature search | No | [TechCrunch 2025](https://techcrunch.com/2025/10/19/openais-embarrassing-math/) |
-| Cybersecurity | OpenAI, Anthropic, Google — Sandbox Escape | 2026 | Harness-Escape-Verify | Unknown | [The Hacker News 2026](https://thehackernews.com/2026/07/openai-says-its-own-ai-models-escaped.html) |
-| Math/CS | **97 VibeMathed Harness** | 2026 | Harness-Lean | No | [VibeMathed](https://vibemathed.com) |
-| Physics | GPT-5.2 Gluon-Amplitude Result | 2026 | Harness-Proof-Search | No | [OpenAI 2026](https://openai.com/index/new-result-theoretical-physics/) |
-| Math/CS | **>17 VibeMathed One-shot** | 2026 | One-shot | Unknown | [VibeMathed](https://vibemathed.com) |
-| All | <span class="crux-word">MOST COMMON</span> AI-assisted science | 2024 | Assist | No | — |
-:::
-
-```{=html}
 </div>
 </div>
 ```
@@ -2113,6 +2112,14 @@ lives in the "Why these placements?" modal's citation list):
   clean. His own words on LLMs, worth quoting live: "clearly better at
   thinking and doing math than I am... but the eventual proofs that I
   write are simpler, more general, and easier to read."
+- **Say this live, it's not on the table or chart**: 97 (Lean-harness) + >17
+  (one-shot) only accounts for ~114 of VibeMathed's 437 resolved problems —
+  there's a big gray middle (~300+) that's neither cleanly harness-verified
+  nor cleanly one-shot (mixed/ambiguous verification, not yet classified, or
+  classified but not dramatic enough to earn its own row). The two rows on
+  this slide are the two clean tails of that distribution, not the whole
+  437 — worth saying explicitly so the table doesn't imply 97+17 is the
+  full picture.
 - **Math: 97 VibeMathed Harness** (Jan–Aug 2026, Harness-Lean): rolls up every
   Lean-verified or Lean-checked entry in VibeMathed's 437-problem resolved
   set (full breakdown: `vibemathed-research/README.md` alongside this deck) —
