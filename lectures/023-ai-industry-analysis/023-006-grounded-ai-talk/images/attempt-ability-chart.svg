@@ -1,0 +1,53 @@
+<svg width="760" height="600" viewBox="0 0 760 600">
+  <defs>
+    <filter id="dotSoftGlow2" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <filter id="regionBlur" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+
+  <!-- axes -->
+  <line x1="110" y1="60" x2="110" y2="480" stroke="#93a1a1" stroke-width="2"/>
+  <line x1="110" y1="480" x2="680" y2="480" stroke="#93a1a1" stroke-width="2"/>
+
+  <!-- axis end labels -->
+  <text x="110" y="502" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#93a1a1">One-shot</text>
+  <text x="680" y="502" text-anchor="end" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#93a1a1">Many (harness / verifier)</text>
+  <text x="100" y="475" text-anchor="end" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#93a1a1">Poor</text>
+  <text x="100" y="70" text-anchor="end" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#93a1a1">Great</text>
+
+  <!-- axis titles -->
+  <text x="395" y="535" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" letter-spacing="0.03em" fill="#eee8d5">Number of Final Solution Attempts</text>
+  <text x="-270" y="30" transform="rotate(-90)" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" letter-spacing="0.03em" fill="#eee8d5">Solving Ability</text>
+
+  <!-- Human Expert region: a soft zone, not a precise curve -- replaces the old dashed line -->
+  <ellipse cx="215" cy="255" rx="150" ry="85" fill="#dc322f" opacity="0.22" filter="url(#regionBlur)"/>
+  <ellipse cx="215" cy="255" rx="150" ry="85" fill="none" stroke="#dc322f" stroke-width="2" stroke-dasharray="6 5" opacity="0.6"/>
+  <text x="215" y="163" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" font-style="italic" fill="#dc322f" opacity="0.9">Human Expert</text>
+
+  <!-- Math (one-shot) -- inside the Human Expert region -->
+  <circle cx="205" cy="270" r="20" fill="#859900" filter="url(#dotSoftGlow2)"/>
+  <text x="205" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#859900">Math</text>
+  <text x="205" y="339" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#859900">(one-shot)</text>
+
+  <!-- Math (Lean-harness) -- far right, lower -->
+  <circle cx="560" cy="385" r="20" fill="#2aa198" filter="url(#dotSoftGlow2)"/>
+  <text x="560" y="425" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#2aa198">Math</text>
+  <text x="560" y="444" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#2aa198">(Lean-harness)</text>
+
+  <!-- Physics -->
+  <circle cx="470" cy="315" r="18" fill="#cb4b16" filter="url(#dotSoftGlow2)"/>
+  <text x="470" y="278" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#cb4b16">Physics</text>
+
+  <!-- Computer Science (provisional) -->
+  <circle cx="330" cy="255" r="18" fill="#6c71c4" filter="url(#dotSoftGlow2)" opacity="0.75"/>
+  <text x="330" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#6c71c4">Computer Science*</text>
+
+  <!-- Cybersecurity -- nudged down toward Math (Lean-harness) -->
+  <circle cx="600" cy="300" r="19" fill="#d33682" filter="url(#dotSoftGlow2)"/>
+  <text x="600" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#d33682">Cybersecurity</text>
+
+  <text x="400" y="565" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#93a1a1" opacity="0.8">*Computer Science placement provisional -- discuss</text>
+</svg>
