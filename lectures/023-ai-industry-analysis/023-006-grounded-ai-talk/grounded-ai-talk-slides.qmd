@@ -1993,13 +1993,13 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | AlphaFold2                                                                                                  | 2020        | ML                | No |
 | FunSearch (cap set problem)                                                                                  | 2023        | Harness-Evolutionary | No |
 | AlphaEvolve                                                                                                  | 2025        | Harness-Evolutionary | No |
-| Math/CS: Literature Search — "GPT-5 solved 10 Erdős problems" (OpenAI), Erdős 333, DeepMind systematic re-check | Oct 2025–Jan 2026 | Literature search | No |
-| Erdős Problem 1102 (human-only, no AI)                                                                       | Nov 2025    | Human             | N/A |
-| Cybersecurity: OpenAI, Anthropic, Google (Meta excluded -- not a true escape) | Jan–Jul 2026 | Harness-Escape-Verify | No |
-| **Math/CS: 97 VibeMathed Harness** — Lean-verified/checked | Jan–Aug 2026 | Harness-Lean      | No |
-| GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness-Proof-Search | No |
-| **Math/CS: >17 VibeMathed One-shot** — self-verifying counterexamples and single-prompt proofs | Mar–Aug 2026 | One-shot          | Unknown |
-| <span class="crux-word">MOST COMMON</span> AI-assisted science — non-frontier, all fields (empirical included) | 2024–present | Assist            | No |
+| Math/CS: Literature Search — "GPT-5 solved 10 Erdős problems" (OpenAI), Erdős 333, DeepMind systematic re-check | 2025 | Literature search | No |
+| Erdős Problem 1102 (human-only, no AI)                                                                       | 2025    | Human             | N/A |
+| Cybersecurity: OpenAI, Anthropic, Google (Meta excluded -- not a true escape) | 2026 | Harness-Escape-Verify | Unknown |
+| **Math/CS: 97 VibeMathed Harness** — Lean-verified/checked | 2026 | Harness-Lean      | No |
+| GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | 2026    | Harness-Proof-Search | No |
+| **Math/CS: >17 VibeMathed One-shot** — self-verifying counterexamples and single-prompt proofs | 2026 | One-shot          | Unknown |
+| <span class="crux-word">MOST COMMON</span> AI-assisted science — non-frontier, all fields (empirical included) | 2024 | Assist            | No |
 :::
 
 ```{=html}
