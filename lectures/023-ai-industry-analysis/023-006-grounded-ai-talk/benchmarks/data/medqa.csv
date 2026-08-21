@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2022-12,Med-PaLM (Flan-PaLM base),67.2,percent accuracy (MedQA USMLE 4-option),https://arxiv.org/abs/2305.09617,"Score for original Med-PaLM as cited retrospectively in the Med-PaLM 2 paper (Singhal et al., submitted 2023-05-16); Med-PaLM itself was published Dec 2022 (arXiv:2212.13138)."
+2023-05-16,Flan-PaLM,67.6,percent accuracy (MedQA USMLE 4-option),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table.
+2023-05-16,GPT-4 (5-shot),81.4,percent accuracy (MedQA USMLE 4-option),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table.
+2023-05-16,Med-PaLM 2 (Ensemble Refinement),85.4,percent accuracy (MedQA USMLE 4-option),https://arxiv.org/html/2305.09617,Med-PaLM 2 paper comparison table.
+2023-05-16,GPT-4-base,86.1,percent accuracy (MedQA USMLE 4-option),https://arxiv.org/html/2305.09617,"Med-PaLM 2 paper comparison table, citing Nori et al. 2023 (arXiv:2303.13375) GPT-4-base result."
+2023-05-16,Med-PaLM 2 (best),86.5,percent accuracy (MedQA USMLE 4-option),https://arxiv.org/html/2305.09617,"Med-PaLM 2 paper headline result; ""improving upon Med-PaLM by over 19%.""."
+2023-11-28,GPT-4 (Medprompt),90.2,percent accuracy (MedQA US 4-option),https://arxiv.org/html/2311.16452,"Nori et al., ""Can Generalist Foundation Models Outcompete Special-Purpose Tuning?"" (Microsoft); first model to surpass 90% via systematic prompt engineering (k=5, 5x ensemble); k=20/11-ensemble variant reached 90.6%."

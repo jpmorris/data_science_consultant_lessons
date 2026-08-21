@@ -1,0 +1,13 @@
+date,model,score,score_unit,source_url,notes
+2025-03-05,claude-3-5-sonnet-20240620,33.4,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,claude-3-7-sonnet-20250219,26.6,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,gpt-4o-2024-08-06,44.5,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,gpt-4o-mini-2024-07-18,45.3,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,gpt-4.5-preview-2025-02-27,43.5,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,o3-mini-2025-01-31,48.6,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard; marked with asterisk for reasoning-model caveat in source
+2025-03-05,gemini-2.0-flash,48.4,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,deepseek-r1,42.9,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,deepseek-v3,53.5,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,grok-2-1212,63.0,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,llama-31-405b-instruct,28.0,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard
+2025-03-05,qwen25-72b-instruct,49.2,percent P(lie) under pressure,https://arxiv.org/abs/2503.03750,MASK paper Table 4 main leaderboard

@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2022-10-06,GPT-3 (text-davinci-002),45.6,percent accuracy (avg across 10 languages),https://arxiv.org/abs/2210.03057,Original MGSM paper Table 3; best prompting strategy for this model (Translate-EN)
+2022-10-06,PaLM-540B,48.1,percent accuracy (avg across 10 languages),https://arxiv.org/abs/2210.03057,Original MGSM paper Table 3; Native chain-of-thought prompting
+2024-05-14,Gemini-1.5-Pro,88.7,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table
+2024-06-20,Claude 3.5 Sonnet,91.6,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table
+2024-07-23,Llama 3.1 405B,91.6,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table
+2024-09-12,o1-mini,89.9,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table
+2024-11-20,GPT-4o (2024-11-20),90.3,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table
+2025-02-27,GPT-4.5-preview (2025-02-27),86.9,percent accuracy (avg across languages),https://github.com/openai/simple-evals,"OpenAI simple-evals aggregator README results table; README notes this eval is ""saturated for newer models"""
+2025-04-14,GPT-4.1 (2025-04-14),86.9,percent accuracy (avg across languages),https://github.com/openai/simple-evals,"OpenAI simple-evals aggregator README results table; README notes this eval is ""saturated for newer models"""
+2025-04-16,o3,92.3,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table
+2025-04-16,o4-mini,93.7,percent accuracy (avg across languages),https://github.com/openai/simple-evals,OpenAI simple-evals aggregator README results table; highest score in table

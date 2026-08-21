@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2023-07-18,Llama-2-70b-chat-hf,69.62,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,"Ai2 WildBench (Lin et al.) official leaderboard data file from its Hugging Face Space. Date = model release date. NOTE: this HF Space's last commit was 2024-08-06 -- the leaderboard appears to have gone inactive since, no post-mid-2024 frontier models found in this data file."
+2023-12-11,Mixtral-8x7B-Instruct-v0.1,73.91,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-01-25,gpt-3.5-turbo-0125,71.05,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-01-25,gpt-4-0125-preview,81.67,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-02-21,gemma-7b-it,61.93,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-02-29,claude-3-opus-20240229,81.54,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-02-29,claude-3-sonnet-20240229,77.76,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-03-07,claude-3-haiku-20240307,75.19,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-04-09,gpt-4-turbo-2024-04-09,82.36,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-04-18,Meta-Llama-3-70B-Instruct,80.22,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Date = model release date.
+2024-05-13,gpt-4o-2024-05-13,82.65,"WB-Score (0-100, WildBench v2 leaderboard)",https://huggingface.co/spaces/allenai/WildBench/blob/main/data_dir/all_stat_wildbench.json,Top score in this snapshot. Date = model release date.

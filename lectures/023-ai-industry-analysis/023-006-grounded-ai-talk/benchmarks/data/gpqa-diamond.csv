@@ -1,0 +1,9 @@
+date,model,score,score_unit,source_url,notes
+2024-06-20,Claude 3.5 Sonnet,59.4,percent accuracy,https://www.anthropic.com/news/claude-3-5-sonnet,Anthropic launch announcement; GPQA Diamond subset
+2024-09-12,GPT-4o (baseline comparison in o1 announcement),56.1,percent accuracy,https://openai.com/index/learning-to-reason-with-llms/,Cited alongside o1 launch as pre-reasoning-model baseline
+2024-09-12,OpenAI o1,78.3,percent accuracy,https://openai.com/index/learning-to-reason-with-llms/,o1 system card / launch blog; exceeds reported human PhD-expert baseline (~69.7%) in OpenAI's framing
+2025-01-31,OpenAI o3-mini (high),77.0,percent accuracy,https://lifearchitect.ai/o3/,Aggregated from OpenAI o3-mini release benchmarks
+2024-12-20,OpenAI o3,87.7,percent accuracy,https://lifearchitect.ai/o3/,o3 announced 2024-12-20 (12 Days of OpenAI); figure widely reported incl. https://www.datacamp.com/blog/o3-openai
+2025-06-27,Gemini 2.5 Pro,84.0,percent accuracy (pass@1 single attempt),https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-2-5-Pro-Model-Card.pdf,Google DeepMind official model card
+2026-02,Claude Opus 4.6,91.31,percent accuracy (avg of 5 trials),https://www-cdn.anthropic.com/0dd865075ad3132672ee0ab40b05a53f14cf5288.pdf,"Anthropic Claude Opus 4.6 system card, dated February 2026; adaptive thinking / max effort setting; date is release month only (day not confirmed)"
+2026-02-19,Gemini 3.1 Pro Preview,94.1,percent accuracy,https://artificialanalysis.ai/evaluations/gpqa-diamond,Per Artificial Analysis GPQA Diamond leaderboard aggregation

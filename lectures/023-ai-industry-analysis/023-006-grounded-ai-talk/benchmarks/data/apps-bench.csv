@@ -1,0 +1,5 @@
+date,model,score,score_unit,source_url,notes
+2021-11-08,GPT-2 0.1B (fine-tuned),0.40,strict accuracy % (avg across Introductory/Interview/Competition),https://arxiv.org/abs/2105.09938,"Original APPS paper (Hendrycks et al., NeurIPS 2021 Datasets & Benchmarks), Table 2, ""Strict Accuracy"" Average column."
+2021-11-08,GPT-2 1.5B (fine-tuned),0.68,strict accuracy % (avg across Introductory/Interview/Competition),https://arxiv.org/abs/2105.09938,"Original APPS paper, Table 2, Strict Accuracy Average column."
+2021-11-08,GPT-Neo 2.7B (fine-tuned),1.12,strict accuracy % (avg across Introductory/Interview/Competition),https://arxiv.org/abs/2105.09938,"Original APPS paper, Table 2, Strict Accuracy Average column; best strict-accuracy model in this paper (~4% on Introductory alone)."
+2021-11-08,"GPT-3 175B (few-shot, not fine-tuned)",0.06,strict accuracy % (avg across Introductory/Interview/Competition),https://arxiv.org/abs/2105.09938,"Original APPS paper, Table 2, Strict Accuracy Average column; unlike the other three rows this model is evaluated few-shot rather than fine-tuned on APPS."

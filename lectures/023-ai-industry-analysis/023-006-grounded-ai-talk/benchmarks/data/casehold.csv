@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2021-04-18,BiLSTM (baseline),39.9,macro F1 (CaseHOLD),https://arxiv.org/html/2104.08671,"Zheng, Guha et al., ""When Does Pretraining Help?"" (CaseHOLD introduction paper), Table 5."
+2021-04-18,BERT,61.3,macro F1 (CaseHOLD),https://arxiv.org/html/2104.08671,Original CaseHOLD paper Table 5.
+2021-04-18,BERT (double),62.3,macro F1 (CaseHOLD),https://arxiv.org/html/2104.08671,Original CaseHOLD paper Table 5.
+2021-04-18,Legal-BERT,68.0,macro F1 (CaseHOLD),https://arxiv.org/html/2104.08671,Original CaseHOLD paper Table 5.
+2021-04-18,Custom Legal-BERT,69.5,macro F1 (CaseHOLD),https://arxiv.org/html/2104.08671,"Original CaseHOLD paper Table 5; best score in the paper, a 7.2pp gain over BERT (double). No general frontier-LLM comparative data was found for CaseHOLD beyond this pre-LLM-era baseline paper -- it is now folded into the LegalBench suite rather than benchmarked standalone."

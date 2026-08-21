@@ -1,0 +1,19 @@
+date,model,score,score_unit,source_url,notes
+2025-02-13,Llama-3.2-90B-Vision,32.0,percent success rate (EmbodiedBench EB-ALFRED avg),https://arxiv.org/html/2502.09560,"Yang et al., EmbodiedBench paper (ICML 2025 Oral), Table 2. Date is paper submission date."
+2025-02-13,InternVL3-78B,39.0,percent success rate (EmbodiedBench EB-ALFRED avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,GPT-4o,56.3,percent success rate (EmbodiedBench EB-ALFRED avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,Gemini 1.5 Pro,62.3,percent success rate (EmbodiedBench EB-ALFRED avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,Claude 3.5 Sonnet,64.0,percent success rate (EmbodiedBench EB-ALFRED avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,Llama-3.2-90B-Vision,40.3,percent success rate (EmbodiedBench EB-Habitat avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,Gemini 1.5 Pro,56.3,percent success rate (EmbodiedBench EB-Habitat avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,InternVL3-78B,55.0,percent success rate (EmbodiedBench EB-Habitat avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,GPT-4o,59.0,percent success rate (EmbodiedBench EB-Habitat avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,Claude 3.5 Sonnet,68.0,percent success rate (EmbodiedBench EB-Habitat avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 2.
+2025-02-13,InternVL3-38B,22.6,percent success rate (EmbodiedBench EB-Manipulation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3 (low-level tasks).
+2025-02-13,InternVL3-78B,26.3,percent success rate (EmbodiedBench EB-Manipulation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3.
+2025-02-13,Claude 3.7 Sonnet,28.5,percent success rate (EmbodiedBench EB-Manipulation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3.
+2025-02-13,GPT-4o,28.9,percent success rate (EmbodiedBench EB-Manipulation avg),https://arxiv.org/html/2502.09560,"EmbodiedBench paper Table 3; best model on this split, illustrating MLLMs struggle with low-level manipulation."
+2025-02-13,InternVL3-38B,50.7,percent success rate (EmbodiedBench EB-Navigation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3.
+2025-02-13,InternVL3-78B,53.7,percent success rate (EmbodiedBench EB-Navigation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3.
+2025-02-13,Claude 3.7 Sonnet,45.0,percent success rate (EmbodiedBench EB-Navigation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3.
+2025-02-13,GPT-4o,57.7,percent success rate (EmbodiedBench EB-Navigation avg),https://arxiv.org/html/2502.09560,EmbodiedBench paper Table 3.

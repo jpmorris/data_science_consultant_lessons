@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2023-10,Multimodal Bard,34.8,percent accuracy (testmini),https://mathvista.github.io/,MathVista original paper/leaderboard baseline
+2023-10,GPT-4V,49.9,percent accuracy (testmini),https://mathvista.github.io/,MathVista original paper best result at the time
+2023-12,Gemini (original multimodal),50.3,percent accuracy (testmini),https://mathvista.github.io/,New SOTA per MathVista leaderboard at Gemini's debut
+2024-05-13,GPT-4o,63.8,percent accuracy (testmini),https://github.com/lupantech/MathVista,"First model to exceed the reported human average of 60.3% on MathVista, per leaderboard commentary"
+2024-05-17,Gemini 1.5 Pro (May),63.9,percent accuracy (testmini),https://github.com/lupantech/MathVista,MathVista GitHub leaderboard
+2024-06-20,Claude 3.5 Sonnet,67.7,percent accuracy (testmini),https://github.com/lupantech/MathVista,MathVista GitHub leaderboard
+2024-08-13,Grok-2,69.0,percent accuracy (testmini),https://github.com/lupantech/MathVista,MathVista GitHub leaderboard
+2024-09-12,OpenAI o1,73.9,percent accuracy (testmini),https://github.com/lupantech/MathVista,MathVista GitHub leaderboard; top score as of Sept 2024
+2026-xx,Seed 2.1 Pro (ByteDance),90.7,percent accuracy (testmini),https://llm-stats.com/benchmarks/mathvista,"Aggregator (llm-stats.com) leaderboard snapshot, 2026; current top score across 39 tracked models, illustrating continued (if slowing) progress since 2024"

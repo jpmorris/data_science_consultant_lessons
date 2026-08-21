@@ -1,0 +1,21 @@
+date,model,score,score_unit,source_url,notes
+2026-08-17,GPT-5.5,353,Kaggle Game Arena overall cross-game score (aggregated across 14 games),https://www.kaggle.com/game-arena,"Live leaderboard snapshot observed 2026-08-17; overall combined ranking table, #1 of ranked models, based on 6050 matches played"
+2026-08-17,Claude Opus 5,334,Kaggle Game Arena overall cross-game score (aggregated across 14 games),https://www.kaggle.com/game-arena,"Live leaderboard snapshot observed 2026-08-17; #2 overall, 6289 matches played"
+2026-08-17,GPT-5.6 Sol,286,Kaggle Game Arena overall cross-game score (aggregated across 14 games),https://www.kaggle.com/game-arena,"Live leaderboard snapshot observed 2026-08-17; #3 overall, 6520 matches played"
+2026-08-17,Gemini 3.1 Pro Preview,276,Kaggle Game Arena overall cross-game score (aggregated across 15 games),https://www.kaggle.com/game-arena,"Live leaderboard snapshot observed 2026-08-17; #4 overall, 26179 matches played"
+2026-08-17,GPT-5.4,260,Kaggle Game Arena overall cross-game score (aggregated across 15 games),https://www.kaggle.com/game-arena,"Live leaderboard snapshot observed 2026-08-17; #5 overall, 28358 matches played"
+2026-08-17,Gemini 3.1 Pro Preview,1367,Chess Elo-style rating,https://www.kaggle.com/game-arena,"Live Chess leaderboard (text/FEN-PGN variant) snapshot observed 2026-08-17; #1 rank, board last updated ~20 days prior per site"
+2026-08-17,Gemini 3.5 Flash,1329,Chess Elo-style rating,https://www.kaggle.com/game-arena,Live Chess leaderboard snapshot observed 2026-08-17; #2 rank
+2026-08-17,GPT-5.5,1305,Chess Elo-style rating,https://www.kaggle.com/game-arena,Live Chess leaderboard snapshot observed 2026-08-17; #3 rank
+2026-08-17,Gemini 3.6 Flash,1286,Chess Elo-style rating,https://www.kaggle.com/game-arena,Live Chess leaderboard snapshot observed 2026-08-17; #4 rank
+2026-08-17,Gemini 3 Flash Preview,1258,Chess Elo-style rating,https://www.kaggle.com/game-arena,Live Chess leaderboard snapshot observed 2026-08-17; #5 rank
+2026-08-17,GPT-5.5,37,Heads Up Poker mean BB/100,https://www.kaggle.com/game-arena,Live Poker leaderboard snapshot observed 2026-08-17; #1 rank
+2026-08-17,GPT-5.6 Sol,35,Heads Up Poker mean BB/100,https://www.kaggle.com/game-arena,Live Poker leaderboard snapshot observed 2026-08-17; #2 rank
+2026-08-17,Claude Opus 5,20,Heads Up Poker mean BB/100,https://www.kaggle.com/game-arena,Live Poker leaderboard snapshot observed 2026-08-17; #3 rank
+2026-08-17,GPT-5.6 Luna,14,Heads Up Poker mean BB/100,https://www.kaggle.com/game-arena,Live Poker leaderboard snapshot observed 2026-08-17; #4 rank
+2026-08-17,GPT-5.6 Terra,14,Heads Up Poker mean BB/100,https://www.kaggle.com/game-arena,Live Poker leaderboard snapshot observed 2026-08-17; #5 rank
+2026-08-17,GPT-5.4,0.08,Werewolf equilibrium rating (percent),https://www.kaggle.com/game-arena,Live Werewolf leaderboard snapshot observed 2026-08-17; #1 rank
+2026-08-17,Gemini 3.1 Pro Preview,-0.38,Werewolf equilibrium rating (percent),https://www.kaggle.com/game-arena,Live Werewolf leaderboard snapshot observed 2026-08-17; #2 rank
+2026-08-17,Gemini 3 Flash Preview,-1.15,Werewolf equilibrium rating (percent),https://www.kaggle.com/game-arena,Live Werewolf leaderboard snapshot observed 2026-08-17; #3 rank
+2026-08-17,Claude Opus 4.6,-1.25,Werewolf equilibrium rating (percent),https://www.kaggle.com/game-arena,Live Werewolf leaderboard snapshot observed 2026-08-17; #4 rank
+2026-08-17,Claude Sonnet 4.6,-2.15,Werewolf equilibrium rating (percent),https://www.kaggle.com/game-arena,Live Werewolf leaderboard snapshot observed 2026-08-17; #5 rank

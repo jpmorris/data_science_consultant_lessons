@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2023-03,GPT-4,59.0,percent accuracy,https://cdn.openai.com/papers/gpt-4.pdf,"0-shot; base model was only slightly better than GPT-3.5 pre-RLHF, but improved substantially after RLHF post-training, per OpenAI's own framing"
+2023-07,Llama 2 70B (pretrained base),50.18,percent (truthful+informative),https://arxiv.org/pdf/2307.09288,Meta Llama 2 paper safety evaluation section
+2023-07,Llama 2 70B Chat (fine-tuned),64.14,percent (truthful+informative),https://arxiv.org/pdf/2307.09288,"Same paper; large jump from RLHF/fine-tuning, mirroring the GPT-4 base-vs-RLHF pattern"
+2024-12-12,Phi-4,77.5,percent accuracy (MC),https://benchlm.ai/benchmarks/truthfulqa,Leaderboard aggregator snapshot
+2026-07,Kimi K2.5,57.3,percent accuracy (MC),https://benchlm.ai/benchmarks/truthfulqa,"Leaderboard aggregator snapshot, second place as of July 2026"
+2026-08,MAI-Thinking-1 (Microsoft),88.0,percent accuracy (MC),https://llm-stats.com/benchmarks/truthfulqa,"Current #1 as of Aug 2026; notably, average score across the 18 models tracked on this leaderboard was only ~60.5%, meaning TruthfulQA — unlike MMLU/HellaSwag/ARC — has NOT saturated even among recent models"

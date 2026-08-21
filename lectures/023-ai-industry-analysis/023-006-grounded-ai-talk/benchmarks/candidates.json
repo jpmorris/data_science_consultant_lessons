@@ -1,0 +1,304 @@
+{
+ "candidates": [
+  {
+   "slug": "browserarena",
+   "name": "BrowserArena",
+   "category": "Web & computer-use agents",
+   "description": "LLM-agent browser benchmark using dynamically generated live-web tasks specifically to resist contamination.",
+   "why_distinct": "2025-era, explicitly contamination-resistant design.",
+   "feasibility": "medium",
+   "sources": [
+    "https://arxiv.org/abs/2510.02418"
+   ],
+   "flagged_by": [
+    "copilot"
+   ]
+  },
+  {
+   "slug": "pokeagent-challenge",
+   "name": "PokeAgent Challenge",
+   "category": "Games & interactive environments",
+   "description": "Two tracks: competitive Pokemon battling (partial-observability opponent modeling) + RPG speedrunning (long-horizon agent orchestration). NeurIPS 2025 competition, ongoing.",
+   "why_distinct": "Nothing in the catalog covers Pokemon-style long-horizon RPG play.",
+   "feasibility": "medium",
+   "sources": [
+    "https://pokeagent.github.io/",
+    "https://arxiv.org/abs/2603.15563"
+   ],
+   "flagged_by": [
+    "claude"
+   ]
+  },
+  {
+   "slug": "textarena",
+   "name": "TextArena",
+   "category": "Games & interactive environments",
+   "description": "57+ competitive text-game environments (negotiation, deception, theory-of-mind); live public TrueSkill leaderboard, models play humans and each other.",
+   "why_distinct": "Broader and live-ranked vs. Balrog's fixed NetHack focus.",
+   "feasibility": "high",
+   "sources": [
+    "https://arxiv.org/abs/2504.11442",
+    "https://www.textarena.ai/"
+   ],
+   "flagged_by": [
+    "claude"
+   ]
+  },
+  {
+   "slug": "uk-aisi-inspect-cyber",
+   "name": "UK AISI Inspect Evals / Inspect Cyber",
+   "category": "Safety, alignment & red-teaming",
+   "description": "Open-source eval framework + canonical eval packages (cyber, bio, autonomy, agentic CTF) UK AISI runs against frontier models pre-release.",
+   "why_distinct": "Increasingly the toolchain frontier labs coordinate through for pre-deployment safety testing.",
+   "feasibility": "medium",
+   "sources": [
+    "https://www.aisi.gov.uk/blog/inspect-cyber",
+    "https://inspect.cyber.aisi.org.uk/"
+   ],
+   "flagged_by": [
+    "claude",
+    "codex"
+   ]
+  },
+  {
+   "slug": "safeagentbench",
+   "name": "SafeAgentBench",
+   "category": "Safety, alignment & red-teaming",
+   "description": "Safety evaluation for embodied/physical-world agent behavior.",
+   "why_distinct": "Embodied-safety angle, distinct from digital-agent safety benchmarks.",
+   "feasibility": "medium",
+   "sources": [
+    "https://github.com/shengyin1224/SafeAgentBench"
+   ],
+   "flagged_by": [
+    "codex"
+   ]
+  },
+  {
+   "slug": "mlcommons-ailuminate",
+   "name": "MLCommons AILuminate",
+   "category": "Safety, alignment & red-teaming",
+   "description": "First cross-industry (OpenAI/Anthropic/Google et al. participated) standardized chat-safety benchmark, 12 hazard categories, 24K+ prompts, public graded leaderboard.",
+   "why_distinct": "Closest thing to an industry-consensus safety leaderboard, not a single academic group's proposal.",
+   "feasibility": "high",
+   "sources": [
+    "https://mlcommons.org/ailuminate/",
+    "https://arxiv.org/abs/2503.05731"
+   ],
+   "flagged_by": [
+    "claude"
+   ]
+  },
+  {
+   "slug": "bbq",
+   "name": "BBQ (Bias Benchmark for QA)",
+   "category": "Safety, alignment & red-teaming",
+   "description": "58,000+ ambiguous trinary-choice QA questions across 9 social categories testing reliance on stereotypical shortcuts.",
+   "why_distinct": "Standard bias benchmark; now mostly folded into HELM Safety composites.",
+   "feasibility": "low",
+   "sources": [],
+   "flagged_by": [
+    "claude",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "toxigen",
+   "name": "ToxiGen",
+   "category": "Safety, alignment & red-teaming",
+   "description": "274K machine-generated toxic/benign statements re: 13 minority groups, implicit hate-speech detection.",
+   "why_distinct": "Pre-2023 vintage, rarely cited in current frontier releases.",
+   "feasibility": "low",
+   "sources": [
+    "https://github.com/microsoft/ToxiGen"
+   ],
+   "flagged_by": [
+    "claude",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "air-bench-2024",
+   "name": "AIR-Bench 2024 (AI Safety)",
+   "category": "Safety, alignment & red-teaming",
+   "description": "Comprehensive safety benchmark across 4 risk categories/8 hazard types, evaluates compliance with CAIS/OpenAI/EU AI Act standards.",
+   "why_distinct": "Regulatory-compliance framing distinct from HarmBench's attack-success framing.",
+   "feasibility": "medium",
+   "sources": [
+    "https://arxiv.org/abs/2407.17436"
+   ],
+   "flagged_by": [
+    "copilot"
+   ]
+  },
+  {
+   "slug": "niah-2",
+   "name": "Needle-in-a-Haystack (NIAH)",
+   "category": "Long-context & memory",
+   "description": "Canonical single/multi-needle retrieval smoke test; by 2026 considered a baseline sanity check rather than a discriminating benchmark on its own.",
+   "why_distinct": "Named explicitly in the Evidently AI article; the original long-context probe most others were built to surpass.",
+   "feasibility": "low",
+   "sources": [],
+   "flagged_by": [
+    "claude",
+    "codex"
+   ]
+  },
+  {
+   "slug": "global-mmlu",
+   "name": "Global-MMLU",
+   "category": "Multilingual",
+   "description": "42-language MMLU, human+machine translated. Gemini 3.1 Pro cited at 93.2%.",
+   "why_distinct": "Directly cited by a frontier lab (Gemini technical report) -- real relevance signal; the catalog has zero multilingual coverage.",
+   "feasibility": "high",
+   "sources": [
+    "https://cohere.com/research/globalmmlu"
+   ],
+   "flagged_by": [
+    "claude"
+   ]
+  },
+  {
+   "slug": "flores-200",
+   "name": "FLORES-200",
+   "category": "Multilingual",
+   "description": "200-language translation-quality benchmark, professional-translated parallel sentences; used in Gemini's own technical report.",
+   "why_distinct": "Translation-specific, complements Belebele's reading-comprehension framing.",
+   "feasibility": "high",
+   "sources": [
+    "https://github.com/facebookresearch/flores"
+   ],
+   "flagged_by": [
+    "claude",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "vals-index",
+   "name": "Vals Index",
+   "category": "Domain-professional (medicine, law, finance)",
+   "description": "GDP-weighted composite index across finance/legal/tax/coding agentic tasks -- an independent enterprise-facing benchmark aggregator.",
+   "why_distinct": "Cross-domain composite specifically aimed at enterprise buyers, distinct provenance from academic benchmarks.",
+   "feasibility": "high",
+   "sources": [
+    "https://www.vals.ai/benchmarks/vals_index"
+   ],
+   "flagged_by": [
+    "claude",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "scale-seal",
+   "name": "Scale AI SEAL Leaderboards (incl. PRBench)",
+   "category": "Domain-professional (medicine, law, finance)",
+   "description": "Private, expert-curated, pairwise-graded evals across coding/instruction-following/math/multilingual, datasets stay unpublished so they can't be gamed. Includes PRBench (Professional Reasoning Bench, incl. legal).",
+   "why_distinct": "The \"Scale SEAL\" the user's Reddit list specifically named, and the closest thing to a private-eval provenance category in this whole landscape -- distinct from every other source here.",
+   "feasibility": "high",
+   "sources": [
+    "https://scale.com/blog/leaderboard",
+    "https://labs.scale.com/leaderboard/prbench-legal"
+   ],
+   "flagged_by": [
+    "claude",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "codecontests",
+   "name": "CodeContests",
+   "category": "Coding & data (extended)",
+   "description": "Competitive-programming dataset (Codeforces/AtCoder/CodeChef) used in AlphaCode evaluations, strict test-case validation.",
+   "why_distinct": "The dataset AlphaCode itself was evaluated against.",
+   "feasibility": "low",
+   "sources": [
+    "https://github.com/google-deepmind/code_contests"
+   ],
+   "flagged_by": [
+    "copilot"
+   ]
+  },
+  {
+   "slug": "repobench",
+   "name": "RepoBench",
+   "category": "Coding & data (extended)",
+   "description": "Repository-level code completion/retrieval benchmark.",
+   "why_distinct": "Named explicitly in the Evidently AI article.",
+   "feasibility": "low",
+   "sources": [],
+   "flagged_by": [
+    "codex"
+   ]
+  },
+  {
+   "slug": "beir",
+   "name": "BeIR",
+   "category": "Embedding & retrieval (different capability axis)",
+   "description": "Retrieval benchmark suite, largely superseded/absorbed by MTEB's retrieval tasks.",
+   "why_distinct": "Named explicitly in the Evidently AI article.",
+   "feasibility": "low",
+   "sources": [],
+   "flagged_by": [
+    "claude",
+    "codex"
+   ]
+  },
+  {
+   "slug": "alfred-virtualhome",
+   "name": "ALFRED / VirtualHome",
+   "category": "Embodied & robotics",
+   "description": "Household task-execution benchmarks: ALFRED (vision-language navigation+manipulation), VirtualHome (symbolic program execution in simulated rooms).",
+   "why_distinct": "Foundational (2018/2020) but still used in current embodied-agent extensions.",
+   "feasibility": "low",
+   "sources": [],
+   "flagged_by": [
+    "codex",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "helm",
+   "name": "Stanford HELM (+ HELM-Lite / MedHELM / VHELM / HEIM / AIR-Bench)",
+   "category": "Meta-evaluation frameworks (not directly plottable)",
+   "description": "Open framework spanning 16+ scenarios x 7 axes (accuracy, robustness, fairness, bias, toxicity, efficiency, calibration); wraps MMLU-Pro/GPQA/IFEval so mostly not new data, but has unique satellite suites (MedHELM clinical, VHELM vision, HEIM text-to-image, AIR-Bench safety).",
+   "why_distinct": "A meta-framework, not a single benchmark -- its own composite score isn't directly comparable to the catalog's per-benchmark rows; its satellite suites (MedHELM, VHELM) are the actual candidates worth pulling.",
+   "feasibility": "low",
+   "sources": [
+    "https://crfm.stanford.edu/helm/latest/"
+   ],
+   "flagged_by": [
+    "claude",
+    "codex",
+    "copilot"
+   ]
+  },
+  {
+   "slug": "open-llm-leaderboard-v2",
+   "name": "Open LLM Leaderboard v2 (Hugging Face)",
+   "category": "Meta-evaluation frameworks (not directly plottable)",
+   "description": "HF's updated community leaderboard using 6 harder benchmarks (IFEval, BBH, MATH-Hard, MuSR, GPQA, MMLU-Pro) -- replaced the saturated v1 covered elsewhere in this catalog.",
+   "why_distinct": "A composite of benchmarks already individually tracked (or candidates above, e.g. MuSR) -- add the components, not a \"v2 score.\"",
+   "feasibility": "not_a_benchmark",
+   "sources": [
+    "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard"
+   ],
+   "flagged_by": [
+    "copilot"
+   ]
+  },
+  {
+   "slug": "browsergym-agentlab",
+   "name": "BrowserGym / AgentLab",
+   "category": "Meta-evaluation frameworks (not directly plottable)",
+   "description": "Evaluation environments/frameworks that unify WebArena, WorkArena, VisualWebArena, AssistantBench, MiniWoB, and other suites under one harness.",
+   "why_distinct": "A framework, not a benchmark with its own score -- add its constituent benchmarks individually instead.",
+   "feasibility": "not_a_benchmark",
+   "sources": [
+    "https://arxiv.org/abs/2412.05467"
+   ],
+   "flagged_by": [
+    "codex"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2024-09-12,Phi3-V,3.5,"percent success rate (Windows Agent Arena, Navi agent, best config)",https://arxiv.org/abs/2409.08264,"Original Windows Agent Arena paper, Table 4; Navi agent with UIA tree + Omniparser input, the paper's best-performing input configuration."
+2024-09-12,GPT-4o-mini,4.2,"percent success rate (Windows Agent Arena, Navi agent, best config)",https://arxiv.org/abs/2409.08264,"Original Windows Agent Arena paper, Table 4; Navi agent with UIA tree + Omniparser input."
+2024-09-12,GPT-4o,8.6,"percent success rate (Windows Agent Arena, Navi agent, best config)",https://arxiv.org/abs/2409.08264,"Original Windows Agent Arena paper, Table 4; Navi agent with UIA tree + Omniparser input."
+2024-09-12,GPT-4V (1106),19.5,"percent success rate (Windows Agent Arena, Navi agent, best config)",https://arxiv.org/abs/2409.08264,"Original Windows Agent Arena paper, Table 4; Navi agent with UIA tree + Omniparser input -- the paper's headline best result across 150+ real Windows application tasks."
+2024-09-12,Human,74.5,percent success rate (Windows Agent Arena),https://arxiv.org/abs/2409.08264,Unassisted human baseline reported in the original paper.

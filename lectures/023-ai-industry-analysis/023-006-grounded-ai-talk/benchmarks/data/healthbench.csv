@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2023-09,GPT-3.5 Turbo,16.0,percent (HealthBench overall score),https://arxiv.org/abs/2505.08775,"OpenAI HealthBench paper (Arora et al., May 2025), Figure 4 retrospective comparison; date is approximate GPT-3.5 Turbo era, not paper date."
+2024-08,GPT-4o,32.0,percent (HealthBench overall score),https://arxiv.org/abs/2505.08775,OpenAI HealthBench paper Figure 4 retrospective comparison.
+2024-10,OpenAI o1,42.0,percent (HealthBench overall score),https://arxiv.org/abs/2505.08775,OpenAI HealthBench paper Figure 4 retrospective comparison.
+2025-04-14,GPT-4.1,48.0,percent (HealthBench overall score),https://arxiv.org/abs/2505.08775,OpenAI HealthBench paper Figure 4; GPT-4.1 released April 14 2025.
+2025-04-16,OpenAI o3,60.0,percent (HealthBench overall score),https://arxiv.org/abs/2505.08775,"OpenAI HealthBench paper Figure 4; also reported as the strongest model on HealthBench Hard at 32%, vs 60% on the full benchmark."

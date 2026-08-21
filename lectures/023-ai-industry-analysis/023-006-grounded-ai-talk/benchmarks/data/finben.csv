@@ -1,0 +1,4 @@
+date,model,score,score_unit,source_url,notes
+2024-06-19,Buy & Hold (baseline),0.02,Sharpe Ratio (FinBen stock-trading decision task),https://arxiv.org/html/2402.12659,"Xie et al., FinBen (NeurIPS 2024 D&B track), Table 4 trading-performance results, v2 dated 2024-06-19."
+2024-06-19,Gemini,1.03,Sharpe Ratio (FinBen stock-trading decision task),https://arxiv.org/html/2402.12659,FinBen paper Table 4; cumulative return 14.95%.
+2024-06-19,GPT-4,1.51,Sharpe Ratio (FinBen stock-trading decision task),https://arxiv.org/html/2402.12659,"FinBen paper Table 4; cumulative return 28.19%; only models >=70B parameters showed viable trading results. Note: FinBen's 24-task, 36-dataset main results table (Table 3) reports per-task accuracy/F1 without a single comparable overall score, so only the trading sub-task (uniform Sharpe Ratio metric) is included here."

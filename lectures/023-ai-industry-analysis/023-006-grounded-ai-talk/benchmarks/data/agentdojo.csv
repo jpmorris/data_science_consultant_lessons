@@ -1,0 +1,20 @@
+date,model,score,score_unit,source_url,notes
+2024-06-05,claude-3-haiku-20240307,9.06,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,claude-3-sonnet-20240229,26.71,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,claude-3-opus-20240229,11.29,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,command-r,3.34,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,command-r-plus,4.45,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,gemini-1.5-flash-001,12.24,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,gemini-1.5-pro-001,28.62,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,gpt-3.5-turbo-0125,10.33,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,gpt-4-0125-preview,56.28,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,gpt-4-turbo-2024-04-09,28.62,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-05,gpt-4o-2024-05-13,47.69,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-06-20,claude-3-5-sonnet-20240620,33.86,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-07-19,gpt-4o-mini-2024-07-18,27.19,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-11-04,gemini-1.5-pro-002,17.01,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-11-05,gemini-1.5-flash-002,3.50,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-11-15,claude-3-5-sonnet-20241022,1.11,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2024-12-11,gemini-2.0-flash-exp,17.01,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2025-01-30,gemini-2.0-flash-001,20.83,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table
+2025-02-24,claude-3-7-sonnet-20250219,7.31,percent targeted attack success rate (important_instructions attack; no defense),https://agentdojo.spylab.ai/results/,AgentDojo official results table

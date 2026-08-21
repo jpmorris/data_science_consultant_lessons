@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2025-03-01,Gemini 1.5 Flash,56.16,DSGBench overall score (0-100 scale; avg of 5 ability dimensions across strategy games),https://arxiv.org/pdf/2503.06047,"DSGBench paper (arXiv:2503.06047), Table 6; best overall score; date is month only (exact day unknown)"
+2025-03-01,GPT-4o,54.10,DSGBench overall score (0-100 scale; avg of 5 ability dimensions across strategy games),https://arxiv.org/pdf/2503.06047,DSGBench paper Table 6; date is month only
+2025-03-01,DeepSeek-V2.5,53.75,DSGBench overall score (0-100 scale; avg of 5 ability dimensions across strategy games),https://arxiv.org/pdf/2503.06047,DSGBench paper Table 6; open-source model; date is month only
+2025-03-01,GPT-3.5 Turbo,47.01,DSGBench overall score (0-100 scale; avg of 5 ability dimensions across strategy games),https://arxiv.org/pdf/2503.06047,DSGBench paper Table 6; date is month only
+2025-03-01,Llama-3.1-70B-Instruct,45.11,DSGBench overall score (0-100 scale; avg of 5 ability dimensions across strategy games),https://arxiv.org/pdf/2503.06047,DSGBench paper Table 6; open-source model; date is month only
+2025-03-01,Llama-3.1-8B-Instruct,10.94,DSGBench overall score (0-100 scale; avg of 5 ability dimensions across strategy games),https://arxiv.org/pdf/2503.06047,DSGBench paper Table 6; open-source model; date is month only

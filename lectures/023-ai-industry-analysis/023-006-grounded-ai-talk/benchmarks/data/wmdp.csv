@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2024-03-05,zephyr-7b (base),63.7,percent accuracy (WMDP-Bio subset),https://arxiv.org/abs/2403.03218,"WMDP paper Table 1/5, base model before RMU unlearning; higher = more retained hazardous knowledge"
+2024-03-05,zephyr-7b (base),44.0,percent accuracy (WMDP-Cyber subset),https://arxiv.org/abs/2403.03218,"WMDP paper Table 1/5, base model before RMU unlearning"
+2024-03-05,Yi-34b (base),75.3,percent accuracy (WMDP-Bio subset),https://arxiv.org/abs/2403.03218,"WMDP paper Table 1/5, base model before RMU unlearning"
+2024-03-05,Yi-34b (base),49.7,percent accuracy (WMDP-Cyber subset),https://arxiv.org/abs/2403.03218,"WMDP paper Table 1/5, base model before RMU unlearning"
+2024-03-05,Mixtral-8x7B (base),74.8,percent accuracy (WMDP-Bio subset),https://arxiv.org/abs/2403.03218,"WMDP paper Table 1/5, base model before RMU unlearning"
+2024-03-05,Mixtral-8x7B (base),52.0,percent accuracy (WMDP-Cyber subset),https://arxiv.org/abs/2403.03218,"WMDP paper Table 1/5, base model before RMU unlearning"

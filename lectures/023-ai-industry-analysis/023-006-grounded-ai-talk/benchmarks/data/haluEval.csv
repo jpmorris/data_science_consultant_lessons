@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2023-05-19,ChatGPT,62.59,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Claude 2,69.78,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Claude,67.60,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Davinci002,60.05,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Davinci003,49.65,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,GPT-3,49.21,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Llama 2,49.60,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,ChatGLM,47.93,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Falcon,39.66,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Vicuna,60.34,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)
+2023-05-19,Alpaca,6.68,percent accuracy recognizing hallucinated QA answers,https://arxiv.org/abs/2305.11747,HaluEval paper Table 4 (QA subtask)

@@ -1,0 +1,3 @@
+date,model,score,score_unit,source_url,notes
+2025-05-30,Skyvern 2.0,46.6,percent NON-READ (write/create/update/delete) task success rate (WebBench),https://halluminate.ai/blog/benchmark,"Halluminate WebBench launch results; best-performing fully-automated agent on NON-READ tasks (2,454-5,750 task live-web benchmark across 452 sites)."
+2025-05-30,Anthropic Computer Use (Claude),66.0,"percent overall task success rate (WebBench, fully-automated agents)",https://halluminate.ai/blog/benchmark,"Halluminate WebBench launch results; best-performing fully-automated agent overall (READ tasks >70%, driving the high overall score)."

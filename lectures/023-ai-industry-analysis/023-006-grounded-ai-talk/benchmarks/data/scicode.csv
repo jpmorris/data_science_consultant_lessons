@@ -1,0 +1,11 @@
+date,model,score,score_unit,source_url,notes
+2024-07-18,GPT-4-Turbo,9.2,main-problem pass@1 %,https://arxiv.org/abs/2407.13168,"Original SciCode paper (338 subproblems from 80 main problems, 16 natural-science subfields, curated by scientists)."
+2024-07-18,Claude 3 Opus,1.5,main-problem pass@1 % (with prior code + background),https://arxiv.org/abs/2407.13168,"""Most realistic"" evaluation setting."
+2024-07-18,GPT-4o,9.2,main-problem pass@1 %,https://arxiv.org/abs/2407.13168,"Tied with GPT-4-Turbo; ~1.5% in the ""most realistic"" setting."
+2024-07-18,GPT-4o,35.4,subproblem pass@1 %,https://arxiv.org/abs/2407.13168,Subproblem-level score (easier partial-credit metric); tied with Claude 3.5 Sonnet.
+2024-07-18,Claude 3.5 Sonnet,35.4,subproblem pass@1 %,https://arxiv.org/abs/2407.13168,Best subproblem score in the original paper.
+2024-07-18,Claude 3.5 Sonnet,12.3,main-problem pass@1 %,https://arxiv.org/abs/2407.13168,Best main-problem score in the original paper.
+2024-07-18,Claude 3.5 Sonnet,4.6,main-problem pass@1 % (most realistic setting),https://arxiv.org/abs/2407.13168,"Best-performing model overall in the paper's most difficult, most realistic evaluation setting -- only ~1 in 20 main problems solved."
+2026-07-31,Kimi K3,58.7,pass@1 %,https://pricepertoken.com/leaderboards/benchmark/scicode,Leaderboard snapshot (262 models tracked).
+2026-07-31,Gemini 3.1 Pro Preview,58.9,pass@1 %,https://pricepertoken.com/leaderboards/benchmark/scicode,Leaderboard snapshot.
+2026-07-31,Claude Fable 5,60.2,pass@1 %,https://pricepertoken.com/leaderboards/benchmark/scicode,"Top of tracked SciCode leaderboard as of snapshot date -- still well under 65%, unlike HumanEval/MBPP, showing SciCode remains far from saturated."

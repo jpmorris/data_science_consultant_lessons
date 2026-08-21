@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2024-04-18,Llama 3 70B Instruct,43.6,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard (bigcode/bigcodebench-results dataset).
+2024-05-13,GPT-4o (2024-05-13),51.1,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-06-13,GPT-4 (0613),46.0,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-06-17,DeepSeek-Coder-V2 Instruct,48.2,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-06-20,Claude 3.5 Sonnet (2024-06-20),46.8,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-09-19,Qwen2.5 72B Instruct,45.8,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-09-19,Qwen2.5-Coder 32B Instruct,49.0,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-10-22,Claude 3.5 Sonnet (2024-10-22),44.6,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard; upgraded Sonnet scored lower than June release on this benchmark.
+2024-12-19,Llama 3.3 70B Instruct,46.9,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard.
+2024-12-26,DeepSeek-V3,50.0,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard; top instruct-split score in this dataset snapshot.
+2025-04-14,GPT-4.1 Mini (2025-04-14),48.9,pass@1 % (Instruct split),https://huggingface.co/spaces/bigcode/bigcodebench-leaderboard,Official BigCodeBench leaderboard; most recent dated entry in the results dataset as of research.

@@ -1,0 +1,6 @@
+date,model,score,score_unit,source_url,notes
+2023-02-17,Codex,36.47,EX % (test set),https://bird-bench.github.io/,Baseline reported on official BIRD-SQL leaderboard at benchmark launch.
+2023-03-17,ChatGPT (gpt-3.5-turbo),39.30,EX % (test set),https://bird-bench.github.io/,Baseline entry on official BIRD-SQL leaderboard.
+2023-07-16,Claude 2,49.02,EX % (test set),https://bird-bench.github.io/,Baseline entry on official BIRD-SQL leaderboard.
+2024-01-14,GPT-4,65.45,EX % (test set),https://bird-bench.github.io/,MCS-SQL agent scaffold (Dunamu / Lee et al. 2024) on official BIRD-SQL leaderboard.
+2025-12-16,GPT-4o,81.95,EX % (test set),https://bird-bench.github.io/,"AskData agent scaffold (AT&T CDO-DSAIR, Shkapenyuk et al. 2025) on official BIRD-SQL leaderboard; most recent entry with a clearly named underlying LLM -- newer top entries are opaque proprietary agents with undisclosed models."

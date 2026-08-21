@@ -1,0 +1,7 @@
+date,model,score,score_unit,source_url,notes
+2024-10-11,GPT-4o,48.4,percent harm score (no attack; standard prompt),https://arxiv.org/abs/2410.09024,"AgentHarm paper Table 2, public test split"
+2024-10-11,Claude 3.5 Sonnet,13.5,percent harm score (no attack; standard prompt),https://arxiv.org/abs/2410.09024,"AgentHarm paper Table 2, public test split"
+2024-10-11,Mistral Large 2,82.2,percent harm score (no attack; standard prompt),https://arxiv.org/abs/2410.09024,"AgentHarm paper Table 2, public test split"
+2024-10-11,GPT-4o,72.7,percent harm score (template jailbreak attack; standard prompt),https://arxiv.org/abs/2410.09024,"AgentHarm paper Table 2, public test split"
+2024-10-11,Claude 3.5 Sonnet,68.7,percent harm score (template jailbreak attack; standard prompt),https://arxiv.org/abs/2410.09024,"AgentHarm paper Table 2, public test split"
+2024-10-11,Mistral Large 2,80.5,percent harm score (template jailbreak attack; standard prompt),https://arxiv.org/abs/2410.09024,"AgentHarm paper Table 2, public test split"

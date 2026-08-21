@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2024-11-30,GPT-4o,9.68,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,"CollideNL2SQL agent scaffold on official Spider 2.0-Snow leaderboard; enterprise text-to-SQL is far harder than classic SQL benchmarks."
+2025-01-28,OpenAI o1-preview,31.26,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,ReFoRCE agent scaffold on official Spider 2.0-Snow leaderboard.
+2025-07-28,Claude 3.5 Sonnet (20241022),19.01,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,Spider-Agent scaffold on official Spider 2.0-Snow leaderboard.
+2025-07-19,DeepSeek-R1,54.84,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,AutoLink agent scaffold on official Spider 2.0-Snow leaderboard.
+2025-08-08,Claude 4 Sonnet,61.43,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,WindAgent scaffold on official Spider 2.0-Snow leaderboard.
+2025-10-02,GPT-5,65.63,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,SSDAT agent scaffold on official Spider 2.0-Snow leaderboard.
+2025-11-03,OpenAI o3,62.89,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,ReFoRCE agent scaffold (same scaffold as the earlier o1-preview entry) on official Spider 2.0-Snow leaderboard.
+2025-12-07,DeepSeek-R1,63.80,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,DSR-SQL agent scaffold on official Spider 2.0-Snow leaderboard.
+2026-01-27,Claude Sonnet 4.5,90.49,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,"Prism Swarm with Deepthink scaffold on official Spider 2.0-Snow leaderboard; large jump reflects heavier agent scaffolding, not just base model gains."
+2026-02-06,Claude Opus 4.6,86.28,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,QUVI-3 agent scaffold on official Spider 2.0-Snow leaderboard.
+2026-02-09,Gemini 3 Pro (preview),94.15,% execution accuracy (Spider 2.0-Snow),https://spider2-sql.github.io/,QUVI-3 agent scaffold (same scaffold as the Claude Opus 4.6 entry above) on official Spider 2.0-Snow leaderboard.

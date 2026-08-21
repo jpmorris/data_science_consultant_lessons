@@ -1,0 +1,12 @@
+date,model,score,score_unit,source_url,notes
+2026-08-17,"claude-fable-5 (xhigh, Claude Code)",67.3,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,"GameDevBench live leaderboard snapshot observed 2026-08-17 (ICML 2026 camera-ready results); #1 rank, +/-5.0 CI"
+2026-08-17,"gpt-5.6-sol (xhigh, Codex)",63.7,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17; best agent/method overall per paper text
+2026-08-17,"muse-spark-1.2 (high, Muse Code)",61.0,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,kimi-k3 (Kimi Code),58.0,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,claude-opus-4-8 (Claude Code),55.9,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,gemini-3-pro-preview (Gemini CLI),53.8,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,gpt-5.4 (Codex),52.0,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,gemini-3-flash-preview (Gemini CLI),46.8,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,claude-sonnet-4-5 (Claude Code),34.8,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,claude-haiku-4-5 (Claude Code),18.6,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17
+2026-08-17,qwen3.5-397b (OpenHands),5.4,percent of 333 Godot game-dev tasks solved,https://waynechi.com/gamedevbench,GameDevBench live leaderboard snapshot observed 2026-08-17; weakest score on leaderboard

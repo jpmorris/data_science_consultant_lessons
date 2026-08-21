@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2026-04-30,GPT-5.4,46.5,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,AI2 AstaBench Spring 2026 update blog post.
+2026-04-30,Gemini 3.1 Pro Preview,49.6,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,AI2 AstaBench Spring 2026 update blog post.
+2026-04-30,GPT-5.5,52.9,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,"AI2 AstaBench Spring 2026 update blog post; reported cost $1.61 per problem."
+2026-04-30,Asta v0,53.0,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,"AI2's own reference agent, included as a baseline in the same snapshot."
+2026-04-30,Claude Sonnet 4.6,54.5,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,AI2 AstaBench Spring 2026 update blog post.
+2026-04-30,Claude Opus 4.6,55.3,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,AI2 AstaBench Spring 2026 update blog post.
+2026-04-30,Claude Opus 4.7,58.0,percent (overall AstaBench score),https://allenai.org/blog/astabench-update-spring-2026,"AI2 AstaBench Spring 2026 update blog post; top performer at snapshot, reported cost $3.54 per problem."

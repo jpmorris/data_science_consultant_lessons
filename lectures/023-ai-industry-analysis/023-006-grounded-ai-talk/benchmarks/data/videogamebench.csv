@@ -1,0 +1,8 @@
+date,model,score,score_unit,source_url,notes
+2026-05-14,GPT-4o (2024-08-06),0.09,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper (arXiv:2505.18134v3, Princeton), Table 2, VG-Agent (ReAct) baseline, real-time setting"
+2026-05-14,Claude 3.7 Sonnet (20250219),0.48,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper Table 2; tied-best score, only model to reach a checkpoint in Kirby's Dream Land and Zelda: Link's Awakening"
+2026-05-14,Gemini 2.5 Pro (2025-03-25 preview),0.48,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper Table 2; tied-best score"
+2026-05-14,Llama 4 Maverick (17B-128E-Instruct-FP8),0.0,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper Table 2; failed to reach any checkpoint"
+2026-05-14,Gemini 2.0 Flash,0.0,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper Table 2; failed to reach any checkpoint"
+2026-05-14,Qwen-VL-2.5 7B,0.0,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper Table 2; failed to reach any checkpoint"
+2026-05-14,Qwen-VL-2.5 32B,0.0,percent of VideoGameBench test-set completed (checkpoint-weighted avg across 7 test games),https://arxiv.org/pdf/2505.18134,"VideoGameBench paper Table 2; failed to reach any checkpoint"

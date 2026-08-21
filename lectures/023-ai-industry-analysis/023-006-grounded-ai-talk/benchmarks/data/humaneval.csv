@@ -1,0 +1,13 @@
+date,model,score,score_unit,source_url,notes
+2021-07-14,Codex (code-davinci),28.8,pass@1 %,https://arxiv.org/abs/2107.03374,Original HumanEval paper baseline; benchmark introduced by OpenAI (164 hand-written Python problems).
+2023-03-14,GPT-4,67.0,pass@1 %,https://arxiv.org/abs/2303.08774,GPT-4 Technical Report reported score.
+2024-06-20,Gemini 1.5 Pro,84.1,pass@1 %,https://siliconangle.com/2024/06/20/anthropic-launches-claude-3-5-sonnet-raise-bar-model-intelligence-coding-visual-processing/,Cited in Claude 3.5 Sonnet launch coverage comparison table.
+2024-06-20,GPT-4o,90.2,pass@1 %,https://siliconangle.com/2024/06/20/anthropic-launches-claude-3-5-sonnet-raise-bar-model-intelligence-coding-visual-processing/,Cited in Claude 3.5 Sonnet launch coverage comparison table.
+2024-06-20,Claude 3.5 Sonnet,92.0,pass@1 %,https://www.anthropic.com/news/claude-3-5-sonnet,Anthropic's zero-shot HumanEval score at launch.
+2024-09-12,o1-preview,92.4,pass@1 %,https://cdn.openai.com/o1-system-card.pdf,OpenAI o1 System Card.
+2024-09-12,o1-mini,92.4,pass@1 %,https://cdn.openai.com/o1-system-card.pdf,OpenAI o1 System Card; comparable to o1-preview on this benchmark.
+2025-05-22,Claude Opus 4,94.5,pass@1 %,https://www.codesota.com/llm/humaneval-mbpp,CodeSOTA aggregator leaderboard entry.
+2025-05-22,Claude Sonnet 4,95.1,pass@1 %,https://www.codesota.com/llm/humaneval-mbpp,CodeSOTA aggregator leaderboard entry; highest of Claude 4 family at launch.
+2025-08-07,GPT-5,95.1,pass@1 %,https://www.codesota.com/llm/humaneval-mbpp,CodeSOTA aggregator leaderboard entry.
+2026-08-08,DeepSeek R1,97.4,pass@1 %,https://pricepertoken.com/leaderboards/benchmark/humaneval,Leaderboard snapshot date; not necessarily model release date.
+2026-08-08,Claude Sonnet 4.5,97.6,pass@1 %,https://pricepertoken.com/leaderboards/benchmark/humaneval,"Top of leaderboard as of snapshot date; page explicitly calls HumanEval saturated (96-98% pass@1 for frontier models, useless for differentiating current models)."

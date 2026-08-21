@@ -128,13 +128,24 @@ $body-bg: #073642;
   margin-bottom: 0.1em;
 }
 
+// Small eyebrow label above each of this slide's two panels ("AI Progress"
+// over the chart, "AI Advancements" over the table) -- centered over the
+// chart to match the centered title/subtitle below it; left-aligned (the
+// base .section-label default) over the table, matching the table's own
+// left-aligned content.
+.reveal .slides .frontier-split-diagram .frontier-panel-kicker {
+  justify-content: center;
+}
 // A .section-label sitting directly above a diagram, standing in for the
 // diagram's own title -- centered rather than left-aligned like the
 // default .section-label, since it's naming the whole figure below it
-// rather than dividing the slide into left-to-right sections.
+// rather than dividing the slide into left-to-right sections. Condensed
+// margins: the title now sits inside a vertically-centered right column
+// (see .frontier-split-diagram below), not pinned right under the intro
+// bullets, so it no longer needs extra clearance to avoid running into them.
 .reveal .slides .frontier-diagram-title {
   justify-content: center;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.1em;
 }
 // Overrides .section-label's deck-wide amber -- this diagram now uses
 // red/green as its only meaningful accent colors (no AI progress vs.
@@ -149,46 +160,75 @@ $body-bg: #073642;
 // Scope caveat for the diagram: it only shows discoveries that are pure
 // theory/math with some cheap mechanical oracle to check them (Lean, a
 // benchmark, a proof checker) -- not embodied/robotics work, and not
-// anything without a fast ground-truth verifier.
+// anything without a fast ground-truth verifier. Condensed to match the
+// tighter title above.
 .reveal .slides .frontier-diagram-subtitle {
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1.05em;
   font-style: italic;
   color: #657b7b;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.35em;
 }
 
-// Diagram + its ledger table side by side instead of stacked, so both fit
-// in one screenful. Floats rather than flex: the table is a separate
-// pandoc-table block compiled from markdown between two raw-html fences
-// (open the wrapping div in one fence, close it after the table in
-// another), not a literal child of a flex container within a single fence
-// -- but plain floats on two block-level siblings don't care how they got
-// there. This row wrapper needs its own block-formatting context (flow-root)
-// for two reasons: it contains the floats for height purposes, and -- less
-// obviously -- it stops the slide's h2 (which is display:inline-block, for
-// the .heading-accent underline-hugs-the-text trick) from being pulled into
-// the same inline formatting context as these floats and having its own
-// line box reflowed around them, even though the h2 comes first in the
-// document. Floats only respect block-box siblings that precede them;
-// inline-level ones don't count, so without this wrapper the heading was
-// visibly sliding over to share a line with the floated diagram.
-.reveal .slides .frontier-split-row {
-  display: flow-root;
-  margin-top: 0.5em;
-}
-// This slide showed a real horizontal scrollbar in an actual browser that
-// never reproduced in headless measurement (different font metrics/zoom,
-// most likely) -- rather than chase an exact pixel, hard-clamp overflow on
-// this specific slide by id (not globally on .scrollable) as a safety net,
-// on top of the wider column margins below.
-.reveal .slides section#ai-and-the-knowledge-frontier {
+// Two-column layout: intro bullets + ledger table stacked in a left column,
+// the solving-ability plot alone in a right column, vertically centered
+// across the slide's full height. Replaced an earlier float-based layout
+// (diagram float:left, table float:right, bullets sitting above both, full
+// width) -- with long bullets, that ran straight into the plot's own title.
+// Moving the bullets inside the left column means they only ever compete
+// for space with the table below them, never with the plot.
+//
+// The section itself needs display:flex/height:100% so .frontier-split-row
+// can grow to fill the space below the heading and let its two columns
+// stretch/center within that -- same pattern used for .diagram-split-row
+// elsewhere in this deck. !important because reveal's own
+// `section.present { display: block }` rule ties on specificity and wins
+// without it. This also folds in the old overflow-x:hidden safety-net rule
+// (a real horizontal scrollbar seen in an actual browser, never reproduced
+// in headless measurement -- different font metrics/zoom, most likely).
+.reveal .slides section#ai-discoveries {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
   overflow-x: hidden;
 }
+.reveal .slides .frontier-split-row {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 2.5%;
+  min-height: 0;
+}
+.reveal .slides .frontier-left-col {
+  display: flex;
+  flex-direction: column;
+  width: 51%;
+}
+// Bullets keep their natural height; the kicker+table group below grows
+// into whatever vertical space is left and centers itself within it, so it
+// sits roughly midway between the bullets and the bottom of the slide
+// instead of hugging the bullets directly. Column direction (not row) --
+// this holds two stacked children now (the "AI Advancements" kicker, then
+// the table-panel itself), not just the table alone; row direction put
+// them side by side instead, squeezing the kicker into a narrow wrapped
+// column to the table's left.
+.reveal .slides .frontier-left-col .frontier-intro-bullets {
+  flex: 0 0 auto;
+}
+.reveal .slides .frontier-left-col .frontier-split-table {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.78em;
+}
+// The plot's own column -- centered vertically across the full row height,
+// independent of how tall the left column's bullets+table happen to be.
 .reveal .slides .frontier-split-diagram {
-  float: left;
-  width: 36%;
-  margin-right: 2%;
+  width: 46.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 // The svg is a direct child here, not wrapped in .diagram-panel-solo (that
 // wrapper was dropped when this became its own column) -- it needs its own
@@ -200,12 +240,7 @@ $body-bg: #073642;
   height: auto;
   display: block;
 }
-.reveal .slides .frontier-split-table {
-  float: right;
-  width: 62%;
-  font-size: 0.78em;
-}
-// 19 rows x 5 columns needs tighter vertical rhythm than the base
+// 10 rows x 6 columns needs tighter vertical rhythm than the base
 // .table-panel's row padding gives -- otherwise it runs past the bottom
 // of the slide and needs a scroll the rest of this layout was built to
 // avoid.
@@ -224,12 +259,30 @@ $body-bg: #073642;
   margin: 0.2em 0 0;
   padding: 0.4em 0.9em;
 }
-// The default first-column rule assumes short entries and forces nowrap --
-// this table's discovery names are long phrases, so let them wrap inside
-// this narrower column instead of blowing out the table's width.
+// Field (col 1) unbolded on request: keep it narrow/nowrap (still useful so
+// long field names don't wrap awkwardly) but drop the bold weight the base
+// first-column rule gives it by default, so Field reads as a quiet category
+// tag rather than competing for attention with the bolded cells now sitting
+// inside Discovery/Mechanism/Superhuman.
 .reveal .slides .frontier-split-table .table-panel td:first-child {
+  font-weight: 400;
+}
+// Discovery moved to col 2 -- it needs the wrap behavior the old first-child
+// override gave it, and it collides with the base rule below (written for
+// the table's original 4-column layout, where Date -- not Discovery -- was
+// col 2 and needed the narrow/tabular-nums treatment); override both back:
+// wrap col 2 normally, and give Date -- now col 3 -- the narrow date style.
+.reveal .slides .frontier-split-table .table-panel tr:has(td:nth-child(4)) td:nth-child(2) {
   white-space: normal;
   width: auto;
+  color: #93a1a1;
+  font-variant-numeric: normal;
+}
+.reveal .slides .frontier-split-table .table-panel td:nth-child(3) {
+  color: #839496;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 1%;
 }
 
 // Persistent footnote bullets under the diagram, shared across all stages
@@ -429,6 +482,30 @@ $body-bg: #073642;
 }
 .llm-citations-dialog-body a:hover {
   color: #eee8d5;
+}
+
+// "Why these placements?" button for the capability chart on the Knowledge
+// Frontier slide. Unlike .llm-citations-button, this one is a normal inline
+// element in the slide's own content flow (sits directly below the chart,
+// not pinned to a screen corner) -- it doesn't need position:fixed, since
+// only the resulting <dialog> (built by chart-notes-modal.html, reusing the
+// .llm-citations-dialog classes above) needs to escape reveal's transformed
+// .slides container.
+.frontier-chart-notes-button {
+  display: block;
+  margin: 0.3em auto 0;
+  background: rgba(38, 139, 210, 0.12);
+  border: 1px solid #268bd2;
+  border-radius: 6px;
+  color: #268bd2;
+  font-family: $font-family-sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+}
+.frontier-chart-notes-button:hover {
+  background: rgba(38, 139, 210, 0.24);
 }
 
 // Full-bleed accent treatment for the single "thesis" slide.
@@ -1135,4 +1212,27 @@ $body-bg: #073642;
 }
 .reveal .slides .emphasis-highlight {
   animation: emphasis-pulse 1.7s ease-in-out infinite;
+}
+
+// "AI Benchmarks" slide: a comprehensive, deliberately dense named list (74
+// benchmarks) grouped under .section-label category headers, plus a
+// top-of-slide stat line summarizing the saturated/climbing split.
+.reveal .slides .benchmark-stat-line {
+  font-size: 0.8em;
+  color: #93a1a1;
+  margin: 0 0 1em;
+  line-height: 1.5;
+}
+.reveal .slides .benchmark-stat-line strong {
+  color: #eee8d5;
+}
+.reveal .slides .benchmark-list {
+  font-size: 0.72em;
+  line-height: 1.85;
+  color: #cbd3d3;
+  margin: 0 0 0.3em;
+}
+.reveal .slides .benchmark-list sup {
+  color: #859900;
+  font-size: 0.85em;
 }

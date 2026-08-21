@@ -1,0 +1,10 @@
+date,model,score,score_unit,source_url,notes
+2025-06-09,Gemini-2.5-pro-preview-03-25,3.9,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard (Krafton AI, arXiv:2506.03610) snapshot, last updated 2025-06-09; best average rank of proprietary models"
+2025-06-09,GPT-4o-2024-08-06,4.3,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09"
+2025-06-09,o3-mini-2025-01-31,4.6,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09"
+2025-06-09,Claude-3.7-sonnet,6.3,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09"
+2025-06-09,Deepseek-R1-2025-01-20,6.4,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09"
+2025-06-09,GPT-4o-mini-2025-04-16,11.2,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09"
+2025-06-09,Qwen-2.5-7B-it,12.9,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09; open-source model"
+2025-06-09,Minitron-8B-it,12.5,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09; best open-source small model"
+2025-06-09,Llama-3.2-1B-it,17.8,ORAK average rank across 12 games (1=best),https://krafton-ai.github.io/orak-leaderboard/,"ORAK leaderboard snapshot, last updated 2025-06-09; weakest ranked model"
