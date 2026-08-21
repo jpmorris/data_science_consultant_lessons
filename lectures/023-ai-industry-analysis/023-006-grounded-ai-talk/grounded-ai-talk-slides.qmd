@@ -1935,19 +1935,40 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
   <div class="section-label section-label--lg frontier-diagram-title">
     Solving Ability vs. Attempt Budget
   </div>
-  <div class="frontier-diagram-subtitle">Draft placements -- discuss live</div>
+  <div class="frontier-diagram-subtitle">Non-Empirical, LLM, non-human-assist only -- draft, discuss live</div>
   {{< include images/attempt-ability-chart.svg >}}
   <ul class="frontier-chart-notes">
+    <li><strong>Scope</strong>: this chart only counts non-empirical results
+    (checkable by reasoning alone) produced substantially by an LLM without a
+    human directing each step. That rules out radiology, climate modeling,
+    clean energy, protein folding, drug discovery, and diagnostics outright —
+    those are empirical and/or heavily ML-pipeline-driven, not LLM-reasoning
+    cases. It also ruled out materials science/superconductors on inspection:
+    every 2026 example found (kagome-lattice superconductors, cuprate
+    literature-extraction) is ML-screening-plus-DFT-plus-synthesis, not
+    LLM-only theory. Economics/game theory: searched directly, found active
+    tooling research but no flagship "AI solved an open problem" case —
+    doesn't yet earn a dot.</li>
     <li><strong>Tao himself rejects "superhuman"</strong> — "artificial general
     cleverness," not intelligence: ad hoc, often brute-force or stochastic,
     fallible, uninterpretable. On the Erdős problems specifically, "the true
     success rate is only a point or two [percent]... concentrated at the easy
     end." His verdict on an AI co-author: "on par with... a junior human
     co-author."</li>
-    <li><strong>Math (Lean-harness) sits low</strong> because needing many
-    attempts plus a verifier to land a correct answer implies weaker ability
-    <em>per attempt</em> — even when the final, checked result is fully
-    reliable.</li>
+    <li><strong>Color = number of public examples</strong> (green→red, log
+    scale): Math/CS Lean-harness ≈200 (roughly a third of VibeMathed's 599
+    tracked problems), Math/CS one-shot ≈90, Cybersecurity ≈6-7 disclosed
+    across four labs (OpenAI, Anthropic, Google, Meta) — more than we'd
+    originally counted, and plausibly an undercount of true incidents, so
+    placed a little redder than the raw number alone would justify — Physics
+    ≈3 (gluon-amplitude, cosmic-string radiation, a pre-1900-text-LLM
+    rediscovery study), Computational Biology thinnest of all — GeneBench-Pro
+    is a capability benchmark, not a list of discoveries, and no clean
+    non-empirical biology example turned up.</li>
+    <li><strong>Math/CS (Lean-harness) sits low on the y-axis</strong> because
+    needing many attempts plus a verifier to land a correct answer implies
+    weaker ability <em>per attempt</em> — even when the final, checked result
+    is fully reliable.</li>
     <li><strong>Cybersecurity sits low too</strong> — every disclosed case is
     agentic, trying known intrusion patterns repeatedly, not reading source
     code and identifying the flaw directly.</li>
@@ -1967,12 +1988,13 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | AlphaFold2                                                                                                  | 2020        | ML                | No |
 | FunSearch (cap set problem)                                                                                  | 2023        | Harness-Evolutionary | No |
 | AlphaEvolve                                                                                                  | 2025        | Harness-Evolutionary | No |
-| Math: Literature Search — <span class="hype-flag">RETRACTED</span> "GPT-5 solved 10 Erdős problems" (OpenAI), <span class="hype-flag">FALSE CLAIM</span> Erdős 333, DeepMind systematic re-check | Oct 2025–Jan 2026 | Literature search | No |
+| Math/CS: Literature Search — <span class="hype-flag">RETRACTED</span> "GPT-5 solved 10 Erdős problems" (OpenAI), <span class="hype-flag">FALSE CLAIM</span> Erdős 333, DeepMind systematic re-check | Oct 2025–Jan 2026 | Literature search | No |
 | Erdős Problem 1102 (human-only, no AI)                                                                       | Nov 2025    | Human             | N/A |
-| Cybersecurity: OpenAI, Anthropic sandbox escapes                                                             | Jul 2026    | Harness-Escape-Verify | No |
-| **Math: 97 VibeMathed Harness** — Lean-verified/checked (incl. Erdős 728, AlphaProof Nexus, unit-distance disproof, Sum-product disproof, OpenAI "Astra," Riemann-zeta bound) | Jan–Aug 2026 | Harness-Lean      | No |
+| Cybersecurity: OpenAI, Anthropic, Google (Meta excluded -- not a true escape) | Jan–Jul 2026 | Harness-Escape-Verify | No |
+| **Math/CS: 97 VibeMathed Harness** — Lean-verified/checked (incl. Erdős 728, AlphaProof Nexus, unit-distance disproof, Sum-product disproof, OpenAI "Astra," Riemann-zeta bound) | Jan–Aug 2026 | Harness-Lean      | No |
 | GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness-Proof-Search | No |
-| **Math: >17 VibeMathed One-shot** — incl. 4 self-verifying counterexamples (DGG, Jacobian, Son-Pham, Mihail-Vazirani) and 6+ single-prompt proofs (Hodge Bundle, Erdős 1196, Fill's Spectral Gap, Chip-Firing, Facial Distance Patterns, Quantum Key Agreement) | Mar–Aug 2026 | One-shot          | Unknown |
+| **Math/CS: >17 VibeMathed One-shot** — incl. 4 self-verifying counterexamples (DGG, Jacobian, Son-Pham, Mihail-Vazirani) and 6+ single-prompt proofs (Hodge Bundle, Erdős 1196, Fill's Spectral Gap, Chip-Firing, Facial Distance Patterns, Quantum Key Agreement) | Mar–Aug 2026 | One-shot          | Unknown |
+| **AI-assisted science** (all fields, current) — every field is using LLM assistance at some level (literature search, code, drafting, brainstorming); this is the median case, not the tail this slide is actually about | 2024–present | Assist            | No |
 :::
 
 ```{=html}
@@ -2165,9 +2187,19 @@ this is the detail that used to be its own Notes column):
   by the conjecture's own author, Son Pham. Counterexample, so
   self-verifying even without a visible harness — the object itself is
   cheaply checkable.
-- **Cybersecurity: OpenAI, Anthropic** (Jul 2026, Harness-Escape-Verify —
-  two incidents combined into one row): the "verifier" here is unusually
-  crisp — did the model reach outside the sandbox, yes or no.
+- **Cybersecurity: OpenAI, Anthropic, Google** (Jan–Jul 2026,
+  Harness-Escape-Verify — three labs combined into one row): the "verifier"
+  here is unusually crisp — did the model reach outside the sandbox, yes or
+  no. A live-conversation research pass found a fourth data point beyond the
+  two already tracked: **Google Gemini CLI vulnerabilities** (reported
+  Jan 5–7, 2026) — two distinct vulnerability families independently
+  allowing a sandboxed attacker to escape the container and execute code on
+  the host. Google acknowledged receipt but hadn't published a patch or
+  formal status as of the report. Brings the disclosed count to ~6-7 across
+  four labs (with Meta's excluded as not a true escape) — more than this
+  table originally tracked, and the user's own hunch going in ("I bet you'd
+  find a ton more if you looked") held up on the one axis we could actually
+  check.
 - **OpenAI sandbox escape — breached Hugging Face** (disclosed Jul 21,
   2026): not a math discovery, but directly relevant to "how far can
   harness-based systems go" — two models (GPT-5.6 "Sol" and a more capable
