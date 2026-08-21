@@ -841,7 +841,7 @@ again" pattern as every other stage.
 ## The Entropy Floor {.smaller .heading-accent}
 
 ```{=html}
-<div class="section-label">What Is Entropy?</div>
+<div class="section-label section-label--lg">What Is Entropy?</div>
 <div class="softmax-row softmax-row--compact">
   <div class="softmax-card softmax-card--compact" style="--accent: #2aa198;">
     <div class="softmax-label">Low Entropy</div>
@@ -874,7 +874,7 @@ again" pattern as every other stage.
     <div class="softmax-caption">probability spread thin across dozens of plausible words</div>
   </div>
 </div>
-<div class="section-label">Entropy Floors At Different Levels</div>
+<div class="section-label section-label--lg">Entropy Floors At Different Levels</div>
 <div class="entropy-ladder">
   <div class="entropy-card" style="--accent: #2aa198;">
     <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
@@ -949,166 +949,8 @@ again" pattern as every other stage.
   <span>open, underspecified</span>
 </div>
 <div class="section-label section-label--lg">How Do You Lower The Floor?</div>
-<div class="floor-lever-row">
-  <div class="floor-lever" style="--accent: #268bd2;">
-    <div class="floor-lever-title">Context</div>
-    <div class="floor-lever-input">supplied at prompt time</div>
-    <div class="floor-mini-fan-row">
-      <div class="floor-mini-fan">
-        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
-          <line x1="32" y1="3" x2="8" y2="37"/>
-          <line x1="32" y1="3" x2="16" y2="37"/>
-          <line x1="32" y1="3" x2="24" y2="37"/>
-          <line x1="32" y1="3" x2="32" y2="37"/>
-          <line x1="32" y1="3" x2="40" y2="37"/>
-          <line x1="32" y1="3" x2="48" y2="37"/>
-          <line x1="32" y1="3" x2="56" y2="37"/>
-          <circle cx="32" cy="3" r="2.5"/>
-        </svg>
-        <span>vague prompt</span>
-      </div>
-      <span class="floor-mini-arrow">→</span>
-      <div class="floor-mini-fan">
-        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
-          <line x1="32" y1="3" x2="8" y2="37"/>
-          <line x1="32" y1="3" x2="32" y2="37"/>
-          <line x1="32" y1="3" x2="56" y2="37"/>
-          <circle cx="32" cy="3" r="2.5"/>
-        </svg>
-        <span>+ requirements</span>
-      </div>
-      <span class="floor-mini-arrow">→</span>
-      <div class="floor-mini-fan">
-        <svg class="entropy-fan" viewBox="0 0 64 40" aria-hidden="true">
-          <line x1="32" y1="3" x2="32" y2="37"/>
-          <circle cx="32" cy="3" r="2.5"/>
-        </svg>
-        <span>+ unit tests</span>
-      </div>
-    </div>
-    <div class="floor-lever-caption">requirements, specs, and tests narrow the space — but rarely to zero, and only for the entropy you already knew was there</div>
-  </div>
-  <div class="floor-lever" style="--accent: #d33682;">
-    <div class="floor-lever-title">World Knowledge</div>
-    <div class="floor-lever-input">baked in at training time</div>
-    <svg class="floor-mesh" viewBox="0 0 208 140" aria-hidden="true">
-      <defs>
-        <radialGradient id="floor-mesh-grad-blue" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#268bd2" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#268bd2" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#268bd2" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-teal" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#2aa198" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#2aa198" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#2aa198" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-amber" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#b58900" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#b58900" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#b58900" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-violet" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#6c71c4" stop-opacity="0.9"/>
-          <stop offset="55%" stop-color="#6c71c4" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#6c71c4" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="floor-mesh-grad-orange" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#cb4b16" stop-opacity="0.85"/>
-          <stop offset="55%" stop-color="#cb4b16" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#cb4b16" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="floor-mesh-blur" x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="9"/>
-        </filter>
-      </defs>
-      <g class="floor-mesh-blobs" filter="url(#floor-mesh-blur)">
-        <path d="M70,12 C100,8 130,20 122,50 C118,75 100,92 68,90 C35,88 15,70 18,45 C20,20 42,16 70,12 Z" fill="url(#floor-mesh-grad-blue)"/>
-        <path d="M140,8 C168,5 192,18 188,45 C186,68 168,84 138,82 C108,80 90,64 93,42 C95,20 114,11 140,8 Z" fill="url(#floor-mesh-grad-teal)"/>
-        <path d="M60,60 C86,57 108,72 106,95 C104,116 86,130 58,129 C30,128 13,113 15,92 C17,71 36,63 60,60 Z" fill="url(#floor-mesh-grad-amber)"/>
-        <path d="M150,58 C178,55 200,70 198,95 C196,118 178,132 148,131 C118,130 101,114 103,92 C105,70 124,61 150,58 Z" fill="url(#floor-mesh-grad-violet)"/>
-        <path d="M104,26 C138,22 165,44 163,70 C161,94 138,116 102,114 C66,112 44,92 46,66 C48,42 72,30 104,26 Z" fill="url(#floor-mesh-grad-orange)"/>
-      </g>
-      <g class="floor-mesh-net">
-        <line x1="20" y1="22" x2="62" y2="22"/>
-        <line x1="20" y1="22" x2="62" y2="54"/>
-        <line x1="20" y1="54" x2="62" y2="22"/>
-        <line x1="20" y1="54" x2="62" y2="54"/>
-        <line x1="20" y1="54" x2="62" y2="86"/>
-        <line x1="20" y1="86" x2="62" y2="54"/>
-        <line x1="20" y1="86" x2="62" y2="86"/>
-        <line x1="20" y1="86" x2="62" y2="118"/>
-        <line x1="20" y1="118" x2="62" y2="86"/>
-        <line x1="20" y1="118" x2="62" y2="118"/>
-        <line x1="62" y1="22" x2="104" y2="22"/>
-        <line x1="62" y1="22" x2="104" y2="54"/>
-        <line x1="62" y1="54" x2="104" y2="22"/>
-        <line x1="62" y1="54" x2="104" y2="54"/>
-        <line x1="62" y1="54" x2="104" y2="86"/>
-        <line x1="62" y1="86" x2="104" y2="54"/>
-        <line x1="62" y1="86" x2="104" y2="86"/>
-        <line x1="62" y1="86" x2="104" y2="118"/>
-        <line x1="62" y1="118" x2="104" y2="86"/>
-        <line x1="62" y1="118" x2="104" y2="118"/>
-        <line x1="104" y1="22" x2="146" y2="22"/>
-        <line x1="104" y1="22" x2="146" y2="54"/>
-        <line x1="104" y1="54" x2="146" y2="22"/>
-        <line x1="104" y1="54" x2="146" y2="54"/>
-        <line x1="104" y1="54" x2="146" y2="86"/>
-        <line x1="104" y1="86" x2="146" y2="54"/>
-        <line x1="104" y1="86" x2="146" y2="86"/>
-        <line x1="104" y1="86" x2="146" y2="118"/>
-        <line x1="104" y1="118" x2="146" y2="86"/>
-        <line x1="104" y1="118" x2="146" y2="118"/>
-        <line x1="146" y1="22" x2="188" y2="22"/>
-        <line x1="146" y1="22" x2="188" y2="54"/>
-        <line x1="146" y1="54" x2="188" y2="22"/>
-        <line x1="146" y1="54" x2="188" y2="54"/>
-        <line x1="146" y1="54" x2="188" y2="86"/>
-        <line x1="146" y1="86" x2="188" y2="54"/>
-        <line x1="146" y1="86" x2="188" y2="86"/>
-        <line x1="146" y1="86" x2="188" y2="118"/>
-        <line x1="146" y1="118" x2="188" y2="86"/>
-        <line x1="146" y1="118" x2="188" y2="118"/>
-        <circle cx="20" cy="22" r="2.4"/>
-        <circle cx="20" cy="54" r="2.4"/>
-        <circle cx="20" cy="86" r="2.4"/>
-        <circle cx="20" cy="118" r="2.4"/>
-        <circle cx="62" cy="22" r="2.4"/>
-        <circle cx="62" cy="54" r="2.4"/>
-        <circle cx="62" cy="86" r="2.4"/>
-        <circle cx="62" cy="118" r="2.4"/>
-        <circle cx="104" cy="22" r="2.4"/>
-        <circle cx="104" cy="54" r="2.4"/>
-        <circle cx="104" cy="86" r="2.4"/>
-        <circle cx="104" cy="118" r="2.4"/>
-        <circle cx="146" cy="22" r="2.4"/>
-        <circle cx="146" cy="54" r="2.4"/>
-        <circle cx="146" cy="86" r="2.4"/>
-        <circle cx="146" cy="118" r="2.4"/>
-        <circle cx="188" cy="22" r="2.4"/>
-        <circle cx="188" cy="54" r="2.4"/>
-        <circle cx="188" cy="86" r="2.4"/>
-        <circle cx="188" cy="118" r="2.4"/>
-      </g>
-    </svg>
-    <div class="floor-legend">
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#268bd2;"></span>physics</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#2aa198;"></span>biology</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#b58900;"></span>grammar</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#6c71c4;"></span>history</span>
-      <span class="floor-legend-item"><span class="floor-legend-dot" style="background:#cb4b16;"></span>code</span>
-    </div>
-    <div class="floor-lever-caption">entangled in the same weights, not separable layers — if a problem has one right answer, and that knowledge is in there, the floor can drop to just that answer</div>
-  </div>
-</div>
-<div class="section-label section-label--lg">Hard To Lower The Floor To 0</div>
-<div class="floor-limit-list">
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the requirements themselves take search to find — humans don't start out knowing them either</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>requirements change out from under the answer</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>translation loss between what's in your head and what's in the prompt</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>benchmarks score one answer, not a menu of options with tradeoffs — models rarely offer either</div>
-  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the real fix sometimes lives one level up — the model just answers the question it was asked (the XY problem)</div>
+<div class="floor-mechanism-panel">
+  {{< include images/entropy-floor-mechanism.svg >}}
 </div>
 ```
 
@@ -1134,31 +976,65 @@ even for a perfect model — React or not, which auth, what feature set. The
 fan icons are a literal count-of-branches metaphor. Key point: this isn't a
 capability gap, the prompt genuinely underdetermines the answer.
 
-"How Do You Lower The Floor?" — two mechanisms, deliberately parallel cards
-so the contrast reads visually: one acts at prompt time, the other was baked
-in at training time.
+"How Do You Lower The Floor?" — the same shaded, unlabeled LLM silhouette
+from "The Ingredients of an LLM", turned on its side so the pipeline reads
+left to right: prompt in, LLM, harness out. Eight labeled arrows point at
+the three places a lever can actually act, so the diagram itself is the
+argument: each lever only touches one specific piece of the pipeline, not
+the model's competence in general. Grouped by attachment point, not by
+how they're presented on the slide:
 
-Context lever: requirements, specs, and unit tests narrow the space --
-"rarely to zero" is worth pausing on if pushed. A test suite defines a
-pass/fail boundary, not a single implementation: different code can pass the
-same tests, different prose can satisfy the same requirements doc. And on
-top of that, in real projects you frequently don't know what you don't know
--- you can't write a test for a requirement you haven't discovered yet.
+Into the weights (pink + violet, both from above) -- both arrows are
+deliberately aimed at the FFN mini-network specifically (the denser,
+fully-connected mesh, closer to the output side), not the attention mesh
+or empty box space beside it. That's not arbitrary placement: this is the
+same FFN called out in "The Transformer Still Rules" as where
+interpretability research locates factual/world knowledge (Geva et al.,
+"Transformer Feed-Forward Layers Are Key-Value Memories"; Meng et al.,
+the ROME paper) -- weight-level changes to what the model knows
+concentrate there, not in attention.
+- Better training data of reality (pink): this is the payoff of the
+  physics-derivation conversation from the "What Is Astounding About
+  LLMs?" slide, one level more general -- world knowledge gets baked in
+  at training time, entangled in the weights rather than living in
+  separable layers (see: superposition, e.g. Anthropic's "Toy Models of
+  Superposition" -- features share the same weights in overlapping
+  combinations, not one clean subspace per topic). Only helps when the
+  task has one right answer AND that knowledge is already in there --
+  for genuinely open or ambiguous questions (edge-of-research stuff),
+  this lever doesn't apply and the floor stays wherever the task's real
+  ambiguity puts it.
+- Fine-tuning / RLHF (violet): distinct from "more training data" --
+  instead of teaching the model more of the world, this narrows the
+  *distribution* it draws from for one specific job. Same mechanism
+  (weight updates), narrower target.
 
-World Knowledge lever: this is the payoff of the physics-derivation
-conversation from the "What Is Astounding About LLMs?" slide, one level
-more general. The mesh is deliberately NOT drawn as separable labeled
-layers -- that would misrepresent how these networks actually store
-concepts (see: superposition, e.g. Anthropic's "Toy Models of
-Superposition" -- features share the same weights in overlapping
-combinations, not one clean subspace per topic). That's why the blobs
-overlap rather than tile: physics, biology, grammar, history, and code all
-live entangled in the same numbers, and you can't cleanly pull "the physics
-part" back out even in principle. The caption is deliberately narrow in
-scope: this only helps when the task has one right answer AND that
-knowledge is in there -- for genuinely open or ambiguous questions (edge-of-
-research stuff), this lever doesn't apply and the floor stays wherever the
-task's real ambiguity puts it.
+Into the prompt (orange + blue, from above and below):
+- RAG / few-shot (orange): narrows the space with current, specific
+  facts or examples supplied at inference time, rather than whatever got
+  baked into the weights at training time -- fixes the "training data
+  goes stale" problem context/specs alone can't touch.
+- Context, requirements, specs (blue): supplied at prompt time, narrows
+  the space -- but rarely to zero. A test suite defines a pass/fail
+  boundary, not a single implementation: different code can pass the
+  same tests, different prose can satisfy the same requirements doc. And
+  on top of that, in real projects you frequently don't know what you
+  don't know -- you can't write a test for a requirement you haven't
+  discovered yet.
+
+Into the harness (amber + teal from above, green + grey from below):
+deliberately drawn hitting the harness, not the LLM itself -- these are
+all ways the harness (or a human) checks candidate outputs, not things
+that change the model's weights or the prompt. Same "Agent Harness" box
+and accent color as the next-token-prediction agent slide, reused on
+purpose: it's literally the same scaffolding-around-the-model concept.
+- Type checkers (amber) / Verifier / Oracle (teal): stronger cousins of
+  unit tests -- exhaustive or authoritative checks (type systems,
+  SAT/SMT solvers, a known-correct oracle) instead of sampled assertions.
+- Unit tests (green): the baseline case, already covered above.
+- Multi-agent critique (grey): a second model (or the same model in a
+  different role) adversarially checks the first's output before it
+  ships -- still scaffolding, not a smarter model.
 
 TODO (planning note, not for delivery): the old closing block from this
 slide -- "a perfect model doesn't get you out of this," the "you don't know
@@ -2207,6 +2083,19 @@ story: same company, seven months apart, one real, one not.
     longer just tracking language statistics?
 - Nobody has a clean answer. This is a live argument between (some) linguists
   and (some) computer scientists — not settled science.
+
+## Limits of LLMs {.heading-accent}
+
+```{=html}
+<div class="section-label section-label--lg">Hard To Lower The Floor To 0</div>
+<div class="floor-limit-list">
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the requirements themselves take search to find — humans don't start out knowing them either</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>requirements change out from under the answer</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>translation loss between what's in your head and what's in the prompt</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>benchmarks score one answer, not a menu of options with tradeoffs — models rarely offer either</div>
+  <div class="floor-limit-item"><span class="floor-limit-mark"></span>the real fix sometimes lives one level up — the model just answers the question it was asked (the XY problem)</div>
+</div>
+```
 
 # Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 

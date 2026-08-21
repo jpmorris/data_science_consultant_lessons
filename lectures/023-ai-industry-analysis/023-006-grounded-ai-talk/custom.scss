@@ -485,7 +485,7 @@ $body-bg: #073642;
 // Natural Language section header as its concrete, single-word anchor.
 .reveal .slides .softmax-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2.4em;
   width: 100%;
   margin-bottom: 0.7em;
@@ -661,147 +661,59 @@ $body-bg: #073642;
   margin-top: 0.25em;
 }
 
-// "How Do You Lower The Floor?": two side-by-side levers, each showing a
-// different mechanism (prompt-time context vs. train-time world knowledge)
-// with matching card chrome to the entropy-ladder cards above.
-.reveal .slides .floor-lever-row {
-  display: flex;
-  gap: 1em;
+// "How Do You Lower The Floor?": the LLM's own shaded/unlabeled silhouette
+// from "The Ingredients of an LLM", turned on its side (left-to-right) with
+// a harness box chained off its output and three labeled arrows pointing at
+// exactly what each lever acts on (training data -> weights, context/specs
+// -> prompt, unit tests -> harness).
+.reveal .slides .floor-mechanism-panel {
   width: 100%;
-  margin-top: 0.3em;
-}
-.reveal .slides .floor-lever {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: #0d4a55;
-  border-top: 4px solid var(--accent);
-  border-radius: 8px;
-  padding: 0.7em 0.9em;
-  text-align: left;
-}
-.reveal .slides .floor-mini-fan-row {
-  flex: 1;
-}
-.reveal .slides .floor-lever-title {
-  font-family: $presentation-heading-font;
-  font-weight: 700;
-  font-size: 0.78em;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  margin-bottom: 0.2em;
-}
-.reveal .slides .floor-lever-input {
-  color: #93a1a1;
-  font-size: 0.6em;
-  font-style: italic;
-  margin-bottom: 0.5em;
-}
-.reveal .slides .floor-lever-caption {
-  color: #93a1a1;
-  font-size: 0.6em;
-  line-height: 1.35;
   margin-top: 0.5em;
-}
-
-// Context lever: three shrinking fan icons (reusing .entropy-fan) walking
-// left to right as more context gets supplied.
-.reveal .slides .floor-mini-fan-row {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 0.6em;
 }
-.reveal .slides .floor-mini-fan {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--accent);
-}
-.reveal .slides .floor-mini-fan .entropy-fan {
-  width: 76px;
-  height: 48px;
-  margin-bottom: 0.2em;
-}
-.reveal .slides .floor-mini-fan span {
-  color: #93a1a1;
-  font-size: 0.62em;
-  white-space: nowrap;
-}
-.reveal .slides .floor-mini-arrow {
-  color: #586e75;
-  font-size: 1.1em;
-  transform: translateY(-0.8em);
-}
-
-// World-knowledge lever: a small neural-net mesh (faint, structural) with
-// several overlapping translucent color blobs standing in for different
-// knowledge domains sharing the same weights rather than living in
-// separable layers -- the whole point being that they can't be pulled apart
-// cleanly, so the blobs are deliberately overlapping, not tiled.
-.reveal .slides .floor-mesh {
+.reveal .slides .floor-mechanism-panel svg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 530px;
   display: block;
-  width: 100%;
-  height: 190px;
-  margin: 0.1em auto 0;
 }
-.reveal .slides .floor-mesh-blobs path {
-  mix-blend-mode: screen;
-}
-.reveal .slides .floor-mesh-net line {
+.reveal .slides .floor-mech-mesh-net line {
   stroke: #93a1a1;
   stroke-width: 1;
   opacity: 0.35;
 }
-.reveal .slides .floor-mesh-net circle {
+.reveal .slides .floor-mech-mesh-net circle {
   fill: #eee8d5;
   opacity: 0.55;
 }
-.reveal .slides .floor-legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.7em;
-  margin-top: 0.3em;
-}
-.reveal .slides .floor-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3em;
-  color: #93a1a1;
-  font-size: 0.56em;
-}
-.reveal .slides .floor-legend-dot {
-  width: 0.6em;
-  height: 0.6em;
-  border-radius: 50%;
-  flex: 0 0 auto;
-}
 
-// Closing "can't get to zero" bullets under the Entropy Floor slide's lever
-// row -- deliberately plain rows, not a table or card grid, since these are
-// caveats/limits rather than parallel mechanisms like Context/World Knowledge.
+// "Limits of LLMs" slide's closing "can't get to zero" bullets -- deliberately
+// plain rows, not a table or card grid, since these are caveats/limits rather
+// than parallel mechanisms like Context/World Knowledge.
 .reveal .slides .floor-limit-list {
   display: flex;
   flex-direction: column;
-  gap: 0.32em;
-  margin-top: 0.35em;
+  gap: 0.7em;
+  margin-top: 1.1em;
+  max-width: 34em;
 }
 .reveal .slides .floor-limit-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.55em;
+  gap: 0.7em;
   color: #93a1a1;
-  font-size: 0.64em;
-  line-height: 1.35;
+  font-size: 1.05em;
+  line-height: 1.4;
+  text-align: left;
 }
 .reveal .slides .floor-limit-mark {
-  width: 0.5em;
-  height: 0.5em;
+  width: 0.6em;
+  height: 0.6em;
   border-radius: 50%;
   background: #cb4b16;
-  margin-top: 0.4em;
+  margin-top: 0.45em;
   flex: 0 0 auto;
 }
 
@@ -1215,4 +1127,12 @@ $body-bg: #073642;
   color: #839496;
   line-height: 1.3;
   margin-top: 0.5em;
+}
+
+@keyframes emphasis-pulse {
+  0%, 100% { stroke-opacity: 0.5; stroke-width: 3; }
+  50% { stroke-opacity: 1; stroke-width: 6; }
+}
+.reveal .slides .emphasis-highlight {
+  animation: emphasis-pulse 1.7s ease-in-out infinite;
 }
