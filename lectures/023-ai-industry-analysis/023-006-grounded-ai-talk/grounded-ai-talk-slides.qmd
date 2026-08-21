@@ -53,7 +53,7 @@ management/BA/delivery roles and unknowns. Pitch explanations so a non-coder in
 the room isn't lost, but don't undersell the technical crowd.
 :::
 
-## If You Take Away Anything From This Talk {background-color="#0d4a55" .stat-slide}
+## If You Take Away Anything From This Talk {background-color="#215862" .stat-slide}
 
 AI progress, job/task replacement, and "the future" all come back to one
 question:
@@ -66,7 +66,7 @@ question:
 
 Everything else in this talk is downstream of that.
 
-# Part 1: The Magic {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
+# Part 1: The Magic {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
 
 <!-- STAGE 1/9 (llm-stage-1-language): language: small constituency tree, "king" glides on to stage 2 -->
 ## The Ingredients of an LLM {#llm-stage-1-language auto-animate="true" .heading-accent}
@@ -1494,9 +1494,7 @@ reason-vs-generalize.
       <rect x="30" y="14" width="170" height="14" fill="url(#better-zone-rlhf)"/>
       <text x="160" y="22.5" text-anchor="middle" class="sl-better-label">better</text>
       <path d="M 32,92 C 50,58 65,42 88,35" class="sl-curve"/>
-      <path d="M 88,35 C 108,41 130,52 150,60 C 170,68 185,74 198,78" class="sl-danger"/>
-      <circle cx="88" cy="35" r="3.2" class="sl-peak-marker"/>
-      <text x="94" y="32" class="sl-peak-label">peak</text>
+      <path d="M 88,35 C 108,41 130,52 150,60 C 170,68 185,74 198,78" class="sl-curve"/>
       <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Optimization pressure →</text>
       <text x="14" y="57" class="sl-axis-label" text-anchor="middle" transform="rotate(-90 14 57)">True quality ↑</text>
     </svg>
@@ -1526,7 +1524,7 @@ reason-vs-generalize.
           <circle cx="50" cy="32" r="7" class="im-frozen-node"/>
         </g>
         <g transform="translate(84,18)">
-          <circle cx="0" cy="0" r="13" fill="#0d4a55" stroke="var(--accent)" stroke-width="2.6"/>
+          <circle cx="0" cy="0" r="13" fill="#215862" stroke="var(--accent)" stroke-width="2.6"/>
           <line x1="0" y1="0" x2="0" y2="-8" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
           <line x1="0" y1="0" x2="6" y2="2" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
         </g>
@@ -1543,7 +1541,7 @@ reason-vs-generalize.
       <line x1="30" y1="100" x2="200" y2="100" class="sl-axis"/>
       <line x1="30" y1="14" x2="30" y2="100" class="sl-axis"/>
       <rect x="30" y="22" width="170" height="14" fill="url(#better-zone-inference)"/>
-      <text x="160" y="30.5" text-anchor="middle" class="sl-better-label">best possible</text>
+      <text x="160" y="30.5" text-anchor="middle" class="sl-better-label">hard ceiling</text>
       <line x1="30" y1="22" x2="200" y2="22" class="sl-ref"/>
       <path d="M 32,86 C 70,72 110,62 150,55 C 170,53 185,52 198,51" class="sl-curve"/>
       <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Samples (log k) →</text>
@@ -1665,7 +1663,7 @@ million years computing an answer and produces "42," a famously unhelpful
 non-answer. Good comedic beat for the exact point this chart is making: more
 thinking time is not a free lunch, and past some point you're paying a lot of
 compute for very little extra coverage. Land it right after naming the
-"best possible" band and before moving on to engineering.
+"hard ceiling" band and before moving on to engineering.
 
 The quote cloud and mechanism cloud used to be their own slide ("The
 Pretraining/Post-Training Dance"), then got merged in below the four cards.
@@ -2322,7 +2320,7 @@ be true on the same conjecture at once.
 ## AI Benchmarks {.smaller .scrollable .heading-accent}
 
 ```{=html}
-<p class="benchmark-stat-line"><strong>74 benchmarks/evals tracked</strong> · <strong>2,913</strong> real, sourced (date, model, score) data points · <strong>48</strong> still discriminating between frontier models · <strong>26</strong> likely saturated<sup style="color:#859900;">†</sup> — full historical data, per-benchmark CSVs, and trend charts: see Sources and the <code>benchmarks/</code> research directory alongside this deck.</p>
+<p class="benchmark-stat-line"><strong>74 benchmarks/evals tracked</strong> · <strong>2,913</strong> real, sourced (date, model, score) data points · <strong>48</strong> still discriminating between frontier models · <strong>26</strong> likely saturated<sup style="color:#5f9e6e;">†</sup> — full historical data, per-benchmark CSVs, and trend charts: see Sources and the <code>benchmarks/</code> research directory alongside this deck.</p>
 
 <div class="section-label section-label--lg">General Knowledge &amp; Broad Reasoning (15)</div>
 <p class="benchmark-list">MMLU<sup>†</sup> · MMLU-Pro<sup>†</sup> · Big Bench Hard<sup>†</sup> · HellaSwag<sup>†</sup> · ARC (AI2 Reasoning Challenge)<sup>†</sup> · TruthfulQA · Winogrande · AGIEval<sup>†</sup> · BoolQ<sup>†</sup> · PIQA · LAMBADA · Adversarial NLI · CommonsenseQA 2.0 · SuperGLUE · ScienceQA<sup>†</sup></p>
@@ -2619,7 +2617,7 @@ estimates.
 </div>
 ```
 
-# Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
+# Part 2: The Future {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
 
 ## Prediction Is Hard — Especially About the Future {.heading-accent}
 
@@ -2761,7 +2759,7 @@ authors' own self-grading post (blog.aifutures.org). Good live-updating source
 if this talk gets reused later — check for a newer scorecard snapshot.
 :::
 
-# Part 3: Your Job {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
+# Part 3: Your Job {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
 
 ## Broader Industry
 
@@ -3104,7 +3102,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   target for automation itself.
 :::
 
-# Part 4: What You Should Know {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
+# Part 4: What You Should Know {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
 
 ## The More Access You Give Agents, the More Powerful They Are {.heading-accent}
 
@@ -3223,7 +3221,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
 - Terminology is still shifting lab to lab (subagents, multi-agent, swarms all
   describe overlapping ideas)
 
-# Summary {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
+# Summary {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
 
 ## What I Hope You Take Away {.heading-accent}
 

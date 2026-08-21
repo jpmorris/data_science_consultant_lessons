@@ -19,7 +19,7 @@
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#6c71c4"/>
     </marker>
     <marker id="floorMechArrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#859900"/>
+      <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#5f9e6e"/>
     </marker>
     <marker id="floorMechArrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#b58900"/>
@@ -138,7 +138,7 @@
   </g>
 
   <!-- the harness, chained off the LLM's output -->
-  <rect x="1340" y="216" width="360" height="170" rx="15" fill="#0d4a55" stroke="#859900" stroke-width="3"/>
+  <rect x="1340" y="216" width="360" height="170" rx="15" fill="#215862" stroke="#5f9e6e" stroke-width="3"/>
   <text x="1520" y="310" text-anchor="middle" font-size="34" font-weight="700" fill="#eee8d5">Harness</text>
 
   <!-- callouts: eight ways to lower the floor, each pointing at the piece
@@ -170,7 +170,7 @@
     <path d="M1640,168 C1635,182 1625,198 1615,214" fill="none" stroke="#2aa198" stroke-width="2.5" marker-end="url(#floorMechArrowTeal)"/>
 
     <text x="1345" y="470" font-size="26" fill="#eee8d5">Unit tests</text>
-    <path d="M1400,455 C1405,438 1412,410 1420,388" fill="none" stroke="#859900" stroke-width="2.5" marker-end="url(#floorMechArrowGreen)"/>
+    <path d="M1400,455 C1405,438 1412,410 1420,388" fill="none" stroke="#5f9e6e" stroke-width="2.5" marker-end="url(#floorMechArrowGreen)"/>
 
     <text x="1590" y="470" font-size="26" fill="#eee8d5">Multi-agent critique</text>
     <path d="M1650,455 C1645,438 1635,410 1622,388" fill="none" stroke="#93a1a1" stroke-width="2.5" marker-end="url(#floorMechArrowGrey)"/>

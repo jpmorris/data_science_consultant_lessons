@@ -1,10 +1,12 @@
 /*-- scss:defaults --*/
 $font-family-sans-serif: 'Inter', sans-serif;
 $presentation-heading-font: 'Inter Display', sans-serif;
-// Solarized base02 instead of moon's default base03 -- one step lighter,
-// still dark. Panels/dividers below use a slightly lighter teal on top of
-// this so they still read as distinct against the new, lighter page bg.
-$body-bg: #073642;
+// One step lighter than Solarized base02 -- still clearly dark, but with
+// more headroom now that the deck is judged on a properly-calibrated
+// (sRGB) display instead of a punchy "Standard" monitor preset. Panels/
+// dividers below use a slightly lighter teal on top of this so they still
+// read as distinct against the lighter page bg.
+$body-bg: #1b444f;
 
 /*-- scss:rules --*/
 
@@ -49,7 +51,7 @@ $body-bg: #073642;
 // Tinted side panel for split image/caption layouts (used inside a
 // {.column} div alongside a figure column).
 .reveal .slides .callout-panel {
-  background: #0d4a55;
+  background: #215862;
   border-radius: 8px;
   padding: 0.9em 1.1em;
   display: flex;
@@ -363,7 +365,7 @@ $body-bg: #073642;
 // final rendered coordinates).
 .llm-axes-visible-panel {
   position: fixed;
-  background: #0d4a55;
+  background: #215862;
   border-radius: 12px;
   padding: 3%;
   box-sizing: border-box;
@@ -411,10 +413,10 @@ $body-bg: #073642;
   cursor: pointer;
 }
 .llm-citations-button:hover {
-  background: #0d4a55;
+  background: #215862;
 }
 .llm-citations-dialog {
-  background: #0d4a55;
+  background: #215862;
   color: #eee8d5;
   border: 1px solid #586e75;
   border-radius: 10px;
@@ -569,7 +571,7 @@ $body-bg: #073642;
 }
 .reveal .slides .softmax-card {
   flex: 0 0 400px;
-  background: #0d4a55;
+  background: #215862;
   border-top: 4px solid var(--accent);
   border-radius: 8px;
   padding: 0.6em 1em;
@@ -640,7 +642,7 @@ $body-bg: #073642;
 }
 .reveal .slides .entropy-card {
   flex: 1;
-  background: #0d4a55;
+  background: #215862;
   border-top: 4px solid var(--accent);
   border-radius: 8px;
   padding: 0.7em 0.65em;
@@ -800,7 +802,7 @@ $body-bg: #073642;
 // row padding, no vertical rules, milestone/date columns sized to content
 // instead of stretching evenly.
 .reveal .slides .table-panel {
-  background: #0d4a55;
+  background: #215862;
   border-radius: 10px;
   padding: 0.5em 1.2em;
   width: 85%;
@@ -895,7 +897,7 @@ $body-bg: #073642;
 // elsewhere in this table's palette) so it reads as a "this one's real"
 // signal rather than another caution color.
 .reveal .slides .table-panel .standout-flag {
-  color: #859900;
+  color: #5f9e6e;
   font-weight: 700;
 }
 
@@ -969,7 +971,7 @@ $body-bg: #073642;
 }
 .reveal .slides .scaling-law-card {
   font-size: 0.72em;
-  background: #0d4a55;
+  background: #215862;
   border-top: 4px solid var(--accent);
   border-radius: 8px;
   padding: 0.55em 0.7em 0.65em;
@@ -1003,7 +1005,7 @@ $body-bg: #073642;
 // slide isn't part of the auto-animate "Ingredients" stage cycle either,
 // so there's no DOM-scan risk in keeping it inline.
 .reveal .slides .architecture-modal {
-  background: #0d4a55;
+  background: #215862;
   color: #eee8d5;
   border: 1px solid #586e75;
   border-radius: 10px;
@@ -1129,26 +1131,6 @@ $body-bg: #073642;
   font-weight: 700;
   font-family: $font-family-sans-serif;
 }
-// RLHF-only: the post-peak segment recolored as a visible "danger zone"
-// instead of continuing in the card's accent color, so the reversal reads
-// as a warning, not just a downward wiggle.
-.reveal .slides .scaling-law-chart .sl-danger {
-  fill: none;
-  stroke: #dc322f;
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-.reveal .slides .scaling-law-chart .sl-peak-marker {
-  fill: #eee8d5;
-  stroke: #073642;
-  stroke-width: 1;
-}
-.reveal .slides .scaling-law-chart .sl-peak-label {
-  fill: #eee8d5;
-  font-size: 8.5px;
-  font-weight: 700;
-  font-family: $font-family-sans-serif;
-}
 .reveal .slides .scaling-law-formula {
   color: #eee8d5;
   font-size: 0.58em;
@@ -1258,6 +1240,6 @@ $body-bg: #073642;
   margin: 0 0 0.3em;
 }
 .reveal .slides .benchmark-list sup {
-  color: #859900;
+  color: #5f9e6e;
   font-size: 0.85em;
 }

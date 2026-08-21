@@ -134,7 +134,7 @@
   <text x="876.3" y="299" text-anchor="middle" font-size="14" font-weight="600" fill="#2aa198">Mythos (preview)</text>
 
   <!-- legend -->
-  <rect x="168" y="120" width="300" height="228" rx="8" fill="#0d4a55" fill-opacity="0.62" stroke="#586e75" stroke-width="1" stroke-opacity="0.5"/>
+  <rect x="168" y="120" width="300" height="228" rx="8" fill="#215862" fill-opacity="0.62" stroke="#586e75" stroke-width="1" stroke-opacity="0.5"/>
   <circle cx="197" cy="146" r="5" fill="#93a1a1"/>
   <text x="220" y="151" font-size="15" fill="#eee8d5">OpenAI</text>
   <circle cx="197" cy="172" r="5" fill="#2aa198"/>
@@ -153,7 +153,7 @@
   <text x="220" y="333" font-size="14" fill="#93a1a1">Fits and starts, then a wall</text>
 
   <!-- AI 2027 milestone definitions -- two columns so each agent is clearly its own line -->
-  <rect x="150" y="655" width="1100" height="130" rx="8" fill="#0d4a55" fill-opacity="0.5" stroke="#586e75" stroke-width="1" stroke-opacity="0.5"/>
+  <rect x="150" y="655" width="1100" height="130" rx="8" fill="#215862" fill-opacity="0.5" stroke="#586e75" stroke-width="1" stroke-opacity="0.5"/>
   <text x="170" y="680" font-size="16" font-weight="600" fill="#b58900">AI 2027's Agent-0 through Agent-4 (per ai-2027.com):</text>
   <text x="170" y="708" font-size="15" fill="#eee8d5">Agent-0 (~late 2025): first heavily AI-assisted in-house model</text>
   <text x="170" y="732" font-size="15" fill="#eee8d5">Agent-1 (~early 2026): near top-human research engineer</text>

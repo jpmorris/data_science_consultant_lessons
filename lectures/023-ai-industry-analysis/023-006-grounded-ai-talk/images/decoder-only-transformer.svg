@@ -18,7 +18,7 @@
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#6c71c4"/>
     </marker>
     <marker id="calloutArrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#859900"/>
+      <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#5f9e6e"/>
     </marker>
     <marker id="calloutArrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#2aa198"/>
@@ -40,7 +40,7 @@
   <!-- ================= MAIN DIAGRAM (unchanged internally, shifted right) ================= -->
   <g transform="translate(600,0)">
     <!-- output probabilities -->
-    <rect x="249.88957" y="37.074272" width="340.22086" height="83.036156" rx="8.0051966" fill="#0d4a55" stroke="#b58900" stroke-width="1.77914"/>
+    <rect x="249.88957" y="37.074272" width="340.22086" height="83.036156" rx="8.0051966" fill="#215862" stroke="#b58900" stroke-width="1.77914"/>
     <text x="419.18835" y="57.667618" text-anchor="middle" font-size="19" fill="#eee8d5">Next-token probabilities</text>
     <rect x="342" y="99" width="12" height="13" fill="#93a1a1"/>
     <rect x="362" y="86" width="12" height="26" fill="#93a1a1"/>
@@ -50,11 +50,11 @@
     <rect x="442" y="95" width="12" height="17" fill="#93a1a1"/>
     <line x1="420" y1="153.32001" x2="420" y2="125.32001" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
     <!-- linear + softmax -->
-    <rect x="270" y="155.98001" width="300" height="58" rx="8" fill="#0d4a55" stroke="#268bd2" stroke-width="2"/>
+    <rect x="270" y="155.98001" width="300" height="58" rx="8" fill="#215862" stroke="#268bd2" stroke-width="2"/>
     <text x="420" y="190.98001" text-anchor="middle" font-size="19" fill="#eee8d5">Linear &#8594; Softmax</text>
     <line x1="420" y1="257.30002" x2="420" y2="219.30002" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
     <!-- final norm -->
-    <rect x="325" y="262.62003" width="190" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
+    <rect x="325" y="262.62003" width="190" height="45" rx="8" fill="#215862" stroke="#6c71c4" stroke-width="2"/>
     <text x="420" y="291.62003" text-anchor="middle" font-size="19" fill="#eee8d5">Final Norm</text>
     <line x1="420" y1="335.94003" x2="420" y2="312.94003" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)"/>
     <!-- continuation dots: Final Norm down into the faded echo -->
@@ -80,27 +80,27 @@
     <path d="M 419.96375,785.24093 H 580.0358 V 530.68419 H 434.9705" fill="none" stroke="#93a1a1" stroke-width="1.94963" marker-end="url(#arrow)"/>
     <text x="-665" y="593.29987" font-size="14" fill="#93a1a1" transform="rotate(-90)" text-anchor="middle">residual</text>
     <!-- residual add 2 -->
-    <circle cx="420" cy="531" r="15" fill="#0d4a55" stroke="#93a1a1" stroke-width="2"/>
+    <circle cx="420" cy="531" r="15" fill="#215862" stroke="#93a1a1" stroke-width="2"/>
     <text x="420" y="537" text-anchor="middle" font-size="18" fill="#eee8d5">+</text>
     <path stroke="#93a1a1" stroke-width="2.00032" marker-end="url(#arrow)" d="M 420,575.45913 V 551.32"/>
     <!-- feed-forward -->
-    <rect x="290" y="582" width="260" height="100" rx="8" fill="#0d4a55" stroke="#859900" stroke-width="2"/>
+    <rect x="290" y="582" width="260" height="100" rx="8" fill="#215862" stroke="#5f9e6e" stroke-width="2"/>
     <text x="420" y="608" text-anchor="middle" font-size="18" fill="#eee8d5">Feed-Forward Network</text>
     <text x="420" y="630" text-anchor="middle" font-size="15" fill="#93a1a1">expand &#8594; activate &#8594; project</text>
-    <rect x="380" y="648" width="14" height="16" fill="#859900" opacity="0.6"/>
-    <rect x="400" y="642" width="14" height="28" fill="#859900"/>
-    <rect x="420" y="648" width="14" height="16" fill="#859900" opacity="0.6"/>
+    <rect x="380" y="648" width="14" height="16" fill="#5f9e6e" opacity="0.6"/>
+    <rect x="400" y="642" width="14" height="28" fill="#5f9e6e"/>
+    <rect x="420" y="648" width="14" height="16" fill="#5f9e6e" opacity="0.6"/>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,712.60696 V 687.32"/>
     <!-- norm 2 -->
-    <rect x="330" y="718" width="180" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
+    <rect x="330" y="718" width="180" height="45" rx="8" fill="#215862" stroke="#6c71c4" stroke-width="2"/>
     <text x="420" y="747" text-anchor="middle" font-size="19" fill="#eee8d5">Norm</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,792.84174 V 768.32"/>
     <!-- residual add 1 -->
-    <circle cx="420" cy="814" r="15" fill="#0d4a55" stroke="#93a1a1" stroke-width="2"/>
+    <circle cx="420" cy="814" r="15" fill="#215862" stroke="#93a1a1" stroke-width="2"/>
     <text x="420" y="820" text-anchor="middle" font-size="18" fill="#eee8d5">+</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,862.28522 V 834.32"/>
     <!-- masked multi-head self-attention -->
-    <rect x="275" y="865" width="290" height="140" rx="8" fill="#0d4a55" stroke="#2aa198" stroke-width="2"/>
+    <rect x="275" y="865" width="290" height="140" rx="8" fill="#215862" stroke="#2aa198" stroke-width="2"/>
     <text x="420" y="891" text-anchor="middle" font-size="18" fill="#eee8d5">Masked Multi-Head</text>
     <text x="420" y="913" text-anchor="middle" font-size="18" fill="#eee8d5">Self-Attention</text>
     <rect x="310" y="924.68005" width="16" height="60" fill="#2aa198" opacity="0.9"/>
@@ -110,20 +110,20 @@
     <text x="420" y="1000.34" text-anchor="middle" font-size="15" fill="#93a1a1">attention heads (illustrative)</text>
     <!-- KV cache, outside the block boundary -->
     <line x1="565" y1="935" x2="668" y2="935" stroke="#b58900" stroke-width="2" marker-start="url(#arrowAmber)" marker-end="url(#arrowAmber)"/>
-    <rect x="670" y="885" width="175" height="100" rx="8" fill="#0d4a55" stroke="#b58900" stroke-width="2"/>
+    <rect x="670" y="885" width="175" height="100" rx="8" fill="#215862" stroke="#b58900" stroke-width="2"/>
     <text x="757" y="911" text-anchor="middle" font-size="18" fill="#eee8d5">KV Cache</text>
     <text x="757" y="933" text-anchor="middle" font-size="14" fill="#93a1a1">cached keys/values</text>
     <text x="757" y="951" text-anchor="middle" font-size="14" fill="#93a1a1">from prior tokens</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,1035.9713 V 1010.32"/>
     <!-- norm 1 -->
-    <rect x="330" y="1041" width="180" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
+    <rect x="330" y="1041" width="180" height="45" rx="8" fill="#215862" stroke="#6c71c4" stroke-width="2"/>
     <text x="420" y="1070" text-anchor="middle" font-size="19" fill="#eee8d5">Norm</text>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,1109.9452 V 1091.32"/>
     <!-- branch point (into norm1 / residual bypass) -->
     <circle cx="420" cy="1114" r="4" fill="#eee8d5"/>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,1163.4591 V 1123.32"/>
     <!-- embedding + positional -->
-    <rect x="270" y="1170" width="300" height="60" rx="8" fill="#0d4a55" stroke="#268bd2" stroke-width="2"/>
+    <rect x="270" y="1170" width="300" height="60" rx="8" fill="#215862" stroke="#268bd2" stroke-width="2"/>
     <text x="420" y="1194" text-anchor="middle" font-size="19" fill="#eee8d5">Token Embedding +</text>
     <text x="420" y="1217" text-anchor="middle" font-size="19" fill="#eee8d5">Positional Encoding</text>
     <path stroke="#93a1a1" stroke-width="2.00032" marker-end="url(#arrow)" d="m 420.38261,1262.1556 v -23.7565"/>
@@ -142,7 +142,7 @@
     <text x="20" y="75" font-size="30" fill="#eee8d5">The model's guess for</text>
     <text x="20" y="113" font-size="30" fill="#eee8d5">what comes next</text>
     <text x="20" y="163" font-size="26" fill="#b58900">&#8594; predicted:</text>
-    <rect x="195" y="138" width="75" height="42" rx="7" fill="#0d4a55" stroke="#b58900" stroke-width="2"/>
+    <rect x="195" y="138" width="75" height="42" rx="7" fill="#215862" stroke="#b58900" stroke-width="2"/>
     <text x="232.5" y="167" font-size="24" fill="#eee8d5" text-anchor="middle">king</text>
   </g>
   <path class="fragment" data-fragment-index="8" d="M360.0,80.0 L439.2,77.0 L527.2,83.0 L615.2,77.5 L703.2,82.0 L800.0,80.0" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#calloutArrowAmber)"/>
@@ -168,8 +168,8 @@
     <text x="20" y="653" font-size="30" fill="#eee8d5">this is largely where facts about</text>
     <text x="20" y="691" font-size="30" fill="#eee8d5">the world are stored</text>
   </g>
-  <path class="fragment" data-fragment-index="5" d="M530.0,632.0 L589.0,629.0 L654.6,635.0 L720.2,629.5 L785.8,634.0 L858.0,632.0" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
-  <rect class="fragment emphasis-highlight" data-fragment-index="5" x="882" y="574" width="276" height="116" rx="16" fill="none" stroke="#859900" filter="url(#emphasisGlow)"/>
+  <path class="fragment" data-fragment-index="5" d="M530.0,632.0 L589.0,629.0 L654.6,635.0 L720.2,629.5 L785.8,634.0 L858.0,632.0" fill="none" stroke="#5f9e6e" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
+  <rect class="fragment emphasis-highlight" data-fragment-index="5" x="882" y="574" width="276" height="116" rx="16" fill="none" stroke="#5f9e6e" filter="url(#emphasisGlow)"/>
 
   <!-- 5: masked multi-head self-attention -->
   <g class="fragment" data-fragment-index="3" font-family="'Architects Daughter', cursive">
@@ -209,15 +209,15 @@
     <text x="20" y="1258" font-size="30" fill="#eee8d5">Split into tokens &#8212;</text>
     <text x="20" y="1296" font-size="30" fill="#eee8d5">not always whole words:</text>
     <g font-size="24" fill="#eee8d5" text-anchor="middle">
-      <rect x="20" y="1310" width="57" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <rect x="20" y="1310" width="57" height="42" rx="7" fill="#215862" stroke="#93a1a1"/>
       <text x="48.5" y="1339">The</text>
-      <rect x="89" y="1310" width="81" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <rect x="89" y="1310" width="81" height="42" rx="7" fill="#215862" stroke="#93a1a1"/>
       <text x="129.5" y="1339">coron</text>
-      <rect x="182" y="1310" width="81" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <rect x="182" y="1310" width="81" height="42" rx="7" fill="#215862" stroke="#93a1a1"/>
       <text x="222.5" y="1339">ation</text>
-      <rect x="275" y="1310" width="69" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <rect x="275" y="1310" width="69" height="42" rx="7" fill="#215862" stroke="#93a1a1"/>
       <text x="309.5" y="1339">made</text>
-      <rect x="356" y="1310" width="57" height="42" rx="7" fill="#0d4a55" stroke="#93a1a1"/>
+      <rect x="356" y="1310" width="57" height="42" rx="7" fill="#215862" stroke="#93a1a1"/>
       <text x="384.5" y="1339">him</text>
     </g>
   </g>

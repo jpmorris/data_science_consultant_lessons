@@ -7,7 +7,7 @@
       <feGaussianBlur stdDeviation="22"/>
     </filter>
     <linearGradient id="exampleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#859900"/>
+      <stop offset="0%" stop-color="#5f9e6e"/>
       <stop offset="100%" stop-color="#dc322f"/>
     </linearGradient>
   </defs>
