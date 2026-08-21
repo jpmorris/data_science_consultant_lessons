@@ -224,12 +224,24 @@ $body-bg: #073642;
   margin: 0.2em 0 0;
   padding: 0.4em 0.9em;
 }
-// The default first-column rule assumes short entries and forces nowrap --
-// this table's discovery names are long phrases, so let them wrap inside
-// this narrower column instead of blowing out the table's width.
-.reveal .slides .frontier-split-table .table-panel td:first-child {
+// Field (col 1, added later) is short (Math, Physics, Cybersecurity...) so
+// the default first-column nowrap/narrow/bold styling now fits it as-is.
+// Discovery moved to col 2 -- it needs the wrap behavior the old first-child
+// override gave it, and it collides with the base rule below (written for
+// the table's original 4-column layout, where Date -- not Discovery -- was
+// col 2 and needed the narrow/tabular-nums treatment); override both back:
+// wrap col 2 normally, and give Date -- now col 3 -- the narrow date style.
+.reveal .slides .frontier-split-table .table-panel tr:has(td:nth-child(4)) td:nth-child(2) {
   white-space: normal;
   width: auto;
+  color: #93a1a1;
+  font-variant-numeric: normal;
+}
+.reveal .slides .frontier-split-table .table-panel td:nth-child(3) {
+  color: #839496;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  width: 1%;
 }
 
 // Persistent footnote bullets under the diagram, shared across all stages
