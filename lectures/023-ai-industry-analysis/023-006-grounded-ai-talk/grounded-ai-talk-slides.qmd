@@ -1915,7 +1915,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 2026. All gathered/verified this research pass — see references/ folder.
 :::
 
-## AI and the Knowledge Frontier {.smaller .scrollable .heading-accent}
+## AI Discoveries {.smaller .scrollable .heading-accent}
 
 ```{=html}
 <div class="frontier-split-row">
@@ -1932,6 +1932,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
   <li>The degree of sub-human, human, or superhuman ability is still contested.</li>
 </ul>
 <div class="frontier-split-table">
+<div class="section-label frontier-panel-kicker">AI Advancements</div>
 ```
 
 ::: {.table-panel}
@@ -1953,10 +1954,11 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 </div>
 </div>
 <div class="frontier-split-diagram">
+  <div class="section-label frontier-panel-kicker">AI Progress</div>
   <div class="section-label section-label--lg frontier-diagram-title">
     Solving Ability vs. Attempt Budget
   </div>
-  <div class="frontier-diagram-subtitle">Non-Empirical, LLM, non-human-assist only -- draft, discuss live</div>
+  <div class="frontier-diagram-subtitle">Non-Empirical, LLM, non-human-assist only</div>
   {{< include images/attempt-ability-chart.svg >}}
   <button id="chart-notes-button" class="frontier-chart-notes-button" type="button">Why these placements?</button>
   <template id="chart-notes-template">

@@ -128,6 +128,14 @@ $body-bg: #073642;
   margin-bottom: 0.1em;
 }
 
+// Small eyebrow label above each of this slide's two panels ("AI Progress"
+// over the chart, "AI Advancements" over the table) -- centered over the
+// chart to match the centered title/subtitle below it; left-aligned (the
+// base .section-label default) over the table, matching the table's own
+// left-aligned content.
+.reveal .slides .frontier-split-diagram .frontier-panel-kicker {
+  justify-content: center;
+}
 // A .section-label sitting directly above a diagram, standing in for the
 // diagram's own title -- centered rather than left-aligned like the
 // default .section-label, since it's naming the whole figure below it
@@ -178,7 +186,7 @@ $body-bg: #073642;
 // without it. This also folds in the old overflow-x:hidden safety-net rule
 // (a real horizontal scrollbar seen in an actual browser, never reproduced
 // in headless measurement -- different font metrics/zoom, most likely).
-.reveal .slides section#ai-and-the-knowledge-frontier {
+.reveal .slides section#ai-discoveries {
   display: flex !important;
   flex-direction: column;
   height: 100%;
@@ -196,17 +204,22 @@ $body-bg: #073642;
   flex-direction: column;
   width: 51%;
 }
-// Bullets keep their natural height; the table below grows into whatever
-// vertical space is left and centers itself within it, so it sits roughly
-// midway between the bullets and the bottom of the slide instead of
-// hugging the bullets directly.
+// Bullets keep their natural height; the kicker+table group below grows
+// into whatever vertical space is left and centers itself within it, so it
+// sits roughly midway between the bullets and the bottom of the slide
+// instead of hugging the bullets directly. Column direction (not row) --
+// this holds two stacked children now (the "AI Advancements" kicker, then
+// the table-panel itself), not just the table alone; row direction put
+// them side by side instead, squeezing the kicker into a narrow wrapped
+// column to the table's left.
 .reveal .slides .frontier-left-col .frontier-intro-bullets {
   flex: 0 0 auto;
 }
 .reveal .slides .frontier-left-col .frontier-split-table {
   flex: 1 1 auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   font-size: 0.78em;
 }
 // The plot's own column -- centered vertically across the full row height,
