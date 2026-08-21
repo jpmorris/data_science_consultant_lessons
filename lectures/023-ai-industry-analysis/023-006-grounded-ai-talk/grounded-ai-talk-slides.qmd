@@ -1927,7 +1927,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
       <li><strong>One-shot / few-shot, no verification in loop</strong></li>
     </ul>
   </li>
-  <li>The degree of sub-human or superhuman ability is still contested.</li>
+  <li>The degree of sub-human, human, or superhuman ability is still contested.</li>
 </ul>
 ```
 
