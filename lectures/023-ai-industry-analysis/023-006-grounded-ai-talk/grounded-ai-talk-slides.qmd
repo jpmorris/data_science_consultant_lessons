@@ -1998,7 +1998,7 @@ et al., ref 68); enterprise agentic benchmark-vs-production gap analysis,
 | **Math/CS: 97 VibeMathed Harness** — Lean-verified/checked | Jan–Aug 2026 | Harness-Lean      | No |
 | GPT-5.2 derives new gluon-amplitude result (OpenAI, physics)                                                | Feb 2026    | Harness-Proof-Search | No |
 | **Math/CS: >17 VibeMathed One-shot** — self-verifying counterexamples and single-prompt proofs | Mar–Aug 2026 | One-shot          | Unknown |
-| <span class="hype-flag">MOST COMMON</span> AI-assisted science (all fields, current) — every field is using LLM assistance at some level | 2024–present | Assist            | No |
+| <span class="crux-word">MOST COMMON</span> AI-assisted science — non-frontier, all fields (empirical included) | 2024–present | Assist            | No |
 :::
 
 ```{=html}
