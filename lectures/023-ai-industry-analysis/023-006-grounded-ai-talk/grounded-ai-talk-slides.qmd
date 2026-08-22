@@ -55,7 +55,7 @@ management/BA/delivery roles and unknowns. Pitch explanations so a non-coder in
 the room isn't lost, but don't undersell the technical crowd.
 :::
 
-## If You Take Away Anything From This Talk {background-color="#215862" .stat-slide}
+## If You Take Away Anything From This Talk {background-color="#0d4a55" .stat-slide}
 
 AI progress, job/task replacement, and "the future" all come back to one
 question:
@@ -68,7 +68,7 @@ question:
 
 Everything else in this talk is downstream of that.
 
-# Part 1: The Magic {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
+# Part 1: The Magic {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 <!-- STAGE 1/9 (llm-stage-1-language): language: small constituency tree, "king" glides on to stage 2 -->
 ## The Ingredients of an LLM {#llm-stage-1-language auto-animate="true" .heading-accent}
@@ -1526,7 +1526,7 @@ reason-vs-generalize.
           <circle cx="50" cy="32" r="7" class="im-frozen-node"/>
         </g>
         <g transform="translate(84,18)">
-          <circle cx="0" cy="0" r="13" fill="#215862" stroke="var(--accent)" stroke-width="2.6"/>
+          <circle cx="0" cy="0" r="13" fill="#0d4a55" stroke="var(--accent)" stroke-width="2.6"/>
           <line x1="0" y1="0" x2="0" y2="-8" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
           <line x1="0" y1="0" x2="6" y2="2" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
         </g>
@@ -2619,7 +2619,7 @@ estimates.
 </div>
 ```
 
-# Part 2: The Future {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
+# Part 2: The Future {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 ## Prediction Is Hard — Especially About the Future {.heading-accent}
 
@@ -2761,7 +2761,7 @@ authors' own self-grading post (blog.aifutures.org). Good live-updating source
 if this talk gets reused later — check for a newer scorecard snapshot.
 :::
 
-# Part 3: Your Job {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
+# Part 3: Your Job {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 ## Broader Industry
 
@@ -3104,7 +3104,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
   target for automation itself.
 :::
 
-# Part 4: What You Should Know {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
+# Part 4: What You Should Know {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 ## The More Access You Give Agents, the More Powerful They Are {.heading-accent}
 
@@ -3223,7 +3223,7 @@ coding. Have Jon Simon and Andrew review this framing before it goes on a slide.
 - Terminology is still shifting lab to lab (subagents, multi-agent, swarms all
   describe overlapping ideas)
 
-# Summary {background-gradient="linear-gradient(135deg, #1b444f 55%, #235b5a 100%)" .divider-slide}
+# Summary {background-gradient="linear-gradient(135deg, #073642 55%, #0f4d4d 100%)" .divider-slide}
 
 ## What I Hope You Take Away {.heading-accent}
 

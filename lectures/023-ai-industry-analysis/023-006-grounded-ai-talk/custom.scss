@@ -1,12 +1,10 @@
 /*-- scss:defaults --*/
 $font-family-sans-serif: 'Inter', sans-serif;
 $presentation-heading-font: 'Inter Display', sans-serif;
-// One step lighter than Solarized base02 -- still clearly dark, but with
-// more headroom now that the deck is judged on a properly-calibrated
-// (sRGB) display instead of a punchy "Standard" monitor preset. Panels/
-// dividers below use a slightly lighter teal on top of this so they still
-// read as distinct against the lighter page bg.
-$body-bg: #1b444f;
+// Solarized base02 instead of moon's default base03 -- one step lighter,
+// still dark. Panels/dividers below use a slightly lighter teal on top of
+// this so they still read as distinct against the new, lighter page bg.
+$body-bg: #073642;
 
 /*-- scss:rules --*/
 
@@ -51,7 +49,7 @@ $body-bg: #1b444f;
 // Tinted side panel for split image/caption layouts (used inside a
 // {.column} div alongside a figure column).
 .reveal .slides .callout-panel {
-  background: #215862;
+  background: #0d4a55;
   border-radius: 8px;
   padding: 0.9em 1.1em;
   display: flex;
@@ -365,7 +363,7 @@ $body-bg: #1b444f;
 // final rendered coordinates).
 .llm-axes-visible-panel {
   position: fixed;
-  background: #215862;
+  background: #0d4a55;
   border-radius: 12px;
   padding: 3%;
   box-sizing: border-box;
@@ -413,10 +411,10 @@ $body-bg: #1b444f;
   cursor: pointer;
 }
 .llm-citations-button:hover {
-  background: #215862;
+  background: #0d4a55;
 }
 .llm-citations-dialog {
-  background: #215862;
+  background: #0d4a55;
   color: #eee8d5;
   border: 1px solid #586e75;
   border-radius: 10px;
@@ -571,7 +569,7 @@ $body-bg: #1b444f;
 }
 .reveal .slides .softmax-card {
   flex: 0 0 400px;
-  background: #215862;
+  background: #0d4a55;
   border-top: 4px solid var(--accent);
   border-radius: 8px;
   padding: 0.6em 1em;
@@ -642,7 +640,7 @@ $body-bg: #1b444f;
 }
 .reveal .slides .entropy-card {
   flex: 1;
-  background: #215862;
+  background: #0d4a55;
   border-top: 4px solid var(--accent);
   border-radius: 8px;
   padding: 0.7em 0.65em;
@@ -802,7 +800,7 @@ $body-bg: #1b444f;
 // row padding, no vertical rules, milestone/date columns sized to content
 // instead of stretching evenly.
 .reveal .slides .table-panel {
-  background: #215862;
+  background: #0d4a55;
   border-radius: 10px;
   padding: 0.5em 1.2em;
   width: 85%;
@@ -971,7 +969,7 @@ $body-bg: #1b444f;
 }
 .reveal .slides .scaling-law-card {
   font-size: 0.72em;
-  background: #215862;
+  background: #0d4a55;
   border-top: 4px solid var(--accent);
   border-radius: 8px;
   padding: 0.55em 0.7em 0.65em;
@@ -1005,7 +1003,7 @@ $body-bg: #1b444f;
 // slide isn't part of the auto-animate "Ingredients" stage cycle either,
 // so there's no DOM-scan risk in keeping it inline.
 .reveal .slides .architecture-modal {
-  background: #215862;
+  background: #0d4a55;
   color: #eee8d5;
   border: 1px solid #586e75;
   border-radius: 10px;

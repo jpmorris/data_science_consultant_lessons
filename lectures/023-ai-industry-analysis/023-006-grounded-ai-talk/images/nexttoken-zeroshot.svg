@@ -229,7 +229,7 @@
   <circle class="arrow2-b fade" cx="455" cy="177" r="5" fill="#eee8d5"/>
 
 
-  <rect class="box fade" x="464" y="65" width="616" height="563" rx="14" fill="#215862" stroke="#b58900" stroke-width="3"/>
+  <rect class="box fade" x="464" y="65" width="616" height="563" rx="14" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
 
 
   <g class="sys fade">
@@ -286,7 +286,7 @@
   <circle class="w5b-ina fade" cx="772" cy="411" r="5" fill="#eee8d5"/>
   <circle class="w5b-inb fade" cx="772" cy="420" r="5" fill="#eee8d5"/>
 
-  <rect class="box fade" x="662" y="438" width="220" height="90" rx="10" fill="#215862" stroke="#b58900" stroke-width="3"/>
+  <rect class="box fade" x="662" y="438" width="220" height="90" rx="10" fill="#0d4a55" stroke="#b58900" stroke-width="3"/>
   <text class="box fade" x="772" y="470" text-anchor="middle" font-size="22" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Transformer</text>
 
   <rect class="w1-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>

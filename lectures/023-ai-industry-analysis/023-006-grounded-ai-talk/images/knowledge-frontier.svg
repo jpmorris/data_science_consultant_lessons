@@ -32,9 +32,9 @@
        the orange tile below covers both harness and no-harness compression
        cases uniformly, so a separate red placeholder for the no-harness
        case no longer makes sense) -->
-  <circle cx="350" cy="320" r="19" fill="#215862" filter="url(#holeBlur)"/>
-  <circle cx="560" cy="500" r="16" fill="#215862" filter="url(#holeBlur)"/>
-  <circle cx="200" cy="420" r="19" fill="#215862" filter="url(#holeBlur)"/>
+  <circle cx="350" cy="320" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <circle cx="560" cy="500" r="16" fill="#0d4a55" filter="url(#holeBlur)"/>
+  <circle cx="200" cy="420" r="19" fill="#0d4a55" filter="url(#holeBlur)"/>
 
   <!-- frontier-edge point: orange -- covers BOTH harness-based wins and the
        no-harness construction/counterexample cases (DGG, Jacobian, etc.)
@@ -51,7 +51,7 @@
        Center-right, vertically between the two edge-of-frontier points.
        Green now -- this is where real AI progress via harness + tireless
        search actually lands, not a "no AI progress yet" placeholder. -->
-  <circle cx="480" cy="300" r="24" fill="#215862" filter="url(#holeBlur)"/>
+  <circle cx="480" cy="300" r="24" fill="#0d4a55" filter="url(#holeBlur)"/>
   <circle cx="480" cy="300" r="13" fill="#5f9e6e" filter="url(#dotSoftGlow)"/>
   <text x="480" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" letter-spacing="0.05em" fill="#eee8d5">KNOWLEDGE GAP; HARNESS, TIRELESS SEARCH</text>
   <text x="480" y="245" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#5f9e6e">AI Progress, Harness</text>
