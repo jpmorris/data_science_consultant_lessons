@@ -196,7 +196,7 @@
 
   <rect class="early fade" x="20" y="70" width="420" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
 
-  <text class="prompt1 fade" x="40" y="100" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text class="prompt1 fade" x="40" y="100" font-family="'Courier New', monospace" font-size="18" fill="#5f9e6e">&gt;</text>
   <text x="62" y="100" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type1clip)">How do LLMs work?</text>
   <rect class="cursor1 fade" y="82" width="9" height="20" fill="#eee8d5"/>
 
@@ -212,7 +212,7 @@
   <circle class="arrow1-a fade" cx="449" cy="112" r="5" fill="#eee8d5"/>
   <circle class="arrow1-b fade" cx="455" cy="112" r="5" fill="#eee8d5"/>
 
-  <text class="prompt2 fade" x="40" y="165" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text class="prompt2 fade" x="40" y="165" font-family="'Courier New', monospace" font-size="18" fill="#5f9e6e">&gt;</text>
   <text x="62" y="165" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#type2clip)">What is a token?</text>
   <rect class="cursor2 fade" y="147" width="9" height="20" fill="#eee8d5"/>
 

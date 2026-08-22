@@ -18,7 +18,7 @@
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#6c71c4"/>
     </marker>
     <marker id="calloutArrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#859900"/>
+      <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#5f9e6e"/>
     </marker>
     <marker id="calloutArrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 L3,5 z" fill="#2aa198"/>
@@ -84,12 +84,12 @@
     <text x="420" y="537" text-anchor="middle" font-size="18" fill="#eee8d5">+</text>
     <path stroke="#93a1a1" stroke-width="2.00032" marker-end="url(#arrow)" d="M 420,575.45913 V 551.32"/>
     <!-- feed-forward -->
-    <rect x="290" y="582" width="260" height="100" rx="8" fill="#0d4a55" stroke="#859900" stroke-width="2"/>
+    <rect x="290" y="582" width="260" height="100" rx="8" fill="#0d4a55" stroke="#5f9e6e" stroke-width="2"/>
     <text x="420" y="608" text-anchor="middle" font-size="18" fill="#eee8d5">Feed-Forward Network</text>
     <text x="420" y="630" text-anchor="middle" font-size="15" fill="#93a1a1">expand &#8594; activate &#8594; project</text>
-    <rect x="380" y="648" width="14" height="16" fill="#859900" opacity="0.6"/>
-    <rect x="400" y="642" width="14" height="28" fill="#859900"/>
-    <rect x="420" y="648" width="14" height="16" fill="#859900" opacity="0.6"/>
+    <rect x="380" y="648" width="14" height="16" fill="#5f9e6e" opacity="0.6"/>
+    <rect x="400" y="642" width="14" height="28" fill="#5f9e6e"/>
+    <rect x="420" y="648" width="14" height="16" fill="#5f9e6e" opacity="0.6"/>
     <path stroke="#93a1a1" stroke-width="2" marker-end="url(#arrow)" d="M 420,712.60696 V 687.32"/>
     <!-- norm 2 -->
     <rect x="330" y="718" width="180" height="45" rx="8" fill="#0d4a55" stroke="#6c71c4" stroke-width="2"/>
@@ -168,8 +168,8 @@
     <text x="20" y="653" font-size="30" fill="#eee8d5">this is largely where facts about</text>
     <text x="20" y="691" font-size="30" fill="#eee8d5">the world are stored</text>
   </g>
-  <path class="fragment" data-fragment-index="5" d="M530.0,632.0 L589.0,629.0 L654.6,635.0 L720.2,629.5 L785.8,634.0 L858.0,632.0" fill="none" stroke="#859900" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
-  <rect class="fragment emphasis-highlight" data-fragment-index="5" x="882" y="574" width="276" height="116" rx="16" fill="none" stroke="#859900" filter="url(#emphasisGlow)"/>
+  <path class="fragment" data-fragment-index="5" d="M530.0,632.0 L589.0,629.0 L654.6,635.0 L720.2,629.5 L785.8,634.0 L858.0,632.0" fill="none" stroke="#5f9e6e" stroke-width="2" marker-end="url(#calloutArrowGreen)"/>
+  <rect class="fragment emphasis-highlight" data-fragment-index="5" x="882" y="574" width="276" height="116" rx="16" fill="none" stroke="#5f9e6e" filter="url(#emphasisGlow)"/>
 
   <!-- 5: masked multi-head self-attention -->
   <g class="fragment" data-fragment-index="3" font-family="'Architects Daughter', cursive">

@@ -1226,7 +1226,10 @@ reason-vs-generalize.
 ## How Do These Models Get Better? {.smaller .scrollable .heading-accent}
 
 ```{=html}
-<div class="scaling-law-row">
+<div class="scaling-law-split">
+  <div class="scaling-law-left">
+  <button type="button" class="architecture-modal-button" id="architecture-modal-open">LLM Improvements</button>
+  <div class="scaling-law-grid">
   <div class="scaling-law-card" style="--accent: #2aa198;">
     <div class="scaling-law-header">
       <svg class="scaling-law-icon" viewBox="0 0 120 120">
@@ -1493,9 +1496,7 @@ reason-vs-generalize.
       <rect x="30" y="14" width="170" height="14" fill="url(#better-zone-rlhf)"/>
       <text x="160" y="22.5" text-anchor="middle" class="sl-better-label">better</text>
       <path d="M 32,92 C 50,58 65,42 88,35" class="sl-curve"/>
-      <path d="M 88,35 C 108,41 130,52 150,60 C 170,68 185,74 198,78" class="sl-danger"/>
-      <circle cx="88" cy="35" r="3.2" class="sl-peak-marker"/>
-      <text x="94" y="32" class="sl-peak-label">peak</text>
+      <path d="M 88,35 C 108,41 130,52 150,60 C 170,68 185,74 198,78" class="sl-curve"/>
       <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Optimization pressure →</text>
       <text x="14" y="57" class="sl-axis-label" text-anchor="middle" transform="rotate(-90 14 57)">True quality ↑</text>
     </svg>
@@ -1542,7 +1543,7 @@ reason-vs-generalize.
       <line x1="30" y1="100" x2="200" y2="100" class="sl-axis"/>
       <line x1="30" y1="14" x2="30" y2="100" class="sl-axis"/>
       <rect x="30" y="22" width="170" height="14" fill="url(#better-zone-inference)"/>
-      <text x="160" y="30.5" text-anchor="middle" class="sl-better-label">best possible</text>
+      <text x="160" y="30.5" text-anchor="middle" class="sl-better-label">hard ceiling</text>
       <line x1="30" y1="22" x2="200" y2="22" class="sl-ref"/>
       <path d="M 32,86 C 70,72 110,62 150,55 C 170,53 185,52 198,51" class="sl-curve"/>
       <text x="115" y="122" class="sl-axis-label" text-anchor="middle">Samples (log k) →</text>
@@ -1552,58 +1553,51 @@ reason-vs-generalize.
     <div class="scaling-law-callout">250x samples → 3.5x coverage (16%→56%)</div>
     <div class="scaling-law-caption">Real ceiling exists (100%), not reached yet (Brown, SWE-bench Lite)</div>
   </div>
-</div>
-<p class="scaling-law-note">All four formulas above are <strong>empirically fit</strong> to observed runs, not derived from first principles. Engineering (harnesses, tools, retrieval) doesn't even get that far — no formal scaling law at all, just benchmark swings of 5–20 points from a design choice, not a curve over any resource.</p>
-```
-
-Open question: is this purely a **data-and-compute** problem? With infinite data
-and compute, how good could these actually get?
-
-- Counter-argument (Haikonen): architecture quality may depend on tacit
-  organizational context — team history, roadmap, unwritten conventions —
-  that no corpus, however large, could ever contain
-
-```{=html}
-<div class="merged-evidence-row">
-  <div class="quote-cloud">
-    <div class="quote-cloud-chip qc-solid" style="margin-top:0;">
-      <div class="qc-text">&hellip;the base model remained the same.</div>
-      <div class="qc-attr">OpenAI, o1 System Card</div>
-    </div>
-    <div class="quote-cloud-chip qc-solid" style="margin-top:14px;">
-      <div class="qc-text">Opus 4.1 falls below Anthropic&rsquo;s own &ldquo;new pretraining scale&rdquo; thresholds.</div>
-      <div class="qc-attr">Anthropic, System Card Addendum</div>
-    </div>
-    <div class="quote-cloud-chip qc-solid" style="margin-top:-6px;">
-      <div class="qc-text">Pretraining &ldquo;isn&rsquo;t dead&rdquo; &mdash; paused for &ldquo;a tiny fraction of the cost&rdquo; alternatives.</div>
-      <div class="qc-attr">Bob McGrew, ex-OpenAI CTO</div>
-    </div>
-    <div class="quote-cloud-chip qc-solid" style="margin-top:10px;">
-      <div class="qc-text">Pretraining as we know it will end. We&rsquo;ve &ldquo;achieved peak data.&rdquo;</div>
-      <div class="qc-attr">Ilya Sutskever, NeurIPS</div>
-    </div>
-    <div class="quote-cloud-chip qc-dashed" style="margin-top:-4px;">
-      <div class="qc-text">OpenAI &ldquo;have not completed a successful full-scale pretraining run&rdquo; since GPT-4o.</div>
-      <div class="qc-attr">SemiAnalysis &middot; contested</div>
-    </div>
-    <div class="quote-cloud-chip qc-dashed" style="margin-top:8px;">
-      <div class="qc-text">On the next &ldquo;new base model&rdquo; claim: &ldquo;the evidence is circumstantial.&rdquo;</div>
-      <div class="qc-attr">Independent analyst</div>
-    </div>
+  </div>
   </div>
   <div class="mechanism-timeline">
     <div class="mt-axis"></div>
-    <div class="mt-item mt-left" style="top:5%; --mc:#6c71c4;"><span class="mt-name">Gemini 1.5 Pro</span> &mdash; sparse MoE + infra <span class="mt-date">Feb 2024</span></div>
-    <div class="mt-item mt-right" style="top:18.5%; --mc:#6c71c4;"><span class="mt-name">GPT-4o</span> &mdash; native multimodality <span class="mt-date">May 2024</span></div>
-    <div class="mt-item mt-left" style="top:32%; --mc:#d33682;"><span class="mt-name">o1</span> &mdash; large-scale RL reasoning <span class="mt-date">Dec 2024</span></div>
-    <div class="mt-item mt-right" style="top:45.5%; --mc:#2aa198;"><span class="mt-name">GPT-4.5</span> &mdash; scales pretraining further* <span class="mt-date">Feb 2025</span></div>
-    <div class="mt-item mt-left" style="top:59%; --mc:#6c71c4;"><span class="mt-name">Gemini 2.5</span> &mdash; architecture developments <span class="mt-date">Mar 2025</span></div>
-    <div class="mt-item mt-right" style="top:72.5%; --mc:#d33682;"><span class="mt-name">o3 / o4-mini</span> &mdash; tool-integrated reasoning <span class="mt-date">Apr 2025</span></div>
-    <div class="mt-item mt-left" style="top:86%; --mc:#6c71c4;"><span class="mt-name">GPT-5</span> &mdash; unified router <span class="mt-date">Aug 2025</span></div>
-    <div class="mt-item mt-right" style="top:95%; --mc:#cb4b16;"><span class="mt-name">Opus 4.5</span> &mdash; &ldquo;effort&rdquo; parameter <span class="mt-date">Nov 2025</span></div>
+    <div class="mt-item mt-left" style="top:5%; --mc:#d33682;"><span class="mt-name">Zephyr-7B</span> &mdash; DPO: no RL loop, no reward model <span class="mt-date">Oct 2023</span></div>
+    <div class="mt-item mt-right" style="top:11%; --mc:#6c71c4;"><span class="mt-name">Gemini 1.5 Pro</span> &mdash; sparse MoE + infra <span class="mt-date">Feb 2024</span></div>
+    <div class="mt-item mt-left" style="top:18%; --mc:#2aa198;"><span class="mt-name">Llama 3</span> &mdash; pretraining well past Chinchilla-optimal <span class="mt-date">Apr 2024</span></div>
+    <div class="mt-item mt-right" style="top:24%; --mc:#6c71c4;"><span class="mt-name">GPT-4o</span> &mdash; native multimodality <span class="mt-date">May 2024</span></div>
+    <div class="mt-item mt-left" style="top:31%; --mc:#268bd2;"><span class="mt-name">Llama 3.1 405B</span> &mdash; synthetic post-training + distillation <span class="mt-date">Jul 2024</span></div>
+    <div class="mt-item mt-right" style="top:37%; --mc:#6c71c4;"><span class="mt-name">DeepSeek-V3</span> &mdash; extreme sparse MoE (671B / 37B active) <span class="mt-date">Dec 2024</span></div>
+    <div class="mt-item mt-left" style="top:44%; --mc:#d33682;"><span class="mt-name">o1</span> &mdash; RLVR (verifiable rewards) + test-time reasoning tokens <span class="mt-date">Dec 2024</span></div>
+    <div class="mt-item mt-right" style="top:50%; --mc:#d33682;"><span class="mt-name">DeepSeek-R1</span> &mdash; pure RLVR via GRPO, no SFT warm-start <span class="mt-date">Jan 2025</span></div>
+    <div class="mt-item mt-left" style="top:56%; --mc:#2aa198;"><span class="mt-name">GPT-4.5</span> &mdash; scales pretraining further* <span class="mt-date">Feb 2025</span></div>
+    <div class="mt-item mt-right" style="top:63%; --mc:#6c71c4;"><span class="mt-name">Gemini 2.5</span> &mdash; built-in reasoning (&ldquo;thinking model&rdquo;) <span class="mt-date">Mar 2025</span></div>
+    <div class="mt-item mt-left" style="top:69%; --mc:#d33682;"><span class="mt-name">o3 / o4-mini</span> &mdash; continued RLVR + tool-integrated reasoning <span class="mt-date">Apr 2025</span></div>
+    <div class="mt-item mt-right" style="top:76%; --mc:#cb4b16;"><span class="mt-name">Claude 4</span> &mdash; parallel sampling + learned selection <span class="mt-date">May 2025</span></div>
+    <div class="mt-item mt-left" style="top:82%; --mc:#d33682;"><span class="mt-name">Qwen3</span> &mdash; GSPO: sequence-level RL, fixes GRPO instability <span class="mt-date">Jul 2025</span></div>
+    <div class="mt-item mt-right" style="top:89%; --mc:#6c71c4;"><span class="mt-name">GPT-5</span> &mdash; router + parallel test-time compute <span class="mt-date">Aug 2025</span></div>
+    <div class="mt-item mt-left" style="top:95%; --mc:#cb4b16;"><span class="mt-name">Opus 4.5</span> &mdash; &ldquo;effort&rdquo; parameter (compute/cost knob) <span class="mt-date">Nov 2025</span></div>
   </div>
 </div>
+<p class="scaling-law-note">All four formulas above are <strong>empirically fit</strong> to observed runs, not derived from first principles. Engineering (harnesses, tools, retrieval) doesn't even get that far — no formal scaling law at all, just benchmark swings of 5–20 points from a design choice, not a curve over any resource.</p>
 <div class="mechanism-cloud-footnote">*GPT-4.5's card claims new pretraining scale, but its knowledge cutoff is identical to GPT-4o's — real compute, no new data collection.</div>
+<dialog class="architecture-modal" id="architecture-modal">
+  <div class="architecture-modal-header">
+    <span>LLM Improvements</span>
+    <button type="button" class="architecture-modal-close" id="architecture-modal-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="architecture-modal-body">
+    {{< include images/llm-mechanism-sketch.svg >}}
+  </div>
+</dialog>
+<script>
+(function () {
+  var openBtn = document.getElementById('architecture-modal-open');
+  var closeBtn = document.getElementById('architecture-modal-close');
+  var dialog = document.getElementById('architecture-modal');
+  if (!openBtn || !dialog) return;
+  openBtn.addEventListener('click', function () { dialog.showModal(); });
+  closeBtn.addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('click', function (event) {
+    if (event.target === dialog) dialog.close();
+  });
+})();
+</script>
 ```
 
 ```{=html}
@@ -1623,6 +1617,13 @@ and compute, how good could these actually get?
     <li>Ilya Sutskever: "pretraining as we know it will end" — NeurIPS 2024, reported in <a href="https://www.understandingai.org/p/its-the-end-of-pretraining-as-we" target="_blank" rel="noopener">Understanding AI</a> (Timothy B. Lee, Dec 2024)</li>
     <li>SemiAnalysis: OpenAI "have not completed a successful full-scale pre-training run... since GPT-4o" — via <a href="https://officechai.com/ai/openai-hasnt-completed-a-successful-full-scale-pretraining-run-since-gpt-4o-in-may-2024-says-semianalysis/" target="_blank" rel="noopener">OfficeChai</a> (Nov 2025) — contested, discussed on <a href="https://news.ycombinator.com/item?id=46126750" target="_blank" rel="noopener">Hacker News</a></li>
     <li>GPT-4.5 System Card: "Building on GPT-4o, GPT-4.5 scales pre-training further" (OpenAI, Feb 2025) — contradicted by an unchanged knowledge cutoff</li>
+    <li>Llama 3: 7x more pretraining data than Llama 2, trained well beyond Chinchilla-optimal token counts — <a href="https://ai.meta.com/blog/meta-llama-3/" target="_blank" rel="noopener">Meta AI blog</a> (Apr 2024)</li>
+    <li>Llama 3.1 405B: synthetic post-training data generated across successive rounds, 405B model used to improve smaller models — <a href="https://ai.meta.com/blog/meta-llama-3-1/" target="_blank" rel="noopener">Meta AI blog</a> (Jul 2024)</li>
+    <li>DeepSeek-V3: 671B total / 37B active params, aux-loss-free load balancing, multi-token prediction — <a href="https://api-docs.deepseek.com/news/news1226" target="_blank" rel="noopener">DeepSeek technical report</a> (Dec 2024)</li>
+    <li>DeepSeek-R1: large-scale RLVR directly on the base model, no SFT warm-start, using GRPO (introduced in DeepSeekMath, arXiv:2402.03300) — <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" rel="noopener">DeepSeek-R1</a> (arXiv:2501.12948, Jan 2025)</li>
+    <li>Claude 4: extended thinking with tool use; high-compute mode uses parallel test-time sampling with a learned selector — <a href="https://www.anthropic.com/news/claude-4" target="_blank" rel="noopener">Anthropic</a> (May 2025)</li>
+    <li>DPO: Rafailov et al., <a href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener">"Direct Preference Optimization: Your Language Model is Secretly a Reward Model"</a> (arXiv:2305.18290, May 2023); first real deployment via Zephyr-7B — <a href="https://arxiv.org/abs/2310.16944" target="_blank" rel="noopener">Zephyr technical report</a> (arXiv:2310.16944, Oct 2023)</li>
+    <li>GSPO: Qwen team, <a href="https://arxiv.org/abs/2507.18071" target="_blank" rel="noopener">"Group Sequence Policy Optimization"</a> (arXiv:2507.18071, Jul 2025) — used to train Qwen3</li>
   </ul>
 </template>
 ```
@@ -1664,16 +1665,17 @@ million years computing an answer and produces "42," a famously unhelpful
 non-answer. Good comedic beat for the exact point this chart is making: more
 thinking time is not a free lunch, and past some point you're paying a lot of
 compute for very little extra coverage. Land it right after naming the
-"best possible" band and before moving on to engineering.
+"hard ceiling" band and before moving on to engineering.
 
-The quote cloud and mechanism cloud below the four cards used to be their
-own slide ("The Pretraining/Post-Training Dance"). Merged in and
-deliberately de-tiered — the point isn't "rank these quotes by confidence,"
-it's "look at everything labs have actually said, all at once." Two of the
-quotes (o1, Opus 4.1) are the labs' own words; the rest are named insiders
-or analysts, kept but not labeled as such anymore (solid border = higher
-confidence, dashed = an analyst openly guessing, per the qc-solid/qc-dashed
-classes, if asked to justify the distinction).
+The quote cloud and mechanism cloud used to be their own slide ("The
+Pretraining/Post-Training Dance"), then got merged in below the four cards.
+The mechanism timeline now lives on-slide next to the card grid; the quotes
+were pulled off-slide entirely and live only in the note below — the point
+was never "rank these quotes by confidence," it's "look at everything labs
+have actually said, all at once." Two of the quotes (o1, Opus 4.1) are the
+labs' own words; the rest are named insiders or analysts (solid = higher
+confidence, dashed = an analyst openly guessing, if asked to justify the
+distinction).
 
 Important distinction if asked about Amodei ("scaling is probably going to
 continue") or Altman ("there is no wall"): those quotes answer a different
@@ -1682,17 +1684,55 @@ whether it has been happening FREQUENTLY recently. Not counter-evidence to
 the quote cloud's claim; a separate, more speculative claim about the
 future.
 
+Quotes (pulled off-slide, kept here for delivery — the old quote cloud):
+Solid = the labs' own words, dashed = an outside analyst's guess.
+- (solid) "&hellip;the base model remained the same." — OpenAI, o1 System Card
+- (solid) "Opus 4.1 falls below Anthropic's own 'new pretraining scale' thresholds." — Anthropic, System Card Addendum
+- (solid) Pretraining "isn't dead" — paused for "a tiny fraction of the cost" alternatives. — Bob McGrew, ex-OpenAI CTO
+- (solid) Pretraining as we know it will end. We've "achieved peak data." — Ilya Sutskever, NeurIPS
+- (dashed) OpenAI "have not completed a successful full-scale pretraining run" since GPT-4o. — SemiAnalysis, contested
+- (dashed) On the next "new base model" claim: "the evidence is circumstantial." — Independent analyst
+
 The mechanism cloud is the same disclosed-mechanism data the old timeline
 used, itemized instead of dated or tallied: of everything labs have named
-as "why this got better," pretraining scale shows up once (GPT-4.5) and
-even that's contradicted by its own unchanged knowledge cutoff. Fine-tuning
-has zero named entries deliberately — no lab has publicly credited a
-specific fine-tuning technique the way they have for RL/reasoning,
-architecture, or inference-time. That silence is itself part of the point.
-Colors match the four cards above (pretraining/RLHF/inference-time); the
-architecture/engineering items (multimodality, MoE, unified router) don't
-have a card above, so they get their own violet, matching the original
-5-icon lead-in before Engineering was cut.
+as "why this got better," pretraining scale shows up twice (Llama 3,
+GPT-4.5) — one a real, successful instance of the lever; the other
+contradicted by its own unchanged knowledge cutoff. Deliberately paired so
+the audience sees the lever both working and not working. Fine-tuning
+went from zero named entries to exactly one (Llama 3.1 405B's synthetic
+post-training/distillation flywheel) once a real one surfaced in research
+— that's the direct answer to "is there auto-fine-tuning" if asked: yes,
+increasingly self-generated rather than purely human-labeled, but it's
+still one entry against five RL/RLVR entries alone, plus seven more across
+inference-time and architecture, and Hernandez's diminishing-returns
+finding on the Fine-Tuning card doesn't care who wrote the labels. Colors
+match the four cards above (pretraining=teal, fine-tuning=blue, RLHF/RL=
+magenta, inference-time=orange); architecture/engineering items
+(multimodality, MoE, unified router) don't have a card above, so they get
+their own violet, matching the original 5-icon lead-in before Engineering
+was cut.
+
+Direct answer if asked "did models move off RLHF, and is that on the
+timeline": yes, and it's now named explicitly rather than just implied.
+All five magenta entries are one lineage, not one repeated mechanism: DPO
+(Zephyr, Oct 2023) was the first real break from the RLHF scaling-law
+card's own mechanism — it deletes the PPO rollout loop and the learned
+reward model entirely, training directly on preference pairs, which is
+exactly what makes it immune to that card's overoptimization curve (no
+reward model to Goodhart). o1, DeepSeek-R1, and o3/o4-mini then moved
+reasoning-focused RL onto RLVR — a verifier (unit tests, answer checkers)
+replaces the learned reward model, again sidestepping that same
+overoptimization failure mode, just for a different reason (no learned
+proxy at all, not a better one). GRPO (DeepSeek-R1's algorithm) first
+appeared in DeepSeekMath (Feb 2024), a year before R1 used it. GSPO (Qwen3,
+Jul 2025) is the next iteration on GRPO, not a new lineage — it fixes a
+training-instability bug in GRPO's token-level importance weighting
+(especially bad for MoE models) by weighting at the sequence level instead.
+Net effect: the RLHF card is still true as a warning about *that specific
+mechanism*, but frontier labs have mostly routed around it rather than
+solved it — worth saying explicitly if asked why the RLHF card's
+overoptimization curve doesn't seem to be the story people talk about
+anymore.
 :::
 
 ## Progress, or a Plateau? {.smaller .heading-accent}
@@ -2282,7 +2322,7 @@ be true on the same conjecture at once.
 ## AI Benchmarks {.smaller .scrollable .heading-accent}
 
 ```{=html}
-<p class="benchmark-stat-line"><strong>74 benchmarks/evals tracked</strong> · <strong>2,913</strong> real, sourced (date, model, score) data points · <strong>48</strong> still discriminating between frontier models · <strong>26</strong> likely saturated<sup style="color:#859900;">†</sup> — full historical data, per-benchmark CSVs, and trend charts: see Sources and the <code>benchmarks/</code> research directory alongside this deck.</p>
+<p class="benchmark-stat-line"><strong>74 benchmarks/evals tracked</strong> · <strong>2,913</strong> real, sourced (date, model, score) data points · <strong>48</strong> still discriminating between frontier models · <strong>26</strong> likely saturated<sup style="color:#5f9e6e;">†</sup> — full historical data, per-benchmark CSVs, and trend charts: see Sources and the <code>benchmarks/</code> research directory alongside this deck.</p>
 
 <div class="section-label section-label--lg">General Knowledge &amp; Broad Reasoning (15)</div>
 <p class="benchmark-list">MMLU<sup>†</sup> · MMLU-Pro<sup>†</sup> · Big Bench Hard<sup>†</sup> · HellaSwag<sup>†</sup> · ARC (AI2 Reasoning Challenge)<sup>†</sup> · TruthfulQA · Winogrande · AGIEval<sup>†</sup> · BoolQ<sup>†</sup> · PIQA · LAMBADA · Adversarial NLI · CommonsenseQA 2.0 · SuperGLUE · ScienceQA<sup>†</sup></p>

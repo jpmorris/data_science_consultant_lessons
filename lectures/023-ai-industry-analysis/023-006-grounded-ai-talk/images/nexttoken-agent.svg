@@ -22,8 +22,8 @@
     @keyframes flashUser { 0%, 100% { fill: #eee8d5; } 50% { fill: #ffffff; } }
     @keyframes flashBlue { 0%, 100% { fill: #268bd2; } 50% { fill: #ffffff; } }
     @keyframes flashCyan { 0%, 100% { fill: #2aa198; } 50% { fill: #ffffff; } }
-    @keyframes flashGreen { 0%, 100% { fill: #859900; } 50% { fill: #ffffff; } }
-    @keyframes harnessBoxFlash { 0%, 100% { stroke: #859900; stroke-width: 3; } 40% { stroke: #eee8d5; stroke-width: 5; } }
+    @keyframes flashGreen { 0%, 100% { fill: #5f9e6e; } 50% { fill: #ffffff; } }
+    @keyframes harnessBoxFlash { 0%, 100% { stroke: #5f9e6e; stroke-width: 3; } 40% { stroke: #eee8d5; stroke-width: 5; } }
     @keyframes typeWidth { from { width: 0; } to { width: var(--full-w); } }
     @keyframes cursorMove { from { x: var(--start-x); } to { x: var(--end-x); } }
     @keyframes cursorBlinkOut {
@@ -218,7 +218,7 @@
 
   <rect class="s3-early fade" x="20" y="70" width="420" height="200" rx="8" fill="#0a0a0a" stroke="#3a4a4a" stroke-width="2"/>
 
-  <text class="s3-prompt1 fade" x="40" y="105" font-family="'Courier New', monospace" font-size="18" fill="#859900">&gt;</text>
+  <text class="s3-prompt1 fade" x="40" y="105" font-family="'Courier New', monospace" font-size="18" fill="#5f9e6e">&gt;</text>
   <text x="62" y="105" font-family="'Courier New', monospace" font-size="18" fill="#eee8d5" clip-path="url(#s3-type1clip)">Make a bash script that echoes</text>
   <rect class="s3-cursor1 fade" y="87" width="9" height="20" fill="#eee8d5"/>
 
@@ -263,7 +263,7 @@
   </text>
   <text class="s3-tagClose fade" x="480" y="236" font-size="15" fill="#268bd2" font-family="'Courier New', monospace">&lt;/function_calls&gt;</text>
 
-  <text class="s3-tool-result fade" x="480" y="260" font-size="14" fill="#859900" font-family="'Courier New', monospace">&lt;tool_result&gt;Created hello-world.sh&lt;/tool_result&gt;</text>
+  <text class="s3-tool-result fade" x="480" y="260" font-size="14" fill="#5f9e6e" font-family="'Courier New', monospace">&lt;tool_result&gt;Created hello-world.sh&lt;/tool_result&gt;</text>
 
   <text x="480" y="287" font-size="18" fill="#2aa198" font-family="'Courier New', monospace">
     <tspan class="s3-answerLabel fade" font-family="'Courier New', monospace">Answer:</tspan>
@@ -275,7 +275,7 @@
   </text>
 
   <!-- panel flash when the harness's result lands in the context -->
-  <rect class="s3-panel-inject-flash fade" x="464" y="65" width="616" height="563" rx="14" fill="none" stroke="#859900" stroke-width="4" filter="url(#softGlow)"/>
+  <rect class="s3-panel-inject-flash fade" x="464" y="65" width="616" height="563" rx="14" fill="none" stroke="#5f9e6e" stroke-width="4" filter="url(#softGlow)"/>
 
 
   <line class="s3-box fade" x1="772" y1="403" x2="772" y2="428" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
@@ -325,7 +325,7 @@
   <rect class="s3-aw5-lg fade" x="662" y="438" width="220" height="90" rx="10" fill="none" stroke="#eee8d5" stroke-width="4" filter="url(#softGlow)"/>
 
   <line class="s3-box fade" x1="612" y1="483" x2="230" y2="483" stroke="#93a1a1" stroke-width="2" marker-end="url(#arrowDown)"/>
-  <rect class="s3-harness-box fade" x="20" y="438" width="160" height="90" rx="10" fill="#0d4a55" stroke="#859900" stroke-width="3"/>
+  <rect class="s3-harness-box fade" x="20" y="438" width="160" height="90" rx="10" fill="#0d4a55" stroke="#5f9e6e" stroke-width="3"/>
   <text class="s3-box fade" x="100" y="470" text-anchor="middle" font-size="16" font-weight="700" fill="#eee8d5" font-family="'Courier New', monospace">Agent Harness</text>
   <circle class="s3-dot-h1 fade" cx="517" cy="483" r="6" fill="#eee8d5"/>
   <circle class="s3-dot-h2 fade" cx="421" cy="483" r="6" fill="#eee8d5"/>
